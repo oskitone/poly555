@@ -1,0 +1,14 @@
+06-23 07:32:48 place_footprints.action_place_footprints 414:Plugin executed on: 'darwin'
+06-23 07:32:48 place_footprints.action_place_footprints 415:Plugin executed with python version: '2.7.16 (default, May 14 2020, 09:34:58) \n[GCC 4.2.1 Compatible Apple LLVM 9.0.0 (clang-900.0.39.2)]'
+06-23 07:32:48 place_footprints.action_place_footprints 416:KiCad build version: (5.1.6-0-10_14)
+06-23 07:32:48 place_footprints.action_place_footprints 417:Place footprints plugin version: 49 started
+06-23 07:32:50 place_footprints.place_footprints 210:getting project hierarchy from schematics
+06-23 07:32:50 place_footprints.place_footprints 225:getting a list of all footprints on board
+06-23 07:32:50 place_footprints.action_place_footprints 472:Reference designator is: S
+06-23 07:32:50 place_footprints.action_place_footprints 473:Rerefence number is: 2
+06-23 07:32:50 place_footprints.action_place_footprints 504:Sorted and filtered list:
+[u'S1', u'S2', u'S3', u'S4', u'S5', u'S6', u'S7', u'S8', u'S9', u'S10', u'S11', u'S12', u'S13']
+06-23 07:33:09 place_footprints.action_place_footprints 535:Modules to place:
+[u'S2', u'S3', u'S4', u'S5', u'S6', u'S7', u'S8', u'S9', u'S10', u'S11', u'S12', u'S13']
+06-23 07:33:09 place_footprints.place_footprints 377:Starting placing with linear layout
+06-23 07:33:09 place_footprints.action_place_footprints 573:Placing complete

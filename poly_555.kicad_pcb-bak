@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 4)
+    (drawings 0)
     (tracks 411)
     (zones 0)
     (modules 129)
@@ -304,7 +304,7 @@
   )
 
   (module digikey-footprints:Toggle_Switch_100SP1T1B4M2QE (layer F.Cu) (tedit 5AF5CA0B) (tstamp 5EED7D1E)
-    (at 246.126 108.712 90)
+    (at 258.445 64.389 90)
     (descr http://spec_sheets.e-switch.com/specs/T111597.pdf)
     (path /605C53E5)
     (fp_text reference S1 (at 4.84 -4.55 90) (layer F.SilkS)
@@ -507,7 +507,7 @@
   )
 
   (module Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical (layer F.Cu) (tedit 59FED5CC) (tstamp 5EED7C70)
-    (at 245.364 148.336)
+    (at 258.445 44.069)
     (descr "Through hole straight pin header, 1x02, 2.54mm pitch, single row")
     (tags "Through hole pin header THT 1x02 2.54mm single row")
     (path /5EEAE121)
@@ -5206,7 +5206,7 @@
   )
 
   (module Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF37E69)
-    (at 205.74 135.128)
+    (at 206.617001 127.155001)
     (descr "C, Axial series, Axial, Horizontal, pin pitch=7.5mm, , length*diameter=3.8*2.6mm^2, http://www.vishay.com/docs/45231/arseries.pdf")
     (tags "C Axial series Axial Horizontal pin pitch 7.5mm  length 3.8mm diameter 2.6mm")
     (path /5F18156C)
@@ -5247,7 +5247,7 @@
   )
 
   (module Capacitor_THT:C_Axial_L3.8mm_D2.6mm_P7.50mm_Horizontal (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF37EAB)
-    (at 205.486 143.256)
+    (at 202.217001 131.425001)
     (descr "C, Axial series, Axial, Horizontal, pin pitch=7.5mm, , length*diameter=3.8*2.6mm^2, http://www.vishay.com/docs/45231/arseries.pdf")
     (tags "C Axial series Axial Horizontal pin pitch 7.5mm  length 3.8mm diameter 2.6mm")
     (path /5F234E50)
@@ -5288,7 +5288,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D8.0mm_P3.50mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF3801B)
-    (at 230.378 146.304)
+    (at 218.911699 129.855001)
     (descr "CP, Radial series, Radial, pin pitch=3.50mm, , diameter=8mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 3.50mm  diameter 8mm Electrolytic Capacitor")
     (path /5F321372)
@@ -5475,7 +5475,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5EF37EE9)
-    (at 218.44 106.934)
+    (at 247.65 38.1)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5F0644B0)
@@ -5510,7 +5510,7 @@
   )
 
   (module Buzzer_Beeper:Buzzer_D14mm_H7mm_P10mm (layer F.Cu) (tedit 5D8D727F) (tstamp 5EF37F5B)
-    (at 238.76 129.286)
+    (at 192.267001 121.575001)
     (descr "Generic Buzzer, D14mm height 7mm with pitch 10mm")
     (tags buzzer)
     (path /5F32F818)
@@ -5545,7 +5545,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF37F23)
-    (at 215.9 100.584)
+    (at 245.11 31.75)
     (descr "Resistor, Axial_DIN0204 series, Axial, Horizontal, pin pitch=7.62mm, 0.167W, length*diameter=3.6*1.6mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0204 series Axial Horizontal pin pitch 7.62mm 0.167W length 3.6mm diameter 1.6mm")
     (path /5F0694ED)
@@ -5586,7 +5586,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF2C762)
-    (at 227.076 122.936 180)
+    (at 246.38 94.742 180)
     (descr "Resistor, Axial_DIN0204 series, Axial, Horizontal, pin pitch=7.62mm, 0.167W, length*diameter=3.6*1.6mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0204 series Axial Horizontal pin pitch 7.62mm 0.167W length 3.6mm diameter 1.6mm")
     (path /5F3FF342)
@@ -5627,7 +5627,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF38181)
-    (at 205.74 139.192)
+    (at 202.117001 135.075001)
     (descr "Resistor, Axial_DIN0204 series, Axial, Horizontal, pin pitch=7.62mm, 0.167W, length*diameter=3.6*1.6mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0204 series Axial Horizontal pin pitch 7.62mm 0.167W length 3.6mm diameter 1.6mm")
     (path /5F2BD566)
@@ -5668,7 +5668,7 @@
   )
 
   (module digikey-footprints:DIP-8_W7.62mm (layer F.Cu) (tedit 5B86B3A2) (tstamp 5EF3838E)
-    (at 205.74 123.19)
+    (at 232.41 152.4)
     (descr http://media.digikey.com/pdf/Data%20Sheets/Lite-On%20PDFs/6N137%20Series.pdf)
     (path /5F0FEF81)
     (fp_text reference U1 (at 4.05 -2.52) (layer F.SilkS)
@@ -5718,7 +5718,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Alpha_RD901F-40-00D_Single_Vertical (layer F.Cu) (tedit 5C6C6C14) (tstamp 5EF2C6B2)
-    (at 220.726 137.16 90)
+    (at 240.03 108.966 90)
     (descr "Potentiometer, vertical, 9mm, single, http://www.taiwanalpha.com.tw/downloads?target=products&id=113")
     (tags "potentiometer vertical 9mm single")
     (path /5F169489)
@@ -5763,11 +5763,6 @@
       (rotate (xyz 0 0 0))
     )
   )
-
-  (gr_line (start 253.746 30.48) (end 19.05 30.48) (layer Margin) (width 0.12))
-  (gr_line (start 253.746 156.21) (end 253.746 30.48) (layer Margin) (width 0.12))
-  (gr_line (start 19.05 156.21) (end 253.746 156.21) (layer Margin) (width 0.12))
-  (gr_line (start 19.05 30.48) (end 19.05 156.21) (layer Margin) (width 0.12))
 
   (segment (start 53.004501 64.935501) (end 53.004501 71.455499) (width 0.25) (layer B.Cu) (net 2))
   (segment (start 63.799501 42.075501) (end 63.799501 48.595499) (width 0.25) (layer B.Cu) (net 2) (tstamp 5EF1B202))
