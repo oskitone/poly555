@@ -83,7 +83,7 @@ AR Path="/60F96864/60FBC6A1" Ref="S?"  Part="1"
 AR Path="/60F96869/60FBC6A1" Ref="S?"  Part="1" 
 F 0 "S2" V 4950 1750 60  0000 L CNN
 F 1 "FSM4JSMATR" V 4950 1800 60  0001 L CNN
-F 2 "digikey-footprints:Switch_Tactile_THT_6x6mm" H 5150 1800 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 5150 1800 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 5150 1900 60  0001 L CNN
 F 4 "450-1759-1-ND" H 5150 2000 60  0001 L CNN "Digi-Key_PN"
 F 5 "FSM4JSMATR" H 5150 2100 60  0001 L CNN "MPN"
@@ -163,7 +163,7 @@ AR Path="/60F96864/5EF1782E" Ref="S?"  Part="1"
 AR Path="/60F96869/5EF1782E" Ref="S?"  Part="1" 
 F 0 "S3" V 4950 2750 60  0000 L CNN
 F 1 "FSM4JSMATR" V 4950 2800 60  0001 L CNN
-F 2 "digikey-footprints:Switch_Tactile_THT_6x6mm" H 5150 2800 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 5150 2800 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 5150 2900 60  0001 L CNN
 F 4 "450-1759-1-ND" H 5150 3000 60  0001 L CNN "Digi-Key_PN"
 F 5 "FSM4JSMATR" H 5150 3100 60  0001 L CNN "MPN"
@@ -240,7 +240,7 @@ AR Path="/60F96864/5EF23045" Ref="S?"  Part="1"
 AR Path="/60F96869/5EF23045" Ref="S?"  Part="1" 
 F 0 "S4" V 4950 3750 60  0000 L CNN
 F 1 "FSM4JSMATR" V 4950 3800 60  0001 L CNN
-F 2 "digikey-footprints:Switch_Tactile_THT_6x6mm" H 5150 3800 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 5150 3800 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 5150 3900 60  0001 L CNN
 F 4 "450-1759-1-ND" H 5150 4000 60  0001 L CNN "Digi-Key_PN"
 F 5 "FSM4JSMATR" H 5150 4100 60  0001 L CNN "MPN"
@@ -317,7 +317,7 @@ AR Path="/60F96864/5EF259F6" Ref="S?"  Part="1"
 AR Path="/60F96869/5EF259F6" Ref="S?"  Part="1" 
 F 0 "S5" V 4950 4750 60  0000 L CNN
 F 1 "FSM4JSMATR" V 4950 4800 60  0001 L CNN
-F 2 "digikey-footprints:Switch_Tactile_THT_6x6mm" H 5150 4800 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 5150 4800 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 5150 4900 60  0001 L CNN
 F 4 "450-1759-1-ND" H 5150 5000 60  0001 L CNN "Digi-Key_PN"
 F 5 "FSM4JSMATR" H 5150 5100 60  0001 L CNN "MPN"
@@ -394,7 +394,7 @@ AR Path="/60F96864/5EF27E61" Ref="S?"  Part="1"
 AR Path="/60F96869/5EF27E61" Ref="S?"  Part="1" 
 F 0 "S6" V 4950 5750 60  0000 L CNN
 F 1 "FSM4JSMATR" V 4950 5800 60  0001 L CNN
-F 2 "digikey-footprints:Switch_Tactile_THT_6x6mm" H 5150 5800 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 5150 5800 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 5150 5900 60  0001 L CNN
 F 4 "450-1759-1-ND" H 5150 6000 60  0001 L CNN "Digi-Key_PN"
 F 5 "FSM4JSMATR" H 5150 6100 60  0001 L CNN "MPN"
@@ -471,7 +471,7 @@ AR Path="/60F96864/5EF2B228" Ref="S?"  Part="1"
 AR Path="/60F96869/5EF2B228" Ref="S?"  Part="1" 
 F 0 "S7" V 4950 6750 60  0000 L CNN
 F 1 "FSM4JSMATR" V 4950 6800 60  0001 L CNN
-F 2 "digikey-footprints:Switch_Tactile_THT_6x6mm" H 5150 6800 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 5150 6800 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 5150 6900 60  0001 L CNN
 F 4 "450-1759-1-ND" H 5150 7000 60  0001 L CNN "Digi-Key_PN"
 F 5 "FSM4JSMATR" H 5150 7100 60  0001 L CNN "MPN"
@@ -625,7 +625,7 @@ AR Path="/60F96864/5EF6056F" Ref="S?"  Part="1"
 AR Path="/60F96869/5EF6056F" Ref="S?"  Part="1" 
 F 0 "S9" V 7850 1750 60  0000 L CNN
 F 1 "FSM4JSMATR" V 7850 1800 60  0001 L CNN
-F 2 "digikey-footprints:Switch_Tactile_THT_6x6mm" H 8050 1800 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 8050 1800 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 8050 1900 60  0001 L CNN
 F 4 "450-1759-1-ND" H 8050 2000 60  0001 L CNN "Digi-Key_PN"
 F 5 "FSM4JSMATR" H 8050 2100 60  0001 L CNN "MPN"
@@ -702,7 +702,7 @@ AR Path="/60F96864/5EF60594" Ref="S?"  Part="1"
 AR Path="/60F96869/5EF60594" Ref="S?"  Part="1" 
 F 0 "S10" V 7850 2750 60  0000 L CNN
 F 1 "FSM4JSMATR" V 7850 2800 60  0001 L CNN
-F 2 "digikey-footprints:Switch_Tactile_THT_6x6mm" H 8050 2800 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 8050 2800 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 8050 2900 60  0001 L CNN
 F 4 "450-1759-1-ND" H 8050 3000 60  0001 L CNN "Digi-Key_PN"
 F 5 "FSM4JSMATR" H 8050 3100 60  0001 L CNN "MPN"
@@ -779,7 +779,7 @@ AR Path="/60F96864/5EF605B7" Ref="S?"  Part="1"
 AR Path="/60F96869/5EF605B7" Ref="S?"  Part="1" 
 F 0 "S11" V 7850 3750 60  0000 L CNN
 F 1 "FSM4JSMATR" V 7850 3800 60  0001 L CNN
-F 2 "digikey-footprints:Switch_Tactile_THT_6x6mm" H 8050 3800 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 8050 3800 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 8050 3900 60  0001 L CNN
 F 4 "450-1759-1-ND" H 8050 4000 60  0001 L CNN "Digi-Key_PN"
 F 5 "FSM4JSMATR" H 8050 4100 60  0001 L CNN "MPN"
@@ -856,7 +856,7 @@ AR Path="/60F96864/5EF605DA" Ref="S?"  Part="1"
 AR Path="/60F96869/5EF605DA" Ref="S?"  Part="1" 
 F 0 "S12" V 7850 4750 60  0000 L CNN
 F 1 "FSM4JSMATR" V 7850 4800 60  0001 L CNN
-F 2 "digikey-footprints:Switch_Tactile_THT_6x6mm" H 8050 4800 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 8050 4800 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 8050 4900 60  0001 L CNN
 F 4 "450-1759-1-ND" H 8050 5000 60  0001 L CNN "Digi-Key_PN"
 F 5 "FSM4JSMATR" H 8050 5100 60  0001 L CNN "MPN"
@@ -933,7 +933,7 @@ AR Path="/60F96864/5EF605FD" Ref="S?"  Part="1"
 AR Path="/60F96869/5EF605FD" Ref="S?"  Part="1" 
 F 0 "S13" V 7850 5750 60  0000 L CNN
 F 1 "FSM4JSMATR" V 7850 5800 60  0001 L CNN
-F 2 "digikey-footprints:Switch_Tactile_THT_6x6mm" H 8050 5800 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 8050 5800 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 8050 5900 60  0001 L CNN
 F 4 "450-1759-1-ND" H 8050 6000 60  0001 L CNN "Digi-Key_PN"
 F 5 "FSM4JSMATR" H 8050 6100 60  0001 L CNN "MPN"
@@ -1010,7 +1010,7 @@ AR Path="/60F96864/5EF60620" Ref="S?"  Part="1"
 AR Path="/60F96869/5EF60620" Ref="S?"  Part="1" 
 F 0 "S14" V 7850 6750 60  0000 L CNN
 F 1 "FSM4JSMATR" V 7850 6800 60  0001 L CNN
-F 2 "digikey-footprints:Switch_Tactile_THT_6x6mm" H 8050 6800 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 8050 6800 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 8050 6900 60  0001 L CNN
 F 4 "450-1759-1-ND" H 8050 7000 60  0001 L CNN "Digi-Key_PN"
 F 5 "FSM4JSMATR" H 8050 7100 60  0001 L CNN "MPN"
@@ -1185,7 +1185,7 @@ AR Path="/60F96864/5EF7A094" Ref="S?"  Part="1"
 AR Path="/60F96869/5EF7A094" Ref="S?"  Part="1" 
 F 0 "S8" V 4950 7750 60  0000 L CNN
 F 1 "FSM4JSMATR" V 4950 7800 60  0001 L CNN
-F 2 "digikey-footprints:Switch_Tactile_THT_6x6mm" H 5150 7800 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 5150 7800 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 5150 7900 60  0001 L CNN
 F 4 "450-1759-1-ND" H 5150 8000 60  0001 L CNN "Digi-Key_PN"
 F 5 "FSM4JSMATR" H 5150 8100 60  0001 L CNN "MPN"
@@ -1303,7 +1303,7 @@ U 1 1 5F0FEF81
 P 12750 4050
 F 0 "U1" H 13094 4004 50  0000 L CNN
 F 1 "LM386" H 13094 4095 50  0000 L CNN
-F 2 "digikey-footprints:DIP-8_W7.62mm" H 12850 4150 50  0001 C CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 12850 4150 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/lm386.pdf" H 12950 4250 50  0001 C CNN
 	1    12750 4050
 	1    0    0    1   
@@ -1478,7 +1478,7 @@ U 1 1 5F32F818
 P 14550 4050
 F 0 "LS1" H 14720 4046 50  0000 L CNN
 F 1 "Speaker" H 14720 3955 50  0000 L CNN
-F 2 "Buzzer_Beeper:Buzzer_D14mm_H7mm_P10mm" H 14550 3850 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 14550 3850 50  0001 C CNN
 F 3 "~" H 14540 4000 50  0001 C CNN
 	1    14550 4050
 	1    0    0    -1  

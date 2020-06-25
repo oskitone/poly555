@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /Users/tommy/Dropbox/poly_555/poly_555.sch)
-    (date "Tuesday, June 23, 2020 at 05:26:16 PM")
+    (date "Wednesday, June 24, 2020 at 02:23:13 PM")
     (tool "Eeschema (5.1.6-0-10_14)")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -184,7 +184,7 @@
       (tstamp 605C53E5))
     (comp (ref S2)
       (value FSM4JSMATR)
-      (footprint digikey-footprints:Switch_Tactile_THT_6x6mm)
+      (footprint Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx)
       (datasheet https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English)
       (fields
         (field (name Category) Switches)
@@ -208,7 +208,7 @@
       (tstamp 60FBDFB0))
     (comp (ref S3)
       (value FSM4JSMATR)
-      (footprint digikey-footprints:Switch_Tactile_THT_6x6mm)
+      (footprint Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx)
       (datasheet https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English)
       (fields
         (field (name Category) Switches)
@@ -232,7 +232,7 @@
       (tstamp 5EF17834))
     (comp (ref S4)
       (value FSM4JSMATR)
-      (footprint digikey-footprints:Switch_Tactile_THT_6x6mm)
+      (footprint Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx)
       (datasheet https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English)
       (fields
         (field (name Category) Switches)
@@ -256,7 +256,7 @@
       (tstamp 5EF2304B))
     (comp (ref S5)
       (value FSM4JSMATR)
-      (footprint digikey-footprints:Switch_Tactile_THT_6x6mm)
+      (footprint Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx)
       (datasheet https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English)
       (fields
         (field (name Category) Switches)
@@ -280,7 +280,7 @@
       (tstamp 5EF259FC))
     (comp (ref S6)
       (value FSM4JSMATR)
-      (footprint digikey-footprints:Switch_Tactile_THT_6x6mm)
+      (footprint Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx)
       (datasheet https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English)
       (fields
         (field (name Category) Switches)
@@ -304,7 +304,7 @@
       (tstamp 5EF27E67))
     (comp (ref S7)
       (value FSM4JSMATR)
-      (footprint digikey-footprints:Switch_Tactile_THT_6x6mm)
+      (footprint Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx)
       (datasheet https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English)
       (fields
         (field (name Category) Switches)
@@ -328,7 +328,7 @@
       (tstamp 5EF2B22E))
     (comp (ref S9)
       (value FSM4JSMATR)
-      (footprint digikey-footprints:Switch_Tactile_THT_6x6mm)
+      (footprint Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx)
       (datasheet https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English)
       (fields
         (field (name Category) Switches)
@@ -352,7 +352,7 @@
       (tstamp 5EF60575))
     (comp (ref S10)
       (value FSM4JSMATR)
-      (footprint digikey-footprints:Switch_Tactile_THT_6x6mm)
+      (footprint Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx)
       (datasheet https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English)
       (fields
         (field (name Category) Switches)
@@ -376,7 +376,7 @@
       (tstamp 5EF6059A))
     (comp (ref S11)
       (value FSM4JSMATR)
-      (footprint digikey-footprints:Switch_Tactile_THT_6x6mm)
+      (footprint Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx)
       (datasheet https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English)
       (fields
         (field (name Category) Switches)
@@ -400,7 +400,7 @@
       (tstamp 5EF605BD))
     (comp (ref S12)
       (value FSM4JSMATR)
-      (footprint digikey-footprints:Switch_Tactile_THT_6x6mm)
+      (footprint Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx)
       (datasheet https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English)
       (fields
         (field (name Category) Switches)
@@ -424,7 +424,7 @@
       (tstamp 5EF605E0))
     (comp (ref S13)
       (value FSM4JSMATR)
-      (footprint digikey-footprints:Switch_Tactile_THT_6x6mm)
+      (footprint Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx)
       (datasheet https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English)
       (fields
         (field (name Category) Switches)
@@ -448,7 +448,7 @@
       (tstamp 5EF60603))
     (comp (ref S14)
       (value FSM4JSMATR)
-      (footprint digikey-footprints:Switch_Tactile_THT_6x6mm)
+      (footprint Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx)
       (datasheet https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English)
       (fields
         (field (name Category) Switches)
@@ -472,7 +472,7 @@
       (tstamp 5EF60626))
     (comp (ref S8)
       (value FSM4JSMATR)
-      (footprint digikey-footprints:Switch_Tactile_THT_6x6mm)
+      (footprint Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx)
       (datasheet https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English)
       (fields
         (field (name Category) Switches)
@@ -510,7 +510,7 @@
       (tstamp 5F0694ED))
     (comp (ref U1)
       (value LM386)
-      (footprint digikey-footprints:DIP-8_W7.62mm)
+      (footprint Package_DIP:DIP-8_W7.62mm)
       (datasheet http://www.ti.com/lit/ds/symlink/lm386.pdf)
       (libsource (lib Amplifier_Audio) (part LM386) (description "Low Voltage Audio Power Amplifier, DIP-8/SOIC-8/SSOP-8"))
       (sheetpath (names /) (tstamps /))
@@ -552,7 +552,7 @@
       (tstamp 5F321372))
     (comp (ref LS1)
       (value Speaker)
-      (footprint Buzzer_Beeper:Buzzer_D14mm_H7mm_P10mm)
+      (footprint Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical)
       (datasheet ~)
       (libsource (lib Device) (part Speaker) (description Speaker))
       (sheetpath (names /) (tstamps /))
@@ -594,7 +594,7 @@
       (tstamp 60F6EAC0))
     (comp (ref U2)
       (value 555)
-      (footprint digikey-footprints:DIP-8_W7.62mm)
+      (footprint Package_DIP:DIP-8_W7.62mm)
       (datasheet http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555)
       (fields
         (field (name Category) "Integrated Circuits (ICs)")
@@ -653,7 +653,7 @@
       (tstamp 60F6EAC0))
     (comp (ref U3)
       (value 555)
-      (footprint digikey-footprints:DIP-8_W7.62mm)
+      (footprint Package_DIP:DIP-8_W7.62mm)
       (datasheet http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555)
       (fields
         (field (name Category) "Integrated Circuits (ICs)")
@@ -712,7 +712,7 @@
       (tstamp 60F6EAC0))
     (comp (ref U4)
       (value 555)
-      (footprint digikey-footprints:DIP-8_W7.62mm)
+      (footprint Package_DIP:DIP-8_W7.62mm)
       (datasheet http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555)
       (fields
         (field (name Category) "Integrated Circuits (ICs)")
@@ -771,7 +771,7 @@
       (tstamp 60F6EAC0))
     (comp (ref U5)
       (value 555)
-      (footprint digikey-footprints:DIP-8_W7.62mm)
+      (footprint Package_DIP:DIP-8_W7.62mm)
       (datasheet http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555)
       (fields
         (field (name Category) "Integrated Circuits (ICs)")
@@ -830,7 +830,7 @@
       (tstamp 60F6EAC0))
     (comp (ref U6)
       (value 555)
-      (footprint digikey-footprints:DIP-8_W7.62mm)
+      (footprint Package_DIP:DIP-8_W7.62mm)
       (datasheet http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555)
       (fields
         (field (name Category) "Integrated Circuits (ICs)")
@@ -889,7 +889,7 @@
       (tstamp 60F6EAC0))
     (comp (ref U7)
       (value 555)
-      (footprint digikey-footprints:DIP-8_W7.62mm)
+      (footprint Package_DIP:DIP-8_W7.62mm)
       (datasheet http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555)
       (fields
         (field (name Category) "Integrated Circuits (ICs)")
@@ -948,7 +948,7 @@
       (tstamp 60F6EAC0))
     (comp (ref U8)
       (value 555)
-      (footprint digikey-footprints:DIP-8_W7.62mm)
+      (footprint Package_DIP:DIP-8_W7.62mm)
       (datasheet http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555)
       (fields
         (field (name Category) "Integrated Circuits (ICs)")
@@ -1007,7 +1007,7 @@
       (tstamp 60F6EAC0))
     (comp (ref U9)
       (value 555)
-      (footprint digikey-footprints:DIP-8_W7.62mm)
+      (footprint Package_DIP:DIP-8_W7.62mm)
       (datasheet http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555)
       (fields
         (field (name Category) "Integrated Circuits (ICs)")
@@ -1066,7 +1066,7 @@
       (tstamp 60F6EAC0))
     (comp (ref U10)
       (value 555)
-      (footprint digikey-footprints:DIP-8_W7.62mm)
+      (footprint Package_DIP:DIP-8_W7.62mm)
       (datasheet http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555)
       (fields
         (field (name Category) "Integrated Circuits (ICs)")
@@ -1125,7 +1125,7 @@
       (tstamp 60F6EAC0))
     (comp (ref U11)
       (value 555)
-      (footprint digikey-footprints:DIP-8_W7.62mm)
+      (footprint Package_DIP:DIP-8_W7.62mm)
       (datasheet http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555)
       (fields
         (field (name Category) "Integrated Circuits (ICs)")
@@ -1184,7 +1184,7 @@
       (tstamp 60F6EAC0))
     (comp (ref U12)
       (value 555)
-      (footprint digikey-footprints:DIP-8_W7.62mm)
+      (footprint Package_DIP:DIP-8_W7.62mm)
       (datasheet http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555)
       (fields
         (field (name Category) "Integrated Circuits (ICs)")
@@ -1243,7 +1243,7 @@
       (tstamp 60F6EAC0))
     (comp (ref U13)
       (value 555)
-      (footprint digikey-footprints:DIP-8_W7.62mm)
+      (footprint Package_DIP:DIP-8_W7.62mm)
       (datasheet http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555)
       (fields
         (field (name Category) "Integrated Circuits (ICs)")
@@ -1302,7 +1302,7 @@
       (tstamp 60F6EAC0))
     (comp (ref U14)
       (value 555)
-      (footprint digikey-footprints:DIP-8_W7.62mm)
+      (footprint Package_DIP:DIP-8_W7.62mm)
       (datasheet http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555)
       (fields
         (field (name Category) "Integrated Circuits (ICs)")

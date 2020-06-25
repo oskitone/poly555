@@ -224,7 +224,7 @@ AR Path="/5EF6060B/60F6A6DA" Ref="U13"  Part="1"
 AR Path="/5EF7A07F/60F6A6DA" Ref="U14"  Part="1" 
 F 0 "U2" H 5800 4050 60  0000 C CNN
 F 1 "555" H 6000 4050 60  0000 C CNN
-F 2 "digikey-footprints:DIP-8_W7.62mm" H 5900 3950 60  0001 L CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 5900 3950 60  0001 L CNN
 F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555" H 5900 4050 60  0001 L CNN
 F 4 "296-1411-5-ND" H 5900 4150 60  0001 L CNN "Digi-Key_PN"
 F 5 "NE555P" H 5900 4250 60  0001 L CNN "MPN"
@@ -399,4 +399,6 @@ Connection ~ 4600 4400
 Connection ~ 4600 4900
 Wire Wire Line
 	4600 4900 4850 4900
+Text Notes 4550 5300 0    50   ~ 0
+TODO: consider coarse/fine tuning pots
 $EndSCHEMATC

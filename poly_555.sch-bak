@@ -1303,7 +1303,7 @@ U 1 1 5F0FEF81
 P 12750 4050
 F 0 "U1" H 13094 4004 50  0000 L CNN
 F 1 "LM386" H 13094 4095 50  0000 L CNN
-F 2 "digikey-footprints:DIP-8_W7.62mm" H 12850 4150 50  0001 C CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 12850 4150 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/lm386.pdf" H 12950 4250 50  0001 C CNN
 	1    12750 4050
 	1    0    0    1   
@@ -1350,7 +1350,7 @@ AR Path="/5EF6060B/5F169489" Ref="RV?"  Part="1"
 AR Path="/5EF7A07F/5F169489" Ref="RV?"  Part="1" 
 F 0 "RV1" V 10800 4050 50  0000 R CNN
 F 1 "R_POT_TRIM_US" H 10832 3905 50  0001 R CNN
-F 2 "Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical" H 10900 3950 50  0001 C CNN
+F 2 "Potentiometer_THT:Potentiometer_Alpha_RD901F-40-00D_Single_Vertical" H 10900 3950 50  0001 C CNN
 F 3 "~" H 10900 3950 50  0001 C CNN
 	1    10900 3950
 	1    0    0    1   
@@ -1478,7 +1478,7 @@ U 1 1 5F32F818
 P 14550 4050
 F 0 "LS1" H 14720 4046 50  0000 L CNN
 F 1 "Speaker" H 14720 3955 50  0000 L CNN
-F 2 "Buzzer_Beeper:Buzzer_D14mm_H7mm_P10mm" H 14550 3850 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 14550 3850 50  0001 C CNN
 F 3 "~" H 14540 4000 50  0001 C CNN
 	1    14550 4050
 	1    0    0    -1  
