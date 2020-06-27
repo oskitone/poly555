@@ -513,4 +513,6 @@ Connection ~ 4600 4900
 Wire Wire Line
 	5150 4900 5350 4900
 Connection ~ 5150 4900
+Text Notes 4550 5200 0    50   ~ 0
+TODO: really? this goes to gnd?
 $EndSCHEMATC
