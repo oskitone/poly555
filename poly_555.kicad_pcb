@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 6)
+    (drawings 7)
     (tracks 861)
     (zones 0)
     (modules 162)
@@ -6785,6 +6785,9 @@
     )
   )
 
+  (gr_text "OSKITONE\nPOLY_555 0.0.0" (at 142.24 163.195) (layer B.SilkS) (tstamp 5EFA35F9)
+    (effects (font (size 1 1) (thickness 0.15)) (justify left mirror))
+  )
   (gr_text "OSKITONE\nPOLY_555 0.0.0" (at 109.855 114.935) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)) (justify left))
   )
