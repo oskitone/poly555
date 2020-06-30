@@ -1,163 +1,162 @@
-06-26 18:10:00 replicate_layout.action_replicate_layout 305:Plugin executed on: 'darwin'
-06-26 18:10:00 replicate_layout.action_replicate_layout 306:Plugin executed with python version: '2.7.16 (default, May 14 2020, 09:34:58) \n[GCC 4.2.1 Compatible Apple LLVM 9.0.0 (clang-900.0.39.2)]'
-06-26 18:10:00 replicate_layout.action_replicate_layout 307:KiCad build version: (5.1.6-0-10_14)
-06-26 18:10:00 replicate_layout.action_replicate_layout 308:Replicate layout plugin version: 64 started
-06-26 18:10:00 replicate_layout.action_replicate_layout 340:Preparing replicator with RV3 as a reference
-06-26 18:10:00 replicate_layout.replicatelayout 211:getting project hierarchy from schematics
-06-26 18:10:00 replicate_layout.replicatelayout 213:Project hierarchy looks like:
+06-29 15:21:04 replicate_layout.action_replicate_layout 305:Plugin executed on: 'darwin'
+06-29 15:21:04 replicate_layout.action_replicate_layout 306:Plugin executed with python version: '2.7.16 (default, May 14 2020, 09:34:58) \n[GCC 4.2.1 Compatible Apple LLVM 9.0.0 (clang-900.0.39.2)]'
+06-29 15:21:04 replicate_layout.action_replicate_layout 307:KiCad build version: (5.1.6-0-10_14)
+06-29 15:21:04 replicate_layout.action_replicate_layout 308:Replicate layout plugin version: 64 started
+06-29 15:21:04 replicate_layout.action_replicate_layout 340:Preparing replicator with U3 as a reference
+06-29 15:21:04 replicate_layout.replicatelayout 211:getting project hierarchy from schematics
+06-29 15:21:04 replicate_layout.replicatelayout 213:Project hierarchy looks like:
 {'5EF27E4C': ['sheet5EF27E47', u'/Users/tommy/Dropbox/poly_555/555_astable.sch'], '5EF6060B': ['sheet5EF60555', u'/Users/tommy/Dropbox/poly_555/555_astable.sch'], '5EF6055A': ['sheet5EF60550', u'/Users/tommy/Dropbox/poly_555/555_astable.sch'], '5EF605A2': ['sheet5EF60552', u'/Users/tommy/Dropbox/poly_555/555_astable.sch'], '5EF605C5': ['sheet5EF60553', u'/Users/tommy/Dropbox/poly_555/555_astable.sch'], '5EF605E8': ['sheet5EF60554', u'/Users/tommy/Dropbox/poly_555/555_astable.sch'], '5EF7A07F': ['sheet5EF7A07A', u'/Users/tommy/Dropbox/poly_555/555_astable.sch'], '5EF2B213': ['sheet5EF2B20E', u'/Users/tommy/Dropbox/poly_555/555_astable.sch'], '5EF17819': ['sheet5EF17814', u'/Users/tommy/Dropbox/poly_555/555_astable.sch'], '60F4E92A': ['555_astable', u'/Users/tommy/Dropbox/poly_555/555_astable.sch'], '5EF23030': ['sheet5EF2302B', u'/Users/tommy/Dropbox/poly_555/555_astable.sch'], '5EF6057F': ['sheet5EF60551', u'/Users/tommy/Dropbox/poly_555/555_astable.sch'], '5EF259E1': ['sheet5EF259DC', u'/Users/tommy/Dropbox/poly_555/555_astable.sch']}
-06-26 18:10:00 replicate_layout.replicatelayout 221:getting a list of all footprints on board
-06-26 18:10:00 replicate_layout.action_replicate_layout 367:source anchor footprint is u'RV3'
-Located on:['555_astable']
+06-29 15:21:04 replicate_layout.replicatelayout 221:getting a list of all footprints on board
+06-29 15:21:04 replicate_layout.action_replicate_layout 367:source anchor footprint is u'U3'
+Located on:['sheet5EF17814']
 With filenames:[u'555_astable.sch']
-With sheet_id:['555_astable']
-06-26 18:10:00 replicate_layout.action_replicate_layout 371:Corresponding footprints are 
-[(u'RV3', ['555_astable']), (u'RV5', ['sheet5EF17814']), (u'RV7', ['sheet5EF2302B']), (u'RV9', ['sheet5EF259DC']), (u'RV11', ['sheet5EF27E47']), (u'RV13', ['sheet5EF2B20E']), (u'RV15', ['sheet5EF60550']), (u'RV17', ['sheet5EF60551']), (u'RV19', ['sheet5EF60552']), (u'RV21', ['sheet5EF60553']), (u'RV23', ['sheet5EF60554']), (u'RV25', ['sheet5EF60555']), (u'RV27', ['sheet5EF7A07A'])]
-06-26 18:10:00 replicate_layout.action_replicate_layout 384:Showing dialog
-06-26 18:10:00 replicate_layout.action_replicate_layout 388:Pcbnew position: wx.Point(640, 23)
-06-26 18:10:00 replicate_layout.action_replicate_layout 394:Display 0: wx.Rect(0, 0, 1920, 1080)
-06-26 18:10:00 replicate_layout.action_replicate_layout 398:Toolbar position: wx.Point(1718, 117)
-06-26 18:10:00 replicate_layout.action_replicate_layout 405:Dialog position: wx.Point(1405, 117)
-06-26 18:10:02 replicate_layout.replicatelayout 245:construcing a list of sheets suitable for replication on level:'555_astable', file:u'555_astable.sch'
-06-26 18:10:02 replicate_layout.replicatelayout 252:Source sheet path up to the level:['555_astable']
-06-26 18:10:02 replicate_layout.replicatelayout 256:Footprints on the sheets:
-[u'RV3', u'RV5', u'RV7', u'RV9', u'RV11', u'RV13', u'RV15', u'RV17', u'RV19', u'RV21', u'RV23', u'RV25', u'RV27']
-06-26 18:10:02 replicate_layout.replicatelayout 259:Footprints raw sheet ids:
-[u'/60F4E92A/60F6A6C5', u'/5EF17819/60F6A6C5', u'/5EF23030/60F6A6C5', u'/5EF259E1/60F6A6C5', u'/5EF27E4C/60F6A6C5', u'/5EF2B213/60F6A6C5', u'/5EF6055A/60F6A6C5', u'/5EF6057F/60F6A6C5', u'/5EF605A2/60F6A6C5', u'/5EF605C5/60F6A6C5', u'/5EF605E8/60F6A6C5', u'/5EF6060B/60F6A6C5', u'/5EF7A07F/60F6A6C5']
-06-26 18:10:02 replicate_layout.replicatelayout 275:All sheets to replicate:
+With sheet_id:['sheet5EF17814']
+06-29 15:21:04 replicate_layout.action_replicate_layout 371:Corresponding footprints are 
+[(u'U2', ['555_astable']), (u'U3', ['sheet5EF17814']), (u'U4', ['sheet5EF2302B']), (u'U5', ['sheet5EF259DC']), (u'U6', ['sheet5EF27E47']), (u'U7', ['sheet5EF2B20E']), (u'U8', ['sheet5EF60550']), (u'U9', ['sheet5EF60551']), (u'U10', ['sheet5EF60552']), (u'U11', ['sheet5EF60553']), (u'U12', ['sheet5EF60554']), (u'U13', ['sheet5EF60555']), (u'U14', ['sheet5EF7A07A'])]
+06-29 15:21:04 replicate_layout.action_replicate_layout 384:Showing dialog
+06-29 15:21:04 replicate_layout.action_replicate_layout 388:Pcbnew position: wx.Point(0, 23)
+06-29 15:21:04 replicate_layout.action_replicate_layout 394:Display 0: wx.Rect(0, 0, 1920, 1080)
+06-29 15:21:04 replicate_layout.action_replicate_layout 398:Toolbar position: wx.Point(1718, 117)
+06-29 15:21:04 replicate_layout.action_replicate_layout 405:Dialog position: wx.Point(1405, 117)
+06-29 15:21:08 replicate_layout.replicatelayout 245:construcing a list of sheets suitable for replication on level:'sheet5EF17814', file:u'555_astable.sch'
+06-29 15:21:08 replicate_layout.replicatelayout 252:Source sheet path up to the level:['sheet5EF17814']
+06-29 15:21:08 replicate_layout.replicatelayout 256:Footprints on the sheets:
+[u'U2', u'U3', u'U4', u'U5', u'U6', u'U7', u'U8', u'U9', u'U10', u'U11', u'U12', u'U13', u'U14']
+06-29 15:21:08 replicate_layout.replicatelayout 259:Footprints raw sheet ids:
+[u'/60F4E92A/60F6A6DA', u'/5EF17819/60F6A6DA', u'/5EF23030/60F6A6DA', u'/5EF259E1/60F6A6DA', u'/5EF27E4C/60F6A6DA', u'/5EF2B213/60F6A6DA', u'/5EF6055A/60F6A6DA', u'/5EF6057F/60F6A6DA', u'/5EF605A2/60F6A6DA', u'/5EF605C5/60F6A6DA', u'/5EF605E8/60F6A6DA', u'/5EF6060B/60F6A6DA', u'/5EF7A07F/60F6A6DA']
+06-29 15:21:08 replicate_layout.replicatelayout 275:All sheets to replicate:
 [['555_astable'], ['sheet5EF17814'], ['sheet5EF2302B'], ['sheet5EF259DC'], ['sheet5EF27E47'], ['sheet5EF2B20E'], ['sheet5EF60550'], ['sheet5EF60551'], ['sheet5EF60552'], ['sheet5EF60553'], ['sheet5EF60554'], ['sheet5EF60555'], ['sheet5EF7A07A']]
-06-26 18:10:02 replicate_layout.replicatelayout 280:All sheets to replicate sorted:
+06-29 15:21:08 replicate_layout.replicatelayout 280:All sheets to replicate sorted:
 [['555_astable'], ['sheet5EF17814'], ['sheet5EF2302B'], ['sheet5EF259DC'], ['sheet5EF27E47'], ['sheet5EF2B20E'], ['sheet5EF60550'], ['sheet5EF60551'], ['sheet5EF60552'], ['sheet5EF60553'], ['sheet5EF60554'], ['sheet5EF60555'], ['sheet5EF7A07A']]
-06-26 18:10:02 replicate_layout.replicatelayout 286:All sheets to replicate sorted and without source sheet:
-[['sheet5EF17814'], ['sheet5EF2302B'], ['sheet5EF259DC'], ['sheet5EF27E47'], ['sheet5EF2B20E'], ['sheet5EF60550'], ['sheet5EF60551'], ['sheet5EF60552'], ['sheet5EF60553'], ['sheet5EF60554'], ['sheet5EF60555'], ['sheet5EF7A07A']]
-06-26 18:10:06 replicate_layout.replicatelayout 245:construcing a list of sheets suitable for replication on level:'555_astable', file:u'555_astable.sch'
-06-26 18:10:06 replicate_layout.replicatelayout 252:Source sheet path up to the level:['555_astable']
-06-26 18:10:06 replicate_layout.replicatelayout 256:Footprints on the sheets:
-[u'RV3', u'RV5', u'RV7', u'RV9', u'RV11', u'RV13', u'RV15', u'RV17', u'RV19', u'RV21', u'RV23', u'RV25', u'RV27']
-06-26 18:10:06 replicate_layout.replicatelayout 259:Footprints raw sheet ids:
-[u'/60F4E92A/60F6A6C5', u'/5EF17819/60F6A6C5', u'/5EF23030/60F6A6C5', u'/5EF259E1/60F6A6C5', u'/5EF27E4C/60F6A6C5', u'/5EF2B213/60F6A6C5', u'/5EF6055A/60F6A6C5', u'/5EF6057F/60F6A6C5', u'/5EF605A2/60F6A6C5', u'/5EF605C5/60F6A6C5', u'/5EF605E8/60F6A6C5', u'/5EF6060B/60F6A6C5', u'/5EF7A07F/60F6A6C5']
-06-26 18:10:06 replicate_layout.replicatelayout 275:All sheets to replicate:
+06-29 15:21:08 replicate_layout.replicatelayout 286:All sheets to replicate sorted and without source sheet:
+[['555_astable'], ['sheet5EF2302B'], ['sheet5EF259DC'], ['sheet5EF27E47'], ['sheet5EF2B20E'], ['sheet5EF60550'], ['sheet5EF60551'], ['sheet5EF60552'], ['sheet5EF60553'], ['sheet5EF60554'], ['sheet5EF60555'], ['sheet5EF7A07A']]
+06-29 15:21:15 replicate_layout.replicatelayout 245:construcing a list of sheets suitable for replication on level:'sheet5EF17814', file:u'555_astable.sch'
+06-29 15:21:15 replicate_layout.replicatelayout 252:Source sheet path up to the level:['sheet5EF17814']
+06-29 15:21:15 replicate_layout.replicatelayout 256:Footprints on the sheets:
+[u'U2', u'U3', u'U4', u'U5', u'U6', u'U7', u'U8', u'U9', u'U10', u'U11', u'U12', u'U13', u'U14']
+06-29 15:21:15 replicate_layout.replicatelayout 259:Footprints raw sheet ids:
+[u'/60F4E92A/60F6A6DA', u'/5EF17819/60F6A6DA', u'/5EF23030/60F6A6DA', u'/5EF259E1/60F6A6DA', u'/5EF27E4C/60F6A6DA', u'/5EF2B213/60F6A6DA', u'/5EF6055A/60F6A6DA', u'/5EF6057F/60F6A6DA', u'/5EF605A2/60F6A6DA', u'/5EF605C5/60F6A6DA', u'/5EF605E8/60F6A6DA', u'/5EF6060B/60F6A6DA', u'/5EF7A07F/60F6A6DA']
+06-29 15:21:15 replicate_layout.replicatelayout 275:All sheets to replicate:
 [['555_astable'], ['sheet5EF17814'], ['sheet5EF2302B'], ['sheet5EF259DC'], ['sheet5EF27E47'], ['sheet5EF2B20E'], ['sheet5EF60550'], ['sheet5EF60551'], ['sheet5EF60552'], ['sheet5EF60553'], ['sheet5EF60554'], ['sheet5EF60555'], ['sheet5EF7A07A']]
-06-26 18:10:06 replicate_layout.replicatelayout 280:All sheets to replicate sorted:
+06-29 15:21:15 replicate_layout.replicatelayout 280:All sheets to replicate sorted:
 [['555_astable'], ['sheet5EF17814'], ['sheet5EF2302B'], ['sheet5EF259DC'], ['sheet5EF27E47'], ['sheet5EF2B20E'], ['sheet5EF60550'], ['sheet5EF60551'], ['sheet5EF60552'], ['sheet5EF60553'], ['sheet5EF60554'], ['sheet5EF60555'], ['sheet5EF7A07A']]
-06-26 18:10:06 replicate_layout.replicatelayout 286:All sheets to replicate sorted and without source sheet:
-[['sheet5EF17814'], ['sheet5EF2302B'], ['sheet5EF259DC'], ['sheet5EF27E47'], ['sheet5EF2B20E'], ['sheet5EF60550'], ['sheet5EF60551'], ['sheet5EF60552'], ['sheet5EF60553'], ['sheet5EF60554'], ['sheet5EF60555'], ['sheet5EF7A07A']]
-06-26 18:10:06 replicate_layout.action_replicate_layout 179:Replicating layout
-06-26 18:10:06 replicate_layout.replicatelayout 986:Starting replication of sheets: [['sheet5EF17814'], ['sheet5EF2302B'], ['sheet5EF259DC'], ['sheet5EF27E47'], ['sheet5EF2B20E'], ['sheet5EF60550'], ['sheet5EF60551'], ['sheet5EF60552'], ['sheet5EF60553'], ['sheet5EF60554'], ['sheet5EF60555'], ['sheet5EF7A07A']]
-on level: ['555_astable']
+06-29 15:21:15 replicate_layout.replicatelayout 286:All sheets to replicate sorted and without source sheet:
+[['555_astable'], ['sheet5EF2302B'], ['sheet5EF259DC'], ['sheet5EF27E47'], ['sheet5EF2B20E'], ['sheet5EF60550'], ['sheet5EF60551'], ['sheet5EF60552'], ['sheet5EF60553'], ['sheet5EF60554'], ['sheet5EF60555'], ['sheet5EF7A07A']]
+06-29 15:21:15 replicate_layout.action_replicate_layout 179:Replicating layout
+06-29 15:21:15 replicate_layout.replicatelayout 986:Starting replication of sheets: [['555_astable'], ['sheet5EF2302B'], ['sheet5EF259DC'], ['sheet5EF27E47'], ['sheet5EF2B20E'], ['sheet5EF60550'], ['sheet5EF60551'], ['sheet5EF60552'], ['sheet5EF60553'], ['sheet5EF60554'], ['sheet5EF60555'], ['sheet5EF7A07A']]
+on level: ['sheet5EF17814']
 with tracks=True, zone=True, text=True, containing=True, remove=False, locked=False
-06-26 18:10:06 root 261:updating GUI message: 'Preparing for replication'
-06-26 18:10:06 replicate_layout.replicatelayout 552:Getting the list of source footprints
-06-26 18:10:06 root 266:updating GUI with: 0
-06-26 18:10:06 replicate_layout.replicatelayout 556:Getting the list of all the remaining footprints
-06-26 18:10:06 replicate_layout.replicatelayout 560:Getting nets local to source footprints
-06-26 18:10:06 replicate_layout.replicatelayout 564:Getting source bounding box
-06-26 18:10:06 root 266:updating GUI with: 37
-06-26 18:10:06 replicate_layout.replicatelayout 568:Getting source tracks
-06-26 18:10:06 replicate_layout.replicatelayout 572:Getting source zones
-06-26 18:10:06 replicate_layout.replicatelayout 576:Getting source text items
-06-26 18:10:06 replicate_layout.replicatelayout 580:Getting source text items
-06-26 18:10:06 root 261:updating GUI message: 'Replicating footprints'
-06-26 18:10:06 replicate_layout.replicatelayout 586:Replicating footprints
-06-26 18:10:06 root 266:updating GUI with: 0
-06-26 18:10:06 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF17814']
-06-26 18:10:06 root 266:updating GUI with: 8
-06-26 18:10:06 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF2302B']
-06-26 18:10:06 root 266:updating GUI with: 15
-06-26 18:10:06 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF259DC']
-06-26 18:10:06 root 266:updating GUI with: 20
-06-26 18:10:06 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF27E47']
-06-26 18:10:06 root 266:updating GUI with: 27
-06-26 18:10:06 root 266:updating GUI with: 33
-06-26 18:10:06 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF2B20E']
-06-26 18:10:06 root 266:updating GUI with: 40
-06-26 18:10:06 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF60550']
-06-26 18:10:06 root 266:updating GUI with: 48
-06-26 18:10:06 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF60551']
-06-26 18:10:06 root 266:updating GUI with: 54
-06-26 18:10:06 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF60552']
-06-26 18:10:07 root 266:updating GUI with: 61
-06-26 18:10:07 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF60553']
-06-26 18:10:07 root 266:updating GUI with: 68
-06-26 18:10:07 root 266:updating GUI with: 74
-06-26 18:10:07 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF60554']
-06-26 18:10:07 root 266:updating GUI with: 81
-06-26 18:10:07 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF60555']
-06-26 18:10:07 root 266:updating GUI with: 88
-06-26 18:10:07 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF7A07A']
-06-26 18:10:07 root 266:updating GUI with: 94
-06-26 18:10:07 root 261:updating GUI message: 'Replicating tracks'
-06-26 18:10:07 replicate_layout.replicatelayout 712:Replicating tracks
-06-26 18:10:07 root 266:updating GUI with: 0
-06-26 18:10:07 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF17814']
-06-26 18:10:07 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF2302B']
-06-26 18:10:07 root 266:updating GUI with: 8
-06-26 18:10:07 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF259DC']
-06-26 18:10:07 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF27E47']
-06-26 18:10:07 root 266:updating GUI with: 25
-06-26 18:10:07 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF2B20E']
-06-26 18:10:07 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF60550']
-06-26 18:10:07 root 266:updating GUI with: 41
-06-26 18:10:07 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF60551']
-06-26 18:10:07 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF60552']
-06-26 18:10:07 root 266:updating GUI with: 58
-06-26 18:10:07 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF60553']
-06-26 18:10:07 root 266:updating GUI with: 66
-06-26 18:10:07 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF60554']
-06-26 18:10:07 root 266:updating GUI with: 75
-06-26 18:10:07 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF60555']
-06-26 18:10:07 root 266:updating GUI with: 83
-06-26 18:10:07 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF7A07A']
-06-26 18:10:07 root 266:updating GUI with: 91
-06-26 18:10:07 root 261:updating GUI message: 'Replicating zones'
-06-26 18:10:07 replicate_layout.replicatelayout 763:Replicating zones
-06-26 18:10:07 root 266:updating GUI with: 0
-06-26 18:10:07 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF17814']
-06-26 18:10:07 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF2302B']
-06-26 18:10:07 root 266:updating GUI with: 16
-06-26 18:10:07 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF259DC']
-06-26 18:10:07 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF27E47']
-06-26 18:10:07 root 266:updating GUI with: 33
-06-26 18:10:07 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF2B20E']
-06-26 18:10:07 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF60550']
-06-26 18:10:07 root 266:updating GUI with: 50
-06-26 18:10:07 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF60551']
-06-26 18:10:07 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF60552']
-06-26 18:10:07 root 266:updating GUI with: 66
-06-26 18:10:07 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF60553']
-06-26 18:10:07 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF60554']
-06-26 18:10:07 root 266:updating GUI with: 83
-06-26 18:10:07 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF60555']
-06-26 18:10:07 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF7A07A']
-06-26 18:10:07 root 261:updating GUI message: 'Replicating text'
-06-26 18:10:07 root 266:updating GUI with: 0
-06-26 18:10:07 replicate_layout.replicatelayout 829:Replicating text
-06-26 18:10:07 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF17814']
-06-26 18:10:07 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF2302B']
-06-26 18:10:07 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF259DC']
-06-26 18:10:07 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF27E47']
-06-26 18:10:07 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF2B20E']
-06-26 18:10:07 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF60550']
-06-26 18:10:07 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF60551']
-06-26 18:10:07 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF60552']
-06-26 18:10:07 root 266:updating GUI with: 66
-06-26 18:10:07 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF60553']
-06-26 18:10:07 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF60554']
-06-26 18:10:07 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF60555']
-06-26 18:10:07 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF7A07A']
-06-26 18:10:07 root 261:updating GUI message: 'Replicating drawings'
-06-26 18:10:07 replicate_layout.replicatelayout 860:Replicating drawings
-06-26 18:10:07 root 266:updating GUI with: 0
-06-26 18:10:07 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF17814']
-06-26 18:10:07 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF2302B']
-06-26 18:10:07 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF259DC']
-06-26 18:10:07 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF27E47']
-06-26 18:10:07 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF2B20E']
-06-26 18:10:07 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF60550']
-06-26 18:10:07 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF60551']
-06-26 18:10:07 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF60552']
-06-26 18:10:07 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF60553']
-06-26 18:10:07 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF60554']
-06-26 18:10:07 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF60555']
-06-26 18:10:07 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF7A07A']
-06-26 18:10:07 replicate_layout.action_replicate_layout 201:Replication complete
+06-29 15:21:15 root 261:updating GUI message: 'Preparing for replication'
+06-29 15:21:15 replicate_layout.replicatelayout 552:Getting the list of source footprints
+06-29 15:21:15 root 266:updating GUI with: 0
+06-29 15:21:15 replicate_layout.replicatelayout 556:Getting the list of all the remaining footprints
+06-29 15:21:15 replicate_layout.replicatelayout 560:Getting nets local to source footprints
+06-29 15:21:15 replicate_layout.replicatelayout 564:Getting source bounding box
+06-29 15:21:15 root 266:updating GUI with: 37
+06-29 15:21:15 replicate_layout.replicatelayout 568:Getting source tracks
+06-29 15:21:15 replicate_layout.replicatelayout 572:Getting source zones
+06-29 15:21:15 replicate_layout.replicatelayout 576:Getting source text items
+06-29 15:21:15 replicate_layout.replicatelayout 580:Getting source text items
+06-29 15:21:15 root 261:updating GUI message: 'Replicating footprints'
+06-29 15:21:15 replicate_layout.replicatelayout 586:Replicating footprints
+06-29 15:21:15 root 266:updating GUI with: 0
+06-29 15:21:15 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['555_astable']
+06-29 15:21:15 root 266:updating GUI with: 6
+06-29 15:21:15 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF2302B']
+06-29 15:21:15 root 266:updating GUI with: 13
+06-29 15:21:15 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF259DC']
+06-29 15:21:15 root 266:updating GUI with: 19
+06-29 15:21:15 root 266:updating GUI with: 25
+06-29 15:21:15 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF27E47']
+06-29 15:21:15 root 266:updating GUI with: 31
+06-29 15:21:15 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF2B20E']
+06-29 15:21:15 root 266:updating GUI with: 37
+06-29 15:21:15 root 266:updating GUI with: 41
+06-29 15:21:15 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF60550']
+06-29 15:21:15 root 266:updating GUI with: 47
+06-29 15:21:15 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF60551']
+06-29 15:21:15 root 266:updating GUI with: 54
+06-29 15:21:15 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF60552']
+06-29 15:21:15 root 266:updating GUI with: 60
+06-29 15:21:15 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF60553']
+06-29 15:21:15 root 266:updating GUI with: 67
+06-29 15:21:15 root 266:updating GUI with: 74
+06-29 15:21:15 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF60554']
+06-29 15:21:15 root 266:updating GUI with: 80
+06-29 15:21:15 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF60555']
+06-29 15:21:15 root 266:updating GUI with: 88
+06-29 15:21:15 replicate_layout.replicatelayout 592:Replicating footprints on sheet ['sheet5EF7A07A']
+06-29 15:21:15 root 266:updating GUI with: 94
+06-29 15:21:15 root 261:updating GUI message: 'Replicating tracks'
+06-29 15:21:15 replicate_layout.replicatelayout 712:Replicating tracks
+06-29 15:21:15 root 266:updating GUI with: 0
+06-29 15:21:15 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['555_astable']
+06-29 15:21:15 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF2302B']
+06-29 15:21:15 root 266:updating GUI with: 8
+06-29 15:21:15 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF259DC']
+06-29 15:21:15 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF27E47']
+06-29 15:21:15 root 266:updating GUI with: 25
+06-29 15:21:15 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF2B20E']
+06-29 15:21:15 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF60550']
+06-29 15:21:15 root 266:updating GUI with: 41
+06-29 15:21:15 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF60551']
+06-29 15:21:15 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF60552']
+06-29 15:21:15 root 266:updating GUI with: 58
+06-29 15:21:15 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF60553']
+06-29 15:21:15 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF60554']
+06-29 15:21:15 root 266:updating GUI with: 75
+06-29 15:21:15 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF60555']
+06-29 15:21:15 replicate_layout.replicatelayout 718:Replicating tracks on sheet ['sheet5EF7A07A']
+06-29 15:21:15 root 266:updating GUI with: 91
+06-29 15:21:15 root 261:updating GUI message: 'Replicating zones'
+06-29 15:21:15 replicate_layout.replicatelayout 763:Replicating zones
+06-29 15:21:15 root 266:updating GUI with: 0
+06-29 15:21:15 replicate_layout.replicatelayout 770:Replicating zones on sheet ['555_astable']
+06-29 15:21:15 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF2302B']
+06-29 15:21:15 root 266:updating GUI with: 16
+06-29 15:21:15 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF259DC']
+06-29 15:21:15 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF27E47']
+06-29 15:21:15 root 266:updating GUI with: 33
+06-29 15:21:15 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF2B20E']
+06-29 15:21:15 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF60550']
+06-29 15:21:15 root 266:updating GUI with: 50
+06-29 15:21:15 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF60551']
+06-29 15:21:15 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF60552']
+06-29 15:21:15 root 266:updating GUI with: 66
+06-29 15:21:15 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF60553']
+06-29 15:21:15 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF60554']
+06-29 15:21:15 root 266:updating GUI with: 83
+06-29 15:21:15 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF60555']
+06-29 15:21:15 replicate_layout.replicatelayout 770:Replicating zones on sheet ['sheet5EF7A07A']
+06-29 15:21:15 root 261:updating GUI message: 'Replicating text'
+06-29 15:21:15 root 266:updating GUI with: 0
+06-29 15:21:15 replicate_layout.replicatelayout 829:Replicating text
+06-29 15:21:15 root 266:updating GUI with: 0
+06-29 15:21:15 replicate_layout.replicatelayout 836:Replicating text on sheet ['555_astable']
+06-29 15:21:15 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF2302B']
+06-29 15:21:15 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF259DC']
+06-29 15:21:15 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF27E47']
+06-29 15:21:15 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF2B20E']
+06-29 15:21:15 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF60550']
+06-29 15:21:15 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF60551']
+06-29 15:21:15 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF60552']
+06-29 15:21:15 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF60553']
+06-29 15:21:15 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF60554']
+06-29 15:21:15 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF60555']
+06-29 15:21:15 replicate_layout.replicatelayout 836:Replicating text on sheet ['sheet5EF7A07A']
+06-29 15:21:15 root 261:updating GUI message: 'Replicating drawings'
+06-29 15:21:15 replicate_layout.replicatelayout 860:Replicating drawings
+06-29 15:21:15 root 266:updating GUI with: 0
+06-29 15:21:15 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['555_astable']
+06-29 15:21:15 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF2302B']
+06-29 15:21:15 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF259DC']
+06-29 15:21:15 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF27E47']
+06-29 15:21:15 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF2B20E']
+06-29 15:21:15 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF60550']
+06-29 15:21:15 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF60551']
+06-29 15:21:15 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF60552']
+06-29 15:21:15 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF60553']
+06-29 15:21:15 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF60554']
+06-29 15:21:15 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF60555']
+06-29 15:21:15 replicate_layout.replicatelayout 866:Replicating drawings on sheet ['sheet5EF7A07A']
+06-29 15:21:15 replicate_layout.action_replicate_layout 201:Replication complete
