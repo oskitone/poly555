@@ -22,9 +22,7 @@ Wire Wire Line
 Wire Wire Line
 	5700 3250 5700 3450
 Wire Wire Line
-	5200 3850 4600 3850
-Wire Wire Line
-	6200 3850 6250 3850
+	6200 3850 6350 3850
 $Comp
 L Device:R R?
 U 1 1 60F6A68E
@@ -68,94 +66,13 @@ Wire Wire Line
 Wire Wire Line
 	5200 3750 4600 3750
 Connection ~ 4600 3750
-$Comp
-L Device:C C?
-U 1 1 60F6A69A
-P 4600 4200
-AR Path="/60F6A69A" Ref="C?"  Part="1" 
-AR Path="/60F4E92A/60F6A69A" Ref="C5"  Part="1" 
-AR Path="/60F9596F/60F6A69A" Ref="C?"  Part="1" 
-AR Path="/60F95BBA/60F6A69A" Ref="C?"  Part="1" 
-AR Path="/60F95BBF/60F6A69A" Ref="C?"  Part="1" 
-AR Path="/60F96182/60F6A69A" Ref="C?"  Part="1" 
-AR Path="/60F96187/60F6A69A" Ref="C?"  Part="1" 
-AR Path="/60F9685F/60F6A69A" Ref="C?"  Part="1" 
-AR Path="/60F96864/60F6A69A" Ref="C?"  Part="1" 
-AR Path="/60F96869/60F6A69A" Ref="C?"  Part="1" 
-AR Path="/5EF17819/60F6A69A" Ref="C8"  Part="1" 
-AR Path="/5EF23030/60F6A69A" Ref="C11"  Part="1" 
-AR Path="/5EF259E1/60F6A69A" Ref="C14"  Part="1" 
-AR Path="/5EF27E4C/60F6A69A" Ref="C17"  Part="1" 
-AR Path="/5EF2B213/60F6A69A" Ref="C20"  Part="1" 
-AR Path="/5EF6055A/60F6A69A" Ref="C23"  Part="1" 
-AR Path="/5EF6057F/60F6A69A" Ref="C26"  Part="1" 
-AR Path="/5EF605A2/60F6A69A" Ref="C29"  Part="1" 
-AR Path="/5EF605C5/60F6A69A" Ref="C32"  Part="1" 
-AR Path="/5EF605E8/60F6A69A" Ref="C35"  Part="1" 
-AR Path="/5EF6060B/60F6A69A" Ref="C38"  Part="1" 
-AR Path="/5EF7A07F/60F6A69A" Ref="C41"  Part="1" 
-F 0 "C5" H 4750 4200 50  0000 L CNN
-F 1 "C" H 4750 4100 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 4638 4050 50  0001 C CNN
-F 3 "~" H 4600 4200 50  0001 C CNN
-	1    4600 4200
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C?
-U 1 1 60F6A6A0
-P 5150 4200
-AR Path="/60F6A6A0" Ref="C?"  Part="1" 
-AR Path="/60F4E92A/60F6A6A0" Ref="C6"  Part="1" 
-AR Path="/60F9596F/60F6A6A0" Ref="C?"  Part="1" 
-AR Path="/60F95BBA/60F6A6A0" Ref="C?"  Part="1" 
-AR Path="/60F95BBF/60F6A6A0" Ref="C?"  Part="1" 
-AR Path="/60F96182/60F6A6A0" Ref="C?"  Part="1" 
-AR Path="/60F96187/60F6A6A0" Ref="C?"  Part="1" 
-AR Path="/60F9685F/60F6A6A0" Ref="C?"  Part="1" 
-AR Path="/60F96864/60F6A6A0" Ref="C?"  Part="1" 
-AR Path="/60F96869/60F6A6A0" Ref="C?"  Part="1" 
-AR Path="/5EF17819/60F6A6A0" Ref="C9"  Part="1" 
-AR Path="/5EF23030/60F6A6A0" Ref="C12"  Part="1" 
-AR Path="/5EF259E1/60F6A6A0" Ref="C15"  Part="1" 
-AR Path="/5EF27E4C/60F6A6A0" Ref="C18"  Part="1" 
-AR Path="/5EF2B213/60F6A6A0" Ref="C21"  Part="1" 
-AR Path="/5EF6055A/60F6A6A0" Ref="C24"  Part="1" 
-AR Path="/5EF6057F/60F6A6A0" Ref="C27"  Part="1" 
-AR Path="/5EF605A2/60F6A6A0" Ref="C30"  Part="1" 
-AR Path="/5EF605C5/60F6A6A0" Ref="C33"  Part="1" 
-AR Path="/5EF605E8/60F6A6A0" Ref="C36"  Part="1" 
-AR Path="/5EF6060B/60F6A6A0" Ref="C39"  Part="1" 
-AR Path="/5EF7A07F/60F6A6A0" Ref="C42"  Part="1" 
-F 0 "C6" H 5300 4200 50  0000 L CNN
-F 1 "10nF" H 5300 4100 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 5188 4050 50  0001 C CNN
-F 3 "~" H 5150 4200 50  0001 C CNN
-	1    5150 4200
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5200 3950 5150 3950
-Wire Wire Line
-	5150 3950 5150 4050
-Wire Wire Line
-	4600 4350 4600 4400
-Wire Wire Line
-	4600 4400 5150 4400
-Wire Wire Line
-	5150 4400 5150 4350
-Wire Wire Line
-	5700 4400 5150 4400
-Connection ~ 5150 4400
-Wire Wire Line
-	4600 3850 4600 4050
 Connection ~ 4600 3850
 Wire Wire Line
 	4600 3750 4600 3850
 Wire Wire Line
-	5500 4650 5700 4650
-Wire Wire Line
-	5700 4150 5700 4400
+	5950 4350 6150 4350
 $Comp
 L Device:C C?
 U 1 1 60F6EAC0
@@ -239,27 +156,27 @@ F 12 "Active" H 5900 4950 60  0001 L CNN "Status"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5500 4750 5500 4650
-Connection ~ 4350 4900
+	5950 4450 5950 4350
+Connection ~ 4350 5250
 Wire Wire Line
-	3300 4900 3500 4900
+	3300 5250 3500 5250
 Wire Wire Line
-	4350 4200 4350 4900
-Text HLabel 3300 4900 0    50   Input ~ 0
+	4350 4200 4350 5250
+Text HLabel 3300 5250 0    50   Input ~ 0
 GND
 Wire Wire Line
-	5700 4900 6250 4900
-Connection ~ 5700 4900
+	6150 4600 6350 4600
+Connection ~ 6150 4600
 Wire Wire Line
-	5700 4650 5700 4900
+	6150 4350 6150 4600
 Wire Wire Line
-	6250 3850 6250 4900
+	6350 3850 6350 4600
 Wire Wire Line
-	5650 4900 5700 4900
+	6100 4600 6150 4600
 $Comp
 L Device:R_POT_TRIM_US RV?
 U 1 1 60F6A6C5
-P 5500 4900
+P 5950 4600
 AR Path="/60F6A6C5" Ref="RV?"  Part="1" 
 AR Path="/60F4E92A/60F6A6C5" Ref="RV3"  Part="1" 
 AR Path="/60F9596F/60F6A6C5" Ref="RV?"  Part="1" 
@@ -282,14 +199,14 @@ AR Path="/5EF605C5/60F6A6C5" Ref="RV21"  Part="1"
 AR Path="/5EF605E8/60F6A6C5" Ref="RV23"  Part="1" 
 AR Path="/5EF6060B/60F6A6C5" Ref="RV25"  Part="1" 
 AR Path="/5EF7A07F/60F6A6C5" Ref="RV27"  Part="1" 
-F 0 "RV3" V 5400 5000 50  0000 R CNN
-F 1 "R_POT_TRIM_US" H 5432 4855 50  0001 R CNN
-F 2 "Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical" H 5500 4900 50  0001 C CNN
-F 3 "~" H 5500 4900 50  0001 C CNN
-	1    5500 4900
+F 0 "RV3" V 5850 4700 50  0000 R CNN
+F 1 "10k" V 5750 4700 50  0000 R CNN
+F 2 "Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical" H 5950 4600 50  0001 C CNN
+F 3 "~" H 5950 4600 50  0001 C CNN
+	1    5950 4600
 	0    -1   -1   0   
 $EndComp
-Text HLabel 6850 3850 2    50   Input ~ 0
+Text HLabel 7050 3850 2    50   Input ~ 0
 Out
 Wire Wire Line
 	3300 3250 3450 3250
@@ -327,7 +244,7 @@ NoConn ~ 6200 3750
 $Comp
 L power:GND #PWR?
 U 1 1 5F5B07DC
-P 3500 5100
+P 3500 5450
 AR Path="/60F4E92A/5F5B07DC" Ref="#PWR?"  Part="1" 
 AR Path="/5EF17819/5F5B07DC" Ref="#PWR?"  Part="1" 
 AR Path="/5EF23030/5F5B07DC" Ref="#PWR?"  Part="1" 
@@ -341,27 +258,22 @@ AR Path="/5EF605C5/5F5B07DC" Ref="#PWR?"  Part="1"
 AR Path="/5EF605E8/5F5B07DC" Ref="#PWR?"  Part="1" 
 AR Path="/5EF6060B/5F5B07DC" Ref="#PWR?"  Part="1" 
 AR Path="/5EF7A07F/5F5B07DC" Ref="#PWR?"  Part="1" 
-F 0 "#PWR?" H 3500 4850 50  0001 C CNN
-F 1 "GND" H 3505 4927 50  0000 C CNN
-F 2 "" H 3500 5100 50  0001 C CNN
-F 3 "" H 3500 5100 50  0001 C CNN
-	1    3500 5100
+F 0 "#PWR?" H 3500 5200 50  0001 C CNN
+F 1 "GND" H 3505 5277 50  0000 C CNN
+F 2 "" H 3500 5450 50  0001 C CNN
+F 3 "" H 3500 5450 50  0001 C CNN
+	1    3500 5450
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3500 4900 3500 5100
-Connection ~ 3500 4900
+	3500 5250 3500 5450
+Connection ~ 3500 5250
 Wire Wire Line
-	3500 4900 3750 4900
-Wire Wire Line
-	4350 4900 4600 4900
-Wire Wire Line
-	4600 4400 4600 4900
-Connection ~ 4600 4400
+	3500 5250 3750 5250
 $Comp
 L Device:R R?
 U 1 1 5EFAE830
-P 6550 3850
+P 6750 3850
 AR Path="/5EFAE830" Ref="R?"  Part="1" 
 AR Path="/60F4E92A/5EFAE830" Ref="R6"  Part="1" 
 AR Path="/60F9596F/5EFAE830" Ref="R?"  Part="1" 
@@ -384,18 +296,18 @@ AR Path="/5EF605C5/5EFAE830" Ref="R33"  Part="1"
 AR Path="/5EF605E8/5EFAE830" Ref="R36"  Part="1" 
 AR Path="/5EF6060B/5EFAE830" Ref="R39"  Part="1" 
 AR Path="/5EF7A07F/5EFAE830" Ref="R42"  Part="1" 
-F 0 "R6" V 6300 3850 50  0000 L CNN
-F 1 "10k" V 6400 3800 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" V 6480 3850 50  0001 C CNN
-F 3 "~" H 6550 3850 50  0001 C CNN
-	1    6550 3850
+F 0 "R6" V 6500 3850 50  0000 L CNN
+F 1 "10k" V 6600 3800 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" V 6680 3850 50  0001 C CNN
+F 3 "~" H 6750 3850 50  0001 C CNN
+	1    6750 3850
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	6250 3850 6400 3850
+	6350 3850 6600 3850
 Wire Wire Line
-	6700 3850 6850 3850
-Connection ~ 6250 3850
+	6900 3850 7050 3850
+Connection ~ 6350 3850
 $Comp
 L Device:LED D?
 U 1 1 5F127BEF
@@ -462,22 +374,22 @@ Connection ~ 3750 3250
 Wire Wire Line
 	3750 3250 4350 3250
 Wire Wire Line
-	3750 4450 3750 4900
-Connection ~ 3750 4900
+	3750 4450 3750 5250
+Connection ~ 3750 5250
 Wire Wire Line
-	3750 4900 4350 4900
+	3750 5250 4350 5250
 Wire Wire Line
-	4950 4650 5150 4650
+	5400 4350 5600 4350
 Wire Wire Line
-	4950 4750 4950 4650
+	5400 4450 5400 4350
 Wire Wire Line
-	5150 4650 5150 4900
+	5600 4350 5600 4600
 Wire Wire Line
-	5100 4900 5150 4900
+	5550 4600 5600 4600
 $Comp
 L Device:R_POT_TRIM_US RV?
 U 1 1 5F13ACF1
-P 4950 4900
+P 5400 4600
 AR Path="/5F13ACF1" Ref="RV?"  Part="1" 
 AR Path="/60F4E92A/5F13ACF1" Ref="RV2"  Part="1" 
 AR Path="/60F9596F/5F13ACF1" Ref="RV?"  Part="1" 
@@ -500,19 +412,108 @@ AR Path="/5EF605C5/5F13ACF1" Ref="RV20"  Part="1"
 AR Path="/5EF605E8/5F13ACF1" Ref="RV22"  Part="1" 
 AR Path="/5EF6060B/5F13ACF1" Ref="RV24"  Part="1" 
 AR Path="/5EF7A07F/5F13ACF1" Ref="RV26"  Part="1" 
-F 0 "RV2" V 4850 5000 50  0000 R CNN
-F 1 "R_POT_TRIM_US" H 4882 4855 50  0001 R CNN
-F 2 "Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical" H 4950 4900 50  0001 C CNN
-F 3 "~" H 4950 4900 50  0001 C CNN
-	1    4950 4900
+F 0 "RV2" V 5300 4700 50  0000 R CNN
+F 1 "10k" V 5200 4700 50  0000 R CNN
+F 2 "Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical" H 5400 4600 50  0001 C CNN
+F 3 "~" H 5400 4600 50  0001 C CNN
+	1    5400 4600
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	4600 4900 4800 4900
-Connection ~ 4600 4900
+	5600 4600 5800 4600
+Connection ~ 5600 4600
 Wire Wire Line
-	5150 4900 5350 4900
-Connection ~ 5150 4900
-Text Notes 4550 5200 0    50   ~ 0
-TODO: really? this goes to gnd?
+	4350 5250 4600 5250
+Wire Wire Line
+	4950 4600 5250 4600
+Wire Wire Line
+	4950 3850 4600 3850
+Connection ~ 4950 3850
+Wire Wire Line
+	5200 3850 4950 3850
+Wire Wire Line
+	5150 3950 5150 4900
+Wire Wire Line
+	4600 3850 4600 4900
+Wire Wire Line
+	4950 3850 4950 4600
+Connection ~ 4600 5250
+Wire Wire Line
+	5700 4150 5700 5250
+Connection ~ 5150 5250
+Wire Wire Line
+	5700 5250 5150 5250
+Wire Wire Line
+	5150 5250 5150 5200
+Wire Wire Line
+	4600 5250 5150 5250
+Wire Wire Line
+	4600 5200 4600 5250
+$Comp
+L Device:C C?
+U 1 1 60F6A6A0
+P 5150 5050
+AR Path="/60F6A6A0" Ref="C?"  Part="1" 
+AR Path="/60F4E92A/60F6A6A0" Ref="C6"  Part="1" 
+AR Path="/60F9596F/60F6A6A0" Ref="C?"  Part="1" 
+AR Path="/60F95BBA/60F6A6A0" Ref="C?"  Part="1" 
+AR Path="/60F95BBF/60F6A6A0" Ref="C?"  Part="1" 
+AR Path="/60F96182/60F6A6A0" Ref="C?"  Part="1" 
+AR Path="/60F96187/60F6A6A0" Ref="C?"  Part="1" 
+AR Path="/60F9685F/60F6A6A0" Ref="C?"  Part="1" 
+AR Path="/60F96864/60F6A6A0" Ref="C?"  Part="1" 
+AR Path="/60F96869/60F6A6A0" Ref="C?"  Part="1" 
+AR Path="/5EF17819/60F6A6A0" Ref="C9"  Part="1" 
+AR Path="/5EF23030/60F6A6A0" Ref="C12"  Part="1" 
+AR Path="/5EF259E1/60F6A6A0" Ref="C15"  Part="1" 
+AR Path="/5EF27E4C/60F6A6A0" Ref="C18"  Part="1" 
+AR Path="/5EF2B213/60F6A6A0" Ref="C21"  Part="1" 
+AR Path="/5EF6055A/60F6A6A0" Ref="C24"  Part="1" 
+AR Path="/5EF6057F/60F6A6A0" Ref="C27"  Part="1" 
+AR Path="/5EF605A2/60F6A6A0" Ref="C30"  Part="1" 
+AR Path="/5EF605C5/60F6A6A0" Ref="C33"  Part="1" 
+AR Path="/5EF605E8/60F6A6A0" Ref="C36"  Part="1" 
+AR Path="/5EF6060B/60F6A6A0" Ref="C39"  Part="1" 
+AR Path="/5EF7A07F/60F6A6A0" Ref="C42"  Part="1" 
+F 0 "C6" H 5300 5050 50  0000 L CNN
+F 1 "10nF" H 5300 4950 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 5188 4900 50  0001 C CNN
+F 3 "~" H 5150 5050 50  0001 C CNN
+	1    5150 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 60F6A69A
+P 4600 5050
+AR Path="/60F6A69A" Ref="C?"  Part="1" 
+AR Path="/60F4E92A/60F6A69A" Ref="C5"  Part="1" 
+AR Path="/60F9596F/60F6A69A" Ref="C?"  Part="1" 
+AR Path="/60F95BBA/60F6A69A" Ref="C?"  Part="1" 
+AR Path="/60F95BBF/60F6A69A" Ref="C?"  Part="1" 
+AR Path="/60F96182/60F6A69A" Ref="C?"  Part="1" 
+AR Path="/60F96187/60F6A69A" Ref="C?"  Part="1" 
+AR Path="/60F9685F/60F6A69A" Ref="C?"  Part="1" 
+AR Path="/60F96864/60F6A69A" Ref="C?"  Part="1" 
+AR Path="/60F96869/60F6A69A" Ref="C?"  Part="1" 
+AR Path="/5EF17819/60F6A69A" Ref="C8"  Part="1" 
+AR Path="/5EF23030/60F6A69A" Ref="C11"  Part="1" 
+AR Path="/5EF259E1/60F6A69A" Ref="C14"  Part="1" 
+AR Path="/5EF27E4C/60F6A69A" Ref="C17"  Part="1" 
+AR Path="/5EF2B213/60F6A69A" Ref="C20"  Part="1" 
+AR Path="/5EF6055A/60F6A69A" Ref="C23"  Part="1" 
+AR Path="/5EF6057F/60F6A69A" Ref="C26"  Part="1" 
+AR Path="/5EF605A2/60F6A69A" Ref="C29"  Part="1" 
+AR Path="/5EF605C5/60F6A69A" Ref="C32"  Part="1" 
+AR Path="/5EF605E8/60F6A69A" Ref="C35"  Part="1" 
+AR Path="/5EF6060B/60F6A69A" Ref="C38"  Part="1" 
+AR Path="/5EF7A07F/60F6A69A" Ref="C41"  Part="1" 
+F 0 "C5" H 4750 5050 50  0000 L CNN
+F 1 "10pF" H 4750 4950 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 4638 4900 50  0001 C CNN
+F 3 "~" H 4600 5050 50  0001 C CNN
+	1    4600 5050
+	1    0    0    -1  
+$EndComp
+NoConn ~ 5700 4600
 $EndSCHEMATC
