@@ -1282,4 +1282,6 @@ Wire Wire Line
 Connection ~ 2600 3400
 Wire Wire Line
 	2600 3400 2600 4300
+Text Notes 2900 3050 0    50   ~ 0
+TODO: consider power switch
 $EndSCHEMATC
