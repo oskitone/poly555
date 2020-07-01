@@ -4,3 +4,5 @@
 *.xml
 # backup files
  *.bak
+
+local/
