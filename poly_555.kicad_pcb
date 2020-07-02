@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 110)
+    (drawings 111)
     (tracks 875)
     (zones 0)
     (modules 162)
@@ -6799,6 +6799,9 @@
     )
   )
 
+  (gr_text "TODO: uneven top line" (at 34.798 -143.51) (layer Cmts.User)
+    (effects (font (size 1.5 1.5) (thickness 0.3)))
+  )
   (gr_line (start 38.335001 -60.724999) (end 38.735 -60.325) (layer F.SilkS) (width 0.1) (tstamp 5EFCEDE3))
   (gr_line (start 17.77 -89.535) (end 1.596 -73.361) (layer F.SilkS) (width 0.1))
   (gr_line (start 1.596 -73.361) (end 1.596 -14.224) (layer F.SilkS) (width 0.1))
