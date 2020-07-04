@@ -1,5 +1,7 @@
 include <values.scad>;
 
+use <basic-shapes.scad>;
+
 module flat_top_rectangular_pyramid(
     top_width = 0,
     top_length = 0,
@@ -188,26 +190,6 @@ module mounted_keys(
     $fn = 24;
     e = 0.0678;
 
-    module _mount_holes() {
-        for (x = mount_hole_xs) {
-            translate([x, natural_length - mount_length / 2, 0]) {
-                translate([0, 0, -e]) {
-                    cylinder(
-                        d = mount_hole_diameter,
-                        h = accidental_height + e * 2
-                    );
-                }
-
-                translate([0, 0, mount_height - e]) {
-                    cylinder(
-                        d = mount_screw_head_diameter,
-                        h = accidental_height - mount_height + e * 2
-                    );
-                }
-            }
-        }
-    }
-
     module _cantilever_cutout(height) {
         translate([-e, natural_length - mount_length - cantilever_length, -e]) {
             cube([
@@ -242,6 +224,16 @@ module mounted_keys(
         }
     }
 
+    module _mount_holes(diameter, height, z) {
+        hole_array(
+            mount_hole_xs,
+            diameter,
+            height,
+            natural_length - mount_length / 2,
+            z
+        );
+    }
+
     difference() {
         union() {
             if (include_natural) { _keys(true); }
@@ -252,7 +244,17 @@ module mounted_keys(
             }
         }
 
-        _mount_holes();
+        _mount_holes(
+            mount_hole_diameter,
+            accidental_height + e * 2,
+            -e
+        );
+
+        _mount_holes(
+            mount_screw_head_diameter,
+            accidental_height - mount_height + e,
+            mount_height
+        );
     }
 }
 
