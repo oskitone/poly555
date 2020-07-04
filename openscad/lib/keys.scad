@@ -180,36 +180,15 @@ module mounted_keys(
     mount_height = 1,
     mount_hole_xs = [],
     mount_hole_diameter = PCB_MOUNT_HOLE_DIAMETER,
-    mount_screw_head_diameter = SCREW_HEAD_DIAMETER
+    mount_screw_head_diameter = SCREW_HEAD_DIAMETER,
+
+    cantilever_length = 2,
+    cantilever_height = 1
 ) {
     $fn = 24;
     e = 0.0678;
 
-    difference() {
-        union() {
-            keys(
-                count = count,
-                starting_index = starting_index,
-
-                natural_width = natural_width,
-                natural_length = natural_length,
-                natural_height = natural_height,
-
-                accidental_width = accidental_width,
-                accidental_length = accidental_length,
-                accidental_height = accidental_height,
-
-                gutter = gutter,
-
-                include_natural = include_natural,
-                include_accidental = include_accidental
-            );
-
-            translate([0, natural_length - mount_length, 0]) {
-                cube([mount_width, mount_length, mount_height]);
-            }
-        }
-
+    module _mount_holes() {
         for (x = mount_hole_xs) {
             translate([x, natural_length - mount_length / 2, 0]) {
                 translate([0, 0, -e]) {
@@ -227,6 +206,53 @@ module mounted_keys(
                 }
             }
         }
+    }
+
+    module _cantilever_cutout(height) {
+        translate([-e, natural_length - mount_length - cantilever_length, -e]) {
+            cube([
+                mount_width + e * 2,
+                cantilever_length,
+                height - cantilever_height
+            ]);
+        }
+    }
+
+    module _keys(naturals = true) {
+        difference() {
+            keys(
+                count = count,
+                starting_index = starting_index,
+
+                natural_width = natural_width,
+                natural_length = natural_length,
+                natural_height = natural_height,
+
+                accidental_width = accidental_width,
+                accidental_length = accidental_length,
+                accidental_height = accidental_height,
+
+                gutter = gutter,
+
+                include_natural = naturals,
+                include_accidental = !naturals
+            );
+
+            _cantilever_cutout(naturals ? natural_height : accidental_height);
+        }
+    }
+
+    difference() {
+        union() {
+            if (include_natural) { _keys(true); }
+            if (include_accidental) { _keys(false); }
+
+            translate([0, natural_length - mount_length, 0]) {
+                cube([mount_width, mount_length, mount_height]);
+            }
+        }
+
+        _mount_holes();
     }
 }
 
@@ -248,5 +274,8 @@ mounted_keys(
     mount_length = 5,
     mount_hole_diameter = 2,
     mount_screw_head_diameter = 4,
-    mount_hole_xs = [5, 30, 40, 65, 82]
+    mount_hole_xs = [5, 30, 40, 65, 82],
+
+    cantilever_length = 2,
+    cantilever_height = 1
 );
