@@ -1,3 +1,5 @@
+include <values.scad>;
+
 module flat_top_rectangular_pyramid(
     top_width = 0,
     top_length = 0,
@@ -156,8 +158,80 @@ module keys(
     }
 }
 
-keys(
-    count = 25,
+module mounted_keys(
+    count,
+    starting_index = 0,
+
+    natural_width,
+    natural_length,
+    natural_height,
+
+    accidental_width,
+    accidental_length,
+    accidental_height,
+
+    gutter = 1,
+
+    include_natural = true,
+    include_accidental = true,
+
+    mount_width = 0, // TODO: derive and remove!
+    mount_length = 0,
+    mount_height = 1,
+    mount_hole_xs = [],
+    mount_hole_diameter = PCB_MOUNT_HOLE_DIAMETER,
+    mount_screw_head_diameter = SCREW_HEAD_DIAMETER
+) {
+    $fn = 24;
+    e = 0.0678;
+
+    difference() {
+        union() {
+            keys(
+                count = count,
+                starting_index = starting_index,
+
+                natural_width = natural_width,
+                natural_length = natural_length,
+                natural_height = natural_height,
+
+                accidental_width = accidental_width,
+                accidental_length = accidental_length,
+                accidental_height = accidental_height,
+
+                gutter = gutter,
+
+                include_natural = include_natural,
+                include_accidental = include_accidental
+            );
+
+            translate([0, natural_length - mount_length, 0]) {
+                cube([mount_width, mount_length, mount_height]);
+            }
+        }
+
+        for (x = mount_hole_xs) {
+            translate([x, natural_length - mount_length / 2, 0]) {
+                translate([0, 0, -e]) {
+                    cylinder(
+                        d = mount_hole_diameter,
+                        h = accidental_height + e * 2
+                    );
+                }
+
+                translate([0, 0, mount_height - e]) {
+                    cylinder(
+                        d = mount_screw_head_diameter,
+                        h = accidental_height - mount_height + e * 2
+                    );
+                }
+            }
+        }
+    }
+}
+
+mounted_keys(
+    count = 13,
     starting_index = 3,
 
     natural_length = 20,
@@ -168,5 +242,11 @@ keys(
     accidental_length = 10,
     accidental_height = 15,
 
-    gutter = 1
+    gutter = 1,
+
+    mount_width = 10 * 8 + 1 * (8 - 1),
+    mount_length = 5,
+    mount_hole_diameter = 2,
+    mount_screw_head_diameter = 4,
+    mount_hole_xs = [5, 30, 40, 65, 82]
 );
