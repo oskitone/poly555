@@ -13,7 +13,7 @@ mount_length = 6;
 key_mount_end = PCB_HOLES[2][1] + mount_length / 2;
 
 natural_key_width = plot * 2 - key_gutter;
-natural_key_length = natural_key_width * 3;
+natural_key_length = natural_key_width * 4;
 
 mount_hole_x_offset = (PCB_WIDTH / 15) - PCB_HOLES[2][0] - key_gutter / 2;
 mount_hole_xs = [
@@ -27,15 +27,20 @@ keys_z = PCB_HEIGHT + BUTTON_HEIGHT;
 
 color("purple") pcb();
 
-translate([keys_x, key_mount_end - mount_length, PCB_HEIGHT]) {
-    # mounting_rail(
-        width = mount_width,
-        length = mount_length,
-        height = keys_z,
-        hole_xs = mount_hole_xs,
-        hole_diameter = 2
-    );
+module _mounting_rail(y, height_difference = 0) {
+    translate([keys_x, y, PCB_HEIGHT]) {
+        # mounting_rail(
+            width = mount_width,
+            length = mount_length,
+            height = keys_z - PCB_HEIGHT - height_difference,
+            hole_xs = mount_hole_xs,
+            hole_diameter = 2
+        );
+    }
 }
+
+_mounting_rail(key_mount_end - mount_length);
+_mounting_rail(PCB_HOLES[5][1] - mount_length / 2, 1);
 
 translate([
     keys_x,
