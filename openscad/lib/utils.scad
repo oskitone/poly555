@@ -9,6 +9,9 @@ function slice(list, start = 0, end) =
         : [for (i = [start : (end == undef ? len(list) : end) - 1]) list[i]]
 ;
 
+function get_starting_note_index(starting_natural_key_index) =
+    [0, 2, 4, 5,7, 9, 11][starting_natural_key_index];
+
 function get_natural_key_count(
     total_key_count,
     starting_note_index = 0
@@ -25,4 +28,14 @@ function get_natural_key_count(
                 )
             )
     )
+);
+
+function get_keys_total_width(
+    count,
+    starting_note_index = 0,
+    natural_width,
+    gutter
+) = (
+    let(natural_key_count=get_natural_key_count(count, starting_note_index))
+    natural_key_count * natural_width + max(0, natural_key_count - 1) * gutter
 );

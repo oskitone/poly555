@@ -178,7 +178,6 @@ module mounted_keys(
     include_natural = true,
     include_accidental = true,
 
-    mount_width = 0, // TODO: derive and remove!
     mount_length = 0,
     mount_height = 1,
     mount_hole_xs = [],
@@ -190,6 +189,13 @@ module mounted_keys(
 ) {
     $fn = 24;
     e = 0.0678;
+
+    mount_width = get_keys_total_width(
+        count = count,
+        starting_note_index = get_starting_note_index(starting_natural_key_index),
+        natural_width = natural_width,
+        gutter = gutter
+    );
 
     module _cantilever_cutout(height) {
         translate([-e, natural_length - mount_length - cantilever_length, -e]) {
@@ -273,7 +279,6 @@ mounted_keys(
 
     gutter = 1,
 
-    mount_width = 10 * 8 + 1 * (8 - 1),
     mount_length = 5,
     mount_hole_diameter = 2,
     mount_screw_head_diameter = 4,

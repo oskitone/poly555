@@ -3,17 +3,23 @@ include <lib/values.scad>;
 use <lib/keys.scad>;
 use <lib/mounting_rail.scad>;
 use <lib/pcb.scad>;
+use <lib/utils.scad>;
 
 key_gutter = 1;
 plot = PCB_BUTTONS[1][0] - PCB_BUTTONS[0][0];
 
-mount_width = plot * 16 - key_gutter;
+natural_key_width = plot * 2 - key_gutter;
+natural_key_length = natural_key_width * 4;
+
+mount_width= get_keys_total_width(
+    count = 13,
+    starting_note_index = 5,
+    natural_width = natural_key_width,
+    gutter = key_gutter
+);
 mount_length = 6;
 
 key_mount_end = PCB_HOLES[2][1] + mount_length / 2;
-
-natural_key_width = plot * 2 - key_gutter;
-natural_key_length = natural_key_width * 4;
 
 mount_hole_x_offset = (PCB_WIDTH / 15) - PCB_HOLES[2][0] - key_gutter / 2;
 mount_hole_xs = [
@@ -61,7 +67,6 @@ translate([
 
         gutter = key_gutter,
 
-        mount_width = mount_width,
         mount_length = mount_length,
         mount_hole_xs = mount_hole_xs
     );
