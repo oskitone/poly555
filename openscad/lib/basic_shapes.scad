@@ -56,3 +56,47 @@ module flat_top_rectangular_pyramid(
         ]
     );
 }
+
+module rounded_cube(dimensions, radius, $fn = $fn) {
+    positions = [
+        [radius, radius, radius],
+        [dimensions.x - radius, radius, radius],
+        [dimensions.x - radius, dimensions.y - radius, radius],
+        [radius, dimensions.y - radius, radius],
+        [radius, radius, dimensions.z - radius],
+        [dimensions.x - radius, radius, dimensions.z - radius],
+        [dimensions.x - radius, dimensions.y - radius, dimensions.z - radius],
+        [radius, dimensions.y - radius, dimensions.z - radius],
+    ];
+
+    hull() {
+        for (position = positions) {
+            translate(position) sphere(r = radius);
+        }
+    }
+}
+
+module rounded_cube_cutout(dimensions, radius) {
+    e = 0.05678;
+
+    width = dimensions[0] + e * 2;
+    length = dimensions[1] + e * 2;
+    height = dimensions[2] + e * 2;
+
+    translate([-e, -e, -e]) {
+        difference() {
+            cube([width, length, height]);
+
+            translate([-e, -e, -e]) {
+                rounded_cube(
+                    [
+                        width + e * 2,
+                        length + e * 2,
+                        height + e * 2
+                    ],
+                    radius = radius
+                );
+            }
+        }
+    }
+}

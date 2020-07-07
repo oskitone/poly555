@@ -1,6 +1,6 @@
 include <values.scad>;
 
-use <basic-shapes.scad>;
+use <basic_shapes.scad>;
 
 module mounting_rail(
     width = 0,
