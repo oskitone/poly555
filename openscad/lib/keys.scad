@@ -1,6 +1,7 @@
 include <values.scad>;
 
 use <basic-shapes.scad>;
+use <utils.scad>;
 
 module flat_top_rectangular_pyramid(
     top_width = 0,
@@ -52,7 +53,7 @@ module flat_top_rectangular_pyramid(
 
 module keys(
     count,
-    starting_index = 0,
+    starting_natural_key_index = 0,
 
     natural_width,
     natural_length,
@@ -69,7 +70,7 @@ module keys(
 ) {
     e = 0.04567;
 
-    index_offset = [0,2,4,5,7,9,11][starting_index];
+    index_offset = [0,2,4,5,7,9,11][starting_natural_key_index];
 
     module _cutout(right = true) {
         // Exact size doesn't matter. Just needs to be big and defined.
@@ -148,12 +149,12 @@ module keys(
         is_accidental = !is_natural;
 
         if (is_natural && include_natural) {
-            x = (natural_width + gutter) * (natural_index - starting_index);
+            x = (natural_width + gutter) * (natural_index - starting_natural_key_index);
             _natural(i, x, note_in_octave_index, natural_index);
         }
 
         if (is_accidental && include_accidental) {
-            x = (natural_index - starting_index) * (natural_width + gutter)
+            x = (natural_index - starting_natural_key_index) * (natural_width + gutter)
                  - (gutter / 2) - (accidental_width / 2);
             _accidental(i, x, note_in_octave_index, natural_index);
         }
@@ -162,7 +163,7 @@ module keys(
 
 module mounted_keys(
     count,
-    starting_index = 0,
+    starting_natural_key_index = 0,
 
     natural_width,
     natural_length,
@@ -204,7 +205,7 @@ module mounted_keys(
         difference() {
             keys(
                 count = count,
-                starting_index = starting_index,
+                starting_natural_key_index = starting_natural_key_index,
 
                 natural_width = natural_width,
                 natural_length = natural_length,
@@ -260,7 +261,7 @@ module mounted_keys(
 
 mounted_keys(
     count = 13,
-    starting_index = 3,
+    starting_natural_key_index = 3,
 
     natural_length = 20,
     natural_width = 10,
