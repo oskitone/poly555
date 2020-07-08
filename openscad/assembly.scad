@@ -3,6 +3,7 @@ include <lib/values.scad>;
 use <lib/battery.scad>;
 use <lib/enclosure.scad>;
 use <lib/keys.scad>;
+use <lib/mount_stilt.scad>;
 use <lib/mounting_rail.scad>;
 use <lib/pcb.scad>;
 use <lib/utils.scad>;
@@ -161,6 +162,15 @@ module assembly(
 
         # _top();
         # _bottom();
+
+        stilt_height = pcb_z - enclosure_wall + e;
+        translate([pcb_x, pcb_y, pcb_z]) {
+            mount_stilts(
+                positions = PCB_HOLES,
+                height = stilt_height,
+                z = -stilt_height
+            );
+        }
     }
 
     module _battery() {
