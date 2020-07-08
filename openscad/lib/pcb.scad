@@ -3,9 +3,16 @@ include <values.scad>;
 module pcb(
     dimensions = [PCB_WIDTH, PCB_LENGTH, PCB_HEIGHT],
     hole_positions = PCB_HOLES,
-    button_positions = PCB_BUTTONS
+    button_positions = PCB_BUTTONS,
+    visualize_silkscreen = false,
+    visualize_non_button_components = false
 ) {
     e = 0.0567;
+
+    assert(
+        !(visualize_silkscreen && visualize_non_button_components),
+        "Can't do both visualize_silkscreen and visualize_non_button_components"
+    )
 
     for (xy = button_positions) {
         translate([xy[0], xy[1], PCB_HEIGHT + e]) {
@@ -13,6 +20,25 @@ module pcb(
                 d = BUTTON_DIAMETER,
                 h = BUTTON_HEIGHT - e
             );
+        }
+    }
+
+    if (visualize_silkscreen) {
+        // magic...
+        translate([-5.49, -4.6, PCB_HEIGHT]) {
+            # render() linear_extrude(1) {
+                import("../../poly_555-brd.svg");
+            }
+        }
+    }
+
+    if (visualize_non_button_components) {
+        translate([PCB_COMPONENTS_X, PCB_COMPONENTS_Y, PCB_HEIGHT - e]) {
+            # cube([
+                PCB_COMPONENTS_WIDTH,
+                PCB_COMPONENTS_LENGTH,
+                PCB_COMPONENTS_HEIGHT
+            ]);
         }
     }
 
@@ -30,4 +56,5 @@ module pcb(
     }
 }
 
-pcb();
+pcb(visualize_silkscreen = true);
+translate([PCB_WIDTH + 10, 0, 0]) pcb(visualize_non_button_components = true);
