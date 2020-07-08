@@ -207,7 +207,7 @@ module enclosure_half(
                     }
 
                     if (include_hinge) { _hinge(); }
-                    if (include_clasp) { _clasp(add_lip); }
+                    if (include_clasp) { _clasp(add_lip); } // TODO: decouple
                 }
 
                 if (radius > 0) {
