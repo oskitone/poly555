@@ -137,7 +137,7 @@ module assembly(
 
         module _bottom() { _enclosure_half(false); }
 
-        module _top() {
+        module _top(window_cavity_gutter = 2) {
             module _keys_cavity(gutter = key_gutter) {
                 translate([
                     enclosure_wall + enclosure_to_component_gutter - gutter,
@@ -152,6 +152,20 @@ module assembly(
                 }
             }
 
+            module _pcb_window_cavity(
+                width = PCB_WIDTH - window_cavity_gutter * 2,
+                length = PCB_LENGTH - key_mount_end_on_pcb -
+                    window_cavity_gutter * 2
+            ) {
+                translate([
+                    pcb_x + window_cavity_gutter,
+                    pcb_y + key_mount_end_on_pcb + window_cavity_gutter,
+                    enclosure_height - enclosure_wall - e
+                ]) {
+                    cube([width, length, enclosure_wall + e * 2]);
+                }
+            }
+
             difference() {
                 translate([enclosure_width + e, e, enclosure_height + e]) {
                     rotate([180, 0, 180]) {
@@ -159,6 +173,7 @@ module assembly(
                     }
                 }
                 _keys_cavity();
+                _pcb_window_cavity();
             }
         }
 
