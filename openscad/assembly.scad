@@ -6,6 +6,7 @@ use <lib/keys.scad>;
 use <lib/mount_stilt.scad>;
 use <lib/mounting_rail.scad>;
 use <lib/pcb.scad>;
+use <lib/speaker.scad>;
 use <lib/utils.scad>;
 
 module assembly(
@@ -64,6 +65,7 @@ module assembly(
     pcb_y = enclosure_wall + enclosure_to_component_gutter + keys_y_over_pcb;
     pcb_z = enclosure_height - PCB_HEIGHT - mount_height
         - (key_height - key_exposed_height);
+    pcb_stilt_height = pcb_z - enclosure_wall;
 
     module _mounting_rail(y, height_difference = 0) {
         translate([keys_from_pcb_x_offset, y, PCB_HEIGHT]) {
@@ -163,12 +165,11 @@ module assembly(
         # _top();
         # _bottom();
 
-        stilt_height = pcb_z - enclosure_wall + e;
-        translate([pcb_x, pcb_y, pcb_z]) {
+        translate([pcb_x, pcb_y, pcb_z - e]) {
             mount_stilts(
                 positions = PCB_HOLES,
-                height = stilt_height,
-                z = -stilt_height
+                height = pcb_stilt_height,
+                z = -pcb_stilt_height
             );
         }
     }
@@ -191,6 +192,19 @@ module assembly(
         }
     }
 
+    module _speaker() {
+        // TODO:  deal with the fact that this speaker doesn't fit here!
+        /* assert(pcb_stilt_height > SPEAKER_HEIGHT, "Speaker doesn't fit"); */
+
+        translate([
+            enclosure_wall + enclosure_to_component_gutter + SPEAKER_DIAMETER / 2,
+            enclosure_wall + enclosure_to_component_gutter + SPEAKER_DIAMETER / 2,
+            enclosure_wall
+        ]) {
+            speaker();
+        }
+    }
+
     _enclosure();
 
     translate([pcb_x, pcb_y, pcb_z]) {
@@ -206,6 +220,7 @@ module assembly(
     }
 
     _battery();
+    _speaker();
 }
 
 assembly();
