@@ -50,9 +50,7 @@ module assembly(
 
     keys_y_over_pcb = natural_key_length - key_mount_end_on_pcb;
 
-    // TODO: decouple from PCB
-    keys_x = PCB_BUTTONS[0][0] - plot + key_gutter / 2;
-    keys_z = PCB_HEIGHT + BUTTON_HEIGHT;
+    keys_from_pcb_x_offset = PCB_BUTTONS[0][0] - plot + key_gutter / 2;
 
     enclosure_width = enclosure_wall * 2 + enclosure_to_component_gutter * 2
         + mount_width;
@@ -60,13 +58,14 @@ module assembly(
         + PCB_LENGTH + keys_y_over_pcb;
     enclosure_height = MINIMUM_HINGE_CLASP_LENGTH + enclosure_chamfer * 2;
 
-    pcb_x = -keys_x + enclosure_wall + enclosure_to_component_gutter;
+    pcb_x = enclosure_wall + enclosure_to_component_gutter -
+        keys_from_pcb_x_offset;
     pcb_y = enclosure_wall + enclosure_to_component_gutter + keys_y_over_pcb;
     pcb_z = enclosure_height - PCB_HEIGHT - mount_height
         - (key_height - key_exposed_height);
 
     module _mounting_rail(y, height_difference = 0) {
-        translate([keys_x, y, PCB_HEIGHT]) {
+        translate([keys_from_pcb_x_offset, y, PCB_HEIGHT]) {
             # mounting_rail(
                 width = mount_width,
                 length = mount_length,
@@ -82,9 +81,9 @@ module assembly(
         include_accidental = false
     ) {
         translate([
-            keys_x,
+            keys_from_pcb_x_offset,
             key_mount_end_on_pcb - natural_key_length,
-            keys_z
+            PCB_HEIGHT + BUTTON_HEIGHT
         ]) {
             mounted_keys(
                 count = 13,
