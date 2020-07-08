@@ -1,5 +1,6 @@
 include <lib/values.scad>;
 
+use <lib/battery.scad>;
 use <lib/enclosure.scad>;
 use <lib/keys.scad>;
 use <lib/mounting_rail.scad>;
@@ -16,6 +17,8 @@ module assembly(
     enclosure_chamfer = 2,
 
     mount_length = 6,
+
+    tolerance = .1,
 
     pcb_color = "purple",
     natural_key_color = "white",
@@ -126,7 +129,7 @@ module assembly(
                 include_clasp = true,
                 just_hinge_parts = false,
                 radius = enclosure_chamfer,
-                tolerance = .1
+                tolerance = tolerance
             );
         }
 
@@ -161,6 +164,24 @@ module assembly(
         # _bottom();
     }
 
+    module _battery() {
+        available_length = pcb_y - enclosure_wall;
+        required_length = BATTERY_LENGTH + tolerance * 2;
+
+        assert(
+            available_length > required_length,
+            "Battery doesn't have enough space under keys"
+        );
+
+        translate([
+            enclosure_width - BATTERY_WIDTH - enclosure_wall,
+            enclosure_wall + tolerance,
+            enclosure_wall
+        ]) {
+            battery();
+        }
+    }
+
     _enclosure();
 
     translate([pcb_x, pcb_y, pcb_z]) {
@@ -174,6 +195,8 @@ module assembly(
         color(accidental_key_color, key_opacity)
             _mounted_keys(include_accidental = true);
     }
+
+    _battery();
 }
 
 assembly();
