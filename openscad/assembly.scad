@@ -11,11 +11,12 @@ use <lib/utils.scad>;
 
 module assembly(
     key_gutter = 1,
-    key_height = 4,
-    key_exposed_height = 2,
+    natural_key_exposed_height = 2,
+    accidental_key_extra_height = 2,
 
     enclosure_wall = 2.5,
     enclosure_to_component_gutter = 2,
+    enclosure_to_component_z_clearance = 2,
     enclosure_chamfer = 2,
 
     mount_length = 6,
@@ -58,14 +59,19 @@ module assembly(
         + mount_width;
     enclosure_length = enclosure_wall * 2 + enclosure_to_component_gutter * 2
         + PCB_LENGTH + keys_y_over_pcb;
-    enclosure_height = MINIMUM_HINGE_CLASP_LENGTH + enclosure_chamfer * 2;
+    enclosure_height = enclosure_wall * 2
+        + NUT_HEIGHT + .5 + 2
+        + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
+        + enclosure_to_component_z_clearance;
 
     pcb_x = enclosure_wall + enclosure_to_component_gutter -
         keys_from_pcb_x_offset;
     pcb_y = enclosure_wall + enclosure_to_component_gutter + keys_y_over_pcb;
-    pcb_z = enclosure_height - PCB_HEIGHT - mount_height
-        - (key_height - key_exposed_height);
+    pcb_z = enclosure_wall + MOUNT_STILT_MINIMUM_HEIGHT;
     pcb_stilt_height = pcb_z - enclosure_wall;
+
+    key_height = enclosure_height - pcb_stilt_height - enclosure_wall
+        - PCB_HEIGHT - mount_height + natural_key_exposed_height;
 
     module _mounting_rail(y, height_difference = 0) {
         translate([keys_from_pcb_x_offset, y, PCB_HEIGHT]) {
@@ -98,7 +104,7 @@ module assembly(
 
                 accidental_width = 7.5,
                 accidental_length = natural_key_length / 2,
-                accidental_height = 6,
+                accidental_height = key_height + accidental_key_extra_height,
 
                 gutter = key_gutter,
 
@@ -223,7 +229,7 @@ module assembly(
     _enclosure();
 
     translate([pcb_x, pcb_y, pcb_z]) {
-        color(pcb_color) pcb();
+        color(pcb_color) pcb(visualize_non_button_components = true);
 
         _mounting_rail(key_mount_end_on_pcb - mount_length);
         _mounting_rail(PCB_HOLES[5][1] - mount_length / 2, 1);

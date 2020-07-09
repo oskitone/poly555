@@ -45,6 +45,8 @@ SCREW_HEAD_DIAMETER = 5.5;
 NUT_DIAMETER = 6.4;
 NUT_HEIGHT = 2.6;
 
+MOUNT_STILT_MINIMUM_HEIGHT = NUT_HEIGHT + .5 + 2; // TODO: tidy against mount_stilt args
+
 NATURAL_KEY_SEQUENCES = [
     [1,0,1,0,1,1,0,1,0,1,0,1,],
     [0,1,0,1,1,0,1,0,1,0,1,1,],
