@@ -19,7 +19,7 @@ module mount_stilt(
 ) {
     e = 0.00987;
 
-    assert(height > nut_lock_height + ceiling, "mount_stilt too short");
+    assert(height >= nut_lock_height + ceiling, "mount_stilt too short");
 
     difference() {
         translate([width / -2, length / -2, 0]) {
