@@ -79,8 +79,10 @@ BATTERY_WIDTH = 51;
 BATTERY_LENGTH = 27.5;
 BATTERY_HEIGHT = 16.5;
 
-SPEAKER_DIAMETER = 30;
-SPEAKER_HEIGHT = 12;
+/* AZ40R https://www.jameco.com/Jameco/Products/ProdDS/2227516.pdf */
+SPEAKER_DIAMETER = 40;
+SPEAKER_HEIGHT = 5;
+SPEAKER_CLEARANCE = 2;
 
 /* https://www.ckswitches.com/media/1428/os.pdf */
 SWITCH_BASE_WIDTH = 4.3;

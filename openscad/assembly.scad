@@ -55,20 +55,23 @@ module assembly(
 
     keys_from_pcb_x_offset = PCB_BUTTONS[0][0] - plot + key_gutter / 2;
 
+    pcb_x = enclosure_wall + enclosure_to_component_gutter -
+        keys_from_pcb_x_offset;
+    pcb_y = enclosure_wall + enclosure_to_component_gutter + keys_y_over_pcb;
+    pcb_z = enclosure_wall + max(
+        MOUNT_STILT_MINIMUM_HEIGHT,
+        SPEAKER_HEIGHT + SPEAKER_CLEARANCE
+    );
+    pcb_stilt_height = pcb_z - enclosure_wall;
+
     enclosure_width = enclosure_wall * 2 + enclosure_to_component_gutter * 2
         + mount_width;
     enclosure_length = enclosure_wall * 2 + enclosure_to_component_gutter * 2
         + PCB_LENGTH + keys_y_over_pcb;
     enclosure_height = enclosure_wall * 2
-        + NUT_HEIGHT + .5 + 2
+        + pcb_stilt_height
         + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
         + enclosure_to_component_z_clearance;
-
-    pcb_x = enclosure_wall + enclosure_to_component_gutter -
-        keys_from_pcb_x_offset;
-    pcb_y = enclosure_wall + enclosure_to_component_gutter + keys_y_over_pcb;
-    pcb_z = enclosure_wall + MOUNT_STILT_MINIMUM_HEIGHT;
-    pcb_stilt_height = pcb_z - enclosure_wall;
 
     key_height = enclosure_height - pcb_stilt_height - enclosure_wall
         - PCB_HEIGHT - mount_height + natural_key_exposed_height;
@@ -214,11 +217,10 @@ module assembly(
     }
 
     module _speaker() {
-        // TODO:  deal with the fact that this speaker doesn't fit here!
-        /* assert(pcb_stilt_height > SPEAKER_HEIGHT, "Speaker doesn't fit"); */
+        assert(pcb_stilt_height > SPEAKER_HEIGHT, "Speaker doesn't fit");
 
         translate([
-            enclosure_wall + enclosure_to_component_gutter + SPEAKER_DIAMETER / 2,
+            pcb_x + (PCB_HOLES[2][0] + PCB_HOLES[3][0]) / 2,
             enclosure_wall + enclosure_to_component_gutter + SPEAKER_DIAMETER / 2,
             enclosure_wall
         ]) {
