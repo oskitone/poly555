@@ -36,6 +36,8 @@ module enclosure_half(
     hinge_end_gutter = undef,
 
     tolerance = .1,
+
+    $fn = $fn
 ) {
     e = 0.01234;
 
@@ -213,7 +215,8 @@ module enclosure_half(
                 if (radius > 0) {
                     rounded_cube_cutout(
                         [_width, _length, total_height],
-                        radius
+                        radius,
+                        $fn = $fn
                     );
                 }
             }

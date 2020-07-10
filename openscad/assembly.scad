@@ -18,6 +18,7 @@ module assembly(
     enclosure_to_component_gutter = 2,
     enclosure_to_component_z_clearance = 2,
     enclosure_chamfer = 2,
+    enclosure_rounding = 24,
 
     mount_length = 6,
 
@@ -146,7 +147,9 @@ module assembly(
                 include_clasp = true,
                 just_hinge_parts = false,
                 radius = enclosure_chamfer,
-                tolerance = tolerance
+                tolerance = tolerance,
+
+                $fn = enclosure_rounding
             );
         }
 

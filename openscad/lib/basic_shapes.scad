@@ -76,7 +76,7 @@ module rounded_cube(dimensions, radius, $fn = $fn) {
     }
 }
 
-module rounded_cube_cutout(dimensions, radius) {
+module rounded_cube_cutout(dimensions, radius, $fn = $fn) {
     e = 0.05678;
 
     width = dimensions[0] + e * 2;
@@ -94,7 +94,8 @@ module rounded_cube_cutout(dimensions, radius) {
                         length + e * 2,
                         height + e * 2
                     ],
-                    radius = radius
+                    radius = radius,
+                    $fn = $fn
                 );
             }
         }
