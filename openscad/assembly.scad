@@ -23,6 +23,9 @@ module assembly(
 
     tolerance = .1,
 
+    keys_count = 13,
+    starting_natural_key_index = 3,
+
     pcb_color = "purple",
     natural_key_color = "white",
     accidental_key_color = "black",
@@ -35,8 +38,9 @@ module assembly(
     natural_key_length = natural_key_width * 4;
 
     mount_width= get_keys_total_width(
-        count = 13,
-        starting_note_index = 5,
+        count = keys_count,
+        starting_note_index =
+            get_starting_note_index(starting_natural_key_index),
         natural_width = natural_key_width,
         gutter = key_gutter
     );
@@ -98,8 +102,8 @@ module assembly(
             PCB_HEIGHT + BUTTON_HEIGHT
         ]) {
             mounted_keys(
-                count = 13,
-                starting_natural_key_index = 3,
+                count = keys_count,
+                starting_natural_key_index = starting_natural_key_index,
 
                 natural_width = natural_key_width,
                 natural_length = natural_key_length,
