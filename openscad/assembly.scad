@@ -80,6 +80,8 @@ module assembly(
     key_height = enclosure_height - pcb_stilt_height - enclosure_wall
         - PCB_HEIGHT - mount_height + natural_key_exposed_height;
 
+    echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
+
     module _mounting_rail(y, height_difference = 0) {
         translate([keys_from_pcb_x_offset, y, PCB_HEIGHT]) {
             # mounting_rail(
