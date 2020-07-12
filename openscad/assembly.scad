@@ -295,8 +295,8 @@ module assembly(
         z_bleed = 0
     ) {
         exposure_height = switch_z - SWITCH_BASE_HEIGHT;
-        length_extension = exposure_height;
         width_extension = exposure_height / 2;
+        length_extension = exposure_height / 2;
 
         translate([
             switch_x - SWITCH_ORIGIN.x - width_extension - xy_bleed,
