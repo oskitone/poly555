@@ -185,7 +185,7 @@ module assembly(
             }
 
             difference() {
-                translate([enclosure_width + e, e, enclosure_height + e]) {
+                translate([enclosure_width + e, e, enclosure_height]) {
                     rotate([180, 0, 180]) {
                         _enclosure_half(true);
                     }
