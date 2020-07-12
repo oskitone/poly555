@@ -1,5 +1,6 @@
 include <lib/values.scad>;
 
+use <lib/basic_shapes.scad>;
 use <lib/battery.scad>;
 use <lib/enclosure.scad>;
 use <lib/keys.scad>;
@@ -7,6 +8,7 @@ use <lib/mount_stilt.scad>;
 use <lib/mounting_rail.scad>;
 use <lib/pcb.scad>;
 use <lib/speaker.scad>;
+use <lib/switch.scad>;
 use <lib/utils.scad>;
 
 module assembly(
@@ -15,10 +17,13 @@ module assembly(
     accidental_key_extra_height = 2,
 
     enclosure_wall = 2.5,
+    enclosure_inner_wall = 1.2,
     enclosure_to_component_gutter = 2,
     enclosure_to_component_z_clearance = 2,
     enclosure_chamfer = 2,
     enclosure_rounding = 24,
+
+    bottom_component_clearance = 1,
 
     mount_length = 6,
 
@@ -32,7 +37,7 @@ module assembly(
     accidental_key_color = "black",
     key_opacity = 0.75
 ) {
-    e = 0.09876;
+    e = 0.0145;
     plot = PCB_BUTTONS[1][0] - PCB_BUTTONS[0][0];
 
     natural_key_width = plot * 2 - key_gutter;
@@ -80,6 +85,16 @@ module assembly(
 
     key_height = enclosure_height - pcb_stilt_height - enclosure_wall
         - PCB_HEIGHT - mount_height + natural_key_exposed_height;
+
+    speaker_corner_gutter = 15;
+    speaker_x = SPEAKER_DIAMETER / 2 + speaker_corner_gutter;
+    speaker_y = enclosure_length - SPEAKER_DIAMETER / 2 - speaker_corner_gutter;
+    speaker_z = enclosure_wall;
+
+    switch_x = 15;
+    switch_y = 15;
+    switch_z = SWITCH_BASE_HEIGHT + SWITCH_ACTUATOR_HEIGHT
+        + bottom_component_clearance;
 
     echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
 
@@ -153,7 +168,40 @@ module assembly(
             );
         }
 
-        module _bottom() { _enclosure_half(false); }
+        module _bottom() {
+            difference() {
+                union() {
+                    _enclosure_half(false);
+
+                    exposure_height = switch_z - SWITCH_BASE_HEIGHT;
+
+                    // Walls around switch
+                    translate([
+                        switch_x - SWITCH_ORIGIN.x - enclosure_inner_wall,
+                        switch_y - SWITCH_ORIGIN.y - enclosure_inner_wall,
+                        exposure_height - e
+                    ]) {
+                        cube([
+                            SWITCH_BASE_WIDTH + enclosure_inner_wall * 2,
+                            SWITCH_BASE_LENGTH + enclosure_inner_wall * 2,
+                            SWITCH_BASE_HEIGHT + e
+                        ]);
+                    }
+
+                    _switch_exposure(
+                        xy_bleed = enclosure_inner_wall,
+                        include_switch_cavity = false,
+                        z_bleed = -e
+                    );
+                }
+
+                _switch_exposure(
+                    xy_bleed = 0,
+                    include_switch_cavity = true,
+                    z_bleed = e
+                );
+            }
+        }
 
         module _top(window_cavity_gutter = 2) {
             module _keys_cavity(gutter = key_gutter) {
@@ -228,12 +276,58 @@ module assembly(
     module _speaker() {
         assert(pcb_stilt_height > SPEAKER_HEIGHT, "Speaker doesn't fit");
 
-        translate([
-            pcb_x + (PCB_HOLES[2][0] + PCB_HOLES[3][0]) / 2,
-            enclosure_wall + enclosure_to_component_gutter + SPEAKER_DIAMETER / 2,
-            enclosure_wall
-        ]) {
+        translate([speaker_x, speaker_y, speaker_z]) {
             speaker();
+        }
+    }
+
+    module _switch() {
+        translate([switch_x, switch_y, switch_z]) {
+            mirror([0, 0, 1]) {
+                switch();
+            }
+        }
+    }
+
+    module _switch_exposure(
+        xy_bleed = 0,
+        include_switch_cavity = true,
+        z_bleed = 0
+    ) {
+        exposure_height = switch_z - SWITCH_BASE_HEIGHT;
+        length_extension = exposure_height;
+        width_extension = exposure_height / 2;
+
+        translate([
+            switch_x - SWITCH_ORIGIN.x - width_extension - xy_bleed,
+            switch_y - SWITCH_ORIGIN.y - length_extension - xy_bleed,
+            -z_bleed
+        ]) {
+            flat_top_rectangular_pyramid(
+                top_width = SWITCH_BASE_WIDTH + xy_bleed * 2,
+                top_length = SWITCH_BASE_LENGTH + xy_bleed * 2,
+
+                bottom_width = SWITCH_BASE_WIDTH + xy_bleed * 2
+                    + width_extension * 2,
+                bottom_length = SWITCH_BASE_LENGTH + xy_bleed * 2
+                    + length_extension * 2,
+
+                height = exposure_height + z_bleed * 2
+            );
+        }
+
+        if (include_switch_cavity) {
+            translate([
+                switch_x - SWITCH_ORIGIN.x - tolerance,
+                switch_y - SWITCH_ORIGIN.y - tolerance,
+                exposure_height - z_bleed
+            ]) {
+                cube([
+                    SWITCH_BASE_WIDTH + tolerance * 2,
+                    SWITCH_BASE_LENGTH + tolerance * 2,
+                    SWITCH_BASE_HEIGHT + z_bleed * 2
+                ]);
+            }
         }
     }
 
@@ -253,6 +347,10 @@ module assembly(
 
     _battery();
     _speaker();
+    _switch();
 }
 
-assembly();
+intersection() {
+    assembly();
+    /* translate([-20, -20, -20]) cube([35, 300, 100]); // switch */
+}

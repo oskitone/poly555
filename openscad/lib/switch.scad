@@ -1,10 +1,7 @@
 include <values.scad>;
 
-module switch(
-    position = 0,
-    origin = [SWITCH_BASE_WIDTH / 2, 2.1] // TODO: confirm in kicad
-) {
-    translate([-origin.x, -origin.y, 0]) {
+module switch(position = 0) {
+    translate([-SWITCH_ORIGIN.x, -SWITCH_ORIGIN.y, 0]) {
         cube([
             SWITCH_BASE_WIDTH,
             SWITCH_BASE_LENGTH,
