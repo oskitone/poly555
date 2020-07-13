@@ -4,6 +4,8 @@ module pcb(
     dimensions = [PCB_WIDTH, PCB_LENGTH, PCB_HEIGHT],
     hole_positions = PCB_HOLES,
     button_positions = PCB_BUTTONS,
+    pcb_color = "purple",
+    button_color = "black",
     visualize_silkscreen = false,
     visualize_non_button_components = false
 ) {
@@ -16,7 +18,7 @@ module pcb(
 
     for (xy = button_positions) {
         translate([xy[0], xy[1], PCB_HEIGHT + e]) {
-            # cylinder(
+            color(button_color) cylinder(
                 d = BUTTON_DIAMETER,
                 h = BUTTON_HEIGHT - e
             );
@@ -26,7 +28,7 @@ module pcb(
     if (visualize_silkscreen) {
         // magic...
         translate([-5.49, -4.6, PCB_HEIGHT]) {
-            # render() linear_extrude(1) {
+            % render() linear_extrude(1) {
                 import("../../poly_555-brd.svg");
             }
         }
@@ -34,7 +36,7 @@ module pcb(
 
     if (visualize_non_button_components) {
         translate([PCB_COMPONENTS_X, PCB_COMPONENTS_Y, PCB_HEIGHT - e]) {
-            # cube([
+            % cube([
                 PCB_COMPONENTS_WIDTH,
                 PCB_COMPONENTS_LENGTH,
                 PCB_COMPONENTS_HEIGHT
@@ -43,7 +45,7 @@ module pcb(
     }
 
     difference() {
-        cube(dimensions);
+        color(pcb_color) cube(dimensions);
 
         for (xy = hole_positions) {
             translate([xy[0], xy[1], -e]) {

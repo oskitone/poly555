@@ -339,7 +339,7 @@ module assembly(
     _enclosure();
 
     translate([pcb_x, pcb_y, pcb_z]) {
-        color(pcb_color) pcb(visualize_non_button_components = true);
+        pcb(visualize_non_button_components = true, pcb_color = pcb_color);
 
         _mounting_rail(key_mount_end_on_pcb - mount_length);
         _mounting_rail(PCB_HOLES[5][1] - mount_length / 2, 1);
@@ -350,9 +350,9 @@ module assembly(
             _mounted_keys(include_accidental = true);
     }
 
-    _battery();
-    _speaker();
-    _switch();
+    % _battery();
+    % _speaker();
+    % _switch();
 }
 
 intersection() {

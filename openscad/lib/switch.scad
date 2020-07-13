@@ -13,7 +13,7 @@ module switch(position = 0) {
             (SWITCH_BASE_LENGTH - SWITCH_ACTUATOR_LENGTH) / 2,
             SWITCH_BASE_HEIGHT - SWITCH_ACTUATOR_TRAVEL * position
         ]) {
-            # cube([
+            cube([
                 SWITCH_ACTUATOR_WIDTH,
                 SWITCH_ACTUATOR_LENGTH,
                 SWITCH_ACTUATOR_HEIGHT
