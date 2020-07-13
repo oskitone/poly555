@@ -131,13 +131,13 @@ module enclosure_half(
             max(1, hinge_count - 1);
 
         for (i = [0 : hinge_count - 1]) {
-            position = [
-                just_hinge_parts
-                    ? i * (hinge_width + gutter)
-                    : hinge_end_gutter + i * availableWidth,
-                just_hinge_parts ? hinge_length : _length,
-                just_hinge_parts ? 0 : total_height / 2 + hinge_length / 2
-            ];
+            position = just_hinge_parts
+                ? [i * (hinge_width + gutter), hinge_length, 0]
+                : [
+                    hinge_end_gutter + i * availableWidth,
+                    _length - e,
+                    total_height / 2 + hinge_length / 2
+                ];
 
             rotation = just_hinge_parts ? [] : [-90, 0, 0];
 
@@ -171,13 +171,13 @@ module enclosure_half(
             max(1, clasp_count - 1);
 
         for (i = [0 : clasp_count - 1]) {
-            position = [
-                just_hinge_parts
-                    ? i * (clasp_width + gutter)
-                    : clasp_end_gutter + i * availableWidth,
-                0,
-                just_hinge_parts ? 0 : (total_height - clasp_length) / 2
-            ];
+            position = just_hinge_parts
+                ? [i * (clasp_width + gutter), 0, 0]
+                : [
+                    clasp_end_gutter + i * availableWidth,
+                    e,
+                    (total_height - clasp_length) / 2
+                ];
 
             translate(position) rotate(just_hinge_parts ? [] : [90, 0, 0]) {
                 hinge_clasp(
