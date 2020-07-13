@@ -96,6 +96,7 @@ module assembly(
     switch_y = 15;
     switch_z = SWITCH_BASE_HEIGHT + SWITCH_ACTUATOR_HEIGHT
         + bottom_component_clearance;
+    switch_exposure_height = switch_z - SWITCH_BASE_HEIGHT;
 
     echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
 
@@ -173,26 +174,40 @@ module assembly(
             );
         }
 
+        module _switch_container(endstop_width = enclosure_inner_wall * 3) {
+            // Walls
+            translate([
+                switch_x - SWITCH_ORIGIN.x - enclosure_inner_wall,
+                switch_y - SWITCH_ORIGIN.y - enclosure_inner_wall,
+                switch_exposure_height - e
+            ]) {
+                cube([
+                    SWITCH_BASE_WIDTH + enclosure_inner_wall * 2,
+                    SWITCH_BASE_LENGTH + enclosure_inner_wall * 2,
+                    SWITCH_BASE_HEIGHT + e
+                ]);
+            }
+
+            // Endstop
+            translate([
+                switch_x
+                    + (SWITCH_BASE_WIDTH - endstop_width) / 2,
+                switch_y - enclosure_inner_wall,
+                switch_exposure_height + SWITCH_BASE_HEIGHT - e
+            ]) {
+                cube([
+                    endstop_width,
+                    SWITCH_BASE_LENGTH + enclosure_inner_wall * 2,
+                    enclosure_inner_wall + e
+                ]);
+            }
+        }
+
         module _bottom() {
             difference() {
                 union() {
                     _enclosure_half(false);
-
-                    exposure_height = switch_z - SWITCH_BASE_HEIGHT;
-
-                    // Walls around switch
-                    translate([
-                        switch_x - SWITCH_ORIGIN.x - enclosure_inner_wall,
-                        switch_y - SWITCH_ORIGIN.y - enclosure_inner_wall,
-                        exposure_height - e
-                    ]) {
-                        cube([
-                            SWITCH_BASE_WIDTH + enclosure_inner_wall * 2,
-                            SWITCH_BASE_LENGTH + enclosure_inner_wall * 2,
-                            SWITCH_BASE_HEIGHT + e
-                        ]);
-                    }
-
+                    _switch_container();
                     _switch_exposure(
                         xy_bleed = enclosure_inner_wall,
                         include_switch_cavity = false,
@@ -299,9 +314,8 @@ module assembly(
         include_switch_cavity = true,
         z_bleed = 0
     ) {
-        exposure_height = switch_z - SWITCH_BASE_HEIGHT;
-        width_extension = exposure_height / 2;
-        length_extension = exposure_height / 2;
+        width_extension = switch_exposure_height / 2;
+        length_extension = switch_exposure_height / 2;
 
         translate([
             switch_x - SWITCH_ORIGIN.x - width_extension - xy_bleed,
@@ -317,7 +331,7 @@ module assembly(
                 bottom_length = SWITCH_BASE_LENGTH + xy_bleed * 2
                     + length_extension * 2,
 
-                height = exposure_height + z_bleed * 2
+                height = switch_exposure_height + z_bleed * 2
             );
         }
 
@@ -325,7 +339,7 @@ module assembly(
             translate([
                 switch_x - SWITCH_ORIGIN.x - tolerance,
                 switch_y - SWITCH_ORIGIN.y - tolerance,
-                exposure_height - z_bleed
+                switch_exposure_height - z_bleed
             ]) {
                 cube([
                     SWITCH_BASE_WIDTH + tolerance * 2,
