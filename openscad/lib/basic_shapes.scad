@@ -101,3 +101,50 @@ module rounded_cube_cutout(dimensions, radius, $fn = $fn) {
         }
     }
 }
+
+module support_wall(
+    dimensions,
+    is_back = true,
+    railing_diameter = 3.5,
+    support_width = 2,
+    support_length = 4,
+    gutter = 4
+) {
+    railing_z = railing_diameter / 4;
+
+    module _support(height = dimensions[2], depth = support_length) {
+        translate([0, -depth, 0]) {
+            flat_top_rectangular_pyramid(
+                top_width = support_width,
+                top_length = 0,
+                bottom_width = support_width,
+                bottom_length = support_length,
+                height = height,
+                top_weight_y = 1
+            );
+        }
+    }
+
+    translate(is_back ? [0, dimensions[1], 0] : [0, 0, 0]) {
+        mirror(is_back ? [0, 1, 0] : [0, 0, 0]) {
+            cube(dimensions);
+
+            translate([0, dimensions[1] / 2, dimensions[2] + railing_z]) {
+                rotate([0, 90, 0]) {
+                    cylinder(
+                        d = railing_diameter,
+                        h = dimensions[0],
+                        $fn = 9
+                    );
+                }
+            }
+
+            translate([gutter, 0, 0]) {
+                _support();
+            }
+            translate([dimensions[0] - support_length - gutter, 0, 0]) {
+                _support();
+            }
+        }
+    }
+}
