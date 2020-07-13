@@ -104,8 +104,7 @@ module assembly(
                 width = mount_width,
                 length = mount_length,
                 height = mount_height - height_difference,
-                hole_xs = mount_hole_xs,
-                hole_diameter = 2
+                hole_xs = mount_hole_xs
             );
         }
     }
