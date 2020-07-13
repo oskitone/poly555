@@ -98,6 +98,9 @@ module assembly(
         + bottom_component_clearance;
     switch_exposure_height = switch_z - SWITCH_BASE_HEIGHT;
 
+    battery_x = enclosure_width - BATTERY_WIDTH - enclosure_wall - tolerance;
+    battery_y = enclosure_wall + tolerance;
+
     echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
 
     module _mounting_rail(y, height_difference = 0) {
@@ -203,6 +206,28 @@ module assembly(
             }
         }
 
+        module _battery_container(
+            length = BATTERY_LENGTH * .5,
+            snap_tolerance = 0, // TODO
+            wall = enclosure_inner_wall,
+            ramp = 5
+        ) {
+            translate([
+                battery_x - snap_tolerance - wall - ramp,
+                battery_y + (BATTERY_LENGTH - length) / 2,
+                enclosure_wall
+            ]) {
+                flat_top_rectangular_pyramid(
+                    top_width = wall,
+                    top_length = length,
+                    bottom_width = wall + ramp,
+                    bottom_length = length,
+                    height = BATTERY_HEIGHT * .67,
+                    top_weight_x = 1
+                );
+            }
+        }
+
         module _bottom() {
             difference() {
                 union() {
@@ -213,6 +238,7 @@ module assembly(
                         include_switch_cavity = false,
                         z_bleed = -e
                     );
+                    _battery_container();
                 }
 
                 _switch_exposure(
@@ -284,11 +310,7 @@ module assembly(
             "Battery doesn't have enough space under keys"
         );
 
-        translate([
-            enclosure_width - BATTERY_WIDTH - enclosure_wall,
-            enclosure_wall + tolerance,
-            enclosure_wall
-        ]) {
+        translate([battery_x, battery_y, enclosure_wall + e]) {
             battery();
         }
     }
