@@ -216,7 +216,7 @@ module assembly(
                 }
 
                 _switch_exposure(
-                    xy_bleed = 0,
+                    xy_bleed = tolerance / 2,
                     include_switch_cavity = true,
                     z_bleed = e
                 );
@@ -337,13 +337,13 @@ module assembly(
 
         if (include_switch_cavity) {
             translate([
-                switch_x - SWITCH_ORIGIN.x - tolerance,
-                switch_y - SWITCH_ORIGIN.y - tolerance,
+                switch_x - SWITCH_ORIGIN.x - xy_bleed,
+                switch_y - SWITCH_ORIGIN.y - xy_bleed,
                 switch_exposure_height - z_bleed
             ]) {
                 cube([
-                    SWITCH_BASE_WIDTH + tolerance * 2,
-                    SWITCH_BASE_LENGTH + tolerance * 2,
+                    SWITCH_BASE_WIDTH + xy_bleed * 2,
+                    SWITCH_BASE_LENGTH + xy_bleed * 2,
                     SWITCH_BASE_HEIGHT + z_bleed * 2
                 ]);
             }
