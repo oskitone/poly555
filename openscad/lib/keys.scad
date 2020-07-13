@@ -17,12 +17,32 @@ module keys(
 
     gutter = 1,
 
+    undercarriage_height = 0,
+    undercarriage_length = 0,
+
     include_natural = true,
     include_accidental = true
 ) {
     e = 0.04567;
 
     index_offset = [0,2,4,5,7,9,11][starting_natural_key_index];
+
+    module _key_block(dimensions) {
+        difference() {
+            cube(dimensions);
+
+            /* TODO: DFM */
+            if (undercarriage_height > 0 && undercarriage_length > 0) {
+                translate([-e, -e, -e]) {
+                    cube([
+                        dimensions[0] + e * 2,
+                        dimensions[1] - undercarriage_length + e,
+                        undercarriage_height + e
+                    ]);
+                }
+            }
+        }
+    }
 
     module _cutout(right = true) {
         // Exact size doesn't matter. Just needs to be big and defined.
@@ -64,7 +84,7 @@ module keys(
 
         translate([x, 0, 0]) {
             difference() {
-                cube([
+                _key_block([
                     natural_width,
                     natural_length,
                     natural_height
@@ -85,7 +105,7 @@ module keys(
         y = natural_length - accidental_length;
 
         translate([x, y, 0]) {
-            cube([
+            _key_block([
                 accidental_width,
                 accidental_length,
                 accidental_height
@@ -126,6 +146,9 @@ module mounted_keys(
     accidental_height,
 
     gutter = 1,
+
+    undercarriage_height = 0,
+    undercarriage_length = 0,
 
     include_natural = true,
     include_accidental = true,
@@ -174,6 +197,9 @@ module mounted_keys(
                 accidental_height = accidental_height,
 
                 gutter = gutter,
+
+                undercarriage_height = undercarriage_height,
+                undercarriage_length = undercarriage_length,
 
                 include_natural = naturals,
                 include_accidental = !naturals
@@ -230,6 +256,9 @@ mounted_keys(
     accidental_height = 15,
 
     gutter = 1,
+
+    undercarriage_height = 5,
+    undercarriage_length = 15,
 
     mount_length = 5,
     mount_hole_diameter = 2,

@@ -31,6 +31,7 @@ module assembly(
 
     keys_count = 13,
     starting_natural_key_index = 3,
+    key_travel = 2,
 
     pcb_color = "purple",
     natural_key_color = "white",
@@ -131,6 +132,11 @@ module assembly(
                 accidental_height = key_height + accidental_key_extra_height,
 
                 gutter = key_gutter,
+
+                undercarriage_height = BATTERY_HEIGHT
+                    - (pcb_stilt_height + PCB_HEIGHT + mount_height)
+                    + key_travel,
+                undercarriage_length = key_mount_end_on_pcb,
 
                 mount_length = mount_length,
                 mount_hole_xs = mount_hole_xs,
