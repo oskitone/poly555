@@ -100,7 +100,7 @@ module assembly(
 
     module _mounting_rail(y, height_difference = 0) {
         translate([keys_from_pcb_x_offset, y, PCB_HEIGHT]) {
-            # mounting_rail(
+            mounting_rail(
                 width = mount_width,
                 length = mount_length,
                 height = mount_height - height_difference,
