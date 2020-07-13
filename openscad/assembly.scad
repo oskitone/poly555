@@ -103,26 +103,11 @@ module assembly(
 
     echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
 
-    module _mounting_rail(y, height_difference = 0) {
-        translate([keys_from_pcb_x_offset, y, PCB_HEIGHT]) {
-            mounting_rail(
-                width = mount_width,
-                length = mount_length,
-                height = mount_height - height_difference,
-                hole_xs = mount_hole_xs
-            );
-        }
-    }
-
-    module _mounted_keys(
-        include_natural = false,
-        include_accidental = false
-    ) {
-        translate([
-            keys_from_pcb_x_offset,
-            key_mount_end_on_pcb - natural_key_length,
-            PCB_HEIGHT + BUTTON_HEIGHT
-        ]) {
+    module _keys() {
+        module _mounted_keys(
+            include_natural = false,
+            include_accidental = false
+        ) {
             mounted_keys(
                 count = keys_count,
                 starting_natural_key_index = starting_natural_key_index,
@@ -148,6 +133,19 @@ module assembly(
                 include_natural = include_natural,
                 include_accidental = include_accidental
             );
+        }
+
+        translate([
+            pcb_x + keys_from_pcb_x_offset,
+            pcb_y + key_mount_end_on_pcb - natural_key_length,
+            pcb_z + PCB_HEIGHT + BUTTON_HEIGHT
+        ]) {
+            color(natural_key_color, key_opacity) {
+                _mounted_keys(include_natural = true);
+            }
+            color(accidental_key_color, key_opacity) {
+                _mounted_keys(include_accidental = true);
+            }
         }
     }
 
@@ -374,17 +372,36 @@ module assembly(
 
     _enclosure();
 
-    translate([pcb_x, pcb_y, pcb_z]) {
-        pcb(visualize_non_button_components = true, pcb_color = pcb_color);
+    module _pcb() {
+        translate([pcb_x, pcb_y, pcb_z]) {
+            pcb(visualize_non_button_components = true, pcb_color = pcb_color);
+        }
+    }
+
+    module _mounting_rails() {
+        module _mounting_rail(y, height_difference = 0) {
+            translate([
+                pcb_x + keys_from_pcb_x_offset,
+                pcb_y + y,
+                pcb_z + PCB_HEIGHT
+            ]) {
+                mounting_rail(
+                    width = mount_width,
+                    length = mount_length,
+                    height = mount_height - height_difference,
+                    hole_xs = mount_hole_xs
+                );
+            }
+        }
 
         _mounting_rail(key_mount_end_on_pcb - mount_length);
         _mounting_rail(PCB_HOLES[5][1] - mount_length / 2, 1);
-
-        color(natural_key_color, key_opacity)
-            _mounted_keys(include_natural = true);
-        color(accidental_key_color, key_opacity)
-            _mounted_keys(include_accidental = true);
     }
+
+    _mounting_rails();
+    _keys();
+
+    % _pcb();
 
     % _battery();
     % _speaker();
