@@ -33,6 +33,15 @@ module assembly(
     starting_natural_key_index = 3,
     key_travel = 2,
 
+    show_enclosure_bottom = true,
+    show_battery = true,
+    show_speaker = true,
+    show_switch = true,
+    show_pcb = true,
+    show_mounting_rails = true,
+    show_keys = true,
+    show_enclosure_top = true,
+
     pcb_color = "purple",
     natural_key_color = "white",
     accidental_key_color = "black",
@@ -287,8 +296,8 @@ module assembly(
             }
         }
 
-        # _top();
-        # _bottom();
+        if (show_enclosure_top) { # _top(); }
+        if (show_enclosure_bottom) { # _bottom(); }
 
         translate([pcb_x, pcb_y, pcb_z - e]) {
             mount_stilts(
@@ -370,8 +379,6 @@ module assembly(
         }
     }
 
-    _enclosure();
-
     module _pcb() {
         translate([pcb_x, pcb_y, pcb_z]) {
             pcb(visualize_non_button_components = true, pcb_color = pcb_color);
@@ -398,17 +405,25 @@ module assembly(
         _mounting_rail(PCB_HOLES[5][1] - mount_length / 2, 1);
     }
 
-    _mounting_rails();
-    _keys();
-
-    % _pcb();
-
-    % _battery();
-    % _speaker();
-    % _switch();
+    _enclosure();
+    if (show_battery) { % _battery(); }
+    if (show_speaker) { % _speaker(); }
+    if (show_switch) { % _switch(); }
+    if (show_pcb) { % _pcb(); }
+    if (show_mounting_rails) { _mounting_rails(); }
+    if (show_keys) { _keys(); }
 }
 
 intersection() {
-    assembly();
+    assembly(
+        show_enclosure_bottom = true,
+        show_battery = true,
+        show_speaker = true,
+        show_switch = true,
+        show_pcb = true,
+        show_mounting_rails = true,
+        show_keys = true,
+        show_enclosure_top = true
+    );
     /* translate([-20, -20, -20]) cube([35, 300, 100]); // switch */
 }
