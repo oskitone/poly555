@@ -268,6 +268,29 @@ module assembly(
             }
         }
 
+        module _speaker_cavities(diameter = 2, gutter = 2) {
+            plot = diameter + gutter;
+            row_count = round((SPEAKER_DIAMETER / 2) / plot);
+
+            translate([speaker_x, speaker_y, 0]) {
+                for (row_i = [0 : row_count - 1]) {
+                    row_diameter = plot * 2 * row_i;
+                    col_count = max(round(row_diameter * PI / plot), 1);
+
+                    for (col_i = [0: col_count - 1]) {
+                        rotate([0, 0, col_i * (360 / col_count)]) {
+                            translate([0, plot * row_i, -e]) {
+                                cylinder(
+                                    d = diameter,
+                                    h = enclosure_wall + e * 2
+                                );
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         module _bottom() {
             difference() {
                 union() {
@@ -287,6 +310,8 @@ module assembly(
                     include_switch_cavity = true,
                     z_bleed = e
                 );
+
+                _speaker_cavities();
             }
         }
 
