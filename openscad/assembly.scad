@@ -99,7 +99,6 @@ module assembly(
     speaker_corner_gutter = 15;
     speaker_x = SPEAKER_DIAMETER / 2 + speaker_corner_gutter;
     speaker_y = enclosure_length - SPEAKER_DIAMETER / 2 - speaker_corner_gutter;
-    speaker_z = enclosure_wall;
 
     switch_x = 15;
     switch_y = 15;
@@ -235,6 +234,40 @@ module assembly(
             }
         }
 
+        module _speaker_container(
+            wall = enclosure_inner_wall,
+            gap_width = 10,
+            gap_count = 3
+        ) {
+            translate([speaker_x, speaker_y, enclosure_wall - e]) {
+                difference() {
+                    cylinder(
+                        d = SPEAKER_DIAMETER + tolerance * 2 + wall * 2,
+                        h = SPEAKER_HEIGHT + e
+                    );
+
+                    translate([0, 0, -e]) {
+                        cylinder(
+                            d = SPEAKER_DIAMETER + tolerance * 2,
+                            h = SPEAKER_HEIGHT + e * 3
+                        );
+                    }
+
+                    for (i = [0 : gap_count - 1]) {
+                        rotate([0, 0, i * (360 / gap_count)]) {
+                            translate([gap_width / -2, 0, 0]) {
+                                cube([
+                                    gap_width,
+                                    SPEAKER_DIAMETER / 2 + wall + e,
+                                    SPEAKER_HEIGHT + e * 3
+                                ]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         module _bottom() {
             difference() {
                 union() {
@@ -246,6 +279,7 @@ module assembly(
                         z_bleed = -e
                     );
                     _battery_container();
+                    _speaker_container();
                 }
 
                 _switch_exposure(
@@ -325,7 +359,7 @@ module assembly(
     module _speaker() {
         assert(pcb_stilt_height > SPEAKER_HEIGHT, "Speaker doesn't fit");
 
-        translate([speaker_x, speaker_y, speaker_z]) {
+        translate([speaker_x, speaker_y, enclosure_wall]) {
             speaker();
         }
     }
