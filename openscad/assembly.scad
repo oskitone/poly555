@@ -236,7 +236,9 @@ module assembly(
         module _speaker_container(
             wall = enclosure_inner_wall,
             gap_width = 10,
-            gap_count = 3
+            gap_count = 3,
+            $fn = HIDEF_ROUNDING,
+            e = 0.3
         ) {
             translate([speaker_x, speaker_y, enclosure_wall - e]) {
                 difference() {
@@ -280,14 +282,16 @@ module assembly(
                     translate([0, 0, -e]) {
                         cylinder(
                             d = SPEAKER_DIAMETER + enclosure_inner_wall * 2,
-                            h = engraving_depth + e
+                            h = engraving_depth + e,
+                            $fn = HIDEF_ROUNDING
                         );
                     }
 
                     translate([0, 0, e * -2]) {
                         cylinder(
                             d = SPEAKER_DIAMETER,
-                            h = engraving_depth + e * 3
+                            h = engraving_depth + e * 3,
+                            $fn = HIDEF_ROUNDING
                         );
                     }
                 }
