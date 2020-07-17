@@ -338,7 +338,7 @@ module assembly(
                     z_bleed = e
                 );
 
-                _speaker_cavities();
+                render() _speaker_cavities();
             }
         }
 
