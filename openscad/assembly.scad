@@ -303,6 +303,13 @@ module assembly(
                     );
                     _battery_container();
                     _speaker_container();
+                    translate([pcb_x, pcb_y, pcb_z - e]) {
+                        mount_stilts(
+                            positions = PCB_HOLES,
+                            height = pcb_stilt_height,
+                            z = -pcb_stilt_height
+                        );
+                    }
                 }
 
                 _switch_exposure(
@@ -357,14 +364,6 @@ module assembly(
 
         if (show_enclosure_top) { # _top(); }
         if (show_enclosure_bottom) { # _bottom(); }
-
-        translate([pcb_x, pcb_y, pcb_z - e]) {
-            mount_stilts(
-                positions = PCB_HOLES,
-                height = pcb_stilt_height,
-                z = -pcb_stilt_height
-            );
-        }
     }
 
     module _battery() {
