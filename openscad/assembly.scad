@@ -486,25 +486,29 @@ module assembly(
         _mounting_rail(PCB_HOLES[5][1] - mount_length / 2, 1);
     }
 
-    _enclosure();
-    if (show_battery) { % _battery(); }
-    if (show_speaker) { % _speaker(); }
-    if (show_switch) { % _switch(); }
-    if (show_pcb) { % _pcb(); }
-    if (show_mounting_rails) { _mounting_rails(); }
-    if (show_keys) { _keys(); }
+    intersection() {
+        union() {
+            _enclosure();
+            if (show_battery) { % _battery(); }
+            if (show_speaker) { % _speaker(); }
+            if (show_switch) { % _switch(); }
+            if (show_pcb) { % _pcb(); }
+            if (show_mounting_rails) { _mounting_rails(); }
+            if (show_keys) { _keys(); }
+        }
+
+        /* translate([-20, -20, -20]) cube([35, 300, 100]); // switch */
+        /* translate([speaker_x, speaker_y, -e]) cylinder(d = SPEAKER_DIAMETER + 8, h = 40); */
+    }
 }
 
-intersection() {
-    assembly(
-        show_enclosure_bottom = true,
-        show_battery = true,
-        show_speaker = true,
-        show_switch = true,
-        show_pcb = true,
-        show_mounting_rails = true,
-        show_keys = true,
-        show_enclosure_top = true
-    );
-    /* translate([-20, -20, -20]) cube([35, 300, 100]); // switch */
-}
+assembly(
+    show_enclosure_bottom = true,
+    show_battery = true,
+    show_speaker = true,
+    show_switch = true,
+    show_pcb = true,
+    show_mounting_rails = true,
+    show_keys = true,
+    show_enclosure_top = true
+);
