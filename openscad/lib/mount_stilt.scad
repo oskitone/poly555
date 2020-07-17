@@ -15,7 +15,9 @@ module mount_stilt(
     nut_lock_height = NUT_HEIGHT + .5,
 
     include_sacrificial_bridge = true,
-    sacrificial_bridge_height = .2
+    sacrificial_bridge_height = .2,
+
+    $fn = DEFAULT_ROUNDING
 ) {
     e = 0.00987;
 

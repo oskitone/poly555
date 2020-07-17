@@ -7,11 +7,10 @@ module mounting_rail(
     length = 0,
     height = 1,
     hole_xs = [],
-    hole_diameter = PCB_MOUNT_HOLE_DIAMETER
+    hole_diameter = PCB_MOUNT_HOLE_DIAMETER,
+    $fn = DEFAULT_ROUNDING
 ) {
     e = 0.0567;
-
-    $fn = 24;
 
     difference() {
         cube([width, length, height]);
