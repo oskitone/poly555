@@ -243,13 +243,13 @@ module assembly(
                 difference() {
                     cylinder(
                         d = SPEAKER_DIAMETER + tolerance * 2 + wall * 2,
-                        h = SPEAKER_HEIGHT + e
+                        h = SPEAKER_RIM_HEIGHT + e
                     );
 
                     translate([0, 0, -e]) {
                         cylinder(
                             d = SPEAKER_DIAMETER + tolerance * 2,
-                            h = SPEAKER_HEIGHT + e * 3
+                            h = SPEAKER_RIM_HEIGHT + e * 3
                         );
                     }
 
@@ -259,7 +259,7 @@ module assembly(
                                 cube([
                                     gap_width,
                                     SPEAKER_DIAMETER / 2 + wall + e,
-                                    SPEAKER_HEIGHT + e * 3
+                                    SPEAKER_RIM_HEIGHT + e * 3
                                 ]);
                             }
                         }
