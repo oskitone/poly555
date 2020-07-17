@@ -5,5 +5,7 @@
 # backup files
  *.bak
 
+fp-info-cache
+
 .DS_Store
 local/
