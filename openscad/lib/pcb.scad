@@ -6,6 +6,7 @@ module pcb(
     button_positions = PCB_BUTTONS,
     pcb_color = "purple",
     button_color = "black",
+    opacity = 1,
     visualize_silkscreen = false,
     visualize_non_button_components = false
 ) {
@@ -18,7 +19,7 @@ module pcb(
 
     for (xy = button_positions) {
         translate([xy[0], xy[1], PCB_HEIGHT + e]) {
-            color(button_color) cylinder(
+            color(button_color, opacity) cylinder(
                 d = BUTTON_DIAMETER,
                 h = BUTTON_HEIGHT - e
             );
@@ -45,7 +46,7 @@ module pcb(
     }
 
     difference() {
-        color(pcb_color) cube(dimensions);
+        color(pcb_color, opacity) cube(dimensions);
 
         for (xy = hole_positions) {
             translate([xy[0], xy[1], -e]) {

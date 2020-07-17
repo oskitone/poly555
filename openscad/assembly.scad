@@ -439,7 +439,11 @@ module assembly(
 
     module _pcb() {
         translate([pcb_x, pcb_y, pcb_z]) {
-            pcb(visualize_non_button_components = true, pcb_color = pcb_color);
+            pcb(
+                visualize_non_button_components = true,
+                pcb_color = pcb_color,
+                opacity = .5
+            );
         }
     }
 
