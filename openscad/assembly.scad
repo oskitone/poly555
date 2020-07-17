@@ -383,7 +383,7 @@ module assembly(
     module _speaker() {
         assert(pcb_stilt_height > SPEAKER_HEIGHT, "Speaker doesn't fit");
 
-        translate([speaker_x, speaker_y, enclosure_wall]) {
+        translate([speaker_x, speaker_y, enclosure_wall - e]) {
             speaker();
         }
     }
