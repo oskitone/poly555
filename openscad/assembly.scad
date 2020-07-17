@@ -268,11 +268,31 @@ module assembly(
             }
         }
 
-        module _speaker_cavities(diameter = 2, gutter = 2) {
+        module _speaker_cavities(
+            diameter = 2,
+            gutter = 2,
+            engraving_depth = 1
+        ) {
             plot = diameter + gutter;
             row_count = round((SPEAKER_DIAMETER / 2) / plot);
 
             translate([speaker_x, speaker_y, 0]) {
+                difference() {
+                    translate([0, 0, -e]) {
+                        cylinder(
+                            d = SPEAKER_DIAMETER + enclosure_inner_wall * 2,
+                            h = engraving_depth + e
+                        );
+                    }
+
+                    translate([0, 0, e * -2]) {
+                        cylinder(
+                            d = SPEAKER_DIAMETER,
+                            h = engraving_depth + e * 3
+                        );
+                    }
+                }
+
                 for (row_i = [0 : row_count - 1]) {
                     row_diameter = plot * 2 * row_i;
                     col_count = max(round(row_diameter * PI / plot), 1);
