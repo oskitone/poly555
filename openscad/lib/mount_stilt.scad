@@ -1,5 +1,6 @@
 include <values.scad>;
 
+use <basic_shapes.scad>;
 use <pcb.scad>;
 
 module mount_stilt(
@@ -17,6 +18,8 @@ module mount_stilt(
     include_sacrificial_bridge = true,
     sacrificial_bridge_height = .2,
 
+    include_pedestal = true,
+
     $fn = DEFAULT_ROUNDING
 ) {
     e = 0.00987;
@@ -26,6 +29,26 @@ module mount_stilt(
     difference() {
         translate([width / -2, length / -2, 0]) {
             cube([width, length, height]);
+
+            if (include_pedestal) {
+                translate([0, -nut_lock_diameter, 0]) {
+                    flat_top_rectangular_pyramid(
+                        top_width = width,
+                        top_length = length,
+
+                        bottom_width = width,
+                        bottom_length = length + nut_lock_diameter * 2,
+
+                        height = height - nut_lock_height - ceiling,
+
+                        top_x = undef,
+                        top_y = undef,
+
+                        top_weight_x = .5,
+                        top_weight_y = .5
+                    );
+                }
+            }
         }
 
         translate([0, 0, -e]) {

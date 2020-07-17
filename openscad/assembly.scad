@@ -326,12 +326,27 @@ module assembly(
                     );
                     _battery_container();
                     _speaker_container();
-                    translate([pcb_x, pcb_y, pcb_z - e]) {
-                        mount_stilts(
-                            positions = PCB_HOLES,
-                            height = pcb_stilt_height,
-                            z = -pcb_stilt_height
-                        );
+
+                    intersection() {
+                        translate([pcb_x, pcb_y, pcb_z - e]) {
+                            mount_stilts(
+                                positions = PCB_HOLES,
+                                height = pcb_stilt_height,
+                                z = -pcb_stilt_height
+                            );
+                        }
+
+                        translate([
+                            enclosure_wall - e,
+                            enclosure_wall - e,
+                            enclosure_wall - e
+                        ]) {
+                            cube([
+                                enclosure_width - enclosure_wall * 2 + e * 2,
+                                enclosure_length - enclosure_wall * 2 + e * 2,
+                                enclosure_height
+                            ]);
+                        }
                     }
                 }
 
@@ -375,7 +390,7 @@ module assembly(
             }
 
             difference() {
-                translate([enclosure_width + e, e, enclosure_height]) {
+                translate([enclosure_width, 0, enclosure_height]) {
                     rotate([180, 0, 180]) {
                         _enclosure_half(true);
                     }
