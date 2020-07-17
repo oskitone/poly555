@@ -96,9 +96,8 @@ module assembly(
     key_height = enclosure_height - pcb_stilt_height - enclosure_wall
         - PCB_HEIGHT - mount_height + natural_key_exposed_height;
 
-    speaker_corner_gutter = 15;
-    speaker_x = SPEAKER_DIAMETER / 2 + speaker_corner_gutter;
-    speaker_y = enclosure_length - SPEAKER_DIAMETER / 2 - speaker_corner_gutter;
+    speaker_x = enclosure_width / 2;
+    speaker_y = enclosure_length - SPEAKER_DIAMETER / 2 - 15;
 
     switch_x = 15;
     switch_y = 15;
