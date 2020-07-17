@@ -16,7 +16,7 @@ module assembly(
     natural_key_exposed_height = 2,
     accidental_key_extra_height = 2,
 
-    enclosure_wall = 2.5,
+    enclosure_wall = 1.8,
     enclosure_inner_wall = 1.2,
     enclosure_to_component_gutter = 2,
     enclosure_to_component_z_clearance = 2,
