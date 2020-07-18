@@ -41,6 +41,7 @@ module assembly(
     show_mounting_rails = true,
     show_keys = true,
     show_enclosure_top = true,
+    show_hinge_parts = true,
 
     enclosure_color = undef,
     enclosure_opacity = .75,
@@ -174,7 +175,7 @@ module assembly(
                 remove_lip = is_top,
 
                 include_hinge = true,
-                include_hinge_parts = true,
+                include_hinge_parts = show_hinge_parts,
 
                 hinge_count = 2,
                 include_clasp = true,
@@ -577,5 +578,6 @@ assembly(
     show_pcb = true,
     show_mounting_rails = true,
     show_keys = true,
-    show_enclosure_top = true
+    show_enclosure_top = true,
+    show_hinge_parts = true
 );
