@@ -393,6 +393,33 @@ module assembly(
                 }
             }
 
+            module _screw_head_cavities() {
+                for (p = PCB_HOLES) {
+                    translate([pcb_x + p.x, pcb_y + p.y, -e]) {
+                        cylinder(
+                            d = SCREW_HEAD_DIAMETER + tolerance * 2,
+                            h = SCREW_HEAD_HEIGHT + bottom_component_clearance + e,
+                            $fn = HIDEF_ROUNDING
+                        );
+                    }
+                }
+            }
+
+            module _screw_head_cavity_bridges() {
+                for (p = PCB_HOLES) {
+                    translate([
+                        pcb_x + p.x,
+                        pcb_y + p.y,
+                        SCREW_HEAD_HEIGHT + bottom_component_clearance
+                    ]) {
+                        cylinder(
+                            d = SCREW_HEAD_DIAMETER + enclosure_wall * 2,
+                            h = SACRIFICIAL_BRIDGE_HEIGHT
+                        );
+                    }
+                }
+            }
+
             difference() {
                 union() {
                     _enclosure_half(false);
@@ -413,7 +440,10 @@ module assembly(
                     z_bleed = e
                 );
                 render() _speaker_cavities();
+                _screw_head_cavities();
             }
+
+            _screw_head_cavity_bridges();
         }
 
         module _top(window_cavity_gutter = 2) {

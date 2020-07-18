@@ -16,7 +16,6 @@ module mount_stilt(
     nut_lock_height = NUT_HEIGHT + .5,
 
     include_sacrificial_bridge = true,
-    sacrificial_bridge_height = .2,
 
     include_pedestal = true,
 
@@ -73,7 +72,7 @@ module mount_stilt(
 
     if (include_sacrificial_bridge) {
         translate([width / -2, length / -2, height - ceiling]) {
-            cube([width, length, sacrificial_bridge_height]);
+            cube([width, length, SACRIFICIAL_BRIDGE_HEIGHT]);
         }
     }
 }
