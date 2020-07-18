@@ -42,6 +42,8 @@ module assembly(
     show_keys = true,
     show_enclosure_top = true,
 
+    enclosure_color = undef,
+    enclosure_opacity = .75,
     pcb_color = "purple",
     natural_key_color = "white",
     accidental_key_color = "black",
@@ -158,7 +160,7 @@ module assembly(
 
     module _enclosure() {
         module _enclosure_half(is_top) {
-            enclosure_half(
+            color(enclosure_color, enclosure_opacity) enclosure_half(
                 width = enclosure_width,
                 length = enclosure_length,
                 total_height = enclosure_height,
@@ -400,8 +402,8 @@ module assembly(
             }
         }
 
-        if (show_enclosure_top) { # _top(); }
-        if (show_enclosure_bottom) { # _bottom(); }
+        if (show_enclosure_top) { _top(); }
+        if (show_enclosure_bottom) { _bottom(); }
     }
 
     module _battery() {
