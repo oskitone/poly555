@@ -359,24 +359,34 @@ module assembly(
             }
 
             module _mount_stilts() {
-                intersection() {
-                    translate([pcb_x, pcb_y, pcb_z - e]) {
-                        mount_stilts(
-                            positions = PCB_HOLES,
-                            height = pcb_stilt_height,
-                            z = -pcb_stilt_height
-                        );
+                difference() {
+                    intersection() {
+                        translate([pcb_x, pcb_y, pcb_z - e]) {
+                            mount_stilts(
+                                positions = PCB_HOLES,
+                                height = pcb_stilt_height,
+                                z = -pcb_stilt_height
+                            );
+                        }
+
+                        translate([
+                            enclosure_wall - e,
+                            enclosure_wall - e,
+                            enclosure_wall - e
+                        ]) {
+                            cube([
+                                enclosure_width - enclosure_wall * 2 + e * 2,
+                                enclosure_length - enclosure_wall * 2 + e * 2,
+                                enclosure_height
+                            ]);
+                        }
                     }
 
-                    translate([
-                        enclosure_wall - e,
-                        enclosure_wall - e,
-                        enclosure_wall - e
-                    ]) {
+                    translate([battery_x, battery_y + tolerance * 2, enclosure_wall - e]) {
                         cube([
-                            enclosure_width - enclosure_wall * 2 + e * 2,
-                            enclosure_length - enclosure_wall * 2 + e * 2,
-                            enclosure_height
+                            enclosure_width - battery_x - enclosure_wall - e,
+                            BATTERY_LENGTH,
+                            BATTERY_HEIGHT
                         ]);
                     }
                 }
@@ -401,7 +411,6 @@ module assembly(
                     include_switch_cavity = true,
                     z_bleed = e
                 );
-
                 render() _speaker_cavities();
             }
         }
