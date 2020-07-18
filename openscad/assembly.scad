@@ -31,7 +31,7 @@ module assembly(
 
     keys_count = 13,
     starting_natural_key_index = 3,
-    key_travel = 2,
+    key_travel = 4,
 
     show_enclosure_bottom = true,
     show_battery = true,
