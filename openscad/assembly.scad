@@ -520,6 +520,7 @@ module assembly(
 
         /* translate([-20, -20, -20]) cube([35, 300, 100]); // switch */
         /* translate([speaker_x, speaker_y, -e]) cylinder(d = SPEAKER_DIAMETER + 8, h = 40); */
+        /* translate([-e, -10, -e]) cube([enclosure_width / 2, enclosure_length + 20, enclosure_height + 20]); // cross section */
     }
 }
 
