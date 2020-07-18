@@ -107,7 +107,9 @@ module assembly(
         + bottom_component_clearance;
     switch_exposure_height = switch_z - SWITCH_BASE_HEIGHT;
 
-    battery_x = enclosure_width - BATTERY_WIDTH - enclosure_wall - tolerance;
+    battery_x = enclosure_width
+        - (BATTERY_WIDTH + BATTERY_SNAP_WIDTH)
+        - enclosure_wall - tolerance;
     battery_y = enclosure_wall + tolerance;
 
     echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
@@ -216,12 +218,11 @@ module assembly(
 
             module _battery_container(
                 length = BATTERY_LENGTH * .5,
-                snap_tolerance = 0, // TODO
                 wall = enclosure_inner_wall,
                 ramp = 5
             ) {
                 translate([
-                    battery_x - snap_tolerance - wall - ramp,
+                    battery_x - wall - ramp,
                     battery_y + (BATTERY_LENGTH - length) / 2,
                     enclosure_wall
                 ]) {
@@ -469,7 +470,9 @@ module assembly(
         );
 
         translate([battery_x, battery_y, enclosure_wall + e]) {
-            battery();
+            cube([BATTERY_SNAP_WIDTH, BATTERY_LENGTH, BATTERY_HEIGHT]);
+
+            translate([BATTERY_SNAP_WIDTH - e, 0, 0]) battery();
         }
     }
 
