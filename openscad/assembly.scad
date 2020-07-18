@@ -184,139 +184,204 @@ module assembly(
             );
         }
 
-        module _switch_container(endstop_width = enclosure_inner_wall * 3) {
-            // Walls
-            translate([
-                switch_x - SWITCH_ORIGIN.x - enclosure_inner_wall,
-                switch_y - SWITCH_ORIGIN.y - enclosure_inner_wall,
-                switch_exposure_height - e
-            ]) {
-                cube([
-                    SWITCH_BASE_WIDTH + enclosure_inner_wall * 2,
-                    SWITCH_BASE_LENGTH + enclosure_inner_wall * 2,
-                    SWITCH_BASE_HEIGHT + e
-                ]);
-            }
-
-            // Endstop
-            translate([
-                switch_x
-                    + (SWITCH_BASE_WIDTH - endstop_width) / 2,
-                switch_y - enclosure_inner_wall,
-                switch_exposure_height + SWITCH_BASE_HEIGHT - e
-            ]) {
-                cube([
-                    endstop_width,
-                    SWITCH_BASE_LENGTH + enclosure_inner_wall * 2,
-                    enclosure_inner_wall + e
-                ]);
-            }
-        }
-
-        module _battery_container(
-            length = BATTERY_LENGTH * .5,
-            snap_tolerance = 0, // TODO
-            wall = enclosure_inner_wall,
-            ramp = 5
-        ) {
-            translate([
-                battery_x - snap_tolerance - wall - ramp,
-                battery_y + (BATTERY_LENGTH - length) / 2,
-                enclosure_wall
-            ]) {
-                flat_top_rectangular_pyramid(
-                    top_width = wall,
-                    top_length = length,
-                    bottom_width = wall + ramp,
-                    bottom_length = length,
-                    height = BATTERY_HEIGHT * .67,
-                    top_weight_x = 1
-                );
-            }
-        }
-
-        module _speaker_container(
-            wall = enclosure_inner_wall,
-            gap_width = 10,
-            gap_count = 3,
-            $fn = HIDEF_ROUNDING,
-            e = 0.3
-        ) {
-            translate([speaker_x, speaker_y, enclosure_wall - e]) {
-                difference() {
-                    cylinder(
-                        d = SPEAKER_DIAMETER + tolerance * 2 + wall * 2,
-                        h = SPEAKER_RIM_HEIGHT + e
-                    );
-
-                    translate([0, 0, -e]) {
-                        cylinder(
-                            d = SPEAKER_DIAMETER + tolerance * 2,
-                            h = SPEAKER_RIM_HEIGHT + e * 3
-                        );
-                    }
-
-                    for (i = [0 : gap_count - 1]) {
-                        rotate([0, 0, i * (360 / gap_count)]) {
-                            translate([gap_width / -2, 0, 0]) {
-                                cube([
-                                    gap_width,
-                                    SPEAKER_DIAMETER / 2 + wall + e,
-                                    SPEAKER_RIM_HEIGHT + e * 3
-                                ]);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        module _speaker_cavities(
-            diameter = 2,
-            gutter = 2,
-            engraving_depth = 1
-        ) {
-            plot = diameter + gutter;
-            row_count = round((SPEAKER_DIAMETER / 2) / plot);
-
-            translate([speaker_x, speaker_y, 0]) {
-                difference() {
-                    translate([0, 0, -e]) {
-                        cylinder(
-                            d = SPEAKER_DIAMETER + enclosure_inner_wall * 2,
-                            h = engraving_depth + e,
-                            $fn = HIDEF_ROUNDING
-                        );
-                    }
-
-                    translate([0, 0, e * -2]) {
-                        cylinder(
-                            d = SPEAKER_DIAMETER,
-                            h = engraving_depth + e * 3,
-                            $fn = HIDEF_ROUNDING
-                        );
-                    }
-                }
-
-                for (row_i = [0 : row_count - 1]) {
-                    row_diameter = plot * 2 * row_i;
-                    col_count = max(round(row_diameter * PI / plot), 1);
-
-                    for (col_i = [0: col_count - 1]) {
-                        rotate([0, 0, col_i * (360 / col_count)]) {
-                            translate([0, plot * row_i, -e]) {
-                                cylinder(
-                                    d = diameter,
-                                    h = enclosure_wall + e * 2
-                                );
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
         module _bottom() {
+            module _switch_container(endstop_width = enclosure_inner_wall * 3) {
+                // Walls
+                translate([
+                    switch_x - SWITCH_ORIGIN.x - enclosure_inner_wall,
+                    switch_y - SWITCH_ORIGIN.y - enclosure_inner_wall,
+                    switch_exposure_height - e
+                ]) {
+                    cube([
+                        SWITCH_BASE_WIDTH + enclosure_inner_wall * 2,
+                        SWITCH_BASE_LENGTH + enclosure_inner_wall * 2,
+                        SWITCH_BASE_HEIGHT + e
+                    ]);
+                }
+
+                // Endstop
+                translate([
+                    switch_x
+                        + (SWITCH_BASE_WIDTH - endstop_width) / 2,
+                    switch_y - enclosure_inner_wall,
+                    switch_exposure_height + SWITCH_BASE_HEIGHT - e
+                ]) {
+                    cube([
+                        endstop_width,
+                        SWITCH_BASE_LENGTH + enclosure_inner_wall * 2,
+                        enclosure_inner_wall + e
+                    ]);
+                }
+            }
+
+            module _battery_container(
+                length = BATTERY_LENGTH * .5,
+                snap_tolerance = 0, // TODO
+                wall = enclosure_inner_wall,
+                ramp = 5
+            ) {
+                translate([
+                    battery_x - snap_tolerance - wall - ramp,
+                    battery_y + (BATTERY_LENGTH - length) / 2,
+                    enclosure_wall
+                ]) {
+                    flat_top_rectangular_pyramid(
+                        top_width = wall,
+                        top_length = length,
+                        bottom_width = wall + ramp,
+                        bottom_length = length,
+                        height = BATTERY_HEIGHT * .67,
+                        top_weight_x = 1
+                    );
+                }
+            }
+
+            module _speaker_container(
+                wall = enclosure_inner_wall,
+                gap_width = 10,
+                gap_count = 3,
+                $fn = HIDEF_ROUNDING,
+                e = 0.3
+            ) {
+                translate([speaker_x, speaker_y, enclosure_wall - e]) {
+                    difference() {
+                        cylinder(
+                            d = SPEAKER_DIAMETER + tolerance * 2 + wall * 2,
+                            h = SPEAKER_RIM_HEIGHT + e
+                        );
+
+                        translate([0, 0, -e]) {
+                            cylinder(
+                                d = SPEAKER_DIAMETER + tolerance * 2,
+                                h = SPEAKER_RIM_HEIGHT + e * 3
+                            );
+                        }
+
+                        for (i = [0 : gap_count - 1]) {
+                            rotate([0, 0, i * (360 / gap_count)]) {
+                                translate([gap_width / -2, 0, 0]) {
+                                    cube([
+                                        gap_width,
+                                        SPEAKER_DIAMETER / 2 + wall + e,
+                                        SPEAKER_RIM_HEIGHT + e * 3
+                                    ]);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            module _speaker_cavities(
+                diameter = 2,
+                gutter = 2,
+                engraving_depth = 1
+            ) {
+                plot = diameter + gutter;
+                row_count = round((SPEAKER_DIAMETER / 2) / plot);
+
+                translate([speaker_x, speaker_y, 0]) {
+                    difference() {
+                        translate([0, 0, -e]) {
+                            cylinder(
+                                d = SPEAKER_DIAMETER + enclosure_inner_wall * 2,
+                                h = engraving_depth + e,
+                                $fn = HIDEF_ROUNDING
+                            );
+                        }
+
+                        translate([0, 0, e * -2]) {
+                            cylinder(
+                                d = SPEAKER_DIAMETER,
+                                h = engraving_depth + e * 3,
+                                $fn = HIDEF_ROUNDING
+                            );
+                        }
+                    }
+
+                    for (row_i = [0 : row_count - 1]) {
+                        row_diameter = plot * 2 * row_i;
+                        col_count = max(round(row_diameter * PI / plot), 1);
+
+                        for (col_i = [0: col_count - 1]) {
+                            rotate([0, 0, col_i * (360 / col_count)]) {
+                                translate([0, plot * row_i, -e]) {
+                                    cylinder(
+                                        d = diameter,
+                                        h = enclosure_wall + e * 2
+                                    );
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            module _switch_exposure(
+                xy_bleed = 0,
+                include_switch_cavity = true,
+                z_bleed = 0
+            ) {
+                width_extension = switch_exposure_height / 2;
+                length_extension = switch_exposure_height / 2;
+
+                translate([
+                    switch_x - SWITCH_ORIGIN.x - width_extension - xy_bleed,
+                    switch_y - SWITCH_ORIGIN.y - length_extension - xy_bleed,
+                    -z_bleed
+                ]) {
+                    flat_top_rectangular_pyramid(
+                        top_width = SWITCH_BASE_WIDTH + xy_bleed * 2,
+                        top_length = SWITCH_BASE_LENGTH + xy_bleed * 2,
+
+                        bottom_width = SWITCH_BASE_WIDTH + xy_bleed * 2
+                            + width_extension * 2,
+                        bottom_length = SWITCH_BASE_LENGTH + xy_bleed * 2
+                            + length_extension * 2,
+
+                        height = switch_exposure_height + z_bleed * 2
+                    );
+                }
+
+                if (include_switch_cavity) {
+                    translate([
+                        switch_x - SWITCH_ORIGIN.x - xy_bleed,
+                        switch_y - SWITCH_ORIGIN.y - xy_bleed,
+                        switch_exposure_height - z_bleed
+                    ]) {
+                        cube([
+                            SWITCH_BASE_WIDTH + xy_bleed * 2,
+                            SWITCH_BASE_LENGTH + xy_bleed * 2,
+                            SWITCH_BASE_HEIGHT + z_bleed * 2
+                        ]);
+                    }
+                }
+            }
+
+            module _mount_stilts() {
+                intersection() {
+                    translate([pcb_x, pcb_y, pcb_z - e]) {
+                        mount_stilts(
+                            positions = PCB_HOLES,
+                            height = pcb_stilt_height,
+                            z = -pcb_stilt_height
+                        );
+                    }
+
+                    translate([
+                        enclosure_wall - e,
+                        enclosure_wall - e,
+                        enclosure_wall - e
+                    ]) {
+                        cube([
+                            enclosure_width - enclosure_wall * 2 + e * 2,
+                            enclosure_length - enclosure_wall * 2 + e * 2,
+                            enclosure_height
+                        ]);
+                    }
+                }
+            }
+
             difference() {
                 union() {
                     _enclosure_half(false);
@@ -328,28 +393,7 @@ module assembly(
                     );
                     _battery_container();
                     _speaker_container();
-
-                    intersection() {
-                        translate([pcb_x, pcb_y, pcb_z - e]) {
-                            mount_stilts(
-                                positions = PCB_HOLES,
-                                height = pcb_stilt_height,
-                                z = -pcb_stilt_height
-                            );
-                        }
-
-                        translate([
-                            enclosure_wall - e,
-                            enclosure_wall - e,
-                            enclosure_wall - e
-                        ]) {
-                            cube([
-                                enclosure_width - enclosure_wall * 2 + e * 2,
-                                enclosure_length - enclosure_wall * 2 + e * 2,
-                                enclosure_height
-                            ]);
-                        }
-                    }
+                    _mount_stilts();
                 }
 
                 _switch_exposure(
@@ -432,47 +476,6 @@ module assembly(
         translate([switch_x, switch_y, switch_z]) {
             mirror([0, 0, 1]) {
                 switch();
-            }
-        }
-    }
-
-    module _switch_exposure(
-        xy_bleed = 0,
-        include_switch_cavity = true,
-        z_bleed = 0
-    ) {
-        width_extension = switch_exposure_height / 2;
-        length_extension = switch_exposure_height / 2;
-
-        translate([
-            switch_x - SWITCH_ORIGIN.x - width_extension - xy_bleed,
-            switch_y - SWITCH_ORIGIN.y - length_extension - xy_bleed,
-            -z_bleed
-        ]) {
-            flat_top_rectangular_pyramid(
-                top_width = SWITCH_BASE_WIDTH + xy_bleed * 2,
-                top_length = SWITCH_BASE_LENGTH + xy_bleed * 2,
-
-                bottom_width = SWITCH_BASE_WIDTH + xy_bleed * 2
-                    + width_extension * 2,
-                bottom_length = SWITCH_BASE_LENGTH + xy_bleed * 2
-                    + length_extension * 2,
-
-                height = switch_exposure_height + z_bleed * 2
-            );
-        }
-
-        if (include_switch_cavity) {
-            translate([
-                switch_x - SWITCH_ORIGIN.x - xy_bleed,
-                switch_y - SWITCH_ORIGIN.y - xy_bleed,
-                switch_exposure_height - z_bleed
-            ]) {
-                cube([
-                    SWITCH_BASE_WIDTH + xy_bleed * 2,
-                    SWITCH_BASE_LENGTH + xy_bleed * 2,
-                    SWITCH_BASE_HEIGHT + z_bleed * 2
-                ]);
             }
         }
     }
