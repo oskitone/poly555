@@ -43,6 +43,7 @@ module assembly(
     show_keys = true,
     show_enclosure_top = true,
     show_hinge_parts = true,
+    show_just_hinge_parts = false,
 
     enclosure_color = undef,
     enclosure_opacity = .75,
@@ -180,7 +181,7 @@ module assembly(
 
                 hinge_count = 2,
                 include_clasp = true,
-                just_hinge_parts = false,
+                just_hinge_parts = show_just_hinge_parts,
                 radius = enclosure_chamfer,
                 tolerance = tolerance,
 
@@ -508,6 +509,13 @@ module assembly(
 
         if (show_enclosure_top) { _top(); }
         if (show_enclosure_bottom) { _bottom(); }
+        if (show_just_hinge_parts) {
+            assert(
+                !show_enclosure_top && !show_enclosure_bottom,
+                "Don't show_enclosure_top or show_enclosure_bottom when using show_just_hinge_parts"
+            );
+            _enclosure_half();
+        }
     }
 
     module _battery() {
@@ -598,5 +606,6 @@ assembly(
     show_mounting_rails = true,
     show_keys = true,
     show_enclosure_top = true,
-    show_hinge_parts = true
+    show_hinge_parts = true,
+    show_just_hinge_parts = false
 );
