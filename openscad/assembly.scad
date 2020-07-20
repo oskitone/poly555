@@ -478,7 +478,7 @@ module assembly(
             _screw_head_cavity_bridges();
         }
 
-        module _top(window_cavity_gutter = 2) {
+        module _top() {
             module _keys_cavity(gutter = key_gutter) {
                 translate([
                     enclosure_wall + enclosure_to_component_gutter - gutter,
@@ -494,16 +494,19 @@ module assembly(
             }
 
             module _pcb_window_cavity(
-                width = PCB_WIDTH - window_cavity_gutter * 2,
-                length = PCB_LENGTH - mount_end_on_pcb -
-                    window_cavity_gutter * 2
+                x_exposure = 6,
+                y_exposure = 3
             ) {
                 translate([
-                    pcb_x + window_cavity_gutter,
-                    pcb_y + mount_end_on_pcb + window_cavity_gutter,
+                    pcb_x + PCB_COMPONENTS_X - x_exposure,
+                    pcb_y + PCB_COMPONENTS_Y - y_exposure,
                     enclosure_height - enclosure_wall - e
                 ]) {
-                    cube([width, length, enclosure_wall + e * 2]);
+                    cube([
+                        PCB_COMPONENTS_WIDTH + x_exposure * 2,
+                        PCB_COMPONENTS_LENGTH + y_exposure * 2,
+                        enclosure_wall + e * 2
+                    ]);
                 }
             }
 
