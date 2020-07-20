@@ -68,6 +68,19 @@ module hinge_clasp(
         knob_width = width - depth * 2;
         knob_length = front_anchor_length - radius - depth * 1.5;
 
+        module _breakaway_support(x = 0) {
+            translate([x, -height + e, 0]) {
+                flat_top_rectangular_pyramid(
+                    top_width = BREAKAWAY_SUPPORT_DEPTH,
+                    top_length = 0,
+                    bottom_width = BREAKAWAY_SUPPORT_DEPTH,
+                    bottom_length = height,
+                    height = height,
+                    top_weight_y = 1
+                );
+            }
+        }
+
         translate([
             (width - knob_width) / 2,
             (front_anchor_length - radius - knob_length) / 2,
@@ -84,6 +97,8 @@ module hinge_clasp(
                 );
             } else {
                 cube([knob_width, knob_length, height]);
+                _breakaway_support();
+                _breakaway_support(knob_width - BREAKAWAY_SUPPORT_DEPTH);
             }
         }
     }
@@ -294,6 +309,33 @@ hinge_clasp(
     clasp = false,
     include_clasp_knob = true,
     clasp_latch_rotation = 0,
+    fixed_front = false,
+
+    pin_diameter = HINGE_CLASP_DEFAULT_PIN_DIAMETER,
+
+    minimal_support = HINGE_CLASP_DEFAULT_MINIMAL_SUPPORT,
+
+    flipped = false,
+
+    tolerance = .25
+);
+
+translate([0, 50, 0])
+hinge_clasp(
+    width = 20, length = 20,
+
+    include_pins = false,
+    include_links = true,
+    include_front_anchor = true,
+    include_back_anchor = true,
+
+    front_back_ratio = .5,
+
+    tooth_count = undef,
+
+    clasp = true,
+    include_clasp_knob = true,
+    clasp_latch_rotation = 90,
     fixed_front = false,
 
     pin_diameter = HINGE_CLASP_DEFAULT_PIN_DIAMETER,
