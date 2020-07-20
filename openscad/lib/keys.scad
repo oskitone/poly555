@@ -20,12 +20,20 @@ module keys(
     undercarriage_height = 0,
     undercarriage_length = 0,
 
+    cantilever_length = 0,
+    cantilever_height = 0,
+
     include_natural = true,
-    include_accidental = true
+    include_accidental = true,
+    include_cantilevers = true
 ) {
     e = 0.04567;
 
     index_offset = [0,2,4,5,7,9,11][starting_natural_key_index];
+    cantilver_width = min(
+        accidental_width,
+        natural_width - ((accidental_width - gutter) / 2) * 2 - gutter * 2
+    );
 
     module _key_block(dimensions) {
         difference() {
@@ -41,6 +49,22 @@ module keys(
                     ]);
                 }
             }
+        }
+
+        if (include_cantilevers) {
+             translate([
+                 (dimensions[0] - cantilver_width) / 2,
+                 dimensions[1] - e,
+                 0
+             ]) {
+                 /* TODO: this is okay but could be more stable by widening
+                 where it joins mounting rail */
+                 cube([
+                     cantilver_width,
+                     cantilever_length + e * 2,
+                     cantilever_height
+                 ]);
+             }
         }
     }
 
@@ -152,6 +176,7 @@ module mounted_keys(
 
     include_natural = true,
     include_accidental = true,
+    include_cantilevers = true,
 
     mount_length = 0,
     mount_height = 1,
@@ -159,8 +184,8 @@ module mounted_keys(
     mount_hole_diameter = PCB_MOUNT_HOLE_DIAMETER,
     mount_screw_head_diameter = SCREW_HEAD_DIAMETER,
 
-    cantilever_length = 2,
-    cantilever_height = 1
+    cantilever_length = 0,
+    cantilever_height = 0
 ) {
     $fn = 24;
     e = 0.0678;
@@ -172,50 +197,30 @@ module mounted_keys(
         gutter = gutter
     );
 
-    module _cantilever_cutout(height) {
-        translate([-e, natural_length - mount_length - cantilever_length, -e]) {
-            cube([
-                mount_width + e * 2,
-                cantilever_length,
-                height - cantilever_height
-            ]);
-        }
-    }
-
     module _keys(naturals = true) {
-        difference() {
-            keys(
-                count = count,
-                starting_natural_key_index = starting_natural_key_index,
+        keys(
+            count = count,
+            starting_natural_key_index = starting_natural_key_index,
 
-                natural_width = natural_width,
-                natural_length = natural_length,
-                natural_height = natural_height,
+            natural_width = natural_width,
+            natural_length = natural_length,
+            natural_height = natural_height,
 
-                accidental_width = accidental_width,
-                accidental_length = accidental_length,
-                accidental_height = accidental_height,
+            accidental_width = accidental_width,
+            accidental_length = accidental_length,
+            accidental_height = accidental_height,
 
-                gutter = gutter,
+            gutter = gutter,
 
-                undercarriage_height = undercarriage_height,
-                undercarriage_length = undercarriage_length,
+            undercarriage_height = undercarriage_height,
+            undercarriage_length = undercarriage_length,
 
-                include_natural = naturals,
-                include_accidental = !naturals
-            );
+            include_natural = naturals,
+            include_accidental = !naturals,
+            include_cantilevers = include_cantilevers,
 
-            _cantilever_cutout(naturals ? natural_height : accidental_height);
-        }
-    }
-
-    module _mount_holes(diameter, height, z) {
-        hole_array(
-            mount_hole_xs,
-            diameter,
-            height,
-            natural_length - mount_length / 2,
-            z
+            cantilever_length = cantilever_length,
+            cantilever_height = cantilever_height
         );
     }
 
@@ -224,21 +229,17 @@ module mounted_keys(
             if (include_natural) { _keys(true); }
             if (include_accidental) { _keys(false); }
 
-            translate([0, natural_length - mount_length, 0]) {
+            translate([0, natural_length + cantilever_length, 0]) {
                 cube([mount_width, mount_length, mount_height]);
             }
         }
 
-        _mount_holes(
+        hole_array(
+            mount_hole_xs,
             mount_hole_diameter,
             accidental_height + e * 2,
+            natural_length + cantilever_length + mount_length / 2,
             -e
-        );
-
-        _mount_holes(
-            mount_screw_head_diameter,
-            accidental_height - mount_height + e,
-            mount_height
         );
     }
 }
@@ -261,10 +262,11 @@ mounted_keys(
     undercarriage_length = 15,
 
     mount_length = 5,
+    mount_height = 2,
     mount_hole_diameter = 2,
     mount_screw_head_diameter = 4,
     mount_hole_xs = [5, 30, 40, 65, 82],
 
     cantilever_length = 2,
-    cantilever_height = 1
+    cantilever_height = 2
 );
