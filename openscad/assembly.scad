@@ -27,6 +27,8 @@ module assembly(
     bottom_component_clearance = 1,
 
     mount_length = 6,
+    cantilever_length = 2,
+    cantilever_height = 2,
 
     tolerance = .1,
 
@@ -56,7 +58,8 @@ module assembly(
     plot = PCB_BUTTONS[1][0] - PCB_BUTTONS[0][0];
 
     natural_key_width = plot * 2 - key_gutter;
-    natural_key_length = natural_key_width * 4;
+    natural_key_length = natural_key_width * 4
+        - cantilever_length - mount_length;
 
     mount_width= get_keys_total_width(
         count = keys_count,
@@ -67,7 +70,7 @@ module assembly(
     );
     mount_height = BUTTON_HEIGHT;
 
-    key_mount_end_on_pcb = PCB_HOLES[2][1] + mount_length / 2;
+    mount_end_on_pcb = PCB_HOLES[2][1] +  mount_length / 2;
 
     mount_hole_x_offset = (PCB_WIDTH / 15) - PCB_HOLES[2][0] - key_gutter / 2;
     mount_hole_xs = [
@@ -76,13 +79,15 @@ module assembly(
         PCB_HOLES[4][0] + mount_hole_x_offset,
     ];
 
-    keys_y_over_pcb = natural_key_length - key_mount_end_on_pcb;
+    keys_y_over_pcb = natural_key_length + cantilever_length + mount_length
+        - mount_end_on_pcb;
 
     keys_from_pcb_x_offset = PCB_BUTTONS[0][0] - plot + key_gutter / 2;
 
     pcb_x = enclosure_wall + enclosure_to_component_gutter -
         keys_from_pcb_x_offset;
-    pcb_y = enclosure_wall + enclosure_to_component_gutter + keys_y_over_pcb;
+    pcb_y = enclosure_wall + enclosure_to_component_gutter - mount_end_on_pcb
+        + natural_key_length + cantilever_length + mount_length;
     pcb_z = enclosure_wall + max(
         MOUNT_STILT_MINIMUM_HEIGHT,
         SPEAKER_HEIGHT + SPEAKER_CLEARANCE
@@ -139,10 +144,15 @@ module assembly(
                 undercarriage_height = BATTERY_HEIGHT
                     - (pcb_stilt_height + PCB_HEIGHT + mount_height)
                     + key_travel,
-                undercarriage_length = key_mount_end_on_pcb,
+                undercarriage_length = mount_end_on_pcb - cantilever_length
+                    - mount_length,
 
                 mount_length = mount_length,
+                mount_height = cantilever_height,
                 mount_hole_xs = mount_hole_xs,
+
+                cantilever_length = cantilever_length,
+                cantilever_height = cantilever_height,
 
                 include_natural = include_natural,
                 include_accidental = include_accidental
@@ -151,7 +161,8 @@ module assembly(
 
         translate([
             pcb_x + keys_from_pcb_x_offset,
-            pcb_y + key_mount_end_on_pcb - natural_key_length,
+            pcb_y - natural_key_length - cantilever_length + mount_end_on_pcb
+                - mount_length,
             pcb_z + PCB_HEIGHT + BUTTON_HEIGHT
         ]) {
             color(natural_key_color, key_opacity) {
@@ -484,12 +495,12 @@ module assembly(
 
             module _pcb_window_cavity(
                 width = PCB_WIDTH - window_cavity_gutter * 2,
-                length = PCB_LENGTH - key_mount_end_on_pcb -
+                length = PCB_LENGTH - mount_end_on_pcb -
                     window_cavity_gutter * 2
             ) {
                 translate([
                     pcb_x + window_cavity_gutter,
-                    pcb_y + key_mount_end_on_pcb + window_cavity_gutter,
+                    pcb_y + mount_end_on_pcb + window_cavity_gutter,
                     enclosure_height - enclosure_wall - e
                 ]) {
                     cube([width, length, enclosure_wall + e * 2]);
@@ -576,7 +587,7 @@ module assembly(
             }
         }
 
-        _mounting_rail(key_mount_end_on_pcb - mount_length);
+        _mounting_rail(mount_end_on_pcb - mount_length);
         _mounting_rail(PCB_HOLES[5][1] - mount_length / 2, 1);
     }
 
