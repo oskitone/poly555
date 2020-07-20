@@ -50,9 +50,10 @@ module assembly(
     enclosure_color = undef,
     enclosure_opacity = .75,
     pcb_color = "purple",
+    pcb_opacity = .75,
     natural_key_color = "white",
     accidental_key_color = "black",
-    key_opacity = 0.75
+    key_opacity = .75,
 ) {
     e = 0.0145;
     plot = PCB_BUTTONS[1][0] - PCB_BUTTONS[0][0];
@@ -569,7 +570,7 @@ module assembly(
             pcb(
                 visualize_non_button_components = true,
                 pcb_color = pcb_color,
-                opacity = .5
+                opacity = pcb_opacity
             );
         }
     }
