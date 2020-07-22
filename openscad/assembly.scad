@@ -46,6 +46,7 @@ module assembly(
     show_keys = true,
     show_enclosure_top = true,
     show_hinge_parts = true,
+    show_window_pane = true,
     show_just_hinge_parts = false,
 
     enclosure_color = undef,
@@ -55,6 +56,8 @@ module assembly(
     natural_key_color = "white",
     accidental_key_color = "black",
     key_opacity = .75,
+    window_pane_color = "blue",
+    window_pane_opacity = .05,
 ) {
     e = 0.0145;
     plot = PCB_BUTTONS[1][0] - PCB_BUTTONS[0][0];
@@ -103,6 +106,7 @@ module assembly(
     enclosure_height = enclosure_wall * 2
         + pcb_stilt_height
         + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
+        + WINDOW_PANE_HEIGHT
         + enclosure_to_component_z_clearance;
 
     key_height = enclosure_height - pcb_stilt_height - enclosure_wall
@@ -123,7 +127,15 @@ module assembly(
         - enclosure_wall - tolerance;
     battery_y = enclosure_wall + tolerance;
 
+    window_pane_x = enclosure_wall + tolerance;
+    window_pane_y = pcb_y + mount_end_on_pcb;
+    window_pane_z = enclosure_height - enclosure_wall - WINDOW_PANE_HEIGHT;
+    window_pane_width = enclosure_width - enclosure_wall * 2 - tolerance * 2;
+    window_pane_length = enclosure_length - window_pane_y - enclosure_wall
+        - tolerance * 2;
+
     echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
+    echo("Window pane dimensions", [enclosure_width, enclosure_length, enclosure_height]);
 
     module _keys() {
         module _mounted_keys(
@@ -496,18 +508,18 @@ module assembly(
                 }
             }
 
-            module _pcb_window_cavity(
-                x_exposure = 6,
-                y_exposure = 3
+            module _pcb_window_pane_cavity(
+                window_pane_x_exposure = 6,
+                window_pane_y_exposure = 3
             ) {
                 translate([
-                    pcb_x + PCB_COMPONENTS_X - x_exposure,
-                    pcb_y + PCB_COMPONENTS_Y - y_exposure,
+                    pcb_x + PCB_COMPONENTS_X - window_pane_x_exposure,
+                    pcb_y + PCB_COMPONENTS_Y - window_pane_y_exposure,
                     enclosure_height - enclosure_wall - e
                 ]) {
                     cube([
-                        PCB_COMPONENTS_WIDTH + x_exposure * 2,
-                        PCB_COMPONENTS_LENGTH + y_exposure * 2,
+                        PCB_COMPONENTS_WIDTH + window_pane_x_exposure * 2,
+                        PCB_COMPONENTS_LENGTH + window_pane_y_exposure * 2,
                         enclosure_wall + e * 2
                     ]);
                 }
@@ -520,7 +532,8 @@ module assembly(
                     }
                 }
                 _keys_cavity();
-                _pcb_window_cavity();
+                _pcb_window_pane_cavity();
+                /* TODO: window pane support */
             }
         }
 
@@ -613,6 +626,14 @@ module assembly(
         );
     }
 
+    module _window_pane() {
+        translate([window_pane_x, window_pane_y, window_pane_z + e]) {
+            color(window_pane_color, window_pane_opacity) {
+                cube([window_pane_width, window_pane_length, WINDOW_PANE_HEIGHT - e * 2]);
+            }
+        }
+    }
+
     intersection() {
         union() {
             _enclosure();
@@ -622,6 +643,7 @@ module assembly(
             if (show_pcb) { % _pcb(); }
             if (show_mounting_rails) { _mounting_rails(); }
             if (show_keys) { _keys(); }
+            if (show_window_pane) { _window_pane(); }
         }
 
         /* translate([-20, -20, -20]) cube([35, 300, 100]); // switch */
@@ -640,5 +662,6 @@ assembly(
     show_keys = true,
     show_enclosure_top = true,
     show_hinge_parts = true,
+    show_window_pane = true,
     show_just_hinge_parts = false
 );
