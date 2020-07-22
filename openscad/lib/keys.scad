@@ -39,32 +39,36 @@ module keys(
 
     module _key_block(dimensions) {
         difference() {
-            width = dimensions[0];
-            length = dimensions[1];
-            height = dimensions[2];
+            if (front_chamfer > 0) {
+                width = dimensions[0];
+                length = dimensions[1];
+                height = dimensions[2];
 
-            hull() {
-                for (position = [
-                    [0, 0, 0],
-                    [width - e, 0, 0],
-                    [width - e, length - e, 0],
-                    [0, length - e, 0],
-                    [width - e, length - e, height - e],
-                    [0, length - e, height - e],
-                ]) {
-                    translate(position) {
-                        cube([e, e, e]);
+                hull() {
+                    for (position = [
+                        [0, 0, 0],
+                        [width - e, 0, 0],
+                        [width - e, length - e, 0],
+                        [0, length - e, 0],
+                        [width - e, length - e, height - e],
+                        [0, length - e, height - e],
+                    ]) {
+                        translate(position) {
+                            cube([e, e, e]);
+                        }
+                    }
+
+                    translate([0, front_chamfer, height - front_chamfer]) {
+                        rotate([0, 90, 0]) {
+                            cylinder(
+                                r = front_chamfer,
+                                h = width
+                            );
+                        }
                     }
                 }
-
-                translate([0, front_chamfer, height - front_chamfer]) {
-                    rotate([0, 90, 0]) {
-                        cylinder(
-                            r = front_chamfer,
-                            h = width
-                        );
-                    }
-                }
+            } else {
+                cube(dimensions);
             }
 
             /* TODO: DFM */
@@ -197,6 +201,8 @@ module mounted_keys(
     accidental_length,
     accidental_height,
 
+    front_chamfer = 2,
+
     gutter = 1,
 
     undercarriage_height = 0,
@@ -237,6 +243,8 @@ module mounted_keys(
             accidental_width = accidental_width,
             accidental_length = accidental_length,
             accidental_height = accidental_height,
+
+            front_chamfer = front_chamfer,
 
             gutter = gutter,
 
@@ -283,6 +291,8 @@ mounted_keys(
     accidental_width = 7.5,
     accidental_length = 10,
     accidental_height = 15,
+
+    front_chamfer = 2,
 
     gutter = 1,
 
