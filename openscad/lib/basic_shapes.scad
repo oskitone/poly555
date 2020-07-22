@@ -80,32 +80,6 @@ module rounded_cube(dimensions, radius, $fn = $fn) {
     }
 }
 
-module rounded_cube_cutout(dimensions, radius, $fn = $fn) {
-    e = 0.05678;
-
-    width = dimensions[0] + e * 2;
-    length = dimensions[1] + e * 2;
-    height = dimensions[2] + e * 2;
-
-    translate([-e, -e, -e]) {
-        difference() {
-            cube([width, length, height]);
-
-            translate([-e, -e, -e]) {
-                rounded_cube(
-                    [
-                        width + e * 2,
-                        length + e * 2,
-                        height + e * 2
-                    ],
-                    radius = radius,
-                    $fn = $fn
-                );
-            }
-        }
-    }
-}
-
 module support_wall(
     dimensions,
     is_back = true,

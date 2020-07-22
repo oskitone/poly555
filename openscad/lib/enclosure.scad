@@ -55,7 +55,20 @@ module enclosure_half(
 
     module _outer_wall() {
         group() {
-            cube([_width, _length, half_height]);
+            difference() {
+                rounded_cube(
+                    [_width, _length, half_height + radius],
+                    radius,
+                    $fn = $fn
+                );
+                translate([-e, -e, half_height]) {
+                    cube([
+                        _width + e * 2,
+                        _length + e * 2,
+                        radius + e
+                    ]);
+                }
+            }
 
             if (add_lip) {
                 translate([
@@ -210,14 +223,6 @@ module enclosure_half(
 
                     if (include_hinge) { _hinge(); }
                     if (include_clasp) { _clasp(add_lip); } // TODO: decouple
-                }
-
-                if (radius > 0) {
-                    rounded_cube_cutout(
-                        [_width, _length, total_height],
-                        radius,
-                        $fn = $fn
-                    );
                 }
             }
         }
