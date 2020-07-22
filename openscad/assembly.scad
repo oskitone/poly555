@@ -25,6 +25,7 @@ module assembly(
     enclosure_rounding = 24,
 
     bottom_component_clearance = 1,
+    speaker_to_pcb_clearance = 4,
 
     mount_length = 6,
     cantilever_length = 2,
@@ -91,7 +92,7 @@ module assembly(
         + natural_key_length + cantilever_length + mount_length;
     pcb_z = enclosure_wall + max(
         MOUNT_STILT_MINIMUM_HEIGHT,
-        SPEAKER_HEIGHT + SPEAKER_CLEARANCE
+        SPEAKER_HEIGHT + speaker_to_pcb_clearance
     );
     pcb_stilt_height = pcb_z - enclosure_wall;
 
