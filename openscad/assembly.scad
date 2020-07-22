@@ -106,6 +106,7 @@ module assembly(
 
     key_height = enclosure_height - pcb_stilt_height - enclosure_wall
         - PCB_HEIGHT - mount_height + natural_key_exposed_height;
+    keys_z = pcb_z + PCB_HEIGHT + BUTTON_HEIGHT;
 
     speaker_x = enclosure_width / 2;
     speaker_y = enclosure_length - SPEAKER_DIAMETER / 2 - 15;
@@ -164,7 +165,7 @@ module assembly(
             pcb_x + keys_from_pcb_x_offset,
             pcb_y - natural_key_length - cantilever_length + mount_end_on_pcb
                 - mount_length,
-            pcb_z + PCB_HEIGHT + BUTTON_HEIGHT
+            keys_z
         ]) {
             color(natural_key_color, key_opacity) {
                 _mounted_keys(include_natural = true);
@@ -576,23 +577,39 @@ module assembly(
     }
 
     module _mounting_rails() {
-        module _mounting_rail(y, height_difference = 0) {
+        module _mounting_rail(y, z, height, include_head_cavity = false) {
             translate([
                 pcb_x + keys_from_pcb_x_offset,
                 pcb_y + y,
-                pcb_z + PCB_HEIGHT
+                pcb_z + PCB_HEIGHT + z
             ]) {
                 mounting_rail(
                     width = mount_width,
                     length = mount_length,
-                    height = mount_height - height_difference,
-                    hole_xs = mount_hole_xs
+                    height = height,
+                    hole_xs = mount_hole_xs,
+                    include_head_cavity = include_head_cavity,
+                    head_hole_diameter = SCREW_HEAD_DIAMETER + tolerance * 2
                 );
             }
         }
 
-        _mounting_rail(mount_end_on_pcb - mount_length);
-        _mounting_rail(PCB_HOLES[5][1] - mount_length / 2, 1);
+        _mounting_rail(
+            mount_end_on_pcb - mount_length,
+            0,
+            mount_height
+        );
+        _mounting_rail(
+            PCB_HOLES[5][1] - mount_length / 2,
+            0,
+            mount_height - 1
+        );
+        _mounting_rail(
+            mount_end_on_pcb - mount_length,
+            mount_height + cantilever_height,
+            enclosure_height - keys_z - cantilever_height - enclosure_wall - 1,
+            true
+        );
     }
 
     intersection() {
