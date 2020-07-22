@@ -69,10 +69,14 @@ module rounded_cube(dimensions, radius, $fn = $fn) {
         [radius, dimensions.y - radius, dimensions.z - radius],
     ];
 
-    hull() {
-        for (position = positions) {
-            translate(position) sphere(r = radius);
+    if (radius > 0) {
+        hull() {
+            for (position = positions) {
+                translate(position) sphere(r = radius);
+            }
         }
+    } else {
+        cube(dimensions);
     }
 }
 
