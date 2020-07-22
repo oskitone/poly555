@@ -15,6 +15,8 @@ module keys(
     accidental_length,
     accidental_height,
 
+    front_chamfer = 2,
+
     gutter = 1,
 
     undercarriage_height = 0,
@@ -37,7 +39,33 @@ module keys(
 
     module _key_block(dimensions) {
         difference() {
-            cube(dimensions);
+            width = dimensions[0];
+            length = dimensions[1];
+            height = dimensions[2];
+
+            hull() {
+                for (position = [
+                    [0, 0, 0],
+                    [width - e, 0, 0],
+                    [width - e, length - e, 0],
+                    [0, length - e, 0],
+                    [width - e, length - e, height - e],
+                    [0, length - e, height - e],
+                ]) {
+                    translate(position) {
+                        cube([e, e, e]);
+                    }
+                }
+
+                translate([0, front_chamfer, height - front_chamfer]) {
+                    rotate([0, 90, 0]) {
+                        cylinder(
+                            r = front_chamfer,
+                            h = width
+                        );
+                    }
+                }
+            }
 
             /* TODO: DFM */
             if (undercarriage_height > 0 && undercarriage_length > 0) {
