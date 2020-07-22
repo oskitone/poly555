@@ -46,7 +46,7 @@ module assembly(
     show_keys = true,
     show_enclosure_top = true,
     show_hinge_parts = true,
-    show_window_pane = true,
+    show_window_pane = false,
     show_just_hinge_parts = false,
 
     enclosure_color = undef,
@@ -58,6 +58,8 @@ module assembly(
     key_opacity = .75,
     window_pane_color = "blue",
     window_pane_opacity = .05,
+
+    quick_preview = false
 ) {
     e = 0.0145;
     plot = PCB_BUTTONS[1][0] - PCB_BUTTONS[0][0];
@@ -154,6 +156,8 @@ module assembly(
                 accidental_length = natural_key_length / 2,
                 accidental_height = key_height + accidental_key_extra_height,
 
+                front_chamfer = quick_preview ? 0 : 2,
+
                 gutter = key_gutter,
 
                 undercarriage_height = BATTERY_HEIGHT
@@ -208,7 +212,7 @@ module assembly(
                 hinge_count = 2,
                 include_clasp = true,
                 just_hinge_parts = show_just_hinge_parts,
-                radius = enclosure_chamfer,
+                radius = quick_preview ? 0 : enclosure_chamfer,
                 tolerance = tolerance,
 
                 $fn = enclosure_rounding
@@ -583,7 +587,8 @@ module assembly(
     module _pcb() {
         translate([pcb_x, pcb_y, pcb_z]) {
             pcb(
-                visualize_non_button_components = true,
+                visualize_non_button_components = quick_preview,
+                visualize_silkscreen = !quick_preview,
                 pcb_color = pcb_color,
                 opacity = pcb_opacity
             );
@@ -652,6 +657,8 @@ module assembly(
     }
 }
 
+DEV_MODE = true;
+
 assembly(
     show_enclosure_bottom = true,
     show_battery = true,
@@ -662,6 +669,7 @@ assembly(
     show_keys = true,
     show_enclosure_top = true,
     show_hinge_parts = true,
-    show_window_pane = true,
-    show_just_hinge_parts = false
+    show_window_pane = false,
+    show_just_hinge_parts = false,
+    quick_preview = DEV_MODE
 );
