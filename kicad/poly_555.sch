@@ -46,10 +46,10 @@ Wire Wire Line
 Wire Wire Line
 	3950 1050 4000 1050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S1
+L dk_Tactile-Switches:FSM4JSMATR S2
 U 1 1 60FBC6A1
 P 3750 1150
-AR Path="/60FBC6A1" Ref="S1"  Part="1" 
+AR Path="/60FBC6A1" Ref="S2"  Part="1" 
 AR Path="/60F4E92A/60FBC6A1" Ref="S?"  Part="1" 
 AR Path="/60F9596F/60FBC6A1" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/60FBC6A1" Ref="S?"  Part="1" 
@@ -59,7 +59,7 @@ AR Path="/60F96187/60FBC6A1" Ref="S?"  Part="1"
 AR Path="/60F9685F/60FBC6A1" Ref="S?"  Part="1" 
 AR Path="/60F96864/60FBC6A1" Ref="S?"  Part="1" 
 AR Path="/60F96869/60FBC6A1" Ref="S?"  Part="1" 
-F 0 "S1" V 3750 1300 60  0000 L CNN
+F 0 "S2" V 3750 1300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 3750 1350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 1350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 1450 60  0001 L CNN
@@ -103,10 +103,10 @@ Wire Wire Line
 Wire Wire Line
 	3950 2050 4000 2050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S2
+L dk_Tactile-Switches:FSM4JSMATR S3
 U 1 1 5EF1782E
 P 3750 2150
-AR Path="/5EF1782E" Ref="S2"  Part="1" 
+AR Path="/5EF1782E" Ref="S3"  Part="1" 
 AR Path="/60F4E92A/5EF1782E" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF1782E" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF1782E" Ref="S?"  Part="1" 
@@ -116,7 +116,7 @@ AR Path="/60F96187/5EF1782E" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF1782E" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF1782E" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF1782E" Ref="S?"  Part="1" 
-F 0 "S2" V 3750 2300 60  0000 L CNN
+F 0 "S3" V 3750 2300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 3750 2350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 2350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 2450 60  0001 L CNN
@@ -157,10 +157,10 @@ Wire Wire Line
 Wire Wire Line
 	3950 3050 4000 3050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S3
+L dk_Tactile-Switches:FSM4JSMATR S4
 U 1 1 5EF23045
 P 3750 3150
-AR Path="/5EF23045" Ref="S3"  Part="1" 
+AR Path="/5EF23045" Ref="S4"  Part="1" 
 AR Path="/60F4E92A/5EF23045" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF23045" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF23045" Ref="S?"  Part="1" 
@@ -170,7 +170,7 @@ AR Path="/60F96187/5EF23045" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF23045" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF23045" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF23045" Ref="S?"  Part="1" 
-F 0 "S3" V 3750 3300 60  0000 L CNN
+F 0 "S4" V 3750 3300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 3750 3350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 3350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 3450 60  0001 L CNN
@@ -211,10 +211,10 @@ Wire Wire Line
 Wire Wire Line
 	3950 4050 4000 4050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S4
+L dk_Tactile-Switches:FSM4JSMATR S5
 U 1 1 5EF259F6
 P 3750 4150
-AR Path="/5EF259F6" Ref="S4"  Part="1" 
+AR Path="/5EF259F6" Ref="S5"  Part="1" 
 AR Path="/60F4E92A/5EF259F6" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF259F6" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF259F6" Ref="S?"  Part="1" 
@@ -224,7 +224,7 @@ AR Path="/60F96187/5EF259F6" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF259F6" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF259F6" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF259F6" Ref="S?"  Part="1" 
-F 0 "S4" V 3750 4300 60  0000 L CNN
+F 0 "S5" V 3750 4300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 3750 4350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 4350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 4450 60  0001 L CNN
@@ -265,10 +265,10 @@ Wire Wire Line
 Wire Wire Line
 	3950 5050 4000 5050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S5
+L dk_Tactile-Switches:FSM4JSMATR S6
 U 1 1 5EF27E61
 P 3750 5150
-AR Path="/5EF27E61" Ref="S5"  Part="1" 
+AR Path="/5EF27E61" Ref="S6"  Part="1" 
 AR Path="/60F4E92A/5EF27E61" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF27E61" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF27E61" Ref="S?"  Part="1" 
@@ -278,7 +278,7 @@ AR Path="/60F96187/5EF27E61" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF27E61" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF27E61" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF27E61" Ref="S?"  Part="1" 
-F 0 "S5" V 3750 5300 60  0000 L CNN
+F 0 "S6" V 3750 5300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 3750 5350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 5350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 5450 60  0001 L CNN
@@ -319,10 +319,10 @@ Wire Wire Line
 Wire Wire Line
 	3950 6050 4000 6050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S6
+L dk_Tactile-Switches:FSM4JSMATR S7
 U 1 1 5EF2B228
 P 3750 6150
-AR Path="/5EF2B228" Ref="S6"  Part="1" 
+AR Path="/5EF2B228" Ref="S7"  Part="1" 
 AR Path="/60F4E92A/5EF2B228" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF2B228" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF2B228" Ref="S?"  Part="1" 
@@ -332,7 +332,7 @@ AR Path="/60F96187/5EF2B228" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF2B228" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF2B228" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF2B228" Ref="S?"  Part="1" 
-F 0 "S6" V 3750 6300 60  0000 L CNN
+F 0 "S7" V 3750 6300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 3750 6350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 6350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 6450 60  0001 L CNN
@@ -429,10 +429,10 @@ Wire Wire Line
 Wire Wire Line
 	6800 1050 6850 1050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S8
+L dk_Tactile-Switches:FSM4JSMATR S12
 U 1 1 5EF6056F
 P 6600 1150
-AR Path="/5EF6056F" Ref="S8"  Part="1" 
+AR Path="/5EF6056F" Ref="S12"  Part="1" 
 AR Path="/60F4E92A/5EF6056F" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF6056F" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF6056F" Ref="S?"  Part="1" 
@@ -442,7 +442,7 @@ AR Path="/60F96187/5EF6056F" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF6056F" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF6056F" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF6056F" Ref="S?"  Part="1" 
-F 0 "S8" V 6600 1300 60  0000 L CNN
+F 0 "S12" V 6600 1300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 6600 1350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6800 1350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6800 1450 60  0001 L CNN
@@ -483,10 +483,10 @@ Wire Wire Line
 Wire Wire Line
 	6800 2050 6850 2050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S9
+L dk_Tactile-Switches:FSM4JSMATR S13
 U 1 1 5EF60594
 P 6600 2150
-AR Path="/5EF60594" Ref="S9"  Part="1" 
+AR Path="/5EF60594" Ref="S13"  Part="1" 
 AR Path="/60F4E92A/5EF60594" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF60594" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF60594" Ref="S?"  Part="1" 
@@ -496,7 +496,7 @@ AR Path="/60F96187/5EF60594" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF60594" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF60594" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF60594" Ref="S?"  Part="1" 
-F 0 "S9" V 6600 2300 60  0000 L CNN
+F 0 "S13" V 6600 2300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 6600 2350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6800 2350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6800 2450 60  0001 L CNN
@@ -537,10 +537,10 @@ Wire Wire Line
 Wire Wire Line
 	6800 3050 6850 3050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S10
+L dk_Tactile-Switches:FSM4JSMATR S14
 U 1 1 5EF605B7
 P 6600 3150
-AR Path="/5EF605B7" Ref="S10"  Part="1" 
+AR Path="/5EF605B7" Ref="S14"  Part="1" 
 AR Path="/60F4E92A/5EF605B7" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF605B7" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF605B7" Ref="S?"  Part="1" 
@@ -550,7 +550,7 @@ AR Path="/60F96187/5EF605B7" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF605B7" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF605B7" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF605B7" Ref="S?"  Part="1" 
-F 0 "S10" V 6600 3300 60  0000 L CNN
+F 0 "S14" V 6600 3300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 6600 3350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6800 3350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6800 3450 60  0001 L CNN
@@ -591,10 +591,10 @@ Wire Wire Line
 Wire Wire Line
 	6800 4050 6850 4050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S11
+L dk_Tactile-Switches:FSM4JSMATR S15
 U 1 1 5EF605DA
 P 6600 4150
-AR Path="/5EF605DA" Ref="S11"  Part="1" 
+AR Path="/5EF605DA" Ref="S15"  Part="1" 
 AR Path="/60F4E92A/5EF605DA" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF605DA" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF605DA" Ref="S?"  Part="1" 
@@ -604,7 +604,7 @@ AR Path="/60F96187/5EF605DA" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF605DA" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF605DA" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF605DA" Ref="S?"  Part="1" 
-F 0 "S11" V 6600 4300 60  0000 L CNN
+F 0 "S15" V 6600 4300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 6600 4350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6800 4350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6800 4450 60  0001 L CNN
@@ -645,10 +645,10 @@ Wire Wire Line
 Wire Wire Line
 	6800 5050 6850 5050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S12
+L dk_Tactile-Switches:FSM4JSMATR S16
 U 1 1 5EF605FD
 P 6600 5150
-AR Path="/5EF605FD" Ref="S12"  Part="1" 
+AR Path="/5EF605FD" Ref="S16"  Part="1" 
 AR Path="/60F4E92A/5EF605FD" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF605FD" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF605FD" Ref="S?"  Part="1" 
@@ -658,7 +658,7 @@ AR Path="/60F96187/5EF605FD" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF605FD" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF605FD" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF605FD" Ref="S?"  Part="1" 
-F 0 "S12" V 6600 5300 60  0000 L CNN
+F 0 "S16" V 6600 5300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 6600 5350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6800 5350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6800 5450 60  0001 L CNN
@@ -699,10 +699,10 @@ Wire Wire Line
 Wire Wire Line
 	6800 6050 6850 6050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S13
+L dk_Tactile-Switches:FSM4JSMATR S17
 U 1 1 5EF60620
 P 6600 6150
-AR Path="/5EF60620" Ref="S13"  Part="1" 
+AR Path="/5EF60620" Ref="S17"  Part="1" 
 AR Path="/60F4E92A/5EF60620" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF60620" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF60620" Ref="S?"  Part="1" 
@@ -712,7 +712,7 @@ AR Path="/60F96187/5EF60620" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF60620" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF60620" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF60620" Ref="S?"  Part="1" 
-F 0 "S13" V 6600 6300 60  0000 L CNN
+F 0 "S17" V 6600 6300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 6600 6350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6800 6350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6800 6450 60  0001 L CNN
@@ -805,10 +805,10 @@ Wire Wire Line
 Wire Wire Line
 	3950 7050 4000 7050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S7
+L dk_Tactile-Switches:FSM4JSMATR S8
 U 1 1 5EF7A094
 P 3750 7150
-AR Path="/5EF7A094" Ref="S7"  Part="1" 
+AR Path="/5EF7A094" Ref="S8"  Part="1" 
 AR Path="/60F4E92A/5EF7A094" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF7A094" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF7A094" Ref="S?"  Part="1" 
@@ -818,7 +818,7 @@ AR Path="/60F96187/5EF7A094" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF7A094" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF7A094" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF7A094" Ref="S?"  Part="1" 
-F 0 "S7" V 3750 7300 60  0000 L CNN
+F 0 "S8" V 3750 7300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 3750 7350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 7350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 7450 60  0001 L CNN
@@ -880,8 +880,6 @@ Wire Wire Line
 	2550 3550 2550 3750
 Wire Wire Line
 	2550 3250 2550 2700
-Wire Wire Line
-	1200 4250 1200 4400
 Wire Wire Line
 	1200 4800 2550 4800
 Wire Wire Line
@@ -945,7 +943,7 @@ AR Path="/60F96864/5F3FF342" Ref="R?"  Part="1"
 AR Path="/60F96869/5F3FF342" Ref="R?"  Part="1" 
 F 0 "R2" H 9600 3900 50  0000 L CNN
 F 1 "100" H 9600 3800 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" V 9780 3850 50  0001 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" V 9780 3850 50  0001 C CNN
 F 3 "~" H 9850 3850 50  0001 C CNN
 	1    9850 3850
 	1    0    0    -1  
@@ -965,24 +963,6 @@ Text Notes 9100 2800 0    50   ~ 0
 TODO: extra resistor here to “fix”\nfrequency shift from vol change?
 Text Notes 9600 4750 0    50   ~ 0
 Optional “fake log” resistor\nhttps://sound-au.com/project01.htm
-$Comp
-L power:GND #PWR?
-U 1 1 5F59FE95
-P 1000 4500
-F 0 "#PWR?" H 1000 4250 50  0001 C CNN
-F 1 "GND" H 1005 4327 50  0000 C CNN
-F 2 "" H 1000 4500 50  0001 C CNN
-F 3 "" H 1000 4500 50  0001 C CNN
-	1    1000 4500
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1200 4400 1000 4400
-Wire Wire Line
-	1000 4400 1000 4500
-Connection ~ 1200 4400
-Wire Wire Line
-	1200 4400 1200 4800
 Wire Wire Line
 	5450 1250 5450 2250
 Wire Wire Line
@@ -1056,24 +1036,6 @@ Connection ~ 5850 700
 Wire Wire Line
 	5850 700  11250 700 
 Connection ~ 5850 1050
-$Comp
-L power:PWR_FLAG #FLG?
-U 1 1 5F58E343
-P 1050 3100
-F 0 "#FLG?" H 1050 3175 50  0001 C CNN
-F 1 "PWR_FLAG" H 1050 3273 50  0000 C CNN
-F 2 "" H 1050 3100 50  0001 C CNN
-F 3 "~" H 1050 3100 50  0001 C CNN
-	1    1050 3100
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1050 3100 1050 3300
-Wire Wire Line
-	1050 3300 1200 3300
-Connection ~ 1200 3300
-Wire Wire Line
-	1200 3300 1200 3850
 $Sheet
 S 4250 8050 900  550 
 U 5F1B4BC2
@@ -1096,10 +1058,10 @@ Wire Wire Line
 Wire Wire Line
 	3950 8050 4000 8050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S?
+L dk_Tactile-Switches:FSM4JSMATR S9
 U 1 1 5F1B4BD7
 P 3750 8150
-AR Path="/5F1B4BD7" Ref="S?"  Part="1" 
+AR Path="/5F1B4BD7" Ref="S9"  Part="1" 
 AR Path="/60F4E92A/5F1B4BD7" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F1B4BD7" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F1B4BD7" Ref="S?"  Part="1" 
@@ -1109,7 +1071,7 @@ AR Path="/60F96187/5F1B4BD7" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F1B4BD7" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F1B4BD7" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F1B4BD7" Ref="S?"  Part="1" 
-F 0 "S?" V 3750 8300 60  0000 L CNN
+F 0 "S9" V 3750 8300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 3750 8350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 8350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 8450 60  0001 L CNN
@@ -1158,10 +1120,10 @@ Wire Wire Line
 Wire Wire Line
 	3950 9050 4000 9050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S?
+L dk_Tactile-Switches:FSM4JSMATR S10
 U 1 1 5F1B4BF9
 P 3750 9150
-AR Path="/5F1B4BF9" Ref="S?"  Part="1" 
+AR Path="/5F1B4BF9" Ref="S10"  Part="1" 
 AR Path="/60F4E92A/5F1B4BF9" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F1B4BF9" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F1B4BF9" Ref="S?"  Part="1" 
@@ -1171,7 +1133,7 @@ AR Path="/60F96187/5F1B4BF9" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F1B4BF9" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F1B4BF9" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F1B4BF9" Ref="S?"  Part="1" 
-F 0 "S?" V 3750 9300 60  0000 L CNN
+F 0 "S10" V 3750 9300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 3750 9350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 9350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 9450 60  0001 L CNN
@@ -1225,10 +1187,10 @@ Wire Wire Line
 Wire Wire Line
 	6800 7050 6850 7050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S?
+L dk_Tactile-Switches:FSM4JSMATR S18
 U 1 1 5F1D8DC6
 P 6600 7150
-AR Path="/5F1D8DC6" Ref="S?"  Part="1" 
+AR Path="/5F1D8DC6" Ref="S18"  Part="1" 
 AR Path="/60F4E92A/5F1D8DC6" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F1D8DC6" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F1D8DC6" Ref="S?"  Part="1" 
@@ -1238,7 +1200,7 @@ AR Path="/60F96187/5F1D8DC6" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F1D8DC6" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F1D8DC6" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F1D8DC6" Ref="S?"  Part="1" 
-F 0 "S?" V 6600 7300 60  0000 L CNN
+F 0 "S18" V 6600 7300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 6600 7350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6800 7350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6800 7450 60  0001 L CNN
@@ -1287,10 +1249,10 @@ Wire Wire Line
 Wire Wire Line
 	6800 8050 6850 8050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S?
+L dk_Tactile-Switches:FSM4JSMATR S19
 U 1 1 5F1D8DE8
 P 6600 8150
-AR Path="/5F1D8DE8" Ref="S?"  Part="1" 
+AR Path="/5F1D8DE8" Ref="S19"  Part="1" 
 AR Path="/60F4E92A/5F1D8DE8" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F1D8DE8" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F1D8DE8" Ref="S?"  Part="1" 
@@ -1300,7 +1262,7 @@ AR Path="/60F96187/5F1D8DE8" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F1D8DE8" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F1D8DE8" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F1D8DE8" Ref="S?"  Part="1" 
-F 0 "S?" V 6600 8300 60  0000 L CNN
+F 0 "S19" V 6600 8300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 6600 8350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6800 8350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6800 8450 60  0001 L CNN
@@ -1351,10 +1313,10 @@ Wire Wire Line
 Wire Wire Line
 	3950 10050 4000 10050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S?
+L dk_Tactile-Switches:FSM4JSMATR S11
 U 1 1 5F1AE59A
 P 3750 10150
-AR Path="/5F1AE59A" Ref="S?"  Part="1" 
+AR Path="/5F1AE59A" Ref="S11"  Part="1" 
 AR Path="/60F4E92A/5F1AE59A" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F1AE59A" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F1AE59A" Ref="S?"  Part="1" 
@@ -1364,7 +1326,7 @@ AR Path="/60F96187/5F1AE59A" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F1AE59A" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F1AE59A" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F1AE59A" Ref="S?"  Part="1" 
-F 0 "S?" V 3750 10300 60  0000 L CNN
+F 0 "S11" V 3750 10300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 3750 10350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 10350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 10450 60  0001 L CNN
@@ -1420,10 +1382,10 @@ Wire Wire Line
 Wire Wire Line
 	6800 9050 6850 9050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S?
+L dk_Tactile-Switches:FSM4JSMATR S20
 U 1 1 5F2156C2
 P 6600 9150
-AR Path="/5F2156C2" Ref="S?"  Part="1" 
+AR Path="/5F2156C2" Ref="S20"  Part="1" 
 AR Path="/60F4E92A/5F2156C2" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F2156C2" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F2156C2" Ref="S?"  Part="1" 
@@ -1433,7 +1395,7 @@ AR Path="/60F96187/5F2156C2" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F2156C2" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F2156C2" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F2156C2" Ref="S?"  Part="1" 
-F 0 "S?" V 6600 9300 60  0000 L CNN
+F 0 "S20" V 6600 9300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 6600 9350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6800 9350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6800 9450 60  0001 L CNN
@@ -1482,10 +1444,10 @@ Wire Wire Line
 Wire Wire Line
 	6800 10050 6850 10050
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S?
+L dk_Tactile-Switches:FSM4JSMATR S21
 U 1 1 5F2156E4
 P 6600 10150
-AR Path="/5F2156E4" Ref="S?"  Part="1" 
+AR Path="/5F2156E4" Ref="S21"  Part="1" 
 AR Path="/60F4E92A/5F2156E4" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F2156E4" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F2156E4" Ref="S?"  Part="1" 
@@ -1495,7 +1457,7 @@ AR Path="/60F96187/5F2156E4" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F2156E4" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F2156E4" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F2156E4" Ref="S?"  Part="1" 
-F 0 "S?" V 6600 10300 60  0000 L CNN
+F 0 "S21" V 6600 10300 60  0000 L CNN
 F 1 "FSM4JSMATR" V 6600 10350 60  0001 L CNN
 F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6800 10350 60  0001 L CNN
 F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6800 10450 60  0001 L CNN
@@ -1581,36 +1543,6 @@ Connection ~ 8300 10250
 Text Notes 9700 3150 0    50   ~ 0
 TODO: reverse vol pot if\nnot using right trimwheel
 $Comp
-L dk_Slide-Switches:EG1218 S?
-U 1 1 5F3DD481
-P 1900 2600
-F 0 "S?" H 1900 2881 50  0000 C CNN
-F 1 "EG1218" H 1900 2790 50  0000 C CNN
-F 2 "digikey-footprints:Switch_Slide_11.6x4mm_EG1218" H 2100 2800 50  0001 L CNN
-F 3 "http://spec_sheets.e-switch.com/specs/P040040.pdf" H 2100 2900 60  0001 L CNN
-F 4 "EG1903-ND" H 2100 3000 60  0001 L CNN "Digi-Key_PN"
-F 5 "EG1218" H 2100 3100 60  0001 L CNN "MPN"
-F 6 "Switches" H 2100 3200 60  0001 L CNN "Category"
-F 7 "Slide Switches" H 2100 3300 60  0001 L CNN "Family"
-F 8 "http://spec_sheets.e-switch.com/specs/P040040.pdf" H 2100 3400 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/e-switch/EG1218/EG1903-ND/101726" H 2100 3500 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH SLIDE SPDT 200MA 30V" H 2100 3600 60  0001 L CNN "Description"
-F 11 "E-Switch" H 2100 3700 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 2100 3800 60  0001 L CNN "Status"
-	1    1900 2600
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1800 2600 1700 2600
-Wire Wire Line
-	1200 2600 1200 3300
-Connection ~ 1700 2600
-Wire Wire Line
-	1700 2600 1200 2600
-Wire Wire Line
-	2100 2700 2550 2700
-Connection ~ 2550 2700
-$Comp
 L Amplifier_Audio:LM386 U1
 U 1 1 5F0FEF81
 P 11350 3400
@@ -1676,7 +1608,7 @@ AR Path="/60F96864/5F2BD566" Ref="R?"  Part="1"
 AR Path="/60F96869/5F2BD566" Ref="R?"  Part="1" 
 F 0 "R3" H 12150 3700 50  0000 L CNN
 F 1 "10" H 12150 3600 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" V 12330 3650 50  0001 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" V 12330 3650 50  0001 C CNN
 F 3 "~" H 12400 3650 50  0001 C CNN
 	1    12400 3650
 	1    0    0    -1  
@@ -1782,4 +1714,89 @@ NoConn ~ 11350 3700
 NoConn ~ 11450 3700
 Wire Wire Line
 	12400 3800 12400 4050
+Wire Wire Line
+	2550 4800 2550 10450
+Wire Wire Line
+	2550 10450 3250 10450
+Connection ~ 2550 4800
+Connection ~ 3250 10450
+Wire Wire Line
+	6000 10450 6000 11000
+Wire Wire Line
+	6000 11000 3250 11000
+Wire Wire Line
+	3250 11000 3250 10650
+Connection ~ 6000 10450
+NoConn ~ 6000 10850
+Wire Wire Line
+	9500 4450 9500 11000
+Wire Wire Line
+	9500 11000 6000 11000
+Connection ~ 9500 4450
+Connection ~ 6000 11000
+Wire Wire Line
+	2200 2500 2550 2500
+Wire Wire Line
+	2550 2500 2550 2700
+Connection ~ 2550 2700
+NoConn ~ 2200 2700
+Wire Wire Line
+	1800 2600 1200 2600
+$Comp
+L dk_Slide-Switches:EG1218 S1
+U 1 1 5F3DD481
+P 2000 2600
+F 0 "S1" H 2000 2881 50  0000 C CNN
+F 1 "EG1218" H 2000 2790 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_Slide_1P2T_CK_OS102011MS2Q" H 2200 2800 50  0001 L CNN
+F 3 "http://spec_sheets.e-switch.com/specs/P040040.pdf" H 2200 2900 60  0001 L CNN
+F 4 "EG1903-ND" H 2200 3000 60  0001 L CNN "Digi-Key_PN"
+F 5 "EG1218" H 2200 3100 60  0001 L CNN "MPN"
+F 6 "Switches" H 2200 3200 60  0001 L CNN "Category"
+F 7 "Slide Switches" H 2200 3300 60  0001 L CNN "Family"
+F 8 "http://spec_sheets.e-switch.com/specs/P040040.pdf" H 2200 3400 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/e-switch/EG1218/EG1903-ND/101726" H 2200 3500 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH SLIDE SPDT 200MA 30V" H 2200 3600 60  0001 L CNN "Description"
+F 11 "E-Switch" H 2200 3700 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 2200 3800 60  0001 L CNN "Status"
+	1    2000 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG?
+U 1 1 5F9428F6
+P 2950 1400
+F 0 "#FLG?" H 2950 1475 50  0001 C CNN
+F 1 "PWR_FLAG" H 2950 1573 50  0000 C CNN
+F 2 "" H 2950 1400 50  0001 C CNN
+F 3 "~" H 2950 1400 50  0001 C CNN
+	1    2950 1400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2950 1400 2950 2050
+Wire Wire Line
+	2950 2050 3100 2050
+Wire Wire Line
+	1200 2600 1200 3850
+Wire Wire Line
+	1200 4250 1200 4800
+$Comp
+L power:GND #PWR?
+U 1 1 5F9C6B7D
+P 2850 10850
+F 0 "#PWR?" H 2850 10600 50  0001 C CNN
+F 1 "GND" H 2855 10677 50  0000 C CNN
+F 2 "" H 2850 10850 50  0001 C CNN
+F 3 "" H 2850 10850 50  0001 C CNN
+	1    2850 10850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2850 10850 2850 10650
+Wire Wire Line
+	2850 10650 3250 10650
+Connection ~ 3250 10650
+Wire Wire Line
+	3250 10650 3250 10450
 $EndSCHEMATC
