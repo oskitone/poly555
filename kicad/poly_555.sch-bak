@@ -886,17 +886,6 @@ Wire Wire Line
 	1200 4800 2550 4800
 Wire Wire Line
 	2550 4050 2550 4800
-$Comp
-L Amplifier_Audio:LM386 U1
-U 1 1 5F0FEF81
-P 11350 3600
-F 0 "U1" H 11694 3554 50  0000 L CNN
-F 1 "LM386" H 11694 3645 50  0000 L CNN
-F 2 "Package_DIP:DIP-8_W7.62mm" H 11450 3700 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/lm386.pdf" H 11550 3800 50  0001 C CNN
-	1    11350 3600
-	1    0    0    1   
-$EndComp
 Wire Wire Line
 	2550 2700 3100 2700
 Connection ~ 3100 2700
@@ -935,136 +924,9 @@ F 3 "~" H 9500 3500 50  0001 C CNN
 	1    9500 3500
 	1    0    0    1   
 $EndComp
-$Comp
-L Device:C C1
-U 1 1 5F18156C
-P 11450 4150
-AR Path="/5F18156C" Ref="C1"  Part="1" 
-AR Path="/60F4E92A/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F9596F/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F95BBA/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F95BBF/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F96182/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F96187/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F9685F/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F96864/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F96869/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF17819/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF23030/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF259E1/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF27E4C/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF2B213/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF6055A/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF6057F/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF605A2/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF605C5/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF605E8/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF6060B/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF7A07F/5F18156C" Ref="C?"  Part="1" 
-F 0 "C1" H 11200 4100 50  0000 L CNN
-F 1 ".1uF" H 11150 4200 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 11488 4000 50  0001 C CNN
-F 3 "~" H 11450 4150 50  0001 C CNN
-	1    11450 4150
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	11250 4450 11250 3900
-Wire Wire Line
-	11050 3700 10950 3700
-Wire Wire Line
-	10950 3700 10950 4450
-Wire Wire Line
-	10950 4450 11250 4450
-$Comp
-L Device:C C2
-U 1 1 5F234E50
-P 12150 4200
-AR Path="/5F234E50" Ref="C2"  Part="1" 
-AR Path="/60F4E92A/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F9596F/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F95BBA/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F95BBF/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F96182/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F96187/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F9685F/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F96864/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F96869/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF17819/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF23030/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF259E1/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF27E4C/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF2B213/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF6055A/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF6057F/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF605A2/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF605C5/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF605E8/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF6060B/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF7A07F/5F234E50" Ref="C?"  Part="1" 
-F 0 "C2" H 12350 4300 50  0000 L CNN
-F 1 ".05uF" H 12300 4200 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 12188 4050 50  0001 C CNN
-F 3 "~" H 12150 4200 50  0001 C CNN
-	1    12150 4200
-	1    0    0    -1  
-$EndComp
-Connection ~ 10950 4450
-$Comp
-L Device:R R3
-U 1 1 5F2BD566
-P 12150 3850
-AR Path="/5F2BD566" Ref="R3"  Part="1" 
-AR Path="/60F4E92A/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F9596F/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F95BBA/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F95BBF/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F96182/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F96187/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F9685F/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F96864/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F96869/5F2BD566" Ref="R?"  Part="1" 
-F 0 "R3" H 11900 3900 50  0000 L CNN
-F 1 "10" H 11900 3800 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" V 12080 3850 50  0001 C CNN
-F 3 "~" H 12150 3850 50  0001 C CNN
-	1    12150 3850
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	11650 3600 12150 3600
-Wire Wire Line
-	12150 3600 12150 3700
-Wire Wire Line
-	11250 4450 11450 4450
-Connection ~ 11250 4450
-$Comp
-L Device:CP1 C3
-U 1 1 5F321372
-P 12500 3600
-F 0 "C3" V 12752 3600 50  0000 C CNN
-F 1 "220uF" V 12661 3600 50  0000 C CNN
-F 2 "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm" H 12500 3600 50  0001 C CNN
-F 3 "~" H 12500 3600 50  0001 C CNN
-	1    12500 3600
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	12150 3600 12350 3600
-Connection ~ 12150 3600
-Wire Wire Line
-	12650 3600 12950 3600
-Wire Wire Line
-	12950 3700 12850 3700
-Wire Wire Line
-	12850 3700 12850 4450
-Wire Wire Line
-	11250 3300 11250 700 
 Wire Wire Line
 	9500 2900 8300 2900
 Connection ~ 8300 2900
-Wire Wire Line
-	11050 3500 9850 3500
 Wire Wire Line
 	9500 4450 9850 4450
 $Comp
@@ -1097,31 +959,12 @@ Wire Wire Line
 	9500 2900 9500 3350
 Wire Wire Line
 	9650 3500 9850 3500
-Connection ~ 9850 3500
 Wire Wire Line
 	9500 3650 9500 4450
 Text Notes 9100 2800 0    50   ~ 0
 TODO: extra resistor here to “fix”\nfrequency shift from vol change?
-Wire Wire Line
-	9850 4450 10950 4450
-Wire Wire Line
-	11350 3900 11450 4000
-Wire Wire Line
-	11450 4300 11450 4450
-Connection ~ 11450 4450
-Wire Wire Line
-	11450 4450 12150 4450
 Text Notes 9600 4750 0    50   ~ 0
 Optional “fake log” resistor\nhttps://sound-au.com/project01.htm
-Wire Wire Line
-	12150 4000 12150 4050
-Wire Wire Line
-	12150 4350 12150 4450
-Connection ~ 12150 4450
-Wire Wire Line
-	12150 4450 12850 4450
-NoConn ~ 11350 3300
-NoConn ~ 11450 3300
 $Comp
 L power:GND #PWR01
 U 1 1 5F59FE95
@@ -1768,14 +1611,175 @@ Wire Wire Line
 	2100 2700 2550 2700
 Connection ~ 2550 2700
 $Comp
-L Device:Speaker LS1
-U 1 1 5F32F818
-P 13150 3600
-F 0 "LS1" H 13320 3596 50  0000 L CNN
-F 1 "Speaker" H 13320 3505 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 13150 3400 50  0001 C CNN
-F 3 "~" H 13140 3550 50  0001 C CNN
-	1    13150 3600
+L Amplifier_Audio:LM386 U1
+U 1 1 5F0FEF81
+P 11350 3400
+F 0 "U1" H 10900 3800 50  0000 L CNN
+F 1 "LM386" H 10900 3700 50  0000 L CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 11450 3500 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm386.pdf" H 11550 3600 50  0001 C CNN
+	1    11350 3400
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	9850 3500 11050 3500
+Connection ~ 9850 3500
+Wire Wire Line
+	11250 3700 11250 4450
+Connection ~ 11250 4450
+$Comp
+L Device:C C2
+U 1 1 5F234E50
+P 12850 4200
+AR Path="/5F234E50" Ref="C2"  Part="1" 
+AR Path="/60F4E92A/5F234E50" Ref="C?"  Part="1" 
+AR Path="/60F9596F/5F234E50" Ref="C?"  Part="1" 
+AR Path="/60F95BBA/5F234E50" Ref="C?"  Part="1" 
+AR Path="/60F95BBF/5F234E50" Ref="C?"  Part="1" 
+AR Path="/60F96182/5F234E50" Ref="C?"  Part="1" 
+AR Path="/60F96187/5F234E50" Ref="C?"  Part="1" 
+AR Path="/60F9685F/5F234E50" Ref="C?"  Part="1" 
+AR Path="/60F96864/5F234E50" Ref="C?"  Part="1" 
+AR Path="/60F96869/5F234E50" Ref="C?"  Part="1" 
+AR Path="/5EF17819/5F234E50" Ref="C?"  Part="1" 
+AR Path="/5EF23030/5F234E50" Ref="C?"  Part="1" 
+AR Path="/5EF259E1/5F234E50" Ref="C?"  Part="1" 
+AR Path="/5EF27E4C/5F234E50" Ref="C?"  Part="1" 
+AR Path="/5EF2B213/5F234E50" Ref="C?"  Part="1" 
+AR Path="/5EF6055A/5F234E50" Ref="C?"  Part="1" 
+AR Path="/5EF6057F/5F234E50" Ref="C?"  Part="1" 
+AR Path="/5EF605A2/5F234E50" Ref="C?"  Part="1" 
+AR Path="/5EF605C5/5F234E50" Ref="C?"  Part="1" 
+AR Path="/5EF605E8/5F234E50" Ref="C?"  Part="1" 
+AR Path="/5EF6060B/5F234E50" Ref="C?"  Part="1" 
+AR Path="/5EF7A07F/5F234E50" Ref="C?"  Part="1" 
+F 0 "C2" H 13050 4300 50  0000 L CNN
+F 1 ".05uF" H 13000 4200 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 12888 4050 50  0001 C CNN
+F 3 "~" H 12850 4200 50  0001 C CNN
+	1    12850 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R3
+U 1 1 5F2BD566
+P 12850 3650
+AR Path="/5F2BD566" Ref="R3"  Part="1" 
+AR Path="/60F4E92A/5F2BD566" Ref="R?"  Part="1" 
+AR Path="/60F9596F/5F2BD566" Ref="R?"  Part="1" 
+AR Path="/60F95BBA/5F2BD566" Ref="R?"  Part="1" 
+AR Path="/60F95BBF/5F2BD566" Ref="R?"  Part="1" 
+AR Path="/60F96182/5F2BD566" Ref="R?"  Part="1" 
+AR Path="/60F96187/5F2BD566" Ref="R?"  Part="1" 
+AR Path="/60F9685F/5F2BD566" Ref="R?"  Part="1" 
+AR Path="/60F96864/5F2BD566" Ref="R?"  Part="1" 
+AR Path="/60F96869/5F2BD566" Ref="R?"  Part="1" 
+F 0 "R3" H 12600 3700 50  0000 L CNN
+F 1 "10" H 12600 3600 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" V 12780 3650 50  0001 C CNN
+F 3 "~" H 12850 3650 50  0001 C CNN
+	1    12850 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	11650 3400 12850 3400
+Wire Wire Line
+	12850 3400 12850 3500
+$Comp
+L Device:CP1 C3
+U 1 1 5F321372
+P 13200 3400
+F 0 "C3" V 13452 3400 50  0000 C CNN
+F 1 "220uF" V 13361 3400 50  0000 C CNN
+F 2 "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm" H 13200 3400 50  0001 C CNN
+F 3 "~" H 13200 3400 50  0001 C CNN
+	1    13200 3400
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	12850 3400 13050 3400
+Connection ~ 12850 3400
+Wire Wire Line
+	13350 3400 13650 3400
+Wire Wire Line
+	13650 3500 13550 3500
+Wire Wire Line
+	12850 4350 12850 4450
+Connection ~ 12850 4450
+Wire Wire Line
+	12850 4450 13550 4450
+$Comp
+L Device:Speaker LS1
+U 1 1 5F32F818
+P 13850 3400
+F 0 "LS1" H 14020 3396 50  0000 L CNN
+F 1 "Speaker" H 14020 3305 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 13850 3200 50  0001 C CNN
+F 3 "~" H 13840 3350 50  0001 C CNN
+	1    13850 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	13550 3500 13550 4450
+Wire Wire Line
+	11250 700  11250 3100
+Wire Wire Line
+	11750 4450 12850 4450
+Wire Wire Line
+	11250 4450 11750 4450
+Connection ~ 11750 4450
+Wire Wire Line
+	11750 4350 11750 4450
+$Comp
+L Device:C C1
+U 1 1 5F18156C
+P 11750 4200
+AR Path="/5F18156C" Ref="C1"  Part="1" 
+AR Path="/60F4E92A/5F18156C" Ref="C?"  Part="1" 
+AR Path="/60F9596F/5F18156C" Ref="C?"  Part="1" 
+AR Path="/60F95BBA/5F18156C" Ref="C?"  Part="1" 
+AR Path="/60F95BBF/5F18156C" Ref="C?"  Part="1" 
+AR Path="/60F96182/5F18156C" Ref="C?"  Part="1" 
+AR Path="/60F96187/5F18156C" Ref="C?"  Part="1" 
+AR Path="/60F9685F/5F18156C" Ref="C?"  Part="1" 
+AR Path="/60F96864/5F18156C" Ref="C?"  Part="1" 
+AR Path="/60F96869/5F18156C" Ref="C?"  Part="1" 
+AR Path="/5EF17819/5F18156C" Ref="C?"  Part="1" 
+AR Path="/5EF23030/5F18156C" Ref="C?"  Part="1" 
+AR Path="/5EF259E1/5F18156C" Ref="C?"  Part="1" 
+AR Path="/5EF27E4C/5F18156C" Ref="C?"  Part="1" 
+AR Path="/5EF2B213/5F18156C" Ref="C?"  Part="1" 
+AR Path="/5EF6055A/5F18156C" Ref="C?"  Part="1" 
+AR Path="/5EF6057F/5F18156C" Ref="C?"  Part="1" 
+AR Path="/5EF605A2/5F18156C" Ref="C?"  Part="1" 
+AR Path="/5EF605C5/5F18156C" Ref="C?"  Part="1" 
+AR Path="/5EF605E8/5F18156C" Ref="C?"  Part="1" 
+AR Path="/5EF6060B/5F18156C" Ref="C?"  Part="1" 
+AR Path="/5EF7A07F/5F18156C" Ref="C?"  Part="1" 
+F 0 "C1" H 11500 4150 50  0000 L CNN
+F 1 ".1uF" H 11450 4250 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 11788 4050 50  0001 C CNN
+F 3 "~" H 11750 4200 50  0001 C CNN
+	1    11750 4200
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	11050 3300 10950 3300
+Wire Wire Line
+	10950 3300 10950 4450
+Wire Wire Line
+	9850 4450 10950 4450
+Wire Wire Line
+	10950 4450 11250 4450
+Connection ~ 10950 4450
+Wire Wire Line
+	11350 3100 11350 3000
+Wire Wire Line
+	11350 3000 11750 3000
+Wire Wire Line
+	11750 3000 11750 4050
+NoConn ~ 11350 3700
+NoConn ~ 11450 3700
+Wire Wire Line
+	12850 3800 12850 4050
 $EndSCHEMATC
