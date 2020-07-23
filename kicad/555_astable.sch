@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 8 21
+Sheet 11 21
 Title ""
 Date ""
 Rev ""
@@ -56,7 +56,7 @@ AR Path="/5F1D8DD3/60F6A68E" Ref="R?"  Part="1"
 AR Path="/5F1AE585/60F6A68E" Ref="R?"  Part="1" 
 AR Path="/5F2156AD/60F6A68E" Ref="R?"  Part="1" 
 AR Path="/5F2156CF/60F6A68E" Ref="R?"  Part="1" 
-F 0 "R?" H 4750 3500 50  0000 L CNN
+F 0 "R32" H 4750 3500 50  0000 L CNN
 F 1 "100k" H 4750 3400 50  0000 L CNN
 F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" V 4530 3450 50  0001 C CNN
 F 3 "~" H 4600 3450 50  0001 C CNN
@@ -113,7 +113,7 @@ AR Path="/5F1D8DD3/60F6EAC0" Ref="C?"  Part="1"
 AR Path="/5F1AE585/60F6EAC0" Ref="C?"  Part="1" 
 AR Path="/5F2156AD/60F6EAC0" Ref="C?"  Part="1" 
 AR Path="/5F2156CF/60F6EAC0" Ref="C?"  Part="1" 
-F 0 "C?" H 4100 4100 50  0000 L CNN
+F 0 "C31" H 4100 4100 50  0000 L CNN
 F 1 ".1uF" H 4050 4000 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 4388 3900 50  0001 C CNN
 F 3 "~" H 4350 4050 50  0001 C CNN
@@ -160,7 +160,7 @@ AR Path="/5F1D8DD3/60F6A6DA" Ref="U?"  Part="1"
 AR Path="/5F1AE585/60F6A6DA" Ref="U?"  Part="1" 
 AR Path="/5F2156AD/60F6A6DA" Ref="U?"  Part="1" 
 AR Path="/5F2156CF/60F6A6DA" Ref="U?"  Part="1" 
-F 0 "U?" H 5800 4050 60  0000 C CNN
+F 0 "U11" H 5800 4050 60  0000 C CNN
 F 1 "555" H 6000 4050 60  0000 C CNN
 F 2 "Package_DIP:DIP-8_W7.62mm" H 5900 3950 60  0001 L CNN
 F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555" H 5900 4050 60  0001 L CNN
@@ -227,10 +227,11 @@ AR Path="/5F1D8DD3/60F6A6C5" Ref="RV?"  Part="1"
 AR Path="/5F1AE585/60F6A6C5" Ref="RV?"  Part="1" 
 AR Path="/5F2156AD/60F6A6C5" Ref="RV?"  Part="1" 
 AR Path="/5F2156CF/60F6A6C5" Ref="RV?"  Part="1" 
-F 0 "RV?" V 5850 4700 50  0000 R CNN
+F 0 "RV21" V 5850 4700 50  0000 R CNN
 F 1 "10k" V 5750 4700 50  0000 R CNN
 F 2 "Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical" H 5950 4600 50  0001 C CNN
 F 3 "~" H 5950 4600 50  0001 C CNN
+F 4 "Course" V 5950 4600 50  0001 C CNN "Description"
 	1    5950 4600
 	0    -1   -1   0   
 $EndComp
@@ -345,7 +346,7 @@ AR Path="/5F1D8DD3/5EFAE830" Ref="R?"  Part="1"
 AR Path="/5F1AE585/5EFAE830" Ref="R?"  Part="1" 
 AR Path="/5F2156AD/5EFAE830" Ref="R?"  Part="1" 
 AR Path="/5F2156CF/5EFAE830" Ref="R?"  Part="1" 
-F 0 "R?" V 6500 3850 50  0000 L CNN
+F 0 "R33" V 6500 3850 50  0000 L CNN
 F 1 "10k" V 6600 3800 50  0000 L CNN
 F 2 "Resistor_THT:R_Axial_DIN0204_L3.6mm_D1.6mm_P7.62mm_Horizontal" V 6680 3850 50  0001 C CNN
 F 3 "~" H 6750 3850 50  0001 C CNN
@@ -382,7 +383,7 @@ AR Path="/5F1D8DD3/5F127BEF" Ref="D?"  Part="1"
 AR Path="/5F1AE585/5F127BEF" Ref="D?"  Part="1" 
 AR Path="/5F2156AD/5F127BEF" Ref="D?"  Part="1" 
 AR Path="/5F2156CF/5F127BEF" Ref="D?"  Part="1" 
-F 0 "D?" V 3789 4182 50  0000 R CNN
+F 0 "D11" V 3789 4182 50  0000 R CNN
 F 1 "LED" V 3698 4182 50  0000 R CNN
 F 2 "LED_THT:LED_D3.0mm" H 3750 4300 50  0001 C CNN
 F 3 "~" H 3750 4300 50  0001 C CNN
@@ -422,7 +423,7 @@ AR Path="/5F1D8DD3/5F127BF5" Ref="R?"  Part="1"
 AR Path="/5F1AE585/5F127BF5" Ref="R?"  Part="1" 
 AR Path="/5F2156AD/5F127BF5" Ref="R?"  Part="1" 
 AR Path="/5F2156CF/5F127BF5" Ref="R?"  Part="1" 
-F 0 "R?" H 3850 3850 50  0000 L CNN
+F 0 "R31" H 3850 3850 50  0000 L CNN
 F 1 "330" H 3850 3750 50  0000 L CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" V 3680 3800 50  0001 C CNN
 F 3 "~" H 3750 3800 50  0001 C CNN
@@ -442,60 +443,7 @@ Connection ~ 3750 5250
 Wire Wire Line
 	3750 5250 4350 5250
 Wire Wire Line
-	5400 4350 5600 4350
-Wire Wire Line
-	5400 4450 5400 4350
-Wire Wire Line
-	5600 4350 5600 4600
-Wire Wire Line
-	5550 4600 5600 4600
-$Comp
-L Device:R_POT_TRIM_US RV?
-U 1 1 5F13ACF1
-P 5400 4600
-AR Path="/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F4E92A/5F13ACF1" Ref="RV2"  Part="1" 
-AR Path="/60F9596F/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F95BBA/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F95BBF/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F96182/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F96187/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F9685F/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F96864/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F96869/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5EF17819/5F13ACF1" Ref="RV4"  Part="1" 
-AR Path="/5EF23030/5F13ACF1" Ref="RV6"  Part="1" 
-AR Path="/5EF259E1/5F13ACF1" Ref="RV8"  Part="1" 
-AR Path="/5EF27E4C/5F13ACF1" Ref="RV10"  Part="1" 
-AR Path="/5EF2B213/5F13ACF1" Ref="RV12"  Part="1" 
-AR Path="/5EF6055A/5F13ACF1" Ref="RV14"  Part="1" 
-AR Path="/5EF6057F/5F13ACF1" Ref="RV16"  Part="1" 
-AR Path="/5EF605A2/5F13ACF1" Ref="RV18"  Part="1" 
-AR Path="/5EF605C5/5F13ACF1" Ref="RV20"  Part="1" 
-AR Path="/5EF605E8/5F13ACF1" Ref="RV22"  Part="1" 
-AR Path="/5EF6060B/5F13ACF1" Ref="RV24"  Part="1" 
-AR Path="/5EF7A07F/5F13ACF1" Ref="RV26"  Part="1" 
-AR Path="/5F1B4BC2/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F1B4BE4/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F1D8DB1/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F1D8DD3/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F1AE585/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F2156AD/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F2156CF/5F13ACF1" Ref="RV?"  Part="1" 
-F 0 "RV?" V 5300 4700 50  0000 R CNN
-F 1 "10k" V 5200 4700 50  0000 R CNN
-F 2 "Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical" H 5400 4600 50  0001 C CNN
-F 3 "~" H 5400 4600 50  0001 C CNN
-	1    5400 4600
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	5600 4600 5800 4600
-Connection ~ 5600 4600
-Wire Wire Line
 	4350 5250 4600 5250
-Wire Wire Line
-	4950 4600 5250 4600
 Wire Wire Line
 	4950 3850 4600 3850
 Connection ~ 4950 3850
@@ -508,8 +456,6 @@ Wire Wire Line
 Wire Wire Line
 	4950 3850 4950 4600
 Connection ~ 4600 5250
-Wire Wire Line
-	5700 4150 5700 5250
 Connection ~ 5150 5250
 Wire Wire Line
 	5700 5250 5150 5250
@@ -552,7 +498,7 @@ AR Path="/5F1D8DD3/60F6A6A0" Ref="C?"  Part="1"
 AR Path="/5F1AE585/60F6A6A0" Ref="C?"  Part="1" 
 AR Path="/5F2156AD/60F6A6A0" Ref="C?"  Part="1" 
 AR Path="/5F2156CF/60F6A6A0" Ref="C?"  Part="1" 
-F 0 "C?" H 5300 5050 50  0000 L CNN
+F 0 "C33" H 5300 5050 50  0000 L CNN
 F 1 "10nF" H 5300 4950 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 5188 4900 50  0001 C CNN
 F 3 "~" H 5150 5050 50  0001 C CNN
@@ -592,12 +538,68 @@ AR Path="/5F1D8DD3/60F6A69A" Ref="C?"  Part="1"
 AR Path="/5F1AE585/60F6A69A" Ref="C?"  Part="1" 
 AR Path="/5F2156AD/60F6A69A" Ref="C?"  Part="1" 
 AR Path="/5F2156CF/60F6A69A" Ref="C?"  Part="1" 
-F 0 "C?" H 4750 5050 50  0000 L CNN
+F 0 "C32" H 4750 5050 50  0000 L CNN
 F 1 "10pF" H 4750 4950 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 4638 4900 50  0001 C CNN
 F 3 "~" H 4600 5050 50  0001 C CNN
 	1    4600 5050
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	5700 4150 5700 5250
+$Comp
+L Device:R_POT_TRIM_US RV?
+U 1 1 5F13ACF1
+P 5400 4600
+AR Path="/5F13ACF1" Ref="RV?"  Part="1" 
+AR Path="/60F4E92A/5F13ACF1" Ref="RV2"  Part="1" 
+AR Path="/60F9596F/5F13ACF1" Ref="RV?"  Part="1" 
+AR Path="/60F95BBA/5F13ACF1" Ref="RV?"  Part="1" 
+AR Path="/60F95BBF/5F13ACF1" Ref="RV?"  Part="1" 
+AR Path="/60F96182/5F13ACF1" Ref="RV?"  Part="1" 
+AR Path="/60F96187/5F13ACF1" Ref="RV?"  Part="1" 
+AR Path="/60F9685F/5F13ACF1" Ref="RV?"  Part="1" 
+AR Path="/60F96864/5F13ACF1" Ref="RV?"  Part="1" 
+AR Path="/60F96869/5F13ACF1" Ref="RV?"  Part="1" 
+AR Path="/5EF17819/5F13ACF1" Ref="RV4"  Part="1" 
+AR Path="/5EF23030/5F13ACF1" Ref="RV6"  Part="1" 
+AR Path="/5EF259E1/5F13ACF1" Ref="RV8"  Part="1" 
+AR Path="/5EF27E4C/5F13ACF1" Ref="RV10"  Part="1" 
+AR Path="/5EF2B213/5F13ACF1" Ref="RV12"  Part="1" 
+AR Path="/5EF6055A/5F13ACF1" Ref="RV14"  Part="1" 
+AR Path="/5EF6057F/5F13ACF1" Ref="RV16"  Part="1" 
+AR Path="/5EF605A2/5F13ACF1" Ref="RV18"  Part="1" 
+AR Path="/5EF605C5/5F13ACF1" Ref="RV20"  Part="1" 
+AR Path="/5EF605E8/5F13ACF1" Ref="RV22"  Part="1" 
+AR Path="/5EF6060B/5F13ACF1" Ref="RV24"  Part="1" 
+AR Path="/5EF7A07F/5F13ACF1" Ref="RV26"  Part="1" 
+AR Path="/5F1B4BC2/5F13ACF1" Ref="RV?"  Part="1" 
+AR Path="/5F1B4BE4/5F13ACF1" Ref="RV?"  Part="1" 
+AR Path="/5F1D8DB1/5F13ACF1" Ref="RV?"  Part="1" 
+AR Path="/5F1D8DD3/5F13ACF1" Ref="RV?"  Part="1" 
+AR Path="/5F1AE585/5F13ACF1" Ref="RV?"  Part="1" 
+AR Path="/5F2156AD/5F13ACF1" Ref="RV?"  Part="1" 
+AR Path="/5F2156CF/5F13ACF1" Ref="RV?"  Part="1" 
+F 0 "RV20" V 5300 4700 50  0000 R CNN
+F 1 "10k" V 5200 4700 50  0000 R CNN
+F 2 "Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical" H 5400 4600 50  0001 C CNN
+F 3 "~" H 5400 4600 50  0001 C CNN
+F 4 "Fine" V 5400 4600 50  0001 C CNN "Description"
+	1    5400 4600
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	4950 4600 5250 4600
+Wire Wire Line
+	5550 4600 5600 4600
+Wire Wire Line
+	5400 4450 5400 4350
+Wire Wire Line
+	5400 4350 5600 4350
+Wire Wire Line
+	5600 4350 5600 4600
+Connection ~ 5600 4600
+Wire Wire Line
+	5600 4600 5800 4600
 NoConn ~ 5700 4600
 $EndSCHEMATC

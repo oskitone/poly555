@@ -1052,17 +1052,6 @@ $EndComp
 Wire Wire Line
 	12150 3600 12350 3600
 Connection ~ 12150 3600
-$Comp
-L Device:Speaker LS1
-U 1 1 5F32F818
-P 13150 3600
-F 0 "LS1" H 13320 3596 50  0000 L CNN
-F 1 "Speaker" H 13320 3505 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 13150 3400 50  0001 C CNN
-F 3 "~" H 13140 3550 50  0001 C CNN
-	1    13150 3600
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	12650 3600 12950 3600
 Wire Wire Line
@@ -1151,8 +1140,6 @@ Wire Wire Line
 Connection ~ 1200 4400
 Wire Wire Line
 	1200 4400 1200 4800
-Text Notes 12850 3350 0    50   ~ 0
-TODO: replace speaker footprint
 Wire Wire Line
 	5450 1250 5450 2250
 Wire Wire Line
@@ -1780,4 +1767,15 @@ Wire Wire Line
 Wire Wire Line
 	2100 2700 2550 2700
 Connection ~ 2550 2700
+$Comp
+L Device:Speaker LS1
+U 1 1 5F32F818
+P 13150 3600
+F 0 "LS1" H 13320 3596 50  0000 L CNN
+F 1 "Speaker" H 13320 3505 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 13150 3400 50  0001 C CNN
+F 3 "~" H 13140 3550 50  0001 C CNN
+	1    13150 3600
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

@@ -847,18 +847,18 @@ Wire Wire Line
 $Comp
 L Device:LED D1
 U 1 1 5F0644B0
-P 2200 3900
-F 0 "D1" V 2239 3782 50  0000 R CNN
-F 1 "LED" V 2148 3782 50  0000 R CNN
-F 2 "LED_THT:LED_D3.0mm" H 2200 3900 50  0001 C CNN
-F 3 "~" H 2200 3900 50  0001 C CNN
-	1    2200 3900
+P 2550 3900
+F 0 "D1" V 2589 3782 50  0000 R CNN
+F 1 "LED" V 2498 3782 50  0000 R CNN
+F 2 "LED_THT:LED_D3.0mm" H 2550 3900 50  0001 C CNN
+F 3 "~" H 2550 3900 50  0001 C CNN
+	1    2550 3900
 	0    -1   -1   0   
 $EndComp
 $Comp
 L Device:R R1
 U 1 1 5F0694ED
-P 2200 3400
+P 2550 3400
 AR Path="/5F0694ED" Ref="R1"  Part="1" 
 AR Path="/60F4E92A/5F0694ED" Ref="R?"  Part="1" 
 AR Path="/60F9596F/5F0694ED" Ref="R?"  Part="1" 
@@ -869,23 +869,23 @@ AR Path="/60F96187/5F0694ED" Ref="R?"  Part="1"
 AR Path="/60F9685F/5F0694ED" Ref="R?"  Part="1" 
 AR Path="/60F96864/5F0694ED" Ref="R?"  Part="1" 
 AR Path="/60F96869/5F0694ED" Ref="R?"  Part="1" 
-F 0 "R1" H 2300 3450 50  0000 L CNN
-F 1 "330" H 2300 3350 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" V 2130 3400 50  0001 C CNN
-F 3 "~" H 2200 3400 50  0001 C CNN
-	1    2200 3400
+F 0 "R1" H 2650 3450 50  0000 L CNN
+F 1 "330" H 2650 3350 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" V 2480 3400 50  0001 C CNN
+F 3 "~" H 2550 3400 50  0001 C CNN
+	1    2550 3400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2200 3550 2200 3750
+	2550 3550 2550 3750
 Wire Wire Line
-	2200 3250 2200 2700
+	2550 3250 2550 2700
 Wire Wire Line
 	1200 4250 1200 4400
 Wire Wire Line
-	1200 4800 2200 4800
+	1200 4800 2550 4800
 Wire Wire Line
-	2200 4050 2200 4800
+	2550 4050 2550 4800
 $Comp
 L Amplifier_Audio:LM386 U1
 U 1 1 5F0FEF81
@@ -898,7 +898,7 @@ F 3 "http://www.ti.com/lit/ds/symlink/lm386.pdf" H 11550 3800 50  0001 C CNN
 	1    0    0    1   
 $EndComp
 Wire Wire Line
-	2200 2700 3100 2700
+	2550 2700 3100 2700
 Connection ~ 3100 2700
 Wire Wire Line
 	3100 2700 3100 3050
@@ -1052,17 +1052,6 @@ $EndComp
 Wire Wire Line
 	12150 3600 12350 3600
 Connection ~ 12150 3600
-$Comp
-L Device:Speaker LS1
-U 1 1 5F32F818
-P 13150 3600
-F 0 "LS1" H 13320 3596 50  0000 L CNN
-F 1 "Speaker" H 13320 3505 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 13150 3400 50  0001 C CNN
-F 3 "~" H 13140 3550 50  0001 C CNN
-	1    13150 3600
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	12650 3600 12950 3600
 Wire Wire Line
@@ -1131,8 +1120,6 @@ Wire Wire Line
 Connection ~ 12150 4450
 Wire Wire Line
 	12150 4450 12850 4450
-Text Notes 1150 5100 0    50   ~ 0
-TODO: consider\npower jack
 NoConn ~ 11350 3300
 NoConn ~ 11450 3300
 $Comp
@@ -1153,8 +1140,6 @@ Wire Wire Line
 Connection ~ 1200 4400
 Wire Wire Line
 	1200 4400 1200 4800
-Text Notes 12850 3350 0    50   ~ 0
-TODO: replace speaker footprint
 Wire Wire Line
 	5450 1250 5450 2250
 Wire Wire Line
@@ -1231,28 +1216,21 @@ Connection ~ 5850 1050
 $Comp
 L power:PWR_FLAG #FLG01
 U 1 1 5F58E343
-P 1050 2750
-F 0 "#FLG01" H 1050 2825 50  0001 C CNN
-F 1 "PWR_FLAG" H 1050 2923 50  0000 C CNN
-F 2 "" H 1050 2750 50  0001 C CNN
-F 3 "~" H 1050 2750 50  0001 C CNN
-	1    1050 2750
+P 1050 3100
+F 0 "#FLG01" H 1050 3175 50  0001 C CNN
+F 1 "PWR_FLAG" H 1050 3273 50  0000 C CNN
+F 2 "" H 1050 3100 50  0001 C CNN
+F 3 "~" H 1050 3100 50  0001 C CNN
+	1    1050 3100
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2200 2700 1200 2700
+	1050 3100 1050 3300
 Wire Wire Line
-	1200 2700 1200 2950
-Connection ~ 2200 2700
+	1050 3300 1200 3300
+Connection ~ 1200 3300
 Wire Wire Line
-	1050 2750 1050 2950
-Wire Wire Line
-	1050 2950 1200 2950
-Connection ~ 1200 2950
-Wire Wire Line
-	1200 2950 1200 3850
-Text Notes 1500 2600 0    50   ~ 0
-TODO: consider power switch
+	1200 3300 1200 3850
 $Sheet
 S 4250 8050 900  550 
 U 5F1B4BC2
@@ -1759,4 +1737,45 @@ Connection ~ 5450 10250
 Connection ~ 8300 10250
 Text Notes 9700 3150 0    50   ~ 0
 TODO: reverse vol pot if\nnot using right trimwheel
+$Comp
+L dk_Slide-Switches:EG1218 S?
+U 1 1 5F3DD481
+P 1900 2600
+F 0 "S?" H 1900 2881 50  0000 C CNN
+F 1 "EG1218" H 1900 2790 50  0000 C CNN
+F 2 "digikey-footprints:Switch_Slide_11.6x4mm_EG1218" H 2100 2800 50  0001 L CNN
+F 3 "http://spec_sheets.e-switch.com/specs/P040040.pdf" H 2100 2900 60  0001 L CNN
+F 4 "EG1903-ND" H 2100 3000 60  0001 L CNN "Digi-Key_PN"
+F 5 "EG1218" H 2100 3100 60  0001 L CNN "MPN"
+F 6 "Switches" H 2100 3200 60  0001 L CNN "Category"
+F 7 "Slide Switches" H 2100 3300 60  0001 L CNN "Family"
+F 8 "http://spec_sheets.e-switch.com/specs/P040040.pdf" H 2100 3400 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/e-switch/EG1218/EG1903-ND/101726" H 2100 3500 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH SLIDE SPDT 200MA 30V" H 2100 3600 60  0001 L CNN "Description"
+F 11 "E-Switch" H 2100 3700 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 2100 3800 60  0001 L CNN "Status"
+	1    1900 2600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1800 2600 1700 2600
+Wire Wire Line
+	1200 2600 1200 3300
+Connection ~ 1700 2600
+Wire Wire Line
+	1700 2600 1200 2600
+Wire Wire Line
+	2100 2700 2550 2700
+Connection ~ 2550 2700
+$Comp
+L Device:Speaker LS1
+U 1 1 5F32F818
+P 13150 3600
+F 0 "LS1" H 13320 3596 50  0000 L CNN
+F 1 "Speaker" H 13320 3505 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 13150 3400 50  0001 C CNN
+F 3 "~" H 13140 3550 50  0001 C CNN
+	1    13150 3600
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
