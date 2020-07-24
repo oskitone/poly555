@@ -239,30 +239,30 @@ Wire Wire Line
 	3300 3250 3450 3250
 Connection ~ 4350 3250
 $Comp
-L power:PWR_FLAG #FLG02
+L power:PWR_FLAG #FLG?
 U 1 1 5F59D1F5
 P 3450 3100
-AR Path="/60F4E92A/5F59D1F5" Ref="#FLG02"  Part="1" 
-AR Path="/5EF17819/5F59D1F5" Ref="#FLG03"  Part="1" 
-AR Path="/5EF23030/5F59D1F5" Ref="#FLG04"  Part="1" 
-AR Path="/5EF259E1/5F59D1F5" Ref="#FLG05"  Part="1" 
-AR Path="/5EF27E4C/5F59D1F5" Ref="#FLG06"  Part="1" 
-AR Path="/5EF2B213/5F59D1F5" Ref="#FLG07"  Part="1" 
-AR Path="/5EF6055A/5F59D1F5" Ref="#FLG08"  Part="1" 
-AR Path="/5EF6057F/5F59D1F5" Ref="#FLG09"  Part="1" 
-AR Path="/5EF605A2/5F59D1F5" Ref="#FLG010"  Part="1" 
-AR Path="/5EF605C5/5F59D1F5" Ref="#FLG011"  Part="1" 
-AR Path="/5EF605E8/5F59D1F5" Ref="#FLG012"  Part="1" 
-AR Path="/5EF6060B/5F59D1F5" Ref="#FLG013"  Part="1" 
-AR Path="/5EF7A07F/5F59D1F5" Ref="#FLG014"  Part="1" 
-AR Path="/5F1B4BC2/5F59D1F5" Ref="#FLG015"  Part="1" 
-AR Path="/5F1B4BE4/5F59D1F5" Ref="#FLG016"  Part="1" 
-AR Path="/5F1D8DB1/5F59D1F5" Ref="#FLG017"  Part="1" 
-AR Path="/5F1D8DD3/5F59D1F5" Ref="#FLG018"  Part="1" 
-AR Path="/5F1AE585/5F59D1F5" Ref="#FLG019"  Part="1" 
-AR Path="/5F2156AD/5F59D1F5" Ref="#FLG020"  Part="1" 
-AR Path="/5F2156CF/5F59D1F5" Ref="#FLG021"  Part="1" 
-F 0 "#FLG021" H 3450 3175 50  0001 C CNN
+AR Path="/60F4E92A/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5EF17819/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5EF23030/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5EF259E1/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5EF27E4C/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5EF2B213/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5EF6055A/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5EF6057F/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5EF605A2/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5EF605C5/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5EF605E8/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5EF6060B/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5EF7A07F/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5F1B4BC2/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5F1B4BE4/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5F1D8DB1/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5F1D8DD3/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5F1AE585/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5F2156AD/5F59D1F5" Ref="#FLG?"  Part="1" 
+AR Path="/5F2156CF/5F59D1F5" Ref="#FLG?"  Part="1" 
+F 0 "#FLG?" H 3450 3175 50  0001 C CNN
 F 1 "PWR_FLAG" H 3450 3273 50  0000 C CNN
 F 2 "" H 3450 3100 50  0001 C CNN
 F 3 "~" H 3450 3100 50  0001 C CNN
@@ -571,6 +571,26 @@ $Comp
 L power:GND #PWR?
 U 1 1 5FA42739
 P 5700 5450
+AR Path="/60F4E92A/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5EF17819/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5EF23030/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5EF259E1/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5EF27E4C/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5EF2B213/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5EF6055A/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5EF6057F/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5EF605A2/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5EF605C5/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5EF605E8/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5EF6060B/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5EF7A07F/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5F1B4BC2/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5F1B4BE4/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5F1D8DB1/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5F1D8DD3/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5F1AE585/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5F2156AD/5FA42739" Ref="#PWR?"  Part="1" 
+AR Path="/5F2156CF/5FA42739" Ref="#PWR?"  Part="1" 
 F 0 "#PWR?" H 5700 5200 50  0001 C CNN
 F 1 "GND" H 5705 5277 50  0000 C CNN
 F 2 "" H 5700 5450 50  0001 C CNN

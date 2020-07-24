@@ -917,7 +917,7 @@ AR Path="/5EF6060B/5F169489" Ref="RV?"  Part="1"
 AR Path="/5EF7A07F/5F169489" Ref="RV?"  Part="1" 
 F 0 "RV1" V 9400 3600 50  0000 R CNN
 F 1 "R_POT_TRIM_US" H 9432 3455 50  0001 R CNN
-F 2 "Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical" H 9500 3500 50  0001 C CNN
+F 2 "Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical" H 9500 3500 50  0001 C CNN
 F 3 "~" H 9500 3500 50  0001 C CNN
 	1    9500 3500
 	1    0    0    1   

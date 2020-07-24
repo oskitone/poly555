@@ -227,7 +227,7 @@ AR Path="/5F2156AD/60F6A6C5" Ref="RV39"  Part="1"
 AR Path="/5F2156CF/60F6A6C5" Ref="RV41"  Part="1" 
 F 0 "RV3" V 5850 4700 50  0000 R CNN
 F 1 "1k" V 5750 4700 50  0000 R CNN
-F 2 "Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical" H 5950 4600 50  0001 C CNN
+F 2 "Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical" H 5950 4600 50  0001 C CNN
 F 3 "~" H 5950 4600 50  0001 C CNN
 F 4 "Course" V 5950 4600 50  0001 C CNN "Description"
 	1    5950 4600

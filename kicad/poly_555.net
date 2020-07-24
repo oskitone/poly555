@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /Users/tommy/Dropbox/poly_555/kicad/poly_555.sch)
-    (date "Thursday, July 23, 2020 at 04:43:02 PM")
+    (date "Friday, July 24, 2020 at 07:58:21 AM")
     (tool "Eeschema (5.1.6-0-10_14)")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -479,7 +479,7 @@
       (tstamp 5F0694ED))
     (comp (ref RV1)
       (value R_POT_TRIM_US)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (libsource (lib Device) (part R_POT_TRIM_US) (description "Trim-potentiometer, US symbol"))
       (sheetpath (names /) (tstamps /))
@@ -702,7 +702,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV3)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -788,7 +788,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV5)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -874,7 +874,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV7)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -960,7 +960,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV9)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -1046,7 +1046,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV11)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -1132,7 +1132,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV13)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -1218,7 +1218,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV15)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -1304,7 +1304,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV17)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -1390,7 +1390,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV19)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -1476,7 +1476,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV21)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -1562,7 +1562,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV23)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -1648,7 +1648,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV25)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -1734,7 +1734,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV27)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -1820,7 +1820,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV29)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -1906,7 +1906,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV31)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -1992,7 +1992,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV33)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -2078,7 +2078,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV35)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -2164,7 +2164,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV37)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -2250,7 +2250,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV39)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
@@ -2336,7 +2336,7 @@
       (tstamp 60F6A6DA))
     (comp (ref RV41)
       (value 1k)
-      (footprint Potentiometer_THT:Potentiometer_Bourns_3386F_Vertical)
+      (footprint Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical)
       (datasheet ~)
       (fields
         (field (name Description) Course))
