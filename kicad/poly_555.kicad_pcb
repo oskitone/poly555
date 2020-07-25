@@ -2,10 +2,10 @@
 
   (general
     (thickness 1.6)
-    (drawings 7)
+    (drawings 16)
     (tracks 0)
     (zones 0)
-    (modules 237)
+    (modules 245)
     (nets 131)
   )
 
@@ -21,7 +21,7 @@
     (37 F.SilkS user)
     (38 B.Mask user)
     (39 F.Mask user)
-    (40 Dwgs.User user hide)
+    (40 Dwgs.User user)
     (41 Cmts.User user)
     (42 Eco1.User user)
     (43 Eco2.User user)
@@ -30,7 +30,7 @@
     (46 B.CrtYd user)
     (47 F.CrtYd user)
     (48 B.Fab user)
-    (49 F.Fab user hide)
+    (49 F.Fab user)
   )
 
   (setup
@@ -360,8 +360,8 @@
     (add_net "Net-(RV8-Pad1)")
   )
 
-  (module MountingHole:MountingHole_3.2mm_M3 (layer F.Cu) (tedit 5EFBFCEB) (tstamp 5F1E8550)
-    (at 173.01 -21.336)
+  (module MountingHole:MountingHole_3.2mm_M3 (layer F.Cu) (tedit 5EFBFCEB) (tstamp 5F1EDFFD)
+    (at 215.9 120.65)
     (descr "Mounting Hole 3.2mm, no annular, M3")
     (tags "mounting hole 3.2mm no annular m3")
     (attr virtual)
@@ -379,21 +379,179 @@
     (pad "" np_thru_hole circle (at 0 0) (size 3 3) (drill 3) (layers *.Cu *.Mask))
   )
 
-  (module "" (layer F.Cu) (tedit 0) (tstamp 0)
-    (at 114.554 -20.32)
-    (fp_text reference "" (at 5.842 -21.336) (layer F.SilkS)
-      (effects (font (size 1.27 1.27) (thickness 0.15)))
-    )
-    (fp_text value "" (at 5.842 -21.336) (layer F.SilkS)
-      (effects (font (size 1.27 1.27) (thickness 0.15)))
-    )
-    (fp_text user REF** (at 5.08 -21.082) (layer F.SilkS) hide
+  (module MountingHole:MountingHole_3.2mm_M3 (layer F.Cu) (tedit 5F1B8426) (tstamp 5F1EE184)
+    (at 193.802 39.624)
+    (descr "Mounting Hole 3.2mm, no annular, M3")
+    (tags "mounting hole 3.2mm no annular m3")
+    (attr virtual)
+    (fp_text reference REF** (at 0 0) (layer F.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)))
     )
+    (fp_text value MountingHole_3.2mm_M3 (at 0 4.2) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_circle (center 0 0) (end 3.2 0) (layer Cmts.User) (width 0.15))
+    (fp_circle (center 0 0) (end 3.45 0) (layer F.CrtYd) (width 0.05))
+    (fp_text user %R (at 0.3 0) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad "" np_thru_hole circle (at 0 0) (size 2 2) (drill 2) (layers *.Cu *.Mask))
+  )
+
+  (module MountingHole:MountingHole_3.2mm_M3 (layer F.Cu) (tedit 5EFBFCEB) (tstamp 5F1EB608)
+    (at 214.92 154.686)
+    (descr "Mounting Hole 3.2mm, no annular, M3")
+    (tags "mounting hole 3.2mm no annular m3")
+    (attr virtual)
+    (fp_text reference REF** (at 0 0) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value MountingHole_3.2mm_M3 (at 0 4.2) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_circle (center 0 0) (end 3.2 0) (layer Cmts.User) (width 0.15))
+    (fp_circle (center 0 0) (end 3.45 0) (layer F.CrtYd) (width 0.05))
+    (fp_text user %R (at 0.3 0) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad "" np_thru_hole circle (at 0 0) (size 3 3) (drill 3) (layers *.Cu *.Mask))
+  )
+
+  (module MountingHole:MountingHole_3.2mm_M3 (layer F.Cu) (tedit 5EFBFCEB) (tstamp 5F1EB601)
+    (at 159.04 154.686)
+    (descr "Mounting Hole 3.2mm, no annular, M3")
+    (tags "mounting hole 3.2mm no annular m3")
+    (attr virtual)
+    (fp_text reference REF** (at 0 0) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value MountingHole_3.2mm_M3 (at 0 4.2) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_circle (center 0 0) (end 3.2 0) (layer Cmts.User) (width 0.15))
+    (fp_circle (center 0 0) (end 3.45 0) (layer F.CrtYd) (width 0.05))
+    (fp_text user %R (at 0.3 0) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad "" np_thru_hole circle (at 0 0) (size 3 3) (drill 3) (layers *.Cu *.Mask))
+  )
+
+  (module MountingHole:MountingHole_3.2mm_M3 (layer F.Cu) (tedit 5EFBFCEB) (tstamp 5F1EB5FA)
+    (at 103.16 154.686)
+    (descr "Mounting Hole 3.2mm, no annular, M3")
+    (tags "mounting hole 3.2mm no annular m3")
+    (attr virtual)
+    (fp_text reference REF** (at 0 0) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value MountingHole_3.2mm_M3 (at 0 4.2) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_circle (center 0 0) (end 3.2 0) (layer Cmts.User) (width 0.15))
+    (fp_circle (center 0 0) (end 3.45 0) (layer F.CrtYd) (width 0.05))
+    (fp_text user %R (at 0.3 0) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad "" np_thru_hole circle (at 0 0) (size 3 3) (drill 3) (layers *.Cu *.Mask))
+  )
+
+  (module MountingHole:MountingHole_3.2mm_M3 (layer F.Cu) (tedit 5EFBFCEB) (tstamp 5F1EB5F3)
+    (at 47.28 154.686)
+    (descr "Mounting Hole 3.2mm, no annular, M3")
+    (tags "mounting hole 3.2mm no annular m3")
+    (attr virtual)
+    (fp_text reference REF** (at 0 0) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value MountingHole_3.2mm_M3 (at 0 4.2) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_circle (center 0 0) (end 3.2 0) (layer Cmts.User) (width 0.15))
+    (fp_circle (center 0 0) (end 3.45 0) (layer F.CrtYd) (width 0.05))
+    (fp_text user %R (at 0.3 0) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad "" np_thru_hole circle (at 0 0) (size 3 3) (drill 3) (layers *.Cu *.Mask))
+  )
+
+  (module MountingHole:MountingHole_3.2mm_M3 (layer F.Cu) (tedit 5EFBFCEB) (tstamp 5F1EB57C)
+    (at 155.992 54.61)
+    (descr "Mounting Hole 3.2mm, no annular, M3")
+    (tags "mounting hole 3.2mm no annular m3")
+    (attr virtual)
+    (fp_text reference REF** (at 0 0) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value MountingHole_3.2mm_M3 (at 0 4.2) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_circle (center 0 0) (end 3.2 0) (layer Cmts.User) (width 0.15))
+    (fp_circle (center 0 0) (end 3.45 0) (layer F.CrtYd) (width 0.05))
+    (fp_text user %R (at 0.3 0) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad "" np_thru_hole circle (at 0 0) (size 3 3) (drill 3) (layers *.Cu *.Mask))
+  )
+
+  (module MountingHole:MountingHole_3.2mm_M3 (layer F.Cu) (tedit 5EFBFCEB) (tstamp 5F1EB57C)
+    (at 70.902 53.848)
+    (descr "Mounting Hole 3.2mm, no annular, M3")
+    (tags "mounting hole 3.2mm no annular m3")
+    (attr virtual)
+    (fp_text reference REF** (at 0 0) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value MountingHole_3.2mm_M3 (at 0 4.2) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_circle (center 0 0) (end 3.2 0) (layer Cmts.User) (width 0.15))
+    (fp_circle (center 0 0) (end 3.45 0) (layer F.CrtYd) (width 0.05))
+    (fp_text user %R (at 0.3 0) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad "" np_thru_hole circle (at 0 0) (size 3 3) (drill 3) (layers *.Cu *.Mask))
+  )
+
+  (module MountingHole:MountingHole_3.2mm_M3 (layer F.Cu) (tedit 5EFBFCEB) (tstamp 5F1EB355)
+    (at 215.392 38.608)
+    (descr "Mounting Hole 3.2mm, no annular, M3")
+    (tags "mounting hole 3.2mm no annular m3")
+    (attr virtual)
+    (fp_text reference REF** (at 0 0) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value MountingHole_3.2mm_M3 (at 0 4.2) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_circle (center 0 0) (end 3.2 0) (layer Cmts.User) (width 0.15))
+    (fp_circle (center 0 0) (end 3.45 0) (layer F.CrtYd) (width 0.05))
+    (fp_text user %R (at 0.3 0) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad "" np_thru_hole circle (at 0 0) (size 3 3) (drill 3) (layers *.Cu *.Mask))
+  )
+
+  (module MountingHole:MountingHole_3.2mm_M3 (layer F.Cu) (tedit 5EFBFCEB) (tstamp 5F1E8550)
+    (at 214.92 129.032)
+    (descr "Mounting Hole 3.2mm, no annular, M3")
+    (tags "mounting hole 3.2mm no annular m3")
+    (attr virtual)
+    (fp_text reference REF** (at 0 0) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value MountingHole_3.2mm_M3 (at 0 4.2) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_circle (center 0 0) (end 3.2 0) (layer Cmts.User) (width 0.15))
+    (fp_circle (center 0 0) (end 3.45 0) (layer F.CrtYd) (width 0.05))
+    (fp_text user %R (at 0.3 0) (layer F.Fab)
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad "" np_thru_hole circle (at 0 0) (size 3 3) (drill 3) (layers *.Cu *.Mask))
   )
 
   (module MountingHole:MountingHole_3.2mm_M3 (layer F.Cu) (tedit 5EFBFCEB) (tstamp 5EFD2507)
-    (at 5.37 -21.336)
+    (at 47.28 129.032)
     (descr "Mounting Hole 3.2mm, no annular, M3")
     (tags "mounting hole 3.2mm no annular m3")
     (attr virtual)
@@ -412,7 +570,7 @@
   )
 
   (module MountingHole:MountingHole_3.2mm_M3 (layer F.Cu) (tedit 5EFBFCEB) (tstamp 5F1E848A)
-    (at 61.25 -21.336)
+    (at 103.16 129.032)
     (descr "Mounting Hole 3.2mm, no annular, M3")
     (tags "mounting hole 3.2mm no annular m3")
     (attr virtual)
@@ -431,7 +589,7 @@
   )
 
   (module MountingHole:MountingHole_3.2mm_M3 (layer F.Cu) (tedit 5EFBFCEB) (tstamp 5EFD24F9)
-    (at 117.13 -21.336)
+    (at 159.04 129.032)
     (descr "Mounting Hole 3.2mm, no annular, M3")
     (tags "mounting hole 3.2mm no annular m3")
     (attr virtual)
@@ -450,7 +608,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5EF7EC74)
-    (at 3.556 -103.378 270)
+    (at 45.466 46.99 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /60F4E92A/5F13ACF1)
@@ -492,14 +650,14 @@
   )
 
   (module Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical (layer F.Cu) (tedit 59FED5CC) (tstamp 5F1E670A)
-    (at 175.006 -14.478)
+    (at 187.452 42.672 90)
     (descr "Through hole straight pin header, 1x02, 2.54mm pitch, single row")
     (tags "Through hole pin header THT 1x02 2.54mm single row")
     (path /5EEAE121)
-    (fp_text reference BT1 (at 0 -2.794) (layer F.SilkS)
+    (fp_text reference BT1 (at -0.508 -2.794 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value 9v (at 2.54 0 90) (layer F.SilkS)
+    (fp_text value 9v (at 2.54 0) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start 1.8 -1.8) (end -1.8 -1.8) (layer F.CrtYd) (width 0.05))
@@ -517,12 +675,12 @@
     (fp_line (start 1.27 3.81) (end -1.27 3.81) (layer F.Fab) (width 0.1))
     (fp_line (start 1.27 -1.27) (end 1.27 3.81) (layer F.Fab) (width 0.1))
     (fp_line (start -0.635 -1.27) (end 1.27 -1.27) (layer F.Fab) (width 0.1))
-    (fp_text user %R (at 0 1.27 90) (layer F.Fab)
+    (fp_text user %R (at 0 1.27) (layer F.Fab)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (pad 2 thru_hole oval (at 0 2.54) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
+    (pad 2 thru_hole oval (at 0 2.54 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 32 GND))
-    (pad 1 thru_hole rect (at 0 0) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
+    (pad 1 thru_hole rect (at 0 0 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 1 "Net-(BT1-Pad1)"))
     (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
@@ -532,7 +690,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5EF76DDD)
-    (at 32.131 -103.378 270)
+    (at 74.041 46.99 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5EF17819/5F13ACF1)
@@ -574,7 +732,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5EF76D9B)
-    (at 60.706 -103.378 270)
+    (at 102.616 46.99 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5EF23030/5F13ACF1)
@@ -616,7 +774,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5EF76699)
-    (at 89.281 -102.87 270)
+    (at 131.191 47.498 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5EF259E1/5F13ACF1)
@@ -658,7 +816,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5EF76657)
-    (at 117.856 -102.87 270)
+    (at 159.766 47.498 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5EF27E4C/5F13ACF1)
@@ -700,7 +858,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5EF76615)
-    (at 3.556 -80.094667 270)
+    (at 45.466 70.273333 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5EF2B213/5F13ACF1)
@@ -742,7 +900,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5EF764FE)
-    (at 32.131 -80.094667 270)
+    (at 74.041 70.273333 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5EF6055A/5F13ACF1)
@@ -784,7 +942,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D8.0mm_P3.50mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF7A767)
-    (at 167.894 -38.862 180)
+    (at 212.598 115.062 180)
     (descr "CP, Radial series, Radial, pin pitch=3.50mm, , diameter=8mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 3.50mm  diameter 8mm Electrolytic Capacitor")
     (path /5F321372)
@@ -971,14 +1129,14 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5F1E8752)
-    (at 153.67 -45.72)
+    (at 186.436 34.544 270)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5F0644B0)
-    (fp_text reference D1 (at -2.286 -0.127 90) (layer F.SilkS)
+    (fp_text reference D1 (at 4.572 1.524) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value LED (at 1.27 2.96) (layer F.Fab)
+    (fp_text value LED (at 1.27 2.96 90) (layer F.Fab)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_circle (center 1.27 0) (end 2.77 0) (layer F.Fab) (width 0.1))
@@ -994,9 +1152,9 @@
     (fp_arc (start 1.27 0) (end -0.29 1.235516) (angle -108.8) (layer F.SilkS) (width 0.12))
     (fp_arc (start 1.27 0) (end 0.229039 -1.08) (angle 87.9) (layer F.SilkS) (width 0.12))
     (fp_arc (start 1.27 0) (end 0.229039 1.08) (angle -87.9) (layer F.SilkS) (width 0.12))
-    (pad 1 thru_hole rect (at 0 0) (size 1.8 1.8) (drill 0.9) (layers *.Cu *.Mask)
+    (pad 1 thru_hole rect (at 0 0 270) (size 1.8 1.8) (drill 0.9) (layers *.Cu *.Mask)
       (net 32 GND))
-    (pad 2 thru_hole circle (at 2.54 0) (size 1.8 1.8) (drill 0.9) (layers *.Cu *.Mask)
+    (pad 2 thru_hole circle (at 2.54 0 270) (size 1.8 1.8) (drill 0.9) (layers *.Cu *.Mask)
       (net 50 "Net-(D1-Pad2)"))
     (model ${KISYS3DMOD}/LED_THT.3dshapes/LED_D3.0mm.wrl
       (at (xyz 0 0 0))
@@ -1006,14 +1164,14 @@
   )
 
   (module Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical (layer F.Cu) (tedit 59FED5CC) (tstamp 5EF7A61D)
-    (at 164.846 -32.258 90)
+    (at 217.932 116.332 180)
     (descr "Through hole straight pin header, 1x02, 2.54mm pitch, single row")
     (tags "Through hole pin header THT 1x02 2.54mm single row")
     (path /5F32F818)
-    (fp_text reference LS1 (at 0 5.334 90) (layer F.SilkS)
+    (fp_text reference LS1 (at 0 5.334) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value Speaker (at 0 4.87 90) (layer F.Fab)
+    (fp_text value Speaker (at 0 4.87) (layer F.Fab)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start 1.8 -1.8) (end -1.8 -1.8) (layer F.CrtYd) (width 0.05))
@@ -1031,12 +1189,12 @@
     (fp_line (start 1.27 3.81) (end -1.27 3.81) (layer F.Fab) (width 0.1))
     (fp_line (start 1.27 -1.27) (end 1.27 3.81) (layer F.Fab) (width 0.1))
     (fp_line (start -0.635 -1.27) (end 1.27 -1.27) (layer F.Fab) (width 0.1))
-    (fp_text user %R (at 0 1.27) (layer F.Fab)
+    (fp_text user %R (at 0 1.27 90) (layer F.Fab)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (pad 1 thru_hole rect (at 0 0 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
+    (pad 1 thru_hole rect (at 0 0 180) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 6 "Net-(C3-Pad2)"))
-    (pad 2 thru_hole oval (at 0 2.54 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
+    (pad 2 thru_hole oval (at 0 2.54 180) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 32 GND))
     (model ${KISYS3DMOD}/Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x02_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
@@ -1046,11 +1204,11 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5EF7A5D2)
-    (at 152.4 -41.656)
+    (at 196.596 111.252)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5F0FEF81)
-    (fp_text reference U1 (at 2.032 10.414) (layer F.SilkS)
+    (fp_text reference U1 (at -0.254 10.16) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value LM386 (at 3.94 10.33) (layer F.Fab)
@@ -1096,7 +1254,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5F1C7A47)
-    (at 16.764 -112.522)
+    (at 58.674 37.846)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /60F4E92A/60F6A6DA)
@@ -1147,7 +1305,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5EF76B3F)
-    (at 45.339 -112.522)
+    (at 87.249 37.846)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5EF17819/60F6A6DA)
@@ -1198,7 +1356,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5EF76AEE)
-    (at 73.914 -112.522)
+    (at 115.824 37.846)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5EF23030/60F6A6DA)
@@ -1249,7 +1407,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5EF76A9D)
-    (at 102.489 -112.014)
+    (at 144.399 38.354)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5EF259E1/60F6A6DA)
@@ -1300,7 +1458,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5EF76BE1)
-    (at 131.064 -112.014)
+    (at 172.974 38.354)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5EF27E4C/60F6A6DA)
@@ -1351,7 +1509,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5EF76B90)
-    (at 16.764 -89.238667)
+    (at 58.674 61.129333)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5EF2B213/60F6A6DA)
@@ -1402,7 +1560,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5EF76A4C)
-    (at 45.339 -89.238667)
+    (at 87.249 61.129333)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5EF6055A/60F6A6DA)
@@ -1453,7 +1611,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5EF769FB)
-    (at 73.914 -89.238667)
+    (at 115.824 61.129333)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5EF6057F/60F6A6DA)
@@ -1504,7 +1662,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5F1C8319)
-    (at 102.489 -88.9)
+    (at 144.399 61.468)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5EF605A2/60F6A6DA)
@@ -1555,7 +1713,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5EF7805D)
-    (at 131.064 -88.9)
+    (at 172.974 61.468)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5EF605C5/60F6A6DA)
@@ -1606,7 +1764,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5F1C86BB)
-    (at 16.764 -65.955334)
+    (at 58.674 84.412666)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5EF605E8/60F6A6DA)
@@ -1657,7 +1815,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5EF77FBB)
-    (at 45.339 -65.955334)
+    (at 87.249 84.412666)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5EF6060B/60F6A6DA)
@@ -1708,7 +1866,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5EF77F6A)
-    (at 73.914 -65.955334)
+    (at 115.824 84.412666)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5EF7A07F/60F6A6DA)
@@ -1759,7 +1917,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C2305)
-    (at 7.62 -7.62 270)
+    (at 49.53 142.748 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /60FBC6A1)
@@ -1801,7 +1959,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C08C0)
-    (at 15.108571 -12.7 270)
+    (at 57.018571 137.668 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5EF1782E)
@@ -1843,7 +2001,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C22C6)
-    (at 23.385713 -7.62 270)
+    (at 65.295713 142.748 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5EF23045)
@@ -1885,7 +2043,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C0842)
-    (at 30.874284 -12.7 270)
+    (at 72.784284 137.668 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5EF259F6)
@@ -1927,7 +2085,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C2287)
-    (at 38.362855 -7.62 270)
+    (at 80.272855 142.748 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5EF27E61)
@@ -1969,7 +2127,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C07C4)
-    (at 45.72 -12.7 270)
+    (at 87.63 137.668 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5EF2B228)
@@ -2011,7 +2169,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C23C2)
-    (at 53.34 -7.62 270)
+    (at 95.25 142.748 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5EF7A094)
@@ -2053,7 +2211,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C2383)
-    (at 68.58 -7.62 270)
+    (at 110.49 142.748 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5F1B4BD7)
@@ -2095,7 +2253,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C097D)
-    (at 76.2 -12.7 270)
+    (at 118.11 137.668 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5F1B4BF9)
@@ -2137,7 +2295,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C2344)
-    (at 83.82 -7.62 270)
+    (at 125.73 142.748 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5F1AE59A)
@@ -2179,7 +2337,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C0A79)
-    (at 91.44 -12.7 270)
+    (at 133.35 137.668 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5EF6056F)
@@ -2221,7 +2379,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C2401)
-    (at 99.06 -7.62 270)
+    (at 140.97 142.748 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5EF60594)
@@ -2263,7 +2421,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5EF76E9F)
-    (at 11.176 -113.284)
+    (at 53.086 37.084)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /60F4E92A/5F127BEF)
@@ -2298,7 +2456,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5EF773AF)
-    (at 39.751 -113.284)
+    (at 81.661 37.084)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5EF17819/5F127BEF)
@@ -2333,7 +2491,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5EF76458)
-    (at 68.326 -113.284)
+    (at 110.236 37.084)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5EF23030/5F127BEF)
@@ -2368,7 +2526,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5EF78111)
-    (at 96.901 -112.776)
+    (at 138.811 37.592)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5EF259E1/5F127BEF)
@@ -2403,7 +2561,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5EF764C4)
-    (at 125.476 -112.776)
+    (at 167.386 37.592)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5EF27E4C/5F127BEF)
@@ -2438,7 +2596,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5EF780DB)
-    (at 11.176 -90.000667)
+    (at 53.086 60.367333)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5EF2B213/5F127BEF)
@@ -2473,7 +2631,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5EF7648E)
-    (at 39.751 -90.000667)
+    (at 81.661 60.367333)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5EF6055A/5F127BEF)
@@ -2508,7 +2666,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5EF77469)
-    (at 68.326 -90.000667)
+    (at 110.236 60.367333)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5EF6057F/5F127BEF)
@@ -2543,7 +2701,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5EF77289)
-    (at 96.901 -89.662)
+    (at 138.811 60.706)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5EF605A2/5F127BEF)
@@ -2578,7 +2736,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5EF772BF)
-    (at 125.476 -89.662)
+    (at 167.386 60.706)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5EF605C5/5F127BEF)
@@ -2613,7 +2771,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5EF77253)
-    (at 11.176 -66.717334)
+    (at 53.086 83.650666)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5EF605E8/5F127BEF)
@@ -2648,7 +2806,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5EF772F5)
-    (at 39.751 -66.717334)
+    (at 81.661 83.650666)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5EF6060B/5F127BEF)
@@ -2683,7 +2841,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5EF780A5)
-    (at 68.326 -66.717334)
+    (at 110.236 83.650666)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5EF7A07F/5F127BEF)
@@ -2718,7 +2876,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5EF77119)
-    (at 60.706 -80.094667 270)
+    (at 102.616 70.273333 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5EF6057F/5F13ACF1)
@@ -2760,7 +2918,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5EF7709B)
-    (at 89.281 -79.756 270)
+    (at 131.191 70.612 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5EF605A2/5F13ACF1)
@@ -2802,7 +2960,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5EF771D3)
-    (at 117.856 -79.756 270)
+    (at 159.766 70.612 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5EF605C5/5F13ACF1)
@@ -2844,7 +3002,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5F1DCEAA)
-    (at 3.556 -56.811334 270)
+    (at 45.466 93.556666 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5EF605E8/5F13ACF1)
@@ -2886,7 +3044,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5EF7732F)
-    (at 32.131 -56.811334 270)
+    (at 74.041 93.556666 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5EF6060B/5F13ACF1)
@@ -2928,7 +3086,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5EF7701D)
-    (at 60.706 -56.811334 270)
+    (at 102.616 93.556666 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5EF7A07F/5F13ACF1)
@@ -2970,11 +3128,11 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1E5D05)
-    (at 144.272 -41.402)
+    (at 187.706 111.506)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F18156C)
-    (fp_text reference C1 (at -1.778 0 90) (layer F.SilkS)
+    (fp_text reference C1 (at -2.032 0.508 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value .1uF (at 2.5 2.5) (layer F.Fab)
@@ -3009,11 +3167,11 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1E5CC9)
-    (at 144.272 -37.846)
+    (at 187.706 115.062)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F234E50)
-    (fp_text reference C2 (at -1.778 0.254 90) (layer F.SilkS)
+    (fp_text reference C2 (at -2.032 0.508 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value 47nF (at 2.5 2.5) (layer F.Fab)
@@ -3048,7 +3206,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF80714)
-    (at 22.86 -115.824 180)
+    (at 64.77 34.544 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /60F4E92A/60F6EAC0)
@@ -3087,7 +3245,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF77B7F)
-    (at 19.304 -101.346)
+    (at 61.214 49.022)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /60F4E92A/60F6A6A0)
@@ -3126,7 +3284,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF77B43)
-    (at 51.435 -115.824 180)
+    (at 93.345 34.544 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF17819/60F6EAC0)
@@ -3165,7 +3323,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF77C6F)
-    (at 47.879 -101.346)
+    (at 89.789 49.022)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF17819/60F6A6A0)
@@ -3204,7 +3362,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF77771)
-    (at 80.01 -115.824 180)
+    (at 121.92 34.544 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF23030/60F6EAC0)
@@ -3243,7 +3401,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF77BBB)
-    (at 76.454 -101.346)
+    (at 118.364 49.022)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF23030/60F6A6A0)
@@ -3282,7 +3440,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF7641E)
-    (at 108.585 -115.316 180)
+    (at 150.495 35.052 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF259E1/60F6EAC0)
@@ -3321,7 +3479,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF77195)
-    (at 105.029 -100.838)
+    (at 146.939 49.53)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF259E1/60F6A6A0)
@@ -3360,7 +3518,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF76D5D)
-    (at 137.16 -115.316 180)
+    (at 179.07 35.052 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF27E4C/60F6EAC0)
@@ -3399,7 +3557,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF7705D)
-    (at 133.604 -100.838)
+    (at 175.514 49.53)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF27E4C/60F6A6A0)
@@ -3438,7 +3596,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF770DB)
-    (at 22.86 -92.540667 180)
+    (at 64.77 57.827333 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF2B213/60F6EAC0)
@@ -3477,7 +3635,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF77D23)
-    (at 19.304 -78.062667)
+    (at 61.214 72.305333)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF2B213/60F6A6A0)
@@ -3516,7 +3674,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF766D9)
-    (at 51.435 -92.540667 180)
+    (at 93.345 57.827333 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF6055A/60F6EAC0)
@@ -3555,7 +3713,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF7836B)
-    (at 47.879 -78.062667)
+    (at 89.789 72.305333)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF6055A/60F6A6A0)
@@ -3594,7 +3752,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF77C33)
-    (at 80.01 -92.540667 180)
+    (at 121.92 57.827333 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF6057F/60F6EAC0)
@@ -3633,7 +3791,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF76CA9)
-    (at 76.454 -78.062667)
+    (at 118.364 72.305333)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF6057F/60F6A6A0)
@@ -3672,7 +3830,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF76C6D)
-    (at 108.585 -92.202 180)
+    (at 150.495 58.166 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF605A2/60F6EAC0)
@@ -3711,7 +3869,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF77CAB)
-    (at 105.029 -77.724)
+    (at 146.939 72.644)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF605A2/60F6A6A0)
@@ -3750,7 +3908,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF776BD)
-    (at 137.16 -92.202 180)
+    (at 179.07 58.166 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF605C5/60F6EAC0)
@@ -3789,7 +3947,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF77735)
-    (at 133.604 -77.724)
+    (at 175.514 72.644)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF605C5/60F6A6A0)
@@ -3828,7 +3986,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF776F9)
-    (at 22.86 -69.257334 180)
+    (at 64.77 81.110666 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF605E8/60F6EAC0)
@@ -3867,7 +4025,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF77591)
-    (at 19.304 -54.779334)
+    (at 61.214 95.588666)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF605E8/60F6A6A0)
@@ -3906,7 +4064,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF77555)
-    (at 51.435 -69.257334 180)
+    (at 93.345 81.110666 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF6060B/60F6EAC0)
@@ -3945,7 +4103,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF774DD)
-    (at 47.879 -54.779334)
+    (at 89.789 95.588666)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF6060B/60F6A6A0)
@@ -3984,7 +4142,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF774A1)
-    (at 80.01 -69.257334 180)
+    (at 121.92 81.110666 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF7A07F/60F6EAC0)
@@ -4023,7 +4181,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5EF77609)
-    (at 76.454 -54.779334)
+    (at 118.364 95.588666)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5EF7A07F/60F6A6A0)
@@ -4062,7 +4220,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF78269)
-    (at 8.128 -112.522 90)
+    (at 50.038 37.846 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /60F4E92A/5F127BF5)
@@ -4095,7 +4253,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF7823F)
-    (at 36.703 -112.522 90)
+    (at 78.613 37.846 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF17819/5F127BF5)
@@ -4128,7 +4286,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF782BD)
-    (at 65.278 -112.522 90)
+    (at 107.188 37.846 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF23030/5F127BF5)
@@ -4161,7 +4319,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF78293)
-    (at 93.853 -112.014 90)
+    (at 135.763 38.354 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF259E1/5F127BF5)
@@ -4194,7 +4352,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF7833B)
-    (at 122.428 -112.014 90)
+    (at 164.338 38.354 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF27E4C/5F127BF5)
@@ -4227,7 +4385,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF78311)
-    (at 8.128 -89.238667 90)
+    (at 50.038 61.129333 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF2B213/5F127BF5)
@@ -4260,7 +4418,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF782E7)
-    (at 36.703 -89.238667 90)
+    (at 78.613 61.129333 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF6055A/5F127BF5)
@@ -4293,7 +4451,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF78215)
-    (at 65.278 -89.238667 90)
+    (at 107.188 61.129333 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF6057F/5F127BF5)
@@ -4326,7 +4484,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF7816D)
-    (at 93.853 -88.9 90)
+    (at 135.763 61.468 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF605A2/5F127BF5)
@@ -4359,7 +4517,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF78143)
-    (at 122.428 -88.9 90)
+    (at 164.338 61.468 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF605C5/5F127BF5)
@@ -4392,7 +4550,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF781EB)
-    (at 8.128 -65.955334 90)
+    (at 50.038 84.412666 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF605E8/5F127BF5)
@@ -4425,7 +4583,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF781C1)
-    (at 36.703 -65.955334 90)
+    (at 78.613 84.412666 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF6060B/5F127BF5)
@@ -4458,7 +4616,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5EF78197)
-    (at 65.278 -65.955334 90)
+    (at 107.188 84.412666 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF7A07F/5F127BF5)
@@ -4490,15 +4648,15 @@
     )
   )
 
-  (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1E8784)
-    (at 159.258 -45.72)
+  (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1E9AFD)
+    (at 191.008 34.544 270)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F0694ED)
-    (fp_text reference R1 (at 1.016 -2.286 180) (layer F.SilkS)
+    (fp_text reference R1 (at 4.572 0.762 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value 330 (at 1.27 2.37) (layer F.Fab)
+    (fp_text value 330 (at 1.27 2.37 90) (layer F.Fab)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_line (start 3.59 -1.5) (end -1.5 -1.5) (layer F.CrtYd) (width 0.05))
@@ -4509,12 +4667,12 @@
     (fp_line (start 0 0) (end 2.54 0) (layer F.Fab) (width 0.1))
     (fp_circle (center 0 0) (end 1.37 0) (layer F.SilkS) (width 0.12))
     (fp_circle (center 0 0) (end 1.25 0) (layer F.Fab) (width 0.1))
-    (fp_text user %R (at 1.27 -2.37) (layer F.Fab)
+    (fp_text user %R (at 1.27 -2.37 90) (layer F.Fab)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (pad 1 thru_hole circle (at 0 0) (size 1.6 1.6) (drill 0.8) (layers *.Cu *.Mask)
+    (pad 1 thru_hole circle (at 0 0 270) (size 1.6 1.6) (drill 0.8) (layers *.Cu *.Mask)
       (net 103 "Net-(R1-Pad1)"))
-    (pad 2 thru_hole oval (at 2.54 0) (size 1.6 1.6) (drill 0.8) (layers *.Cu *.Mask)
+    (pad 2 thru_hole oval (at 2.54 0 270) (size 1.6 1.6) (drill 0.8) (layers *.Cu *.Mask)
       (net 50 "Net-(D1-Pad2)"))
     (model ${KISYS3DMOD}/Resistor_THT.3dshapes/R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical.wrl
       (at (xyz 0 0 0))
@@ -4524,7 +4682,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1DDB58)
-    (at 4.572 -113.792 180)
+    (at 46.482 36.576 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /60F4E92A/60F6A69A)
@@ -4650,7 +4808,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB30B)
-    (at 33.147 -113.792 180)
+    (at 75.057 36.576 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5EF17819/60F6A69A)
@@ -4776,7 +4934,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB376)
-    (at 61.722 -113.792 180)
+    (at 103.632 36.576 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5EF23030/60F6A69A)
@@ -4902,7 +5060,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB3E1)
-    (at 90.297 -113.284 180)
+    (at 132.207 37.084 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5EF259E1/60F6A69A)
@@ -5028,7 +5186,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB44C)
-    (at 118.872 -113.284 180)
+    (at 160.782 37.084 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5EF27E4C/60F6A69A)
@@ -5154,7 +5312,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB4B7)
-    (at 4.572 -90.508667 180)
+    (at 46.482 59.859333 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5EF2B213/60F6A69A)
@@ -5280,7 +5438,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB522)
-    (at 33.147 -90.508667 180)
+    (at 75.057 59.859333 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5EF6055A/60F6A69A)
@@ -5406,7 +5564,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB58D)
-    (at 61.722 -90.508667 180)
+    (at 103.632 59.859333 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5EF6057F/60F6A69A)
@@ -5532,7 +5690,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB5F8)
-    (at 90.297 -90.17 180)
+    (at 132.207 60.198 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5EF605A2/60F6A69A)
@@ -5658,7 +5816,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB663)
-    (at 118.872 -90.17 180)
+    (at 160.782 60.198 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5EF605C5/60F6A69A)
@@ -5784,7 +5942,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB6CE)
-    (at 4.572 -67.225334 180)
+    (at 46.482 83.142666 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5EF605E8/60F6A69A)
@@ -5910,7 +6068,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB739)
-    (at 33.147 -67.225334 180)
+    (at 75.057 83.142666 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5EF6060B/60F6A69A)
@@ -6036,7 +6194,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB7A4)
-    (at 61.722 -67.225334 180)
+    (at 103.632 83.142666 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5EF7A07F/60F6A69A)
@@ -6162,7 +6320,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB823)
-    (at 108.585 -69.088 180)
+    (at 150.495 81.28 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F1B4BC2/60F6EAC0)
@@ -6201,7 +6359,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB88F)
-    (at 90.297 -67.056 180)
+    (at 132.207 83.312 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5F1B4BC2/60F6A69A)
@@ -6327,7 +6485,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB8A4)
-    (at 105.029 -54.61)
+    (at 146.939 95.758)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F1B4BC2/60F6A6A0)
@@ -6366,7 +6524,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB8B9)
-    (at 137.16 -69.088 180)
+    (at 179.07 81.28 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F1B4BE4/60F6EAC0)
@@ -6405,7 +6563,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB925)
-    (at 118.872 -67.056 180)
+    (at 160.782 83.312 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5F1B4BE4/60F6A69A)
@@ -6531,7 +6689,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB93A)
-    (at 133.604 -54.61)
+    (at 175.514 95.758)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F1B4BE4/60F6A6A0)
@@ -6570,7 +6728,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB94F)
-    (at 22.86 -45.974 180)
+    (at 64.77 104.394 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F1D8DB1/60F6EAC0)
@@ -6609,7 +6767,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB9BB)
-    (at 4.572 -43.942 180)
+    (at 46.482 106.426 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5F1D8DB1/60F6A69A)
@@ -6735,7 +6893,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB9D0)
-    (at 19.304 -31.496)
+    (at 61.214 118.872)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F1D8DB1/60F6A6A0)
@@ -6774,7 +6932,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BB9E5)
-    (at 51.435 -45.974 180)
+    (at 93.345 104.394 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F1D8DD3/60F6EAC0)
@@ -6813,7 +6971,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BBA51)
-    (at 33.147 -43.942 180)
+    (at 75.057 106.426 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5F1D8DD3/60F6A69A)
@@ -6939,7 +7097,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BBA66)
-    (at 47.879 -31.496)
+    (at 89.789 118.872)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F1D8DD3/60F6A6A0)
@@ -6978,7 +7136,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BBA7B)
-    (at 80.01 -45.974 180)
+    (at 121.92 104.394 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F1AE585/60F6EAC0)
@@ -7017,7 +7175,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BBAE7)
-    (at 61.722 -43.942 180)
+    (at 103.632 106.426 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5F1AE585/60F6A69A)
@@ -7143,7 +7301,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BBAFC)
-    (at 76.454 -31.496)
+    (at 118.364 118.872)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F1AE585/60F6A6A0)
@@ -7182,7 +7340,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BBB11)
-    (at 108.585 -45.974 180)
+    (at 150.495 104.394 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F2156AD/60F6EAC0)
@@ -7221,7 +7379,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BBB7D)
-    (at 90.297 -43.942 180)
+    (at 132.207 106.426 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5F2156AD/60F6A69A)
@@ -7347,7 +7505,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BBB92)
-    (at 105.029 -31.496)
+    (at 146.939 118.872)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F2156AD/60F6A6A0)
@@ -7386,7 +7544,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BBBA7)
-    (at 137.16 -45.974 180)
+    (at 179.07 104.394 180)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F2156CF/60F6EAC0)
@@ -7425,7 +7583,7 @@
   )
 
   (module Capacitor_THT:CP_Radial_D4.0mm_P2.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BBC13)
-    (at 118.872 -43.942 180)
+    (at 160.782 106.426 180)
     (descr "CP, Radial series, Radial, pin pitch=2.00mm, , diameter=4mm, Electrolytic Capacitor")
     (tags "CP Radial series Radial pin pitch 2.00mm  diameter 4mm Electrolytic Capacitor")
     (path /5F2156CF/60F6A69A)
@@ -7551,7 +7709,7 @@
   )
 
   (module Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm (layer F.Cu) (tedit 5AE50EF0) (tstamp 5F1BBC28)
-    (at 133.604 -31.496)
+    (at 175.514 118.872)
     (descr "C, Disc series, Radial, pin pitch=5.00mm, , diameter*width=5*2.5mm^2, Capacitor, http://cdn-reichelt.de/documents/datenblatt/B300/DS_KERKO_TC.pdf")
     (tags "C Disc series Radial pin pitch 5.00mm  diameter 5mm width 2.5mm Capacitor")
     (path /5F2156CF/60F6A6A0)
@@ -7590,7 +7748,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5F1BBC3B)
-    (at 96.901 -66.548)
+    (at 138.811 83.82)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5F1B4BC2/5F127BEF)
@@ -7625,7 +7783,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5F1BBC4E)
-    (at 125.476 -66.548)
+    (at 167.386 83.82)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5F1B4BE4/5F127BEF)
@@ -7660,7 +7818,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5F1BBC61)
-    (at 11.176 -43.434)
+    (at 53.086 106.934)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5F1D8DB1/5F127BEF)
@@ -7695,7 +7853,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5F1BBC74)
-    (at 39.751 -43.434)
+    (at 81.661 106.934)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5F1D8DD3/5F127BEF)
@@ -7730,7 +7888,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5F1BBC87)
-    (at 68.326 -43.434)
+    (at 110.236 106.934)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5F1AE585/5F127BEF)
@@ -7765,7 +7923,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5F1BBC9A)
-    (at 96.901 -43.434)
+    (at 138.811 106.934)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5F2156AD/5F127BEF)
@@ -7800,7 +7958,7 @@
   )
 
   (module LED_THT:LED_D3.0mm (layer F.Cu) (tedit 587A3A7B) (tstamp 5F1BBCAD)
-    (at 125.476 -43.434)
+    (at 167.386 106.934)
     (descr "LED, diameter 3.0mm, 2 pins")
     (tags "LED diameter 3.0mm 2 pins")
     (path /5F2156CF/5F127BEF)
@@ -7834,12 +7992,12 @@
     )
   )
 
-  (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1E5A04)
-    (at 174.752 -32.766)
+  (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1E9CCE)
+    (at 205.486 41.91)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F3FF342)
-    (fp_text reference R2 (at -2.54 -0.254 90) (layer F.SilkS)
+    (fp_text reference R2 (at -2.54 0.508 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value 100 (at 1.27 2.37) (layer F.Fab)
@@ -7868,11 +8026,11 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1E5D3B)
-    (at 145.542 -34.29)
+    (at 188.976 118.618)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F2BD566)
-    (fp_text reference R3 (at -2.286 0 90) (layer F.SilkS)
+    (fp_text reference R3 (at -3.302 0.508 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value 10 (at 1.27 2.37) (layer F.Fab)
@@ -7901,7 +8059,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBCCA)
-    (at 10.414 -101.346 180)
+    (at 52.324 49.022 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /60F4E92A/60F6A68E)
@@ -7934,7 +8092,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBCD8)
-    (at 13.97 -101.346)
+    (at 55.88 49.022)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /60F4E92A/5EFAE830)
@@ -7967,7 +8125,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBCE6)
-    (at 38.989 -101.346 180)
+    (at 80.899 49.022 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF17819/60F6A68E)
@@ -8000,7 +8158,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBCF4)
-    (at 42.545 -101.346)
+    (at 84.455 49.022)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF17819/5EFAE830)
@@ -8033,7 +8191,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBD02)
-    (at 67.564 -101.346 180)
+    (at 109.474 49.022 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF23030/60F6A68E)
@@ -8066,7 +8224,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBD10)
-    (at 71.12 -101.346)
+    (at 113.03 49.022)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF23030/5EFAE830)
@@ -8099,7 +8257,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBD1E)
-    (at 96.139 -100.838 180)
+    (at 138.049 49.53 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF259E1/60F6A68E)
@@ -8132,7 +8290,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBD2C)
-    (at 99.695 -100.838)
+    (at 141.605 49.53)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF259E1/5EFAE830)
@@ -8165,7 +8323,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBD3A)
-    (at 124.714 -100.838 180)
+    (at 166.624 49.53 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF27E4C/60F6A68E)
@@ -8198,7 +8356,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBD48)
-    (at 128.27 -100.838)
+    (at 170.18 49.53)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF27E4C/5EFAE830)
@@ -8231,7 +8389,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBD56)
-    (at 10.414 -78.062667 180)
+    (at 52.324 72.305333 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF2B213/60F6A68E)
@@ -8264,7 +8422,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBD64)
-    (at 13.97 -78.062667)
+    (at 55.88 72.305333)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF2B213/5EFAE830)
@@ -8297,7 +8455,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBD72)
-    (at 38.989 -78.062667 180)
+    (at 80.899 72.305333 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF6055A/60F6A68E)
@@ -8330,7 +8488,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBD80)
-    (at 42.545 -78.062667)
+    (at 84.455 72.305333)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF6055A/5EFAE830)
@@ -8363,7 +8521,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBD8E)
-    (at 67.564 -78.062667 180)
+    (at 109.474 72.305333 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF6057F/60F6A68E)
@@ -8396,7 +8554,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBD9C)
-    (at 71.12 -78.062667)
+    (at 113.03 72.305333)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF6057F/5EFAE830)
@@ -8429,7 +8587,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBDAA)
-    (at 96.139 -77.724 180)
+    (at 138.049 72.644 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF605A2/60F6A68E)
@@ -8462,7 +8620,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBDB8)
-    (at 99.695 -77.724)
+    (at 141.605 72.644)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF605A2/5EFAE830)
@@ -8495,7 +8653,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBDC6)
-    (at 124.714 -77.724 180)
+    (at 166.624 72.644 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF605C5/60F6A68E)
@@ -8528,7 +8686,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBDD4)
-    (at 128.27 -77.724)
+    (at 170.18 72.644)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF605C5/5EFAE830)
@@ -8561,7 +8719,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBDE2)
-    (at 10.414 -54.779334 180)
+    (at 52.324 95.588666 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF605E8/60F6A68E)
@@ -8594,7 +8752,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBDF0)
-    (at 13.97 -54.779334)
+    (at 55.88 95.588666)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF605E8/5EFAE830)
@@ -8627,7 +8785,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBDFE)
-    (at 38.989 -54.779334 180)
+    (at 80.899 95.588666 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF6060B/60F6A68E)
@@ -8660,7 +8818,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBE0C)
-    (at 42.545 -54.779334)
+    (at 84.455 95.588666)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF6060B/5EFAE830)
@@ -8693,7 +8851,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBE1A)
-    (at 67.564 -54.779334 180)
+    (at 109.474 95.588666 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF7A07F/60F6A68E)
@@ -8726,7 +8884,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBE28)
-    (at 71.12 -54.779334)
+    (at 113.03 95.588666)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5EF7A07F/5EFAE830)
@@ -8759,7 +8917,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBE44)
-    (at 93.853 -65.786 90)
+    (at 135.763 84.582 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F1B4BC2/5F127BF5)
@@ -8792,7 +8950,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBE53)
-    (at 96.139 -54.61 180)
+    (at 138.049 95.758 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F1B4BC2/60F6A68E)
@@ -8825,7 +8983,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBE62)
-    (at 99.695 -54.61)
+    (at 141.605 95.758)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F1B4BC2/5EFAE830)
@@ -8858,7 +9016,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBE71)
-    (at 122.428 -65.786 90)
+    (at 164.338 84.582 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F1B4BE4/5F127BF5)
@@ -8891,7 +9049,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBE80)
-    (at 124.714 -54.61 180)
+    (at 166.624 95.758 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F1B4BE4/60F6A68E)
@@ -8924,7 +9082,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBE8F)
-    (at 128.27 -54.61)
+    (at 170.18 95.758)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F1B4BE4/5EFAE830)
@@ -8957,7 +9115,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBE9E)
-    (at 8.128 -42.672 90)
+    (at 50.038 107.696 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F1D8DB1/5F127BF5)
@@ -8990,7 +9148,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBEAD)
-    (at 10.414 -31.496 180)
+    (at 52.324 118.872 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F1D8DB1/60F6A68E)
@@ -9023,7 +9181,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBEBC)
-    (at 13.97 -31.496)
+    (at 55.88 118.872)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F1D8DB1/5EFAE830)
@@ -9056,7 +9214,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBECB)
-    (at 36.703 -42.672 90)
+    (at 78.613 107.696 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F1D8DD3/5F127BF5)
@@ -9089,7 +9247,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBEDA)
-    (at 38.989 -31.496 180)
+    (at 80.899 118.872 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F1D8DD3/60F6A68E)
@@ -9122,7 +9280,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBEE9)
-    (at 42.545 -31.496)
+    (at 84.455 118.872)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F1D8DD3/5EFAE830)
@@ -9155,7 +9313,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBEF8)
-    (at 65.278 -42.672 90)
+    (at 107.188 107.696 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F1AE585/5F127BF5)
@@ -9188,7 +9346,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBF07)
-    (at 67.564 -31.496 180)
+    (at 109.474 118.872 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F1AE585/60F6A68E)
@@ -9221,7 +9379,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBF16)
-    (at 71.12 -31.496)
+    (at 113.03 118.872)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F1AE585/5EFAE830)
@@ -9254,7 +9412,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBF25)
-    (at 93.853 -42.672 90)
+    (at 135.763 107.696 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F2156AD/5F127BF5)
@@ -9287,7 +9445,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBF34)
-    (at 96.139 -31.496 180)
+    (at 138.049 118.872 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F2156AD/60F6A68E)
@@ -9320,7 +9478,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBF43)
-    (at 99.695 -31.496)
+    (at 141.605 118.872)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F2156AD/5EFAE830)
@@ -9353,7 +9511,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBF52)
-    (at 122.428 -42.672 90)
+    (at 164.338 107.696 90)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F2156CF/5F127BF5)
@@ -9386,7 +9544,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBF61)
-    (at 124.714 -31.496 180)
+    (at 166.624 118.872 180)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F2156CF/60F6A68E)
@@ -9419,7 +9577,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5F1BBF70)
-    (at 128.27 -31.496)
+    (at 170.18 118.872)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=2.54mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 2.54mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5F2156CF/5EFAE830)
@@ -9452,7 +9610,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5F1BC0BB)
-    (at 89.281 -56.642 270)
+    (at 131.191 93.726 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5F1B4BC2/5F13ACF1)
@@ -9494,7 +9652,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5F1BC0E9)
-    (at 117.856 -56.642 270)
+    (at 159.766 93.726 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5F1B4BE4/5F13ACF1)
@@ -9536,7 +9694,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5F1BC117)
-    (at 3.556 -33.528 270)
+    (at 45.466 116.84 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5F1D8DB1/5F13ACF1)
@@ -9578,7 +9736,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5F1BC145)
-    (at 32.131 -33.528 270)
+    (at 74.041 116.84 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5F1D8DD3/5F13ACF1)
@@ -9620,7 +9778,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5F1BC173)
-    (at 60.706 -33.528 270)
+    (at 102.616 116.84 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5F1AE585/5F13ACF1)
@@ -9662,7 +9820,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5F1BC1A1)
-    (at 89.281 -33.528 270)
+    (at 131.191 116.84 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5F2156AD/5F13ACF1)
@@ -9704,7 +9862,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical (layer F.Cu) (tedit 5A3D4994) (tstamp 5F1BC1CF)
-    (at 117.856 -33.528 270)
+    (at 159.766 116.84 270)
     (descr "Potentiometer, vertical, Bourns 3296W, https://www.bourns.com/pdfs/3296.pdf")
     (tags "Potentiometer vertical Bourns 3296W")
     (path /5F2156CF/5F13ACF1)
@@ -9745,8 +9903,8 @@
     )
   )
 
-  (module Button_Switch_THT:SW_Slide_1P2T_CK_OS102011MS2Q (layer B.Cu) (tedit 5C5044D5) (tstamp 5F1E864B)
-    (at 165.354 -5.334 90)
+  (module Button_Switch_THT:SW_Slide_1P2T_CK_OS102011MS2Q (layer B.Cu) (tedit 5C5044D5) (tstamp 5F1EB85E)
+    (at 198.12 40.64 90)
     (descr "CuK miniature slide switch, OS series, SPDT, https://www.ckswitches.com/media/1428/os.pdf")
     (tags "switch SPDT")
     (path /5F3DD481)
@@ -9801,7 +9959,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C218B)
-    (at 114.3 -7.62 270)
+    (at 156.21 142.748 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5EF605B7)
@@ -9843,7 +10001,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C060B)
-    (at 121.92 -12.7 270)
+    (at 163.83 137.668 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5EF605DA)
@@ -9885,7 +10043,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C214C)
-    (at 129.54 -7.62 270)
+    (at 171.45 142.748 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5EF605FD)
@@ -9927,7 +10085,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C06C8)
-    (at 137.16 -12.7 270)
+    (at 179.07 137.668 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5EF60620)
@@ -9969,7 +10127,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C21CA)
-    (at 144.78 -7.62 270)
+    (at 186.69 142.748 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5F1D8DC6)
@@ -10011,7 +10169,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C0746)
-    (at 152.4 -12.7 270)
+    (at 194.31 137.668 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5F1D8DE8)
@@ -10053,7 +10211,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C2209)
-    (at 160.02 -7.62 270)
+    (at 201.93 142.748 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5F2156C2)
@@ -10095,7 +10253,7 @@
   )
 
   (module Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx (layer F.Cu) (tedit 5D84F0EF) (tstamp 5F1C2248)
-    (at 175.26 -7.62 270)
+    (at 217.17 142.748 270)
     (descr SW_TH_Tactile_Omron_B3F-10xx_https://www.omron.com/ecb/products/pdf/en-b3f.pdf)
     (tags "Omron B3F-10xx")
     (path /5F2156E4)
@@ -10137,7 +10295,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5F1BC2D6)
-    (at 102.489 -65.786)
+    (at 144.399 84.582)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5F1B4BC2/60F6A6DA)
@@ -10188,7 +10346,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5F1BC2F2)
-    (at 131.064 -65.786)
+    (at 172.974 84.582)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5F1B4BE4/60F6A6DA)
@@ -10239,7 +10397,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5F1BC30E)
-    (at 16.764 -42.672)
+    (at 58.674 107.696)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5F1D8DB1/60F6A6DA)
@@ -10290,7 +10448,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5F1BC32A)
-    (at 45.339 -42.672)
+    (at 87.249 107.696)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5F1D8DD3/60F6A6DA)
@@ -10341,7 +10499,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5F1BC346)
-    (at 73.914 -42.672)
+    (at 115.824 107.696)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5F1AE585/60F6A6DA)
@@ -10392,7 +10550,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5F1BC362)
-    (at 102.489 -42.672)
+    (at 144.399 107.696)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5F2156AD/60F6A6DA)
@@ -10443,7 +10601,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5F1BC37E)
-    (at 131.064 -42.672)
+    (at 172.974 107.696)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5F2156CF/60F6A6DA)
@@ -10493,12 +10651,12 @@
     )
   )
 
-  (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCCDF)
-    (at 178.562 -35.814 90)
+  (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1E9C9E)
+    (at 209.042 37.846 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5F169489)
-    (fp_text reference RV1 (at 2.54 -7.112 90) (layer F.SilkS)
+    (fp_text reference RV1 (at 0 -7.112 90) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value R_POT_TRIM_US (at 2.5 2.06 90) (layer F.Fab)
@@ -10531,7 +10689,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCCF0)
-    (at 13.462 -104.394 90)
+    (at 55.372 45.974 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /60F4E92A/60F6A6C5)
@@ -10568,7 +10726,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCD01)
-    (at 42.037 -104.394 90)
+    (at 83.947 45.974 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5EF17819/60F6A6C5)
@@ -10605,7 +10763,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCD12)
-    (at 70.612 -104.394 90)
+    (at 112.522 45.974 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5EF23030/60F6A6C5)
@@ -10642,7 +10800,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCD23)
-    (at 99.187 -103.886 90)
+    (at 141.097 46.482 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5EF259E1/60F6A6C5)
@@ -10679,7 +10837,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCD34)
-    (at 127.762 -103.886 90)
+    (at 169.672 46.482 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5EF27E4C/60F6A6C5)
@@ -10716,7 +10874,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCD45)
-    (at 13.462 -81.110667 90)
+    (at 55.372 69.257333 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5EF2B213/60F6A6C5)
@@ -10753,7 +10911,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCD56)
-    (at 42.037 -81.110667 90)
+    (at 83.947 69.257333 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5EF6055A/60F6A6C5)
@@ -10790,7 +10948,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCD67)
-    (at 70.612 -81.110667 90)
+    (at 112.522 69.257333 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5EF6057F/60F6A6C5)
@@ -10827,7 +10985,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCD78)
-    (at 99.187 -80.772 90)
+    (at 141.097 69.596 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5EF605A2/60F6A6C5)
@@ -10864,7 +11022,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCD89)
-    (at 127.762 -80.772 90)
+    (at 169.672 69.596 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5EF605C5/60F6A6C5)
@@ -10901,7 +11059,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCD9A)
-    (at 13.462 -57.827334 90)
+    (at 55.372 92.540666 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5EF605E8/60F6A6C5)
@@ -10938,7 +11096,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCDAB)
-    (at 42.037 -57.827334 90)
+    (at 83.947 92.540666 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5EF6060B/60F6A6C5)
@@ -10975,7 +11133,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCDBC)
-    (at 70.612 -57.827334 90)
+    (at 112.522 92.540666 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5EF7A07F/60F6A6C5)
@@ -11012,7 +11170,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCDCD)
-    (at 99.187 -57.658 90)
+    (at 141.097 92.71 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5F1B4BC2/60F6A6C5)
@@ -11049,7 +11207,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCDDE)
-    (at 127.762 -57.658 90)
+    (at 169.672 92.71 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5F1B4BE4/60F6A6C5)
@@ -11086,7 +11244,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCDEF)
-    (at 13.462 -34.544 90)
+    (at 55.372 115.824 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5F1D8DB1/60F6A6C5)
@@ -11123,7 +11281,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCE00)
-    (at 42.037 -34.544 90)
+    (at 83.947 115.824 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5F1D8DD3/60F6A6C5)
@@ -11160,7 +11318,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCE11)
-    (at 70.612 -34.544 90)
+    (at 112.522 115.824 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5F1AE585/60F6A6C5)
@@ -11197,7 +11355,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCE22)
-    (at 99.187 -34.544 90)
+    (at 141.097 115.824 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5F2156AD/60F6A6C5)
@@ -11234,7 +11392,7 @@
   )
 
   (module Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical (layer F.Cu) (tedit 5A3D4993) (tstamp 5F1DCE33)
-    (at 127.762 -34.544 90)
+    (at 169.672 115.824 90)
     (descr "Potentiometer, vertical, Piher PT-6-V, http://www.piher-nacesa.com/pdf/11-PT6v03.pdf")
     (tags "Potentiometer vertical Piher PT-6-V")
     (path /5F2156CF/60F6A6C5)
@@ -11270,15 +11428,22 @@
     )
   )
 
-  (gr_line (start -1.27 -119.126) (end 180.086 -119.126) (layer Edge.Cuts) (width 0.05))
-  (gr_line (start 180.086 -119.126) (end 180.086 2.286) (layer Edge.Cuts) (width 0.05))
-  (gr_poly (pts (xy 178.308 -117.602) (xy 178.308 -57.658) (xy 150.368 -57.658) (xy 150.368 -117.602)) (layer F.SilkS) (width 0.1) (tstamp 5F1E853D))
-  (gr_text VOLUME (at 176.022 -43.434) (layer F.SilkS) (tstamp 5EFD2CB6)
-    (effects (font (size 1 1) (thickness 0.15)))
-  )
-  (gr_line (start -1.27 2.286) (end 180.086 2.286) (layer Edge.Cuts) (width 0.05) (tstamp 5EFAA472))
-  (gr_line (start -1.27 2.286) (end -1.27 -119.126) (layer Edge.Cuts) (width 0.05) (tstamp 5F1E6B81))
-  (gr_text "OSKITONE\nPOLY_555 0.0.0+" (at 39.878 -21.59) (layer F.SilkS)
+  (gr_circle (center 206.502 35.56) (end 214.884 30.734) (layer Dwgs.User) (width 0.12) (tstamp 5F1EE0DA))
+  (gr_circle (center 74.168 156.718) (end 94.488 156.718) (layer Dwgs.User) (width 0.12) (tstamp 5F1EE0DD))
+  (gr_line (start 222.386 132.102) (end 222.386 181.102) (layer Dwgs.User) (width 0.12) (tstamp 5F1EB546))
+  (gr_line (start 40.386 132.08) (end 222.386 132.08) (layer Dwgs.User) (width 0.12) (tstamp 5F1EE0E0))
+  (gr_line (start 40.386 181.102) (end 222.386 181.102) (layer Dwgs.User) (width 0.12) (tstamp 5F1EB424))
+  (gr_line (start 40.386 132.102) (end 40.386 181.102) (layer Dwgs.User) (width 0.12) (tstamp 5F1EE0E3))
+  (gr_line (start 221.996 31.242) (end 221.996 46.228) (layer Edge.Cuts) (width 0.05) (tstamp 5F1EA01E))
+  (gr_line (start 184.658 46.228) (end 221.996 46.228) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 184.658 107.696) (end 221.996 107.696) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 184.658 46.228) (end 184.658 107.696) (layer Edge.Cuts) (width 0.05) (tstamp 5F1E9ADA))
+  (gr_line (start 40.64 31.242) (end 221.996 31.242) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 221.996 107.696) (end 221.996 158.496) (layer Edge.Cuts) (width 0.05) (tstamp 5F1E9C8B))
+  (gr_poly (pts (xy 221.488 46.736) (xy 221.488 106.68) (xy 193.548 106.68) (xy 193.548 46.736)) (layer Dwgs.User) (width 0.1) (tstamp 5F1EE0E6))
+  (gr_line (start 40.64 158.496) (end 221.996 158.496) (layer Edge.Cuts) (width 0.05) (tstamp 5EFAA472))
+  (gr_line (start 40.64 158.496) (end 40.64 31.242) (layer Edge.Cuts) (width 0.05) (tstamp 5F1E6B81))
+  (gr_text "OSKITONE\nPOLY_555 0.0.0+" (at 81.788 128.778) (layer F.SilkS)
     (effects (font (size 1.5 1.5) (thickness 0.2)) (justify right))
   )
 
