@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /Users/tommy/Dropbox/poly_555/kicad/poly_555.sch)
-    (date "Friday, July 24, 2020 at 07:58:21 AM")
+    (date "Sunday, July 26, 2020 at 03:48:31 PM")
     (tool "Eeschema (5.1.6-0-10_14)")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -486,7 +486,7 @@
       (tstamp 5F169489))
     (comp (ref R2)
       (value 100)
-      (footprint Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical)
+      (footprint Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal)
       (datasheet ~)
       (libsource (lib Device) (part R) (description Resistor))
       (sheetpath (names /) (tstamps /))
