@@ -485,9 +485,6 @@ $EndComp
 Wire Wire Line
 	9850 3500 11050 3500
 Connection ~ 9850 3500
-Wire Wire Line
-	11250 3700 11250 4450
-Connection ~ 11250 4450
 $Comp
 L Device:C C2
 U 1 1 5F234E50
@@ -586,8 +583,6 @@ Wire Wire Line
 	11250 700  11250 3100
 Wire Wire Line
 	11750 4450 12400 4450
-Wire Wire Line
-	11250 4450 11750 4450
 Connection ~ 11750 4450
 Wire Wire Line
 	11750 4350 11750 4450
@@ -630,8 +625,6 @@ Wire Wire Line
 	10950 3300 10950 4450
 Wire Wire Line
 	9850 4450 10950 4450
-Wire Wire Line
-	10950 4450 11250 4450
 Connection ~ 10950 4450
 Wire Wire Line
 	11350 3100 11350 3000
@@ -699,7 +692,7 @@ $EndComp
 Wire Wire Line
 	13100 4650 13100 4450
 Wire Wire Line
-	3100 700  11250 700 
+	3100 700  5900 700 
 $Sheet
 S 4250 6050 900  550 
 U 5F7AB892
@@ -1781,4 +1774,17 @@ Wire Wire Line
 	2550 10900 3250 10900
 Connection ~ 2550 4800
 Connection ~ 3250 10900
+Wire Wire Line
+	10950 4450 11250 4450
+Wire Wire Line
+	11250 3700 11250 4450
+Connection ~ 11250 4450
+Wire Wire Line
+	11250 4450 11750 4450
+Wire Wire Line
+	5900 700  5900 1050
+Connection ~ 5900 700 
+Wire Wire Line
+	5900 700  11250 700 
+Connection ~ 5900 1050
 $EndSCHEMATC

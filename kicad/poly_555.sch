@@ -692,7 +692,7 @@ $EndComp
 Wire Wire Line
 	13100 4650 13100 4450
 Wire Wire Line
-	3100 700  11250 700 
+	3100 700  5900 700 
 $Sheet
 S 4250 6050 900  550 
 U 5F7AB892
@@ -1046,7 +1046,7 @@ Connection ~ 5450 6250
 Wire Wire Line
 	2550 2500 2550 3250
 Wire Wire Line
-	3100 2050 3100 3050
+	3100 2050 3100 2500
 $Sheet
 S 7050 1050 900  550 
 U 5F842B3B
@@ -1781,4 +1781,16 @@ Wire Wire Line
 Connection ~ 11250 4450
 Wire Wire Line
 	11250 4450 11750 4450
+Wire Wire Line
+	5900 700  5900 1050
+Connection ~ 5900 700 
+Wire Wire Line
+	5900 700  11250 700 
+Connection ~ 5900 1050
+Wire Wire Line
+	2550 2500 3100 2500
+Connection ~ 2550 2500
+Connection ~ 3100 2500
+Wire Wire Line
+	3100 2500 3100 3050
 $EndSCHEMATC
