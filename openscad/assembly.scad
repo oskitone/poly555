@@ -587,7 +587,7 @@ module assembly(
     module _pcb() {
         translate([pcb_x, pcb_y, pcb_z]) {
             pcb(
-                visualize_non_button_components = quick_preview,
+                visualize_circuit_space = quick_preview,
                 visualize_silkscreen = !quick_preview,
                 pcb_color = pcb_color,
                 opacity = pcb_opacity

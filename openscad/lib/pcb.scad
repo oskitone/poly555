@@ -7,35 +7,39 @@ module pcb(
     pcb_color = "purple",
     button_color = "black",
     opacity = 1,
+
+    visualize_buttons = false,
     visualize_silkscreen = false,
-    visualize_non_button_components = false
+    visualize_circuit_space = false,
+    visualize_volume_wheel = false
 ) {
     e = 0.0567;
 
-    assert(
-        !(visualize_silkscreen && visualize_non_button_components),
-        "Can't do both visualize_silkscreen and visualize_non_button_components"
-    )
-
-    for (xy = button_positions) {
-        translate([xy[0], xy[1], PCB_HEIGHT + e]) {
-            color(button_color, opacity) cylinder(
-                d = BUTTON_DIAMETER,
-                h = BUTTON_HEIGHT - e
-            );
+    if (visualize_buttons) {
+        for (xy = button_positions) {
+            translate([
+                xy[0] - BUTTON_WIDTH / 2,
+                xy[1] + BUTTON_LENGTH / 2,
+                PCB_HEIGHT + e
+            ]) {
+                color(button_color, opacity) cylinder(
+                    d = BUTTON_DIAMETER,
+                    h = BUTTON_HEIGHT - e
+                );
+            }
         }
     }
 
     if (visualize_silkscreen) {
         // magic...
-        translate([-5.49, -4.6, PCB_HEIGHT]) {
+        translate([-16.25, -0.5, PCB_HEIGHT]) {
             render() linear_extrude(1) offset(delta = .2) {
                 import("../../poly_555-brd.svg");
             }
         }
     }
 
-    if (visualize_non_button_components) {
+    if (visualize_circuit_space) {
         translate([PCB_COMPONENTS_X, PCB_COMPONENTS_Y, PCB_HEIGHT - e]) {
             % cube([
                 PCB_COMPONENTS_WIDTH,
@@ -45,8 +49,29 @@ module pcb(
         }
     }
 
+    if (visualize_volume_wheel) {
+        translate([
+            PCB_VOLUME_WHEEL_X,
+            PCB_VOLUME_WHEEL_Y,
+            BUTTON_HEIGHT
+        ]) {
+            % cylinder(
+                r = 9,
+                h = 2
+            );
+        }
+    }
+
     difference() {
         color(pcb_color, opacity) cube(dimensions);
+
+        translate([PCB_BATTERY_CAVITY_X, PCB_BATTERY_CAVITY_Y, -e]) {
+            cube([
+                PCB_WIDTH - PCB_BATTERY_CAVITY_X + e,
+                PCB_BATTERY_CAVITY_LENGTH,
+                PCB_HEIGHT + e * 2
+            ]);
+        }
 
         for (xy = hole_positions) {
             translate([xy[0], xy[1], -e]) {
@@ -59,5 +84,9 @@ module pcb(
     }
 }
 
-pcb(visualize_silkscreen = true);
-translate([PCB_WIDTH + 10, 0, 0]) pcb(visualize_non_button_components = true);
+pcb(
+    visualize_buttons = true,
+    visualize_silkscreen = true,
+    visualize_circuit_space = false,
+    visualize_volume_wheel = false
+);
