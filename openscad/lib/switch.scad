@@ -10,8 +10,10 @@ module switch(position = 0) {
 
         translate([
             (SWITCH_BASE_WIDTH - SWITCH_ACTUATOR_WIDTH) / 2,
-            (SWITCH_BASE_LENGTH - SWITCH_ACTUATOR_LENGTH) / 2,
-            SWITCH_BASE_HEIGHT - SWITCH_ACTUATOR_TRAVEL * position
+            (SWITCH_BASE_LENGTH - SWITCH_ACTUATOR_LENGTH) / 2
+                - SWITCH_ACTUATOR_TRAVEL / 2
+                + SWITCH_ACTUATOR_TRAVEL * position,
+            SWITCH_BASE_HEIGHT
         ]) {
             cube([
                 SWITCH_ACTUATOR_WIDTH,
@@ -22,4 +24,4 @@ module switch(position = 0) {
     }
 }
 
-switch(0);
+switch();
