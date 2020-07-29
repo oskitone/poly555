@@ -143,7 +143,7 @@ module assembly(
         - tolerance * 2;
 
     echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
-    echo("Window pane dimensions", [enclosure_width, enclosure_length, enclosure_height]);
+    echo("Window pane dimensions", [window_pane_width, window_pane_length]);
 
     module _keys() {
         module _mounted_keys(
