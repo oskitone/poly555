@@ -122,7 +122,8 @@ module assembly(
     keys_z = pcb_z + PCB_HEIGHT + BUTTON_HEIGHT;
 
     speaker_x = enclosure_width / 2;
-    speaker_y = enclosure_length - SPEAKER_DIAMETER / 2 - 15;
+    speaker_y = enclosure_wall + SPEAKER_DIAMETER / 2
+        + enclosure_to_component_gutter;
 
     switch_x = 15;
     switch_y = 15;
@@ -275,13 +276,13 @@ module assembly(
                     difference() {
                         cylinder(
                             d = SPEAKER_DIAMETER + tolerance * 2 + wall * 2,
-                            h = SPEAKER_RIM_HEIGHT + e
+                            h = SPEAKER_HEIGHT + e
                         );
 
                         translate([0, 0, -e]) {
                             cylinder(
                                 d = SPEAKER_DIAMETER + tolerance * 2,
-                                h = SPEAKER_RIM_HEIGHT + e * 3
+                                h = SPEAKER_HEIGHT + e * 3
                             );
                         }
 
@@ -291,53 +292,8 @@ module assembly(
                                     cube([
                                         gap_width,
                                         SPEAKER_DIAMETER / 2 + wall + e,
-                                        SPEAKER_RIM_HEIGHT + e * 3
+                                        SPEAKER_HEIGHT + e * 3
                                     ]);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            module _speaker_cavities(
-                diameter = 2,
-                gutter = 2,
-                engraving_depth = 1
-            ) {
-                plot = diameter + gutter;
-                row_count = round((SPEAKER_DIAMETER / 2) / plot);
-
-                translate([speaker_x, speaker_y, 0]) {
-                    difference() {
-                        translate([0, 0, -e]) {
-                            cylinder(
-                                d = SPEAKER_DIAMETER + enclosure_inner_wall * 2,
-                                h = engraving_depth + e,
-                                $fn = HIDEF_ROUNDING
-                            );
-                        }
-
-                        translate([0, 0, e * -2]) {
-                            cylinder(
-                                d = SPEAKER_DIAMETER,
-                                h = engraving_depth + e * 3,
-                                $fn = HIDEF_ROUNDING
-                            );
-                        }
-                    }
-
-                    for (row_i = [0 : row_count - 1]) {
-                        row_diameter = plot * 2 * row_i;
-                        col_count = max(round(row_diameter * PI / plot), 1);
-
-                        for (col_i = [0: col_count - 1]) {
-                            rotate([0, 0, col_i * (360 / col_count)]) {
-                                translate([0, plot * row_i, -e]) {
-                                    cylinder(
-                                        d = diameter,
-                                        h = enclosure_wall + e * 2
-                                    );
                                 }
                             }
                         }
@@ -473,7 +429,6 @@ module assembly(
                     include_switch_cavity = true,
                     z_bleed = e
                 );
-                render() _speaker_cavities();
                 _screw_head_cavities();
                 _pencil_stand(true);
             }
