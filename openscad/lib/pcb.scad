@@ -1,5 +1,7 @@
 include <values.scad>;
 
+use <switch.scad>;
+
 module pcb(
     dimensions = [PCB_WIDTH, PCB_LENGTH, PCB_HEIGHT],
     hole_positions = PCB_HOLES,
@@ -11,7 +13,8 @@ module pcb(
     visualize_buttons = false,
     visualize_silkscreen = false,
     visualize_circuit_space = false,
-    visualize_volume_wheel = false
+    visualize_volume_wheel = false,
+    visualize_switch = false
 ) {
     e = 0.0567;
 
@@ -78,6 +81,14 @@ module pcb(
         }
     }
 
+    if (visualize_switch) {
+        translate([PCB_SWITCH_X, PCB_SWITCH_Y, 0]) {
+            mirror([0, 0, 1]) {
+                switch();
+            }
+        }
+    }
+
     difference() {
         color(pcb_color, opacity) cube(dimensions);
 
@@ -104,5 +115,6 @@ pcb(
     visualize_buttons = true,
     visualize_silkscreen = true,
     visualize_circuit_space = true,
-    visualize_volume_wheel = false
+    visualize_volume_wheel = true,
+    visualize_switch = true
 );
