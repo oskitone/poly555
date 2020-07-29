@@ -33,7 +33,7 @@ module assembly(
 
     tolerance = .1,
 
-    keys_count = 13,
+    keys_count = 20,
     starting_natural_key_index = 3,
     key_travel = 4,
 
@@ -77,19 +77,19 @@ module assembly(
     );
     mount_height = BUTTON_HEIGHT;
 
-    mount_end_on_pcb = PCB_HOLES[2][1] +  mount_length / 2;
-
-    mount_hole_x_offset = (PCB_WIDTH / 15) - PCB_HOLES[2][0] - key_gutter / 2;
-    mount_hole_xs = [
-        PCB_HOLES[2][0] + mount_hole_x_offset,
-        PCB_HOLES[3][0] + mount_hole_x_offset,
-        PCB_HOLES[4][0] + mount_hole_x_offset,
-    ];
+    mount_end_on_pcb = PCB_HOLES[4][1] +  mount_length / 2;
 
     keys_y_over_pcb = natural_key_length + cantilever_length + mount_length
         - mount_end_on_pcb;
 
-    keys_from_pcb_x_offset = PCB_BUTTONS[0][0] - plot + key_gutter / 2;
+    keys_from_pcb_x_offset = PCB_BUTTONS[0][0] - BUTTON_WIDTH / 2 - plot + key_gutter / 2;
+
+    mount_hole_xs = [
+        PCB_HOLES[4][0] - keys_from_pcb_x_offset,
+        PCB_HOLES[5][0] - keys_from_pcb_x_offset,
+        PCB_HOLES[6][0] - keys_from_pcb_x_offset,
+        PCB_HOLES[7][0] - keys_from_pcb_x_offset,
+    ];
 
     pcb_x = enclosure_wall + enclosure_to_component_gutter -
         keys_from_pcb_x_offset;
@@ -113,6 +113,7 @@ module assembly(
 
     key_height = enclosure_height - pcb_stilt_height - enclosure_wall
         - PCB_HEIGHT - mount_height + natural_key_exposed_height;
+    keys_x = pcb_x + keys_from_pcb_x_offset;
     keys_z = pcb_z + PCB_HEIGHT + BUTTON_HEIGHT;
 
     speaker_x = enclosure_width / 2;
@@ -179,7 +180,7 @@ module assembly(
         }
 
         translate([
-            pcb_x + keys_from_pcb_x_offset,
+            keys_x,
             pcb_y - natural_key_length - cantilever_length + mount_end_on_pcb
                 - mount_length,
             keys_z
@@ -553,14 +554,6 @@ module assembly(
     }
 
     module _battery() {
-        available_length = pcb_y - enclosure_wall;
-        required_length = BATTERY_LENGTH + tolerance * 2;
-
-        assert(
-            available_length > required_length,
-            "Battery doesn't have enough space under keys"
-        );
-
         translate([battery_x, battery_y, enclosure_wall + e]) {
             cube([BATTERY_SNAP_WIDTH, BATTERY_LENGTH, BATTERY_HEIGHT]);
 
@@ -598,7 +591,7 @@ module assembly(
     module _mounting_rails() {
         module _mounting_rail(y, z, height, include_head_cavity = false) {
             translate([
-                pcb_x + keys_from_pcb_x_offset,
+                keys_x,
                 pcb_y + y,
                 pcb_z + PCB_HEIGHT + z
             ]) {
@@ -619,7 +612,7 @@ module assembly(
             mount_height
         );
         _mounting_rail(
-            PCB_HOLES[5][1] - mount_length / 2,
+            PCB_HOLES[0][1] - mount_length / 2,
             0,
             mount_height - 1
         );
