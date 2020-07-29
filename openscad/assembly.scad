@@ -7,7 +7,6 @@ use <lib/keys.scad>;
 use <lib/mount_stilt.scad>;
 use <lib/mounting_rail.scad>;
 use <lib/pcb.scad>;
-use <lib/pencil_stand.scad>;
 use <lib/speaker.scad>;
 use <lib/switch.scad>;
 use <lib/utils.scad>;
@@ -393,22 +392,6 @@ module assembly(
                 }
             }
 
-            module _pencil_stand(is_cavity) {
-                pencil_stand_x = 30;
-                pencil_stand_y = enclosure_length - 20;
-                depth = 12; // TODO: derive
-
-                if (is_cavity) {
-                    translate([pencil_stand_x, pencil_stand_y, -e]) {
-                        pencil_stand_cavity(enclosure_inner_wall, depth);
-                    }
-                } else {
-                    translate([pencil_stand_x, pencil_stand_y, e]) {
-                        pencil_stand(enclosure_inner_wall, depth);
-                    }
-                }
-            }
-
             difference() {
                 union() {
                     _enclosure_half(false);
@@ -421,7 +404,6 @@ module assembly(
                     _battery_container();
                     _speaker_container();
                     _mount_stilts();
-                    _pencil_stand();
                 }
 
                 _switch_exposure(
@@ -430,7 +412,6 @@ module assembly(
                     z_bleed = e
                 );
                 _screw_head_cavities();
-                _pencil_stand(true);
             }
 
             _screw_head_cavity_bridges();
