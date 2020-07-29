@@ -97,7 +97,9 @@ module assembly(
         - mount_end_on_pcb + enclosure_gutter;
     pcb_z = enclosure_wall + max(
         MOUNT_STILT_MINIMUM_HEIGHT,
-        SPEAKER_HEIGHT + speaker_to_pcb_clearance
+        SPEAKER_HEIGHT + speaker_to_pcb_clearance,
+        SWITCH_BASE_HEIGHT + SWITCH_ACTUATOR_HEIGHT
+            - enclosure_wall + bottom_component_clearance
     );
     pcb_stilt_height = pcb_z - enclosure_wall;
 
@@ -124,10 +126,9 @@ module assembly(
     speaker_y = enclosure_wall + SPEAKER_DIAMETER / 2
         + enclosure_to_component_gutter;
 
-    switch_x = 15;
-    switch_y = 15;
-    switch_z = SWITCH_BASE_HEIGHT + SWITCH_ACTUATOR_HEIGHT
-        + bottom_component_clearance;
+    switch_x = pcb_x + PCB_SWITCH_X;
+    switch_y = pcb_y + PCB_SWITCH_Y;
+    switch_z = pcb_z;
     switch_exposure_height = switch_z - SWITCH_BASE_HEIGHT;
 
     battery_x = enclosure_width - BATTERY_WIDTH - enclosure_wall - tolerance;
@@ -214,8 +215,7 @@ module assembly(
         }
 
         module _bottom() {
-            module _switch_container(endstop_width = enclosure_inner_wall * 3) {
-                // Walls
+            module _switch_container() {
                 translate([
                     switch_x - SWITCH_ORIGIN.x - enclosure_inner_wall,
                     switch_y - SWITCH_ORIGIN.y - enclosure_inner_wall,
@@ -225,20 +225,6 @@ module assembly(
                         SWITCH_BASE_WIDTH + enclosure_inner_wall * 2,
                         SWITCH_BASE_LENGTH + enclosure_inner_wall * 2,
                         SWITCH_BASE_HEIGHT + e
-                    ]);
-                }
-
-                // Endstop
-                translate([
-                    switch_x
-                        + (SWITCH_BASE_WIDTH - endstop_width) / 2,
-                    switch_y - enclosure_inner_wall,
-                    switch_exposure_height + SWITCH_BASE_HEIGHT - e
-                ]) {
-                    cube([
-                        endstop_width,
-                        SWITCH_BASE_LENGTH + enclosure_inner_wall * 2,
-                        enclosure_inner_wall + e
                     ]);
                 }
             }
@@ -492,19 +478,12 @@ module assembly(
         }
     }
 
-    module _switch() {
-        translate([switch_x, switch_y, switch_z]) {
-            mirror([0, 0, 1]) {
-                switch();
-            }
-        }
-    }
-
     module _pcb() {
         translate([pcb_x, pcb_y, pcb_z]) {
             pcb(
                 visualize_circuit_space = quick_preview,
                 visualize_silkscreen = !quick_preview,
+                visualize_switch = show_switch,
                 pcb_color = pcb_color,
                 opacity = pcb_opacity
             );
@@ -560,7 +539,6 @@ module assembly(
             _enclosure();
             if (show_battery) { % _battery(); }
             if (show_speaker) { % _speaker(); }
-            if (show_switch) { % _switch(); }
             if (show_pcb) { % _pcb(); }
             if (show_mounting_rails) { _mounting_rails(); }
             if (show_keys) { _keys(); }
@@ -570,6 +548,7 @@ module assembly(
         /* translate([-20, -20, -20]) cube([35, 300, 100]); // switch */
         /* translate([speaker_x, speaker_y, -e]) cylinder(d = SPEAKER_DIAMETER + 8, h = 40); */
         /* translate([-e, -10, -e]) cube([enclosure_width / 2, enclosure_length + 20, enclosure_height + 20]); // cross section */
+        /* translate([-e, -10, -e]) cube([ pcb_x + PCB_SWITCH_X + SWITCH_BASE_WIDTH / 2 - SWITCH_ORIGIN.x, enclosure_length + 20, enclosure_height + 20 ]); */
     }
 }
 
