@@ -63,6 +63,7 @@ module assembly(
 ) {
     e = 0.0145;
     plot = PCB_BUTTONS[1][0] - PCB_BUTTONS[0][0];
+    enclosure_gutter = mount_length;
 
     natural_key_width = plot * 2 - key_gutter;
     natural_key_length = natural_key_width * 4
@@ -81,8 +82,8 @@ module assembly(
 
     keys_y_over_pcb = natural_key_length + cantilever_length + mount_length
         - mount_end_on_pcb;
-
     keys_from_pcb_x_offset = PCB_BUTTONS[0][0] - BUTTON_WIDTH / 2 - plot + key_gutter / 2;
+    keys_cavity_length = natural_key_length + key_gutter * 2; // TODO: tighten
 
     mount_hole_xs = [
         PCB_HOLES[4][0] - keys_from_pcb_x_offset,
@@ -91,20 +92,22 @@ module assembly(
         PCB_HOLES[7][0] - keys_from_pcb_x_offset,
     ];
 
-    pcb_x = enclosure_wall + enclosure_to_component_gutter -
-        keys_from_pcb_x_offset;
-    pcb_y = enclosure_wall + enclosure_to_component_gutter - mount_end_on_pcb
-        + natural_key_length + cantilever_length + mount_length;
+    pcb_window_extension = PCB_COMPONENTS_Y - mount_end_on_pcb;
+    pcb_x = enclosure_gutter - keys_from_pcb_x_offset;
+    pcb_y = (natural_key_length + cantilever_length + mount_length)
+        - mount_end_on_pcb + enclosure_gutter;
     pcb_z = enclosure_wall + max(
         MOUNT_STILT_MINIMUM_HEIGHT,
         SPEAKER_HEIGHT + speaker_to_pcb_clearance
     );
     pcb_stilt_height = pcb_z - enclosure_wall;
 
-    enclosure_width = enclosure_wall * 2 + enclosure_to_component_gutter * 2
-        + mount_width;
-    enclosure_length = enclosure_wall * 2 + enclosure_to_component_gutter * 2
-        + PCB_LENGTH + keys_y_over_pcb;
+    enclosure_width = enclosure_gutter * 2 + mount_width;
+    enclosure_length = keys_cavity_length
+        + mount_length
+        + enclosure_gutter * 2
+        + PCB_COMPONENTS_LENGTH + pcb_window_extension * 2;
+
     enclosure_height = enclosure_wall * 2
         + pcb_stilt_height
         + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
@@ -114,6 +117,8 @@ module assembly(
     key_height = enclosure_height - pcb_stilt_height - enclosure_wall
         - PCB_HEIGHT - mount_height + natural_key_exposed_height;
     keys_x = pcb_x + keys_from_pcb_x_offset;
+    keys_y = pcb_y - natural_key_length - cantilever_length + mount_end_on_pcb
+        - mount_length;
     keys_z = pcb_z + PCB_HEIGHT + BUTTON_HEIGHT;
 
     speaker_x = enclosure_width / 2;
@@ -179,12 +184,7 @@ module assembly(
             );
         }
 
-        translate([
-            keys_x,
-            pcb_y - natural_key_length - cantilever_length + mount_end_on_pcb
-                - mount_length,
-            keys_z
-        ]) {
+        translate([keys_x, keys_y, keys_z]) {
             color(natural_key_color, key_opacity) {
                 _mounted_keys(include_natural = true);
             }
@@ -499,23 +499,25 @@ module assembly(
         }
 
         module _top() {
-            module _keys_cavity(gutter = key_gutter) {
+            module _keys_cavity() {
                 translate([
-                    enclosure_wall + enclosure_to_component_gutter - gutter,
-                    enclosure_wall + enclosure_to_component_gutter - gutter,
+                    enclosure_gutter - key_gutter,
+                    enclosure_gutter - key_gutter,
                     enclosure_height - enclosure_wall - e
                 ]) {
                     cube([
-                        mount_width + gutter * 2,
-                        natural_key_length + gutter * 2,
+                        mount_width + key_gutter * 2,
+                        keys_cavity_length,
                         enclosure_wall + e * 2
                     ]);
                 }
             }
 
             module _pcb_window_pane_cavity(
-                window_pane_x_exposure = 6,
-                window_pane_y_exposure = 3
+                /* Make window align with keys: */
+                window_pane_x_exposure = pcb_x + PCB_COMPONENTS_X
+                    - enclosure_gutter + key_gutter,
+                window_pane_y_exposure = pcb_window_extension
             ) {
                 translate([
                     pcb_x + PCB_COMPONENTS_X - window_pane_x_exposure,
