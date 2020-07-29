@@ -130,10 +130,9 @@ module assembly(
         + bottom_component_clearance;
     switch_exposure_height = switch_z - SWITCH_BASE_HEIGHT;
 
-    battery_x = enclosure_width
-        - (BATTERY_WIDTH + BATTERY_SNAP_WIDTH)
-        - enclosure_wall - tolerance;
-    battery_y = enclosure_wall + tolerance;
+    battery_x = enclosure_width - BATTERY_WIDTH - enclosure_wall - tolerance;
+    battery_y = pcb_y + PCB_BATTERY_CAVITY_Y
+        + (PCB_BATTERY_CAVITY_LENGTH - BATTERY_LENGTH) / 2;
 
     window_pane_x = enclosure_wall + tolerance;
     window_pane_y = pcb_y + mount_end_on_pcb;
@@ -165,12 +164,6 @@ module assembly(
                 front_chamfer = quick_preview ? 0 : 2,
 
                 gutter = key_gutter,
-
-                undercarriage_height = BATTERY_HEIGHT
-                    - (pcb_stilt_height + PCB_HEIGHT + mount_height)
-                    + key_travel,
-                undercarriage_length = mount_end_on_pcb - cantilever_length
-                    - mount_length,
 
                 mount_length = mount_length,
                 mount_height = cantilever_height,
@@ -394,34 +387,24 @@ module assembly(
             }
 
             module _mount_stilts() {
-                difference() {
-                    intersection() {
-                        translate([pcb_x, pcb_y, pcb_z - e]) {
-                            mount_stilts(
-                                positions = PCB_HOLES,
-                                height = pcb_stilt_height,
-                                z = -pcb_stilt_height
-                            );
-                        }
-
-                        translate([
-                            enclosure_wall - e,
-                            enclosure_wall - e,
-                            enclosure_wall - e
-                        ]) {
-                            cube([
-                                enclosure_width - enclosure_wall * 2 + e * 2,
-                                enclosure_length - enclosure_wall * 2 + e * 2,
-                                enclosure_height
-                            ]);
-                        }
+                intersection() {
+                    translate([pcb_x, pcb_y, pcb_z - e]) {
+                        mount_stilts(
+                            positions = PCB_HOLES,
+                            height = pcb_stilt_height,
+                            z = -pcb_stilt_height
+                        );
                     }
 
-                    translate([battery_x, battery_y + tolerance * 2, enclosure_wall - e]) {
+                    translate([
+                        enclosure_wall - e,
+                        enclosure_wall - e,
+                        enclosure_wall - e
+                    ]) {
                         cube([
-                            enclosure_width - battery_x - enclosure_wall - e,
-                            BATTERY_LENGTH,
-                            BATTERY_HEIGHT
+                            enclosure_width - enclosure_wall * 2 + e * 2,
+                            enclosure_length - enclosure_wall * 2 + e * 2,
+                            enclosure_height
                         ]);
                     }
                 }
@@ -557,9 +540,11 @@ module assembly(
 
     module _battery() {
         translate([battery_x, battery_y, enclosure_wall + e]) {
-            cube([BATTERY_SNAP_WIDTH, BATTERY_LENGTH, BATTERY_HEIGHT]);
+            translate([0, BATTERY_LENGTH + e, 0]) {
+                cube([BATTERY_WIDTH, BATTERY_SNAP_LENGTH, BATTERY_HEIGHT]);
+            }
 
-            translate([BATTERY_SNAP_WIDTH - e, 0, 0]) battery();
+            battery();
         }
     }
 
