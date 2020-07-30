@@ -1,6 +1,7 @@
 include <values.scad>;
 
 use <basic_shapes.scad>;
+use <hitch.scad>;
 use <utils.scad>;
 
 module keys(
@@ -211,6 +212,7 @@ module mounted_keys(
     include_natural = true,
     include_accidental = true,
     include_cantilevers = true,
+    include_hitch = false,
 
     mount_length = 0,
     mount_height = 1,
@@ -219,7 +221,13 @@ module mounted_keys(
     mount_screw_head_diameter = SCREW_HEAD_DIAMETER,
 
     cantilever_length = 0,
-    cantilever_height = 0
+    cantilever_height = 0,
+
+    hitch_height = 0,
+    hitch_y = 0,
+    hitch_z = 0,
+    hitch_clearance = .4,
+    key_travel = 1
 ) {
     $fn = 24;
     e = 0.0678;
@@ -277,6 +285,27 @@ module mounted_keys(
             natural_length + cantilever_length + mount_length / 2,
             -e
         );
+
+        if (hitch_height > 0) {
+            translate([-e, hitch_y, hitch_z - e]) {
+                hitch(
+                    width = mount_width + e * 2,
+                    height = hitch_height + e,
+                    head_bleed = key_travel - hitch_clearance,
+                    y_bleed = hitch_clearance
+                );
+            }
+        }
+    }
+
+    if (include_hitch) {
+        translate([0, hitch_y, hitch_z]) {
+            hitch(
+                width = mount_width,
+                height = hitch_height - hitch_clearance,
+                mount_hole_xs = mount_hole_xs
+            );
+        }
     }
 }
 
@@ -284,20 +313,22 @@ mounted_keys(
     count = 13,
     starting_natural_key_index = 3,
 
-    natural_length = 20,
+    natural_length = 40,
     natural_width = 10,
-    natural_height = 10,
+    natural_height = 13,
 
     accidental_width = 7.5,
-    accidental_length = 10,
+    accidental_length = 20,
     accidental_height = 15,
 
-    front_chamfer = 2,
+    front_chamfer = 0,
 
     gutter = 1,
 
     undercarriage_height = 5,
-    undercarriage_length = 15,
+    undercarriage_length = 30,
+
+    include_hitch = true,
 
     mount_length = 5,
     mount_height = 2,
@@ -306,5 +337,9 @@ mounted_keys(
     mount_hole_xs = [5, 30, 40, 65, 82],
 
     cantilever_length = 2,
-    cantilever_height = 2
+    cantilever_height = 2,
+
+    hitch_height = 12,
+    hitch_y = 25,
+    hitch_z = -6
 );
