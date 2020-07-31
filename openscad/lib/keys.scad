@@ -90,13 +90,16 @@ module keys(
                  dimensions[1] - e,
                  0
              ]) {
-                 /* TODO: this is okay but could be more stable by widening
-                 where it joins mounting rail */
-                 cube([
-                     cantilver_width,
-                     cantilever_length + e * 2,
-                     cantilever_height
-                 ]);
+                 linear_extrude(cantilever_height) {
+                     polygon(
+                         points=[
+                            [0, 0],
+                            [cantilver_width, 0],
+                            [cantilver_width + gutter / 2, cantilever_length + e * 2],
+                            [-gutter / 2, cantilever_length + e * 2]
+                        ]
+                     );
+                 }
              }
         }
     }
