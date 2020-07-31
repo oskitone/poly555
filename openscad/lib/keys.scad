@@ -209,6 +209,7 @@ module mounted_keys(
     undercarriage_height = 0,
     undercarriage_length = 0,
 
+    include_mount = true,
     include_natural = true,
     include_accidental = true,
     include_cantilevers = true,
@@ -268,32 +269,35 @@ module mounted_keys(
         );
     }
 
-    difference() {
-        union() {
-            if (include_natural) { _keys(true); }
-            if (include_accidental) { _keys(false); }
-
-            translate([0, natural_length + cantilever_length, 0]) {
-                cube([mount_width, mount_length, mount_height]);
+    if (include_natural || include_accidental || include_mount) {
+        difference() {
+            union() {
+                if (include_natural) { _keys(true); }
+                if (include_accidental) { _keys(false); }
+                if (include_mount) {
+                    translate([0, natural_length + cantilever_length, 0]) {
+                        cube([mount_width, mount_length, mount_height]);
+                    }
+                }
             }
-        }
 
-        hole_array(
-            mount_hole_xs,
-            mount_hole_diameter,
-            accidental_height + e * 2,
-            natural_length + cantilever_length + mount_length / 2,
-            -e
-        );
+            hole_array(
+                mount_hole_xs,
+                mount_hole_diameter,
+                accidental_height + e * 2,
+                natural_length + cantilever_length + mount_length / 2,
+                -e
+            );
 
-        if (hitch_height > 0) {
-            translate([-e, hitch_y, hitch_z - e]) {
-                hitch(
-                    width = mount_width + e * 2,
-                    height = hitch_height + e,
-                    head_bleed = key_travel - hitch_clearance,
-                    y_bleed = hitch_clearance
-                );
+            if (hitch_height > 0) {
+                translate([-e, hitch_y, hitch_z - e]) {
+                    hitch(
+                        width = mount_width + e * 2,
+                        height = hitch_height + e,
+                        head_bleed = key_travel - hitch_clearance,
+                        y_bleed = hitch_clearance
+                    );
+                }
             }
         }
     }
