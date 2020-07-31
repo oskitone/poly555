@@ -34,7 +34,7 @@ module assembly(
 
     keys_count = 20,
     starting_natural_key_index = 3,
-    key_travel = 4,
+    key_travel = 1.4,
 
     show_enclosure_bottom = true,
     show_battery = true,
@@ -145,11 +145,12 @@ module assembly(
     echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
     echo("Window pane dimensions", [window_pane_width, window_pane_length]);
 
-    module _keys() {
-        module _mounted_keys(
-            include_natural = false,
-            include_accidental = false
-        ) {
+    module _mounted_keys(
+        include_natural = false,
+        include_accidental = false,
+        include_hitch = false
+    ) {
+        translate([keys_x, keys_y, keys_z]) {
             mounted_keys(
                 count = keys_count,
                 starting_natural_key_index = starting_natural_key_index,
@@ -173,18 +174,26 @@ module assembly(
                 cantilever_length = cantilever_length,
                 cantilever_height = cantilever_height,
 
+                include_mount = include_natural,
                 include_natural = include_natural,
-                include_accidental = include_accidental
+                include_accidental = include_accidental,
+                include_hitch = include_hitch,
+
+                key_travel = key_travel,
+
+                hitch_height = mount_height + key_height / 3,
+                hitch_y = pcb_y - keys_y + PCB_HOLES[0][1],
+                hitch_z = -mount_height
             );
         }
+    }
 
-        translate([keys_x, keys_y, keys_z]) {
-            color(natural_key_color, key_opacity) {
-                _mounted_keys(include_natural = true);
-            }
-            color(accidental_key_color, key_opacity) {
-                _mounted_keys(include_accidental = true);
-            }
+    module _keys() {
+        color(natural_key_color, key_opacity) {
+            _mounted_keys(include_natural = true);
+        }
+        color(accidental_key_color, key_opacity) {
+            _mounted_keys(include_accidental = true);
         }
     }
 
@@ -481,6 +490,7 @@ module assembly(
     module _pcb() {
         translate([pcb_x, pcb_y, pcb_z]) {
             pcb(
+                visualize_buttons = true,
                 visualize_circuit_space = quick_preview,
                 visualize_silkscreen = !quick_preview,
                 visualize_switch = show_switch,
@@ -513,11 +523,7 @@ module assembly(
             0,
             mount_height
         );
-        _mounting_rail(
-            PCB_HOLES[0][1] - mount_length / 2,
-            0,
-            mount_height - 1
-        );
+        _mounted_keys(include_hitch = true);
         _mounting_rail(
             mount_end_on_pcb - mount_length,
             mount_height + cantilever_height,
