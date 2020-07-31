@@ -14,7 +14,9 @@ module pcb(
     visualize_silkscreen = false,
     visualize_circuit_space = false,
     visualize_volume_wheel = false,
-    visualize_switch = false
+    visualize_switch = false,
+
+    $fn = DEFAULT_ROUNDING
 ) {
     e = 0.0567;
 
