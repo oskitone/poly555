@@ -25,11 +25,11 @@ module pcb(
             translate([
                 xy[0] - BUTTON_WIDTH / 2,
                 xy[1] + BUTTON_LENGTH / 2,
-                PCB_HEIGHT + e
+                PCB_HEIGHT
             ]) {
                 color(button_color, opacity) cylinder(
                     d = BUTTON_DIAMETER,
-                    h = BUTTON_HEIGHT - e
+                    h = BUTTON_HEIGHT
                 );
             }
         }
