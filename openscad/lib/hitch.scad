@@ -11,7 +11,7 @@ module hitch(
 
     mount_hole_xs = [],
 
-    mount_hole_diameter = PCB_MOUNT_HOLE_DIAMETER,
+    mount_hole_diameter = PCB_MOUNT_HOLE_DIAMETER + .2,
     mount_screw_head_diameter = SCREW_HEAD_DIAMETER,
     mount_screw_head_height = SCREW_HEAD_HEIGHT,
     mount_screw_head_clearance = .2,
@@ -21,7 +21,7 @@ module hitch(
     e = 0.007;
     minimum_wall = .2;
 
-    head_length = mount_screw_head_diameter + minimum_wall * 2 + y_bleed * 2;
+    head_length = mount_screw_head_diameter - minimum_wall * 2 + y_bleed * 2;
     head_height = mount_screw_head_height + mount_screw_head_clearance
         + head_bleed;
     arm_length = mount_hole_diameter - minimum_wall * 2 + y_bleed * 2;
@@ -84,14 +84,7 @@ module hitch(
 hitch(
     width = 30,
     height = 10,
-
     head_bleed = 0,
     y_bleed = 0,
-
-    mount_hole_xs = [5, 25],
-
-    mount_hole_diameter = PCB_MOUNT_HOLE_DIAMETER,
-    mount_screw_head_diameter = SCREW_HEAD_DIAMETER,
-    mount_screw_head_height = SCREW_HEAD_HEIGHT,
-    mount_screw_head_clearance = .2
+    mount_hole_xs = [5, 25]
 );

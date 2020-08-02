@@ -224,14 +224,16 @@ module mounted_keys(
     mount_hole_diameter = PCB_MOUNT_HOLE_DIAMETER,
     mount_screw_head_diameter = SCREW_HEAD_DIAMETER,
 
+    tolerance = .1,
+
     cantilever_length = 0,
     cantilever_height = 0,
 
     hitch_height = 0,
     hitch_y = 0,
     hitch_z = 0,
-    hitch_clearance = .4,
-    key_travel = 1
+    hitch_clearance = .8,
+    key_travel = 1.4
 ) {
     $fn = 24;
     e = 0.0678;
@@ -297,8 +299,8 @@ module mounted_keys(
                     hitch(
                         width = mount_width + e * 2,
                         height = hitch_height + e,
-                        head_bleed = key_travel - hitch_clearance,
-                        y_bleed = hitch_clearance
+                        head_bleed = key_travel,
+                        y_bleed = hitch_clearance + tolerance * 2
                     );
                 }
             }
@@ -309,8 +311,9 @@ module mounted_keys(
         translate([0, hitch_y, hitch_z]) {
             hitch(
                 width = mount_width,
-                height = hitch_height - hitch_clearance,
-                mount_hole_xs = mount_hole_xs
+                height = hitch_height,
+                mount_hole_xs = mount_hole_xs,
+                y_bleed = tolerance * -2
             );
         }
     }
