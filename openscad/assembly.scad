@@ -202,7 +202,7 @@ module assembly(
             color(enclosure_color, enclosure_opacity) enclosure_half(
                 width = enclosure_width,
                 length = enclosure_length,
-                total_height = enclosure_height,
+                height = enclosure_height / 2,
 
                 wall = enclosure_wall,
                 floor_ceiling = undef,

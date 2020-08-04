@@ -4,7 +4,7 @@ use <basic_shapes.scad>;
 use <hinge_clasp.scad>;
 
 module enclosure_half(
-    width, length, total_height,
+    width, length, height,
 
     wall = 2.5,
     floor_ceiling = undef,
@@ -47,7 +47,7 @@ module enclosure_half(
     _length = is_left_right_hinge ? width : length;
 
     floor_ceiling = floor_ceiling ? floor_ceiling : wall;
-    half_height = total_height / 2;
+    assumed_total_height = height * 2;
 
     lip_offset_xy = wall - lip;
     lip_offset_z = 0;
@@ -57,11 +57,11 @@ module enclosure_half(
         group() {
             difference() {
                 rounded_cube(
-                    [_width, _length, half_height + radius],
+                    [_width, _length, height + radius],
                     radius,
                     $fn = $fn
                 );
-                translate([-e, -e, half_height]) {
+                translate([-e, -e, height]) {
                     cube([
                         _width + e * 2,
                         _length + e * 2,
@@ -79,7 +79,7 @@ module enclosure_half(
                     cube([
                         _width - lip_difference - tolerance / 2,
                         _length - lip_difference - tolerance / 2,
-                        half_height + lip_height - floor_ceiling + e
+                        height + lip_height - floor_ceiling + e
                     ]);
                 }
             }
@@ -91,13 +91,13 @@ module enclosure_half(
             cube([
                 _width - wall * 2,
                 _length - wall * 2,
-                half_height + lip_height + e
+                height + lip_height + e
             ]);
         }
 
         if (remove_lip) {
             xy = wall - lip - tolerance / 4;
-            z = half_height - lip_height;
+            z = height - lip_height;
 
             width = _width - lip_difference + tolerance / 2;
             length = _length - lip_difference + tolerance / 2;
@@ -134,7 +134,7 @@ module enclosure_half(
         hinge_count = hinge_count != undef
             ? hinge_count
             : get_hinge_clasp_count(_width);
-        hinge_length = min(total_height, MINIMUM_HINGE_CLASP_LENGTH);
+        hinge_length = min(assumed_total_height, MINIMUM_HINGE_CLASP_LENGTH);
         hinge_width = HINGE_CLASP_MINIMUM_WIDTH;
         hinge_end_gutter = hinge_end_gutter == undef || hinge_count == 1
             ? ((_width / hinge_count) - hinge_width) / 2
@@ -149,7 +149,7 @@ module enclosure_half(
                 : [
                     hinge_end_gutter + i * availableWidth,
                     _length - e,
-                    total_height / 2 + hinge_length / 2
+                    height + hinge_length / 2
                 ];
 
             rotation = just_hinge_parts ? [] : [-90, 0, 0];
@@ -174,7 +174,7 @@ module enclosure_half(
             : get_hinge_clasp_count(_width);
 
         clasp_width = HINGE_CLASP_MINIMUM_WIDTH;
-        clasp_length = min(total_height, MINIMUM_HINGE_CLASP_LENGTH);
+        clasp_length = min(assumed_total_height, MINIMUM_HINGE_CLASP_LENGTH);
 
         clasp_end_gutter = clasp_end_gutter == undef || clasp_count == 1
             ? ((_width / clasp_count) - clasp_width) / 2
@@ -189,7 +189,7 @@ module enclosure_half(
                 : [
                     clasp_end_gutter + i * availableWidth,
                     e,
-                    (total_height - clasp_length) / 2
+                    height - clasp_length / 2
                 ];
 
             translate(position) rotate(just_hinge_parts ? [] : [90, 0, 0]) {
@@ -238,7 +238,7 @@ module enclosure_half(
 enclosure_half(
     width = 120,
     length = 90,
-    total_height = 50,
+    height = 25,
 
     wall = 2.5,
     floor_ceiling = undef,
