@@ -10,6 +10,7 @@ module pcb(
     button_color = "black",
     opacity = 1,
 
+    visualize_board = true,
     visualize_buttons = false,
     visualize_silkscreen = false,
     visualize_circuit_space = false,
@@ -91,29 +92,32 @@ module pcb(
         }
     }
 
-    difference() {
-        color(pcb_color, opacity) cube(dimensions);
+    if (visualize_board) {
+        difference() {
+            color(pcb_color, opacity) cube(dimensions);
 
-        translate([PCB_BATTERY_CAVITY_X, PCB_BATTERY_CAVITY_Y, -e]) {
-            cube([
-                PCB_WIDTH - PCB_BATTERY_CAVITY_X + e,
-                PCB_BATTERY_CAVITY_LENGTH,
-                PCB_HEIGHT + e * 2
-            ]);
-        }
+            translate([PCB_BATTERY_CAVITY_X, PCB_BATTERY_CAVITY_Y, -e]) {
+                cube([
+                    PCB_WIDTH - PCB_BATTERY_CAVITY_X + e,
+                    PCB_BATTERY_CAVITY_LENGTH,
+                    PCB_HEIGHT + e * 2
+                ]);
+            }
 
-        for (xy = hole_positions) {
-            translate([xy[0], xy[1], -e]) {
-                cylinder(
-                    d = PCB_MOUNT_HOLE_DIAMETER,
-                    h = PCB_HEIGHT + e * 2
-                );
+            for (xy = hole_positions) {
+                translate([xy[0], xy[1], -e]) {
+                    cylinder(
+                        d = PCB_MOUNT_HOLE_DIAMETER,
+                        h = PCB_HEIGHT + e * 2
+                    );
+                }
             }
         }
     }
 }
 
 pcb(
+    visualize_board = true,
     visualize_buttons = true,
     visualize_silkscreen = true,
     visualize_circuit_space = true,
