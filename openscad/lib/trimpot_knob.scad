@@ -11,6 +11,8 @@ module trimpot_knob(
     head_height = 1.5,
     head_flat_depth = .55,
 
+    simplify = false,
+
     wall = 1.8,
 
     grip_size = 1,
@@ -90,19 +92,24 @@ module trimpot_knob(
         }
     }
 
-    _head_lock();
-    cylinder(d = inner_diameter, h = cap_height);
-    cylinder_grip(
-        diameter,
-        cap_height * 2 + head_height,
-        size = grip_size
-    );
-    ring(
-        diameter = diameter,
-        height = total_height,
-        thickness = wall
-    );
-    _spokes();
+    if (simplify) {
+        cylinder(d = diameter, h = total_height);
+    } else {
+        _head_lock();
+        cylinder(d = inner_diameter, h = cap_height);
+        cylinder_grip(
+            diameter,
+            cap_height * 2 + head_height,
+            size = grip_size
+        );
+        ring(
+            diameter = diameter,
+            height = total_height,
+            thickness = wall
+        );
+        _spokes();
+    }
 }
 
+# trimpot_knob(diameter = 20, simplify = true);
 trimpot_knob(diameter = 20);

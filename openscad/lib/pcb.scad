@@ -11,6 +11,7 @@ module pcb(
     button_color = "black",
     opacity = 1,
 
+    simplify_volume_wheel = false,
     volume_wheel_diameter = 20,
     volume_wheel_grip_size = 0,
 
@@ -85,7 +86,8 @@ module pcb(
         ]) {
             trimpot_knob(
                 diameter = volume_wheel_diameter,
-                grip_size = volume_wheel_grip_size
+                grip_size = volume_wheel_grip_size,
+                simplify = simplify_volume_wheel
             );
         }
     }

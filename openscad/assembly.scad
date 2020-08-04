@@ -502,7 +502,7 @@ module assembly(
                 visualize_switch = show_switch && !for_enclosure_cavity,
                 visualize_volume_wheel = for_enclosure_cavity || !quick_preview,
 
-                // TODO: simplify cavity to plain cylinder
+                simplify_volume_wheel = for_enclosure_cavity,
                 volume_wheel_diameter = for_enclosure_cavity
                     ? volume_wheel_diameter
                         + volume_wheel_grip_size * 2
