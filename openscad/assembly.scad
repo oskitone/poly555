@@ -114,6 +114,8 @@ module assembly(
         + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
         + WINDOW_PANE_HEIGHT
         + enclosure_to_component_z_clearance;
+    enclosure_bottom_height = pcb_z + PCB_HEIGHT;
+    enclosure_top_height = enclosure_height - enclosure_bottom_height;
 
     key_height = enclosure_height - pcb_stilt_height - enclosure_wall
         - PCB_HEIGHT - mount_height + natural_key_exposed_height;
@@ -199,28 +201,50 @@ module assembly(
 
     module _enclosure() {
         module _enclosure_half(is_top) {
-            color(enclosure_color, enclosure_opacity) enclosure_half(
-                width = enclosure_width,
-                length = enclosure_length,
-                height = enclosure_height / 2,
+            position = is_top
+                ? [enclosure_width, 0, enclosure_height]
+                : [0, 0, 0];
 
-                wall = enclosure_wall,
-                floor_ceiling = undef,
+            rotation = is_top ? [180, 0, 180] : [0, 0, 0];
 
-                add_lip = !is_top,
-                remove_lip = is_top,
+            translate(position) rotate(rotation) {
+                enclosure_half(
+                    width = enclosure_width,
+                    length = enclosure_length,
+                    height = is_top
+                        ? enclosure_top_height
+                        : enclosure_bottom_height,
 
-                include_hinge = true,
-                include_hinge_parts = show_hinge_parts,
+                    wall = enclosure_wall,
+                    floor_ceiling = undef,
 
-                hinge_count = 2,
-                include_clasp = true,
-                just_hinge_parts = show_just_hinge_parts,
-                radius = quick_preview ? 0 : enclosure_chamfer,
-                tolerance = tolerance,
+                    add_lip = is_top,
+                    remove_lip = !is_top,
 
-                $fn = enclosure_rounding
-            );
+                    include_hinge = true,
+                    include_hinge_parts = show_hinge_parts,
+                    include_clasp = false,
+                    just_hinge_parts = show_just_hinge_parts,
+
+                    radius = quick_preview ? 0 : enclosure_chamfer,
+                    tolerance = tolerance,
+
+                    $fn = enclosure_rounding
+                );
+            }
+        }
+
+        module _keys_and_bumper_cavity(length_adjustment = 0) {
+            z = enclosure_bottom_height - LIP_BOX_DEFAULT_LIP_HEIGHT - e;
+
+            translate([-e, -e, z]) {
+                cube([
+                    enclosure_width + e * 2,
+                    keys_cavity_length + enclosure_gutter - key_gutter
+                        + length_adjustment,
+                    enclosure_height - z + e
+                ]);
+            }
         }
 
         module _bottom() {
@@ -387,9 +411,31 @@ module assembly(
                 }
             }
 
+            module _keys_bumper() {
+                difference() {
+                    intersection() {
+                        _enclosure_half(true);
+                        _keys_and_bumper_cavity(tolerance * -2);
+                    }
+
+                    translate([
+                        enclosure_gutter - key_gutter,
+                        enclosure_gutter - key_gutter,
+                        enclosure_height - enclosure_wall - e
+                    ]) {
+                        cube([
+                            mount_width + key_gutter * 2,
+                            keys_cavity_length,
+                            enclosure_wall + e * 2
+                        ]);
+                    }
+                }
+            }
+
             difference() {
                 union() {
                     _enclosure_half(false);
+                    _keys_bumper();
                     _switch_container();
                     _switch_exposure(
                         xy_bleed = enclosure_inner_wall,
@@ -413,20 +459,6 @@ module assembly(
         }
 
         module _top() {
-            module _keys_cavity() {
-                translate([
-                    enclosure_gutter - key_gutter,
-                    enclosure_gutter - key_gutter,
-                    enclosure_height - enclosure_wall - e
-                ]) {
-                    cube([
-                        mount_width + key_gutter * 2,
-                        keys_cavity_length,
-                        enclosure_wall + e * 2
-                    ]);
-                }
-            }
-
             module _pcb_window_pane_cavity(
                 /* Make window align with keys: */
                 window_pane_x_exposure = pcb_x + PCB_COMPONENTS_X
@@ -446,27 +478,46 @@ module assembly(
                 }
             }
 
-            difference() {
-                translate([enclosure_width, 0, enclosure_height]) {
-                    rotate([180, 0, 180]) {
-                        _enclosure_half(true);
-                    }
+            module _key_mounting_rail() {
+                x = enclosure_wall - e;
+                z = pcb_z + PCB_HEIGHT + mount_height + cantilever_height;
+
+                translate([x, pcb_y + mount_end_on_pcb - mount_length, z]) {
+                    mounting_rail(
+                        width = enclosure_width - x * 2,
+                        length = mount_length,
+                        height = enclosure_height - z - enclosure_wall + e,
+                        hole_xs = mount_hole_xs,
+                        hole_xs_x_offset = keys_x - x,
+                        head_hole_diameter = SCREW_HEAD_DIAMETER + tolerance * 2,
+                        include_nut_cavity = true,
+                        nut_lock_z = 2
+                    );
                 }
-                _keys_cavity();
+            }
+
+            _key_mounting_rail();
+
+            difference() {
+                _enclosure_half(true);
+                _keys_and_bumper_cavity();
                 _pcb_window_pane_cavity();
                 _pcb(true);
                 /* TODO: window pane support */
             }
         }
 
-        if (show_enclosure_top) { _top(); }
-        if (show_enclosure_bottom) { _bottom(); }
         if (show_just_hinge_parts) {
             assert(
                 !show_enclosure_top && !show_enclosure_bottom,
                 "Don't show_enclosure_top or show_enclosure_bottom when using show_just_hinge_parts"
             );
             _enclosure_half();
+        }
+
+        color(enclosure_color, enclosure_opacity) {
+            if (show_enclosure_top) { _top(); }
+            if (show_enclosure_bottom) { _bottom(); }
         }
     }
 
@@ -520,35 +571,21 @@ module assembly(
     }
 
     module _mounting_rails() {
-        module _mounting_rail(y, z, height, include_head_cavity = false) {
-            translate([
-                keys_x,
-                pcb_y + y,
-                pcb_z + PCB_HEIGHT + z
-            ]) {
-                mounting_rail(
-                    width = mount_width,
-                    length = mount_length,
-                    height = height,
-                    hole_xs = mount_hole_xs,
-                    include_head_cavity = include_head_cavity,
-                    head_hole_diameter = SCREW_HEAD_DIAMETER + tolerance * 2
-                );
-            }
+        translate([
+            keys_x,
+            pcb_y + mount_end_on_pcb - mount_length,
+            pcb_z + PCB_HEIGHT
+        ]) {
+            mounting_rail(
+                width = mount_width,
+                length = mount_length,
+                height = mount_height,
+                hole_xs = mount_hole_xs,
+                head_hole_diameter = SCREW_HEAD_DIAMETER + tolerance * 2
+            );
         }
 
-        _mounting_rail(
-            mount_end_on_pcb - mount_length,
-            0,
-            mount_height
-        );
-        _mounted_keys(include_hitch = true);
-        _mounting_rail(
-            mount_end_on_pcb - mount_length,
-            mount_height + cantilever_height,
-            enclosure_height - keys_z - cantilever_height - enclosure_wall - 1,
-            true
-        );
+        translate([e, 0, 0]) _mounted_keys(include_hitch = true);
     }
 
     module _window_pane() {
