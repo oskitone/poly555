@@ -1,10 +1,13 @@
-module hole_array(xs, diameter, height, y = 0, z = 0) {
+module hole_array(xs, diameter, height, y = 0, z = 0, square = false) {
     for (x = xs) {
         translate([x, y, z]) {
-            cylinder(
-                d = diameter,
-                h = height
-            );
+            if (square) {
+                translate([diameter / -2, diameter / -2, 0]) {
+                    cube([diameter, diameter, height]);
+                }
+            } else {
+                cylinder(d = diameter, h = height);
+            }
         }
     }
 }
