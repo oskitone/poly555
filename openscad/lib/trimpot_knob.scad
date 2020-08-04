@@ -7,15 +7,9 @@ module trimpot_knob(
 
     cap_height = 1,
 
-    tip_width = 3.8,
-    tip_length = .6,
-    tip_depth = 0, // in reality it's 1.5 but too small to print
-
     head_diameter = 6.15,
     head_height = 1.5,
     head_flat_depth = .55,
-
-    body_diameter = 10,
 
     wall = 1.8,
 
@@ -30,16 +24,16 @@ module trimpot_knob(
     e = 0.047;
 
     total_height = cap_height * 2 + head_height;
-    inner_diameter = head_diameter + wall * 2;
+    inner_diameter = head_diameter + tolerance * 2 + wall * 2;
 
     module _head_lock() {
         z = cap_height - e;
 
         translate([0, 0, z]) {
             ring(
-                diameter = diameter,
+                diameter = inner_diameter,
                 height = head_height + e,
-                thickness = (diameter - head_diameter) / 2 - tolerance
+                thickness = wall
             );
 
             cylinder_grip(
@@ -51,54 +45,17 @@ module trimpot_knob(
             );
         }
 
-        intersection() {
-            translate([
-                diameter / -2,
-                head_diameter / -2 - tolerance * 1 - e,
-                z
-            ]) {
-                cube([
-                    diameter,
-                    head_flat_depth - tolerance + e,
-                    head_height + e,
-                ]);
-            }
-
-            translate([0, 0, z - e]) {
-                cylinder(d = diameter - e * 2, h = head_height + e * 2);
-            }
+        translate([
+            head_diameter / -2,
+            head_diameter / -2 - tolerance,
+            z
+        ]) {
+            cube([
+                head_diameter,
+                head_flat_depth - tolerance + e,
+                head_height + e,
+            ]);
         }
-
-        if (tip_depth > 0) {
-            translate([
-                tip_width / -2 + tolerance,
-                tip_length / -2 + tolerance,
-                cap_height - e
-            ]) {
-                cube([
-                    tip_width - tolerance * 2,
-                    tip_length - tolerance * 2,
-                    tip_depth + e
-                ]);
-            }
-        }
-    }
-
-    // This breaks when diameter is narrower than the whole wall + spoke thing
-    // TODO: simplify
-    module _caps() {
-        translate([0, 0, cap_height + head_height - e]) {
-            ring(
-                diameter = diameter,
-                height = cap_height + e,
-                thickness = wall
-            );
-        }
-
-        cylinder(
-            d = diameter,
-            h = cap_height
-        );
     }
 
     module _spokes(width = 1.8, count = 4) {
@@ -133,26 +90,18 @@ module trimpot_knob(
         }
     }
 
-    difference() {
-        union() {
-            _head_lock();
-            _caps();
-            cylinder_grip(
-                diameter,
-                cap_height * 2 + head_height,
-                size = grip_size
-            );
-        }
-
-        translate([0, 0, -e]) {
-            ring(
-                diameter = diameter - wall * 2,
-                height = total_height + e * 2,
-                thickness = ((diameter - wall * 2) - inner_diameter) / 2
-            );
-        }
-    }
-
+    _head_lock();
+    cylinder(d = inner_diameter, h = cap_height);
+    cylinder_grip(
+        diameter,
+        cap_height * 2 + head_height,
+        size = grip_size
+    );
+    ring(
+        diameter = diameter,
+        height = total_height,
+        thickness = wall
+    );
     _spokes();
 }
 
