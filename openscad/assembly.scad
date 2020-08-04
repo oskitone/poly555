@@ -454,6 +454,7 @@ module assembly(
                 }
                 _keys_cavity();
                 _pcb_window_pane_cavity();
+                _pcb(true);
                 /* TODO: window pane support */
             }
         }
@@ -487,13 +488,31 @@ module assembly(
         }
     }
 
-    module _pcb() {
+    module _pcb(
+        for_enclosure_cavity = false,
+        volume_wheel_diameter = 21,
+        volume_wheel_grip_size = .6
+    ) {
         translate([pcb_x, pcb_y, pcb_z]) {
             pcb(
-                visualize_buttons = true,
-                visualize_circuit_space = quick_preview,
-                visualize_silkscreen = !quick_preview,
-                visualize_switch = show_switch,
+                visualize_board =  !for_enclosure_cavity,
+                visualize_buttons = !for_enclosure_cavity,
+                visualize_circuit_space = quick_preview && !for_enclosure_cavity,
+                visualize_silkscreen = !quick_preview && !for_enclosure_cavity,
+                visualize_switch = show_switch && !for_enclosure_cavity,
+                visualize_volume_wheel = for_enclosure_cavity || !quick_preview,
+
+                // TODO: simplify cavity to plain cylinder
+                volume_wheel_diameter = for_enclosure_cavity
+                    ? volume_wheel_diameter
+                        + volume_wheel_grip_size * 2
+                        + tolerance * 4
+                    : volume_wheel_diameter,
+                volume_wheel_grip_size =
+                    (quick_preview || for_enclosure_cavity)
+                        ? 0
+                        : volume_wheel_grip_size,
+
                 pcb_color = pcb_color,
                 opacity = pcb_opacity
             );

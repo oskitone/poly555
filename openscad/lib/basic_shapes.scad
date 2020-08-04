@@ -126,3 +126,37 @@ module support_wall(
         }
     }
 }
+
+module ring(diameter, height, thickness) {
+    e = 0.034;
+
+    difference() {
+        cylinder(d = diameter, h = height);
+        translate([0, 0, -e]) {
+            cylinder(d = diameter - thickness * 2, h = height + e * 2);
+        }
+    }
+}
+
+module cylinder_grip(
+    diameter,
+    height,
+    count,
+    rotation_offset = 0,
+    size = 1,
+    $fn = undef
+) {
+    if (size > 0) {
+        count = count != undef
+            ? count
+            : floor((diameter * PI) / size / 2);
+
+        for (i = [0 : count - 1]) {
+            rotate([0, 0, rotation_offset + 360 * i / count]) {
+                translate([0, diameter / 2, 0]) {
+                    cylinder(d = size, h = height);
+                }
+            }
+        }
+    }
+}

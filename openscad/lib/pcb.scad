@@ -1,6 +1,7 @@
 include <values.scad>;
 
 use <switch.scad>;
+use <trimpot_knob.scad>;
 
 module pcb(
     dimensions = [PCB_WIDTH, PCB_LENGTH, PCB_HEIGHT],
@@ -9,6 +10,9 @@ module pcb(
     pcb_color = "purple",
     button_color = "black",
     opacity = 1,
+
+    volume_wheel_diameter = 20,
+    volume_wheel_grip_size = 0,
 
     visualize_board = true,
     visualize_buttons = false,
@@ -71,15 +75,17 @@ module pcb(
         }
     }
 
+    // TODO: account for cap height in Z position
+    // TODO: flip upside down
     if (visualize_volume_wheel) {
         translate([
             PCB_VOLUME_WHEEL_X,
             PCB_VOLUME_WHEEL_Y,
-            BUTTON_HEIGHT
+            POT_HEIGHT
         ]) {
-            % cylinder(
-                r = 9,
-                h = 2
+            trimpot_knob(
+                diameter = volume_wheel_diameter,
+                grip_size = volume_wheel_grip_size
             );
         }
     }
