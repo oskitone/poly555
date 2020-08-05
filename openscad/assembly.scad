@@ -420,8 +420,6 @@ module assembly(
             }
 
             module _keys_bumper() {
-                chamfer = quick_preview ? 0 : enclosure_chamfer;
-
                 keys_exposed_height = accidental_key_extra_height
                     + natural_key_exposed_height;
 
@@ -436,7 +434,7 @@ module assembly(
                         translate([0, 0, -z_offset]) {
                             _enclosure_half(
                                 is_top = true,
-                                length = bumper_length + chamfer,
+                                length = bumper_length + enclosure_chamfer,
                                 height = bumper_height
                             );
                         }
