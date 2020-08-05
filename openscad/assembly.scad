@@ -65,9 +65,12 @@ module assembly(
     plot = PCB_BUTTONS[1][0] - PCB_BUTTONS[0][0];
     enclosure_gutter = mount_length;
 
+    keys_back_gutter = key_gutter; // TODO: tighten
+    cantilever_recession = cantilever_length - keys_back_gutter;
+
     natural_key_width = plot * 2 - key_gutter;
     natural_key_length = natural_key_width * 4
-        - cantilever_length - mount_length;
+        - (cantilever_length - cantilever_recession) - mount_length;
 
     mount_width= get_keys_total_width(
         count = keys_count,
@@ -80,10 +83,13 @@ module assembly(
 
     mount_end_on_pcb = PCB_HOLES[4][1] +  mount_length / 2;
 
-    keys_y_over_pcb = natural_key_length + cantilever_length + mount_length
-        - mount_end_on_pcb;
+    mounted_keys_total_length = natural_key_length
+        + (cantilever_length - cantilever_recession)
+        + mount_length;
+
+    keys_y_over_pcb = mounted_keys_total_length - mount_end_on_pcb;
     keys_from_pcb_x_offset = PCB_BUTTONS[0][0] - BUTTON_WIDTH / 2 - plot + key_gutter / 2;
-    keys_cavity_length = natural_key_length + key_gutter * 2; // TODO: tighten
+    keys_cavity_length = natural_key_length + key_gutter + keys_back_gutter;
 
     mount_hole_xs = [
         PCB_HOLES[4][0] - keys_from_pcb_x_offset,
@@ -94,8 +100,7 @@ module assembly(
 
     pcb_window_extension = PCB_COMPONENTS_Y - mount_end_on_pcb;
     pcb_x = enclosure_gutter - keys_from_pcb_x_offset;
-    pcb_y = (natural_key_length + cantilever_length + mount_length)
-        - mount_end_on_pcb + enclosure_gutter;
+    pcb_y = mounted_keys_total_length - mount_end_on_pcb + enclosure_gutter;
     pcb_z = enclosure_wall + max(
         MOUNT_STILT_MINIMUM_HEIGHT,
         SPEAKER_HEIGHT + speaker_to_pcb_clearance,
@@ -121,7 +126,10 @@ module assembly(
         - PCB_HEIGHT - mount_height - accidental_key_extra_height
         - accidental_key_recession;
     keys_x = pcb_x + keys_from_pcb_x_offset;
-    keys_y = pcb_y - natural_key_length - cantilever_length + mount_end_on_pcb
+    keys_y = pcb_y
+        - natural_key_length
+        - (cantilever_length - cantilever_recession)
+        + mount_end_on_pcb
         - mount_length;
     keys_z = pcb_z + PCB_HEIGHT + BUTTON_HEIGHT;
 
@@ -176,6 +184,7 @@ module assembly(
 
                 cantilever_length = cantilever_length,
                 cantilever_height = cantilever_height,
+                cantilever_recession = cantilever_recession,
 
                 include_mount = include_natural,
                 include_natural = include_natural,
