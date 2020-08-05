@@ -25,6 +25,7 @@ module keys(
 
     cantilever_length = 0,
     cantilever_height = 0,
+    cantilever_recession = 0,
 
     include_natural = true,
     include_accidental = true,
@@ -39,6 +40,34 @@ module keys(
     );
 
     module _key_block(dimensions) {
+        cavity_width = dimensions[0] + e * 2;
+
+        module _cantilever_recession_cavity() {
+            x = -e;
+            y = dimensions[1] - cantilever_recession;
+
+            length = cantilever_recession + e;
+
+            translate([x, y, -e]) {
+                cube([
+                    cavity_width,
+                    length,
+                    cantilever_height + e
+                ]);
+            }
+
+            translate([x, y, cantilever_height - e]) {
+                flat_top_rectangular_pyramid(
+                    top_width = cavity_width,
+                    top_length = 0,
+                    bottom_width = cavity_width,
+                    bottom_length = length,
+                    height = length,
+                    top_weight_y = 1
+                );
+            }
+        }
+
         difference() {
             if (front_chamfer > 0) {
                 width = dimensions[0];
@@ -72,11 +101,15 @@ module keys(
                 cube(dimensions);
             }
 
+            if (cantilever_recession > 0) {
+                _cantilever_recession_cavity();
+            }
+
             /* TODO: DFM */
             if (undercarriage_height > 0 && undercarriage_length > 0) {
                 translate([-e, -e, -e]) {
                     cube([
-                        dimensions[0] + e * 2,
+                        cavity_width,
                         dimensions[1] - undercarriage_length + e,
                         undercarriage_height + e
                     ]);
@@ -87,7 +120,7 @@ module keys(
         if (include_cantilevers) {
              translate([
                  (dimensions[0] - cantilver_width) / 2,
-                 dimensions[1] - e,
+                 dimensions[1] - cantilever_recession - e,
                  0
              ]) {
                  linear_extrude(cantilever_height) {
@@ -228,6 +261,7 @@ module mounted_keys(
 
     cantilever_length = 0,
     cantilever_height = 0,
+    cantilever_recession = 0,
 
     hitch_height = 0,
     hitch_y = 0,
@@ -270,17 +304,20 @@ module mounted_keys(
             include_cantilevers = include_cantilevers,
 
             cantilever_length = cantilever_length,
-            cantilever_height = cantilever_height
+            cantilever_height = cantilever_height,
+            cantilever_recession = cantilever_recession
         );
     }
 
     if (include_natural || include_accidental || include_mount) {
+        mount_y = natural_length + cantilever_length - cantilever_recession;
+
         difference() {
             union() {
                 if (include_natural) { _keys(true); }
                 if (include_accidental) { _keys(false); }
                 if (include_mount) {
-                    translate([0, natural_length + cantilever_length, 0]) {
+                    translate([0, mount_y, 0]) {
                         cube([mount_width, mount_length, mount_height]);
                     }
                 }
@@ -290,7 +327,7 @@ module mounted_keys(
                 mount_hole_xs,
                 mount_hole_diameter,
                 accidental_height + e * 2,
-                natural_length + cantilever_length + mount_length / 2,
+                mount_y + mount_length / 2,
                 -e
             );
 
@@ -346,8 +383,9 @@ mounted_keys(
     mount_screw_head_diameter = 4,
     mount_hole_xs = [5, 30, 40, 65, 82],
 
-    cantilever_length = 2,
+    cantilever_length = 4,
     cantilever_height = 2,
+    cantilever_recession = 2,
 
     hitch_height = 12,
     hitch_y = 25,
