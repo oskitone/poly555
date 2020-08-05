@@ -65,7 +65,7 @@ module assembly(
     plot = PCB_BUTTONS[1][0] - PCB_BUTTONS[0][0];
     enclosure_gutter = mount_length;
 
-    keys_back_gutter = key_gutter; // TODO: tighten
+    keys_back_gutter = tolerance * 2;
     cantilever_recession = cantilever_length - keys_back_gutter;
 
     natural_key_width = plot * 2 - key_gutter;
