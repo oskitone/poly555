@@ -81,13 +81,12 @@ module assembly(
     );
     mount_height = BUTTON_HEIGHT;
 
-    mount_end_on_pcb = PCB_HOLES[4][1] +  mount_length / 2;
-
     mounted_keys_total_length = natural_key_length
         + (cantilever_length - cantilever_recession)
         + mount_length;
 
-    keys_y_over_pcb = mounted_keys_total_length - mount_end_on_pcb;
+    keys_mount_end_on_pcb = PCB_HOLES[4][1] +  mount_length / 2;
+    keys_y_over_pcb = mounted_keys_total_length - keys_mount_end_on_pcb;
     keys_from_pcb_x_offset = PCB_BUTTONS[0][0] - BUTTON_WIDTH / 2 - plot + key_gutter / 2;
     keys_cavity_length = natural_key_length + key_gutter + keys_back_gutter;
 
@@ -98,9 +97,9 @@ module assembly(
         PCB_HOLES[7][0] - keys_from_pcb_x_offset,
     ];
 
-    pcb_window_extension = PCB_COMPONENTS_Y - mount_end_on_pcb;
+    pcb_window_extension = PCB_COMPONENTS_Y - keys_mount_end_on_pcb;
     pcb_x = enclosure_gutter - keys_from_pcb_x_offset;
-    pcb_y = mounted_keys_total_length - mount_end_on_pcb + enclosure_gutter;
+    pcb_y = mounted_keys_total_length - keys_mount_end_on_pcb + enclosure_gutter;
     pcb_z = enclosure_wall + max(
         MOUNT_STILT_MINIMUM_HEIGHT,
         SPEAKER_HEIGHT + speaker_to_pcb_clearance,
@@ -110,7 +109,7 @@ module assembly(
     pcb_stilt_height = pcb_z - enclosure_wall;
 
     enclosure_width = enclosure_gutter * 2 + mount_width;
-    enclosure_length = pcb_y + mount_end_on_pcb
+    enclosure_length = pcb_y + keys_mount_end_on_pcb
         + PCB_COMPONENTS_LENGTH + pcb_window_extension * 2
         + enclosure_gutter;
 
@@ -129,7 +128,7 @@ module assembly(
     keys_y = pcb_y
         - natural_key_length
         - (cantilever_length - cantilever_recession)
-        + mount_end_on_pcb
+        + keys_mount_end_on_pcb
         - mount_length;
     keys_z = pcb_z + PCB_HEIGHT + BUTTON_HEIGHT;
 
@@ -147,7 +146,7 @@ module assembly(
         + (PCB_BATTERY_CAVITY_LENGTH - BATTERY_LENGTH) / 2;
 
     window_pane_x = enclosure_wall + tolerance;
-    window_pane_y = pcb_y + mount_end_on_pcb;
+    window_pane_y = pcb_y + keys_mount_end_on_pcb;
     window_pane_z = enclosure_height - enclosure_wall - WINDOW_PANE_HEIGHT;
     window_pane_width = enclosure_width - enclosure_wall * 2 - tolerance * 2;
     window_pane_length = enclosure_length - window_pane_y - enclosure_wall
@@ -514,7 +513,7 @@ module assembly(
                 x = enclosure_wall - e;
                 z = pcb_z + PCB_HEIGHT + mount_height + cantilever_height;
 
-                translate([x, pcb_y + mount_end_on_pcb - mount_length, z]) {
+                translate([x, pcb_y + keys_mount_end_on_pcb - mount_length, z]) {
                     mounting_rail(
                         width = enclosure_width - x * 2,
                         length = mount_length,
@@ -605,7 +604,7 @@ module assembly(
     module _mounting_rails() {
         translate([
             keys_x,
-            pcb_y + mount_end_on_pcb - mount_length,
+            pcb_y + keys_mount_end_on_pcb - mount_length,
             pcb_z + PCB_HEIGHT
         ]) {
             mounting_rail(
