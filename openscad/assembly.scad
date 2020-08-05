@@ -170,7 +170,7 @@ module assembly(
                 natural_height = key_height,
 
                 accidental_width = 7.5,
-                accidental_length = natural_key_length / 2,
+                accidental_length = natural_key_length * 3/5,
                 accidental_height = key_height + accidental_key_extra_height,
 
                 front_chamfer = quick_preview ? 0 : 2,
@@ -192,7 +192,7 @@ module assembly(
 
                 key_travel = key_travel,
 
-                hitch_height = mount_height + key_height / 3,
+                hitch_height = mount_height + HITCH_RECOMMENDED_MINIMUM_CAVITY_HEIGHT,
                 hitch_y = pcb_y - keys_y + PCB_HOLES[0][1],
                 hitch_z = -mount_height
             );

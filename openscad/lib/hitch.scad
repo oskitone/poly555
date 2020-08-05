@@ -14,7 +14,7 @@ module hitch(
     mount_hole_diameter = PCB_MOUNT_HOLE_DIAMETER + .2,
     mount_screw_head_diameter = SCREW_HEAD_DIAMETER,
     mount_screw_head_height = SCREW_HEAD_HEIGHT,
-    mount_screw_head_clearance = .2,
+    mount_screw_head_clearance = HITCH_DEFAULT_MOUNT_SCREW_HEAD_CLEARANCE,
 
     $fn = DEFAULT_ROUNDING
 ) {
