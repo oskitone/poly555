@@ -105,10 +105,9 @@ module assembly(
     pcb_stilt_height = pcb_z - enclosure_wall;
 
     enclosure_width = enclosure_gutter * 2 + mount_width;
-    enclosure_length = keys_cavity_length
-        + mount_length
-        + enclosure_gutter * 2
-        + PCB_COMPONENTS_LENGTH + pcb_window_extension * 2;
+    enclosure_length = pcb_y + mount_end_on_pcb
+        + PCB_COMPONENTS_LENGTH + pcb_window_extension * 2
+        + enclosure_gutter;
 
     enclosure_height = enclosure_wall * 2
         + pcb_stilt_height
