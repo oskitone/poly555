@@ -13,8 +13,9 @@ use <lib/utils.scad>;
 
 module assembly(
     key_gutter = 1,
-    natural_key_exposed_height = 2,
-    accidental_key_extra_height = 2,
+    accidental_key_recession = 2,
+    natural_key_exposed_height = 3,
+    accidental_key_extra_height = 3,
 
     enclosure_wall = 1.8,
     enclosure_inner_wall = 1.2,
@@ -118,7 +119,8 @@ module assembly(
     enclosure_top_height = enclosure_height - enclosure_bottom_height;
 
     key_height = enclosure_height - pcb_stilt_height - enclosure_wall
-        - PCB_HEIGHT - mount_height + natural_key_exposed_height;
+        - PCB_HEIGHT - mount_height - accidental_key_extra_height
+        - accidental_key_recession;
     keys_x = pcb_x + keys_from_pcb_x_offset;
     keys_y = pcb_y - natural_key_length - cantilever_length + mount_end_on_pcb
         - mount_length;
@@ -200,7 +202,12 @@ module assembly(
     }
 
     module _enclosure() {
-        module _enclosure_half(is_top) {
+        module _enclosure_half(
+            is_top,
+            width = enclosure_width,
+            length = enclosure_length,
+            height
+        ) {
             position = is_top
                 ? [enclosure_width, 0, enclosure_height]
                 : [0, 0, 0];
@@ -209,11 +216,13 @@ module assembly(
 
             translate(position) rotate(rotation) {
                 enclosure_half(
-                    width = enclosure_width,
-                    length = enclosure_length,
-                    height = is_top
-                        ? enclosure_top_height
-                        : enclosure_bottom_height,
+                    width = width,
+                    length = length,
+                    height = height != undef
+                        ? height
+                        : is_top
+                            ? enclosure_top_height
+                            : enclosure_bottom_height,
 
                     wall = enclosure_wall,
                     floor_ceiling = undef,
@@ -412,16 +421,33 @@ module assembly(
             }
 
             module _keys_bumper() {
+                chamfer = quick_preview ? 0 : enclosure_chamfer;
+
+                keys_exposed_height = accidental_key_extra_height
+                    + natural_key_exposed_height;
+
+                z_offset = keys_exposed_height + accidental_key_recession;
+
+                bumper_length = keys_cavity_length + enclosure_gutter - key_gutter;
+                bumper_height = enclosure_height - enclosure_bottom_height
+                    - accidental_key_recession - keys_exposed_height;
+
                 difference() {
                     intersection() {
-                        _enclosure_half(true);
+                        translate([0, 0, -z_offset]) {
+                            _enclosure_half(
+                                is_top = true,
+                                length = bumper_length + chamfer,
+                                height = bumper_height
+                            );
+                        }
                         _keys_and_bumper_cavity(tolerance * -2);
                     }
 
                     translate([
                         enclosure_gutter - key_gutter,
                         enclosure_gutter - key_gutter,
-                        enclosure_height - enclosure_wall - e
+                        enclosure_height - enclosure_wall - e - z_offset
                     ]) {
                         cube([
                             mount_width + key_gutter * 2,
