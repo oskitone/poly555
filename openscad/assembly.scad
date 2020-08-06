@@ -3,6 +3,7 @@ include <lib/values.scad>;
 use <lib/basic_shapes.scad>;
 use <lib/battery.scad>;
 use <lib/enclosure.scad>;
+use <lib/engraving.scad>;
 use <lib/keys.scad>;
 use <lib/mount_stilt.scad>;
 use <lib/mounting_rail.scad>;
@@ -23,6 +24,8 @@ module assembly(
     enclosure_to_component_z_clearance = 2,
     enclosure_chamfer = 2,
     enclosure_rounding = 24,
+
+    engraving_depth = 1,
 
     bottom_component_clearance = 1,
     speaker_to_pcb_clearance = 4,
@@ -463,6 +466,21 @@ module assembly(
                 }
             }
 
+            module _engraving(corner_offset = 10) {
+                translate([
+                    enclosure_width / 2,
+                    enclosure_length * .75,
+                    engraving_depth
+                ]) {
+                    rotate([0, 180, 0]) {
+                        engraving(
+                            height = engraving_depth + e,
+                            bleed = tolerance
+                        );
+                    }
+                }
+            }
+
             difference() {
                 union() {
                     _enclosure_half(false);
@@ -484,6 +502,7 @@ module assembly(
                     z_bleed = e
                 );
                 _screw_head_cavities();
+                _engraving();
             }
 
             _screw_head_cavity_bridges();
