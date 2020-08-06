@@ -27,8 +27,8 @@ module assembly(
 
     engraving_depth = 1,
 
-    bottom_component_clearance = 1,
-    speaker_to_pcb_clearance = 4,
+    bottom_component_clearance = .4,
+    speaker_to_pcb_clearance = 2.4,
 
     mount_length = 6,
     cantilever_length = 2,
