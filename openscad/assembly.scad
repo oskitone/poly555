@@ -730,7 +730,6 @@ assembly(
     show_keys = true,
     show_enclosure_top = true,
     show_hinge_parts = true,
-    show_window_pane = false,
-    show_just_hinge_parts = false,
+
     quick_preview = DEV_MODE
 );
