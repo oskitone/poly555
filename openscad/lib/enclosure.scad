@@ -29,7 +29,7 @@ module enclosure_half(
 
     radius = 0,
 
-    chamfer_lip_removal = true,
+    chamfer_lip_removal = false,
 
     gutter = 5,
     clasp_end_gutter = undef,
