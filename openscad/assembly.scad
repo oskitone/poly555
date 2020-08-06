@@ -497,7 +497,7 @@ module assembly(
                 }
 
                 _switch_exposure(
-                    xy_bleed = tolerance / 2,
+                    xy_bleed = tolerance,
                     include_switch_cavity = true,
                     z_bleed = e
                 );
