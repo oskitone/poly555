@@ -88,16 +88,16 @@ module assembly(
         + (cantilever_length - cantilever_recession)
         + mount_length;
 
-    keys_mount_end_on_pcb = PCB_HOLES[4][1] +  mount_length / 2;
+    keys_mount_end_on_pcb = BOTTOM_MOUNTED_PCB_HOLES[0][1] +  mount_length / 2;
     keys_y_over_pcb = mounted_keys_total_length - keys_mount_end_on_pcb;
     keys_from_pcb_x_offset = PCB_BUTTONS[0][0] - BUTTON_WIDTH / 2 - plot + key_gutter / 2;
     keys_cavity_length = natural_key_length + key_gutter + keys_back_gutter;
 
     mount_hole_xs = [
-        PCB_HOLES[4][0] - keys_from_pcb_x_offset,
-        PCB_HOLES[5][0] - keys_from_pcb_x_offset,
-        PCB_HOLES[6][0] - keys_from_pcb_x_offset,
-        PCB_HOLES[7][0] - keys_from_pcb_x_offset,
+        BOTTOM_MOUNTED_PCB_HOLES[0][0] - keys_from_pcb_x_offset,
+        BOTTOM_MOUNTED_PCB_HOLES[1][0] - keys_from_pcb_x_offset,
+        BOTTOM_MOUNTED_PCB_HOLES[2][0] - keys_from_pcb_x_offset,
+        BOTTOM_MOUNTED_PCB_HOLES[3][0] - keys_from_pcb_x_offset,
     ];
 
     pcb_window_extension = PCB_COMPONENTS_Y - keys_mount_end_on_pcb;
@@ -196,7 +196,7 @@ module assembly(
                 key_travel = key_travel,
 
                 hitch_height = mount_height + HITCH_RECOMMENDED_MINIMUM_CAVITY_HEIGHT,
-                hitch_y = pcb_y - keys_y + PCB_HOLES[0][1],
+                hitch_y = pcb_y - keys_y + TOP_MOUNTED_PCB_HOLES[0][1],
                 hitch_z = -mount_height
             );
         }
@@ -379,11 +379,14 @@ module assembly(
                 }
             }
 
-            module _mount_stilts() {
+            module _mount_stilts_and_spacers() {
                 intersection() {
                     translate([pcb_x, pcb_y, pcb_z - e]) {
                         mount_stilts(
-                            positions = PCB_HOLES,
+                            positions = concat(
+                                TOP_MOUNTED_PCB_HOLES,
+                                BACK_PCB_HOLES
+                            ),
                             height = pcb_stilt_height,
                             z = -pcb_stilt_height
                         );
@@ -401,10 +404,18 @@ module assembly(
                         ]);
                     }
                 }
+
+                translate([pcb_x, pcb_y, enclosure_wall - e]) {
+                    spacer_array(
+                        BOTTOM_MOUNTED_PCB_HOLES,
+                        height = pcb_stilt_height + e,
+                        wall = enclosure_wall
+                    );
+                }
             }
 
             module _screw_head_cavities() {
-                for (p = PCB_HOLES) {
+                for (p = BOTTOM_MOUNTED_PCB_HOLES) {
                     translate([pcb_x + p.x, pcb_y + p.y, -e]) {
                         cylinder(
                             d = SCREW_HEAD_DIAMETER + tolerance * 2,
@@ -415,15 +426,18 @@ module assembly(
                 }
             }
 
-            module _screw_head_cavity_bridges() {
-                for (p = PCB_HOLES) {
+            module _screw_head_cavity_bridges(
+                diameter = PCB_MOUNT_HOLE_DIAMETER + e * 2,
+                $fn = DEFAULT_ROUNDING
+            ) {
+                for (p = BOTTOM_MOUNTED_PCB_HOLES) {
                     translate([
                         pcb_x + p.x,
                         pcb_y + p.y,
                         SCREW_HEAD_HEIGHT + bottom_component_clearance
                     ]) {
                         cylinder(
-                            d = SCREW_HEAD_DIAMETER + enclosure_wall * 2,
+                            d = diameter,
                             h = SACRIFICIAL_BRIDGE_HEIGHT
                         );
                     }
@@ -493,7 +507,7 @@ module assembly(
                     );
                     _battery_container();
                     _speaker_container();
-                    _mount_stilts();
+                    _mount_stilts_and_spacers();
                 }
 
                 _switch_exposure(

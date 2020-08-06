@@ -1,3 +1,5 @@
+include <values.scad>;
+
 module hole_array(xs, diameter, height, y = 0, z = 0, square = false) {
     for (x = xs) {
         translate([x, y, z]) {
@@ -8,6 +10,25 @@ module hole_array(xs, diameter, height, y = 0, z = 0, square = false) {
             } else {
                 cylinder(d = diameter, h = height);
             }
+        }
+    }
+}
+
+module spacer_array(
+    positions,
+    height,
+    wall = 2,
+    hole_diameter = PCB_MOUNT_HOLE_DIAMETER,
+    z = 0,
+    $fn = DEFAULT_ROUNDING
+) {
+    for (position = positions) {
+        translate([position.x, position.y, z]) {
+            ring(
+                diameter = hole_diameter + wall * 2,
+                inner_diameter = hole_diameter,
+                height = height
+            );
         }
     }
 }
@@ -130,11 +151,19 @@ module support_wall(
     }
 }
 
-module ring(diameter, height, thickness) {
+module ring(
+    diameter,
+    height,
+    thickness, inner_diameter = 0
+) {
     e = 0.034;
+    thickness = thickness != undef
+        ? thickness
+        : (diameter - inner_diameter) / 2;
 
     difference() {
         cylinder(d = diameter, h = height);
+
         translate([0, 0, -e]) {
             cylinder(d = diameter - thickness * 2, h = height + e * 2);
         }
