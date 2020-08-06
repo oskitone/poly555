@@ -92,6 +92,8 @@ module assembly(
     keys_y_over_pcb = mounted_keys_total_length - keys_mount_end_on_pcb;
     keys_from_pcb_x_offset = PCB_BUTTONS[0][0] - BUTTON_WIDTH / 2 - plot + key_gutter / 2;
     keys_cavity_length = natural_key_length + key_gutter + keys_back_gutter;
+    keys_and_bumper_cavity_length = keys_cavity_length + enclosure_gutter
+        - key_gutter;
 
     mount_hole_xs = [
         BOTTOM_MOUNTED_PCB_HOLES[0][0] - keys_from_pcb_x_offset,
@@ -259,8 +261,7 @@ module assembly(
             translate([-e, -e, z]) {
                 cube([
                     enclosure_width + e * 2,
-                    keys_cavity_length + enclosure_gutter - key_gutter
-                        + length_adjustment,
+                    keys_and_bumper_cavity_length + length_adjustment,
                     enclosure_height - z + e
                 ]);
             }
@@ -454,29 +455,68 @@ module assembly(
                 bumper_height = enclosure_height - enclosure_bottom_height
                     - accidental_key_recession - keys_exposed_height;
 
-                difference() {
-                    intersection() {
-                        translate([0, 0, -z_offset]) {
-                            _enclosure_half(
-                                is_top = true,
-                                length = bumper_length + enclosure_chamfer,
-                                height = bumper_height
-                            );
-                        }
-                        _keys_and_bumper_cavity(tolerance * -2);
-                    }
+                xy = enclosure_gutter - key_gutter;
+                z = enclosure_height - enclosure_wall - z_offset;
 
-                    translate([
-                        enclosure_gutter - key_gutter,
-                        enclosure_gutter - key_gutter,
-                        enclosure_height - enclosure_wall - e - z_offset
-                    ]) {
+                width = mount_width + key_gutter * 2;
+
+                support_depth = xy - enclosure_wall;
+                cavity_length_adjustment = tolerance * -2;
+
+                module _keys_cavity() {
+                    translate([xy, xy, z - e]) {
                         cube([
-                            mount_width + key_gutter * 2,
+                            width,
                             keys_cavity_length,
                             enclosure_wall + e * 2
                         ]);
                     }
+
+                    translate([
+                        xy - support_depth,
+                        xy - support_depth,
+                        z - support_depth - e
+                    ]) {
+                        flat_top_rectangular_pyramid(
+                            top_width = width,
+                            top_length = keys_cavity_length,
+                            bottom_width = width + support_depth * 2,
+                            bottom_length = keys_cavity_length + support_depth,
+                            height = support_depth + e,
+                            top_weight_y = 1
+                        );
+                    }
+                }
+
+                difference() {
+                    union() {
+                        intersection() {
+                            translate([0, 0, -z_offset]) {
+                                _enclosure_half(
+                                    is_top = true,
+                                    length = bumper_length + enclosure_chamfer,
+                                    height = bumper_height
+                                );
+                            }
+                            _keys_and_bumper_cavity(cavity_length_adjustment);
+                        }
+
+                        translate([
+                            enclosure_wall - e,
+                            enclosure_wall - e,
+                            z - support_depth
+                        ]) {
+                            cube([
+                                enclosure_width - enclosure_wall * 2 + e * 2,
+                                keys_and_bumper_cavity_length
+                                    + cavity_length_adjustment - enclosure_wall
+                                    - e,
+                                support_depth
+                            ]);
+                        }
+                    }
+
+                    _keys_cavity();
                 }
             }
 
