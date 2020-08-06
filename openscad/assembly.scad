@@ -667,6 +667,7 @@ module assembly(
                     (quick_preview || for_enclosure_cavity)
                         ? 0
                         : volume_wheel_grip_size,
+                volume_wheel_cap_height = 1,
 
                 pcb_color = pcb_color,
                 opacity = pcb_opacity

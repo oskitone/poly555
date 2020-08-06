@@ -14,6 +14,7 @@ module pcb(
     simplify_volume_wheel = false,
     volume_wheel_diameter = 20,
     volume_wheel_grip_size = 0,
+    volume_wheel_cap_height = 1,
 
     visualize_board = true,
     visualize_buttons = false,
@@ -76,18 +77,18 @@ module pcb(
         }
     }
 
-    // TODO: account for cap height in Z position
-    // TODO: flip upside down
     if (visualize_volume_wheel) {
         translate([
             PCB_VOLUME_WHEEL_X,
             PCB_VOLUME_WHEEL_Y,
-            POT_HEIGHT
+            POT_HEIGHT - volume_wheel_cap_height
         ]) {
             trimpot_knob(
                 diameter = volume_wheel_diameter,
                 grip_size = volume_wheel_grip_size,
-                simplify = simplify_volume_wheel
+                cap_height = volume_wheel_cap_height,
+                simplify = simplify_volume_wheel,
+                flip = true
             );
         }
     }

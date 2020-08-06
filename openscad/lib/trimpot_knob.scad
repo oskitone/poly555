@@ -21,6 +21,8 @@ module trimpot_knob(
 
     shim_size = .8,
 
+    flip = false,
+
     $fn = HIDEF_ROUNDING
 ) {
     e = 0.047;
@@ -92,22 +94,24 @@ module trimpot_knob(
         }
     }
 
-    if (simplify) {
-        cylinder(d = diameter, h = total_height);
-    } else {
-        _head_lock();
-        cylinder(d = inner_diameter, h = cap_height);
-        cylinder_grip(
-            diameter,
-            cap_height * 2 + head_height,
-            size = grip_size
-        );
-        ring(
-            diameter = diameter,
-            height = total_height,
-            thickness = wall
-        );
-        _spokes();
+    mirror([0, 0, flip ? 1 : 0]) translate([0, 0, flip ? -total_height : 0]) {
+        if (simplify) {
+            cylinder(d = diameter, h = total_height);
+        } else {
+            _head_lock();
+            cylinder(d = inner_diameter, h = cap_height);
+            cylinder_grip(
+                diameter,
+                cap_height * 2 + head_height,
+                size = grip_size
+            );
+            ring(
+                diameter = diameter,
+                height = total_height,
+                thickness = wall
+            );
+            _spokes();
+        }
     }
 }
 
