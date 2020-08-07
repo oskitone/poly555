@@ -44,7 +44,7 @@ module pcb(
 
     if (visualize_silkscreen) {
         // magic...
-        translate([-16.25, -0.5, PCB_HEIGHT]) {
+        translate([-5.49, -4.6, PCB_HEIGHT]) {
             render() linear_extrude(1) offset(delta = .2) {
                 import("../../poly_555-brd.svg");
             }

@@ -18,7 +18,7 @@ module mount_stilt(
     // TODO: obviate
     include_sacrificial_bridge = true,
 
-    include_pedestal = true,
+    include_pedestal = false,
 
     $fn = DEFAULT_ROUNDING
 ) {

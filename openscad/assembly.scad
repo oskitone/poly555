@@ -36,7 +36,7 @@ module assembly(
 
     tolerance = .1,
 
-    keys_count = 20,
+    keys_count = 13,
     starting_natural_key_index = 3,
     key_travel = 1.4,
 
@@ -99,7 +99,6 @@ module assembly(
         BOTTOM_MOUNTED_PCB_HOLES[0][0] - keys_from_pcb_x_offset,
         BOTTOM_MOUNTED_PCB_HOLES[1][0] - keys_from_pcb_x_offset,
         BOTTOM_MOUNTED_PCB_HOLES[2][0] - keys_from_pcb_x_offset,
-        BOTTOM_MOUNTED_PCB_HOLES[3][0] - keys_from_pcb_x_offset,
     ];
 
     pcb_window_extension = PCB_COMPONENTS_Y - keys_mount_end_on_pcb;
@@ -137,18 +136,19 @@ module assembly(
         - mount_length;
     keys_z = pcb_z + PCB_HEIGHT + BUTTON_HEIGHT;
 
-    speaker_x = enclosure_width / 2;
+    speaker_x = 42;
     speaker_y = enclosure_wall + SPEAKER_DIAMETER / 2
         + enclosure_to_component_gutter;
 
-    switch_x = pcb_x + PCB_SWITCH_X;
-    switch_y = pcb_y + PCB_SWITCH_Y;
+    switch_x = 15;
+    switch_y = 15;
     switch_z = pcb_z;
     switch_exposure_height = switch_z - SWITCH_BASE_HEIGHT;
 
-    battery_x = enclosure_width - BATTERY_WIDTH - enclosure_wall - tolerance;
-    battery_y = pcb_y + PCB_BATTERY_CAVITY_Y
-        + (PCB_BATTERY_CAVITY_LENGTH - BATTERY_LENGTH) / 2;
+    battery_x = enclosure_width
+        - (BATTERY_WIDTH + BATTERY_SNAP_WIDTH)
+        - enclosure_wall - tolerance;
+    battery_y = enclosure_wall + tolerance;
 
     window_pane_x = enclosure_wall + tolerance;
     window_pane_y = pcb_y + keys_mount_end_on_pcb;
@@ -181,6 +181,12 @@ module assembly(
                 front_chamfer = quick_preview ? 0 : 2,
 
                 gutter = key_gutter,
+
+                undercarriage_height = BATTERY_HEIGHT
+                    - (pcb_stilt_height + PCB_HEIGHT + mount_height)
+                    + key_travel,
+                undercarriage_length = keys_mount_end_on_pcb - cantilever_length
+                    - mount_length,
 
                 mount_length = mount_length,
                 mount_height = cantilever_height,
@@ -247,6 +253,7 @@ module assembly(
 
                     include_hinge = true,
                     include_hinge_parts = show_hinge_parts,
+                    hinge_count = 2,
                     include_clasp = false,
                     just_hinge_parts = show_just_hinge_parts,
 
@@ -271,17 +278,36 @@ module assembly(
         }
 
         module _bottom() {
-            module _switch_container() {
+            module _switch_container(
+                endstop_gap = SWITCH_BASE_WIDTH / 2,
+                endstop_height = enclosure_inner_wall
+            ) {
                 translate([
                     switch_x - SWITCH_ORIGIN.x - enclosure_inner_wall,
                     switch_y - SWITCH_ORIGIN.y - enclosure_inner_wall,
                     switch_exposure_height - e
                 ]) {
-                    cube([
+                    dimensions = [
                         SWITCH_BASE_WIDTH + enclosure_inner_wall * 2,
                         SWITCH_BASE_LENGTH + enclosure_inner_wall * 2,
-                        SWITCH_BASE_HEIGHT + e
-                    ]);
+                        SWITCH_BASE_HEIGHT + endstop_height + e
+                    ];
+
+                    difference() {
+                        cube(dimensions);
+
+                        translate([
+                            (dimensions[0] - endstop_gap) / 2,
+                            -e,
+                            dimensions[2] - endstop_height - e
+                        ]) {
+                            cube([
+                                endstop_gap,
+                                dimensions[1],
+                                endstop_height + e * 2
+                            ]);
+                        }
+                    }
                 }
             }
 
@@ -380,29 +406,15 @@ module assembly(
             }
 
             module _mount_stilts_and_spacers() {
-                intersection() {
-                    translate([pcb_x, pcb_y, pcb_z - e]) {
-                        mount_stilts(
-                            positions = concat(
-                                TOP_MOUNTED_PCB_HOLES,
-                                BACK_PCB_HOLES
-                            ),
-                            height = pcb_stilt_height,
-                            z = -pcb_stilt_height
-                        );
-                    }
-
-                    translate([
-                        enclosure_wall - e,
-                        enclosure_wall - e,
-                        enclosure_wall - e
-                    ]) {
-                        cube([
-                            enclosure_width - enclosure_wall * 2 + e * 2,
-                            enclosure_length - enclosure_wall * 2 + e * 2,
-                            enclosure_height
-                        ]);
-                    }
+                translate([pcb_x, pcb_y, pcb_z - e]) {
+                    mount_stilts(
+                        positions = concat(
+                            TOP_MOUNTED_PCB_HOLES,
+                            BACK_PCB_HOLES
+                        ),
+                        height = pcb_stilt_height,
+                        z = -pcb_stilt_height
+                    );
                 }
 
                 for (p = BOTTOM_MOUNTED_PCB_HOLES) {
@@ -685,11 +697,9 @@ module assembly(
 
     module _battery() {
         translate([battery_x, battery_y, enclosure_wall + e]) {
-            translate([0, BATTERY_LENGTH + e, 0]) {
-                cube([BATTERY_WIDTH, BATTERY_SNAP_LENGTH, BATTERY_HEIGHT]);
-            }
+            cube([BATTERY_SNAP_WIDTH, BATTERY_LENGTH, BATTERY_HEIGHT]);
 
-            battery();
+            translate([BATTERY_SNAP_WIDTH - e, 0, 0]) battery();
         }
     }
 
@@ -712,8 +722,8 @@ module assembly(
                 visualize_buttons = !for_enclosure_cavity,
                 visualize_circuit_space = quick_preview && !for_enclosure_cavity,
                 visualize_silkscreen = !quick_preview && !for_enclosure_cavity,
-                visualize_switch = show_switch && !for_enclosure_cavity,
-                visualize_volume_wheel = for_enclosure_cavity || !quick_preview,
+                visualize_switch = false,
+                visualize_volume_wheel = false,
 
                 simplify_volume_wheel = for_enclosure_cavity,
                 volume_wheel_diameter = for_enclosure_cavity
