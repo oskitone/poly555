@@ -305,9 +305,9 @@ module assembly(
 
             module _speaker_container(
                 wall = enclosure_inner_wall,
-                gap_width = 10,
-                gap_count = 3,
+                gap_width = SPEAKER_SOLDER_PADS_WIDTH,
                 $fn = HIDEF_ROUNDING,
+                tolerance = tolerance / 2,
                 e = 0.3
             ) {
                 translate([speaker_x, speaker_y, enclosure_wall - e]) {
@@ -324,16 +324,12 @@ module assembly(
                             );
                         }
 
-                        for (i = [0 : gap_count - 1]) {
-                            rotate([0, 0, i * (360 / gap_count)]) {
-                                translate([gap_width / -2, 0, 0]) {
-                                    cube([
-                                        gap_width,
-                                        SPEAKER_DIAMETER / 2 + wall + e,
-                                        SPEAKER_HEIGHT + e * 3
-                                    ]);
-                                }
-                            }
+                        translate([gap_width / -2, 0, 0]) {
+                            cube([
+                                gap_width,
+                                SPEAKER_DIAMETER / 2 + tolerance + wall + e,
+                                SPEAKER_HEIGHT + e * 3
+                            ]);
                         }
                     }
                 }
