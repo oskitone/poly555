@@ -402,6 +402,20 @@ module assembly(
                     }
                 }
 
+                for (p = BOTTOM_MOUNTED_PCB_HOLES) {
+                    translate([pcb_x + p.x, pcb_y + p.y, e]) {
+                        ring(
+                            diameter = SCREW_HEAD_DIAMETER + enclosure_wall * 2,
+                            height = SCREW_HEAD_HEIGHT
+                                + bottom_component_clearance + enclosure_wall
+                                - e,
+                            inner_diameter = SCREW_HEAD_DIAMETER
+                                + tolerance * 2,
+                            $fn = DEFAULT_ROUNDING
+                        );
+                    }
+                }
+
                 translate([pcb_x, pcb_y, enclosure_wall - e]) {
                     spacer_array(
                         BOTTOM_MOUNTED_PCB_HOLES,
@@ -712,6 +726,7 @@ module assembly(
         /* translate([speaker_x, speaker_y, -e]) cylinder(d = SPEAKER_DIAMETER + 8, h = 40); */
         /* translate([-e, -10, -e]) cube([enclosure_width / 2, enclosure_length + 20, enclosure_height + 20]); // cross section */
         /* translate([-e, -10, -e]) cube([ pcb_x + PCB_SWITCH_X + SWITCH_BASE_WIDTH / 2 - SWITCH_ORIGIN.x, enclosure_length + 20, enclosure_height + 20 ]); */
+        /* translate([pcb_x + PCB_HOLES[2][0], pcb_y + PCB_HOLES[2][1], -e]) cylinder(d = 12, h = 20); */
     }
 }
 
