@@ -337,7 +337,8 @@ module mounted_keys(
                         width = mount_width + e * 2,
                         height = hitch_height + e,
                         head_bleed = key_travel,
-                        y_bleed = hitch_clearance + tolerance * 2
+                        y_bleed = hitch_clearance + tolerance * 2,
+                        flatten_front = true
                     );
                 }
             }

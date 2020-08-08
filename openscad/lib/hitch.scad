@@ -16,6 +16,8 @@ module hitch(
     mount_screw_head_height = SCREW_HEAD_HEIGHT,
     mount_screw_head_clearance = HITCH_DEFAULT_MOUNT_SCREW_HEAD_CLEARANCE,
 
+    flatten_front = false,
+
     $fn = DEFAULT_ROUNDING
 ) {
     e = 0.007;
@@ -69,12 +71,24 @@ module hitch(
         }
     }
 
+    module _flat_front() {
+        translate([0, arm_length / 2 - mount_screw_head_diameter, 0]) {
+            cube([width, mount_screw_head_diameter, height + head_bleed]);
+        }
+    }
+
+    /* DEBUG */
+    /* # translate([0, head_length / -2, 0]) cube([width, head_length, height + head_bleed]); */
+
     difference() {
         union() {
             _chamfer(arm_length, head_length, 0);
             _arm();
             _chamfer(head_length, arm_length, chamfer_height + arm_height);
             _head();
+            if (flatten_front) {
+                _flat_front();
+            }
         }
 
         _mount_holes();
@@ -86,5 +100,6 @@ hitch(
     height = 10,
     head_bleed = 0,
     y_bleed = 0,
-    mount_hole_xs = [5, 25]
+    mount_hole_xs = [5, 25],
+    flatten_front = true
 );
