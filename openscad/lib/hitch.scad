@@ -11,7 +11,7 @@ module hitch(
 
     mount_hole_xs = [],
 
-    mount_hole_diameter = PCB_MOUNT_HOLE_DIAMETER + .2,
+    mount_hole_diameter = PCB_MOUNT_HOLE_DIAMETER + .4,
     mount_screw_head_diameter = SCREW_HEAD_DIAMETER,
     mount_screw_head_height = SCREW_HEAD_HEIGHT,
     mount_screw_head_clearance = HITCH_DEFAULT_MOUNT_SCREW_HEAD_CLEARANCE,
@@ -26,7 +26,7 @@ module hitch(
     head_length = mount_screw_head_diameter - minimum_wall * 2 + y_bleed * 2;
     head_height = mount_screw_head_height + mount_screw_head_clearance
         + head_bleed;
-    arm_length = mount_hole_diameter - minimum_wall * 2 + y_bleed * 2;
+    arm_length = mount_hole_diameter + minimum_wall * 2 + y_bleed * 2;
     chamfer_height = (head_length - arm_length) / 2;
     arm_height = height - head_height + head_bleed - chamfer_height * 2;
 
