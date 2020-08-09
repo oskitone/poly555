@@ -24,7 +24,7 @@ module enclosure_half(
 
     just_hinge_parts = false,
 
-    lip = 1,
+    lip = .6,
     lip_height = LIP_BOX_DEFAULT_LIP_HEIGHT,
 
     radius = 0,

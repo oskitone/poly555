@@ -123,7 +123,7 @@ module assembly(
         + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
         + WINDOW_PANE_HEIGHT
         + enclosure_to_component_z_clearance;
-    enclosure_bottom_height = pcb_z + PCB_HEIGHT;
+    enclosure_bottom_height = pcb_z + PCB_HEIGHT - LIP_BOX_DEFAULT_LIP_HEIGHT;
     enclosure_top_height = enclosure_height - enclosure_bottom_height;
 
     key_height = enclosure_height - pcb_stilt_height - enclosure_wall
@@ -240,8 +240,8 @@ module assembly(
                     wall = enclosure_wall,
                     floor_ceiling = undef,
 
-                    add_lip = is_top,
-                    remove_lip = !is_top,
+                    add_lip = !is_top,
+                    remove_lip = is_top,
 
                     include_hinge = true,
                     include_hinge_parts = show_hinge_parts,
