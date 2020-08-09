@@ -198,6 +198,8 @@ module assembly(
 
                 key_travel = key_travel,
 
+                // TODO: make sure screw length will match
+                // or consider carving partial screw cavity into enclosure
                 hitch_height = mount_height + HITCH_RECOMMENDED_MINIMUM_CAVITY_HEIGHT,
                 hitch_y = pcb_y - keys_y + TOP_MOUNTED_PCB_HOLES[0][1],
                 hitch_z = -mount_height
@@ -445,6 +447,7 @@ module assembly(
                 }
             }
 
+            // TODO: obviate
             module _screw_head_cavity_bridges(
                 diameter = PCB_MOUNT_HOLE_DIAMETER + e * 2,
                 $fn = DEFAULT_ROUNDING
@@ -604,6 +607,7 @@ module assembly(
                 x = enclosure_wall - e;
                 z = pcb_z + PCB_HEIGHT + mount_height + cantilever_height;
 
+                // TODO: carve out window lip
                 translate([x, pcb_y + keys_mount_end_on_pcb - mount_length, z]) {
                     mounting_rail(
                         width = enclosure_width - x * 2,
@@ -613,7 +617,7 @@ module assembly(
                         hole_xs_x_offset = keys_x - x,
                         head_hole_diameter = SCREW_HEAD_DIAMETER + tolerance * 2,
                         include_nut_cavity = true,
-                        nut_lock_z = 2
+                        nut_lock_z = 2 // TODO: tighten for shorter screw
                     );
                 }
             }
@@ -699,6 +703,7 @@ module assembly(
             pcb_y + keys_mount_end_on_pcb - mount_length,
             pcb_z + PCB_HEIGHT
         ]) {
+            // TODO: lock this into enclosure w/o screws to ease assembly
             mounting_rail(
                 width = mount_width,
                 length = mount_length,

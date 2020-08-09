@@ -287,7 +287,7 @@ module mounted_keys(
     hitch_height = 0,
     hitch_y = 0,
     hitch_z = 0,
-    hitch_clearance = .8,
+    hitch_clearance = .8, // TODO: tighten
     key_travel = 1.4
 ) {
     $fn = 24;
