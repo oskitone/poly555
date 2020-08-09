@@ -427,12 +427,19 @@ module assembly(
             }
 
             module _screw_head_cavities() {
+                diameter = SCREW_HEAD_DIAMETER + tolerance * 2;
+                height = SCREW_HEAD_HEIGHT + bottom_component_clearance + e;
+                chamfer = 1;
+
+                $fn = HIDEF_ROUNDING;
+
                 for (p = BOTTOM_MOUNTED_PCB_HOLES) {
                     translate([pcb_x + p.x, pcb_y + p.y, -e]) {
+                        cylinder(d = diameter, h = height);
                         cylinder(
-                            d = SCREW_HEAD_DIAMETER + tolerance * 2,
-                            h = SCREW_HEAD_HEIGHT + bottom_component_clearance + e,
-                            $fn = HIDEF_ROUNDING
+                            d1 = diameter + chamfer * 2,
+                            d2 = diameter,
+                            h = chamfer
                         );
                     }
                 }
