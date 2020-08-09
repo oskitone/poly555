@@ -1,6 +1,7 @@
 include <values.scad>;
 
 use <basic_shapes.scad>;
+use <breakaway_support.scad>;
 use <hitch.scad>;
 use <utils.scad>;
 
@@ -29,7 +30,8 @@ module keys(
 
     include_natural = true,
     include_accidental = true,
-    include_cantilevers = true
+    include_cantilevers = true,
+    include_print_supports = false
 ) {
     e = 0.04567;
 
@@ -39,8 +41,16 @@ module keys(
         natural_width - ((accidental_width - gutter) / 2) * 2 - gutter * 2
     );
 
-    module _key_block(dimensions) {
+    module _key_block(dimensions, is_natural) {
         cavity_width = dimensions[0] + e * 2;
+        has_undercarriage = (
+            undercarriage_height > 0 &&
+            undercarriage_length > 0 &&
+            (
+                is_natural ||
+                (!is_natural && dimensions[1] > undercarriage_length)
+            )
+        );
 
         module _cantilever_recession_cavity() {
             x = -e;
@@ -105,8 +115,7 @@ module keys(
                 _cantilever_recession_cavity();
             }
 
-            /* TODO: DFM */
-            if (undercarriage_height > 0 && undercarriage_length > 0) {
+            if (has_undercarriage) {
                 translate([-e, -e, -e]) {
                     cube([
                         cavity_width,
@@ -134,6 +143,19 @@ module keys(
                      );
                  }
              }
+        }
+
+        if (has_undercarriage && include_print_supports) {
+            length = dimensions[1] - undercarriage_length
+                - BREAKAWAY_SUPPORT_GUTTER;
+            for (x = [0, dimensions[0] - BREAKAWAY_SUPPORT_DEPTH]) {
+                translate([x, 0, 0]) {
+                    # breakaway_support(
+                        length = length,
+                        height = undercarriage_height + e
+                    );
+                }
+            }
         }
     }
 
@@ -177,11 +199,10 @@ module keys(
 
         translate([x, 0, 0]) {
             difference() {
-                _key_block([
-                    natural_width,
-                    natural_length,
-                    natural_height
-                ]);
+                _key_block(
+                    [natural_width, natural_length, natural_height],
+                    is_natural = true
+                );
 
                 if (cutLeft) {
                     _cutout(right = false);
@@ -198,11 +219,10 @@ module keys(
         y = natural_length - accidental_length;
 
         translate([x, y, 0]) {
-            _key_block([
-                accidental_width,
-                accidental_length,
-                accidental_height
-            ]);
+            _key_block(
+                [accidental_width, accidental_length, accidental_height],
+                is_natural = false
+            );
         }
     }
 
@@ -250,6 +270,7 @@ module mounted_keys(
     include_accidental = true,
     include_cantilevers = true,
     include_hitch = false,
+    include_print_supports = false,
 
     mount_length = 0,
     mount_height = 1,
@@ -302,6 +323,7 @@ module mounted_keys(
             include_natural = naturals,
             include_accidental = !naturals,
             include_cantilevers = include_cantilevers,
+            include_print_supports = include_print_supports,
 
             cantilever_length = cantilever_length,
             cantilever_height = cantilever_height,
@@ -361,12 +383,12 @@ mounted_keys(
     count = 13,
     starting_natural_key_index = 3,
 
-    natural_length = 40,
+    natural_length = 50,
     natural_width = 10,
     natural_height = 13,
 
     accidental_width = 7.5,
-    accidental_length = 20,
+    accidental_length = 30,
     accidental_height = 15,
 
     front_chamfer = 0,
@@ -374,9 +396,12 @@ mounted_keys(
     gutter = 1,
 
     undercarriage_height = 5,
-    undercarriage_length = 30,
+    undercarriage_length = 20,
 
     include_hitch = true,
+    include_print_supports = true,
+    include_accidental = true,
+    include_natural = true,
 
     mount_length = 5,
     mount_height = 2,
@@ -389,6 +414,6 @@ mounted_keys(
     cantilever_recession = 2,
 
     hitch_height = 12,
-    hitch_y = 25,
+    hitch_y = 35,
     hitch_z = -6
 );

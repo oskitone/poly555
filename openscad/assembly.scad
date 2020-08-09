@@ -194,6 +194,7 @@ module assembly(
                 include_natural = include_natural,
                 include_accidental = include_accidental,
                 include_hitch = include_hitch,
+                include_print_supports = true,
 
                 key_travel = key_travel,
 
