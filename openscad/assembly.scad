@@ -31,8 +31,8 @@ module assembly(
     speaker_to_pcb_clearance = 2.4,
 
     mount_length = 6,
-    cantilever_length = 2,
-    cantilever_height = 2,
+    cantilever_length = 3,
+    cantilever_height = 1,
 
     tolerance = .1,
 
