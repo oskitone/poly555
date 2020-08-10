@@ -134,6 +134,7 @@ module enclosure_half(
         hinge_count = hinge_count != undef
             ? hinge_count
             : get_hinge_clasp_count(_width);
+        // TODO: fix against radius
         hinge_length = min(assumed_total_height, MINIMUM_HINGE_CLASP_LENGTH);
         hinge_width = HINGE_CLASP_MINIMUM_WIDTH;
         hinge_end_gutter = hinge_end_gutter == undef || hinge_count == 1
@@ -174,6 +175,7 @@ module enclosure_half(
             : get_hinge_clasp_count(_width);
 
         clasp_width = HINGE_CLASP_MINIMUM_WIDTH;
+        // TODO: fix against radius
         clasp_length = min(assumed_total_height, MINIMUM_HINGE_CLASP_LENGTH);
 
         clasp_end_gutter = clasp_end_gutter == undef || clasp_count == 1
