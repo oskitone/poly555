@@ -723,6 +723,8 @@ module assembly(
                 visualize_circuit_space = quick_preview && !for_enclosure_cavity,
                 visualize_silkscreen = !quick_preview && !for_enclosure_cavity,
                 visualize_switch = false,
+
+                // TODO: improve for assembly by splitting across top and bottom
                 visualize_volume_wheel = false,
 
                 simplify_volume_wheel = for_enclosure_cavity,

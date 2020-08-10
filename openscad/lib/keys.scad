@@ -111,11 +111,14 @@ module keys(
                 cube(dimensions);
             }
 
+            // TODO: round sides too
+
             if (cantilever_recession > 0) {
                 _cantilever_recession_cavity();
             }
 
             if (has_undercarriage) {
+                // TODO: have this cut out breakaway_supports too
                 translate([-e, -e, -e]) {
                     cube([
                         cavity_width,
@@ -148,6 +151,8 @@ module keys(
         if (has_undercarriage && include_print_supports) {
             length = dimensions[1] - undercarriage_length
                 - BREAKAWAY_SUPPORT_GUTTER;
+
+            // TODO: add sides near cutaways too
             for (x = [0, dimensions[0] - BREAKAWAY_SUPPORT_DEPTH]) {
                 translate([x, 0, 0]) {
                     # breakaway_support(
