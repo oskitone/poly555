@@ -21,7 +21,7 @@ module hitch(
     $fn = DEFAULT_ROUNDING
 ) {
     e = 0.007;
-    minimum_wall = .2;
+    minimum_wall = .1;
 
     head_length = mount_screw_head_diameter - minimum_wall * 2 + y_bleed * 2;
     head_height = mount_screw_head_height + mount_screw_head_clearance
@@ -99,7 +99,7 @@ hitch(
     width = 30,
     height = 10,
     head_bleed = 0,
-    y_bleed = 0,
+    y_bleed = .1 * -2, // tolerance
     mount_hole_xs = [5, 25],
     flatten_front = true
 );
