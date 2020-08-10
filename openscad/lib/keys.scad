@@ -41,7 +41,7 @@ module keys(
         natural_width - ((accidental_width - gutter) / 2) * 2 - gutter * 2
     );
 
-    module _key_block(dimensions, is_natural) {
+    module _key_block(dimensions, is_natural, cut_left, cut_right) {
         cavity_width = dimensions[0] + e * 2;
         has_undercarriage = (
             undercarriage_height > 0 &&
@@ -118,7 +118,6 @@ module keys(
             }
 
             if (has_undercarriage) {
-                // TODO: have this cut out breakaway_supports too
                 translate([-e, -e, -e]) {
                     cube([
                         cavity_width,
@@ -148,18 +147,49 @@ module keys(
              }
         }
 
+        module _breakaway_support(x, y, length) {
+            translate([x, y, 0]) {
+                # breakaway_support(
+                    length = length,
+                    height = undercarriage_height + e
+                );
+            }
+        }
+
         if (has_undercarriage && include_print_supports) {
-            length = dimensions[1] - undercarriage_length
+            full_length = dimensions[1] - undercarriage_length
                 - BREAKAWAY_SUPPORT_GUTTER;
 
-            // TODO: add sides near cutaways too
-            for (x = [0, dimensions[0] - BREAKAWAY_SUPPORT_DEPTH]) {
-                translate([x, 0, 0]) {
-                    # breakaway_support(
-                        length = length,
-                        height = undercarriage_height + e
-                    );
-                }
+            bridge_x = accidental_width / 2 + gutter / 2;
+            bridge_y = dimensions[1] - accidental_length - gutter;
+            bridge_length = full_length - bridge_y;
+
+            _breakaway_support(
+                0,
+                0,
+                cut_left ? bridge_y : full_length
+            );
+
+            _breakaway_support(
+                dimensions[0] - BREAKAWAY_SUPPORT_DEPTH,
+                0,
+                cut_right ? bridge_y : full_length
+            );
+
+            if (cut_left) {
+                _breakaway_support(
+                    bridge_x,
+                    bridge_y,
+                    bridge_length
+                );
+            }
+
+            if (cut_right) {
+                _breakaway_support(
+                    dimensions[0] - bridge_x - BREAKAWAY_SUPPORT_DEPTH,
+                    bridge_y,
+                    bridge_length
+                );
             }
         }
     }
@@ -193,11 +223,11 @@ module keys(
     }
 
     module _natural(i, x, note_in_octave_index, natural_index) {
-        cutLeft = (
+        cut_left = (
             (note_in_octave_index != 0 && note_in_octave_index != 5) &&
             i != 0
         );
-        cutRight = (
+        cut_right = (
             (note_in_octave_index != 4 && note_in_octave_index != 11) &&
             i != count - 1
         );
@@ -206,14 +236,16 @@ module keys(
             difference() {
                 _key_block(
                     [natural_width, natural_length, natural_height],
-                    is_natural = true
+                    is_natural = true,
+                    cut_left = cut_left,
+                    cut_right = cut_right
                 );
 
-                if (cutLeft) {
+                if (cut_left) {
                     _cutout(right = false);
                 }
 
-                if (cutRight) {
+                if (cut_right) {
                     _cutout(right = true);
                 }
             }
@@ -389,7 +421,7 @@ mounted_keys(
     starting_natural_key_index = 3,
 
     natural_length = 50,
-    natural_width = 10,
+    natural_width = 15,
     natural_height = 13,
 
     accidental_width = 7.5,
@@ -419,6 +451,6 @@ mounted_keys(
     cantilever_recession = 2,
 
     hitch_height = 12,
-    hitch_y = 35,
+    hitch_y = 30,
     hitch_z = -6
 );
