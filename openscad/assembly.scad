@@ -484,6 +484,65 @@ module assembly(
                 support_depth = xy - enclosure_wall;
                 cavity_length_adjustment = tolerance * -2;
 
+                module _front_lip_and_lower_sides() {
+                    intersection() {
+                        translate([0, 0, -z_offset]) {
+                            _enclosure_half(
+                                is_top = true,
+                                length = bumper_length + enclosure_chamfer,
+                                height = bumper_height
+                            );
+                        }
+                        _keys_and_bumper_cavity(cavity_length_adjustment);
+                    }
+
+                    translate([
+                        enclosure_wall - e,
+                        enclosure_wall - e,
+                        z - support_depth
+                    ]) {
+                        cube([
+                            enclosure_width - enclosure_wall * 2 + e * 2,
+                            keys_and_bumper_cavity_length
+                                + cavity_length_adjustment - enclosure_wall
+                                - e,
+                            support_depth
+                        ]);
+                    }
+                }
+
+                module _bumper_arms() {
+                    lip_z = enclosure_bottom_height + bumper_height;
+                    chamfer = quick_preview ? 0 : enclosure_chamfer;
+
+                    width = xy;
+                    length = bumper_length + cavity_length_adjustment;
+                    height = enclosure_height - lip_z + chamfer * 2;
+
+                    z = enclosure_height - height;
+
+                    for (x = [0, enclosure_width - xy]) {
+                        translate([x, 0, z - e]) {
+                            difference() {
+                                rounded_cube(
+                                    [width, length + chamfer, height + e],
+                                    chamfer,
+                                    $fn = enclosure_rounding
+                                );
+
+                                // Chop off chamfer end
+                                translate([-e, length, -e]) {
+                                    cube([
+                                        width + e * 2,
+                                        chamfer + e,
+                                        height + e * 2
+                                    ]);
+                                }
+                            }
+                        }
+                    }
+                }
+
                 module _keys_cavity() {
                     translate([xy, xy, z - e]) {
                         cube([
@@ -511,32 +570,9 @@ module assembly(
 
                 difference() {
                     union() {
-                        intersection() {
-                            translate([0, 0, -z_offset]) {
-                                _enclosure_half(
-                                    is_top = true,
-                                    length = bumper_length + enclosure_chamfer,
-                                    height = bumper_height
-                                );
-                            }
-                            _keys_and_bumper_cavity(cavity_length_adjustment);
-                        }
-
-                        translate([
-                            enclosure_wall - e,
-                            enclosure_wall - e,
-                            z - support_depth
-                        ]) {
-                            cube([
-                                enclosure_width - enclosure_wall * 2 + e * 2,
-                                keys_and_bumper_cavity_length
-                                    + cavity_length_adjustment - enclosure_wall
-                                    - e,
-                                support_depth
-                            ]);
-                        }
+                        _front_lip_and_lower_sides();
+                        _bumper_arms();
                     }
-
                     _keys_cavity();
                 }
             }
