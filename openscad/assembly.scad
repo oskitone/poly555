@@ -370,8 +370,8 @@ module assembly(
                 include_switch_cavity = true,
                 z_bleed = 0
             ) {
-                width_extension = switch_exposure_height / 2;
-                length_extension = switch_exposure_height / 2;
+                width_extension = switch_exposure_height;
+                length_extension = switch_exposure_height;
 
                 translate([
                     switch_x - SWITCH_ORIGIN.x - width_extension - xy_bleed,
