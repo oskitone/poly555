@@ -151,7 +151,8 @@ module assembly(
     battery_y = enclosure_wall + tolerance;
 
     window_pane_x = enclosure_wall + tolerance;
-    window_pane_y = pcb_y + keys_mount_end_on_pcb;
+    window_pane_y = pcb_y + keys_mount_end_on_pcb
+        - (mount_length - PCB_MOUNT_HOLE_DIAMETER) / 2;
     window_pane_z = enclosure_height - enclosure_wall - WINDOW_PANE_HEIGHT;
     window_pane_width = enclosure_width - enclosure_wall * 2 - tolerance * 2;
     window_pane_length = enclosure_length - window_pane_y - enclosure_wall
@@ -653,20 +654,24 @@ module assembly(
 
             module _key_mounting_rail() {
                 x = enclosure_wall - e;
+                y = pcb_y + keys_mount_end_on_pcb - mount_length;
                 z = pcb_z + PCB_HEIGHT + mount_height + cantilever_height;
 
-                // TODO: carve out window lip
-                translate([x, pcb_y + keys_mount_end_on_pcb - mount_length, z]) {
-                    mounting_rail(
-                        width = enclosure_width - x * 2,
-                        length = mount_length,
-                        height = enclosure_height - z - enclosure_wall + e,
-                        hole_xs = mount_hole_xs,
-                        hole_xs_x_offset = keys_x - x,
-                        head_hole_diameter = SCREW_HEAD_DIAMETER + tolerance * 2,
-                        include_nut_cavity = true,
-                        nut_lock_z = 2 // TODO: tighten for shorter screw
-                    );
+                difference() {
+                    translate([x, y, z]) {
+                        mounting_rail(
+                            width = enclosure_width - x * 2,
+                            length = mount_length,
+                            height = enclosure_height - z - enclosure_wall + e,
+                            hole_xs = mount_hole_xs,
+                            hole_xs_x_offset = keys_x - x,
+                            head_hole_diameter = SCREW_HEAD_DIAMETER + tolerance * 2,
+                            include_nut_cavity = true,
+                            nut_lock_z = 2 // TODO: tighten for shorter screw
+                        );
+                    }
+
+                    _window_pane(tolerance);
                 }
             }
 
@@ -764,11 +769,17 @@ module assembly(
         translate([e, 0, 0]) _mounted_keys(include_hitch = true);
     }
 
-    module _window_pane() {
-        translate([window_pane_x, window_pane_y, window_pane_z + e]) {
-            color(window_pane_color, window_pane_opacity) {
-                cube([window_pane_width, window_pane_length, WINDOW_PANE_HEIGHT - e * 2]);
-            }
+    module _window_pane(xy_bleed = 0, z_bleed = 0) {
+        translate([
+            window_pane_x - xy_bleed,
+            window_pane_y - xy_bleed,
+            window_pane_z - z_bleed
+        ]) {
+            cube([
+                window_pane_width + xy_bleed * 2,
+                window_pane_length + xy_bleed * 2,
+                WINDOW_PANE_HEIGHT + z_bleed * 2
+            ]);
         }
     }
 
@@ -780,7 +791,11 @@ module assembly(
             if (show_pcb) { % _pcb(); }
             if (show_mounting_rails) { _mounting_rails(); }
             if (show_keys) { _keys(); }
-            if (show_window_pane) { _window_pane(); }
+            if (show_window_pane) {
+                color(window_pane_color, window_pane_opacity) {
+                    _window_pane();
+                }
+            }
         }
 
         /* translate([-20, -20, -20]) cube([35, 300, 100]); // switch */
