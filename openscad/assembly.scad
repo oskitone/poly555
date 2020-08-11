@@ -25,7 +25,7 @@ module assembly(
     enclosure_chamfer = 2,
     enclosure_rounding = 24,
 
-    engraving_depth = 1,
+    engraving_depth = .4,
 
     bottom_component_clearance = .4,
     speaker_to_pcb_clearance = 2.4,
