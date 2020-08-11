@@ -136,6 +136,7 @@ module assembly(
         + keys_mount_end_on_pcb
         - mount_length;
     keys_z = pcb_z + PCB_HEIGHT + BUTTON_HEIGHT;
+    key_mounting_rail_y = pcb_y + keys_mount_end_on_pcb - mount_length;
 
     speaker_x = enclosure_width / 2;
     speaker_y = enclosure_wall + SPEAKER_DIAMETER / 2
@@ -214,6 +215,27 @@ module assembly(
         }
         color(accidental_key_color, key_opacity) {
             _mounted_keys(include_accidental = true);
+        }
+    }
+
+    module _mounting_rail_aligners(bleed = 0) {
+        width_length = enclosure_inner_wall + bleed;
+        length = mount_length / 2 + bleed * 2;
+
+        y = key_mounting_rail_y + (mount_length - length) / 2;
+        z = enclosure_wall - e;
+
+        for (x = [
+            enclosure_wall - e,
+            enclosure_width - enclosure_wall - width_length
+        ]) {
+            translate([x, y, z]) {
+                cube([
+                    width_length,
+                    length,
+                    enclosure_bottom_height + LIP_BOX_DEFAULT_LIP_HEIGHT - z
+                ]);
+            }
         }
     }
 
@@ -606,6 +628,7 @@ module assembly(
                     _battery_container();
                     _speaker_container();
                     _mount_stilts_and_spacers();
+                    _mounting_rail_aligners();
                 }
 
                 _switch_exposure(
@@ -642,7 +665,7 @@ module assembly(
 
             module _key_mounting_rail() {
                 x = enclosure_wall - e;
-                y = pcb_y + keys_mount_end_on_pcb - mount_length;
+                y = key_mounting_rail_y;
                 z = pcb_z + PCB_HEIGHT + mount_height + cantilever_height;
 
                 difference() {
@@ -741,19 +764,38 @@ module assembly(
     }
 
     module _mounting_rails() {
-        translate([
-            keys_x,
-            pcb_y + keys_mount_end_on_pcb - mount_length,
-            pcb_z + PCB_HEIGHT
-        ]) {
-            // TODO: lock this into enclosure w/o screws to ease assembly
-            mounting_rail(
-                width = mount_width,
-                length = mount_length,
-                height = mount_height,
-                hole_xs = mount_hole_xs,
-                head_hole_diameter = SCREW_HEAD_DIAMETER + tolerance * 2
-            );
+        rail_x = enclosure_wall + tolerance * 2;
+        rail_y = key_mounting_rail_y;
+        rail_z = pcb_z + PCB_HEIGHT;
+
+        rail_width = enclosure_width - rail_x * 2;
+        foot_width = pcb_x - rail_x - tolerance;
+
+        difference() {
+            translate([rail_x, rail_y, 0]) {
+                translate([0, 0, rail_z]) {
+                    mounting_rail(
+                        width = rail_width,
+                        length = mount_length,
+                        height = mount_height,
+                        hole_xs = mount_hole_xs,
+                        hole_xs_x_offset = keys_x - rail_x,
+                        head_hole_diameter = SCREW_HEAD_DIAMETER + tolerance * 2
+                    );
+                }
+
+                for (x = [0, 0 + rail_width - foot_width]) {
+                    translate([x, 0, enclosure_wall]) {
+                        cube([
+                            foot_width,
+                            mount_length,
+                            rail_z - enclosure_wall + e
+                        ]);
+                    }
+                }
+            }
+
+            _mounting_rail_aligners(tolerance * 2);
         }
 
         translate([e, 0, 0]) _mounted_keys(include_hitch = true);
@@ -793,6 +835,7 @@ module assembly(
         /* translate([-e, -10, -e]) cube([enclosure_width / 2, enclosure_length + 20, enclosure_height + 20]); // cross section */
         /* translate([-e, -10, -e]) cube([ pcb_x + PCB_SWITCH_X + SWITCH_BASE_WIDTH / 2 - SWITCH_ORIGIN.x, enclosure_length + 20, enclosure_height + 20 ]); */
         /* translate([pcb_x + PCB_HOLES[2][0], pcb_y + PCB_HOLES[2][1], -e]) cylinder(d = 12, h = 20); */
+        /* translate([-e, key_mounting_rail_y - 4, -e]) cube([10, 10, 4]); */
     }
 }
 
