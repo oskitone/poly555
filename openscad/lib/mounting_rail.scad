@@ -16,7 +16,7 @@ module mounting_rail(
 
     include_nut_cavity = false,
     nut_lock_diameter = NUT_DIAMETER + .5,
-    nut_lock_height = NUT_HEIGHT + .5, // TODO: tighten
+    nut_lock_height = NUT_HEIGHT + .4,
     nut_lock_z = 0,
 
     // TODO: obviate
