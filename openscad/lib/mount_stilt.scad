@@ -13,7 +13,7 @@ module mount_stilt(
 
     hole_diameter = PCB_MOUNT_HOLE_DIAMETER,
     nut_lock_diameter = NUT_DIAMETER + .5,
-    nut_lock_height = NUT_HEIGHT + .5, // TODO: tighten
+    nut_lock_height = NUT_HEIGHT + 0,
 
     // TODO: obviate
     include_sacrificial_bridge = true,
@@ -90,9 +90,15 @@ module mount_stilts(
     }
 }
 
-color("purple", .25) pcb();
-mount_stilts(
-    positions = PCB_HOLES,
-    height = 10,
-    z = -10
-);
+plot = NUT_DIAMETER + 4;
+height_adjustments = [0, .1, .2, .3, .4, .5, .6, .7];
+
+for (i = [0 : len(height_adjustments) - 1]) {
+    translate([plot * i, 0, 0]) {
+        mount_stilt(
+            width = plot,
+            height = 8,
+            nut_lock_height = NUT_HEIGHT + height_adjustments[i]
+        );
+    }
+}
