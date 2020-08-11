@@ -141,7 +141,7 @@ module assembly(
         + enclosure_to_component_gutter;
 
     switch_x = 15;
-    switch_y = 15;
+    switch_y = 20;
     switch_z = pcb_z;
     switch_exposure_height = switch_z - SWITCH_BASE_HEIGHT;
 
