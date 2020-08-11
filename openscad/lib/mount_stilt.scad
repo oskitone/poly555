@@ -13,7 +13,7 @@ module mount_stilt(
 
     hole_diameter = PCB_MOUNT_HOLE_DIAMETER,
     nut_lock_diameter = NUT_DIAMETER + .5,
-    nut_lock_height = NUT_HEIGHT + 0,
+    nut_lock_height = NUT_HEIGHT + .4,
 
     // TODO: obviate
     include_sacrificial_bridge = true,
