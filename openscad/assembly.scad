@@ -206,8 +206,6 @@ module assembly(
 
                 key_travel = key_travel,
 
-                // TODO: make sure screw length will match
-                // or consider carving partial screw cavity into enclosure
                 hitch_height = mount_height + HITCH_RECOMMENDED_MINIMUM_CAVITY_HEIGHT,
                 hitch_y = pcb_y - keys_y + TOP_MOUNTED_PCB_HOLES[0][1],
                 hitch_z = -mount_height
@@ -463,24 +461,41 @@ module assembly(
                 }
             }
 
-            module _screw_head_cavities() {
-                diameter = SCREW_HEAD_DIAMETER + tolerance * 2;
-                height = SCREW_HEAD_HEIGHT + bottom_component_clearance + e;
-                chamfer = 1;
-
+            module _screw_cavities() {
                 $fn = HIDEF_ROUNDING;
 
-                for (p = BOTTOM_MOUNTED_PCB_HOLES) {
-                    translate([pcb_x + p.x, pcb_y + p.y, -e]) {
-                        cylinder(d = diameter, h = height);
-                        cylinder(
-                            d1 = diameter + chamfer * 2,
-                            d2 = diameter,
-                            h = chamfer
-                        );
+                module _chamfer(diameter, chamfer = 1, $fn = DEFAULT_ROUNDING) {
+                    cylinder(
+                        d1 = diameter + chamfer * 2,
+                        d2 = diameter,
+                        h = chamfer
+                    );
+                }
+
+                module _heads() {
+                    diameter = SCREW_HEAD_DIAMETER + tolerance * 2;
+                    height = SCREW_HEAD_HEIGHT + bottom_component_clearance + e;
+
+                    for (p = BOTTOM_MOUNTED_PCB_HOLES) {
+                        translate([pcb_x + p.x, pcb_y + p.y, -e]) {
+                            cylinder(d = diameter, h = height);
+                            _chamfer(diameter);
+                        }
                     }
                 }
-            }
+
+                _heads();
+
+                for (xy = TOP_MOUNTED_PCB_HOLES) {
+                    translate([pcb_x + xy[0], pcb_y + xy[1], -e]) {
+                        cylinder(
+                            d = PCB_MOUNT_HOLE_DIAMETER,
+                            h = enclosure_wall + e * 2
+                        );
+                        _chamfer(PCB_MOUNT_HOLE_DIAMETER);
+                    }
+                }
+        }
 
             // TODO: obviate
             module _screw_head_cavity_bridges(
@@ -648,7 +663,7 @@ module assembly(
                     include_switch_cavity = true,
                     z_bleed = e
                 );
-                _screw_head_cavities();
+                _screw_cavities();
                 _engraving();
             }
 
