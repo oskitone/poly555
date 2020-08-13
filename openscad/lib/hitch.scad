@@ -23,9 +23,10 @@ module hitch(
     $fn = DEFAULT_ROUNDING
 ) {
     e = 0.007;
+    head_wall = 1;
     minimum_wall = .1;
 
-    head_length = mount_screw_head_diameter - minimum_wall * 2 + y_bleed * 2;
+    head_length = mount_screw_head_diameter + head_wall * 2 + y_bleed * 2;
     head_height = mount_screw_head_height + mount_screw_head_clearance
         + head_bleed;
     arm_length = mount_hole_diameter + minimum_wall * 2 + y_bleed * 2;
@@ -80,8 +81,9 @@ module hitch(
     }
 
     module _flat_front() {
-        translate([0, arm_length / 2 - mount_screw_head_diameter, 0]) {
-            cube([width, mount_screw_head_diameter, height + head_bleed]);
+        head_length_without_bleed = mount_screw_head_diameter + head_wall * 2;
+        translate([0, arm_length / 2 - head_length_without_bleed, 0]) {
+            cube([width, head_length_without_bleed, height + head_bleed]);
         }
     }
 
