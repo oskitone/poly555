@@ -784,7 +784,7 @@ module assembly(
         rail_z = pcb_z + PCB_HEIGHT;
 
         rail_width = enclosure_width - rail_x * 2;
-        foot_width = pcb_x - rail_x - tolerance;
+        foot_width = pcb_x - rail_x - 1; // extra wide berth around PCB
 
         difference() {
             translate([rail_x, rail_y, 0]) {
