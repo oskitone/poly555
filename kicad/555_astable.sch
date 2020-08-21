@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 21 21
+Sheet 2 21
 Title ""
 Date ""
 Rev ""
@@ -37,10 +37,10 @@ AR Path="/60F96187/60F6A68E" Ref="R?"  Part="1"
 AR Path="/60F9685F/60F6A68E" Ref="R?"  Part="1" 
 AR Path="/60F96864/60F6A68E" Ref="R?"  Part="1" 
 AR Path="/60F96869/60F6A68E" Ref="R?"  Part="1" 
-AR Path="/5EF17819/60F6A68E" Ref="R8"  Part="1" 
-AR Path="/5EF23030/60F6A68E" Ref="R11"  Part="1" 
-AR Path="/5EF259E1/60F6A68E" Ref="R14"  Part="1" 
-AR Path="/5EF27E4C/60F6A68E" Ref="R17"  Part="1" 
+AR Path="/5EF17819/60F6A68E" Ref="R9"  Part="1" 
+AR Path="/5EF23030/60F6A68E" Ref="R13"  Part="1" 
+AR Path="/5EF259E1/60F6A68E" Ref="R17"  Part="1" 
+AR Path="/5EF27E4C/60F6A68E" Ref="R21"  Part="1" 
 AR Path="/5EF2B213/60F6A68E" Ref="R?"  Part="1" 
 AR Path="/5EF6055A/60F6A68E" Ref="R?"  Part="1" 
 AR Path="/5EF6057F/60F6A68E" Ref="R?"  Part="1" 
@@ -61,22 +61,22 @@ AR Path="/5F7926DC/60F6A68E" Ref="R?"  Part="1"
 AR Path="/5F7926F8/60F6A68E" Ref="R?"  Part="1" 
 AR Path="/5F792714/60F6A68E" Ref="R?"  Part="1" 
 AR Path="/5F792730/60F6A68E" Ref="R?"  Part="1" 
-AR Path="/5F7AB892/60F6A68E" Ref="R20"  Part="1" 
-AR Path="/5F7AB8B0/60F6A68E" Ref="R23"  Part="1" 
-AR Path="/5F7AB8CC/60F6A68E" Ref="R26"  Part="1" 
-AR Path="/5F7AB8E8/60F6A68E" Ref="R29"  Part="1" 
-AR Path="/5F7AB904/60F6A68E" Ref="R32"  Part="1" 
-AR Path="/5F842B3B/60F6A68E" Ref="R35"  Part="1" 
-AR Path="/5F842B59/60F6A68E" Ref="R38"  Part="1" 
-AR Path="/5F842B75/60F6A68E" Ref="R41"  Part="1" 
-AR Path="/5F842B91/60F6A68E" Ref="R44"  Part="1" 
-AR Path="/5F842BAD/60F6A68E" Ref="R47"  Part="1" 
-AR Path="/5F842BEF/60F6A68E" Ref="R50"  Part="1" 
-AR Path="/5F842C0D/60F6A68E" Ref="R53"  Part="1" 
-AR Path="/5F842C29/60F6A68E" Ref="R56"  Part="1" 
-AR Path="/5F842C45/60F6A68E" Ref="R59"  Part="1" 
-AR Path="/5F842C61/60F6A68E" Ref="R62"  Part="1" 
-F 0 "R62" H 4750 3500 50  0000 L CNN
+AR Path="/5F7AB892/60F6A68E" Ref="R25"  Part="1" 
+AR Path="/5F7AB8B0/60F6A68E" Ref="R29"  Part="1" 
+AR Path="/5F7AB8CC/60F6A68E" Ref="R33"  Part="1" 
+AR Path="/5F7AB8E8/60F6A68E" Ref="R37"  Part="1" 
+AR Path="/5F7AB904/60F6A68E" Ref="R41"  Part="1" 
+AR Path="/5F842B3B/60F6A68E" Ref="R45"  Part="1" 
+AR Path="/5F842B59/60F6A68E" Ref="R49"  Part="1" 
+AR Path="/5F842B75/60F6A68E" Ref="R53"  Part="1" 
+AR Path="/5F842B91/60F6A68E" Ref="R57"  Part="1" 
+AR Path="/5F842BAD/60F6A68E" Ref="R61"  Part="1" 
+AR Path="/5F842BEF/60F6A68E" Ref="R65"  Part="1" 
+AR Path="/5F842C0D/60F6A68E" Ref="R69"  Part="1" 
+AR Path="/5F842C29/60F6A68E" Ref="R73"  Part="1" 
+AR Path="/5F842C45/60F6A68E" Ref="R77"  Part="1" 
+AR Path="/5F842C61/60F6A68E" Ref="R81"  Part="1" 
+F 0 "R5" H 4750 3500 50  0000 L CNN
 F 1 "100k" H 4750 3400 50  0000 L CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" V 4530 3450 50  0001 C CNN
 F 3 "~" H 4600 3450 50  0001 C CNN
@@ -99,7 +99,7 @@ Connection ~ 4600 3850
 Wire Wire Line
 	4600 3750 4600 3850
 Wire Wire Line
-	5950 4350 6150 4350
+	6000 4350 6200 4350
 $Comp
 L Device:C C?
 U 1 1 60F6EAC0
@@ -153,7 +153,7 @@ AR Path="/5F842C0D/60F6EAC0" Ref="C52"  Part="1"
 AR Path="/5F842C29/60F6EAC0" Ref="C55"  Part="1" 
 AR Path="/5F842C45/60F6EAC0" Ref="C58"  Part="1" 
 AR Path="/5F842C61/60F6EAC0" Ref="C61"  Part="1" 
-F 0 "C61" H 4100 4100 50  0000 L CNN
+F 0 "C4" H 4100 4100 50  0000 L CNN
 F 1 ".1uF" H 4050 4000 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 4388 3900 50  0001 C CNN
 F 3 "~" H 4350 4050 50  0001 C CNN
@@ -220,7 +220,7 @@ AR Path="/5F842C0D/60F6A6DA" Ref="U18"  Part="1"
 AR Path="/5F842C29/60F6A6DA" Ref="U19"  Part="1" 
 AR Path="/5F842C45/60F6A6DA" Ref="U20"  Part="1" 
 AR Path="/5F842C61/60F6A6DA" Ref="U21"  Part="1" 
-F 0 "U21" H 5800 4050 60  0000 C CNN
+F 0 "U2" H 5800 4050 60  0000 C CNN
 F 1 "555" H 6000 4050 60  0000 C CNN
 F 2 "Package_DIP:DIP-8_W7.62mm" H 5900 3950 60  0001 L CNN
 F 3 "http://www.ti.com/general/docs/suppproductinfo.tsp?distId=10&gotoUrl=http%3A%2F%2Fwww.ti.com%2Flit%2Fgpn%2Fne555" H 5900 4050 60  0001 L CNN
@@ -237,27 +237,27 @@ F 12 "Active" H 5900 4950 60  0001 L CNN "Status"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5950 4450 5950 4350
+	6000 4450 6000 4350
 Connection ~ 4350 5250
 Wire Wire Line
 	4350 4200 4350 5250
 Text HLabel 3300 5250 0    50   Input ~ 0
 GND
 Wire Wire Line
-	6150 4600 6350 4600
-Connection ~ 6150 4600
+	6200 4600 6350 4600
+Connection ~ 6200 4600
 Wire Wire Line
-	6150 4350 6150 4600
+	6200 4350 6200 4600
 Wire Wire Line
 	6350 3850 6350 4600
 Wire Wire Line
-	6100 4600 6150 4600
+	6150 4600 6200 4600
 $Comp
 L Device:R_POT_TRIM_US RV?
 U 1 1 60F6A6C5
-P 5950 4600
+P 6000 4600
 AR Path="/60F6A6C5" Ref="RV?"  Part="1" 
-AR Path="/60F4E92A/60F6A6C5" Ref="RV3"  Part="1" 
+AR Path="/60F4E92A/60F6A6C5" Ref="RV2"  Part="1" 
 AR Path="/60F9596F/60F6A6C5" Ref="RV?"  Part="1" 
 AR Path="/60F95BBA/60F6A6C5" Ref="RV?"  Part="1" 
 AR Path="/60F95BBF/60F6A6C5" Ref="RV?"  Part="1" 
@@ -266,10 +266,10 @@ AR Path="/60F96187/60F6A6C5" Ref="RV?"  Part="1"
 AR Path="/60F9685F/60F6A6C5" Ref="RV?"  Part="1" 
 AR Path="/60F96864/60F6A6C5" Ref="RV?"  Part="1" 
 AR Path="/60F96869/60F6A6C5" Ref="RV?"  Part="1" 
-AR Path="/5EF17819/60F6A6C5" Ref="RV5"  Part="1" 
-AR Path="/5EF23030/60F6A6C5" Ref="RV7"  Part="1" 
-AR Path="/5EF259E1/60F6A6C5" Ref="RV9"  Part="1" 
-AR Path="/5EF27E4C/60F6A6C5" Ref="RV11"  Part="1" 
+AR Path="/5EF17819/60F6A6C5" Ref="RV3"  Part="1" 
+AR Path="/5EF23030/60F6A6C5" Ref="RV4"  Part="1" 
+AR Path="/5EF259E1/60F6A6C5" Ref="RV5"  Part="1" 
+AR Path="/5EF27E4C/60F6A6C5" Ref="RV6"  Part="1" 
 AR Path="/5EF2B213/60F6A6C5" Ref="RV?"  Part="1" 
 AR Path="/5EF6055A/60F6A6C5" Ref="RV?"  Part="1" 
 AR Path="/5EF6057F/60F6A6C5" Ref="RV?"  Part="1" 
@@ -290,27 +290,27 @@ AR Path="/5F7926DC/60F6A6C5" Ref="RV?"  Part="1"
 AR Path="/5F7926F8/60F6A6C5" Ref="RV?"  Part="1" 
 AR Path="/5F792714/60F6A6C5" Ref="RV?"  Part="1" 
 AR Path="/5F792730/60F6A6C5" Ref="RV?"  Part="1" 
-AR Path="/5F7AB892/60F6A6C5" Ref="RV13"  Part="1" 
-AR Path="/5F7AB8B0/60F6A6C5" Ref="RV15"  Part="1" 
-AR Path="/5F7AB8CC/60F6A6C5" Ref="RV17"  Part="1" 
-AR Path="/5F7AB8E8/60F6A6C5" Ref="RV19"  Part="1" 
-AR Path="/5F7AB904/60F6A6C5" Ref="RV21"  Part="1" 
-AR Path="/5F842B3B/60F6A6C5" Ref="RV23"  Part="1" 
-AR Path="/5F842B59/60F6A6C5" Ref="RV25"  Part="1" 
-AR Path="/5F842B75/60F6A6C5" Ref="RV27"  Part="1" 
-AR Path="/5F842B91/60F6A6C5" Ref="RV29"  Part="1" 
-AR Path="/5F842BAD/60F6A6C5" Ref="RV31"  Part="1" 
-AR Path="/5F842BEF/60F6A6C5" Ref="RV33"  Part="1" 
-AR Path="/5F842C0D/60F6A6C5" Ref="RV35"  Part="1" 
-AR Path="/5F842C29/60F6A6C5" Ref="RV37"  Part="1" 
-AR Path="/5F842C45/60F6A6C5" Ref="RV39"  Part="1" 
-AR Path="/5F842C61/60F6A6C5" Ref="RV41"  Part="1" 
-F 0 "RV41" V 5850 4700 50  0000 R CNN
-F 1 "1k" V 5750 4700 50  0000 R CNN
-F 2 "Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical" H 5950 4600 50  0001 C CNN
-F 3 "~" H 5950 4600 50  0001 C CNN
-F 4 "Course" V 5950 4600 50  0001 C CNN "Description"
-	1    5950 4600
+AR Path="/5F7AB892/60F6A6C5" Ref="RV7"  Part="1" 
+AR Path="/5F7AB8B0/60F6A6C5" Ref="RV8"  Part="1" 
+AR Path="/5F7AB8CC/60F6A6C5" Ref="RV9"  Part="1" 
+AR Path="/5F7AB8E8/60F6A6C5" Ref="RV10"  Part="1" 
+AR Path="/5F7AB904/60F6A6C5" Ref="RV11"  Part="1" 
+AR Path="/5F842B3B/60F6A6C5" Ref="RV12"  Part="1" 
+AR Path="/5F842B59/60F6A6C5" Ref="RV13"  Part="1" 
+AR Path="/5F842B75/60F6A6C5" Ref="RV14"  Part="1" 
+AR Path="/5F842B91/60F6A6C5" Ref="RV15"  Part="1" 
+AR Path="/5F842BAD/60F6A6C5" Ref="RV16"  Part="1" 
+AR Path="/5F842BEF/60F6A6C5" Ref="RV17"  Part="1" 
+AR Path="/5F842C0D/60F6A6C5" Ref="RV18"  Part="1" 
+AR Path="/5F842C29/60F6A6C5" Ref="RV19"  Part="1" 
+AR Path="/5F842C45/60F6A6C5" Ref="RV20"  Part="1" 
+AR Path="/5F842C61/60F6A6C5" Ref="RV21"  Part="1" 
+F 0 "RV2" V 5900 4700 50  0000 R CNN
+F 1 "1k" V 5800 4700 50  0000 R CNN
+F 2 "Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical" H 6000 4600 50  0001 C CNN
+F 3 "~" H 6000 4600 50  0001 C CNN
+F 4 "Course" V 6000 4600 50  0001 C CNN "Description"
+	1    6000 4600
 	0    -1   -1   0   
 $EndComp
 Text HLabel 7050 3850 2    50   Input ~ 0
@@ -380,7 +380,7 @@ L Device:R R?
 U 1 1 5EFAE830
 P 6750 3850
 AR Path="/5EFAE830" Ref="R?"  Part="1" 
-AR Path="/60F4E92A/5EFAE830" Ref="R6"  Part="1" 
+AR Path="/60F4E92A/5EFAE830" Ref="R7"  Part="1" 
 AR Path="/60F9596F/5EFAE830" Ref="R?"  Part="1" 
 AR Path="/60F95BBA/5EFAE830" Ref="R?"  Part="1" 
 AR Path="/60F95BBF/5EFAE830" Ref="R?"  Part="1" 
@@ -389,10 +389,10 @@ AR Path="/60F96187/5EFAE830" Ref="R?"  Part="1"
 AR Path="/60F9685F/5EFAE830" Ref="R?"  Part="1" 
 AR Path="/60F96864/5EFAE830" Ref="R?"  Part="1" 
 AR Path="/60F96869/5EFAE830" Ref="R?"  Part="1" 
-AR Path="/5EF17819/5EFAE830" Ref="R9"  Part="1" 
-AR Path="/5EF23030/5EFAE830" Ref="R12"  Part="1" 
-AR Path="/5EF259E1/5EFAE830" Ref="R15"  Part="1" 
-AR Path="/5EF27E4C/5EFAE830" Ref="R18"  Part="1" 
+AR Path="/5EF17819/5EFAE830" Ref="R11"  Part="1" 
+AR Path="/5EF23030/5EFAE830" Ref="R15"  Part="1" 
+AR Path="/5EF259E1/5EFAE830" Ref="R19"  Part="1" 
+AR Path="/5EF27E4C/5EFAE830" Ref="R23"  Part="1" 
 AR Path="/5EF2B213/5EFAE830" Ref="R?"  Part="1" 
 AR Path="/5EF6055A/5EFAE830" Ref="R?"  Part="1" 
 AR Path="/5EF6057F/5EFAE830" Ref="R?"  Part="1" 
@@ -413,22 +413,22 @@ AR Path="/5F7926DC/5EFAE830" Ref="R?"  Part="1"
 AR Path="/5F7926F8/5EFAE830" Ref="R?"  Part="1" 
 AR Path="/5F792714/5EFAE830" Ref="R?"  Part="1" 
 AR Path="/5F792730/5EFAE830" Ref="R?"  Part="1" 
-AR Path="/5F7AB892/5EFAE830" Ref="R21"  Part="1" 
-AR Path="/5F7AB8B0/5EFAE830" Ref="R24"  Part="1" 
-AR Path="/5F7AB8CC/5EFAE830" Ref="R27"  Part="1" 
-AR Path="/5F7AB8E8/5EFAE830" Ref="R30"  Part="1" 
-AR Path="/5F7AB904/5EFAE830" Ref="R33"  Part="1" 
-AR Path="/5F842B3B/5EFAE830" Ref="R36"  Part="1" 
-AR Path="/5F842B59/5EFAE830" Ref="R39"  Part="1" 
-AR Path="/5F842B75/5EFAE830" Ref="R42"  Part="1" 
-AR Path="/5F842B91/5EFAE830" Ref="R45"  Part="1" 
-AR Path="/5F842BAD/5EFAE830" Ref="R48"  Part="1" 
-AR Path="/5F842BEF/5EFAE830" Ref="R51"  Part="1" 
-AR Path="/5F842C0D/5EFAE830" Ref="R54"  Part="1" 
-AR Path="/5F842C29/5EFAE830" Ref="R57"  Part="1" 
-AR Path="/5F842C45/5EFAE830" Ref="R60"  Part="1" 
-AR Path="/5F842C61/5EFAE830" Ref="R63"  Part="1" 
-F 0 "R63" V 6500 3850 50  0000 L CNN
+AR Path="/5F7AB892/5EFAE830" Ref="R27"  Part="1" 
+AR Path="/5F7AB8B0/5EFAE830" Ref="R31"  Part="1" 
+AR Path="/5F7AB8CC/5EFAE830" Ref="R35"  Part="1" 
+AR Path="/5F7AB8E8/5EFAE830" Ref="R39"  Part="1" 
+AR Path="/5F7AB904/5EFAE830" Ref="R43"  Part="1" 
+AR Path="/5F842B3B/5EFAE830" Ref="R47"  Part="1" 
+AR Path="/5F842B59/5EFAE830" Ref="R51"  Part="1" 
+AR Path="/5F842B75/5EFAE830" Ref="R55"  Part="1" 
+AR Path="/5F842B91/5EFAE830" Ref="R59"  Part="1" 
+AR Path="/5F842BAD/5EFAE830" Ref="R63"  Part="1" 
+AR Path="/5F842BEF/5EFAE830" Ref="R67"  Part="1" 
+AR Path="/5F842C0D/5EFAE830" Ref="R71"  Part="1" 
+AR Path="/5F842C29/5EFAE830" Ref="R75"  Part="1" 
+AR Path="/5F842C45/5EFAE830" Ref="R79"  Part="1" 
+AR Path="/5F842C61/5EFAE830" Ref="R83"  Part="1" 
+F 0 "R7" V 6500 3850 50  0000 L CNN
 F 1 "10k" V 6600 3800 50  0000 L CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" V 6680 3850 50  0001 C CNN
 F 3 "~" H 6750 3850 50  0001 C CNN
@@ -485,9 +485,9 @@ AR Path="/5F842C0D/5F127BEF" Ref="D18"  Part="1"
 AR Path="/5F842C29/5F127BEF" Ref="D19"  Part="1" 
 AR Path="/5F842C45/5F127BEF" Ref="D20"  Part="1" 
 AR Path="/5F842C61/5F127BEF" Ref="D21"  Part="1" 
-F 0 "D21" V 3789 4182 50  0000 R CNN
+F 0 "D2" V 3789 4182 50  0000 R CNN
 F 1 "LED" V 3698 4182 50  0000 R CNN
-F 2 "LED_THT:LED_D3.0mm" H 3750 4300 50  0001 C CNN
+F 2 "LED_THT:LED_D5.0mm" H 3750 4300 50  0001 C CNN
 F 3 "~" H 3750 4300 50  0001 C CNN
 	1    3750 4300
 	0    -1   -1   0   
@@ -506,10 +506,10 @@ AR Path="/60F96187/5F127BF5" Ref="R?"  Part="1"
 AR Path="/60F9685F/5F127BF5" Ref="R?"  Part="1" 
 AR Path="/60F96864/5F127BF5" Ref="R?"  Part="1" 
 AR Path="/60F96869/5F127BF5" Ref="R?"  Part="1" 
-AR Path="/5EF17819/5F127BF5" Ref="R7"  Part="1" 
-AR Path="/5EF23030/5F127BF5" Ref="R10"  Part="1" 
-AR Path="/5EF259E1/5F127BF5" Ref="R13"  Part="1" 
-AR Path="/5EF27E4C/5F127BF5" Ref="R16"  Part="1" 
+AR Path="/5EF17819/5F127BF5" Ref="R8"  Part="1" 
+AR Path="/5EF23030/5F127BF5" Ref="R12"  Part="1" 
+AR Path="/5EF259E1/5F127BF5" Ref="R16"  Part="1" 
+AR Path="/5EF27E4C/5F127BF5" Ref="R20"  Part="1" 
 AR Path="/5EF2B213/5F127BF5" Ref="R?"  Part="1" 
 AR Path="/5EF6055A/5F127BF5" Ref="R?"  Part="1" 
 AR Path="/5EF6057F/5F127BF5" Ref="R?"  Part="1" 
@@ -530,22 +530,22 @@ AR Path="/5F7926DC/5F127BF5" Ref="R?"  Part="1"
 AR Path="/5F7926F8/5F127BF5" Ref="R?"  Part="1" 
 AR Path="/5F792714/5F127BF5" Ref="R?"  Part="1" 
 AR Path="/5F792730/5F127BF5" Ref="R?"  Part="1" 
-AR Path="/5F7AB892/5F127BF5" Ref="R19"  Part="1" 
-AR Path="/5F7AB8B0/5F127BF5" Ref="R22"  Part="1" 
-AR Path="/5F7AB8CC/5F127BF5" Ref="R25"  Part="1" 
-AR Path="/5F7AB8E8/5F127BF5" Ref="R28"  Part="1" 
-AR Path="/5F7AB904/5F127BF5" Ref="R31"  Part="1" 
-AR Path="/5F842B3B/5F127BF5" Ref="R34"  Part="1" 
-AR Path="/5F842B59/5F127BF5" Ref="R37"  Part="1" 
-AR Path="/5F842B75/5F127BF5" Ref="R40"  Part="1" 
-AR Path="/5F842B91/5F127BF5" Ref="R43"  Part="1" 
-AR Path="/5F842BAD/5F127BF5" Ref="R46"  Part="1" 
-AR Path="/5F842BEF/5F127BF5" Ref="R49"  Part="1" 
-AR Path="/5F842C0D/5F127BF5" Ref="R52"  Part="1" 
-AR Path="/5F842C29/5F127BF5" Ref="R55"  Part="1" 
-AR Path="/5F842C45/5F127BF5" Ref="R58"  Part="1" 
-AR Path="/5F842C61/5F127BF5" Ref="R61"  Part="1" 
-F 0 "R61" H 3850 3850 50  0000 L CNN
+AR Path="/5F7AB892/5F127BF5" Ref="R24"  Part="1" 
+AR Path="/5F7AB8B0/5F127BF5" Ref="R28"  Part="1" 
+AR Path="/5F7AB8CC/5F127BF5" Ref="R32"  Part="1" 
+AR Path="/5F7AB8E8/5F127BF5" Ref="R36"  Part="1" 
+AR Path="/5F7AB904/5F127BF5" Ref="R40"  Part="1" 
+AR Path="/5F842B3B/5F127BF5" Ref="R44"  Part="1" 
+AR Path="/5F842B59/5F127BF5" Ref="R48"  Part="1" 
+AR Path="/5F842B75/5F127BF5" Ref="R52"  Part="1" 
+AR Path="/5F842B91/5F127BF5" Ref="R56"  Part="1" 
+AR Path="/5F842BAD/5F127BF5" Ref="R60"  Part="1" 
+AR Path="/5F842BEF/5F127BF5" Ref="R64"  Part="1" 
+AR Path="/5F842C0D/5F127BF5" Ref="R68"  Part="1" 
+AR Path="/5F842C29/5F127BF5" Ref="R72"  Part="1" 
+AR Path="/5F842C45/5F127BF5" Ref="R76"  Part="1" 
+AR Path="/5F842C61/5F127BF5" Ref="R80"  Part="1" 
+F 0 "R4" H 3850 3850 50  0000 L CNN
 F 1 "330" H 3850 3750 50  0000 L CNN
 F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" V 3680 3800 50  0001 C CNN
 F 3 "~" H 3750 3800 50  0001 C CNN
@@ -638,7 +638,7 @@ AR Path="/5F842C0D/60F6A6A0" Ref="C54"  Part="1"
 AR Path="/5F842C29/60F6A6A0" Ref="C57"  Part="1" 
 AR Path="/5F842C45/60F6A6A0" Ref="C60"  Part="1" 
 AR Path="/5F842C61/60F6A6A0" Ref="C63"  Part="1" 
-F 0 "C63" H 5300 5050 50  0000 L CNN
+F 0 "C6" H 5300 5050 50  0000 L CNN
 F 1 "10nF" H 5300 4950 50  0000 L CNN
 F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 5188 4900 50  0001 C CNN
 F 3 "~" H 5150 5050 50  0001 C CNN
@@ -698,7 +698,7 @@ AR Path="/5F842C0D/60F6A69A" Ref="C53"  Part="1"
 AR Path="/5F842C29/60F6A69A" Ref="C56"  Part="1" 
 AR Path="/5F842C45/60F6A69A" Ref="C59"  Part="1" 
 AR Path="/5F842C61/60F6A69A" Ref="C62"  Part="1" 
-F 0 "C62" H 4750 5050 50  0000 L CNN
+F 0 "C5" H 4750 5050 50  0000 L CNN
 F 1 "4.7uF" H 4750 4950 50  0000 L CNN
 F 2 "Capacitor_THT:CP_Radial_D4.0mm_P2.00mm" H 4638 4900 50  0001 C CNN
 F 3 "~" H 4600 5050 50  0001 C CNN
@@ -706,85 +706,8 @@ F 4 "Timing" H 4600 5050 50  0001 C CNN "Description"
 	1    4600 5050
 	1    0    0    -1  
 $EndComp
-$Comp
-L Device:R_POT_TRIM_US RV?
-U 1 1 5F13ACF1
-P 5400 4600
-AR Path="/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F4E92A/5F13ACF1" Ref="RV2"  Part="1" 
-AR Path="/60F9596F/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F95BBA/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F95BBF/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F96182/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F96187/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F9685F/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F96864/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/60F96869/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5EF17819/5F13ACF1" Ref="RV4"  Part="1" 
-AR Path="/5EF23030/5F13ACF1" Ref="RV6"  Part="1" 
-AR Path="/5EF259E1/5F13ACF1" Ref="RV8"  Part="1" 
-AR Path="/5EF27E4C/5F13ACF1" Ref="RV10"  Part="1" 
-AR Path="/5EF2B213/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5EF6055A/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5EF6057F/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5EF605A2/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5EF605C5/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5EF605E8/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5EF6060B/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5EF7A07F/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F1B4BC2/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F1B4BE4/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F1D8DB1/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F1D8DD3/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F1AE585/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F2156AD/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F2156CF/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F7926BE/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F7926DC/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F7926F8/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F792714/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F792730/5F13ACF1" Ref="RV?"  Part="1" 
-AR Path="/5F7AB892/5F13ACF1" Ref="RV12"  Part="1" 
-AR Path="/5F7AB8B0/5F13ACF1" Ref="RV14"  Part="1" 
-AR Path="/5F7AB8CC/5F13ACF1" Ref="RV16"  Part="1" 
-AR Path="/5F7AB8E8/5F13ACF1" Ref="RV18"  Part="1" 
-AR Path="/5F7AB904/5F13ACF1" Ref="RV20"  Part="1" 
-AR Path="/5F842B3B/5F13ACF1" Ref="RV22"  Part="1" 
-AR Path="/5F842B59/5F13ACF1" Ref="RV24"  Part="1" 
-AR Path="/5F842B75/5F13ACF1" Ref="RV26"  Part="1" 
-AR Path="/5F842B91/5F13ACF1" Ref="RV28"  Part="1" 
-AR Path="/5F842BAD/5F13ACF1" Ref="RV30"  Part="1" 
-AR Path="/5F842BEF/5F13ACF1" Ref="RV32"  Part="1" 
-AR Path="/5F842C0D/5F13ACF1" Ref="RV34"  Part="1" 
-AR Path="/5F842C29/5F13ACF1" Ref="RV36"  Part="1" 
-AR Path="/5F842C45/5F13ACF1" Ref="RV38"  Part="1" 
-AR Path="/5F842C61/5F13ACF1" Ref="RV40"  Part="1" 
-F 0 "RV40" V 5300 4700 50  0000 R CNN
-F 1 "1k" V 5200 4700 50  0000 R CNN
-F 2 "Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical" H 5400 4600 50  0001 C CNN
-F 3 "~" H 5400 4600 50  0001 C CNN
-F 4 "Fine" V 5400 4600 50  0001 C CNN "Description"
-	1    5400 4600
-	0    1    -1   0   
-$EndComp
-Wire Wire Line
-	4950 4600 5250 4600
-Wire Wire Line
-	5550 4600 5600 4600
-Wire Wire Line
-	5400 4450 5400 4350
-Wire Wire Line
-	5400 4350 5600 4350
-Wire Wire Line
-	5600 4350 5600 4600
-Connection ~ 5600 4600
-Wire Wire Line
-	5600 4600 5800 4600
 Wire Wire Line
 	3300 5250 3750 5250
-NoConn ~ 5700 4600
-Wire Wire Line
-	5700 4150 5700 5250
 Wire Wire Line
 	3750 5250 4350 5250
 $Comp
@@ -840,5 +763,71 @@ F 3 "" H 5700 5450 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5700 5250 5700 5450
+Wire Wire Line
+	5700 4150 5700 5250
 Connection ~ 5700 5250
+Wire Wire Line
+	4950 4600 5300 4600
+Wire Wire Line
+	5600 4600 5850 4600
+$Comp
+L Device:R R?
+U 1 1 5F3F39A8
+P 5450 4600
+AR Path="/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/60F4E92A/5F3F39A8" Ref="R6"  Part="1" 
+AR Path="/60F9596F/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/60F95BBA/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/60F95BBF/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/60F96182/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/60F96187/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/60F9685F/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/60F96864/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/60F96869/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5EF17819/5F3F39A8" Ref="R10"  Part="1" 
+AR Path="/5EF23030/5F3F39A8" Ref="R14"  Part="1" 
+AR Path="/5EF259E1/5F3F39A8" Ref="R18"  Part="1" 
+AR Path="/5EF27E4C/5F3F39A8" Ref="R22"  Part="1" 
+AR Path="/5EF2B213/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5EF6055A/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5EF6057F/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5EF605A2/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5EF605C5/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5EF605E8/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5EF6060B/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5EF7A07F/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5F1B4BC2/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5F1B4BE4/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5F1D8DB1/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5F1D8DD3/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5F1AE585/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5F2156AD/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5F2156CF/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5F7926BE/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5F7926DC/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5F7926F8/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5F792714/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5F792730/5F3F39A8" Ref="R?"  Part="1" 
+AR Path="/5F7AB892/5F3F39A8" Ref="R26"  Part="1" 
+AR Path="/5F7AB8B0/5F3F39A8" Ref="R30"  Part="1" 
+AR Path="/5F7AB8CC/5F3F39A8" Ref="R34"  Part="1" 
+AR Path="/5F7AB8E8/5F3F39A8" Ref="R38"  Part="1" 
+AR Path="/5F7AB904/5F3F39A8" Ref="R42"  Part="1" 
+AR Path="/5F842B3B/5F3F39A8" Ref="R46"  Part="1" 
+AR Path="/5F842B59/5F3F39A8" Ref="R50"  Part="1" 
+AR Path="/5F842B75/5F3F39A8" Ref="R54"  Part="1" 
+AR Path="/5F842B91/5F3F39A8" Ref="R58"  Part="1" 
+AR Path="/5F842BAD/5F3F39A8" Ref="R62"  Part="1" 
+AR Path="/5F842BEF/5F3F39A8" Ref="R66"  Part="1" 
+AR Path="/5F842C0D/5F3F39A8" Ref="R70"  Part="1" 
+AR Path="/5F842C29/5F3F39A8" Ref="R74"  Part="1" 
+AR Path="/5F842C45/5F3F39A8" Ref="R78"  Part="1" 
+AR Path="/5F842C61/5F3F39A8" Ref="R82"  Part="1" 
+F 0 "R6" V 5550 4550 50  0000 L CNN
+F 1 "100-300" V 5650 4450 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" V 5380 4600 50  0001 C CNN
+F 3 "~" H 5450 4600 50  0001 C CNN
+	1    5450 4600
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC
