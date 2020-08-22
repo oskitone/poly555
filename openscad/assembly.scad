@@ -224,6 +224,7 @@ module assembly(
     module _mounting_rail_aligners(bleed = 0) {
         width_length = enclosure_inner_wall + bleed;
         length = mount_length / 2 + bleed * 2;
+        height = pcb_stilt_height + PCB_HEIGHT + mount_height;
 
         y = key_mounting_rail_y + (mount_length - length) / 2;
         z = enclosure_wall - e;
@@ -236,7 +237,7 @@ module assembly(
                 cube([
                     width_length,
                     length,
-                    enclosure_bottom_height + LIP_BOX_DEFAULT_LIP_HEIGHT - z
+                    height + e * 2
                 ]);
             }
         }
