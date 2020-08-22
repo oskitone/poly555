@@ -25,7 +25,19 @@ module pcb(
 
     $fn = DEFAULT_ROUNDING
 ) {
+    silkscreen_height = 1;
     e = 0.0567;
+
+    module _holes() {
+        for (xy = hole_positions) {
+            translate([xy[0], xy[1], -e]) {
+                cylinder(
+                    d = PCB_MOUNT_HOLE_DIAMETER,
+                    h = PCB_HEIGHT + silkscreen_height + e * 2
+                );
+            }
+        }
+    }
 
     if (visualize_buttons) {
         for (xy = button_positions) {
@@ -43,11 +55,15 @@ module pcb(
     }
 
     if (visualize_silkscreen) {
-        // magic...
-        translate([-16.25, -0.5, PCB_HEIGHT]) {
-            render() linear_extrude(1) offset(delta = .2) {
-                import("../../poly_555-brd.svg");
+        difference() {
+            // magic...
+            translate([-15.25, -0.42, PCB_HEIGHT]) {
+                render() linear_extrude(silkscreen_height) offset(delta = .2) {
+                    import("../../poly_555-brd.svg");
+                }
             }
+
+            _holes();
         }
     }
 
@@ -113,14 +129,7 @@ module pcb(
                 ]);
             }
 
-            for (xy = hole_positions) {
-                translate([xy[0], xy[1], -e]) {
-                    cylinder(
-                        d = PCB_MOUNT_HOLE_DIAMETER,
-                        h = PCB_HEIGHT + e * 2
-                    );
-                }
-            }
+            _holes();
         }
     }
 }
