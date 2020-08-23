@@ -2,6 +2,7 @@ include <lib/values.scad>;
 
 use <lib/basic_shapes.scad>;
 use <lib/battery.scad>;
+use <lib/diagonal_grill.scad>;
 use <lib/enclosure.scad>;
 use <lib/engraving.scad>;
 use <lib/keys.scad>;
@@ -666,20 +667,31 @@ module assembly(
             _screw_head_cavity_bridges();
         }
 
-        module _top() {
-            module _pcb_window_pane_cavity(
-                /* Make window align with keys: */
-                window_pane_x_exposure = pcb_x + PCB_COMPONENTS_X
-                    - enclosure_gutter + key_gutter,
-                window_pane_y_exposure = pcb_window_extension
-            ) {
+        module _top(
+            /* Make window align with keys: */
+            window_pane_x_exposure = pcb_x + PCB_COMPONENTS_X
+                - enclosure_gutter + key_gutter,
+            window_pane_y_exposure = pcb_window_extension
+        ) {
+            pane_x = pcb_x + PCB_COMPONENTS_X - window_pane_x_exposure;
+            pane_width = PCB_COMPONENTS_WIDTH + window_pane_x_exposure * 2;
+
+            panel_x = pane_x + pane_width + enclosure_gutter;
+            panel_y = key_mounting_rail_y + mount_length;
+            panel_width = enclosure_width - enclosure_gutter - panel_x;
+            panel_length = enclosure_length - enclosure_gutter - panel_y;
+            branding_length = 11; // TODO: derive or obviate
+
+            echo("Side panel dimensions", [panel_width, panel_length]);
+
+            module _pcb_window_pane_cavity() {
                 translate([
-                    pcb_x + PCB_COMPONENTS_X - window_pane_x_exposure,
+                    pane_x,
                     pcb_y + PCB_COMPONENTS_Y - window_pane_y_exposure,
                     enclosure_height - enclosure_wall - e
                 ]) {
                     cube([
-                        PCB_COMPONENTS_WIDTH + window_pane_x_exposure * 2,
+                        pane_width,
                         PCB_COMPONENTS_LENGTH + window_pane_y_exposure * 2,
                         enclosure_wall + e * 2
                     ]);
@@ -709,6 +721,44 @@ module assembly(
                 }
             }
 
+            module _branding(depth = enclosure_wall - 1) {
+                font_size = 5.9; // TODO: derive or obviate
+                z = enclosure_height - depth;
+
+                translate([panel_x, panel_y, z]) {
+                    engraving(
+                        string = "POLY555",
+                        font = "Work Sans:style=Bold",
+                        height = depth + e,
+                        size = font_size * .75,
+                        center = false,
+                        bleed = tolerance
+                    );
+                }
+
+                translate([panel_x, panel_y + 5.5, z]) {
+                    engraving(
+                        height = depth + e,
+                        size = font_size,
+                        center = false,
+                        bleed = tolerance
+                    );
+                }
+            }
+
+            module _speaker_cavity() {
+                length = panel_length - branding_length - enclosure_gutter;
+
+                translate([
+                    panel_x,
+                    panel_y + panel_length - length,
+                    enclosure_height - engraving_depth
+                ]) {
+                    diagonal_grill(panel_width, length, engraving_depth + e,
+                    angle = 60);
+                }
+            }
+
             _key_mounting_rail();
 
             difference() {
@@ -716,6 +766,8 @@ module assembly(
                 _keys_and_bumper_cavity();
                 _pcb_window_pane_cavity();
                 _pcb(true);
+                _branding();
+                _speaker_cavity();
                 /* TODO: window pane support */
             }
         }
