@@ -109,7 +109,6 @@ module assembly(
     pcb_y = mounted_keys_total_length - keys_mount_end_on_pcb + enclosure_gutter;
     pcb_z = enclosure_wall + max(
         MOUNT_STILT_MINIMUM_HEIGHT,
-        SPEAKER_HEIGHT + speaker_to_pcb_clearance,
         SWITCH_BASE_HEIGHT + SWITCH_ACTUATOR_HEIGHT
             - enclosure_wall + bottom_component_clearance
     );
@@ -121,8 +120,10 @@ module assembly(
         + enclosure_gutter;
 
     enclosure_height = enclosure_wall * 2
-        + pcb_stilt_height
-        + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
+        + max(
+            pcb_stilt_height + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT,
+            BATTERY_HEIGHT
+        )
         + WINDOW_PANE_HEIGHT
         + enclosure_to_component_z_clearance;
     // TODO: tidy
@@ -143,9 +144,9 @@ module assembly(
     keys_z = pcb_z + PCB_HEIGHT + BUTTON_HEIGHT;
     key_mounting_rail_y = pcb_y + keys_mount_end_on_pcb - mount_length;
 
-    speaker_x = enclosure_width / 2;
-    speaker_y = enclosure_wall + SPEAKER_DIAMETER / 2
-        + enclosure_to_component_gutter;
+    // TODO: refine
+    speaker_x = pcb_x + PCB_BATTERY_CAVITY_X + SPEAKER_DIAMETER / 2;
+    speaker_y = pcb_y + PCB_LENGTH - SPEAKER_DIAMETER / 2;
 
     switch_x = pcb_x + PCB_SWITCH_X;
     switch_y = pcb_y + PCB_SWITCH_Y;
@@ -153,8 +154,7 @@ module assembly(
     switch_exposure_height = switch_z - SWITCH_BASE_HEIGHT;
 
     battery_x = enclosure_width - BATTERY_WIDTH - enclosure_wall - tolerance;
-    battery_y = pcb_y + PCB_BATTERY_CAVITY_Y
-        + (PCB_BATTERY_CAVITY_LENGTH - BATTERY_LENGTH) / 2;
+    battery_y = pcb_y + PCB_BATTERY_CAVITY_Y + tolerance;
 
     window_pane_x = enclosure_wall + tolerance;
     window_pane_y = pcb_y + keys_mount_end_on_pcb
@@ -646,7 +646,8 @@ module assembly(
                         include_switch_cavity = false,
                         z_bleed = -e
                     );
-                    _battery_container();
+                    /* TODO: redesign or ditch */
+                    * _battery_container();
                     _speaker_container();
                     _mount_stilts_and_spacers();
                     _mounting_rail_aligners();
@@ -735,8 +736,8 @@ module assembly(
 
     module _battery() {
         translate([battery_x, battery_y, enclosure_wall + e]) {
-            translate([0, BATTERY_LENGTH + e, 0]) {
-                cube([BATTERY_WIDTH, BATTERY_SNAP_LENGTH, BATTERY_HEIGHT]);
+            translate([-BATTERY_SNAP_WIDTH, 0, 0]) {
+                # cube([BATTERY_SNAP_WIDTH, BATTERY_LENGTH, BATTERY_HEIGHT]);
             }
 
             battery();
@@ -753,7 +754,7 @@ module assembly(
 
     module _pcb(
         for_enclosure_cavity = false,
-        volume_wheel_diameter = 21,
+        volume_wheel_diameter = 18,
         volume_wheel_grip_size = .6
     ) {
         translate([pcb_x, pcb_y, pcb_z]) {
