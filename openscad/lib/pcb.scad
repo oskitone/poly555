@@ -78,18 +78,6 @@ module pcb(
                     PCB_COMPONENTS_HEIGHT
                 ]);
             }
-
-            translate([
-                PCB_BATTERY_CAVITY_X - PCB_COMPONENTS_X,
-                PCB_BATTERY_CAVITY_Y - PCB_COMPONENTS_X,
-                z - e
-            ]) {
-                cube([
-                    PCB_WIDTH - PCB_BATTERY_CAVITY_X + PCB_COMPONENTS_X * 2,
-                    PCB_BATTERY_CAVITY_LENGTH + PCB_COMPONENTS_X * 2,
-                    PCB_COMPONENTS_HEIGHT + z
-                ]);
-            }
         }
     }
 
