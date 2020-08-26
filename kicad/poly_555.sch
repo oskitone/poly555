@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A3 16535 11693
 encoding utf-8
-Sheet 1 21
+Sheet 1 22
 Title ""
 Date ""
 Rev ""
@@ -1793,4 +1793,10 @@ Connection ~ 2550 2500
 Connection ~ 3100 2500
 Wire Wire Line
 	3100 2500 3100 3050
+$Sheet
+S 10500 5850 1700 950 
+U 5F470266
+F0 "APC" 50
+F1 "apc.sch" 50
+$EndSheet
 $EndSCHEMATC
