@@ -806,9 +806,12 @@ module assembly(
 
     module _pcb(
         for_enclosure_cavity = false,
-        volume_wheel_diameter = 18,
+        volume_wheel_exposure = 2,
         volume_wheel_grip_size = .6
     ) {
+        volume_wheel_diameter = volume_wheel_exposure +
+            (enclosure_width - (pcb_x + PCB_VOLUME_WHEEL_X)) * 2;
+
         translate([pcb_x, pcb_y, pcb_z]) {
             pcb(
                 visualize_board =  !for_enclosure_cavity,
