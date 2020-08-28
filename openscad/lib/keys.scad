@@ -17,7 +17,7 @@ module keys(
     accidental_length,
     accidental_height,
 
-    front_chamfer = 2,
+    front_and_sides_chamfer = 2,
 
     gutter = 1,
 
@@ -79,39 +79,25 @@ module keys(
         }
 
         difference() {
-            if (front_chamfer > 0) {
+            if (front_and_sides_chamfer > 0) {
                 width = dimensions[0];
                 length = dimensions[1];
                 height = dimensions[2];
 
-                hull() {
-                    for (position = [
-                        [0, 0, 0],
-                        [width - e, 0, 0],
-                        [width - e, length - e, 0],
-                        [0, length - e, 0],
-                        [width - e, length - e, height - e],
-                        [0, length - e, height - e],
-                    ]) {
-                        translate(position) {
-                            cube([e, e, e]);
-                        }
+                intersection() {
+                    translate([0, 0, -front_and_sides_chamfer]) {
+                        rounded_cube([
+                            dimensions.x,
+                            dimensions.y + front_and_sides_chamfer,
+                            dimensions.z + front_and_sides_chamfer
+                        ], radius = front_and_sides_chamfer);
                     }
 
-                    translate([0, front_chamfer, height - front_chamfer]) {
-                        rotate([0, 90, 0]) {
-                            cylinder(
-                                r = front_chamfer,
-                                h = width
-                            );
-                        }
-                    }
+                    cube(dimensions);
                 }
             } else {
                 cube(dimensions);
             }
-
-            // TODO: round sides too
 
             if (cantilever_recession > 0) {
                 _cantilever_recession_cavity();
@@ -295,7 +281,7 @@ module mounted_keys(
     accidental_length,
     accidental_height,
 
-    front_chamfer = 2,
+    front_and_sides_chamfer = 2,
 
     gutter = 1,
 
@@ -350,7 +336,7 @@ module mounted_keys(
             accidental_length = accidental_length,
             accidental_height = accidental_height,
 
-            front_chamfer = front_chamfer,
+            front_and_sides_chamfer = front_and_sides_chamfer,
 
             gutter = gutter,
 
@@ -428,7 +414,7 @@ mounted_keys(
     accidental_length = 30,
     accidental_height = 15,
 
-    front_chamfer = 0,
+    front_and_sides_chamfer = 1,
 
     gutter = 1,
 
