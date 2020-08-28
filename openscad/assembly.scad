@@ -637,6 +637,27 @@ module assembly(
                 }
             }
 
+            module _switch_engraving(font_size = 5) {
+                x = switch_x - SWITCH_ORIGIN.x - font_size * 2;
+                y_gutter = font_size * 1.5;
+                y_origin = switch_y - SWITCH_ORIGIN.y + SWITCH_BASE_LENGTH / 2;
+                ys = [y_origin - y_gutter / 2, y_origin + y_gutter / 2];
+
+                for (i = [0, 1]) {
+                    translate([x, ys[i], -e]) {
+                        mirror([1, 0, 0]) {
+                            engraving(
+                                string = str(i),
+                                font = "Work Sans:style=Bold",
+                                height = engraving_depth + e,
+                                size = font_size,
+                                bleed = tolerance
+                            );
+                        }
+                    }
+                }
+            }
+
             difference() {
                 union() {
                     _enclosure_half(false);
@@ -659,6 +680,7 @@ module assembly(
                     include_switch_cavity = true,
                     z_bleed = e
                 );
+                _switch_engraving();
                 _screw_cavities();
                 _engraving();
                 _pcb(true);
