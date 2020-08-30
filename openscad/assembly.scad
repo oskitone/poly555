@@ -122,11 +122,10 @@ module assembly(
 
     enclosure_height = enclosure_wall * 2
         + max(
-            pcb_stilt_height + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT,
-            BATTERY_HEIGHT,
-            SPEAKER_HEIGHT
+            pcb_stilt_height + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
+                + WINDOW_PANE_HEIGHT,
+            SPEAKER_HEIGHT - SPEAKER_MAGNET_HEIGHT + BATTERY_HEIGHT
         )
-        + WINDOW_PANE_HEIGHT
         + enclosure_to_component_z_clearance;
     // TODO: tidy
     enclosure_bottom_height = pcb_z + PCB_HEIGHT + POT_HEIGHT
@@ -328,22 +327,22 @@ module assembly(
             }
 
             module _battery_container(
-                length = BATTERY_LENGTH * .5,
+                width = BATTERY_LENGTH * .5,
                 wall = enclosure_inner_wall,
                 ramp = 5
             ) {
                 translate([
-                    battery_x - wall - ramp,
-                    battery_y + (BATTERY_LENGTH - length) / 2,
+                    battery_x + (BATTERY_WIDTH - width) / 2,
+                    battery_y - wall - ramp,
                     enclosure_wall
                 ]) {
                     flat_top_rectangular_pyramid(
-                        top_width = wall,
-                        top_length = length,
-                        bottom_width = wall + ramp,
-                        bottom_length = length,
-                        height = BATTERY_HEIGHT * .67,
-                        top_weight_x = 1
+                        top_width = width,
+                        top_length = wall,
+                        bottom_width = width,
+                        bottom_length = wall + ramp,
+                        height = BATTERY_HEIGHT * .5,
+                        top_weight_y = 1
                     );
                 }
             }
@@ -650,8 +649,7 @@ module assembly(
                         include_switch_cavity = false,
                         z_bleed = -e
                     );
-                    /* TODO: redesign or ditch */
-                    * _battery_container();
+                    _battery_container();
                     _mount_stilts_and_spacers();
                     _mounting_rail_aligners();
                 }
@@ -904,7 +902,7 @@ module assembly(
         }
 
         /* translate([-20, -20, -20]) cube([35, 300, 100]); // switch */
-        /* translate([speaker_x, speaker_y, -e]) cylinder(d = SPEAKER_DIAMETER + 8, h = 40); */
+        /* translate([-e, -e, -e]) cube([speaker_x, 300, 100]); */
         /* translate([-e, -10, -e]) cube([enclosure_width / 2, enclosure_length + 20, enclosure_height + 20]); // cross section */
         /* translate([-e, -10, -e]) cube([ pcb_x + PCB_SWITCH_X + SWITCH_BASE_WIDTH / 2 - SWITCH_ORIGIN.x, enclosure_length + 20, enclosure_height + 20 ]); */
         /* translate([pcb_x + PCB_HOLES[2][0], pcb_y + PCB_HOLES[2][1], -e]) cylinder(d = 12, h = 20); */
