@@ -105,7 +105,7 @@ module assembly(
         BOTTOM_MOUNTED_PCB_HOLES[3][0] - keys_from_pcb_x_offset,
     ];
 
-    pcb_window_extension = PCB_COMPONENTS_Y - keys_mount_end_on_pcb;
+    pcb_window_y_extension = PCB_COMPONENTS_Y - keys_mount_end_on_pcb;
     pcb_x = enclosure_gutter - keys_from_pcb_x_offset;
     pcb_y = mounted_keys_total_length - keys_mount_end_on_pcb + enclosure_gutter;
     pcb_z = enclosure_wall + max(
@@ -117,13 +117,14 @@ module assembly(
 
     enclosure_width = enclosure_gutter * 2 + mount_width;
     enclosure_length = pcb_y + keys_mount_end_on_pcb
-        + PCB_COMPONENTS_LENGTH + pcb_window_extension * 2
+        + PCB_COMPONENTS_LENGTH + pcb_window_y_extension * 2
         + enclosure_gutter;
 
     enclosure_height = enclosure_wall * 2
         + max(
             pcb_stilt_height + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT,
-            BATTERY_HEIGHT
+            BATTERY_HEIGHT,
+            SPEAKER_HEIGHT
         )
         + WINDOW_PANE_HEIGHT
         + enclosure_to_component_z_clearance;
@@ -137,6 +138,7 @@ module assembly(
         - PCB_HEIGHT - mount_height - accidental_key_extra_height
         - accidental_key_recession;
     keys_x = pcb_x + keys_from_pcb_x_offset;
+    assert(keys_x == enclosure_gutter, "keys_x should equal enclosure_gutter");
     keys_y = pcb_y
         - natural_key_length
         - (cantilever_length - cantilever_recession)
@@ -145,25 +147,37 @@ module assembly(
     keys_z = pcb_z + PCB_HEIGHT + BUTTON_HEIGHT;
     key_mounting_rail_y = pcb_y + keys_mount_end_on_pcb - mount_length;
 
-    // TODO: refine
-    speaker_x = pcb_x + PCB_BATTERY_CAVITY_X + SPEAKER_DIAMETER / 2;
-    speaker_y = pcb_y + PCB_LENGTH - SPEAKER_DIAMETER / 2;
+    battery_x = enclosure_width - BATTERY_WIDTH - enclosure_wall - tolerance;
+    battery_y = enclosure_length - enclosure_wall - BATTERY_LENGTH;
 
     switch_x = pcb_x + PCB_SWITCH_X;
     switch_y = pcb_y + PCB_SWITCH_Y;
     switch_z = pcb_z;
     switch_exposure_height = switch_z - SWITCH_BASE_HEIGHT;
 
-    battery_x = enclosure_width - BATTERY_WIDTH - enclosure_wall - tolerance;
-    battery_y = pcb_y + PCB_BATTERY_CAVITY_Y + tolerance;
-
-    window_pane_x = enclosure_wall + tolerance;
+    // TODO: differentiate between window vs pane vs cavity, etc
+    window_and_side_panel_gutter = enclosure_gutter - key_gutter;
     window_pane_y = pcb_y + keys_mount_end_on_pcb
         - (mount_length - PCB_MOUNT_HOLE_DIAMETER) / 2;
     window_pane_z = enclosure_height - enclosure_wall - WINDOW_PANE_HEIGHT;
-    window_pane_width = enclosure_width - enclosure_wall * 2 - tolerance * 2;
-    window_pane_length = enclosure_length - window_pane_y - enclosure_wall
-        - tolerance * 2;
+    window_pane_width = PCB_COMPONENTS_WIDTH +
+        ((pcb_x + PCB_COMPONENTS_X) - window_and_side_panel_gutter) * 2;
+    window_pane_length = PCB_COMPONENTS_LENGTH + pcb_window_y_extension * 2;
+
+    side_panel_width = enclosure_width
+        - window_and_side_panel_gutter * 3
+        - window_pane_width;
+    side_panel_x = enclosure_width - side_panel_width - window_and_side_panel_gutter;
+    side_panel_y = key_mounting_rail_y + mount_length;
+    side_panel_length = enclosure_length - enclosure_gutter - side_panel_y;
+
+    branding_length = 11; // TODO: derive or obviate
+    speaker_grill_length = side_panel_length - branding_length - enclosure_gutter;
+    speaker_grill_y = side_panel_y + side_panel_length - speaker_grill_length;
+
+    speaker_x = side_panel_x + side_panel_width / 2;
+    speaker_y = speaker_grill_y + (speaker_grill_length - SPEAKER_LENGTH) / 2
+        + SPEAKER_LENGTH / 2;
 
     echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
     echo("Window pane dimensions", [window_pane_width, window_pane_length]);
@@ -331,38 +345,6 @@ module assembly(
                         height = BATTERY_HEIGHT * .67,
                         top_weight_x = 1
                     );
-                }
-            }
-
-            module _speaker_container(
-                wall = enclosure_inner_wall,
-                gap_width = SPEAKER_SOLDER_PADS_WIDTH,
-                $fn = HIDEF_ROUNDING,
-                tolerance = tolerance / 2,
-                e = 0.3
-            ) {
-                translate([speaker_x, speaker_y, enclosure_wall - e]) {
-                    difference() {
-                        cylinder(
-                            d = SPEAKER_DIAMETER + tolerance * 2 + wall * 2,
-                            h = SPEAKER_HEIGHT + e
-                        );
-
-                        translate([0, 0, -e]) {
-                            cylinder(
-                                d = SPEAKER_DIAMETER + tolerance * 2,
-                                h = SPEAKER_HEIGHT + e * 3
-                            );
-                        }
-
-                        translate([gap_width / -2, 0, 0]) {
-                            cube([
-                                gap_width,
-                                SPEAKER_DIAMETER / 2 + tolerance + wall + e,
-                                SPEAKER_HEIGHT + e * 3
-                            ]);
-                        }
-                    }
                 }
             }
 
@@ -670,7 +652,6 @@ module assembly(
                     );
                     /* TODO: redesign or ditch */
                     * _battery_container();
-                    _speaker_container();
                     _mount_stilts_and_spacers();
                     _mounting_rail_aligners();
                 }
@@ -689,32 +670,16 @@ module assembly(
             _screw_head_cavity_bridges();
         }
 
-        module _top(
-            /* Make window align with keys: */
-            window_pane_x_exposure = pcb_x + PCB_COMPONENTS_X
-                - enclosure_gutter + key_gutter,
-            window_pane_y_exposure = pcb_window_extension
-        ) {
-            pane_x = pcb_x + PCB_COMPONENTS_X - window_pane_x_exposure;
-            pane_width = PCB_COMPONENTS_WIDTH + window_pane_x_exposure * 2;
-
-            panel_x = pane_x + pane_width + enclosure_gutter;
-            panel_y = key_mounting_rail_y + mount_length;
-            panel_width = enclosure_width - enclosure_gutter - panel_x;
-            panel_length = enclosure_length - enclosure_gutter - panel_y;
-            branding_length = 11; // TODO: derive or obviate
-
-            echo("Side panel dimensions", [panel_width, panel_length]);
-
+        module _top() {
             module _pcb_window_pane_cavity() {
                 translate([
-                    pane_x,
-                    pcb_y + PCB_COMPONENTS_Y - window_pane_y_exposure,
+                    window_and_side_panel_gutter,
+                    pcb_y + PCB_COMPONENTS_Y - pcb_window_y_extension,
                     enclosure_height - enclosure_wall - e
                 ]) {
                     cube([
-                        pane_width,
-                        PCB_COMPONENTS_LENGTH + window_pane_y_exposure * 2,
+                        window_pane_width,
+                        window_pane_length,
                         enclosure_wall + e * 2
                     ]);
                 }
@@ -747,7 +712,10 @@ module assembly(
                 font_size = 5.9; // TODO: derive or obviate
                 z = enclosure_height - depth;
 
-                translate([panel_x, panel_y, z]) {
+                translate([side_panel_x, side_panel_y, z]) {
+                    // DEBUG to find branding_length
+                    * % cube([side_panel_width, branding_length, .1]);
+
                     engraving(
                         string = "POLY555",
                         font = "Work Sans:style=Bold",
@@ -758,7 +726,7 @@ module assembly(
                     );
                 }
 
-                translate([panel_x, panel_y + 5.5, z]) {
+                translate([side_panel_x, side_panel_y + 5.5, z]) {
                     engraving(
                         height = depth + e,
                         size = font_size,
@@ -768,16 +736,16 @@ module assembly(
                 }
             }
 
-            module _speaker_cavity() {
-                length = panel_length - branding_length - enclosure_gutter;
-
+            module _speaker_grill() {
                 translate([
-                    panel_x,
-                    panel_y + panel_length - length,
+                    side_panel_x,
+                    speaker_grill_y,
                     enclosure_height - engraving_depth
                 ]) {
-                    diagonal_grill(panel_width, length, engraving_depth + e,
-                    angle = 60);
+                    diagonal_grill(
+                        side_panel_width, speaker_grill_length, engraving_depth + e,
+                        angle = 60
+                    );
                 }
             }
 
@@ -789,7 +757,7 @@ module assembly(
                 _pcb_window_pane_cavity();
                 _pcb(true);
                 _branding();
-                _speaker_cavity();
+                _speaker_grill();
                 /* TODO: window pane support */
             }
         }
@@ -819,9 +787,11 @@ module assembly(
     }
 
     module _speaker() {
-        assert(pcb_stilt_height > SPEAKER_HEIGHT, "Speaker doesn't fit");
-
-        translate([speaker_x, speaker_y, enclosure_wall - e]) {
+        translate([
+            speaker_x,
+            speaker_y,
+            enclosure_height - enclosure_wall - SPEAKER_HEIGHT
+        ]) {
             speaker();
         }
     }
@@ -903,9 +873,10 @@ module assembly(
         translate([e, 0, 0]) _mounted_keys(include_hitch = true);
     }
 
+    // TODO: udpate. these values are wack.
     module _window_pane(xy_bleed = 0, z_bleed = 0) {
         translate([
-            window_pane_x - xy_bleed,
+            window_and_side_panel_gutter - xy_bleed,
             window_pane_y - xy_bleed,
             window_pane_z - z_bleed
         ]) {
