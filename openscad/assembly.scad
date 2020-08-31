@@ -125,7 +125,6 @@ module assembly(
             pcb_stilt_height + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
                 + WINDOW_PANE_HEIGHT,
             SPEAKER_HEIGHT - SPEAKER_MAGNET_HEIGHT + BATTERY_HEIGHT
-                + SCREW_HEAD_HEIGHT + exposed_screw_head_clearance
         )
         + enclosure_to_component_z_clearance;
     // TODO: tidy
@@ -181,9 +180,7 @@ module assembly(
     speaker_x = side_panel_x + side_panel_width / 2;
     speaker_y = speaker_grill_y + (speaker_grill_length - SPEAKER_LENGTH) / 2
         + SPEAKER_LENGTH / 2;
-    speaker_z = enclosure_height
-        - exposed_screw_head_clearance - SCREW_HEAD_HEIGHT - enclosure_wall
-        - SPEAKER_HEIGHT;
+    speaker_z = enclosure_height - enclosure_wall - SPEAKER_HEIGHT;
 
     echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
     echo("Window pane dimensions", [window_pane_width, window_pane_length]);
@@ -646,6 +643,26 @@ module assembly(
                 }
             }
 
+            module _speaker_container() {
+                z = enclosure_wall - e;
+
+                inner_diameter = SPEAKER_MAGNET_DIAMETER + tolerance * 2;
+                outer_diameter = inner_diameter + enclosure_inner_wall * 2;
+
+                translate([speaker_x, speaker_y, z]) {
+                    cylinder(
+                        d = inner_diameter + e * 2,
+                        h = speaker_z - z
+                    );
+
+                    ring(
+                        diameter = outer_diameter,
+                        height = speaker_z + SPEAKER_MAGNET_HEIGHT - z,
+                        inner_diameter = inner_diameter
+                    );
+                }
+            }
+
             difference() {
                 union() {
                     _enclosure_half(false);
@@ -659,6 +676,7 @@ module assembly(
                     _battery_container();
                     _mount_stilts_and_spacers();
                     _mounting_rail_aligners();
+                    _speaker_container();
                 }
 
                 _switch_exposure(
@@ -677,8 +695,7 @@ module assembly(
 
         module _top() {
             speaker_mounting_plate_z = speaker_z + SPEAKER_HEIGHT;
-            speaker_mounting_plate_height = enclosure_height - enclosure_wall
-                - speaker_mounting_plate_z;
+            speaker_mounting_plate_height = enclosure_wall - engraving_depth;
 
             module _pcb_window_pane_cavity() {
                 translate([
@@ -774,67 +791,19 @@ module assembly(
                 }
             }
 
-            module _speaker_cavities() {
-                module _grill() {
-                    difference() {
-                        translate([
-                            side_panel_x,
-                            speaker_grill_y,
-                            enclosure_height - enclosure_wall - e
-                        ]) {
-                            diagonal_grill(
-                                side_panel_width, speaker_grill_length, enclosure_wall + e * 2,
-                                angle = 60
-                            );
-                        }
-                    }
-                }
-
-                module _plate_holes(height, diameter, z) {
-                    for (xy = [
-                        [
-                            speaker_x + SPEAKER_PLATE_HOLE_XY,
-                            speaker_y + SPEAKER_PLATE_HOLE_XY
-                        ],
-                        [
-                            speaker_x + SPEAKER_DIAMETER - SPEAKER_PLATE_HOLE_XY,
-                            speaker_y + SPEAKER_PLATE_HOLE_XY
-                        ],
-                        [
-                            speaker_x + SPEAKER_PLATE_HOLE_XY,
-                            speaker_y + SPEAKER_LENGTH - SPEAKER_PLATE_HOLE_XY
-                        ],
-                        [
-                            speaker_x + SPEAKER_DIAMETER - SPEAKER_PLATE_HOLE_XY,
-                            speaker_y + SPEAKER_LENGTH - SPEAKER_PLATE_HOLE_XY
-                        ],
+            module _speaker_grill() {
+                difference() {
+                    translate([
+                        side_panel_x,
+                        speaker_grill_y,
+                        enclosure_height - enclosure_wall - e
                     ]) {
-                        translate([
-                            xy.x - SPEAKER_DIAMETER / 2,
-                            xy.y - SPEAKER_LENGTH / 2,
-                            z
-                        ]) {
-                            cylinder(
-                                d = diameter,
-                                h = height,
-                                $fn = HIDEF_ROUNDING
-                            );
-                        }
+                        diagonal_grill(
+                            side_panel_width, speaker_grill_length, enclosure_wall + e * 2,
+                            angle = 60
+                        );
                     }
                 }
-
-                _grill();
-
-                _plate_holes(
-                    height = SCREW_HEAD_HEIGHT + e,
-                    diameter = SCREW_HEAD_DIAMETER + tolerance * 2,
-                    z = enclosure_height - SCREW_HEAD_HEIGHT
-                );
-                _plate_holes(
-                    height = (enclosure_wall + speaker_mounting_plate_height) + e * 2,
-                    diameter = PCB_MOUNT_HOLE_DIAMETER,
-                    z = enclosure_height - (enclosure_wall + speaker_mounting_plate_height) - e
-                );
             }
 
             module _volume_wheel_brace() {
@@ -881,17 +850,15 @@ module assembly(
 
             _key_mounting_rail();
             _volume_wheel_brace();
+            _speaker_mounting_plate();
 
             difference() {
-                union() {
-                    _enclosure_half(true);
-                    _speaker_mounting_plate();
-                }
+                _enclosure_half(true);
                 _keys_and_bumper_cavity();
                 _pcb_window_pane_cavity();
                 _pcb(true);
                 _branding();
-                _speaker_cavities();
+                _speaker_grill();
                 /* TODO: window pane support */
             }
         }
