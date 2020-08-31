@@ -174,7 +174,7 @@ module assembly(
     speaker_y = speaker_grill_y + (speaker_grill_length - SPEAKER_LENGTH) / 2
         + SPEAKER_LENGTH / 2;
     speaker_z = enclosure_height
-        - exposed_screw_head_clearance - SCREW_HEAD_HEIGHT - enclosure_wall
+        - enclosure_wall
         - SPEAKER_HEIGHT;
 
     echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
@@ -651,6 +651,26 @@ module assembly(
                 }
             }
 
+            module _speaker_container() {
+                z = enclosure_wall - e;
+
+                inner_diameter = SPEAKER_MAGNET_DIAMETER + tolerance * 2;
+                outer_diameter = inner_diameter + enclosure_inner_wall * 2;
+
+                translate([speaker_x, speaker_y, z]) {
+                    cylinder(
+                        d = inner_diameter + e * 2,
+                        h = speaker_z - z
+                    );
+
+                    ring(
+                        diameter = outer_diameter,
+                        height = speaker_z + SPEAKER_MAGNET_HEIGHT - z,
+                        inner_diameter = inner_diameter
+                    );
+                }
+            }
+
             difference() {
                 union() {
                     _enclosure_half(false);
@@ -664,6 +684,7 @@ module assembly(
                     _battery_container();
                     * _mount_stilts_and_spacers();
                     * _mounting_rail_aligners();
+                    _speaker_container();
                 }
 
                 * _switch_exposure(
@@ -831,12 +852,12 @@ module assembly(
 
                 _grill();
 
-                _plate_holes(
+                * _plate_holes(
                     height = SCREW_HEAD_HEIGHT + e,
                     diameter = SCREW_HEAD_DIAMETER + tolerance * 2,
                     z = enclosure_height - SCREW_HEAD_HEIGHT
                 );
-                _plate_holes(
+                * _plate_holes(
                     height = (enclosure_wall + speaker_mounting_plate_height) + e * 2,
                     diameter = PCB_MOUNT_HOLE_DIAMETER,
                     z = enclosure_height - (enclosure_wall + speaker_mounting_plate_height) - e
@@ -848,7 +869,7 @@ module assembly(
             difference() {
                 union() {
                     _enclosure_half(true);
-                    _speaker_mounting_plate();
+                    * _speaker_mounting_plate();
                 }
                 * _keys_and_bumper_cavity();
                 * _pcb_window_pane_cavity();
