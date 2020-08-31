@@ -42,15 +42,15 @@ module assembly(
 
     volume_wheel_cap_height = 1,
 
-    show_enclosure_bottom = true,
-    show_battery = true,
-    show_speaker = true,
-    show_switch = true,
-    show_pcb = true,
-    show_mounting_rails = true,
-    show_keys = true,
-    show_enclosure_top = true,
-    show_hinge_parts = true,
+    show_enclosure_bottom = false,
+    show_battery = false,
+    show_speaker = false,
+    show_switch = false,
+    show_pcb = false,
+    show_mounting_rails = false,
+    show_keys = false,
+    show_enclosure_top = false,
+    show_hinge_parts = false,
     show_window_pane = false,
     show_just_hinge_parts = false,
 
@@ -114,10 +114,8 @@ module assembly(
     );
     pcb_stilt_height = pcb_z - enclosure_wall;
 
-    enclosure_width = enclosure_gutter * 2 + mount_width;
-    enclosure_length = pcb_y + keys_mount_end_on_pcb
-        + PCB_COMPONENTS_LENGTH + pcb_window_y_extension * 2
-        + enclosure_gutter;
+    enclosure_width = 46.126 + enclosure_gutter * 2;
+    enclosure_length = 89.25 + enclosure_gutter * 2;
 
     enclosure_height = enclosure_wall * 2
         + max(
@@ -163,12 +161,10 @@ module assembly(
         ((pcb_x + PCB_COMPONENTS_X) - window_and_side_panel_gutter) * 2;
     window_pane_length = PCB_COMPONENTS_LENGTH + pcb_window_y_extension * 2;
 
-    side_panel_width = enclosure_width
-        - window_and_side_panel_gutter * 3
-        - window_pane_width;
-    side_panel_x = enclosure_width - side_panel_width - window_and_side_panel_gutter;
-    side_panel_y = key_mounting_rail_y + mount_length;
-    side_panel_length = enclosure_length - enclosure_gutter - side_panel_y;
+    side_panel_width = 46.126;
+    side_panel_x = enclosure_gutter;
+    side_panel_y = enclosure_gutter;
+    side_panel_length = 89.25;
 
     branding_length = 11; // TODO: derive or obviate
     speaker_grill_length = side_panel_length - branding_length - enclosure_gutter;
@@ -289,7 +285,7 @@ module assembly(
                     add_lip = !is_top,
                     remove_lip = is_top,
 
-                    include_hinge = true,
+                    include_hinge = false,
                     include_hinge_parts = show_hinge_parts,
                     include_clasp = false,
                     just_hinge_parts = show_just_hinge_parts,
@@ -642,33 +638,47 @@ module assembly(
                 }
             }
 
+            module _TEST_branding_led_entrance() {
+                diameter = 6;
+                y = enclosure_length - enclosure_gutter * 3 - speaker_grill_length;
+
+                translate([enclosure_width / 2, y, -e]) {
+                    cylinder(
+                        d = diameter,
+                        h = enclosure_wall + e * 2,
+                        $fn = HIDEF_ROUNDING
+                    );
+                }
+            }
+
             difference() {
                 union() {
                     _enclosure_half(false);
-                    _keys_bumper();
-                    _switch_container();
-                    _switch_exposure(
+                    * _keys_bumper();
+                    * _switch_container();
+                    * _switch_exposure(
                         xy_bleed = enclosure_inner_wall,
                         include_switch_cavity = false,
                         z_bleed = -e
                     );
                     _battery_container();
-                    _mount_stilts_and_spacers();
-                    _mounting_rail_aligners();
+                    * _mount_stilts_and_spacers();
+                    * _mounting_rail_aligners();
                 }
 
-                _switch_exposure(
+                * _switch_exposure(
                     xy_bleed = tolerance,
                     include_switch_cavity = true,
                     z_bleed = e
                 );
-                _switch_engraving();
-                _screw_cavities();
-                _engraving();
-                _pcb(true);
+                * _switch_engraving();
+                * _screw_cavities();
+                * _engraving();
+                * _pcb(true);
+                _TEST_branding_led_entrance();
             }
 
-            _screw_head_cavity_bridges();
+            * _screw_head_cavity_bridges();
         }
 
         module _top() {
@@ -713,7 +723,7 @@ module assembly(
                 }
             }
 
-            module _branding(depth = enclosure_wall - 1) {
+            module _branding(depth = enclosure_wall - .4) {
                 font_size = 5.9; // TODO: derive or obviate
                 z = enclosure_height - depth;
 
@@ -722,7 +732,7 @@ module assembly(
                     * % cube([side_panel_width, branding_length, .1]);
 
                     engraving(
-                        string = "POLY555",
+                        string = "XYZ123",
                         font = "Work Sans:style=Bold",
                         height = depth + e,
                         size = font_size * .75,
@@ -833,16 +843,16 @@ module assembly(
                 );
             }
 
-            _key_mounting_rail();
+            * _key_mounting_rail();
 
             difference() {
                 union() {
                     _enclosure_half(true);
                     _speaker_mounting_plate();
                 }
-                _keys_and_bumper_cavity();
-                _pcb_window_pane_cavity();
-                _pcb(true);
+                * _keys_and_bumper_cavity();
+                * _pcb_window_pane_cavity();
+                * _pcb(true);
                 _branding();
                 _speaker_cavities();
                 /* TODO: window pane support */
@@ -996,18 +1006,5 @@ module assembly(
     }
 }
 
-DEV_MODE = true;
-
-assembly(
-    show_enclosure_bottom = true,
-    show_battery = true,
-    show_speaker = true,
-    show_switch = true,
-    show_pcb = true,
-    show_mounting_rails = true,
-    show_keys = true,
-    show_enclosure_top = true,
-    show_hinge_parts = true,
-
-    quick_preview = DEV_MODE
-);
+translate([58.126, 0, 40.6]) rotate([0, 180, 0]) assembly(show_enclosure_top = true);
+translate([58.126 + 5, 0, 0]) assembly(show_enclosure_bottom = true);
