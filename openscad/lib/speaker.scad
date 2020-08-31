@@ -1,41 +1,41 @@
 include <values.scad>;
 
-module speaker() {
-    e = .095;
+module speaker_face(
+    diameter = SPEAKER_DIAMETER,
+    d1, d2,
+    height,
+    z = 0
+) {
+    d1 = d1 != undef ? d1 : diameter;
+    d2 = d2 != undef ? d2 : diameter;
 
-    module _hulls(
-        d1 = SPEAKER_CONE_DIAMETER,
-        d2 = SPEAKER_DIAMETER,
-        h = e,
-        z = SPEAKER_HEIGHT - SPEAKER_RIM_HEIGHT - SPEAKER_PLATE_HEIGHT - e
-    ) {
-        hull() {
-            for (y = [
-                SPEAKER_LENGTH / 2 - SPEAKER_DIAMETER / 2,
-                SPEAKER_LENGTH / -2 + SPEAKER_DIAMETER / 2,
-            ]) {
-                translate([0, y, z]) {
-                    cylinder(d1 = d1, d2 = d2, h = h);
-                }
+    hull() {
+        for (y = [
+            SPEAKER_LENGTH / 2 - SPEAKER_DIAMETER / 2,
+            SPEAKER_LENGTH / -2 + SPEAKER_DIAMETER / 2,
+        ]) {
+            translate([0, y, z]) {
+                cylinder(d1 = d1, d2 = d2, h = height);
             }
         }
     }
+}
+
+module speaker() {
+    e = .01;
 
     module _rim() {
         z = SPEAKER_HEIGHT - SPEAKER_RIM_HEIGHT;
 
         translate([0, 0, -e]) difference() {
-            _hulls(
-                d1 = SPEAKER_DIAMETER,
-                d2 = SPEAKER_DIAMETER,
-                h = SPEAKER_RIM_HEIGHT,
+            speaker_face(
+                height = SPEAKER_RIM_HEIGHT,
                 z = z
             );
 
-            _hulls(
-                d1 = SPEAKER_DIAMETER - SPEAKER_RIM_DEPTH,
-                d2 = SPEAKER_DIAMETER - SPEAKER_RIM_DEPTH,
-                h = SPEAKER_RIM_HEIGHT + e * 2,
+            speaker_face(
+                diameter = SPEAKER_DIAMETER - SPEAKER_RIM_DEPTH,
+                height = SPEAKER_RIM_HEIGHT + e * 2,
                 z = z - e
             );
         }
@@ -69,7 +69,12 @@ module speaker() {
 
     module _cone() {
         hull() {
-            _hulls();
+            speaker_face(
+                d1 = SPEAKER_CONE_DIAMETER,
+                d2 = SPEAKER_DIAMETER,
+                height = e,
+                z = SPEAKER_HEIGHT - SPEAKER_RIM_HEIGHT - SPEAKER_PLATE_HEIGHT - e
+            );
 
             translate([0, 0, SPEAKER_MAGNET_HEIGHT]) {
                 cylinder(d = SPEAKER_CONE_DIAMETER, h = e);

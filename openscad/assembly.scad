@@ -21,14 +21,13 @@ module assembly(
 
     enclosure_wall = 1.8,
     enclosure_inner_wall = 1.2,
-    enclosure_to_component_gutter = 2,
     enclosure_to_component_z_clearance = 2,
     enclosure_chamfer = 2,
     enclosure_rounding = 24,
 
     engraving_depth = 1,
 
-    bottom_component_clearance = .4,
+    exposed_screw_head_clearance = .4,
     speaker_to_pcb_clearance = 2.4,
 
     mount_length = 6,
@@ -111,7 +110,7 @@ module assembly(
     pcb_z = enclosure_wall + max(
         MOUNT_STILT_MINIMUM_HEIGHT,
         SWITCH_BASE_HEIGHT + SWITCH_ACTUATOR_HEIGHT
-            - enclosure_wall + bottom_component_clearance
+            - enclosure_wall + exposed_screw_head_clearance
     );
     pcb_stilt_height = pcb_z - enclosure_wall;
 
@@ -125,6 +124,7 @@ module assembly(
             pcb_stilt_height + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
                 + WINDOW_PANE_HEIGHT,
             SPEAKER_HEIGHT - SPEAKER_MAGNET_HEIGHT + BATTERY_HEIGHT
+                + SCREW_HEAD_HEIGHT + exposed_screw_head_clearance
         )
         + enclosure_to_component_z_clearance;
     // TODO: tidy
@@ -177,6 +177,9 @@ module assembly(
     speaker_x = side_panel_x + side_panel_width / 2;
     speaker_y = speaker_grill_y + (speaker_grill_length - SPEAKER_LENGTH) / 2
         + SPEAKER_LENGTH / 2;
+    speaker_z = enclosure_height
+        - exposed_screw_head_clearance - SCREW_HEAD_HEIGHT - enclosure_wall
+        - SPEAKER_HEIGHT;
 
     echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
     echo("Window pane dimensions", [window_pane_width, window_pane_length]);
@@ -419,7 +422,7 @@ module assembly(
                         ring(
                             diameter = SCREW_HEAD_DIAMETER + enclosure_wall * 2,
                             height = SCREW_HEAD_HEIGHT
-                                + bottom_component_clearance + enclosure_wall
+                                + exposed_screw_head_clearance + enclosure_wall
                                 - e,
                             inner_diameter = SCREW_HEAD_DIAMETER
                                 + tolerance * 2,
@@ -450,7 +453,7 @@ module assembly(
 
                 module _heads() {
                     diameter = SCREW_HEAD_DIAMETER + tolerance * 2;
-                    height = SCREW_HEAD_HEIGHT + bottom_component_clearance + e;
+                    height = SCREW_HEAD_HEIGHT + exposed_screw_head_clearance + e;
 
                     for (p = BOTTOM_MOUNTED_PCB_HOLES) {
                         translate([pcb_x + p.x, pcb_y + p.y, -e]) {
@@ -482,7 +485,7 @@ module assembly(
                     translate([
                         pcb_x + p.x,
                         pcb_y + p.y,
-                        SCREW_HEAD_HEIGHT + bottom_component_clearance
+                        SCREW_HEAD_HEIGHT + exposed_screw_head_clearance
                     ]) {
                         cylinder(
                             d = diameter,
@@ -669,6 +672,10 @@ module assembly(
         }
 
         module _top() {
+            speaker_mounting_plate_z = speaker_z + SPEAKER_HEIGHT;
+            speaker_mounting_plate_height = enclosure_height - enclosure_wall
+                - speaker_mounting_plate_z;
+
             module _pcb_window_pane_cavity() {
                 translate([
                     window_and_side_panel_gutter,
@@ -734,28 +741,110 @@ module assembly(
                 }
             }
 
-            module _speaker_grill() {
-                translate([
-                    side_panel_x,
-                    speaker_grill_y,
-                    enclosure_height - engraving_depth
-                ]) {
-                    diagonal_grill(
-                        side_panel_width, speaker_grill_length, engraving_depth + e,
-                        angle = 60
-                    );
+            module _speaker_mounting_plate() {
+                overlap = enclosure_wall;
+
+                difference() {
+                    translate([
+                        side_panel_x - overlap,
+                        speaker_grill_y - overlap,
+                        speaker_mounting_plate_z
+                    ]) {
+                        cube([
+                            side_panel_width + overlap * 2,
+                            speaker_grill_length + overlap * 2,
+                            speaker_mounting_plate_height
+                        ]);
+                    }
+
+                    translate([
+                        speaker_x,
+                        speaker_y,
+                        speaker_mounting_plate_z - e
+                    ]) {
+                        speaker_face(
+                            diameter = SPEAKER_DIAMETER - SPEAKER_RIM_DEPTH,
+                            height = speaker_mounting_plate_height + e * 2
+                        );
+                    }
                 }
+            }
+
+            module _speaker_cavities() {
+                module _grill() {
+                    difference() {
+                        translate([
+                            side_panel_x,
+                            speaker_grill_y,
+                            enclosure_height - enclosure_wall - e
+                        ]) {
+                            diagonal_grill(
+                                side_panel_width, speaker_grill_length, enclosure_wall + e * 2,
+                                angle = 60
+                            );
+                        }
+                    }
+                }
+
+                module _plate_holes(height, diameter, z) {
+                    for (xy = [
+                        [
+                            speaker_x + SPEAKER_PLATE_HOLE_XY,
+                            speaker_y + SPEAKER_PLATE_HOLE_XY
+                        ],
+                        [
+                            speaker_x + SPEAKER_DIAMETER - SPEAKER_PLATE_HOLE_XY,
+                            speaker_y + SPEAKER_PLATE_HOLE_XY
+                        ],
+                        [
+                            speaker_x + SPEAKER_PLATE_HOLE_XY,
+                            speaker_y + SPEAKER_LENGTH - SPEAKER_PLATE_HOLE_XY
+                        ],
+                        [
+                            speaker_x + SPEAKER_DIAMETER - SPEAKER_PLATE_HOLE_XY,
+                            speaker_y + SPEAKER_LENGTH - SPEAKER_PLATE_HOLE_XY
+                        ],
+                    ]) {
+                        translate([
+                            xy.x - SPEAKER_DIAMETER / 2,
+                            xy.y - SPEAKER_LENGTH / 2,
+                            z
+                        ]) {
+                            cylinder(
+                                d = diameter,
+                                h = height,
+                                $fn = HIDEF_ROUNDING
+                            );
+                        }
+                    }
+                }
+
+                _grill();
+
+                _plate_holes(
+                    height = SCREW_HEAD_HEIGHT + e,
+                    diameter = SCREW_HEAD_DIAMETER + tolerance * 2,
+                    z = enclosure_height - SCREW_HEAD_HEIGHT
+                );
+                _plate_holes(
+                    height = (enclosure_wall + speaker_mounting_plate_height) + e * 2,
+                    diameter = PCB_MOUNT_HOLE_DIAMETER,
+                    z = enclosure_height - (enclosure_wall + speaker_mounting_plate_height) - e
+                );
             }
 
             _key_mounting_rail();
 
             difference() {
-                _enclosure_half(true);
+                union() {
+                    _enclosure_half(true);
+                    _speaker_mounting_plate();
+                }
                 _keys_and_bumper_cavity();
                 _pcb_window_pane_cavity();
                 _pcb(true);
                 _branding();
-                _speaker_grill();
+                _speaker_cavities();
                 /* TODO: window pane support */
             }
         }
@@ -785,11 +874,7 @@ module assembly(
     }
 
     module _speaker() {
-        translate([
-            speaker_x,
-            speaker_y,
-            enclosure_height - enclosure_wall - SPEAKER_HEIGHT
-        ]) {
+        translate([speaker_x, speaker_y, speaker_z]) {
             speaker();
         }
     }
