@@ -40,6 +40,7 @@ module assembly(
     starting_natural_key_index = 3,
     key_travel = 1.4,
 
+    volume_wheel_exposure = 2,
     volume_wheel_cap_height = 1,
 
     show_enclosure_bottom = true,
@@ -169,6 +170,9 @@ module assembly(
     side_panel_x = enclosure_width - side_panel_width - window_and_side_panel_gutter;
     side_panel_y = key_mounting_rail_y + mount_length;
     side_panel_length = enclosure_length - enclosure_gutter - side_panel_y;
+
+    volume_wheel_diameter = volume_wheel_exposure +
+        (enclosure_width - (pcb_x + PCB_VOLUME_WHEEL_X)) * 2;
 
     branding_length = 11; // TODO: derive or obviate
     speaker_grill_length = side_panel_length - branding_length - enclosure_gutter;
@@ -833,7 +837,50 @@ module assembly(
                 );
             }
 
+            module _volume_wheel_brace() {
+                z = pcb_z + PCB_HEIGHT + POT_HEIGHT + volume_wheel_cap_height;
+                width = enclosure_width - enclosure_wall
+                    - (pcb_x + PCB_VOLUME_WHEEL_X);
+                length = enclosure_inner_wall;
+                height = width;
+
+                cone_diameter = volume_wheel_diameter / 2;
+                cone_height = cone_diameter / 2;
+
+                translate([
+                    enclosure_width - enclosure_wall - width - e,
+                    pcb_y + PCB_VOLUME_WHEEL_Y - length / 2,
+                    z
+                ]) {
+                    cube([width, length, cone_height]);
+
+                    translate([0, 0, cone_height]) {
+                        flat_top_rectangular_pyramid(
+                            top_width = 0,
+                            top_length = length,
+                            bottom_width = width + e,
+                            bottom_length = length,
+                            height = height,
+                            top_weight_x = 1
+                        );
+                    }
+                }
+
+                translate([
+                    pcb_x + PCB_VOLUME_WHEEL_X,
+                    pcb_y + PCB_VOLUME_WHEEL_Y,
+                    z
+                ]) {
+                    cylinder(
+                        d1 = cone_diameter,
+                        d2 = 0,
+                        h = cone_height
+                    );
+                }
+            }
+
             _key_mounting_rail();
+            _volume_wheel_brace();
 
             difference() {
                 union() {
@@ -881,12 +928,8 @@ module assembly(
 
     module _pcb(
         for_enclosure_cavity = false,
-        volume_wheel_exposure = 2,
         volume_wheel_grip_size = .6
     ) {
-        volume_wheel_diameter = volume_wheel_exposure +
-            (enclosure_width - (pcb_x + PCB_VOLUME_WHEEL_X)) * 2;
-
         translate([pcb_x, pcb_y, pcb_z]) {
             pcb(
                 visualize_board =  !for_enclosure_cavity,
