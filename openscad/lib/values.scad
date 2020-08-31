@@ -30,11 +30,12 @@ BUTTON_HEIGHT = 6;
 
 POT_HEIGHT = 7.8;
 
+/* Commented out lines are on PCB but not needed for assembly */
 TOP_MOUNTED_PCB_HOLES = [
     [8.164, 3.048],
-    [46.264, 3.048],
+    /* [46.264, 3.048], */
     [64.044, 3.048],
-    [137.704, 3.048],
+    /* [137.704, 3.048], */
     [119.924, 3.048],
     [175.804, 3.048],
 ];
