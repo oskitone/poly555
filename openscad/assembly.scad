@@ -704,8 +704,7 @@ module assembly(
 
         module _top() {
             speaker_mounting_plate_z = speaker_z + SPEAKER_HEIGHT;
-            speaker_mounting_plate_height = enclosure_height - enclosure_wall
-                - speaker_mounting_plate_z;
+            speaker_mounting_plate_height = enclosure_wall - engraving_depth;
 
             module _pcb_window_pane_cavity() {
                 translate([
@@ -865,11 +864,11 @@ module assembly(
             }
 
             * _key_mounting_rail();
+            _speaker_mounting_plate();
 
             difference() {
                 union() {
                     _enclosure_half(true);
-                    * _speaker_mounting_plate();
                 }
                 * _keys_and_bumper_cavity();
                 * _pcb_window_pane_cavity();
