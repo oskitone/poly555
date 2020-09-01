@@ -29,8 +29,6 @@ module enclosure_half(
 
     radius = 0,
 
-    chamfer_lip_removal = false,
-
     gutter = 5,
     clasp_end_gutter = undef,
     hinge_end_gutter = undef,
@@ -104,28 +102,6 @@ module enclosure_half(
 
             translate([xy, xy, z]) {
                 cube([width, length, lip_height + e]);
-            }
-
-            if (chamfer_lip_removal) {
-                depth = lip_offset_xy;
-
-                translate([xy + depth, xy + depth, z - depth]) {
-                    flat_top_rectangular_pyramid(
-                       top_width = width,
-                       top_length = length,
-
-                       bottom_width = width - depth * 2,
-                       bottom_length = length - depth * 2,
-
-                       height = depth + e,
-
-                       top_x = undef,
-                       top_y = undef,
-
-                       top_weight_x = .5,
-                       top_weight_y = .5
-                   );
-                }
             }
         }
     }
@@ -262,8 +238,6 @@ enclosure_half(
     lip_height = LIP_BOX_DEFAULT_LIP_HEIGHT,
 
     radius = 2,
-
-    chamfer_lip_removal = true,
 
     gutter = 5,
     clasp_end_gutter = undef,
