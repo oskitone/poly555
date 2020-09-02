@@ -2,6 +2,7 @@ include <values.scad>;
 
 use <basic_shapes.scad>;
 use <hinge_clasp.scad>;
+use <engraving.scad>;
 
 module enclosure_half(
     width, length, height,
@@ -348,4 +349,85 @@ module __test_enclosure_half(
     }
 }
 
-__test_enclosure_half();
+* __test_enclosure_half();
+
+module __test_enclosure_lip_tolerances(
+    tolerances,
+    width = 30,
+    length = 30,
+    height = 10,
+    wall = 1.8,
+    engraving_depth = .4
+) {
+    gutter = 1;
+    test_height = LIP_BOX_DEFAULT_LIP_HEIGHT * 2.5;
+    z = height + LIP_BOX_DEFAULT_LIP_HEIGHT - test_height;
+
+    module _(tolerance, add_lip = false, remove_lip = false) {
+        difference() {
+            enclosure_half(
+                width = width,
+                length = length,
+                height = height,
+
+                wall = wall,
+                floor_ceiling = undef,
+
+                add_lip = add_lip,
+                remove_lip = remove_lip,
+
+                include_hinge = false,
+                include_hinge_parts = false,
+
+                include_clasp = false,
+                include_clasp_knob = false,
+
+                just_hinge_parts = false,
+
+                lip_height = LIP_BOX_DEFAULT_LIP_HEIGHT,
+
+                radius = 2,
+
+                groove_depth = 0,
+                groove_height = 0,
+
+                tolerance = tolerance,
+
+                $fn = 24
+            );
+
+            translate([width / 2, engraving_depth, (height - z) / 2 + z]) {
+                rotate([90, 0, 0]) {
+                    engraving(
+                        string = str(tolerance),
+                        font = "Orbitron:style=Black",
+                        size = 3,
+                        bleed = 0,
+                        height = engraving_depth + .1,
+                        center = true
+                    );
+                }
+            }
+        }
+    }
+
+    for (i = [0 : len(tolerances) - 1]) {
+        translate([(width + gutter) * i, 0, -z]) {
+            intersection() {
+                union() {
+                    _(tolerances[i], add_lip = true);
+
+                    translate([0, length + gutter, 0]) {
+                        _(tolerances[i], remove_lip = true);
+                    }
+                }
+
+                translate([0, 0, z]) {
+                    cube([width, length * 2 + gutter, test_height]);
+                }
+            }
+        }
+    }
+}
+
+__test_enclosure_lip_tolerances([0, .05, .1]);
