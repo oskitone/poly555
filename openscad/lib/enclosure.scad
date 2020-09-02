@@ -36,10 +36,13 @@ module enclosure_half(
 
     tolerance = .1,
 
+    groove_depth = 1,
+    groove_height = 1,
+
     $fn = $fn
 ) {
     e = 0.01234;
-    lip = lip != undef ? lip : wall / 2;
+    lip = lip != undef ? lip : (wall - groove_depth) / 2;
 
     is_left_right_hinge = hinge_clasp_side == HINGE_CLASP_SIDE_LEFT_RIGHT;
 
@@ -49,15 +52,50 @@ module enclosure_half(
     floor_ceiling = floor_ceiling ? floor_ceiling : wall;
     assumed_total_height = height * 2;
 
+    has_groove = groove_depth > 0 && groove_height > 0;
+
+    module _grooves(z, bleed = 0) {
+        /* TODO: DFM */
+
+        x = wall - lip + tolerance - groove_depth - bleed;
+
+        if (has_groove) {
+            translate([x, wall, z]) {
+                cube([_width - x * 2, _length - wall * 2, groove_height]);
+            }
+        }
+    }
+
     module _outer_wall() {
         group() {
             difference() {
                 rounded_cube(
-                    [_width, _length, height + radius],
+                    [
+                        _width,
+                        _length,
+                        (add_lip && has_groove)
+                            ? height + lip_height + radius
+                            : height + radius
+                    ],
                     radius,
                     $fn = $fn
                 );
-                translate([-e, -e, height]) {
+
+                if (add_lip && has_groove) {
+                    translate([-e, wall, height]) {
+                        cube([
+                            _width + e * 2,
+                            _length - wall + e,
+                            lip_height * 2 + e
+                        ]);
+                    }
+                }
+
+                translate([
+                    -e,
+                    -e,
+                    (add_lip && has_groove) ? height + lip_height : height
+                ]) {
                     cube([
                         _width + e * 2,
                         _length + e * 2,
@@ -67,11 +105,20 @@ module enclosure_half(
             }
 
             if (add_lip) {
-                xy = wall - lip + tolerance;
+                x = wall - lip + tolerance;
+                y = (add_lip && has_groove) ? wall : x;
 
-                translate([xy, xy, height - e]) {
-                    cube([_width - xy * 2, _length - xy * 2, lip_height + e]);
+                /* TODO: actually, it can have the extra length for add_lip
+                since remove_lip has that edge exposed! */
+
+                translate([x, y, height - e]) {
+                    cube([_width - x * 2, _length - y * 2, lip_height + e]);
                 }
+
+                _grooves(
+                    z = height + lip_height - groove_height,
+                    bleed = -tolerance
+                );
             }
         }
     }
@@ -86,14 +133,34 @@ module enclosure_half(
         }
 
         if (remove_lip) {
-            xy = wall - lip - tolerance;
+            x = wall - lip - tolerance;
+            y = has_groove ? wall : x;
             z = height - lip_height;
 
-            width = _width - xy * 2;
-            length = _length - xy * 2;
+            width = _width - x * 2;
+            length = _length - y * 2;
 
-            translate([xy, xy, z]) {
+            translate([x, y, z]) {
                 cube([width, length, lip_height + e]);
+            }
+
+            _grooves(
+                z = height - lip_height,
+                bleed = tolerance
+            );
+        }
+    }
+
+    module _groove_exposure() {
+        if (has_groove) {
+            if (add_lip) {
+                translate([0, length - wall - tolerance - e, height]) {
+                    cube([width, wall + tolerance + e * 2, lip_height + e]);
+                }
+            } else {
+                translate([0, -e, height - lip_height]) {
+                    cube([width, wall + tolerance + e * 2, lip_height + e]);
+                }
             }
         }
     }
@@ -189,6 +256,7 @@ module enclosure_half(
                     difference() {
                         _outer_wall();
                         _inner_cutout();
+                        _groove_exposure();
                     }
 
                     if (include_hinge) { _hinge(); }
@@ -207,33 +275,34 @@ module enclosure_half(
 }
 
 module __test_enclosure_half(
-    width = 120,
-    length = 90,
-    height = 25
+    width = 30,
+    length = 30,
+    height = 10
 ) {
     module _(
         add_lip = false,
         remove_lip = true
     ) {
+        render()
         enclosure_half(
             width = width,
             length = length,
             height = height,
 
-            wall = 3,
+            wall = 1.8,
             floor_ceiling = undef,
 
             add_lip = add_lip,
             remove_lip = remove_lip,
 
-            include_hinge = true,
-            include_hinge_parts = true,
+            include_hinge = false,
+            include_hinge_parts = false,
 
             hinge_count = 2,
             clasp_count = undef,
 
-            include_clasp = remove_lip,
-            include_clasp_knob = add_lip,
+            include_clasp = false,
+            include_clasp_knob = false,
 
             just_hinge_parts = false,
 
@@ -245,23 +314,37 @@ module __test_enclosure_half(
             clasp_end_gutter = undef,
             hinge_end_gutter = undef,
 
+            groove_depth = 2.5 / 3,
+            groove_height = LIP_BOX_DEFAULT_LIP_HEIGHT / 2,
+
             tolerance = .1,
 
             $fn = 24
         );
     }
 
-    e = .1;
+    function ease_in_out_quad(t) = (
+        t < .5
+            ? 2 * pow(t, 2)
+            : -1 + (4 - 2 * t) * t
+    );
+
+    e = .01;
+    y = ease_in_out_quad(abs((($t % .5) * 2 - .5) * 2)) * length * 1.1 + e;
+
+    rotate([0, 0, $t * 360])
+    translate([width / -2, (length + y) / -2, -height])
     intersection() {
         union() {
             _(add_lip = true, remove_lip = false);
 
-            translate([width, 0, height * 2 + e]) rotate([0, 180, 0]) {
-                _(add_lip = false, remove_lip = true);
+            translate([width, y, height * 2 + e]) rotate([0, 180, 0]) {
+                # _(add_lip = false, remove_lip = true);
             }
         }
 
-        cube([width / 2, length, height * 2]);
+        /* cube([width / 2, length, height * 2 + e]); */
+        /* cube([width, length / 2, height * 2 + e]); */
     }
 }
 
