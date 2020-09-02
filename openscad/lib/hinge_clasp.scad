@@ -23,6 +23,7 @@ module hinge_clasp(
     tooth_count = undef,
 
     clasp = false,
+    include_clasp = true,
     include_clasp_knob = true,
     clasp_latch_rotation = 0,
     fixed_front = false,
@@ -257,27 +258,30 @@ module hinge_clasp(
         translate([0, rotation_adjustment_y, rotation_adjustment_z])
         rotate([clasp ? -clasp_latch_rotation : 0, 0, 0])
         translate([0, -rotation_adjustment_y, -rotation_adjustment_z])
-        difference() {
-            group() {
-                if (include_links) { _links(); }
-                if (include_pins) { _pins(); }
-                if (clasp) { _anchors(showBack = false); }
-                cube([0,0,0]); // prevent difference error
-            }
 
-            if (clasp) {
-                _clasp_knob(cutout = true);
+        if (!clasp || include_clasp) {
+            difference() {
+                group() {
+                    if (include_links) { _links(); }
+                    if (include_pins) { _pins(); }
+                    if (clasp) { _anchors(showBack = false); }
+                    cube([0,0,0]); // prevent difference error
+                }
 
-                grip_width = HINGE_CLASP_MINIMUM_TOOTH_WIDTH * 2;
-                grip_length = HINGE_CLASP_MINIMUM_TOOTH_WIDTH * .25;
-                grip_height = height * .5;
+                if (clasp) {
+                    _clasp_knob(cutout = true);
 
-                translate([(width - grip_width) / 2, -e, -e]) {
-                    cube([
-                        grip_width,
-                        grip_length + e,
-                        grip_height + e
-                    ]);
+                    grip_width = HINGE_CLASP_MINIMUM_TOOTH_WIDTH * 2;
+                    grip_length = HINGE_CLASP_MINIMUM_TOOTH_WIDTH * .25;
+                    grip_height = height * .5;
+
+                    translate([(width - grip_width) / 2, -e, -e]) {
+                        cube([
+                            grip_width,
+                            grip_length + e,
+                            grip_height + e
+                        ]);
+                    }
                 }
             }
         }
@@ -334,6 +338,7 @@ hinge_clasp(
     tooth_count = undef,
 
     clasp = true,
+    include_clasp = true,
     include_clasp_knob = true,
     clasp_latch_rotation = 90,
     fixed_front = false,
