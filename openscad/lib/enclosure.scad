@@ -25,7 +25,7 @@ module enclosure_half(
 
     just_hinge_parts = false,
 
-    lip = .6,
+    lip = undef,
     lip_height = LIP_BOX_DEFAULT_LIP_HEIGHT,
 
     radius = 0,
@@ -39,6 +39,7 @@ module enclosure_half(
     $fn = $fn
 ) {
     e = 0.01234;
+    lip = lip != undef ? lip : wall / 2;
 
     is_left_right_hinge = hinge_clasp_side == HINGE_CLASP_SIDE_LEFT_RIGHT;
 
