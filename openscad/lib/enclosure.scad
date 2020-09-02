@@ -20,6 +20,7 @@ module enclosure_half(
 
     include_clasp = true,
 
+    include_clasp_knob = false,
     hinge_clasp_side = HINGE_CLASP_SIDE_FRONT_BACK,
 
     just_hinge_parts = false,
@@ -175,12 +176,12 @@ module enclosure_half(
                     clasp_width,
                     clasp_length,
                     clasp = true,
-                    include_clasp_knob = is_bottom && !just_hinge_parts,
+                    include_clasp = !include_clasp_knob,
+                    include_clasp_knob = include_clasp_knob,
                     include_front_anchor = include_hinge_parts
                         || just_hinge_parts,
                     include_back_anchor = !just_hinge_parts && !is_bottom,
-                    include_links = include_hinge_parts
-                        || just_hinge_parts,
+                    include_links = include_hinge_parts || just_hinge_parts,
                     flipped = !is_bottom
                 );
             }
@@ -200,7 +201,8 @@ module enclosure_half(
                     }
 
                     if (include_hinge) { _hinge(); }
-                    if (include_clasp) { _clasp(add_lip); } // TODO: decouple
+                    if (include_clasp) { _clasp(is_bottom = false); }
+                    if (include_clasp_knob) { _clasp(is_bottom = true); }
                 }
             }
         }
