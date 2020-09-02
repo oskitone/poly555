@@ -49,10 +49,6 @@ module enclosure_half(
     floor_ceiling = floor_ceiling ? floor_ceiling : wall;
     assumed_total_height = height * 2;
 
-    lip_offset_xy = wall - lip;
-    lip_offset_z = 0;
-    lip_difference = lip_offset_xy * 2;
-
     module _outer_wall() {
         group() {
             difference() {
@@ -71,16 +67,10 @@ module enclosure_half(
             }
 
             if (add_lip) {
-                translate([
-                    lip_offset_xy + tolerance / 4,
-                    lip_offset_xy + tolerance / 4,
-                    floor_ceiling - e
-                ]) {
-                    cube([
-                        _width - lip_difference - tolerance / 2,
-                        _length - lip_difference - tolerance / 2,
-                        height + lip_height - floor_ceiling + e
-                    ]);
+                xy = wall - lip + tolerance;
+
+                translate([xy, xy, height - e]) {
+                    cube([_width - xy * 2, _length - xy * 2, lip_height + e]);
                 }
             }
         }
@@ -96,11 +86,11 @@ module enclosure_half(
         }
 
         if (remove_lip) {
-            xy = wall - lip - tolerance / 4;
+            xy = wall - lip - tolerance;
             z = height - lip_height;
 
-            width = _width - lip_difference + tolerance / 2;
-            length = _length - lip_difference + tolerance / 2;
+            width = _width - xy * 2;
+            length = _length - xy * 2;
 
             translate([xy, xy, z]) {
                 cube([width, length, lip_height + e]);
@@ -216,35 +206,63 @@ module enclosure_half(
     }
 }
 
-enclosure_half(
+module __test_enclosure_half(
     width = 120,
     length = 90,
-    height = 25,
+    height = 25
+) {
+    module _(
+        add_lip = false,
+        remove_lip = true
+    ) {
+        enclosure_half(
+            width = width,
+            length = length,
+            height = height,
 
-    wall = 2.5,
-    floor_ceiling = undef,
+            wall = 3,
+            floor_ceiling = undef,
 
-    add_lip = false,
-    remove_lip = true,
+            add_lip = add_lip,
+            remove_lip = remove_lip,
 
-    include_hinge = true,
-    include_hinge_parts = true,
+            include_hinge = true,
+            include_hinge_parts = true,
 
-    hinge_count = 2,
-    clasp_count = undef,
+            hinge_count = 2,
+            clasp_count = undef,
 
-    include_clasp = true,
+            include_clasp = remove_lip,
+            include_clasp_knob = add_lip,
 
-    just_hinge_parts = false,
+            just_hinge_parts = false,
 
-    lip = 1,
-    lip_height = LIP_BOX_DEFAULT_LIP_HEIGHT,
+            lip_height = LIP_BOX_DEFAULT_LIP_HEIGHT,
 
-    radius = 2,
+            radius = 2,
 
-    gutter = 5,
-    clasp_end_gutter = undef,
-    hinge_end_gutter = undef,
+            gutter = 5,
+            clasp_end_gutter = undef,
+            hinge_end_gutter = undef,
 
-    tolerance = .1
-);
+            tolerance = .1,
+
+            $fn = 24
+        );
+    }
+
+    e = .1;
+    intersection() {
+        union() {
+            _(add_lip = true, remove_lip = false);
+
+            translate([width, 0, height * 2 + e]) rotate([0, 180, 0]) {
+                _(add_lip = false, remove_lip = true);
+            }
+        }
+
+        cube([width / 2, length, height * 2]);
+    }
+}
+
+__test_enclosure_half();
