@@ -19,7 +19,8 @@ module assembly(
     natural_key_exposed_height = 3,
     accidental_key_extra_height = 3,
 
-    enclosure_wall = 1.8,
+    enclosure_wall = 2.4,
+    enclosure_floor_ceiling = 1.8,
     enclosure_inner_wall = 1.2,
     enclosure_to_component_z_clearance = 2,
     enclosure_chamfer = 2,
@@ -108,19 +109,19 @@ module assembly(
     pcb_window_y_extension = PCB_COMPONENTS_Y - keys_mount_end_on_pcb;
     pcb_x = enclosure_gutter - keys_from_pcb_x_offset;
     pcb_y = mounted_keys_total_length - keys_mount_end_on_pcb + enclosure_gutter;
-    pcb_z = enclosure_wall + max(
+    pcb_z = enclosure_floor_ceiling + max(
         MOUNT_STILT_MINIMUM_HEIGHT,
         SWITCH_BASE_HEIGHT + SWITCH_ACTUATOR_HEIGHT
-            - enclosure_wall + exposed_screw_head_clearance
+            - enclosure_floor_ceiling + exposed_screw_head_clearance
     );
-    pcb_stilt_height = pcb_z - enclosure_wall;
+    pcb_stilt_height = pcb_z - enclosure_floor_ceiling;
 
     enclosure_width = enclosure_gutter * 2 + mount_width;
     enclosure_length = pcb_y + keys_mount_end_on_pcb
         + PCB_COMPONENTS_LENGTH + pcb_window_y_extension * 2
         + enclosure_gutter;
 
-    enclosure_height = enclosure_wall * 2
+    enclosure_height = enclosure_floor_ceiling * 2
         + max(
             pcb_stilt_height + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
                 + WINDOW_PANE_HEIGHT,
@@ -133,7 +134,7 @@ module assembly(
         - 3.5; // total wheel  height
     enclosure_top_height = enclosure_height - enclosure_bottom_height;
 
-    key_height = enclosure_height - pcb_stilt_height - enclosure_wall
+    key_height = enclosure_height - pcb_stilt_height - enclosure_floor_ceiling
         - PCB_HEIGHT - mount_height - accidental_key_extra_height
         - accidental_key_recession;
     keys_x = pcb_x + keys_from_pcb_x_offset;
@@ -158,7 +159,7 @@ module assembly(
     window_and_side_panel_gutter = enclosure_gutter - key_gutter;
     window_pane_y = pcb_y + keys_mount_end_on_pcb
         - (mount_length - PCB_MOUNT_HOLE_DIAMETER) / 2;
-    window_pane_z = enclosure_height - enclosure_wall - WINDOW_PANE_HEIGHT;
+    window_pane_z = enclosure_height - enclosure_floor_ceiling - WINDOW_PANE_HEIGHT;
     window_pane_width = PCB_COMPONENTS_WIDTH +
         ((pcb_x + PCB_COMPONENTS_X) - window_and_side_panel_gutter) * 2;
     window_pane_length = PCB_COMPONENTS_LENGTH + pcb_window_y_extension * 2;
@@ -180,7 +181,7 @@ module assembly(
     speaker_x = side_panel_x + side_panel_width / 2;
     speaker_y = speaker_grill_y + (speaker_grill_length - SPEAKER_LENGTH) / 2
         + SPEAKER_LENGTH / 2;
-    speaker_z = enclosure_height - enclosure_wall - SPEAKER_HEIGHT;
+    speaker_z = enclosure_height - enclosure_floor_ceiling - SPEAKER_HEIGHT;
 
     echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
     echo("Window pane dimensions", [window_pane_width, window_pane_length]);
@@ -245,7 +246,7 @@ module assembly(
         height = pcb_stilt_height + PCB_HEIGHT + mount_height;
 
         y = key_mounting_rail_y + (mount_length - length) / 2;
-        z = enclosure_wall - e;
+        z = enclosure_floor_ceiling - e;
 
         for (x = [
             enclosure_wall - e,
@@ -285,7 +286,7 @@ module assembly(
                             : enclosure_bottom_height,
 
                     wall = enclosure_wall,
-                    floor_ceiling = undef,
+                    floor_ceiling = enclosure_floor_ceiling,
 
                     add_lip = !is_top,
                     remove_lip = is_top,
@@ -338,7 +339,7 @@ module assembly(
                 translate([
                     battery_x + (BATTERY_WIDTH - width) / 2,
                     battery_y - wall - ramp,
-                    enclosure_wall
+                    enclosure_floor_ceiling
                 ]) {
                     flat_top_rectangular_pyramid(
                         top_width = width,
@@ -408,7 +409,7 @@ module assembly(
                     translate([
                         enclosure_wall - e,
                         enclosure_wall - e,
-                        enclosure_wall - e
+                        enclosure_floor_ceiling - e
                     ]) {
                         cube([
                             enclosure_width - enclosure_wall * 2 + e * 2,
@@ -432,7 +433,7 @@ module assembly(
                     }
                 }
 
-                translate([pcb_x, pcb_y, enclosure_wall - e]) {
+                translate([pcb_x, pcb_y, enclosure_floor_ceiling - e]) {
                     spacer_array(
                         BOTTOM_MOUNTED_PCB_HOLES,
                         height = pcb_stilt_height + e,
@@ -470,7 +471,7 @@ module assembly(
                     translate([pcb_x + xy[0], pcb_y + xy[1], -e]) {
                         cylinder(
                             d = PCB_MOUNT_HOLE_DIAMETER,
-                            h = enclosure_wall + e * 2
+                            h = enclosure_floor_ceiling + e * 2
                         );
                         _chamfer(PCB_MOUNT_HOLE_DIAMETER);
                     }
@@ -507,7 +508,7 @@ module assembly(
                     - accidental_key_recession - keys_exposed_height;
 
                 xy = enclosure_gutter - key_gutter;
-                z = enclosure_height - enclosure_wall - z_offset;
+                z = enclosure_height - enclosure_floor_ceiling - z_offset;
 
                 width = mount_width + key_gutter * 2;
 
@@ -578,7 +579,7 @@ module assembly(
                         cube([
                             width,
                             keys_cavity_length,
-                            enclosure_wall + e * 2
+                            enclosure_floor_ceiling + e * 2
                         ]);
                     }
 
@@ -644,7 +645,7 @@ module assembly(
             }
 
             module _speaker_container() {
-                z = enclosure_wall - e;
+                z = enclosure_floor_ceiling - e;
 
                 inner_diameter = SPEAKER_MAGNET_DIAMETER + tolerance * 2;
                 outer_diameter = inner_diameter + enclosure_inner_wall * 2;
@@ -695,18 +696,18 @@ module assembly(
 
         module _top() {
             speaker_mounting_plate_z = speaker_z + SPEAKER_HEIGHT;
-            speaker_mounting_plate_height = enclosure_wall - engraving_depth;
+            speaker_mounting_plate_height = enclosure_floor_ceiling - engraving_depth;
 
             module _pcb_window_pane_cavity() {
                 translate([
                     window_and_side_panel_gutter,
                     pcb_y + PCB_COMPONENTS_Y - pcb_window_y_extension,
-                    enclosure_height - enclosure_wall - e
+                    enclosure_height - enclosure_floor_ceiling - e
                 ]) {
                     cube([
                         window_pane_width,
                         window_pane_length,
-                        enclosure_wall + e * 2
+                        enclosure_floor_ceiling + e * 2
                     ]);
                 }
             }
@@ -721,7 +722,7 @@ module assembly(
                         mounting_rail(
                             width = enclosure_width - x * 2,
                             length = mount_length,
-                            height = enclosure_height - z - enclosure_wall + e,
+                            height = enclosure_height - z - enclosure_floor_ceiling + e,
                             hole_xs = mount_hole_xs,
                             hole_xs_x_offset = keys_x - x,
                             head_hole_diameter = SCREW_HEAD_DIAMETER + tolerance * 2,
@@ -734,7 +735,7 @@ module assembly(
                 }
             }
 
-            module _branding(depth = enclosure_wall - 1) {
+            module _branding(depth = enclosure_floor_ceiling - 1) {
                 font_size = 5.9; // TODO: derive or obviate
                 z = enclosure_height - depth;
 
@@ -796,10 +797,10 @@ module assembly(
                     translate([
                         side_panel_x,
                         speaker_grill_y,
-                        enclosure_height - enclosure_wall - e
+                        enclosure_height - enclosure_floor_ceiling - e
                     ]) {
                         diagonal_grill(
-                            side_panel_width, speaker_grill_length, enclosure_wall + e * 2,
+                            side_panel_width, speaker_grill_length, enclosure_floor_ceiling + e * 2,
                             angle = 60
                         );
                     }
@@ -878,7 +879,7 @@ module assembly(
     }
 
     module _battery() {
-        translate([battery_x, battery_y, enclosure_wall + e]) {
+        translate([battery_x, battery_y, enclosure_floor_ceiling + e]) {
             translate([-BATTERY_SNAP_WIDTH, 0, 0]) {
                 # cube([BATTERY_SNAP_WIDTH, BATTERY_LENGTH, BATTERY_HEIGHT]);
             }
@@ -950,11 +951,11 @@ module assembly(
                 }
 
                 for (x = [0, 0 + rail_width - foot_width]) {
-                    translate([x, 0, enclosure_wall]) {
+                    translate([x, 0, enclosure_floor_ceiling]) {
                         cube([
                             foot_width,
                             mount_length,
-                            rail_z - enclosure_wall + e
+                            rail_z - enclosure_floor_ceiling + e
                         ]);
                     }
                 }
