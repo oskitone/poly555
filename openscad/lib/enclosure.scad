@@ -38,6 +38,7 @@ module enclosure_half(
     tolerance = .1, // increase to .2 for looser fit, will need separate fixture
 
     include_tongue_and_groove = false,
+    tongue_and_groove_end_length = undef,
 
     $fn = $fn
 ) {
@@ -66,27 +67,42 @@ module enclosure_half(
         support_depth = groove_depth - tolerance;
 
         if (include_tongue_and_groove) {
-            hull() {
-                translate([x + support_depth, wall, z]) {
-                    flat_top_rectangular_pyramid(
-                        top_width = groove_width,
-                        top_length = groove_length,
-                        bottom_width = groove_width - support_depth * 2,
-                        bottom_length = groove_length - support_depth,
-                        height = support_depth,
-                        top_y = 0
-                    );
+            intersection() {
+                hull() {
+                    translate([x + support_depth, wall, z]) {
+                        flat_top_rectangular_pyramid(
+                            top_width = groove_width,
+                            top_length = groove_length,
+                            bottom_width = groove_width - support_depth * 2,
+                            bottom_length = groove_length - support_depth,
+                            height = support_depth,
+                            top_y = 0
+                        );
+                    }
+
+                    translate([x, wall, z + groove_height - support_depth]) {
+                        flat_top_rectangular_pyramid(
+                            top_width = groove_width - support_depth * 2,
+                            top_length = groove_length - support_depth,
+                            bottom_width = groove_width,
+                            bottom_length = groove_length,
+                            height = support_depth,
+                            top_y = 0
+                        );
+                    }
                 }
 
-                translate([x, wall, z + groove_height - support_depth]) {
-                    flat_top_rectangular_pyramid(
-                        top_width = groove_width - support_depth * 2,
-                        top_length = groove_length - support_depth,
-                        bottom_width = groove_width,
-                        bottom_length = groove_length,
-                        height = support_depth,
-                        top_y = 0
-                    );
+                if (tongue_and_groove_end_length) {
+                    y = length - wall - tongue_and_groove_end_length - bleed;
+                    z = add_lip ? height : height - lip_height;
+
+                    translate([-e, y, z - e]) {
+                        cube([
+                            width + e * 2,
+                            tongue_and_groove_end_length + wall + bleed,
+                            lip_height + e * 2
+                        ]);
+                    }
                 }
             }
         }
@@ -376,10 +392,10 @@ module __test_enclosure_half(
     }
 }
 
-__test_enclosure_half();
+* __test_enclosure_half();
 
-module __test_enclosure_include_tongue_and_groove(
-    include_tongue_and_groove,
+module __test_enclosure(
+    values,
     width = 30,
     length = 30,
     height = 10,
@@ -390,7 +406,7 @@ module __test_enclosure_include_tongue_and_groove(
     test_height = LIP_BOX_DEFAULT_LIP_HEIGHT * 3;
     z = height + LIP_BOX_DEFAULT_LIP_HEIGHT - test_height;
 
-    module _(include_tongue_and_groove, add_lip = false, remove_lip = false) {
+    module _(value, add_lip = false, remove_lip = false) {
         difference() {
             enclosure_half(
                 width = width,
@@ -415,7 +431,8 @@ module __test_enclosure_include_tongue_and_groove(
 
                 radius = 2,
 
-                include_tongue_and_groove = include_tongue_and_groove,
+                include_tongue_and_groove = true,
+                tongue_and_groove_end_length = value,
 
                 tolerance = .1,
 
@@ -425,7 +442,7 @@ module __test_enclosure_include_tongue_and_groove(
             translate([width / 2, engraving_depth, (height - z) / 2 + z]) {
                 rotate([90, 0, 0]) {
                     engraving(
-                        string = str(include_tongue_and_groove),
+                        string = str(value),
                         font = "Orbitron:style=Black",
                         size = 3,
                         bleed = 0,
@@ -437,14 +454,14 @@ module __test_enclosure_include_tongue_and_groove(
         }
     }
 
-    for (i = [0 : len(include_tongue_and_groove) - 1]) {
+    for (i = [0 : len(values) - 1]) {
         translate([(width + gutter) * i, 0, -z]) {
             intersection() {
                 union() {
-                    _(include_tongue_and_groove[i], add_lip = true);
+                    _(values[i], add_lip = true);
 
                     translate([0, length + gutter, 0]) {
-                        _(include_tongue_and_groove[i], remove_lip = true);
+                        _(values[i], remove_lip = true);
                     }
                 }
 
@@ -456,4 +473,4 @@ module __test_enclosure_include_tongue_and_groove(
     }
 }
 
-* __test_enclosure_include_tongue_and_groove([true, false]);
+__test_enclosure([undef, 0, 1, 5, 20]);
