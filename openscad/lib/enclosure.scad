@@ -13,13 +13,13 @@ module enclosure_half(
     add_lip = false,
     remove_lip = false,
 
-    include_hinge = true,
+    include_hinge = false,
     include_hinge_parts = false,
 
     hinge_count = undef,
     clasp_count = undef,
 
-    include_clasp = true,
+    include_clasp = false,
 
     include_clasp_knob = false,
     hinge_clasp_side = HINGE_CLASP_SIDE_FRONT_BACK,
