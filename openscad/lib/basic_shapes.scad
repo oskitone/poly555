@@ -192,3 +192,17 @@ module cylinder_grip(
         }
     }
 }
+
+module rounded_corner_cutoff(height, radius, angle = 0, e = 1.123, $fn = $fn) {
+    difference() {
+        rotate([0, 0, angle]) {
+            cube([radius + e, radius + e, height]);
+        }
+
+        translate([0, 0, -e]) {
+            cylinder(r = radius, h = height + e * 2);
+        }
+    }
+}
+
+rounded_corner_cutoff(height = 15, radius = 5);

@@ -261,6 +261,11 @@ module assembly(
     }
 
     module _enclosure() {
+        keys_exposed_height = accidental_key_extra_height
+            + natural_key_exposed_height;
+        bumper_length = keys_cavity_length + enclosure_gutter - key_gutter
+             - tolerance * 2;
+
         module _enclosure_half(
             is_top,
             width = enclosure_width,
@@ -493,117 +498,6 @@ module assembly(
                 }
             }
 
-            module _keys_bumper() {
-                keys_exposed_height = accidental_key_extra_height
-                    + natural_key_exposed_height;
-
-                z_offset = keys_exposed_height + accidental_key_recession;
-
-                bumper_length = keys_cavity_length + enclosure_gutter - key_gutter;
-                bumper_height = enclosure_height - enclosure_bottom_height
-                    - accidental_key_recession - keys_exposed_height;
-
-                xy = enclosure_gutter - key_gutter;
-                z = enclosure_height - enclosure_floor_ceiling - z_offset;
-
-                width = mount_width + key_gutter * 2;
-
-                support_depth = xy - enclosure_wall;
-                cavity_length_adjustment = tolerance * -2;
-
-                module _front_lip_and_lower_sides() {
-                    intersection() {
-                        translate([0, 0, -z_offset]) {
-                            _enclosure_half(
-                                is_top = true,
-                                length = bumper_length + enclosure_chamfer,
-                                height = bumper_height
-                            );
-                        }
-                        _keys_and_bumper_cavity(cavity_length_adjustment);
-                    }
-
-                    translate([
-                        enclosure_wall - e,
-                        enclosure_wall - e,
-                        z - support_depth
-                    ]) {
-                        cube([
-                            enclosure_width - enclosure_wall * 2 + e * 2,
-                            keys_and_bumper_cavity_length
-                                + cavity_length_adjustment - enclosure_wall
-                                - e,
-                            support_depth
-                        ]);
-                    }
-                }
-
-                module _bumper_arms() {
-                    lip_z = enclosure_bottom_height + bumper_height;
-                    chamfer = quick_preview ? 0 : enclosure_chamfer;
-
-                    width = xy;
-                    length = bumper_length + cavity_length_adjustment;
-                    height = enclosure_height - lip_z + chamfer * 2;
-
-                    z = enclosure_height - height;
-
-                    for (x = [0, enclosure_width - xy]) {
-                        translate([x, 0, z - e]) {
-                            difference() {
-                                rounded_cube(
-                                    [width, length + chamfer, height + e],
-                                    chamfer,
-                                    $fn = enclosure_rounding
-                                );
-
-                                // Chop off chamfer end
-                                translate([-e, length, -e]) {
-                                    cube([
-                                        width + e * 2,
-                                        chamfer + e,
-                                        height + e * 2
-                                    ]);
-                                }
-                            }
-                        }
-                    }
-                }
-
-                module _keys_cavity() {
-                    translate([xy, xy, z - e]) {
-                        cube([
-                            width,
-                            keys_cavity_length,
-                            enclosure_floor_ceiling + e * 2
-                        ]);
-                    }
-
-                    translate([
-                        xy - support_depth,
-                        xy - support_depth,
-                        z - support_depth - e
-                    ]) {
-                        flat_top_rectangular_pyramid(
-                            top_width = width,
-                            top_length = keys_cavity_length,
-                            bottom_width = width + support_depth * 2,
-                            bottom_length = keys_cavity_length + support_depth,
-                            height = support_depth + e,
-                            top_weight_y = 1
-                        );
-                    }
-                }
-
-                difference() {
-                    union() {
-                        _front_lip_and_lower_sides();
-                        _bumper_arms();
-                    }
-                    _keys_cavity();
-                }
-            }
-
             module _engraving(corner_offset = 10) {
                 translate([
                     enclosure_width / 2,
@@ -660,10 +554,110 @@ module assembly(
                 }
             }
 
+            module _back() {
+                length = enclosure_length - bumper_length;
+                overlap = enclosure_wall + e;
+
+                intersection() {
+                    translate([0, enclosure_length - (length + overlap), 0]) {
+                        _enclosure_half(
+                            is_top = false,
+                            length = (length + overlap)
+                        );
+                    }
+
+                    translate([-e, enclosure_length - length, -e]) {
+                        cube([
+                            enclosure_width + e * 2,
+                            length + e,
+                            enclosure_height + e * 2
+                        ]);
+                    }
+                }
+            }
+
+            module _front() {
+                overlap = enclosure_wall + e;
+                keys_cavity_xy = enclosure_gutter - key_gutter;
+
+                module _enclosure_inner_cavity() {
+                    translate([
+                        enclosure_wall,
+                        enclosure_wall,
+                        enclosure_floor_ceiling
+                    ]) {
+                        flat_top_rectangular_pyramid(
+                            top_width = enclosure_width - keys_cavity_xy * 2,
+                            top_length = bumper_length - enclosure_wall,
+                            bottom_width = enclosure_width - enclosure_wall * 2,
+                            bottom_length = bumper_length + (keys_cavity_xy - enclosure_wall)
+                                - enclosure_wall,
+                            height = enclosure_height - enclosure_floor_ceiling + e,
+                            top_weight_y = 1
+                        );
+                    }
+                }
+
+                module _front_key_exposure_lip_cavity() {
+                    height = keys_exposed_height + accidental_key_recession;
+
+                    translate([keys_cavity_xy, -e, enclosure_height - height]) {
+                        cube([
+                            enclosure_width - keys_cavity_xy * 2,
+                            keys_cavity_xy + e * 2,
+                            height + e
+                        ]);
+                    }
+
+                    if (!quick_preview) {
+                        translate([
+                            keys_cavity_xy,
+                            enclosure_chamfer,
+                            enclosure_height - height - enclosure_chamfer
+                        ]) {
+                            rotate([0, 90, 0]) {
+                                rounded_corner_cutoff(
+                                    height = enclosure_width - keys_cavity_xy * 2,
+                                    angle = 180,
+                                    radius = enclosure_chamfer,
+                                    e = e,
+                                    $fn = enclosure_rounding
+                                );
+                            }
+                        }
+                    }
+                }
+
+                difference() {
+                    intersection() {
+                        rounded_cube(
+                            [
+                                enclosure_width,
+                                bumper_length + overlap,
+                                enclosure_height
+                            ],
+                            quick_preview ? 0 : enclosure_chamfer,
+                            $fn = enclosure_rounding
+                        );
+
+                        translate([-e, -e, -e]) {
+                            cube([
+                                enclosure_width + e * 2,
+                                bumper_length + e,
+                                enclosure_height + e * 2
+                            ]);
+                        }
+                    }
+
+                    _enclosure_inner_cavity();
+                    _front_key_exposure_lip_cavity();
+                }
+            }
+
             difference() {
                 union() {
-                    _enclosure_half(false);
-                    _keys_bumper();
+                    _back();
+                    _front();
                     _switch_container();
                     _switch_exposure(
                         xy_bleed = enclosure_inner_wall,
