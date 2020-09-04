@@ -52,9 +52,7 @@ module assembly(
     show_mounting_rails = true,
     show_keys = true,
     show_enclosure_top = true,
-    show_hinge_parts = true,
     show_window_pane = false,
-    show_just_hinge_parts = false,
 
     enclosure_color = undef,
     enclosure_opacity = .75,
@@ -291,10 +289,8 @@ module assembly(
                     add_lip = !is_top,
                     remove_lip = is_top,
 
-                    include_hinge = true,
-                    include_hinge_parts = show_hinge_parts,
-                    include_clasp = false,
-                    just_hinge_parts = show_just_hinge_parts,
+                    include_tongue_and_groove = !quick_preview,
+                    tongue_and_groove_end_length = enclosure_wall * 2,
 
                     radius = quick_preview ? 0 : enclosure_chamfer,
                     tolerance = tolerance,
@@ -864,14 +860,6 @@ module assembly(
             }
         }
 
-        if (show_just_hinge_parts) {
-            assert(
-                !show_enclosure_top && !show_enclosure_bottom,
-                "Don't show_enclosure_top or show_enclosure_bottom when using show_just_hinge_parts"
-            );
-            _enclosure_half();
-        }
-
         color(enclosure_color, enclosure_opacity) {
             if (show_enclosure_top) { _top(); }
             if (show_enclosure_bottom) { _bottom(); }
@@ -1018,7 +1006,6 @@ assembly(
     show_mounting_rails = true,
     show_keys = true,
     show_enclosure_top = true,
-    show_hinge_parts = true,
 
     quick_preview = DEV_MODE
 );
