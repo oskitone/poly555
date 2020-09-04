@@ -472,7 +472,7 @@ module assembly(
                         _chamfer(PCB_MOUNT_HOLE_DIAMETER);
                     }
                 }
-        }
+            }
 
             // TODO: obviate
             module _screw_head_cavity_bridges(
