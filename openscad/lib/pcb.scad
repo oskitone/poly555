@@ -22,6 +22,7 @@ module pcb(
     visualize_circuit_space = false,
     visualize_volume_wheel = false,
     visualize_switch = false,
+    visualize_led = false,
 
     $fn = DEFAULT_ROUNDING
 ) {
@@ -120,6 +121,12 @@ module pcb(
             _holes();
         }
     }
+
+    if (visualize_led) {
+        translate([PCB_LED_X, PCB_LED_Y, PCB_HEIGHT]) {
+            cylinder(d = LED_DIAMETER, h = LED_HEIGHT);
+        }
+    }
 }
 
 pcb(
@@ -128,5 +135,6 @@ pcb(
     visualize_silkscreen = true,
     visualize_circuit_space = true,
     visualize_volume_wheel = true,
-    visualize_switch = true
+    visualize_switch = true,
+    visualize_led = true
 );
