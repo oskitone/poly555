@@ -6,6 +6,7 @@ use <lib/diagonal_grill.scad>;
 use <lib/enclosure.scad>;
 use <lib/engraving.scad>;
 use <lib/keys.scad>;
+use <lib/lightpipe_engraving.scad>;
 use <lib/mount_stilt.scad>;
 use <lib/mounting_rail.scad>;
 use <lib/pcb.scad>;
@@ -51,6 +52,7 @@ module assembly(
     show_pcb = true,
     show_mounting_rails = true,
     show_keys = true,
+    show_lightpipe_branding = true,
     show_enclosure_top = true,
     show_window_pane = false,
 
@@ -725,31 +727,17 @@ module assembly(
                 }
             }
 
-            module _branding(depth = enclosure_floor_ceiling - 1) {
-                font_size = 5.9; // TODO: derive or obviate
-                z = enclosure_height - depth;
-
-                translate([side_panel_x, side_panel_y, z]) {
-                    // DEBUG to find branding_length
-                    * % cube([side_panel_width, branding_length, .1]);
-
-                    engraving(
-                        string = "POLY555",
-                        font = "Work Sans:style=Bold",
-                        height = depth + e,
-                        size = font_size * .75,
-                        center = false,
-                        bleed = tolerance
-                    );
-                }
-
-                translate([side_panel_x, side_panel_y + 5.5, z]) {
-                    engraving(
-                        height = depth + e,
-                        size = font_size,
-                        center = false,
-                        bleed = tolerance
-                    );
+            module _branding_cavity() {
+                translate([
+                    side_panel_x,
+                    side_panel_y,
+                    enclosure_height - enclosure_floor_ceiling - e
+                ]) {
+                    cube([
+                        side_panel_width,
+                        branding_length,
+                        enclosure_floor_ceiling + e * 2
+                    ]);
                 }
             }
 
@@ -848,7 +836,7 @@ module assembly(
                 _keys_and_bumper_cavity();
                 _pcb_window_pane_cavity();
                 _pcb(true);
-                _branding();
+                _branding_cavity();
                 _speaker_grill();
                 /* TODO: window pane support */
             }
@@ -949,6 +937,16 @@ module assembly(
         translate([e, 0, 0]) _mounted_keys(include_hitch = true);
     }
 
+    module _lightpipe_branding() {
+        translate([
+            side_panel_x + side_panel_width / 2,
+            side_panel_y + branding_length / 2,
+            pcb_z + PCB_HEIGHT
+        ]) {
+            lightpipe_engraving();
+        }
+    }
+
     // TODO: udpate. these values are wack.
     module _window_pane(xy_bleed = 0, z_bleed = 0) {
         translate([
@@ -972,6 +970,7 @@ module assembly(
             if (show_pcb) { % _pcb(); }
             if (show_mounting_rails) { _mounting_rails(); }
             if (show_keys) { _keys(); }
+            if (show_lightpipe_branding) { _lightpipe_branding(); }
             if (show_window_pane) {
                 color(window_pane_color, window_pane_opacity) {
                     _window_pane();
@@ -999,6 +998,7 @@ assembly(
     show_pcb = true,
     show_mounting_rails = true,
     show_keys = true,
+    show_lightpipe_branding = true,
     show_enclosure_top = true,
 
     quick_preview = DEV_MODE
