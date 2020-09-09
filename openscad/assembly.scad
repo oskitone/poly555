@@ -172,7 +172,7 @@ module assembly(
     volume_wheel_diameter = volume_wheel_exposure +
         (enclosure_width - (pcb_x + PCB_VOLUME_WHEEL_X)) * 2;
 
-    branding_length = 11; // TODO: derive or obviate
+    branding_length = ((pcb_y + PCB_LED_Y) - side_panel_y) * 2;
     speaker_grill_length = side_panel_length - branding_length - enclosure_gutter;
     speaker_grill_y = side_panel_y + side_panel_length - speaker_grill_length;
 
