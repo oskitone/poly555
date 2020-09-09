@@ -725,32 +725,55 @@ module assembly(
                 }
             }
 
-            module _branding(depth = enclosure_floor_ceiling - 1) {
-                font_size = 5.9; // TODO: derive or obviate
+            module _branding(
+                depth = enclosure_floor_ceiling - 1,
+                ratio = 1.5,
+                line_gutter = enclosure_gutter / 8
+            ) {
                 z = enclosure_height - depth;
 
-                translate([side_panel_x, side_panel_y, z]) {
-                    // DEBUG to find branding_length
-                    * % cube([side_panel_width, branding_length, .1]);
-
-                    engraving(
-                        string = "POLY555",
-                        font = "Work Sans:style=Bold",
-                        height = depth + e,
-                        size = font_size * .75,
-                        center = false,
-                        bleed = tolerance
-                    );
+                module _text(
+                    string,
+                    size,
+                    font = "Work Sans:style=Black",
+                    bleed = -tolerance,
+                    y = 0
+                ) {
+                    translate([
+                        side_panel_x + side_panel_width / 2,
+                        side_panel_y + branding_length / 2 + y,
+                        z
+                    ]) {
+                        linear_extrude(height = depth + e) {
+                            offset(delta = bleed) {
+                                text(
+                                    string,
+                                    size = size,
+                                    font = font,
+                                    halign = "center",
+                                    valign = "center"
+                                );
+                            }
+                        }
+                    }
                 }
 
-                translate([side_panel_x, side_panel_y + 5.5, z]) {
-                    engraving(
-                        height = depth + e,
-                        size = font_size,
-                        center = false,
-                        bleed = tolerance
-                    );
-                }
+                available_length = branding_length - line_gutter;
+                brand_size = (available_length / (ratio + 1)) * ratio;
+                model_size = available_length / (ratio + 1);
+
+                _text(
+                    "OSKITONE",
+                    size = brand_size,
+                    y = branding_length / 2 - brand_size / 2
+                );
+                _text(
+                    "POLY555",
+                    size = model_size,
+                    y = branding_length / -2 + model_size / 2,
+                    font="Orbitron:style=Black",
+                    bleed = 0
+                );
             }
 
             module _speaker_mounting_plate() {
