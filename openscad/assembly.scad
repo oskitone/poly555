@@ -346,7 +346,7 @@ module assembly(
                 ramp = 5
             ) {
                 translate([
-                    battery_x + (BATTERY_WIDTH - width) / 2,
+                    side_panel_x + (side_panel_width - width) / 2,
                     battery_y - wall - ramp,
                     enclosure_floor_ceiling
                 ]) {
