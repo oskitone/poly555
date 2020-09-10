@@ -62,7 +62,8 @@ module assembly(
     accidental_key_color = "black",
     key_opacity = .75,
 
-    quick_preview = false
+    quick_preview = false,
+    cross_section = undef
 ) {
     e = 0.0145;
     plot = PCB_BUTTONS[1][0] - PCB_BUTTONS[0][0];
@@ -996,14 +997,19 @@ module assembly(
             if (show_window_pane) { % _window_pane();}
         }
 
-        /* translate([-20, -20, -20]) cube([35, 300, 100]); // switch */
-        /* translate([-e, -e, -e]) cube([speaker_x, 300, 100]); */
-        /* translate([-e, -10, -e]) cube([enclosure_width / 2, enclosure_length + 20, enclosure_height + 20]); // cross section */
-        /* cube([enclosure_width, enclosure_length / 2, enclosure_height]); */
-        /* translate([-e, -10, -e]) cube([ pcb_x + PCB_SWITCH_X + SWITCH_BASE_WIDTH / 2 - SWITCH_ORIGIN.x, enclosure_length + 20, enclosure_height + 20 ]); */
-        /* translate([pcb_x + PCB_HOLES[2][0], pcb_y + PCB_HOLES[2][1], -e]) cylinder(d = 12, h = 20); */
-        /* translate([-e, key_mounting_rail_y - 4, -e]) cube([10, 10, 4]); */
-        /* cube([enclosure_width, enclosure_length, 18]); */
+        if (cross_section == "speaker") {
+            cube([speaker_x, enclosure_length, enclosure_height]);
+        } else if (cross_section == "width") {
+            cube([enclosure_width / 2, enclosure_length, enclosure_height]);
+        } else if (cross_section == "length") {
+            cube([enclosure_width, enclosure_length / 2, enclosure_height]);
+        } else if (cross_section == "switch") {
+            cube([
+                pcb_x + PCB_SWITCH_X + SWITCH_BASE_WIDTH / 2 - SWITCH_ORIGIN.x,
+                enclosure_length,
+                enclosure_height
+            ]);
+        }
     }
 }
 
@@ -1019,5 +1025,6 @@ assembly(
     show_keys = true,
     show_enclosure_top = true,
 
-    quick_preview = DEV_MODE
+    quick_preview = DEV_MODE,
+    cross_section = undef
 );
