@@ -61,8 +61,6 @@ module assembly(
     natural_key_color = "white",
     accidental_key_color = "black",
     key_opacity = .75,
-    window_pane_color = "blue",
-    window_pane_opacity = .05,
 
     quick_preview = false
 ) {
@@ -104,7 +102,7 @@ module assembly(
         BOTTOM_MOUNTED_PCB_HOLES[3][0] - keys_from_pcb_x_offset,
     ];
 
-    pcb_window_y_extension = PCB_COMPONENTS_Y - keys_mount_end_on_pcb;
+    window_y_extension = PCB_COMPONENTS_Y - keys_mount_end_on_pcb;
     pcb_x = enclosure_gutter - keys_from_pcb_x_offset;
     pcb_y = mounted_keys_total_length - keys_mount_end_on_pcb + enclosure_gutter;
     pcb_z = enclosure_floor_ceiling + max(
@@ -116,7 +114,7 @@ module assembly(
 
     enclosure_width = enclosure_gutter * 2 + mount_width;
     enclosure_length = pcb_y + keys_mount_end_on_pcb
-        + PCB_COMPONENTS_LENGTH + pcb_window_y_extension * 2
+        + PCB_COMPONENTS_LENGTH + window_y_extension * 2
         + enclosure_gutter;
 
     enclosure_height = enclosure_floor_ceiling * 2
@@ -153,18 +151,26 @@ module assembly(
     switch_z = pcb_z;
     switch_exposure_height = switch_z - SWITCH_BASE_HEIGHT;
 
-    // TODO: differentiate between window vs pane vs cavity, etc
     window_and_side_panel_gutter = enclosure_gutter - key_gutter;
-    window_pane_y = pcb_y + keys_mount_end_on_pcb
-        - (mount_length - PCB_MOUNT_HOLE_DIAMETER) / 2;
-    window_pane_z = enclosure_height - enclosure_floor_ceiling - WINDOW_PANE_HEIGHT;
-    window_pane_width = PCB_COMPONENTS_WIDTH +
+
+    window_cavity_width = PCB_COMPONENTS_WIDTH +
         ((pcb_x + PCB_COMPONENTS_X) - window_and_side_panel_gutter) * 2;
-    window_pane_length = PCB_COMPONENTS_LENGTH + pcb_window_y_extension * 2;
+    window_cavity_length = PCB_COMPONENTS_LENGTH + window_y_extension * 2;
+    window_cavity_y = pcb_y + PCB_COMPONENTS_Y - window_y_extension;
+
+    window_pane_x = enclosure_wall + tolerance;
+    window_pane_y = pcb_y + keys_mount_end_on_pcb - tolerance
+        - (mount_length - PCB_MOUNT_HOLE_DIAMETER) / 2;
+    window_pane_z = enclosure_height - enclosure_floor_ceiling
+        - WINDOW_PANE_HEIGHT;
+    window_pane_width = window_cavity_width + window_pane_x * 2
+        - PLASTICS_TOLERANCE;
+    window_pane_length = enclosure_length - enclosure_wall - window_pane_y
+        - tolerance - PLASTICS_TOLERANCE;
 
     side_panel_width = enclosure_width
         - window_and_side_panel_gutter * 3
-        - window_pane_width;
+        - window_cavity_width;
     side_panel_x = enclosure_width - side_panel_width - window_and_side_panel_gutter;
     side_panel_y = key_mounting_rail_y + mount_length;
     side_panel_length = enclosure_length - enclosure_gutter - side_panel_y;
@@ -182,7 +188,8 @@ module assembly(
     speaker_z = enclosure_height - enclosure_floor_ceiling - SPEAKER_HEIGHT;
 
     echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
-    echo("Window pane dimensions", [window_pane_width, window_pane_length]);
+    echo("Window cavity dimensions", [window_cavity_width, window_cavity_length]);
+    echo("Window pane dimensions", window_pane_width, window_pane_length);
 
     module _mounted_keys(
         include_natural = false,
@@ -688,15 +695,15 @@ module assembly(
             speaker_mounting_plate_z = speaker_z + SPEAKER_HEIGHT;
             speaker_mounting_plate_height = enclosure_floor_ceiling - engraving_depth;
 
-            module _pcb_window_pane_cavity() {
+            module _window_cavity() {
                 translate([
                     window_and_side_panel_gutter,
-                    pcb_y + PCB_COMPONENTS_Y - pcb_window_y_extension,
+                    window_cavity_y,
                     enclosure_height - enclosure_floor_ceiling - e
                 ]) {
                     cube([
-                        window_pane_width,
-                        window_pane_length,
+                        window_cavity_width,
+                        window_cavity_length,
                         enclosure_floor_ceiling + e * 2
                     ]);
                 }
@@ -721,7 +728,7 @@ module assembly(
                         );
                     }
 
-                    _window_pane(tolerance);
+                    _window_pane();
                 }
             }
 
@@ -869,7 +876,7 @@ module assembly(
             difference() {
                 _enclosure_half(true);
                 _keys_and_bumper_cavity();
-                _pcb_window_pane_cavity();
+                _window_cavity();
                 _pcb(true);
                 _branding();
                 _speaker_grill();
@@ -972,18 +979,9 @@ module assembly(
         translate([e, 0, 0]) _mounted_keys(include_hitch = true);
     }
 
-    // TODO: udpate. these values are wack.
-    module _window_pane(xy_bleed = 0, z_bleed = 0) {
-        translate([
-            window_and_side_panel_gutter - xy_bleed,
-            window_pane_y - xy_bleed,
-            window_pane_z - z_bleed
-        ]) {
-            cube([
-                window_pane_width + xy_bleed * 2,
-                window_pane_length + xy_bleed * 2,
-                WINDOW_PANE_HEIGHT + z_bleed * 2
-            ]);
+    module _window_pane() {
+        translate([window_pane_x, window_pane_y, window_pane_z]) {
+            cube([window_pane_width, window_pane_length, WINDOW_PANE_HEIGHT]);
         }
     }
 
@@ -995,16 +993,13 @@ module assembly(
             if (show_pcb) { % _pcb(); }
             if (show_mounting_rails) { _mounting_rails(); }
             if (show_keys) { _keys(); }
-            if (show_window_pane) {
-                color(window_pane_color, window_pane_opacity) {
-                    _window_pane();
-                }
-            }
+            if (show_window_pane) { % _window_pane();}
         }
 
         /* translate([-20, -20, -20]) cube([35, 300, 100]); // switch */
         /* translate([-e, -e, -e]) cube([speaker_x, 300, 100]); */
         /* translate([-e, -10, -e]) cube([enclosure_width / 2, enclosure_length + 20, enclosure_height + 20]); // cross section */
+        /* cube([enclosure_width, enclosure_length / 2, enclosure_height]); */
         /* translate([-e, -10, -e]) cube([ pcb_x + PCB_SWITCH_X + SWITCH_BASE_WIDTH / 2 - SWITCH_ORIGIN.x, enclosure_length + 20, enclosure_height + 20 ]); */
         /* translate([pcb_x + PCB_HOLES[2][0], pcb_y + PCB_HOLES[2][1], -e]) cylinder(d = 12, h = 20); */
         /* translate([-e, key_mounting_rail_y - 4, -e]) cube([10, 10, 4]); */

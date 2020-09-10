@@ -162,6 +162,7 @@ LED_HEIGHT = 8.6;
 
 PENCIL_STAND_CAVITY_DIAMETER = 8.5;
 
+PLASTICS_TOLERANCE = 1.524; // https://www.tapplastics.com/product/plastics/cut_to_size_plastic
 WINDOW_PANE_HEIGHT = 25.4 * 1 / 8;
 
 HITCH_DEFAULT_MOUNT_SCREW_HEAD_CLEARANCE = .1;
