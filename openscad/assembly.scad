@@ -542,23 +542,46 @@ module assembly(
                 }
             }
 
-            module _speaker_container() {
+            // TODO: make a lil taller for tighter fit
+            module _speaker_container(wall = enclosure_wall, spoke_count = 3) {
                 z = enclosure_floor_ceiling - e;
 
                 inner_diameter = SPEAKER_MAGNET_DIAMETER + tolerance * 2;
-                outer_diameter = inner_diameter + enclosure_inner_wall * 2;
+                outer_diameter = inner_diameter + wall * 2;
+                height = speaker_z + SPEAKER_MAGNET_HEIGHT - z;
 
-                translate([speaker_x, speaker_y, z]) {
-                    cylinder(
-                        d = inner_diameter + e * 2,
-                        h = speaker_z - z
-                    );
+                spoke_length = (SPEAKER_CONE_DIAMETER - SPEAKER_MAGNET_DIAMETER) / 2;
+                ring_segment_width = (inner_diameter * PI) / spoke_count / 2;
 
-                    ring(
-                        diameter = outer_diameter,
-                        height = speaker_z + SPEAKER_MAGNET_HEIGHT - z,
-                        inner_diameter = inner_diameter
-                    );
+                module _spoke(angle = 0) {
+                    rotate([0, 0, 180 + angle]) {
+                        translate([wall / -2, inner_diameter / 2, 0]) {
+                            cube([wall, spoke_length + e, height]);
+                        }
+
+                        intersection() {
+                            ring(
+                                diameter = outer_diameter,
+                                height = height,
+                                inner_diameter = inner_diameter,
+                                $fn = HIDEF_ROUNDING
+                            );
+
+                            translate([ring_segment_width / -2, 0, -e]) {
+                                cube([
+                                    ring_segment_width,
+                                    outer_diameter / 2 + e,
+                                    height + e * 2
+                                ]);
+                            }
+                        }
+                    }
+                }
+
+                for (i = [0 : spoke_count - 1]) {
+                    translate([speaker_x, speaker_y, z]) {
+                        _spoke(i / spoke_count * 360);
+                    }
                 }
             }
 
