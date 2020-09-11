@@ -22,14 +22,14 @@ module assembly(
     enclosure_wall = 2.4,
     enclosure_floor_ceiling = 1.8,
     enclosure_inner_wall = 1.2,
-    enclosure_to_component_z_clearance = 2,
     enclosure_chamfer = 2,
     enclosure_rounding = 24,
 
     engraving_depth = 1,
 
+    components_to_window_clearance = 2,
+    speaker_to_battery_clearance = .5,
     exposed_screw_head_clearance = .4,
-    speaker_to_pcb_clearance = 2.4,
 
     mount_length = 6,
     cantilever_length = 3,
@@ -118,13 +118,12 @@ module assembly(
         + PCB_COMPONENTS_LENGTH + window_y_extension * 2
         + enclosure_gutter;
 
-    enclosure_height = enclosure_floor_ceiling * 2
-        + max(
-            pcb_stilt_height + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
-                + WINDOW_PANE_HEIGHT,
-            SPEAKER_HEIGHT - SPEAKER_MAGNET_HEIGHT + BATTERY_HEIGHT
-        )
-        + enclosure_to_component_z_clearance;
+    enclosure_height = enclosure_floor_ceiling * 2 + max(
+        pcb_stilt_height + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
+            + WINDOW_PANE_HEIGHT + components_to_window_clearance,
+        SPEAKER_HEIGHT - SPEAKER_MAGNET_HEIGHT + BATTERY_HEIGHT
+            + speaker_to_battery_clearance
+    );
     // TODO: tidy
     enclosure_bottom_height = pcb_z + PCB_HEIGHT + POT_HEIGHT
         + volume_wheel_cap_height
