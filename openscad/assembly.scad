@@ -41,6 +41,10 @@ module assembly(
     starting_natural_key_index = 3,
     key_travel = 1.4,
 
+    // Adjust from 0 to 1 to see possible plastic dimensions from manufacturer
+    visualized_plastic_tolerance_weight = .5,
+    animate_visualized_plastic_tolerance_weight = false,
+
     volume_wheel_exposure = 2,
     volume_wheel_cap_height = 1,
 
@@ -158,15 +162,17 @@ module assembly(
     window_cavity_length = PCB_COMPONENTS_LENGTH + window_y_extension * 2;
     window_cavity_y = pcb_y + PCB_COMPONENTS_Y - window_y_extension;
 
+    // Pane dimensions are average between +/- PLASTICS_TOLERANCE
     window_pane_x = enclosure_wall + tolerance;
     window_pane_y = pcb_y + keys_mount_end_on_pcb - tolerance
         - (mount_length - PCB_MOUNT_HOLE_DIAMETER) / 2;
     window_pane_z = enclosure_height - enclosure_floor_ceiling
         - WINDOW_PANE_HEIGHT;
-    window_pane_width = window_cavity_width + window_pane_x * 2
-        - PLASTICS_TOLERANCE;
-    window_pane_length = enclosure_length - enclosure_wall - window_pane_y
-        - tolerance - PLASTICS_TOLERANCE;
+    window_pane_max_width = window_cavity_width + window_pane_x * 2;
+    window_pane_width = window_pane_max_width - PLASTICS_TOLERANCE;
+    window_pane_max_length = enclosure_length - enclosure_wall - window_pane_y
+        - tolerance;
+    window_pane_length = window_pane_max_length - PLASTICS_TOLERANCE;
 
     side_panel_width = enclosure_width
         - window_and_side_panel_gutter * 3
@@ -751,7 +757,17 @@ module assembly(
                         );
                     }
 
-                    _window_pane();
+                    translate([
+                        window_pane_x - tolerance * 2,
+                        window_pane_y - tolerance,
+                        window_pane_z
+                    ]) {
+                        cube([
+                            window_pane_max_width + tolerance * 4 + e * 2,
+                            mount_length / 2,
+                            WINDOW_PANE_HEIGHT
+                        ]);
+                    }
                 }
             }
 
@@ -894,7 +910,7 @@ module assembly(
 
             module _window_pane_supports() {
                 module _struts(count = 2, width = 20, overlap = 1) {
-                    plot = window_pane_width / count;
+                    plot = window_pane_max_width / count;
                     y = enclosure_length - enclosure_wall;
                     length = y - (window_pane_y + window_pane_length)
                         + overlap;
@@ -933,8 +949,7 @@ module assembly(
                     length = enclosure_length - window_pane_y - enclosure_wall
                         + e * 2;
 
-                    x = window_pane_x + window_pane_width + PLASTICS_TOLERANCE
-                        + tolerance;
+                    x = window_pane_x + window_pane_max_width + tolerance;
                     z = enclosure_height - enclosure_floor_ceiling - height;
 
                     translate([x, window_pane_y - e, z]) {
@@ -1057,8 +1072,22 @@ module assembly(
     }
 
     module _window_pane() {
-        translate([window_pane_x, window_pane_y, window_pane_z]) {
-            cube([window_pane_width, window_pane_length, WINDOW_PANE_HEIGHT]);
+        weight = animate_visualized_plastic_tolerance_weight
+            ? abs(($t - .5) * 2)
+            : visualized_plastic_tolerance_weight;
+
+        bleed = PLASTICS_TOLERANCE * 2 * weight - PLASTICS_TOLERANCE;
+
+        translate([
+            window_pane_x + PLASTICS_TOLERANCE * (1 - weight),
+            window_pane_y + PLASTICS_TOLERANCE * (1 - weight),
+            window_pane_z
+        ]) {
+            cube([
+                window_pane_width + bleed,
+                window_pane_length + bleed,
+                WINDOW_PANE_HEIGHT
+            ]);
         }
     }
 
@@ -1100,6 +1129,9 @@ assembly(
     show_mounting_rails = true,
     show_keys = true,
     show_enclosure_top = true,
+
+    show_window_pane = false,
+    animate_visualized_plastic_tolerance_weight = false,
 
     quick_preview = DEV_MODE,
     cross_section = undef
