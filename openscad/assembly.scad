@@ -892,9 +892,64 @@ module assembly(
                 }
             }
 
+            module _window_pane_supports() {
+                module _struts(count = 2, width = 20, overlap = 1) {
+                    plot = window_pane_width / count;
+                    y = enclosure_length - enclosure_wall;
+                    length = y - (window_pane_y + window_pane_length)
+                        + overlap;
+                    z = enclosure_height - enclosure_floor_ceiling
+                        - WINDOW_PANE_HEIGHT - length;
+
+                    for (i = [0 : count - 1]) {
+                        x = window_pane_x + plot * i + (plot - width) / 2;
+
+                        intersection() {
+                            translate([x, y, z]) {
+                                rotate([0, 90, 0]) {
+                                    cylinder(
+                                        d = length * 2,
+                                        h = width,
+                                        $fn = 4
+                                    );
+                                }
+                            }
+
+                            translate([x - e, y - length - e, z - length - e]) {
+                                cube([
+                                    width + e * 2,
+                                    length + e * 2,
+                                    length * 2 + e * 2
+                                ]);
+                            }
+                        }
+                    }
+                }
+
+                module _aligner(
+                    width = enclosure_wall,
+                    height = WINDOW_PANE_HEIGHT
+                ) {
+                    length = enclosure_length - window_pane_y - enclosure_wall
+                        + e * 2;
+
+                    x = window_pane_x + window_pane_width + PLASTICS_TOLERANCE
+                        + tolerance;
+                    z = enclosure_height - enclosure_floor_ceiling - height;
+
+                    translate([x, window_pane_y - e, z]) {
+                        cube([width, length, height + e]);
+                    }
+                }
+
+                _struts();
+                _aligner();
+            }
+
             _key_mounting_rail();
             _volume_wheel_brace();
             _speaker_mounting_plate();
+            _window_pane_supports();
 
             difference() {
                 _enclosure_half(true);
@@ -903,7 +958,6 @@ module assembly(
                 _pcb(true);
                 _branding();
                 _speaker_grill();
-                /* TODO: window pane support */
             }
         }
 
