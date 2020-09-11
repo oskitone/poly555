@@ -145,7 +145,7 @@ module assembly(
     key_mounting_rail_y = pcb_y + keys_mount_end_on_pcb - mount_length;
 
     battery_x = enclosure_width - BATTERY_WIDTH - enclosure_wall - tolerance;
-    battery_y = enclosure_length - enclosure_wall - BATTERY_LENGTH;
+    battery_y = enclosure_length - enclosure_wall - BATTERY_LENGTH - tolerance;
 
     switch_x = pcb_x + PCB_SWITCH_X;
     switch_y = pcb_y + PCB_SWITCH_Y;
@@ -347,7 +347,7 @@ module assembly(
             ) {
                 translate([
                     side_panel_x + (side_panel_width - width) / 2,
-                    battery_y - wall - ramp,
+                    battery_y - wall - ramp - tolerance,
                     enclosure_floor_ceiling
                 ]) {
                     flat_top_rectangular_pyramid(
