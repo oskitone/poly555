@@ -480,16 +480,6 @@ module assembly(
                 }
 
                 _heads();
-
-                for (xy = TOP_MOUNTED_PCB_HOLES) {
-                    translate([pcb_x + xy[0], pcb_y + xy[1], -e]) {
-                        cylinder(
-                            d = PCB_MOUNT_HOLE_DIAMETER,
-                            h = enclosure_floor_ceiling + e * 2
-                        );
-                        _chamfer(PCB_MOUNT_HOLE_DIAMETER);
-                    }
-                }
             }
 
             // TODO: obviate
