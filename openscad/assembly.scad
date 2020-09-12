@@ -590,6 +590,28 @@ module assembly(
                 }
             }
 
+            module _window_pane_bottom_supports(width = 15) {
+                height = window_pane_z - enclosure_floor_ceiling;
+                length = enclosure_length - enclosure_wall
+                    - window_cavity_y - window_cavity_length
+                    - tolerance;
+
+                for (x = [
+                    window_pane_x,
+                    window_pane_x
+                        + (window_pane_max_width - width) / 2,
+                    window_pane_x + window_pane_max_width - width
+                ]) {
+                    translate([
+                        x,
+                        enclosure_length - enclosure_wall - length,
+                        enclosure_floor_ceiling - e
+                    ]) {
+                        cube([width, length + e, height + e]);
+                    }
+                }
+            }
+
             module _back() {
                 length = enclosure_length - bumper_length;
                 overlap = enclosure_wall + e;
@@ -704,6 +726,7 @@ module assembly(
                     _mount_stilts_and_spacers();
                     _mounting_rail_aligners();
                     _speaker_container();
+                    _window_pane_bottom_supports();
                 }
 
                 _switch_exposure(
@@ -908,7 +931,7 @@ module assembly(
                 }
             }
 
-            module _window_pane_supports() {
+            module _window_pane_top_supports() {
                 module _struts(count = 2, width = 20, overlap = 1) {
                     plot = window_pane_max_width / count;
                     y = enclosure_length - enclosure_wall;
@@ -964,7 +987,7 @@ module assembly(
             _key_mounting_rail();
             _volume_wheel_brace();
             _speaker_mounting_plate();
-            _window_pane_supports();
+            _window_pane_top_supports();
 
             difference() {
                 _enclosure_half(true);
