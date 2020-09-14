@@ -795,25 +795,23 @@ module assembly(
                     string,
                     size,
                     font = "Work Sans:style=Black",
-                    bleed = -tolerance,
-                    y = 0
+                    y = 0,
+                    chamfer = 0
                 ) {
                     translate([
                         side_panel_x + side_panel_width / 2,
                         side_panel_y + branding_length / 2 + y,
                         z
                     ]) {
-                        linear_extrude(height = depth + e) {
-                            offset(delta = bleed) {
-                                text(
-                                    string,
-                                    size = size,
-                                    font = font,
-                                    halign = "center",
-                                    valign = "center"
-                                );
-                            }
-                        }
+                        engraving(
+                            string = string,
+                            font = font,
+                            size = size,
+                            height = depth + e,
+                            center = true,
+                            bleed = -tolerance,
+                            chamfer = .2
+                        );
                     }
                 }
 
@@ -830,8 +828,7 @@ module assembly(
                     "POLY555",
                     size = model_size,
                     y = branding_length / -2 + model_size / 2,
-                    font="Orbitron:style=Black",
-                    bleed = 0
+                    font="Orbitron:style=Black"
                 );
             }
 
