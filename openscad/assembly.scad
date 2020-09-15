@@ -53,6 +53,7 @@ module assembly(
     show_speaker = true,
     show_switch = true,
     show_pcb = true,
+    show_volume_wheel = true,
     show_mounting_rails = true,
     show_keys = true,
     show_enclosure_top = true,
@@ -727,7 +728,7 @@ module assembly(
                 _switch_engraving();
                 _screw_cavities();
                 _engraving();
-                _pcb(true);
+                _pcb(for_enclosure_cavity = true);
             }
 
             _screw_head_cavity_bridges();
@@ -980,7 +981,7 @@ module assembly(
                 _enclosure_half(true);
                 _keys_and_bumper_cavity();
                 _window_cavity();
-                _pcb(true);
+                _pcb(for_enclosure_cavity = true);
                 _branding();
                 _speaker_grill();
             }
@@ -1010,18 +1011,21 @@ module assembly(
 
     module _pcb(
         for_enclosure_cavity = false,
+        just_volume_wheel = false,
         volume_wheel_grip_size = .6
     ) {
+        show_pcb = just_volume_wheel ? false : show_pcb;
+
         translate([pcb_x, pcb_y, pcb_z]) {
             pcb(
-                visualize_board =  !for_enclosure_cavity,
-                visualize_buttons = !for_enclosure_cavity,
+                visualize_board =  !for_enclosure_cavity && show_pcb,
+                visualize_buttons = !for_enclosure_cavity && show_pcb,
                 visualize_circuit_space = quick_preview && !for_enclosure_cavity,
-                visualize_silkscreen = !quick_preview && !for_enclosure_cavity,
+                visualize_silkscreen = !quick_preview && !for_enclosure_cavity
+                     && show_pcb,
                 visualize_switch = show_switch && !for_enclosure_cavity,
-
-                // TODO: improve for assembly by splitting across top and bottom
-                visualize_volume_wheel = for_enclosure_cavity || !quick_preview,
+                visualize_volume_wheel =
+                    just_volume_wheel || for_enclosure_cavity,
 
                 simplify_volume_wheel = for_enclosure_cavity,
                 volume_wheel_diameter = for_enclosure_cavity
@@ -1107,6 +1111,7 @@ module assembly(
             if (show_battery) { % _battery(); }
             if (show_speaker) { % _speaker(); }
             if (show_pcb) { % _pcb(); }
+            if (show_volume_wheel) { _pcb(just_volume_wheel = true); }
             if (show_mounting_rails) { _mounting_rails(); }
             if (show_keys) { _keys(); }
             if (show_window_pane) { % _window_pane();}
@@ -1136,6 +1141,7 @@ assembly(
     show_speaker = true,
     show_switch = true,
     show_pcb = true,
+    show_volume_wheel = true,
     show_mounting_rails = true,
     show_keys = true,
     show_enclosure_top = true,
