@@ -1012,7 +1012,7 @@ module assembly(
     module _pcb(
         for_enclosure_cavity = false,
         just_volume_wheel = false,
-        volume_wheel_grip_size = .6
+        volume_wheel_grip_size = 1.5
     ) {
         show_pcb = just_volume_wheel ? false : show_pcb;
 

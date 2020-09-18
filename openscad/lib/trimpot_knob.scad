@@ -15,7 +15,7 @@ module trimpot_knob(
 
     wall = 1.8,
 
-    grip_size = 1,
+    grip_size = 1.5,
 
     tolerance = .1,
 
