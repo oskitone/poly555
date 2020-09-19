@@ -46,17 +46,6 @@ F 3 "~" H 5050 3200 50  0001 C CNN
 	1    5050 3200
 	-1   0    0    1   
 $EndComp
-$Comp
-L Timer:LM556 U101
-U 1 1 5F4726A4
-P 4150 3500
-F 0 "U101" H 4150 4081 50  0000 C CNN
-F 1 "LM556" H 4150 3990 50  0000 C CNN
-F 2 "Package_DIP:DIP-14_W7.62mm_LongPads" H 4150 3500 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/lm556.pdf" H 4150 3500 50  0001 C CNN
-	1    4150 3500
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5050 2700 5050 2950
 Wire Wire Line
@@ -88,18 +77,6 @@ $EndComp
 Connection ~ 5050 3500
 Wire Wire Line
 	4650 3700 4700 3700
-Wire Wire Line
-	4700 3700 4700 3800
-Wire Wire Line
-	4700 3800 5050 3800
-Wire Wire Line
-	3650 3300 3400 3300
-Wire Wire Line
-	5050 5000 5050 3800
-Connection ~ 5050 3800
-Wire Wire Line
-	5050 5000 6600 5000
-Connection ~ 5050 5000
 Wire Wire Line
 	4650 3300 4650 2550
 Wire Wire Line
@@ -254,27 +231,10 @@ Wire Wire Line
 	5800 2700 6050 2700
 Wire Wire Line
 	3150 5000 4150 5000
-Wire Wire Line
-	4150 3900 4150 5000
 Connection ~ 4150 5000
-Wire Wire Line
-	4150 5000 5050 5000
 Wire Wire Line
 	6600 3900 6600 5000
 Connection ~ 6600 5000
-Wire Wire Line
-	3400 3300 3400 3900
-Wire Wire Line
-	3400 3900 4150 3900
-Wire Wire Line
-	4700 3900 4700 3800
-Connection ~ 3400 3300
-Wire Wire Line
-	3400 3300 3150 3300
-Connection ~ 4150 3900
-Wire Wire Line
-	4150 3900 4700 3900
-Connection ~ 4700 3800
 $Comp
 L Timer:LM556 U101
 U 2 1 5F472EE9
@@ -385,4 +345,36 @@ Wire Wire Line
 Connection ~ 3150 5000
 Wire Wire Line
 	6600 5000 7700 5000
+Wire Wire Line
+	4150 3900 4150 5000
+$Comp
+L Timer:LM556 U101
+U 1 1 5F4726A4
+P 4150 3500
+F 0 "U101" H 4150 4081 50  0000 C CNN
+F 1 "LM556" H 4150 3990 50  0000 C CNN
+F 2 "Package_DIP:DIP-14_W7.62mm_LongPads" H 4150 3500 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm556.pdf" H 4150 3500 50  0001 C CNN
+	1    4150 3500
+	1    0    0    -1  
+$EndComp
+NoConn ~ 4150 4050
+Wire Wire Line
+	4150 5000 6600 5000
+Wire Wire Line
+	5050 3800 5050 4050
+Wire Wire Line
+	5050 4050 4700 4050
+Wire Wire Line
+	3650 3300 3400 3300
+Wire Wire Line
+	3400 3300 3150 3300
+Connection ~ 3400 3300
+Wire Wire Line
+	3400 3300 3400 4050
+Connection ~ 4700 4050
+Wire Wire Line
+	4700 4050 3400 4050
+Wire Wire Line
+	4700 3700 4700 4050
 $EndSCHEMATC
