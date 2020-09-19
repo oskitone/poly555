@@ -13,43 +13,32 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L Device:Battery BT1
-U 1 1 5EEAE121
-P 1200 4050
-F 0 "BT1" H 1308 4096 50  0000 L CNN
-F 1 "9v" H 1308 4005 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" V 1200 4110 50  0001 C CNN
-F 3 "~" V 1200 4110 50  0001 C CNN
-	1    1200 4050
-	1    0    0    -1  
-$EndComp
 $Sheet
-S 4250 1050 900  550 
+S 4850 1300 900  550 
 U 60F4E92A
 F0 "555_astable" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 5150 1250 50 
-F3 "9v" I L 4250 1250 50 
-F4 "Gnd" I L 4250 1450 50 
+F2 "Out" I R 5750 1500 50 
+F3 "9v" I L 4850 1500 50 
+F4 "Gnd" I L 4850 1700 50 
 $EndSheet
 Wire Wire Line
-	3450 1050 3550 1050
+	4050 1300 4150 1300
 Wire Wire Line
-	3450 1250 3450 1050
+	4050 1500 4050 1300
 Wire Wire Line
-	3550 1250 3450 1250
+	4150 1500 4050 1500
 Wire Wire Line
-	4000 1250 4000 1050
+	4600 1500 4600 1300
 Wire Wire Line
-	3950 1250 4000 1250
+	4550 1500 4600 1500
 Wire Wire Line
-	3950 1050 4000 1050
+	4550 1300 4600 1300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S2
+L dk_Tactile-Switches:FSM4JSMATR S1
 U 1 1 60FBC6A1
-P 3750 1150
-AR Path="/60FBC6A1" Ref="S2"  Part="1" 
+P 4350 1400
+AR Path="/60FBC6A1" Ref="S1"  Part="1" 
 AR Path="/60F4E92A/60FBC6A1" Ref="S?"  Part="1" 
 AR Path="/60F9596F/60FBC6A1" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/60FBC6A1" Ref="S?"  Part="1" 
@@ -59,54 +48,54 @@ AR Path="/60F96187/60FBC6A1" Ref="S?"  Part="1"
 AR Path="/60F9685F/60FBC6A1" Ref="S?"  Part="1" 
 AR Path="/60F96864/60FBC6A1" Ref="S?"  Part="1" 
 AR Path="/60F96869/60FBC6A1" Ref="S?"  Part="1" 
-F 0 "S2" V 3750 1300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 3750 1350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 1350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 1450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 3950 1550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 3950 1650 60  0001 L CNN "MPN"
-F 6 "Switches" H 3950 1750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 3950 1850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 1950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 3950 2050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 3950 2150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 3950 2250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 3950 2350 60  0001 L CNN "Status"
-	1    3750 1150
+F 0 "S1" V 4350 1550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 4350 1600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 4550 1600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 1700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 4550 1800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 4550 1900 60  0001 L CNN "MPN"
+F 6 "Switches" H 4550 2000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 4550 2100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 2200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 4550 2300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 4550 2400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 4550 2500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 4550 2600 60  0001 L CNN "Status"
+	1    4350 1400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3450 1050 3100 1050
-Connection ~ 3450 1050
+	4050 1300 3700 1300
+Connection ~ 4050 1300
 Wire Wire Line
-	4000 1250 4250 1250
-Connection ~ 4000 1250
+	4600 1500 4850 1500
+Connection ~ 4600 1500
 $Sheet
-S 4250 2050 900  550 
+S 4850 2300 900  550 
 U 5EF17819
 F0 "sheet5EF17814" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 5150 2250 50 
-F3 "9v" I L 4250 2250 50 
-F4 "Gnd" I L 4250 2450 50 
+F2 "Out" I R 5750 2500 50 
+F3 "9v" I L 4850 2500 50 
+F4 "Gnd" I L 4850 2700 50 
 $EndSheet
 Wire Wire Line
-	3450 2050 3550 2050
+	4050 2300 4150 2300
 Wire Wire Line
-	3450 2250 3450 2050
+	4050 2500 4050 2300
 Wire Wire Line
-	3550 2250 3450 2250
+	4150 2500 4050 2500
 Wire Wire Line
-	4000 2250 4000 2050
+	4600 2500 4600 2300
 Wire Wire Line
-	3950 2250 4000 2250
+	4550 2500 4600 2500
 Wire Wire Line
-	3950 2050 4000 2050
+	4550 2300 4600 2300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S3
+L dk_Tactile-Switches:FSM4JSMATR S2
 U 1 1 5EF1782E
-P 3750 2150
-AR Path="/5EF1782E" Ref="S3"  Part="1" 
+P 4350 2400
+AR Path="/5EF1782E" Ref="S2"  Part="1" 
 AR Path="/60F4E92A/5EF1782E" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF1782E" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF1782E" Ref="S?"  Part="1" 
@@ -116,51 +105,51 @@ AR Path="/60F96187/5EF1782E" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF1782E" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF1782E" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF1782E" Ref="S?"  Part="1" 
-F 0 "S3" V 3750 2300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 3750 2350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 2350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 2450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 3950 2550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 3950 2650 60  0001 L CNN "MPN"
-F 6 "Switches" H 3950 2750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 3950 2850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 2950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 3950 3050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 3950 3150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 3950 3250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 3950 3350 60  0001 L CNN "Status"
-	1    3750 2150
+F 0 "S2" V 4350 2550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 4350 2600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 4550 2600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 2700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 4550 2800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 4550 2900 60  0001 L CNN "MPN"
+F 6 "Switches" H 4550 3000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 4550 3100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 3200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 4550 3300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 4550 3400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 4550 3500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 4550 3600 60  0001 L CNN "Status"
+	1    4350 2400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4000 2250 4250 2250
-Connection ~ 4000 2250
+	4600 2500 4850 2500
+Connection ~ 4600 2500
 $Sheet
-S 4250 3050 900  550 
+S 4850 3300 900  550 
 U 5EF23030
 F0 "sheet5EF2302B" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 5150 3250 50 
-F3 "9v" I L 4250 3250 50 
-F4 "Gnd" I L 4250 3450 50 
+F2 "Out" I R 5750 3500 50 
+F3 "9v" I L 4850 3500 50 
+F4 "Gnd" I L 4850 3700 50 
 $EndSheet
 Wire Wire Line
-	3450 3050 3550 3050
+	4050 3300 4150 3300
 Wire Wire Line
-	3450 3250 3450 3050
+	4050 3500 4050 3300
 Wire Wire Line
-	3550 3250 3450 3250
+	4150 3500 4050 3500
 Wire Wire Line
-	4000 3250 4000 3050
+	4600 3500 4600 3300
 Wire Wire Line
-	3950 3250 4000 3250
+	4550 3500 4600 3500
 Wire Wire Line
-	3950 3050 4000 3050
+	4550 3300 4600 3300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S4
+L dk_Tactile-Switches:FSM4JSMATR S3
 U 1 1 5EF23045
-P 3750 3150
-AR Path="/5EF23045" Ref="S4"  Part="1" 
+P 4350 3400
+AR Path="/5EF23045" Ref="S3"  Part="1" 
 AR Path="/60F4E92A/5EF23045" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF23045" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF23045" Ref="S?"  Part="1" 
@@ -170,51 +159,51 @@ AR Path="/60F96187/5EF23045" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF23045" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF23045" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF23045" Ref="S?"  Part="1" 
-F 0 "S4" V 3750 3300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 3750 3350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 3350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 3450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 3950 3550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 3950 3650 60  0001 L CNN "MPN"
-F 6 "Switches" H 3950 3750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 3950 3850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 3950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 3950 4050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 3950 4150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 3950 4250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 3950 4350 60  0001 L CNN "Status"
-	1    3750 3150
+F 0 "S3" V 4350 3550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 4350 3600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 4550 3600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 3700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 4550 3800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 4550 3900 60  0001 L CNN "MPN"
+F 6 "Switches" H 4550 4000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 4550 4100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 4200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 4550 4300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 4550 4400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 4550 4500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 4550 4600 60  0001 L CNN "Status"
+	1    4350 3400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4000 3250 4250 3250
-Connection ~ 4000 3250
+	4600 3500 4850 3500
+Connection ~ 4600 3500
 $Sheet
-S 4250 4050 900  550 
+S 4850 4300 900  550 
 U 5EF259E1
 F0 "sheet5EF259DC" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 5150 4250 50 
-F3 "9v" I L 4250 4250 50 
-F4 "Gnd" I L 4250 4450 50 
+F2 "Out" I R 5750 4500 50 
+F3 "9v" I L 4850 4500 50 
+F4 "Gnd" I L 4850 4700 50 
 $EndSheet
 Wire Wire Line
-	3450 4050 3550 4050
+	4050 4300 4150 4300
 Wire Wire Line
-	3450 4250 3450 4050
+	4050 4500 4050 4300
 Wire Wire Line
-	3550 4250 3450 4250
+	4150 4500 4050 4500
 Wire Wire Line
-	4000 4250 4000 4050
+	4600 4500 4600 4300
 Wire Wire Line
-	3950 4250 4000 4250
+	4550 4500 4600 4500
 Wire Wire Line
-	3950 4050 4000 4050
+	4550 4300 4600 4300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S5
+L dk_Tactile-Switches:FSM4JSMATR S4
 U 1 1 5EF259F6
-P 3750 4150
-AR Path="/5EF259F6" Ref="S5"  Part="1" 
+P 4350 4400
+AR Path="/5EF259F6" Ref="S4"  Part="1" 
 AR Path="/60F4E92A/5EF259F6" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF259F6" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF259F6" Ref="S?"  Part="1" 
@@ -224,51 +213,51 @@ AR Path="/60F96187/5EF259F6" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF259F6" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF259F6" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF259F6" Ref="S?"  Part="1" 
-F 0 "S5" V 3750 4300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 3750 4350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 4350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 4450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 3950 4550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 3950 4650 60  0001 L CNN "MPN"
-F 6 "Switches" H 3950 4750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 3950 4850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 4950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 3950 5050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 3950 5150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 3950 5250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 3950 5350 60  0001 L CNN "Status"
-	1    3750 4150
+F 0 "S4" V 4350 4550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 4350 4600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 4550 4600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 4700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 4550 4800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 4550 4900 60  0001 L CNN "MPN"
+F 6 "Switches" H 4550 5000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 4550 5100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 5200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 4550 5300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 4550 5400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 4550 5500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 4550 5600 60  0001 L CNN "Status"
+	1    4350 4400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4000 4250 4250 4250
-Connection ~ 4000 4250
+	4600 4500 4850 4500
+Connection ~ 4600 4500
 $Sheet
-S 4250 5050 900  550 
+S 4850 5300 900  550 
 U 5EF27E4C
 F0 "sheet5EF27E47" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 5150 5250 50 
-F3 "9v" I L 4250 5250 50 
-F4 "Gnd" I L 4250 5450 50 
+F2 "Out" I R 5750 5500 50 
+F3 "9v" I L 4850 5500 50 
+F4 "Gnd" I L 4850 5700 50 
 $EndSheet
 Wire Wire Line
-	3450 5050 3550 5050
+	4050 5300 4150 5300
 Wire Wire Line
-	3450 5250 3450 5050
+	4050 5500 4050 5300
 Wire Wire Line
-	3550 5250 3450 5250
+	4150 5500 4050 5500
 Wire Wire Line
-	4000 5250 4000 5050
+	4600 5500 4600 5300
 Wire Wire Line
-	3950 5250 4000 5250
+	4550 5500 4600 5500
 Wire Wire Line
-	3950 5050 4000 5050
+	4550 5300 4600 5300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S6
+L dk_Tactile-Switches:FSM4JSMATR S5
 U 1 1 5EF27E61
-P 3750 5150
-AR Path="/5EF27E61" Ref="S6"  Part="1" 
+P 4350 5400
+AR Path="/5EF27E61" Ref="S5"  Part="1" 
 AR Path="/60F4E92A/5EF27E61" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5EF27E61" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5EF27E61" Ref="S?"  Part="1" 
@@ -278,447 +267,129 @@ AR Path="/60F96187/5EF27E61" Ref="S?"  Part="1"
 AR Path="/60F9685F/5EF27E61" Ref="S?"  Part="1" 
 AR Path="/60F96864/5EF27E61" Ref="S?"  Part="1" 
 AR Path="/60F96869/5EF27E61" Ref="S?"  Part="1" 
-F 0 "S6" V 3750 5300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 3750 5350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 5350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 5450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 3950 5550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 3950 5650 60  0001 L CNN "MPN"
-F 6 "Switches" H 3950 5750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 3950 5850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 5950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 3950 6050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 3950 6150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 3950 6250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 3950 6350 60  0001 L CNN "Status"
-	1    3750 5150
+F 0 "S5" V 4350 5550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 4350 5600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 4550 5600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 5700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 4550 5800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 4550 5900 60  0001 L CNN "MPN"
+F 6 "Switches" H 4550 6000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 4550 6100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 6200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 4550 6300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 4550 6400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 4550 6500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 4550 6600 60  0001 L CNN "Status"
+	1    4350 5400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4000 5250 4250 5250
-Connection ~ 4000 5250
+	4600 5500 4850 5500
+Connection ~ 4600 5500
 Wire Wire Line
-	3100 1050 3100 2050
+	3700 1300 3700 1600
 Wire Wire Line
-	3100 2050 3450 2050
-Connection ~ 3450 2050
+	3700 2300 4050 2300
+Connection ~ 4050 2300
 Wire Wire Line
-	3100 3050 3450 3050
-Connection ~ 3100 2050
-Connection ~ 3450 3050
+	3700 3300 4050 3300
+Connection ~ 3700 2300
+Connection ~ 4050 3300
 Wire Wire Line
-	3100 3050 3100 4050
+	3700 3300 3700 4300
 Wire Wire Line
-	3100 4050 3450 4050
-Connection ~ 3100 3050
-Connection ~ 3450 4050
+	3700 4300 4050 4300
+Connection ~ 3700 3300
+Connection ~ 4050 4300
 Wire Wire Line
-	3100 4050 3100 5050
+	3700 4300 3700 5300
 Wire Wire Line
-	3100 5050 3450 5050
-Connection ~ 3100 4050
-Connection ~ 3450 5050
+	3700 5300 4050 5300
+Connection ~ 3700 4300
+Connection ~ 4050 5300
 Wire Wire Line
-	4250 1450 3250 1450
+	4850 1700 3850 1700
 Wire Wire Line
-	3250 1450 3250 2450
+	3850 1700 3850 2700
 Wire Wire Line
-	4250 2450 3250 2450
-Connection ~ 3250 2450
+	4850 2700 3850 2700
+Connection ~ 3850 2700
 Wire Wire Line
-	3250 2450 3250 3450
+	3850 2700 3850 3700
 Wire Wire Line
-	4250 3450 3250 3450
-Connection ~ 3250 3450
+	4850 3700 3850 3700
+Connection ~ 3850 3700
 Wire Wire Line
-	3250 3450 3250 4450
+	3850 3700 3850 4700
 Wire Wire Line
-	4250 4450 3250 4450
-Connection ~ 3250 4450
+	4850 4700 3850 4700
+Connection ~ 3850 4700
 Wire Wire Line
-	3250 4450 3250 5450
+	3850 4700 3850 5700
 Wire Wire Line
-	4250 5450 3250 5450
-$Comp
-L Device:LED D1
-U 1 1 5F0644B0
-P 2550 3900
-F 0 "D1" V 2589 3782 50  0000 R CNN
-F 1 "LED" V 2498 3782 50  0000 R CNN
-F 2 "LED_THT:LED_D5.0mm" H 2550 3900 50  0001 C CNN
-F 3 "~" H 2550 3900 50  0001 C CNN
-	1    2550 3900
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:R R1
-U 1 1 5F0694ED
-P 2550 3400
-AR Path="/5F0694ED" Ref="R1"  Part="1" 
-AR Path="/60F4E92A/5F0694ED" Ref="R?"  Part="1" 
-AR Path="/60F9596F/5F0694ED" Ref="R?"  Part="1" 
-AR Path="/60F95BBA/5F0694ED" Ref="R?"  Part="1" 
-AR Path="/60F95BBF/5F0694ED" Ref="R?"  Part="1" 
-AR Path="/60F96182/5F0694ED" Ref="R?"  Part="1" 
-AR Path="/60F96187/5F0694ED" Ref="R?"  Part="1" 
-AR Path="/60F9685F/5F0694ED" Ref="R?"  Part="1" 
-AR Path="/60F96864/5F0694ED" Ref="R?"  Part="1" 
-AR Path="/60F96869/5F0694ED" Ref="R?"  Part="1" 
-F 0 "R1" H 2650 3450 50  0000 L CNN
-F 1 "330" H 2650 3350 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" V 2480 3400 50  0001 C CNN
-F 3 "~" H 2550 3400 50  0001 C CNN
-	1    2550 3400
-	1    0    0    -1  
-$EndComp
+	4850 5700 3850 5700
 Wire Wire Line
-	2550 3550 2550 3750
+	6050 1500 6050 2500
 Wire Wire Line
-	1200 4800 2550 4800
+	5750 1500 6050 1500
 Wire Wire Line
-	2550 4050 2550 4800
-$Comp
-L Device:R_POT_TRIM_US RV1
-U 1 1 5F169489
-P 9500 3500
-AR Path="/5F169489" Ref="RV1"  Part="1" 
-AR Path="/60F4E92A/5F169489" Ref="RV?"  Part="1" 
-AR Path="/60F9596F/5F169489" Ref="RV?"  Part="1" 
-AR Path="/60F95BBA/5F169489" Ref="RV?"  Part="1" 
-AR Path="/60F95BBF/5F169489" Ref="RV?"  Part="1" 
-AR Path="/60F96182/5F169489" Ref="RV?"  Part="1" 
-AR Path="/60F96187/5F169489" Ref="RV?"  Part="1" 
-AR Path="/60F9685F/5F169489" Ref="RV?"  Part="1" 
-AR Path="/60F96864/5F169489" Ref="RV?"  Part="1" 
-AR Path="/60F96869/5F169489" Ref="RV?"  Part="1" 
-AR Path="/5EF17819/5F169489" Ref="RV?"  Part="1" 
-AR Path="/5EF23030/5F169489" Ref="RV?"  Part="1" 
-AR Path="/5EF259E1/5F169489" Ref="RV?"  Part="1" 
-AR Path="/5EF27E4C/5F169489" Ref="RV?"  Part="1" 
-AR Path="/5EF2B213/5F169489" Ref="RV?"  Part="1" 
-AR Path="/5EF6055A/5F169489" Ref="RV?"  Part="1" 
-AR Path="/5EF6057F/5F169489" Ref="RV?"  Part="1" 
-AR Path="/5EF605A2/5F169489" Ref="RV?"  Part="1" 
-AR Path="/5EF605C5/5F169489" Ref="RV?"  Part="1" 
-AR Path="/5EF605E8/5F169489" Ref="RV?"  Part="1" 
-AR Path="/5EF6060B/5F169489" Ref="RV?"  Part="1" 
-AR Path="/5EF7A07F/5F169489" Ref="RV?"  Part="1" 
-F 0 "RV1" V 9400 3600 50  0000 R CNN
-F 1 "R_POT_TRIM_US" H 9432 3455 50  0001 R CNN
-F 2 "Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical" H 9500 3500 50  0001 C CNN
-F 3 "~" H 9500 3500 50  0001 C CNN
-	1    9500 3500
-	1    0    0    1   
-$EndComp
+	5750 2500 6050 2500
+Connection ~ 6050 2500
 Wire Wire Line
-	9500 4450 9850 4450
-$Comp
-L Device:R R2
-U 1 1 5F3FF342
-P 9850 3850
-AR Path="/5F3FF342" Ref="R2"  Part="1" 
-AR Path="/60F4E92A/5F3FF342" Ref="R?"  Part="1" 
-AR Path="/60F9596F/5F3FF342" Ref="R?"  Part="1" 
-AR Path="/60F95BBA/5F3FF342" Ref="R?"  Part="1" 
-AR Path="/60F95BBF/5F3FF342" Ref="R?"  Part="1" 
-AR Path="/60F96182/5F3FF342" Ref="R?"  Part="1" 
-AR Path="/60F96187/5F3FF342" Ref="R?"  Part="1" 
-AR Path="/60F9685F/5F3FF342" Ref="R?"  Part="1" 
-AR Path="/60F96864/5F3FF342" Ref="R?"  Part="1" 
-AR Path="/60F96869/5F3FF342" Ref="R?"  Part="1" 
-F 0 "R2" H 9600 3900 50  0000 L CNN
-F 1 "100" H 9600 3800 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 9780 3850 50  0001 C CNN
-F 3 "~" H 9850 3850 50  0001 C CNN
-	1    9850 3850
-	1    0    0    -1  
-$EndComp
+	6050 2500 6050 3500
 Wire Wire Line
-	9850 3500 9850 3700
+	5750 3500 6050 3500
+Connection ~ 6050 3500
 Wire Wire Line
-	9850 4000 9850 4450
-Connection ~ 9850 4450
+	6050 3500 6050 4500
 Wire Wire Line
-	9500 2900 9500 3350
+	5750 4500 6050 4500
+Connection ~ 6050 4500
 Wire Wire Line
-	9650 3500 9850 3500
+	5750 5500 6050 5500
 Wire Wire Line
-	9500 3650 9500 4450
-Text Notes 9100 2800 0    50   ~ 0
-TODO: extra resistor here to “fix”\nfrequency shift from vol change?
-Text Notes 9600 4750 0    50   ~ 0
-Optional “fake log” resistor\nhttps://sound-au.com/project01.htm
-Wire Wire Line
-	5450 1250 5450 2250
-Wire Wire Line
-	5150 1250 5450 1250
-Wire Wire Line
-	5150 2250 5450 2250
-Connection ~ 5450 2250
-Wire Wire Line
-	5450 2250 5450 3250
-Wire Wire Line
-	5150 3250 5450 3250
-Connection ~ 5450 3250
-Wire Wire Line
-	5450 3250 5450 4250
-Wire Wire Line
-	5150 4250 5450 4250
-Connection ~ 5450 4250
-Wire Wire Line
-	5150 5250 5450 5250
-Wire Wire Line
-	5450 4250 5450 5250
-Text Notes 9700 3150 0    50   ~ 0
-TODO: reverse vol pot if\nnot using right trimwheel
-$Comp
-L Amplifier_Audio:LM386 U1
-U 1 1 5F0FEF81
-P 11350 3400
-F 0 "U1" H 10900 3800 50  0000 L CNN
-F 1 "LM386" H 10900 3700 50  0000 L CNN
-F 2 "Package_DIP:DIP-8_W7.62mm" H 11450 3500 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/lm386.pdf" H 11550 3600 50  0001 C CNN
-	1    11350 3400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9850 3500 11050 3500
-Connection ~ 9850 3500
-$Comp
-L Device:C C2
-U 1 1 5F234E50
-P 12400 4200
-AR Path="/5F234E50" Ref="C2"  Part="1" 
-AR Path="/60F4E92A/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F9596F/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F95BBA/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F95BBF/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F96182/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F96187/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F9685F/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F96864/5F234E50" Ref="C?"  Part="1" 
-AR Path="/60F96869/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF17819/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF23030/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF259E1/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF27E4C/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF2B213/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF6055A/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF6057F/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF605A2/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF605C5/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF605E8/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF6060B/5F234E50" Ref="C?"  Part="1" 
-AR Path="/5EF7A07F/5F234E50" Ref="C?"  Part="1" 
-F 0 "C2" H 12600 4300 50  0000 L CNN
-F 1 "47nF" H 12550 4200 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 12438 4050 50  0001 C CNN
-F 3 "~" H 12400 4200 50  0001 C CNN
-	1    12400 4200
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:R R3
-U 1 1 5F2BD566
-P 12400 3650
-AR Path="/5F2BD566" Ref="R3"  Part="1" 
-AR Path="/60F4E92A/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F9596F/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F95BBA/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F95BBF/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F96182/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F96187/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F9685F/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F96864/5F2BD566" Ref="R?"  Part="1" 
-AR Path="/60F96869/5F2BD566" Ref="R?"  Part="1" 
-F 0 "R3" H 12150 3700 50  0000 L CNN
-F 1 "10" H 12150 3600 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" V 12330 3650 50  0001 C CNN
-F 3 "~" H 12400 3650 50  0001 C CNN
-	1    12400 3650
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	11650 3400 12400 3400
-Wire Wire Line
-	12400 3400 12400 3500
-$Comp
-L Device:CP1 C3
-U 1 1 5F321372
-P 12750 3400
-F 0 "C3" V 13002 3400 50  0000 C CNN
-F 1 "220uF" V 12911 3400 50  0000 C CNN
-F 2 "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm" H 12750 3400 50  0001 C CNN
-F 3 "~" H 12750 3400 50  0001 C CNN
-	1    12750 3400
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	12400 3400 12600 3400
-Connection ~ 12400 3400
-Wire Wire Line
-	12900 3400 13200 3400
-Wire Wire Line
-	13200 3500 13100 3500
-Wire Wire Line
-	12400 4350 12400 4450
-Connection ~ 12400 4450
-Wire Wire Line
-	12400 4450 13100 4450
-$Comp
-L Device:Speaker LS1
-U 1 1 5F32F818
-P 13400 3400
-F 0 "LS1" H 13570 3396 50  0000 L CNN
-F 1 "Speaker" H 13570 3305 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 13400 3200 50  0001 C CNN
-F 3 "~" H 13390 3350 50  0001 C CNN
-	1    13400 3400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	13100 3500 13100 4450
-Wire Wire Line
-	11250 700  11250 3100
-Wire Wire Line
-	11750 4450 12400 4450
-Connection ~ 11750 4450
-Wire Wire Line
-	11750 4350 11750 4450
-$Comp
-L Device:C C1
-U 1 1 5F18156C
-P 11750 4200
-AR Path="/5F18156C" Ref="C1"  Part="1" 
-AR Path="/60F4E92A/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F9596F/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F95BBA/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F95BBF/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F96182/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F96187/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F9685F/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F96864/5F18156C" Ref="C?"  Part="1" 
-AR Path="/60F96869/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF17819/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF23030/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF259E1/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF27E4C/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF2B213/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF6055A/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF6057F/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF605A2/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF605C5/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF605E8/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF6060B/5F18156C" Ref="C?"  Part="1" 
-AR Path="/5EF7A07F/5F18156C" Ref="C?"  Part="1" 
-F 0 "C1" H 11500 4150 50  0000 L CNN
-F 1 ".1uF" H 11450 4250 50  0000 L CNN
-F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 11788 4050 50  0001 C CNN
-F 3 "~" H 11750 4200 50  0001 C CNN
-	1    11750 4200
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	11050 3300 10950 3300
-Wire Wire Line
-	10950 3300 10950 4450
-Wire Wire Line
-	9850 4450 10950 4450
-Connection ~ 10950 4450
-Wire Wire Line
-	11350 3100 11350 3000
-Wire Wire Line
-	11350 3000 11750 3000
-Wire Wire Line
-	11750 3000 11750 4050
-NoConn ~ 11350 3700
-NoConn ~ 11450 3700
-Wire Wire Line
-	12400 3800 12400 4050
-Wire Wire Line
-	2200 2500 2550 2500
-NoConn ~ 2200 2700
-Wire Wire Line
-	1800 2600 1200 2600
-$Comp
-L dk_Slide-Switches:EG1218 S1
-U 1 1 5F3DD481
-P 2000 2600
-F 0 "S1" H 2000 2881 50  0000 C CNN
-F 1 "EG1218" H 2000 2790 50  0000 C CNN
-F 2 "Button_Switch_THT:SW_Slide_1P2T_CK_OS102011MS2Q" H 2200 2800 50  0001 L CNN
-F 3 "http://spec_sheets.e-switch.com/specs/P040040.pdf" H 2200 2900 60  0001 L CNN
-F 4 "EG1903-ND" H 2200 3000 60  0001 L CNN "Digi-Key_PN"
-F 5 "EG1218" H 2200 3100 60  0001 L CNN "MPN"
-F 6 "Switches" H 2200 3200 60  0001 L CNN "Category"
-F 7 "Slide Switches" H 2200 3300 60  0001 L CNN "Family"
-F 8 "http://spec_sheets.e-switch.com/specs/P040040.pdf" H 2200 3400 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/e-switch/EG1218/EG1903-ND/101726" H 2200 3500 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH SLIDE SPDT 200MA 30V" H 2200 3600 60  0001 L CNN "Description"
-F 11 "E-Switch" H 2200 3700 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 2200 3800 60  0001 L CNN "Status"
-	1    2000 2600
-	1    0    0    -1  
-$EndComp
+	6050 4500 6050 5500
 $Comp
 L power:PWR_FLAG #FLG?
 U 1 1 5F9428F6
-P 1300 1400
-F 0 "#FLG?" H 1300 1475 50  0001 C CNN
-F 1 "PWR_FLAG" H 1300 1573 50  0000 C CNN
-F 2 "" H 1300 1400 50  0001 C CNN
-F 3 "~" H 1300 1400 50  0001 C CNN
-	1    1300 1400
+P 850 950
+F 0 "#FLG?" H 850 1025 50  0001 C CNN
+F 1 "PWR_FLAG" H 850 1123 50  0000 C CNN
+F 2 "" H 850 950 50  0001 C CNN
+F 3 "~" H 850 950 50  0001 C CNN
+	1    850  950 
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1300 1400 1300 2050
+	850  950  850  1600
 Wire Wire Line
-	1200 2600 1200 3850
-Wire Wire Line
-	1200 4250 1200 4800
-$Comp
-L power:GND #PWR?
-U 1 1 5F9C6B7D
-P 13100 4650
-F 0 "#PWR?" H 13100 4400 50  0001 C CNN
-F 1 "GND" H 13105 4477 50  0000 C CNN
-F 2 "" H 13100 4650 50  0001 C CNN
-F 3 "" H 13100 4650 50  0001 C CNN
-	1    13100 4650
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	13100 4650 13100 4450
-Wire Wire Line
-	3100 700  5900 700 
+	3700 950  6500 950 
 $Sheet
-S 4250 6050 900  550 
+S 4850 6300 900  550 
 U 5F7AB892
 F0 "sheet5F7AB889" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 5150 6250 50 
-F3 "9v" I L 4250 6250 50 
-F4 "Gnd" I L 4250 6450 50 
+F2 "Out" I R 5750 6500 50 
+F3 "9v" I L 4850 6500 50 
+F4 "Gnd" I L 4850 6700 50 
 $EndSheet
 Wire Wire Line
-	3450 6050 3550 6050
+	4050 6300 4150 6300
 Wire Wire Line
-	3450 6250 3450 6050
+	4050 6500 4050 6300
 Wire Wire Line
-	3550 6250 3450 6250
+	4150 6500 4050 6500
 Wire Wire Line
-	4000 6250 4000 6050
+	4600 6500 4600 6300
 Wire Wire Line
-	3950 6250 4000 6250
+	4550 6500 4600 6500
 Wire Wire Line
-	3950 6050 4000 6050
+	4550 6300 4600 6300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S7
+L dk_Tactile-Switches:FSM4JSMATR S6
 U 1 1 5F7AB8A7
-P 3750 6150
-AR Path="/5F7AB8A7" Ref="S7"  Part="1" 
+P 4350 6400
+AR Path="/5F7AB8A7" Ref="S6"  Part="1" 
 AR Path="/60F4E92A/5F7AB8A7" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F7AB8A7" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F7AB8A7" Ref="S?"  Part="1" 
@@ -728,54 +399,54 @@ AR Path="/60F96187/5F7AB8A7" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F7AB8A7" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F7AB8A7" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F7AB8A7" Ref="S?"  Part="1" 
-F 0 "S7" V 3750 6300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 3750 6350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 6350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 6450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 3950 6550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 3950 6650 60  0001 L CNN "MPN"
-F 6 "Switches" H 3950 6750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 3950 6850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 6950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 3950 7050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 3950 7150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 3950 7250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 3950 7350 60  0001 L CNN "Status"
-	1    3750 6150
+F 0 "S6" V 4350 6550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 4350 6600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 4550 6600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 6700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 4550 6800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 4550 6900 60  0001 L CNN "MPN"
+F 6 "Switches" H 4550 7000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 4550 7100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 7200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 4550 7300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 4550 7400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 4550 7500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 4550 7600 60  0001 L CNN "Status"
+	1    4350 6400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3450 6050 3100 6050
-Connection ~ 3450 6050
+	4050 6300 3700 6300
+Connection ~ 4050 6300
 Wire Wire Line
-	4000 6250 4250 6250
-Connection ~ 4000 6250
+	4600 6500 4850 6500
+Connection ~ 4600 6500
 $Sheet
-S 4250 7050 900  550 
+S 4850 7300 900  550 
 U 5F7AB8B0
 F0 "sheet5F7AB88A" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 5150 7250 50 
-F3 "9v" I L 4250 7250 50 
-F4 "Gnd" I L 4250 7450 50 
+F2 "Out" I R 5750 7500 50 
+F3 "9v" I L 4850 7500 50 
+F4 "Gnd" I L 4850 7700 50 
 $EndSheet
 Wire Wire Line
-	3450 7050 3550 7050
+	4050 7300 4150 7300
 Wire Wire Line
-	3450 7250 3450 7050
+	4050 7500 4050 7300
 Wire Wire Line
-	3550 7250 3450 7250
+	4150 7500 4050 7500
 Wire Wire Line
-	4000 7250 4000 7050
+	4600 7500 4600 7300
 Wire Wire Line
-	3950 7250 4000 7250
+	4550 7500 4600 7500
 Wire Wire Line
-	3950 7050 4000 7050
+	4550 7300 4600 7300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S8
+L dk_Tactile-Switches:FSM4JSMATR S7
 U 1 1 5F7AB8C5
-P 3750 7150
-AR Path="/5F7AB8C5" Ref="S8"  Part="1" 
+P 4350 7400
+AR Path="/5F7AB8C5" Ref="S7"  Part="1" 
 AR Path="/60F4E92A/5F7AB8C5" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F7AB8C5" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F7AB8C5" Ref="S?"  Part="1" 
@@ -785,51 +456,51 @@ AR Path="/60F96187/5F7AB8C5" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F7AB8C5" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F7AB8C5" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F7AB8C5" Ref="S?"  Part="1" 
-F 0 "S8" V 3750 7300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 3750 7350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 7350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 7450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 3950 7550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 3950 7650 60  0001 L CNN "MPN"
-F 6 "Switches" H 3950 7750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 3950 7850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 7950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 3950 8050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 3950 8150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 3950 8250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 3950 8350 60  0001 L CNN "Status"
-	1    3750 7150
+F 0 "S7" V 4350 7550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 4350 7600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 4550 7600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 7700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 4550 7800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 4550 7900 60  0001 L CNN "MPN"
+F 6 "Switches" H 4550 8000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 4550 8100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 8200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 4550 8300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 4550 8400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 4550 8500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 4550 8600 60  0001 L CNN "Status"
+	1    4350 7400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4000 7250 4250 7250
-Connection ~ 4000 7250
+	4600 7500 4850 7500
+Connection ~ 4600 7500
 $Sheet
-S 4250 8050 900  550 
+S 4850 8300 900  550 
 U 5F7AB8CC
 F0 "sheet5F7AB88B" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 5150 8250 50 
-F3 "9v" I L 4250 8250 50 
-F4 "Gnd" I L 4250 8450 50 
+F2 "Out" I R 5750 8500 50 
+F3 "9v" I L 4850 8500 50 
+F4 "Gnd" I L 4850 8700 50 
 $EndSheet
 Wire Wire Line
-	3450 8050 3550 8050
+	4050 8300 4150 8300
 Wire Wire Line
-	3450 8250 3450 8050
+	4050 8500 4050 8300
 Wire Wire Line
-	3550 8250 3450 8250
+	4150 8500 4050 8500
 Wire Wire Line
-	4000 8250 4000 8050
+	4600 8500 4600 8300
 Wire Wire Line
-	3950 8250 4000 8250
+	4550 8500 4600 8500
 Wire Wire Line
-	3950 8050 4000 8050
+	4550 8300 4600 8300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S9
+L dk_Tactile-Switches:FSM4JSMATR S8
 U 1 1 5F7AB8E1
-P 3750 8150
-AR Path="/5F7AB8E1" Ref="S9"  Part="1" 
+P 4350 8400
+AR Path="/5F7AB8E1" Ref="S8"  Part="1" 
 AR Path="/60F4E92A/5F7AB8E1" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F7AB8E1" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F7AB8E1" Ref="S?"  Part="1" 
@@ -839,51 +510,51 @@ AR Path="/60F96187/5F7AB8E1" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F7AB8E1" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F7AB8E1" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F7AB8E1" Ref="S?"  Part="1" 
-F 0 "S9" V 3750 8300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 3750 8350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 8350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 8450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 3950 8550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 3950 8650 60  0001 L CNN "MPN"
-F 6 "Switches" H 3950 8750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 3950 8850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 8950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 3950 9050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 3950 9150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 3950 9250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 3950 9350 60  0001 L CNN "Status"
-	1    3750 8150
+F 0 "S8" V 4350 8550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 4350 8600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 4550 8600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 8700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 4550 8800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 4550 8900 60  0001 L CNN "MPN"
+F 6 "Switches" H 4550 9000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 4550 9100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 9200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 4550 9300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 4550 9400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 4550 9500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 4550 9600 60  0001 L CNN "Status"
+	1    4350 8400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4000 8250 4250 8250
-Connection ~ 4000 8250
+	4600 8500 4850 8500
+Connection ~ 4600 8500
 $Sheet
-S 4250 9050 900  550 
+S 4850 9300 900  550 
 U 5F7AB8E8
 F0 "sheet5F7AB88C" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 5150 9250 50 
-F3 "9v" I L 4250 9250 50 
-F4 "Gnd" I L 4250 9450 50 
+F2 "Out" I R 5750 9500 50 
+F3 "9v" I L 4850 9500 50 
+F4 "Gnd" I L 4850 9700 50 
 $EndSheet
 Wire Wire Line
-	3450 9050 3550 9050
+	4050 9300 4150 9300
 Wire Wire Line
-	3450 9250 3450 9050
+	4050 9500 4050 9300
 Wire Wire Line
-	3550 9250 3450 9250
+	4150 9500 4050 9500
 Wire Wire Line
-	4000 9250 4000 9050
+	4600 9500 4600 9300
 Wire Wire Line
-	3950 9250 4000 9250
+	4550 9500 4600 9500
 Wire Wire Line
-	3950 9050 4000 9050
+	4550 9300 4600 9300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S10
+L dk_Tactile-Switches:FSM4JSMATR S9
 U 1 1 5F7AB8FD
-P 3750 9150
-AR Path="/5F7AB8FD" Ref="S10"  Part="1" 
+P 4350 9400
+AR Path="/5F7AB8FD" Ref="S9"  Part="1" 
 AR Path="/60F4E92A/5F7AB8FD" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F7AB8FD" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F7AB8FD" Ref="S?"  Part="1" 
@@ -893,51 +564,51 @@ AR Path="/60F96187/5F7AB8FD" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F7AB8FD" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F7AB8FD" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F7AB8FD" Ref="S?"  Part="1" 
-F 0 "S10" V 3750 9300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 3750 9350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 9350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 9450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 3950 9550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 3950 9650 60  0001 L CNN "MPN"
-F 6 "Switches" H 3950 9750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 3950 9850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 9950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 3950 10050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 3950 10150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 3950 10250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 3950 10350 60  0001 L CNN "Status"
-	1    3750 9150
+F 0 "S9" V 4350 9550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 4350 9600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 4550 9600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 9700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 4550 9800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 4550 9900 60  0001 L CNN "MPN"
+F 6 "Switches" H 4550 10000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 4550 10100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 10200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 4550 10300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 4550 10400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 4550 10500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 4550 10600 60  0001 L CNN "Status"
+	1    4350 9400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4000 9250 4250 9250
-Connection ~ 4000 9250
+	4600 9500 4850 9500
+Connection ~ 4600 9500
 $Sheet
-S 4250 10050 900  550 
+S 4850 10300 900  550 
 U 5F7AB904
 F0 "sheet5F7AB88D" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 5150 10250 50 
-F3 "9v" I L 4250 10250 50 
-F4 "Gnd" I L 4250 10450 50 
+F2 "Out" I R 5750 10500 50 
+F3 "9v" I L 4850 10500 50 
+F4 "Gnd" I L 4850 10700 50 
 $EndSheet
 Wire Wire Line
-	3450 10050 3550 10050
+	4050 10300 4150 10300
 Wire Wire Line
-	3450 10250 3450 10050
+	4050 10500 4050 10300
 Wire Wire Line
-	3550 10250 3450 10250
+	4150 10500 4050 10500
 Wire Wire Line
-	4000 10250 4000 10050
+	4600 10500 4600 10300
 Wire Wire Line
-	3950 10250 4000 10250
+	4550 10500 4600 10500
 Wire Wire Line
-	3950 10050 4000 10050
+	4550 10300 4600 10300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S11
+L dk_Tactile-Switches:FSM4JSMATR S10
 U 1 1 5F7AB919
-P 3750 10150
-AR Path="/5F7AB919" Ref="S11"  Part="1" 
+P 4350 10400
+AR Path="/5F7AB919" Ref="S10"  Part="1" 
 AR Path="/60F4E92A/5F7AB919" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F7AB919" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F7AB919" Ref="S?"  Part="1" 
@@ -947,132 +618,128 @@ AR Path="/60F96187/5F7AB919" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F7AB919" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F7AB919" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F7AB919" Ref="S?"  Part="1" 
-F 0 "S11" V 3750 10300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 3750 10350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 3950 10350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 10450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 3950 10550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 3950 10650 60  0001 L CNN "MPN"
-F 6 "Switches" H 3950 10750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 3950 10850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 3950 10950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 3950 11050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 3950 11150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 3950 11250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 3950 11350 60  0001 L CNN "Status"
-	1    3750 10150
+F 0 "S10" V 4350 10550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 4350 10600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 4550 10600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 10700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 4550 10800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 4550 10900 60  0001 L CNN "MPN"
+F 6 "Switches" H 4550 11000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 4550 11100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 4550 11200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 4550 11300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 4550 11400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 4550 11500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 4550 11600 60  0001 L CNN "Status"
+	1    4350 10400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4000 10250 4250 10250
-Connection ~ 4000 10250
+	4600 10500 4850 10500
+Connection ~ 4600 10500
 Wire Wire Line
-	3100 7050 3450 7050
-Connection ~ 3450 7050
+	3700 7300 4050 7300
+Connection ~ 4050 7300
 Wire Wire Line
-	3100 8050 3450 8050
-Connection ~ 3450 8050
+	3700 8300 4050 8300
+Connection ~ 4050 8300
 Wire Wire Line
-	3100 9050 3450 9050
-Connection ~ 3450 9050
+	3700 9300 4050 9300
+Connection ~ 4050 9300
 Wire Wire Line
-	3100 10050 3450 10050
-Connection ~ 3450 10050
+	3700 10300 4050 10300
+Connection ~ 4050 10300
 Wire Wire Line
-	4250 6450 3250 6450
+	4850 6700 3850 6700
 Wire Wire Line
-	3250 6450 3250 7450
+	3850 6700 3850 7700
 Wire Wire Line
-	4250 7450 3250 7450
-Connection ~ 3250 7450
+	4850 7700 3850 7700
+Connection ~ 3850 7700
 Wire Wire Line
-	3250 7450 3250 8450
+	3850 7700 3850 8700
 Wire Wire Line
-	4250 8450 3250 8450
-Connection ~ 3250 8450
+	4850 8700 3850 8700
+Connection ~ 3850 8700
 Wire Wire Line
-	3250 8450 3250 9450
+	3850 8700 3850 9700
 Wire Wire Line
-	4250 9450 3250 9450
-Connection ~ 3250 9450
+	4850 9700 3850 9700
+Connection ~ 3850 9700
 Wire Wire Line
-	3250 9450 3250 10450
+	3850 9700 3850 10700
 Wire Wire Line
-	4250 10450 3250 10450
+	4850 10700 3850 10700
 Wire Wire Line
-	5450 6250 5450 7250
+	6050 6500 6050 7500
 Wire Wire Line
-	5150 6250 5450 6250
+	5750 6500 6050 6500
 Wire Wire Line
-	5150 7250 5450 7250
-Connection ~ 5450 7250
+	5750 7500 6050 7500
+Connection ~ 6050 7500
 Wire Wire Line
-	5450 7250 5450 8250
+	6050 7500 6050 8500
 Wire Wire Line
-	5150 8250 5450 8250
-Connection ~ 5450 8250
+	5750 8500 6050 8500
+Connection ~ 6050 8500
 Wire Wire Line
-	5450 8250 5450 9250
+	6050 8500 6050 9500
 Wire Wire Line
-	5150 9250 5450 9250
-Connection ~ 5450 9250
+	5750 9500 6050 9500
+Connection ~ 6050 9500
 Wire Wire Line
-	5150 10250 5450 10250
+	5750 10500 6050 10500
 Wire Wire Line
-	5450 9250 5450 10250
+	6050 9500 6050 10500
 Wire Wire Line
-	3100 5050 3100 6050
-Connection ~ 3100 5050
+	3700 5300 3700 6300
+Connection ~ 3700 5300
 Wire Wire Line
-	3100 6050 3100 7050
-Connection ~ 3100 6050
+	3700 6300 3700 7300
+Connection ~ 3700 6300
 Wire Wire Line
-	3100 7050 3100 8050
-Connection ~ 3100 7050
+	3700 7300 3700 8300
+Connection ~ 3700 7300
 Wire Wire Line
-	3100 8050 3100 9050
-Connection ~ 3100 8050
+	3700 8300 3700 9300
+Connection ~ 3700 8300
 Wire Wire Line
-	3100 9050 3100 10050
-Connection ~ 3100 9050
+	3700 9300 3700 10300
+Connection ~ 3700 9300
 Wire Wire Line
-	3250 5450 3250 6450
-Connection ~ 3250 5450
-Connection ~ 3250 6450
+	3850 5700 3850 6700
+Connection ~ 3850 5700
+Connection ~ 3850 6700
 Wire Wire Line
-	5450 5250 5450 6250
-Connection ~ 5450 5250
-Connection ~ 5450 6250
-Wire Wire Line
-	2550 2500 2550 3250
-Wire Wire Line
-	3100 2050 3100 2500
+	6050 5500 6050 6500
+Connection ~ 6050 5500
+Connection ~ 6050 6500
 $Sheet
-S 7050 1050 900  550 
+S 7650 1300 900  550 
 U 5F842B3B
 F0 "sheet5F842B2D" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 7950 1250 50 
-F3 "9v" I L 7050 1250 50 
-F4 "Gnd" I L 7050 1450 50 
+F2 "Out" I R 8550 1500 50 
+F3 "9v" I L 7650 1500 50 
+F4 "Gnd" I L 7650 1700 50 
 $EndSheet
 Wire Wire Line
-	6250 1050 6350 1050
+	6850 1300 6950 1300
 Wire Wire Line
-	6250 1250 6250 1050
+	6850 1500 6850 1300
 Wire Wire Line
-	6350 1250 6250 1250
+	6950 1500 6850 1500
 Wire Wire Line
-	6800 1250 6800 1050
+	7400 1500 7400 1300
 Wire Wire Line
-	6750 1250 6800 1250
+	7350 1500 7400 1500
 Wire Wire Line
-	6750 1050 6800 1050
+	7350 1300 7400 1300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S12
+L dk_Tactile-Switches:FSM4JSMATR S11
 U 1 1 5F842B50
-P 6550 1150
-AR Path="/5F842B50" Ref="S12"  Part="1" 
+P 7150 1400
+AR Path="/5F842B50" Ref="S11"  Part="1" 
 AR Path="/60F4E92A/5F842B50" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F842B50" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F842B50" Ref="S?"  Part="1" 
@@ -1082,54 +749,54 @@ AR Path="/60F96187/5F842B50" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F842B50" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F842B50" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F842B50" Ref="S?"  Part="1" 
-F 0 "S12" V 6550 1300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 6550 1350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6750 1350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 1450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 6750 1550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 6750 1650 60  0001 L CNN "MPN"
-F 6 "Switches" H 6750 1750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 6750 1850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 1950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 6750 2050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 6750 2150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 6750 2250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 6750 2350 60  0001 L CNN "Status"
-	1    6550 1150
+F 0 "S11" V 7150 1550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 7150 1600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 7350 1600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 1700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 7350 1800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 7350 1900 60  0001 L CNN "MPN"
+F 6 "Switches" H 7350 2000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 7350 2100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 2200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 7350 2300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 7350 2400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 7350 2500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 7350 2600 60  0001 L CNN "Status"
+	1    7150 1400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6250 1050 5900 1050
-Connection ~ 6250 1050
+	6850 1300 6500 1300
+Connection ~ 6850 1300
 Wire Wire Line
-	6800 1250 7050 1250
-Connection ~ 6800 1250
+	7400 1500 7650 1500
+Connection ~ 7400 1500
 $Sheet
-S 7050 2050 900  550 
+S 7650 2300 900  550 
 U 5F842B59
 F0 "sheet5F842B2E" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 7950 2250 50 
-F3 "9v" I L 7050 2250 50 
-F4 "Gnd" I L 7050 2450 50 
+F2 "Out" I R 8550 2500 50 
+F3 "9v" I L 7650 2500 50 
+F4 "Gnd" I L 7650 2700 50 
 $EndSheet
 Wire Wire Line
-	6250 2050 6350 2050
+	6850 2300 6950 2300
 Wire Wire Line
-	6250 2250 6250 2050
+	6850 2500 6850 2300
 Wire Wire Line
-	6350 2250 6250 2250
+	6950 2500 6850 2500
 Wire Wire Line
-	6800 2250 6800 2050
+	7400 2500 7400 2300
 Wire Wire Line
-	6750 2250 6800 2250
+	7350 2500 7400 2500
 Wire Wire Line
-	6750 2050 6800 2050
+	7350 2300 7400 2300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S13
+L dk_Tactile-Switches:FSM4JSMATR S12
 U 1 1 5F842B6E
-P 6550 2150
-AR Path="/5F842B6E" Ref="S13"  Part="1" 
+P 7150 2400
+AR Path="/5F842B6E" Ref="S12"  Part="1" 
 AR Path="/60F4E92A/5F842B6E" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F842B6E" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F842B6E" Ref="S?"  Part="1" 
@@ -1139,51 +806,51 @@ AR Path="/60F96187/5F842B6E" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F842B6E" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F842B6E" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F842B6E" Ref="S?"  Part="1" 
-F 0 "S13" V 6550 2300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 6550 2350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6750 2350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 2450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 6750 2550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 6750 2650 60  0001 L CNN "MPN"
-F 6 "Switches" H 6750 2750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 6750 2850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 2950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 6750 3050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 6750 3150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 6750 3250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 6750 3350 60  0001 L CNN "Status"
-	1    6550 2150
+F 0 "S12" V 7150 2550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 7150 2600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 7350 2600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 2700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 7350 2800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 7350 2900 60  0001 L CNN "MPN"
+F 6 "Switches" H 7350 3000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 7350 3100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 3200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 7350 3300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 7350 3400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 7350 3500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 7350 3600 60  0001 L CNN "Status"
+	1    7150 2400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6800 2250 7050 2250
-Connection ~ 6800 2250
+	7400 2500 7650 2500
+Connection ~ 7400 2500
 $Sheet
-S 7050 3050 900  550 
+S 7650 3300 900  550 
 U 5F842B75
 F0 "sheet5F842B2F" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 7950 3250 50 
-F3 "9v" I L 7050 3250 50 
-F4 "Gnd" I L 7050 3450 50 
+F2 "Out" I R 8550 3500 50 
+F3 "9v" I L 7650 3500 50 
+F4 "Gnd" I L 7650 3700 50 
 $EndSheet
 Wire Wire Line
-	6250 3050 6350 3050
+	6850 3300 6950 3300
 Wire Wire Line
-	6250 3250 6250 3050
+	6850 3500 6850 3300
 Wire Wire Line
-	6350 3250 6250 3250
+	6950 3500 6850 3500
 Wire Wire Line
-	6800 3250 6800 3050
+	7400 3500 7400 3300
 Wire Wire Line
-	6750 3250 6800 3250
+	7350 3500 7400 3500
 Wire Wire Line
-	6750 3050 6800 3050
+	7350 3300 7400 3300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S14
+L dk_Tactile-Switches:FSM4JSMATR S13
 U 1 1 5F842B8A
-P 6550 3150
-AR Path="/5F842B8A" Ref="S14"  Part="1" 
+P 7150 3400
+AR Path="/5F842B8A" Ref="S13"  Part="1" 
 AR Path="/60F4E92A/5F842B8A" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F842B8A" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F842B8A" Ref="S?"  Part="1" 
@@ -1193,51 +860,51 @@ AR Path="/60F96187/5F842B8A" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F842B8A" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F842B8A" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F842B8A" Ref="S?"  Part="1" 
-F 0 "S14" V 6550 3300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 6550 3350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6750 3350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 3450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 6750 3550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 6750 3650 60  0001 L CNN "MPN"
-F 6 "Switches" H 6750 3750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 6750 3850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 3950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 6750 4050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 6750 4150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 6750 4250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 6750 4350 60  0001 L CNN "Status"
-	1    6550 3150
+F 0 "S13" V 7150 3550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 7150 3600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 7350 3600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 3700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 7350 3800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 7350 3900 60  0001 L CNN "MPN"
+F 6 "Switches" H 7350 4000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 7350 4100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 4200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 7350 4300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 7350 4400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 7350 4500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 7350 4600 60  0001 L CNN "Status"
+	1    7150 3400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6800 3250 7050 3250
-Connection ~ 6800 3250
+	7400 3500 7650 3500
+Connection ~ 7400 3500
 $Sheet
-S 7050 4050 900  550 
+S 7650 4300 900  550 
 U 5F842B91
 F0 "sheet5F842B30" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 7950 4250 50 
-F3 "9v" I L 7050 4250 50 
-F4 "Gnd" I L 7050 4450 50 
+F2 "Out" I R 8550 4500 50 
+F3 "9v" I L 7650 4500 50 
+F4 "Gnd" I L 7650 4700 50 
 $EndSheet
 Wire Wire Line
-	6250 4050 6350 4050
+	6850 4300 6950 4300
 Wire Wire Line
-	6250 4250 6250 4050
+	6850 4500 6850 4300
 Wire Wire Line
-	6350 4250 6250 4250
+	6950 4500 6850 4500
 Wire Wire Line
-	6800 4250 6800 4050
+	7400 4500 7400 4300
 Wire Wire Line
-	6750 4250 6800 4250
+	7350 4500 7400 4500
 Wire Wire Line
-	6750 4050 6800 4050
+	7350 4300 7400 4300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S15
+L dk_Tactile-Switches:FSM4JSMATR S14
 U 1 1 5F842BA6
-P 6550 4150
-AR Path="/5F842BA6" Ref="S15"  Part="1" 
+P 7150 4400
+AR Path="/5F842BA6" Ref="S14"  Part="1" 
 AR Path="/60F4E92A/5F842BA6" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F842BA6" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F842BA6" Ref="S?"  Part="1" 
@@ -1247,51 +914,51 @@ AR Path="/60F96187/5F842BA6" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F842BA6" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F842BA6" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F842BA6" Ref="S?"  Part="1" 
-F 0 "S15" V 6550 4300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 6550 4350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6750 4350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 4450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 6750 4550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 6750 4650 60  0001 L CNN "MPN"
-F 6 "Switches" H 6750 4750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 6750 4850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 4950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 6750 5050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 6750 5150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 6750 5250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 6750 5350 60  0001 L CNN "Status"
-	1    6550 4150
+F 0 "S14" V 7150 4550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 7150 4600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 7350 4600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 4700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 7350 4800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 7350 4900 60  0001 L CNN "MPN"
+F 6 "Switches" H 7350 5000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 7350 5100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 5200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 7350 5300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 7350 5400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 7350 5500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 7350 5600 60  0001 L CNN "Status"
+	1    7150 4400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6800 4250 7050 4250
-Connection ~ 6800 4250
+	7400 4500 7650 4500
+Connection ~ 7400 4500
 $Sheet
-S 7050 5050 900  550 
+S 7650 5300 900  550 
 U 5F842BAD
 F0 "sheet5F842B31" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 7950 5250 50 
-F3 "9v" I L 7050 5250 50 
-F4 "Gnd" I L 7050 5450 50 
+F2 "Out" I R 8550 5500 50 
+F3 "9v" I L 7650 5500 50 
+F4 "Gnd" I L 7650 5700 50 
 $EndSheet
 Wire Wire Line
-	6250 5050 6350 5050
+	6850 5300 6950 5300
 Wire Wire Line
-	6250 5250 6250 5050
+	6850 5500 6850 5300
 Wire Wire Line
-	6350 5250 6250 5250
+	6950 5500 6850 5500
 Wire Wire Line
-	6800 5250 6800 5050
+	7400 5500 7400 5300
 Wire Wire Line
-	6750 5250 6800 5250
+	7350 5500 7400 5500
 Wire Wire Line
-	6750 5050 6800 5050
+	7350 5300 7400 5300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S16
+L dk_Tactile-Switches:FSM4JSMATR S15
 U 1 1 5F842BC2
-P 6550 5150
-AR Path="/5F842BC2" Ref="S16"  Part="1" 
+P 7150 5400
+AR Path="/5F842BC2" Ref="S15"  Part="1" 
 AR Path="/60F4E92A/5F842BC2" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F842BC2" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F842BC2" Ref="S?"  Part="1" 
@@ -1301,114 +968,112 @@ AR Path="/60F96187/5F842BC2" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F842BC2" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F842BC2" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F842BC2" Ref="S?"  Part="1" 
-F 0 "S16" V 6550 5300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 6550 5350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6750 5350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 5450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 6750 5550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 6750 5650 60  0001 L CNN "MPN"
-F 6 "Switches" H 6750 5750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 6750 5850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 5950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 6750 6050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 6750 6150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 6750 6250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 6750 6350 60  0001 L CNN "Status"
-	1    6550 5150
+F 0 "S15" V 7150 5550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 7150 5600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 7350 5600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 5700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 7350 5800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 7350 5900 60  0001 L CNN "MPN"
+F 6 "Switches" H 7350 6000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 7350 6100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 6200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 7350 6300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 7350 6400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 7350 6500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 7350 6600 60  0001 L CNN "Status"
+	1    7150 5400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6800 5250 7050 5250
-Connection ~ 6800 5250
+	7400 5500 7650 5500
+Connection ~ 7400 5500
 Wire Wire Line
-	5900 1050 5900 2050
+	6500 1300 6500 2300
 Wire Wire Line
-	5900 2050 6250 2050
-Connection ~ 6250 2050
+	6500 2300 6850 2300
+Connection ~ 6850 2300
 Wire Wire Line
-	5900 3050 6250 3050
-Connection ~ 5900 2050
-Connection ~ 6250 3050
+	6500 3300 6850 3300
+Connection ~ 6500 2300
+Connection ~ 6850 3300
 Wire Wire Line
-	5900 3050 5900 4050
+	6500 3300 6500 4300
 Wire Wire Line
-	5900 4050 6250 4050
-Connection ~ 5900 3050
-Connection ~ 6250 4050
+	6500 4300 6850 4300
+Connection ~ 6500 3300
+Connection ~ 6850 4300
 Wire Wire Line
-	5900 4050 5900 5050
+	6500 4300 6500 5300
 Wire Wire Line
-	5900 5050 6250 5050
-Connection ~ 5900 4050
-Connection ~ 6250 5050
+	6500 5300 6850 5300
+Connection ~ 6500 4300
+Connection ~ 6850 5300
 Wire Wire Line
-	7050 1450 6050 1450
+	7650 1700 6650 1700
 Wire Wire Line
-	6050 1450 6050 2450
+	6650 1700 6650 2700
 Wire Wire Line
-	7050 2450 6050 2450
-Connection ~ 6050 2450
+	7650 2700 6650 2700
+Connection ~ 6650 2700
 Wire Wire Line
-	6050 2450 6050 3450
+	6650 2700 6650 3700
 Wire Wire Line
-	7050 3450 6050 3450
-Connection ~ 6050 3450
+	7650 3700 6650 3700
+Connection ~ 6650 3700
 Wire Wire Line
-	6050 3450 6050 4450
+	6650 3700 6650 4700
 Wire Wire Line
-	7050 4450 6050 4450
-Connection ~ 6050 4450
+	7650 4700 6650 4700
+Connection ~ 6650 4700
 Wire Wire Line
-	6050 4450 6050 5450
+	6650 4700 6650 5700
 Wire Wire Line
-	7050 5450 6050 5450
+	7650 5700 6650 5700
 Wire Wire Line
-	8250 1250 8250 2250
+	8850 1500 8850 2500
 Wire Wire Line
-	7950 1250 8250 1250
+	8550 1500 8850 1500
 Wire Wire Line
-	7950 2250 8250 2250
-Connection ~ 8250 2250
+	8550 2500 8850 2500
+Connection ~ 8850 2500
 Wire Wire Line
-	8250 2250 8250 2900
+	8550 3500 8850 3500
+Connection ~ 8850 3500
 Wire Wire Line
-	7950 3250 8250 3250
-Connection ~ 8250 3250
+	8850 3500 8850 4500
 Wire Wire Line
-	8250 3250 8250 4250
+	8550 4500 8850 4500
+Connection ~ 8850 4500
 Wire Wire Line
-	7950 4250 8250 4250
-Connection ~ 8250 4250
+	8550 5500 8850 5500
 Wire Wire Line
-	7950 5250 8250 5250
-Wire Wire Line
-	8250 4250 8250 5250
+	8850 4500 8850 5500
 $Sheet
-S 7050 6050 900  550 
+S 7650 6300 900  550 
 U 5F842BEF
 F0 "sheet5F842B32" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 7950 6250 50 
-F3 "9v" I L 7050 6250 50 
-F4 "Gnd" I L 7050 6450 50 
+F2 "Out" I R 8550 6500 50 
+F3 "9v" I L 7650 6500 50 
+F4 "Gnd" I L 7650 6700 50 
 $EndSheet
 Wire Wire Line
-	6250 6050 6350 6050
+	6850 6300 6950 6300
 Wire Wire Line
-	6250 6250 6250 6050
+	6850 6500 6850 6300
 Wire Wire Line
-	6350 6250 6250 6250
+	6950 6500 6850 6500
 Wire Wire Line
-	6800 6250 6800 6050
+	7400 6500 7400 6300
 Wire Wire Line
-	6750 6250 6800 6250
+	7350 6500 7400 6500
 Wire Wire Line
-	6750 6050 6800 6050
+	7350 6300 7400 6300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S17
+L dk_Tactile-Switches:FSM4JSMATR S16
 U 1 1 5F842C04
-P 6550 6150
-AR Path="/5F842C04" Ref="S17"  Part="1" 
+P 7150 6400
+AR Path="/5F842C04" Ref="S16"  Part="1" 
 AR Path="/60F4E92A/5F842C04" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F842C04" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F842C04" Ref="S?"  Part="1" 
@@ -1418,54 +1083,54 @@ AR Path="/60F96187/5F842C04" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F842C04" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F842C04" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F842C04" Ref="S?"  Part="1" 
-F 0 "S17" V 6550 6300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 6550 6350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6750 6350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 6450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 6750 6550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 6750 6650 60  0001 L CNN "MPN"
-F 6 "Switches" H 6750 6750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 6750 6850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 6950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 6750 7050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 6750 7150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 6750 7250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 6750 7350 60  0001 L CNN "Status"
-	1    6550 6150
+F 0 "S16" V 7150 6550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 7150 6600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 7350 6600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 6700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 7350 6800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 7350 6900 60  0001 L CNN "MPN"
+F 6 "Switches" H 7350 7000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 7350 7100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 7200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 7350 7300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 7350 7400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 7350 7500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 7350 7600 60  0001 L CNN "Status"
+	1    7150 6400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6250 6050 5900 6050
-Connection ~ 6250 6050
+	6850 6300 6500 6300
+Connection ~ 6850 6300
 Wire Wire Line
-	6800 6250 7050 6250
-Connection ~ 6800 6250
+	7400 6500 7650 6500
+Connection ~ 7400 6500
 $Sheet
-S 7050 7050 900  550 
+S 7650 7300 900  550 
 U 5F842C0D
 F0 "sheet5F842B33" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 7950 7250 50 
-F3 "9v" I L 7050 7250 50 
-F4 "Gnd" I L 7050 7450 50 
+F2 "Out" I R 8550 7500 50 
+F3 "9v" I L 7650 7500 50 
+F4 "Gnd" I L 7650 7700 50 
 $EndSheet
 Wire Wire Line
-	6250 7050 6350 7050
+	6850 7300 6950 7300
 Wire Wire Line
-	6250 7250 6250 7050
+	6850 7500 6850 7300
 Wire Wire Line
-	6350 7250 6250 7250
+	6950 7500 6850 7500
 Wire Wire Line
-	6800 7250 6800 7050
+	7400 7500 7400 7300
 Wire Wire Line
-	6750 7250 6800 7250
+	7350 7500 7400 7500
 Wire Wire Line
-	6750 7050 6800 7050
+	7350 7300 7400 7300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S18
+L dk_Tactile-Switches:FSM4JSMATR S17
 U 1 1 5F842C22
-P 6550 7150
-AR Path="/5F842C22" Ref="S18"  Part="1" 
+P 7150 7400
+AR Path="/5F842C22" Ref="S17"  Part="1" 
 AR Path="/60F4E92A/5F842C22" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F842C22" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F842C22" Ref="S?"  Part="1" 
@@ -1475,51 +1140,51 @@ AR Path="/60F96187/5F842C22" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F842C22" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F842C22" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F842C22" Ref="S?"  Part="1" 
-F 0 "S18" V 6550 7300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 6550 7350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6750 7350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 7450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 6750 7550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 6750 7650 60  0001 L CNN "MPN"
-F 6 "Switches" H 6750 7750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 6750 7850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 7950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 6750 8050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 6750 8150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 6750 8250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 6750 8350 60  0001 L CNN "Status"
-	1    6550 7150
+F 0 "S17" V 7150 7550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 7150 7600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 7350 7600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 7700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 7350 7800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 7350 7900 60  0001 L CNN "MPN"
+F 6 "Switches" H 7350 8000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 7350 8100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 8200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 7350 8300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 7350 8400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 7350 8500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 7350 8600 60  0001 L CNN "Status"
+	1    7150 7400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6800 7250 7050 7250
-Connection ~ 6800 7250
+	7400 7500 7650 7500
+Connection ~ 7400 7500
 $Sheet
-S 7050 8050 900  550 
+S 7650 8300 900  550 
 U 5F842C29
 F0 "sheet5F842B34" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 7950 8250 50 
-F3 "9v" I L 7050 8250 50 
-F4 "Gnd" I L 7050 8450 50 
+F2 "Out" I R 8550 8500 50 
+F3 "9v" I L 7650 8500 50 
+F4 "Gnd" I L 7650 8700 50 
 $EndSheet
 Wire Wire Line
-	6250 8050 6350 8050
+	6850 8300 6950 8300
 Wire Wire Line
-	6250 8250 6250 8050
+	6850 8500 6850 8300
 Wire Wire Line
-	6350 8250 6250 8250
+	6950 8500 6850 8500
 Wire Wire Line
-	6800 8250 6800 8050
+	7400 8500 7400 8300
 Wire Wire Line
-	6750 8250 6800 8250
+	7350 8500 7400 8500
 Wire Wire Line
-	6750 8050 6800 8050
+	7350 8300 7400 8300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S19
+L dk_Tactile-Switches:FSM4JSMATR S18
 U 1 1 5F842C3E
-P 6550 8150
-AR Path="/5F842C3E" Ref="S19"  Part="1" 
+P 7150 8400
+AR Path="/5F842C3E" Ref="S18"  Part="1" 
 AR Path="/60F4E92A/5F842C3E" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F842C3E" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F842C3E" Ref="S?"  Part="1" 
@@ -1529,51 +1194,51 @@ AR Path="/60F96187/5F842C3E" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F842C3E" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F842C3E" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F842C3E" Ref="S?"  Part="1" 
-F 0 "S19" V 6550 8300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 6550 8350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6750 8350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 8450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 6750 8550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 6750 8650 60  0001 L CNN "MPN"
-F 6 "Switches" H 6750 8750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 6750 8850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 8950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 6750 9050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 6750 9150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 6750 9250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 6750 9350 60  0001 L CNN "Status"
-	1    6550 8150
+F 0 "S18" V 7150 8550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 7150 8600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 7350 8600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 8700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 7350 8800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 7350 8900 60  0001 L CNN "MPN"
+F 6 "Switches" H 7350 9000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 7350 9100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 9200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 7350 9300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 7350 9400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 7350 9500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 7350 9600 60  0001 L CNN "Status"
+	1    7150 8400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6800 8250 7050 8250
-Connection ~ 6800 8250
+	7400 8500 7650 8500
+Connection ~ 7400 8500
 $Sheet
-S 7050 9050 900  550 
+S 7650 9300 900  550 
 U 5F842C45
 F0 "sheet5F842B35" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 7950 9250 50 
-F3 "9v" I L 7050 9250 50 
-F4 "Gnd" I L 7050 9450 50 
+F2 "Out" I R 8550 9500 50 
+F3 "9v" I L 7650 9500 50 
+F4 "Gnd" I L 7650 9700 50 
 $EndSheet
 Wire Wire Line
-	6250 9050 6350 9050
+	6850 9300 6950 9300
 Wire Wire Line
-	6250 9250 6250 9050
+	6850 9500 6850 9300
 Wire Wire Line
-	6350 9250 6250 9250
+	6950 9500 6850 9500
 Wire Wire Line
-	6800 9250 6800 9050
+	7400 9500 7400 9300
 Wire Wire Line
-	6750 9250 6800 9250
+	7350 9500 7400 9500
 Wire Wire Line
-	6750 9050 6800 9050
+	7350 9300 7400 9300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S20
+L dk_Tactile-Switches:FSM4JSMATR S19
 U 1 1 5F842C5A
-P 6550 9150
-AR Path="/5F842C5A" Ref="S20"  Part="1" 
+P 7150 9400
+AR Path="/5F842C5A" Ref="S19"  Part="1" 
 AR Path="/60F4E92A/5F842C5A" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F842C5A" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F842C5A" Ref="S?"  Part="1" 
@@ -1583,51 +1248,51 @@ AR Path="/60F96187/5F842C5A" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F842C5A" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F842C5A" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F842C5A" Ref="S?"  Part="1" 
-F 0 "S20" V 6550 9300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 6550 9350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6750 9350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 9450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 6750 9550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 6750 9650 60  0001 L CNN "MPN"
-F 6 "Switches" H 6750 9750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 6750 9850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 9950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 6750 10050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 6750 10150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 6750 10250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 6750 10350 60  0001 L CNN "Status"
-	1    6550 9150
+F 0 "S19" V 7150 9550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 7150 9600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 7350 9600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 9700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 7350 9800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 7350 9900 60  0001 L CNN "MPN"
+F 6 "Switches" H 7350 10000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 7350 10100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 10200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 7350 10300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 7350 10400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 7350 10500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 7350 10600 60  0001 L CNN "Status"
+	1    7150 9400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6800 9250 7050 9250
-Connection ~ 6800 9250
+	7400 9500 7650 9500
+Connection ~ 7400 9500
 $Sheet
-S 7050 10050 900  550 
+S 7650 10300 900  550 
 U 5F842C61
 F0 "sheet5F842B36" 50
 F1 "555_astable.sch" 50
-F2 "Out" I R 7950 10250 50 
-F3 "9v" I L 7050 10250 50 
-F4 "Gnd" I L 7050 10450 50 
+F2 "Out" I R 8550 10500 50 
+F3 "9v" I L 7650 10500 50 
+F4 "Gnd" I L 7650 10700 50 
 $EndSheet
 Wire Wire Line
-	6250 10050 6350 10050
+	6850 10300 6950 10300
 Wire Wire Line
-	6250 10250 6250 10050
+	6850 10500 6850 10300
 Wire Wire Line
-	6350 10250 6250 10250
+	6950 10500 6850 10500
 Wire Wire Line
-	6800 10250 6800 10050
+	7400 10500 7400 10300
 Wire Wire Line
-	6750 10250 6800 10250
+	7350 10500 7400 10500
 Wire Wire Line
-	6750 10050 6800 10050
+	7350 10300 7400 10300
 $Comp
-L dk_Tactile-Switches:FSM4JSMATR S21
+L dk_Tactile-Switches:FSM4JSMATR S20
 U 1 1 5F842C76
-P 6550 10150
-AR Path="/5F842C76" Ref="S21"  Part="1" 
+P 7150 10400
+AR Path="/5F842C76" Ref="S20"  Part="1" 
 AR Path="/60F4E92A/5F842C76" Ref="S?"  Part="1" 
 AR Path="/60F9596F/5F842C76" Ref="S?"  Part="1" 
 AR Path="/60F95BBA/5F842C76" Ref="S?"  Part="1" 
@@ -1637,166 +1302,587 @@ AR Path="/60F96187/5F842C76" Ref="S?"  Part="1"
 AR Path="/60F9685F/5F842C76" Ref="S?"  Part="1" 
 AR Path="/60F96864/5F842C76" Ref="S?"  Part="1" 
 AR Path="/60F96869/5F842C76" Ref="S?"  Part="1" 
-F 0 "S21" V 6550 10300 60  0000 L CNN
-F 1 "FSM4JSMATR" V 6550 10350 60  0001 L CNN
-F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 6750 10350 60  0001 L CNN
-F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 10450 60  0001 L CNN
-F 4 "450-1759-1-ND" H 6750 10550 60  0001 L CNN "Digi-Key_PN"
-F 5 "FSM4JSMATR" H 6750 10650 60  0001 L CNN "MPN"
-F 6 "Switches" H 6750 10750 60  0001 L CNN "Category"
-F 7 "Tactile Switches" H 6750 10850 60  0001 L CNN "Family"
-F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 6750 10950 60  0001 L CNN "DK_Datasheet_Link"
-F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 6750 11050 60  0001 L CNN "DK_Detail_Page"
-F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 6750 11150 60  0001 L CNN "Description"
-F 11 "TE Connectivity ALCOSWITCH Switches" H 6750 11250 60  0001 L CNN "Manufacturer"
-F 12 "Active" H 6750 11350 60  0001 L CNN "Status"
-	1    6550 10150
+F 0 "S20" V 7150 10550 60  0000 L CNN
+F 1 "FSM4JSMATR" V 7150 10600 60  0001 L CNN
+F 2 "Button_Switch_THT:SW_TH_Tactile_Omron_B3F-10xx" H 7350 10600 60  0001 L CNN
+F 3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 10700 60  0001 L CNN
+F 4 "450-1759-1-ND" H 7350 10800 60  0001 L CNN "Digi-Key_PN"
+F 5 "FSM4JSMATR" H 7350 10900 60  0001 L CNN "MPN"
+F 6 "Switches" H 7350 11000 60  0001 L CNN "Category"
+F 7 "Tactile Switches" H 7350 11100 60  0001 L CNN "Family"
+F 8 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=2-1437565-7&DocType=Customer+Drawing&DocLang=English" H 7350 11200 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/te-connectivity-alcoswitch-switches/FSM4JSMATR/450-1759-1-ND/2271638" H 7350 11300 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH TACTILE SPST-NO 0.05A 24V" H 7350 11400 60  0001 L CNN "Description"
+F 11 "TE Connectivity ALCOSWITCH Switches" H 7350 11500 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 7350 11600 60  0001 L CNN "Status"
+	1    7150 10400
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6800 10250 7050 10250
-Connection ~ 6800 10250
+	7400 10500 7650 10500
+Connection ~ 7400 10500
 Wire Wire Line
-	5900 7050 6250 7050
-Connection ~ 6250 7050
+	6500 7300 6850 7300
+Connection ~ 6850 7300
 Wire Wire Line
-	5900 8050 6250 8050
-Connection ~ 6250 8050
+	6500 8300 6850 8300
+Connection ~ 6850 8300
 Wire Wire Line
-	5900 9050 6250 9050
-Connection ~ 6250 9050
+	6500 9300 6850 9300
+Connection ~ 6850 9300
 Wire Wire Line
-	5900 10050 6250 10050
-Connection ~ 6250 10050
+	6500 10300 6850 10300
+Connection ~ 6850 10300
 Wire Wire Line
-	7050 6450 6050 6450
+	7650 6700 6650 6700
 Wire Wire Line
-	6050 6450 6050 7450
+	6650 6700 6650 7700
 Wire Wire Line
-	7050 7450 6050 7450
-Connection ~ 6050 7450
+	7650 7700 6650 7700
+Connection ~ 6650 7700
 Wire Wire Line
-	6050 7450 6050 8450
+	6650 7700 6650 8700
 Wire Wire Line
-	7050 8450 6050 8450
-Connection ~ 6050 8450
+	7650 8700 6650 8700
+Connection ~ 6650 8700
 Wire Wire Line
-	6050 8450 6050 9450
+	6650 8700 6650 9700
 Wire Wire Line
-	7050 9450 6050 9450
-Connection ~ 6050 9450
+	7650 9700 6650 9700
+Connection ~ 6650 9700
 Wire Wire Line
-	6050 9450 6050 10450
+	6650 9700 6650 10700
 Wire Wire Line
-	7050 10450 6050 10450
+	7650 10700 6650 10700
 Wire Wire Line
-	8250 6250 8250 7250
+	8850 6500 8850 7500
 Wire Wire Line
-	7950 6250 8250 6250
+	8550 6500 8850 6500
 Wire Wire Line
-	7950 7250 8250 7250
-Connection ~ 8250 7250
+	8550 7500 8850 7500
+Connection ~ 8850 7500
 Wire Wire Line
-	8250 7250 8250 8250
+	8850 7500 8850 8500
 Wire Wire Line
-	7950 8250 8250 8250
-Connection ~ 8250 8250
+	8550 8500 8850 8500
+Connection ~ 8850 8500
 Wire Wire Line
-	8250 8250 8250 9250
+	8850 8500 8850 9500
 Wire Wire Line
-	7950 9250 8250 9250
-Connection ~ 8250 9250
+	8550 9500 8850 9500
+Connection ~ 8850 9500
 Wire Wire Line
-	7950 10250 8250 10250
+	8550 10500 8850 10500
 Wire Wire Line
-	8250 9250 8250 10250
+	8850 9500 8850 10500
 Wire Wire Line
-	5900 5050 5900 6050
-Connection ~ 5900 5050
+	6500 5300 6500 6300
+Connection ~ 6500 5300
 Wire Wire Line
-	5900 6050 5900 7050
-Connection ~ 5900 6050
+	6500 6300 6500 7300
+Connection ~ 6500 6300
 Wire Wire Line
-	5900 7050 5900 8050
-Connection ~ 5900 7050
+	6500 7300 6500 8300
+Connection ~ 6500 7300
 Wire Wire Line
-	5900 8050 5900 9050
-Connection ~ 5900 8050
+	6500 8300 6500 9300
+Connection ~ 6500 8300
 Wire Wire Line
-	5900 9050 5900 10050
-Connection ~ 5900 9050
+	6500 9300 6500 10300
+Connection ~ 6500 9300
 Wire Wire Line
-	6050 5450 6050 6450
-Connection ~ 6050 5450
-Connection ~ 6050 6450
+	6650 5700 6650 6700
+Connection ~ 6650 5700
+Connection ~ 6650 6700
 Wire Wire Line
-	8250 5250 8250 6250
-Connection ~ 8250 5250
-Connection ~ 8250 6250
+	8850 5500 8850 6500
+Connection ~ 8850 5500
+Connection ~ 8850 6500
 Wire Wire Line
-	5900 2050 5900 3050
+	6500 2300 6500 3300
 Wire Wire Line
-	5450 10250 5450 10750
+	6050 10500 6050 11000
 Wire Wire Line
-	5450 10750 8250 10750
+	6050 11000 8850 11000
 Wire Wire Line
-	8250 10750 8250 10250
-Connection ~ 5450 10250
-Connection ~ 8250 10250
+	8850 11000 8850 10500
+Connection ~ 6050 10500
+Connection ~ 8850 10500
 Wire Wire Line
-	3250 10450 3250 10900
+	3850 10700 3850 11150
 Wire Wire Line
-	3250 10900 6050 10900
+	6650 11150 6650 10700
+Connection ~ 3850 10700
+Connection ~ 6650 10700
 Wire Wire Line
-	6050 10900 6050 10450
-Connection ~ 3250 10450
-Connection ~ 6050 10450
+	3700 950  3700 1300
+Connection ~ 3700 1300
 Wire Wire Line
-	3100 700  3100 1050
-Connection ~ 3100 1050
-Wire Wire Line
-	3100 2050 1300 2050
-Wire Wire Line
-	9500 2900 8250 2900
-Connection ~ 8250 2900
-Wire Wire Line
-	8250 2900 8250 3250
-Connection ~ 13100 4450
-Wire Wire Line
-	9500 4450 9500 10900
-Wire Wire Line
-	9500 10900 6050 10900
-Connection ~ 9500 4450
-Connection ~ 6050 10900
-Wire Wire Line
-	2550 4800 2550 10900
-Wire Wire Line
-	2550 10900 3250 10900
-Connection ~ 2550 4800
-Connection ~ 3250 10900
-Wire Wire Line
-	10950 4450 11250 4450
-Wire Wire Line
-	11250 3700 11250 4450
-Connection ~ 11250 4450
-Wire Wire Line
-	11250 4450 11750 4450
-Wire Wire Line
-	5900 700  5900 1050
-Connection ~ 5900 700 
-Wire Wire Line
-	5900 700  11250 700 
-Connection ~ 5900 1050
-Wire Wire Line
-	2550 2500 3100 2500
-Connection ~ 2550 2500
-Connection ~ 3100 2500
-Wire Wire Line
-	3100 2500 3100 3050
+	6500 950  6500 1300
+Connection ~ 6500 1300
 $Sheet
-S 10500 5850 1700 950 
+S 11100 6100 1700 950 
 U 5F470266
 F0 "APC" 50
 F1 "apc.sch" 50
 $EndSheet
+Wire Wire Line
+	11850 650  1750 650 
+Wire Wire Line
+	1750 650  1750 1600
+Wire Wire Line
+	3850 11150 6650 11150
+Connection ~ 3850 11150
+Wire Wire Line
+	6650 11150 10100 11150
+Connection ~ 6650 11150
+Wire Wire Line
+	3050 11150 3850 11150
+Wire Wire Line
+	850  1600 1750 1600
+$Comp
+L power:+5V #PWR?
+U 1 1 5FA72657
+P 3300 1300
+F 0 "#PWR?" H 3300 1150 50  0001 C CNN
+F 1 "+5V" H 3315 1473 50  0000 C CNN
+F 2 "" H 3300 1300 50  0001 C CNN
+F 3 "" H 3300 1300 50  0001 C CNN
+	1    3300 1300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3300 1300 3300 1600
+Wire Wire Line
+	3300 1600 3700 1600
+Connection ~ 3700 1600
+Wire Wire Line
+	3700 1600 3700 2300
+Wire Wire Line
+	8850 2500 8850 3150
+$Comp
+L Device:R_POT_TRIM_US RV21
+U 1 1 5FD21AA5
+P 10100 3750
+AR Path="/5FD21AA5" Ref="RV21"  Part="1" 
+AR Path="/60F4E92A/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/60F9596F/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/60F95BBA/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/60F95BBF/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/60F96182/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/60F96187/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/60F9685F/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/60F96864/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/60F96869/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/5EF17819/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/5EF23030/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/5EF259E1/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/5EF27E4C/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/5EF2B213/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/5EF6055A/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/5EF6057F/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/5EF605A2/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/5EF605C5/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/5EF605E8/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/5EF6060B/5FD21AA5" Ref="RV?"  Part="1" 
+AR Path="/5EF7A07F/5FD21AA5" Ref="RV?"  Part="1" 
+F 0 "RV21" V 10000 3850 50  0000 R CNN
+F 1 "R_POT_TRIM_US" H 10032 3705 50  0001 R CNN
+F 2 "Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical" H 10100 3750 50  0001 C CNN
+F 3 "~" H 10100 3750 50  0001 C CNN
+	1    10100 3750
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	10100 4700 10450 4700
+$Comp
+L Device:R R82
+U 1 1 5FD21AAC
+P 10450 4100
+AR Path="/5FD21AAC" Ref="R82"  Part="1" 
+AR Path="/60F4E92A/5FD21AAC" Ref="R?"  Part="1" 
+AR Path="/60F9596F/5FD21AAC" Ref="R?"  Part="1" 
+AR Path="/60F95BBA/5FD21AAC" Ref="R?"  Part="1" 
+AR Path="/60F95BBF/5FD21AAC" Ref="R?"  Part="1" 
+AR Path="/60F96182/5FD21AAC" Ref="R?"  Part="1" 
+AR Path="/60F96187/5FD21AAC" Ref="R?"  Part="1" 
+AR Path="/60F9685F/5FD21AAC" Ref="R?"  Part="1" 
+AR Path="/60F96864/5FD21AAC" Ref="R?"  Part="1" 
+AR Path="/60F96869/5FD21AAC" Ref="R?"  Part="1" 
+F 0 "R82" H 10200 4150 50  0000 L CNN
+F 1 "100" H 10200 4050 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 10380 4100 50  0001 C CNN
+F 3 "~" H 10450 4100 50  0001 C CNN
+	1    10450 4100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10450 3750 10450 3950
+Wire Wire Line
+	10450 4250 10450 4700
+Connection ~ 10450 4700
+Wire Wire Line
+	10250 3750 10450 3750
+Wire Wire Line
+	10100 3900 10100 4700
+Text Notes 9700 3050 0    50   ~ 0
+TODO: extra resistor here to “fix”\nfrequency shift from vol change?
+Text Notes 10200 5000 0    50   ~ 0
+Optional “fake log” resistor\nhttps://sound-au.com/project01.htm
+Text Notes 10300 3400 0    50   ~ 0
+TODO: reverse vol pot if\nnot using right trimwheel
+Wire Wire Line
+	10450 3750 11650 3750
+Connection ~ 10450 3750
+$Comp
+L Device:C C63
+U 1 1 5FD21ABD
+P 13000 4450
+AR Path="/5FD21ABD" Ref="C63"  Part="1" 
+AR Path="/60F4E92A/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/60F9596F/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/60F95BBA/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/60F95BBF/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/60F96182/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/60F96187/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/60F9685F/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/60F96864/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/60F96869/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/5EF17819/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/5EF23030/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/5EF259E1/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/5EF27E4C/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/5EF2B213/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/5EF6055A/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/5EF6057F/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/5EF605A2/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/5EF605C5/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/5EF605E8/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/5EF6060B/5FD21ABD" Ref="C?"  Part="1" 
+AR Path="/5EF7A07F/5FD21ABD" Ref="C?"  Part="1" 
+F 0 "C63" H 13200 4550 50  0000 L CNN
+F 1 "47nF" H 13150 4450 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 13038 4300 50  0001 C CNN
+F 3 "~" H 13000 4450 50  0001 C CNN
+	1    13000 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R83
+U 1 1 5FD21AC3
+P 13000 3900
+AR Path="/5FD21AC3" Ref="R83"  Part="1" 
+AR Path="/60F4E92A/5FD21AC3" Ref="R?"  Part="1" 
+AR Path="/60F9596F/5FD21AC3" Ref="R?"  Part="1" 
+AR Path="/60F95BBA/5FD21AC3" Ref="R?"  Part="1" 
+AR Path="/60F95BBF/5FD21AC3" Ref="R?"  Part="1" 
+AR Path="/60F96182/5FD21AC3" Ref="R?"  Part="1" 
+AR Path="/60F96187/5FD21AC3" Ref="R?"  Part="1" 
+AR Path="/60F9685F/5FD21AC3" Ref="R?"  Part="1" 
+AR Path="/60F96864/5FD21AC3" Ref="R?"  Part="1" 
+AR Path="/60F96869/5FD21AC3" Ref="R?"  Part="1" 
+F 0 "R83" H 12750 3950 50  0000 L CNN
+F 1 "10" H 12750 3850 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" V 12930 3900 50  0001 C CNN
+F 3 "~" H 13000 3900 50  0001 C CNN
+	1    13000 3900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	12250 3650 13000 3650
+Wire Wire Line
+	13000 3650 13000 3750
+$Comp
+L Device:CP1 C64
+U 1 1 5FD21ACB
+P 13350 3650
+F 0 "C64" V 13602 3650 50  0000 C CNN
+F 1 "220uF" V 13511 3650 50  0000 C CNN
+F 2 "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm" H 13350 3650 50  0001 C CNN
+F 3 "~" H 13350 3650 50  0001 C CNN
+	1    13350 3650
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	13000 3650 13200 3650
+Connection ~ 13000 3650
+Wire Wire Line
+	13500 3650 13800 3650
+Wire Wire Line
+	13800 3750 13700 3750
+Wire Wire Line
+	13000 4600 13000 4700
+Connection ~ 13000 4700
+Wire Wire Line
+	13000 4700 13700 4700
+$Comp
+L Device:Speaker LS1
+U 1 1 5FD21AD8
+P 14000 3650
+F 0 "LS1" H 14170 3646 50  0000 L CNN
+F 1 "Speaker" H 14170 3555 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 14000 3450 50  0001 C CNN
+F 3 "~" H 13990 3600 50  0001 C CNN
+	1    14000 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	13700 3750 13700 4700
+Wire Wire Line
+	12350 4700 13000 4700
+Connection ~ 12350 4700
+Wire Wire Line
+	12350 4600 12350 4700
+$Comp
+L Device:C C62
+U 1 1 5FD21AE2
+P 12350 4450
+AR Path="/5FD21AE2" Ref="C62"  Part="1" 
+AR Path="/60F4E92A/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/60F9596F/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/60F95BBA/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/60F95BBF/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/60F96182/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/60F96187/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/60F9685F/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/60F96864/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/60F96869/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/5EF17819/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/5EF23030/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/5EF259E1/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/5EF27E4C/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/5EF2B213/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/5EF6055A/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/5EF6057F/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/5EF605A2/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/5EF605C5/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/5EF605E8/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/5EF6060B/5FD21AE2" Ref="C?"  Part="1" 
+AR Path="/5EF7A07F/5FD21AE2" Ref="C?"  Part="1" 
+F 0 "C62" H 12100 4400 50  0000 L CNN
+F 1 ".1uF" H 12050 4500 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 12388 4300 50  0001 C CNN
+F 3 "~" H 12350 4450 50  0001 C CNN
+	1    12350 4450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	11650 3550 11550 3550
+Wire Wire Line
+	11550 3550 11550 4700
+Wire Wire Line
+	10450 4700 11550 4700
+Connection ~ 11550 4700
+Wire Wire Line
+	11950 3350 11950 3250
+Wire Wire Line
+	11950 3250 12350 3250
+Wire Wire Line
+	12350 3250 12350 4300
+NoConn ~ 11950 3950
+NoConn ~ 12050 3950
+Wire Wire Line
+	13000 4050 13000 4300
+$Comp
+L power:GND #PWR?
+U 1 1 5FD21AF6
+P 13700 4900
+F 0 "#PWR?" H 13700 4650 50  0001 C CNN
+F 1 "GND" H 13705 4727 50  0000 C CNN
+F 2 "" H 13700 4900 50  0001 C CNN
+F 3 "" H 13700 4900 50  0001 C CNN
+	1    13700 4900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	13700 4900 13700 4700
+Connection ~ 13700 4700
+Wire Wire Line
+	10100 4700 10100 11150
+Connection ~ 10100 4700
+Wire Wire Line
+	11550 4700 11850 4700
+Wire Wire Line
+	11850 3950 11850 4700
+Connection ~ 11850 4700
+Wire Wire Line
+	11850 4700 12350 4700
+Wire Wire Line
+	11850 650  11850 3350
+$Comp
+L Amplifier_Audio:LM386 U22
+U 1 1 5FD21B21
+P 11950 3650
+F 0 "U22" H 11500 4050 50  0000 L CNN
+F 1 "LM386" H 11500 3950 50  0000 L CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 12050 3750 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm386.pdf" H 12150 3850 50  0001 C CNN
+	1    11950 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Battery BT1
+U 1 1 5FD21A92
+P 850 3900
+F 0 "BT1" H 958 3946 50  0000 L CNN
+F 1 "9v" H 958 3855 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" V 850 3960 50  0001 C CNN
+F 3 "~" V 850 3960 50  0001 C CNN
+	1    850  3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D21
+U 1 1 5FD21A98
+P 2050 3750
+F 0 "D21" V 2089 3632 50  0000 R CNN
+F 1 "LED" V 1998 3632 50  0000 R CNN
+F 2 "LED_THT:LED_D5.0mm" H 2050 3750 50  0001 C CNN
+F 3 "~" H 2050 3750 50  0001 C CNN
+	1    2050 3750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R81
+U 1 1 5FD21A9E
+P 2050 3250
+AR Path="/5FD21A9E" Ref="R81"  Part="1" 
+AR Path="/60F4E92A/5FD21A9E" Ref="R?"  Part="1" 
+AR Path="/60F9596F/5FD21A9E" Ref="R?"  Part="1" 
+AR Path="/60F95BBA/5FD21A9E" Ref="R?"  Part="1" 
+AR Path="/60F95BBF/5FD21A9E" Ref="R?"  Part="1" 
+AR Path="/60F96182/5FD21A9E" Ref="R?"  Part="1" 
+AR Path="/60F96187/5FD21A9E" Ref="R?"  Part="1" 
+AR Path="/60F9685F/5FD21A9E" Ref="R?"  Part="1" 
+AR Path="/60F96864/5FD21A9E" Ref="R?"  Part="1" 
+AR Path="/60F96869/5FD21A9E" Ref="R?"  Part="1" 
+F 0 "R81" H 2150 3300 50  0000 L CNN
+F 1 "330" H 2150 3200 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" V 1980 3250 50  0001 C CNN
+F 3 "~" H 2050 3250 50  0001 C CNN
+	1    2050 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2050 3400 2050 3600
+NoConn ~ 1650 2950
+Wire Wire Line
+	1250 2850 850  2850
+Wire Wire Line
+	850  2850 850  3700
+Wire Wire Line
+	1750 2750 1650 2750
+Wire Wire Line
+	2750 2750 2650 2750
+Connection ~ 1750 2750
+Wire Wire Line
+	3350 2750 3700 2750
+Wire Wire Line
+	2050 3100 2050 2750
+Connection ~ 2050 2750
+Wire Wire Line
+	2050 2750 1750 2750
+Wire Wire Line
+	3050 3050 3050 5050
+Wire Wire Line
+	850  5050 2050 5050
+Connection ~ 3050 5050
+Wire Wire Line
+	3050 5050 3050 11150
+Wire Wire Line
+	2050 3900 2050 5050
+Connection ~ 2050 5050
+Wire Wire Line
+	2050 5050 2650 5050
+Wire Wire Line
+	1750 1600 1750 2750
+$Comp
+L Device:C C61
+U 1 1 5FD21B15
+P 2650 3400
+AR Path="/5FD21B15" Ref="C61"  Part="1" 
+AR Path="/60F4E92A/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/60F9596F/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/60F95BBA/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/60F95BBF/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/60F96182/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/60F96187/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/60F9685F/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/60F96864/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/60F96869/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/5EF17819/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/5EF23030/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/5EF259E1/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/5EF27E4C/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/5EF2B213/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/5EF6055A/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/5EF6057F/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/5EF605A2/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/5EF605C5/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/5EF605E8/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/5EF6060B/5FD21B15" Ref="C?"  Part="1" 
+AR Path="/5EF7A07F/5FD21B15" Ref="C?"  Part="1" 
+F 0 "C61" H 2400 3350 50  0000 L CNN
+F 1 ".22uF" H 2350 3450 50  0000 L CNN
+F 2 "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm" H 2688 3250 50  0001 C CNN
+F 3 "~" H 2650 3400 50  0001 C CNN
+	1    2650 3400
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2650 2750 2650 3250
+Connection ~ 2650 2750
+Wire Wire Line
+	2650 2750 2050 2750
+Wire Wire Line
+	2650 3550 2650 5050
+Connection ~ 2650 5050
+Wire Wire Line
+	2650 5050 3050 5050
+$Comp
+L Regulator_Linear:L7805 U21
+U 1 1 5FD21B27
+P 3050 2750
+F 0 "U21" H 3050 2992 50  0000 C CNN
+F 1 "L7805" H 3050 2901 50  0000 C CNN
+F 2 "Package_TO_SOT_THT:TO-220F-3_Horizontal_TabDown" H 3075 2600 50  0001 L CIN
+F 3 "http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" H 3050 2700 50  0001 C CNN
+	1    3050 2750
+	1    0    0    -1  
+$EndComp
+$Comp
+L dk_Slide-Switches:EG1218 S21
+U 1 1 5FD21B36
+P 1450 2850
+F 0 "S21" H 1450 3131 50  0000 C CNN
+F 1 "EG1218" H 1450 3040 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_Slide_1P2T_CK_OS102011MS2Q" H 1650 3050 50  0001 L CNN
+F 3 "http://spec_sheets.e-switch.com/specs/P040040.pdf" H 1650 3150 60  0001 L CNN
+F 4 "EG1903-ND" H 1650 3250 60  0001 L CNN "Digi-Key_PN"
+F 5 "EG1218" H 1650 3350 60  0001 L CNN "MPN"
+F 6 "Switches" H 1650 3450 60  0001 L CNN "Category"
+F 7 "Slide Switches" H 1650 3550 60  0001 L CNN "Family"
+F 8 "http://spec_sheets.e-switch.com/specs/P040040.pdf" H 1650 3650 60  0001 L CNN "DK_Datasheet_Link"
+F 9 "/product-detail/en/e-switch/EG1218/EG1903-ND/101726" H 1650 3750 60  0001 L CNN "DK_Detail_Page"
+F 10 "SWITCH SLIDE SPDT 200MA 30V" H 1650 3850 60  0001 L CNN "Description"
+F 11 "E-Switch" H 1650 3950 60  0001 L CNN "Manufacturer"
+F 12 "Active" H 1650 4050 60  0001 L CNN "Status"
+	1    1450 2850
+	1    0    0    -1  
+$EndComp
+Connection ~ 1750 1600
+Wire Wire Line
+	3700 2300 3700 2750
+Wire Wire Line
+	3700 2750 3700 3300
+Connection ~ 3700 2750
+Wire Wire Line
+	850  4100 850  5050
+Wire Wire Line
+	10100 3600 10100 3150
+Wire Wire Line
+	10100 3150 8850 3150
+Connection ~ 8850 3150
+Wire Wire Line
+	8850 3150 8850 3500
 $EndSCHEMATC
