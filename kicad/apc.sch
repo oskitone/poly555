@@ -78,11 +78,7 @@ Connection ~ 5050 3500
 Wire Wire Line
 	4650 3700 4700 3700
 Wire Wire Line
-	4650 3300 4650 2550
-Wire Wire Line
 	4650 2550 6050 2550
-Wire Wire Line
-	6050 2550 6050 2700
 Wire Wire Line
 	6050 3300 6100 3300
 Wire Wire Line
@@ -114,13 +110,6 @@ Connection ~ 3500 2700
 Wire Wire Line
 	3500 2700 4150 2700
 NoConn ~ 3500 3300
-NoConn ~ 4650 2700
-NoConn ~ 6050 2700
-Connection ~ 6050 2700
-Wire Wire Line
-	6050 2700 6600 2700
-Wire Wire Line
-	6050 2700 6050 3300
 Connection ~ 5050 2700
 $Comp
 L Device:C_Small C102
@@ -159,7 +148,6 @@ Wire Wire Line
 	6600 2700 7700 2700
 Wire Wire Line
 	7700 2700 7700 2850
-Connection ~ 6600 2700
 Wire Wire Line
 	7700 2850 7500 2850
 Connection ~ 7700 2850
@@ -226,9 +214,6 @@ Wire Wire Line
 	8800 3300 9050 3300
 Wire Wire Line
 	5800 3700 5800 2700
-Connection ~ 5800 2700
-Wire Wire Line
-	5800 2700 6050 2700
 Wire Wire Line
 	3150 5000 4150 5000
 Connection ~ 4150 5000
@@ -377,4 +362,16 @@ Wire Wire Line
 	4700 4050 3400 4050
 Wire Wire Line
 	4700 3700 4700 4050
+NoConn ~ 6100 3500
+NoConn ~ 3650 3500
+Wire Wire Line
+	5800 2700 6600 2700
+Connection ~ 5800 2700
+Connection ~ 6600 2700
+Wire Wire Line
+	4650 3300 4650 2550
+Wire Wire Line
+	6050 3300 6050 2550
+NoConn ~ 6050 2700
+NoConn ~ 4650 2700
 $EndSCHEMATC
