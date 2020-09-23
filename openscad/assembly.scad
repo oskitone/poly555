@@ -920,13 +920,19 @@ module assembly(
             }
 
             module _window_pane_top_supports() {
-                module _struts(count = 2, width = 20, overlap = 1) {
+                module _struts(
+                    count = 1,
+                    width = window_pane_width / 4,
+                    overlap = .5,
+                    z_tightness = .5
+                ) {
                     plot = window_pane_max_width / count;
                     y = enclosure_length - enclosure_wall;
                     length = y - (window_pane_y + window_pane_length)
                         + overlap;
                     z = enclosure_height - enclosure_floor_ceiling
-                        - WINDOW_PANE_HEIGHT - length;
+                        - WINDOW_PANE_HEIGHT - length
+                        + z_tightness;
 
                     for (i = [0 : count - 1]) {
                         x = window_pane_x + plot * i + (plot - width) / 2;
