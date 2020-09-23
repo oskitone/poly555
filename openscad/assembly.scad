@@ -734,7 +734,10 @@ module assembly(
             _screw_head_cavity_bridges();
         }
 
-        module _top() {
+        module _top(
+            branding_floor_extension = 1,
+            branding_curtain_depth = 1
+        ) {
             speaker_mounting_plate_z = speaker_z + SPEAKER_HEIGHT;
             speaker_mounting_plate_height = enclosure_floor_ceiling - engraving_depth;
 
@@ -785,33 +788,47 @@ module assembly(
                 }
             }
 
-            module _branding(
-                depth = enclosure_floor_ceiling - 1,
+            module _branding_floor() {
+                x = side_panel_x - e;
+                y = side_panel_y - e;
+                z = enclosure_height - enclosure_floor_ceiling
+                    - branding_floor_extension;
+
+                width = enclosure_width - x - enclosure_wall + e;
+                length = speaker_y - SPEAKER_LENGTH / 2 - tolerance
+                    - side_panel_y + e;
+
+                translate([x, y, z]) {
+                    cube([width, length, branding_floor_extension + e]);
+                }
+            }
+
+            module _branding_cavities(
                 ratio = 1.5,
-                line_gutter = enclosure_gutter / 8
+                line_gutter = enclosure_gutter / 8,
+                chamfer = .2
             ) {
-                z = enclosure_height - depth;
+                height = enclosure_floor_ceiling + branding_floor_extension;
 
                 module _text(
                     string,
                     size,
                     font = "Work Sans:style=Black",
-                    y = 0,
-                    chamfer = 0
+                    y = 0
                 ) {
                     translate([
                         side_panel_x + side_panel_width / 2,
                         side_panel_y + branding_length / 2 + y,
-                        z
+                        enclosure_height - height - e
                     ]) {
                         engraving(
                             string = string,
                             font = font,
                             size = size,
-                            height = depth + e,
+                            height = height + e * 2,
                             center = true,
                             bleed = -tolerance,
-                            chamfer = .2
+                            chamfer = chamfer
                         );
                     }
                 }
@@ -820,17 +837,33 @@ module assembly(
                 brand_size = (available_length / (ratio + 1)) * ratio;
                 model_size = available_length / (ratio + 1);
 
-                _text(
-                    "OSKITONE",
-                    size = brand_size,
-                    y = branding_length / 2 - brand_size / 2
-                );
-                _text(
-                    "POLY555",
-                    size = model_size,
-                    y = branding_length / -2 + model_size / 2,
-                    font="Orbitron:style=Black"
-                );
+                difference() {
+                    union() {
+                        _text(
+                            "OSKITONE",
+                            size = brand_size,
+                            y = branding_length / 2 - brand_size / 2
+                        );
+                        _text(
+                            "POLY555",
+                            size = model_size,
+                            y = branding_length / -2 + model_size / 2,
+                            font="Orbitron:style=Black"
+                        );
+                    }
+
+                    translate([
+                        side_panel_x - e,
+                        side_panel_y - e,
+                        enclosure_height - enclosure_floor_ceiling
+                    ]) {
+                        cube([
+                            side_panel_width + e * 2,
+                            branding_length + e * 2,
+                            branding_curtain_depth
+                        ]);
+                    }
+                }
             }
 
             module _speaker_mounting_plate() {
@@ -984,11 +1017,14 @@ module assembly(
             _window_pane_top_supports();
 
             difference() {
-                _enclosure_half(true);
+                union() {
+                    _enclosure_half(true);
+                    _branding_floor();
+                }
                 _keys_and_bumper_cavity();
                 _window_cavity();
                 _pcb(for_enclosure_cavity = true);
-                _branding();
+                _branding_cavities();
                 _speaker_grill();
             }
         }
