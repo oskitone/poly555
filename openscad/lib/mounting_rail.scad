@@ -10,7 +10,6 @@ module mounting_rail(
     hole_xs_x_offset = 0,
     hole_diameter = PCB_MOUNT_HOLE_DIAMETER,
 
-    include_head_cavity = false,
     head_hole_diameter = SCREW_HEAD_DIAMETER,
     head_hole_height = SCREW_HEAD_HEIGHT,
 
@@ -53,10 +52,6 @@ module mounting_rail(
                     z = -e
                 );
 
-                if (include_head_cavity) {
-                    _hole_array(z = height - head_hole_height);
-                }
-
                 if (include_nut_cavity) {
                     _hole_array(
                         diameter = nut_lock_diameter,
@@ -94,7 +89,6 @@ mounting_rail(
     height = 8,
     hole_xs = [5, 30, 40, 65, 82],
     hole_diameter = 2,
-    include_head_cavity = true,
     include_nut_cavity = true,
     nut_lock_z = 1,
     include_sacrificial_bridge = true
