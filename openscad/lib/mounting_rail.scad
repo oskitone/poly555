@@ -8,6 +8,7 @@ module mounting_rail(
     height = 1,
     hole_xs = [],
     hole_xs_x_offset = 0,
+    hole_y = undef,
     hole_diameter = PCB_MOUNT_HOLE_DIAMETER,
 
     head_hole_diameter = SCREW_HEAD_DIAMETER,
@@ -36,7 +37,7 @@ module mounting_rail(
                 hole_xs,
                 diameter,
                 height,
-                length / 2,
+                hole_y != undef ? hole_y : length / 2,
                 z,
                 square = square
             );
