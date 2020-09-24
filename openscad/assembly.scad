@@ -828,7 +828,7 @@ module assembly(
                             height = height + e * 2,
                             center = true,
                             bleed = -tolerance,
-                            chamfer = chamfer
+                            chamfer = quick_preview ? 0 : chamfer
                         );
                     }
                 }
