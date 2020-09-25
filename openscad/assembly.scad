@@ -741,6 +741,8 @@ module assembly(
             speaker_mounting_plate_z = speaker_z + SPEAKER_HEIGHT;
             speaker_mounting_plate_height = enclosure_floor_ceiling - engraving_depth;
 
+            aligner_width = enclosure_inner_wall;
+
             module _window_cavity() {
                 translate([
                     window_and_side_panel_gutter,
@@ -756,47 +758,149 @@ module assembly(
             }
 
             module _key_mounting_rail() {
+                wall_length = enclosure_wall;
+
                 x = enclosure_wall - e;
                 y = key_mounting_rail_y;
                 z = pcb_z + PCB_HEIGHT + mount_height + cantilever_height;
 
-                difference() {
-                    translate([x, y, z]) {
-                        mounting_rail(
-                            width = enclosure_width - x * 2,
-                            length = mount_length,
-                            height = enclosure_height - z - enclosure_floor_ceiling + e,
-                            hole_xs = mount_hole_xs,
-                            hole_xs_x_offset = keys_x - x,
-                            head_hole_diameter = SCREW_HEAD_DIAMETER + tolerance * 2,
-                            include_nut_cavity = true,
-                            nut_lock_z = 2 // TODO: tighten for shorter screw
-                        );
-                    }
+                nut_lock_floor = 2; // TODO: tighten for shorter screw
 
-                    translate([
-                        window_pane_x - tolerance * 2,
-                        window_pane_y - tolerance,
-                        window_pane_z
-                    ]) {
+                sill_height = enclosure_wall;
+                wall_height = enclosure_height - z - enclosure_floor_ceiling + e;
+
+                nut_lock_width = NUT_DIAMETER + .5;
+                nut_lock_height = NUT_HEIGHT + .4;
+
+                rail_height = nut_lock_floor + nut_lock_height;
+                rail_support_length = mount_length - wall_length;
+
+                module _wall() {
+                    translate([x, y, z + rail_height - e]) {
                         cube([
-                            window_pane_max_width + tolerance * 4 + e * 2,
-                            mount_length / 2,
-                            WINDOW_PANE_HEIGHT
+                            enclosure_width - x * 2,
+                            wall_length,
+                            wall_height - rail_height + e
                         ]);
                     }
+                }
+
+                module _rail() {
+                    x = enclosure_wall - e;
+                    rail_width = enclosure_width - x * 2;
+
+                    lip_clearance = tolerance * 4;
+                    lip_clerance_height = enclosure_top_height - z
+                        - LIP_BOX_DEFAULT_LIP_HEIGHT;
+
+                    translate([x + lip_clearance, y, z]) {
+                        cube([
+                            rail_width - lip_clearance * 2,
+                            mount_length,
+                            lip_clerance_height + e
+                        ]);
+                    }
+
+                    translate([x, y, z + lip_clerance_height]) {
+                        cube([
+                            rail_width,
+                            mount_length,
+                            rail_height - lip_clerance_height
+                        ]);
+                    }
+
+                    translate([x, y + wall_length, z + rail_height - e]) {
+                        flat_top_rectangular_pyramid(
+                            top_width = rail_width,
+                            top_length = 0,
+                            bottom_width = rail_width,
+                            bottom_length = rail_support_length,
+                            height = rail_support_length,
+                            top_weight_y = 0
+                        );
+                    }
+                }
+
+                module _screw_and_nut_lock_cavities($fn = DEFAULT_ROUNDING) {
+                    translate([keys_x, y, z - e]) {
+                        hole_array(
+                            xs = mount_hole_xs,
+                            diameter = PCB_MOUNT_HOLE_DIAMETER,
+                            height = wall_height - WINDOW_PANE_HEIGHT
+                                - sill_height - e,
+                            y = mount_length / 2,
+                            z = 0,
+                            square = false
+                        );
+
+                        translate([0, 0, nut_lock_floor + e]) {
+                            hole_array(
+                                xs = mount_hole_xs,
+                                diameter = nut_lock_width,
+                                height = nut_lock_height,
+                                y = mount_length / 2,
+                                z = 0,
+                                square = true
+                            );
+                        }
+                    }
+                }
+
+                module _window_pane_sill() {
+                    sill_width = window_pane_max_width + tolerance * 4;
+
+                    sill_x = window_pane_x - tolerance * 2;
+                    sill_y = y + wall_length - e;
+                    sill_z = window_pane_z - sill_height;
+
+                    supports_count =
+                        round(sill_width / BREAKAWAY_SUPPORT_DISTANCE);
+                    support_plot = sill_width / supports_count;
+
+                    translate([sill_x, sill_y, sill_z]) {
+                        cube([
+                            sill_width + aligner_width,
+                            mount_length - wall_length + e,
+                            sill_height
+                        ]);
+                    }
+
+                    for (i = [1 : supports_count - 1]) {
+                        translate([
+                            sill_x + i * support_plot
+                                - BREAKAWAY_SUPPORT_DEPTH / 2,
+                            sill_y,
+                            window_pane_z - e
+                        ]) {
+                            cube([
+                                BREAKAWAY_SUPPORT_DEPTH,
+                                rail_support_length,
+                                WINDOW_PANE_HEIGHT + e * 2
+                            ]);
+                        }
+                    }
+                }
+
+                _window_pane_sill();
+
+                difference() {
+                    union() {
+                        _wall();
+                        _rail();
+                    }
+
+                    _screw_and_nut_lock_cavities();
                 }
             }
 
             module _branding_floor() {
-                x = side_panel_x - e;
-                y = side_panel_y - e;
+                x = window_pane_x + window_pane_max_width + aligner_width;
+                y = key_mounting_rail_y + e;
                 z = enclosure_height - enclosure_floor_ceiling
                     - branding_floor_extension;
 
                 width = enclosure_width - x - enclosure_wall + e;
-                length = speaker_y - SPEAKER_LENGTH / 2 - tolerance
-                    - side_panel_y + e;
+                length = speaker_y - SPEAKER_LENGTH / 2 - tolerance - y;
 
                 translate([x, y, z]) {
                     cube([width, length, branding_floor_extension + e]);
@@ -992,18 +1096,16 @@ module assembly(
                     }
                 }
 
-                module _aligner(
-                    width = enclosure_wall,
-                    height = WINDOW_PANE_HEIGHT
-                ) {
-                    length = enclosure_length - window_pane_y - enclosure_wall
-                        + e * 2;
+                module _aligner() {
+                    y = key_mounting_rail_y + e;
+                    length = enclosure_length - y - e;
 
                     x = window_pane_x + window_pane_max_width + tolerance;
-                    z = enclosure_height - enclosure_floor_ceiling - height;
+                    z = enclosure_height - enclosure_floor_ceiling
+                        - WINDOW_PANE_HEIGHT;
 
-                    translate([x, window_pane_y - e, z]) {
-                        cube([width, length, height + e]);
+                    translate([x, y, z]) {
+                        cube([aligner_width, length, WINDOW_PANE_HEIGHT + e]);
                     }
                 }
 
