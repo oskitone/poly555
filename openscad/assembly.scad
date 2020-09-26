@@ -174,6 +174,7 @@ module assembly(
     window_pane_max_length = enclosure_length - enclosure_wall - window_pane_y
         - tolerance;
     window_pane_length = window_pane_max_length - PLASTICS_TOLERANCE;
+    window_pane_strut_width = window_pane_width / 4;
 
     side_panel_width = enclosure_width
         - window_and_side_panel_gutter * 3
@@ -587,11 +588,12 @@ module assembly(
                     - window_cavity_y - window_cavity_length
                     - tolerance;
 
+                plot = (window_cavity_width - window_pane_strut_width) / 2;
+
                 for (x = [
-                    window_pane_x,
-                    window_pane_x
-                        + (window_pane_max_width - width) / 2,
-                    window_pane_x + window_pane_max_width - width
+                    window_and_side_panel_gutter + (plot - width) / 2,
+                    window_and_side_panel_gutter + plot
+                        + window_pane_strut_width + (plot - width) / 2,
                 ]) {
                     translate([
                         x,
@@ -1059,7 +1061,7 @@ module assembly(
             module _window_pane_top_supports() {
                 module _struts(
                     count = 1,
-                    width = window_pane_width / 4,
+                    width = window_pane_strut_width,
                     overlap = .5,
                     z_tightness = .5
                 ) {
