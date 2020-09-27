@@ -1252,30 +1252,17 @@ module assembly(
         rail_z = pcb_z + PCB_HEIGHT;
 
         rail_width = enclosure_width - rail_x * 2;
-        foot_width = pcb_x - rail_x - 1; // extra wide berth around PCB
 
         difference() {
-            translate([rail_x, rail_y, 0]) {
-                translate([0, 0, rail_z]) {
-                    mounting_rail(
-                        width = rail_width,
-                        length = mount_length,
-                        height = mount_height,
-                        hole_xs = mount_hole_xs,
-                        hole_xs_x_offset = keys_x - rail_x,
-                        head_hole_diameter = SCREW_HEAD_DIAMETER + tolerance * 2
-                    );
-                }
-
-                for (x = [0, 0 + rail_width - foot_width]) {
-                    translate([x, 0, enclosure_floor_ceiling]) {
-                        cube([
-                            foot_width,
-                            mount_length,
-                            rail_z - enclosure_floor_ceiling + e
-                        ]);
-                    }
-                }
+            translate([rail_x, rail_y, rail_z]) {
+                mounting_rail(
+                    width = rail_width,
+                    length = mount_length,
+                    height = mount_height,
+                    hole_xs = mount_hole_xs,
+                    hole_xs_x_offset = keys_x - rail_x,
+                    head_hole_diameter = SCREW_HEAD_DIAMETER + tolerance * 2
+                );
             }
 
             _mounting_rail_aligners(tolerance * 2);
