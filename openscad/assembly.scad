@@ -631,32 +631,65 @@ module assembly(
                 overlap = enclosure_wall + e;
                 keys_cavity_xy = enclosure_gutter - key_gutter;
 
+                lip_cavity_height = keys_exposed_height + accidental_key_recession;
+
                 module _enclosure_inner_cavity() {
+                    keys_exposed_width = enclosure_width - keys_cavity_xy * 2;
+                    keys_exposed_length = bumper_length - enclosure_wall;
+
+                    bottom_width = enclosure_width - enclosure_wall * 2;
+                    bottom_length = bumper_length + (keys_cavity_xy - enclosure_wall)
+                        - enclosure_wall;
+
+                    lip_vault_height = bottom_length - keys_exposed_length;
+
+                    lip_cavity_height = keys_exposed_height + accidental_key_recession;
+
+                    vault_height = (bottom_width - keys_exposed_width) / 2;
+                    vault_z = enclosure_height - lip_cavity_height - vault_height;
+
                     translate([
                         enclosure_wall,
                         enclosure_wall,
                         enclosure_floor_ceiling
                     ]) {
+                        cube([
+                            bottom_width,
+                            bottom_length,
+                            vault_z - enclosure_floor_ceiling + e
+                        ]);
+                    }
+
+                    translate([enclosure_wall, enclosure_wall, vault_z]) {
                         flat_top_rectangular_pyramid(
-                            top_width = enclosure_width - keys_cavity_xy * 2,
-                            top_length = bumper_length - enclosure_wall,
-                            bottom_width = enclosure_width - enclosure_wall * 2,
-                            bottom_length = bumper_length + (keys_cavity_xy - enclosure_wall)
-                                - enclosure_wall,
-                            height = enclosure_height - enclosure_floor_ceiling + e,
+                            top_width = keys_exposed_width,
+                            top_length = keys_exposed_length,
+                            bottom_width = bottom_width,
+                            bottom_length = bottom_length,
+                            height = vault_height,
                             top_weight_y = 1
                         );
+                    }
+
+                    translate([
+                        keys_cavity_xy,
+                        keys_cavity_xy,
+                        vault_z + vault_height - e
+                    ]) {
+                        cube([
+                            keys_exposed_width,
+                            keys_exposed_length,
+                            enclosure_height - vault_z - vault_height + e * 2
+                        ]);
                     }
                 }
 
                 module _front_key_exposure_lip_cavity() {
-                    height = keys_exposed_height + accidental_key_recession;
-
-                    translate([keys_cavity_xy, -e, enclosure_height - height]) {
+                    translate([keys_cavity_xy, -e, enclosure_height - lip_cavity_height]) {
                         cube([
                             enclosure_width - keys_cavity_xy * 2,
                             keys_cavity_xy + e * 2,
-                            height + e
+                            lip_cavity_height + e
                         ]);
                     }
 
@@ -664,7 +697,7 @@ module assembly(
                         translate([
                             keys_cavity_xy,
                             enclosure_chamfer,
-                            enclosure_height - height - enclosure_chamfer
+                            enclosure_height - lip_cavity_height - enclosure_chamfer
                         ]) {
                             rotate([0, 90, 0]) {
                                 rounded_corner_cutoff(
