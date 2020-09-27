@@ -146,6 +146,7 @@ module assembly(
         + keys_mount_end_on_pcb
         - mount_length;
     keys_z = pcb_z + PCB_HEIGHT + BUTTON_HEIGHT;
+    key_mounting_rail_x = enclosure_wall + tolerance * 2;
     key_mounting_rail_y = pcb_y + keys_mount_end_on_pcb - mount_length;
 
     battery_x = enclosure_width - BATTERY_WIDTH - enclosure_wall - tolerance;
@@ -229,7 +230,7 @@ module assembly(
                 cantilever_height = cantilever_height,
                 cantilever_recession = cantilever_recession,
 
-                include_mount = include_natural,
+                include_mount = false,
                 include_natural = include_natural,
                 include_accidental = include_accidental,
                 include_hitch = include_hitch,
@@ -244,9 +245,26 @@ module assembly(
         }
     }
 
+    module _mount() {
+        difference() {
+            translate([key_mounting_rail_x, key_mounting_rail_y, keys_z]) {
+                mounting_rail(
+                    enclosure_width - key_mounting_rail_x * 2,
+                    mount_length,
+                    cantilever_height,
+                    hole_xs = mount_hole_xs,
+                    hole_xs_x_offset = pcb_x - key_mounting_rail_x + key_gutter
+                );
+            }
+
+            _mounting_rail_aligners(tolerance * 2);
+        }
+    }
+
     module _keys() {
         color(natural_key_color, key_opacity) {
             _mounted_keys(include_natural = true);
+            _mount();
         }
         color(accidental_key_color, key_opacity) {
             _mounted_keys(include_accidental = true);
@@ -254,20 +272,21 @@ module assembly(
     }
 
     module _mounting_rail_aligners(bleed = 0) {
-        width_length = enclosure_inner_wall + bleed;
+        width = enclosure_inner_wall + bleed;
         length = mount_length / 2 + bleed * 2;
-        height = pcb_stilt_height + PCB_HEIGHT + mount_height;
+        height = enclosure_bottom_height + LIP_BOX_DEFAULT_LIP_HEIGHT
+            - enclosure_floor_ceiling;
 
         y = key_mounting_rail_y + (mount_length - length) / 2;
         z = enclosure_floor_ceiling - e;
 
         for (x = [
             enclosure_wall - e,
-            enclosure_width - enclosure_wall - width_length
+            enclosure_width - enclosure_wall - width
         ]) {
             translate([x, y, z]) {
                 cube([
-                    width_length,
+                    width,
                     length,
                     height + e * 2
                 ]);
@@ -1247,20 +1266,18 @@ module assembly(
     }
 
     module _mounting_rails() {
-        rail_x = enclosure_wall + tolerance * 2;
-        rail_y = key_mounting_rail_y;
-        rail_z = pcb_z + PCB_HEIGHT;
-
-        rail_width = enclosure_width - rail_x * 2;
-
         difference() {
-            translate([rail_x, rail_y, rail_z]) {
+            translate([
+                key_mounting_rail_x,
+                key_mounting_rail_y,
+                pcb_z + PCB_HEIGHT
+            ]) {
                 mounting_rail(
-                    width = rail_width,
+                    width = enclosure_width - key_mounting_rail_x * 2,
                     length = mount_length,
                     height = mount_height,
                     hole_xs = mount_hole_xs,
-                    hole_xs_x_offset = keys_x - rail_x,
+                    hole_xs_x_offset = keys_x - key_mounting_rail_x,
                     head_hole_diameter = SCREW_HEAD_DIAMETER + tolerance * 2
                 );
             }
