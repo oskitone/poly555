@@ -20,6 +20,7 @@ module pcb(
     visualize_buttons = false,
     visualize_silkscreen = false,
     visualize_circuit_space = false,
+    visualize_volume_pot = false,
     visualize_volume_wheel = false,
     visualize_switch = false,
     visualize_led = false,
@@ -82,6 +83,15 @@ module pcb(
         }
     }
 
+    if (visualize_volume_pot) {
+        translate([PCB_VOLUME_WHEEL_X, PCB_VOLUME_WHEEL_Y, PCB_HEIGHT]) {
+            % cylinder(
+                d = 6,
+                h = POT_HEIGHT
+            );
+        }
+    }
+
     if (visualize_volume_wheel) {
         translate([
             PCB_VOLUME_WHEEL_X,
@@ -134,6 +144,7 @@ pcb(
     visualize_buttons = true,
     visualize_silkscreen = true,
     visualize_circuit_space = true,
+    visualize_volume_pot = true,
     visualize_volume_wheel = true,
     visualize_switch = true,
     visualize_led = true
