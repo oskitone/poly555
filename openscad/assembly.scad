@@ -582,13 +582,33 @@ module assembly(
                 }
             }
 
-            module _window_pane_bottom_supports(width = 15) {
-                height = window_pane_z - enclosure_floor_ceiling;
+            module _window_pane_stilts(width = 15) {
+                z = pcb_z + PCB_HEIGHT;
+
+                height = window_pane_z - z;
                 length = enclosure_length - enclosure_wall
                     - window_cavity_y - window_cavity_length
                     - tolerance;
+                vault_height = length;
 
                 plot = (window_cavity_width - window_pane_strut_width) / 2;
+
+                module _stilt() {
+                    translate([0, length, 0]) {
+                        flat_top_rectangular_pyramid(
+                            top_width = width,
+                            top_length = length + e,
+                            bottom_width = width,
+                            bottom_length = 0,
+                            height = vault_height + e,
+                            top_weight_y = 1
+                        );
+                    }
+
+                    translate([0, 0, vault_height]) {
+                        cube([width, length + e, height - vault_height]);
+                    }
+                }
 
                 for (x = [
                     window_and_side_panel_gutter + (plot - width) / 2,
@@ -598,9 +618,9 @@ module assembly(
                     translate([
                         x,
                         enclosure_length - enclosure_wall - length,
-                        enclosure_floor_ceiling - e
+                        z
                     ]) {
-                        cube([width, length + e, height + e]);
+                        _stilt();
                     }
                 }
             }
@@ -752,7 +772,7 @@ module assembly(
                     _mount_stilts_and_spacers();
                     _mounting_rail_aligners();
                     _speaker_container();
-                    _window_pane_bottom_supports();
+                    _window_pane_stilts();
                 }
 
                 _switch_exposure(
