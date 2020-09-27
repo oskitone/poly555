@@ -1236,7 +1236,7 @@ module assembly(
                         ? 0
                         : volume_wheel_grip_size,
                 volume_wheel_cap_height = for_enclosure_cavity
-                    ? volume_wheel_cap_height + tolerance * 4
+                    ? volume_wheel_cap_height + tolerance * 8
                     : volume_wheel_cap_height,
 
                 pcb_color = pcb_color,
