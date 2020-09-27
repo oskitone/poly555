@@ -368,22 +368,15 @@ module assembly(
 
             module _battery_container(
                 width = BATTERY_LENGTH * .5,
-                wall = enclosure_inner_wall,
-                ramp = 5
+                length = enclosure_inner_wall,
+                height = BATTERY_HEIGHT * .5
             ) {
                 translate([
                     side_panel_x + (side_panel_width - width) / 2,
-                    battery_y - wall - ramp - tolerance,
+                    battery_y - length - tolerance,
                     enclosure_floor_ceiling
                 ]) {
-                    flat_top_rectangular_pyramid(
-                        top_width = width,
-                        top_length = wall,
-                        bottom_width = width,
-                        bottom_length = wall + ramp,
-                        height = BATTERY_HEIGHT * .5,
-                        top_weight_y = 1
-                    );
+                    cube([width, length, height]);
                 }
             }
 
@@ -566,37 +559,24 @@ module assembly(
                 outer_diameter = inner_diameter + wall * 2;
                 height = speaker_z + SPEAKER_MAGNET_HEIGHT - z;
 
-                spoke_length = (SPEAKER_CONE_DIAMETER - SPEAKER_MAGNET_DIAMETER) / 2;
+                spoke_length =
+                    (SPEAKER_CONE_DIAMETER - SPEAKER_MAGNET_DIAMETER) / 2;
                 ring_segment_width = (inner_diameter * PI) / spoke_count / 2;
 
-                module _spoke(angle = 0) {
-                    rotate([0, 0, 180 + angle]) {
-                        translate([wall / -2, inner_diameter / 2, 0]) {
-                            cube([wall, spoke_length + e, height]);
-                        }
+                translate([speaker_x, speaker_y, z]) {
+                    ring(
+                        diameter = outer_diameter,
+                        height = height,
+                        inner_diameter = inner_diameter,
+                        $fn = HIDEF_ROUNDING
+                    );
 
-                        intersection() {
-                            ring(
-                                diameter = outer_diameter,
-                                height = height,
-                                inner_diameter = inner_diameter,
-                                $fn = HIDEF_ROUNDING
-                            );
-
-                            translate([ring_segment_width / -2, 0, -e]) {
-                                cube([
-                                    ring_segment_width,
-                                    outer_diameter / 2 + e,
-                                    height + e * 2
-                                ]);
+                    for (i = [0 : spoke_count - 1]) {
+                        rotate([0, 0, 180 + i / spoke_count * 360]) {
+                            translate([wall / -2, inner_diameter / 2, 0]) {
+                                cube([wall, spoke_length + e, height]);
                             }
                         }
-                    }
-                }
-
-                for (i = [0 : spoke_count - 1]) {
-                    translate([speaker_x, speaker_y, z]) {
-                        _spoke(i / spoke_count * 360);
                     }
                 }
             }
