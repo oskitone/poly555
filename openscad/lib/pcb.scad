@@ -1,4 +1,5 @@
 include <values.scad>;
+include <utils.scad>;
 
 use <switch.scad>;
 use <trimpot_knob.scad>;
@@ -96,7 +97,7 @@ module pcb(
         translate([
             PCB_VOLUME_WHEEL_X,
             PCB_VOLUME_WHEEL_Y,
-            POT_HEIGHT - volume_wheel_cap_height
+            get_volume_wheel_z(cap_height = volume_wheel_cap_height)
         ]) {
             trimpot_knob(
                 diameter = volume_wheel_diameter,

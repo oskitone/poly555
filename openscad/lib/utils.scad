@@ -39,3 +39,19 @@ function get_keys_total_width(
     let(natural_key_count=get_natural_key_count(count, starting_note_index))
     natural_key_count * natural_width + max(0, natural_key_count - 1) * gutter
 );
+
+function get_volume_wheel_total_height(
+    cap_height = 1,
+    head_height = 1.5
+) = (
+    cap_height * 2 + head_height
+);
+
+function get_volume_wheel_z(
+    cap_height = 1,
+    pcb_z = 0,
+    pcb_height = PCB_HEIGHT,
+    pot_height = POT_HEIGHT
+) = (
+    pcb_z + pcb_height + pot_height - cap_height
+);

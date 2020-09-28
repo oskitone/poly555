@@ -47,6 +47,7 @@ module assembly(
 
     volume_wheel_exposure = 2,
     volume_wheel_cap_height = 1,
+    volume_wheel_vertical_clearance = .4,
 
     show_enclosure_bottom = true,
     show_battery = true,
@@ -129,10 +130,8 @@ module assembly(
         SPEAKER_HEIGHT - SPEAKER_MAGNET_HEIGHT + BATTERY_HEIGHT
             + speaker_to_battery_clearance
     );
-    // TODO: tidy
     enclosure_bottom_height = pcb_z + PCB_HEIGHT + POT_HEIGHT
-        + volume_wheel_cap_height
-        - 3.5; // total wheel  height
+        - volume_wheel_cap_height - volume_wheel_vertical_clearance;
     enclosure_top_height = enclosure_height - enclosure_bottom_height;
 
     key_height = enclosure_height - pcb_stilt_height - enclosure_floor_ceiling
@@ -336,6 +335,21 @@ module assembly(
 
                     $fn = enclosure_rounding
                 );
+            }
+        }
+
+        module _volume_wheel_flank_wall(x_bleed = 0, z_bleed = 0) {
+            x = enclosure_width - enclosure_wall - x_bleed;
+            y = key_mounting_rail_y - tolerance * 2 - e;
+
+            translate([x, y, enclosure_bottom_height - z_bleed]) {
+                cube([
+                    enclosure_wall + x_bleed * 2,
+                    pcb_y + PCB_VOLUME_WHEEL_Y - y,
+                    get_volume_wheel_total_height(
+                        cap_height = volume_wheel_cap_height
+                    ) + volume_wheel_vertical_clearance * 2 + z_bleed
+                ]);
             }
         }
 
@@ -772,6 +786,7 @@ module assembly(
                     _mounting_rail_aligners();
                     _speaker_container();
                     _window_pane_stilts();
+                    _volume_wheel_flank_wall();
                 }
 
                 _switch_exposure(
@@ -1182,6 +1197,7 @@ module assembly(
                 _pcb(for_enclosure_cavity = true);
                 _branding_cavities();
                 _speaker_grill();
+                _volume_wheel_flank_wall(x_bleed = e, z_bleed = e);
             }
         }
 
@@ -1236,7 +1252,8 @@ module assembly(
                         ? 0
                         : volume_wheel_grip_size,
                 volume_wheel_cap_height = for_enclosure_cavity
-                    ? volume_wheel_cap_height + tolerance * 8
+                    ? volume_wheel_cap_height + volume_wheel_vertical_clearance
+                        + e
                     : volume_wheel_cap_height,
 
                 pcb_color = pcb_color,
