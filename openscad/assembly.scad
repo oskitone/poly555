@@ -2,6 +2,7 @@ include <lib/values.scad>;
 
 use <lib/basic_shapes.scad>;
 use <lib/battery.scad>;
+use <lib/breakaway_support.scad>;
 use <lib/diagonal_grill.scad>;
 use <lib/enclosure.scad>;
 use <lib/engraving.scad>;
@@ -935,14 +936,15 @@ module assembly(
                         translate([
                             sill_x + i * support_plot
                                 - BREAKAWAY_SUPPORT_DEPTH / 2,
-                            sill_y,
+                            sill_y - e,
                             window_pane_z - e
                         ]) {
-                            cube([
-                                BREAKAWAY_SUPPORT_DEPTH,
-                                rail_support_length,
-                                WINDOW_PANE_HEIGHT + e * 2
-                            ]);
+                            breakaway_support(
+                                length = rail_support_length + e,
+                                height = WINDOW_PANE_HEIGHT + e * 2,
+                                flip_vertically = true,
+                                include_first = false
+                            );
                         }
                     }
                 }
@@ -1325,6 +1327,14 @@ module assembly(
                 enclosure_length,
                 enclosure_height
             ]);
+        } else if (cross_section == "pane_cavity") {
+            x = 1.8;
+            z = enclosure_height - enclosure_floor_ceiling - WINDOW_PANE_HEIGHT
+                - 1;
+
+            translate([x, key_mounting_rail_y, z]) {
+                cube([41.8 - x, mount_length + e * 2, enclosure_height - z + e]);
+            }
         }
     }
 }
