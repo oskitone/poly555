@@ -838,8 +838,8 @@ module assembly(
                 sill_height = enclosure_wall;
                 wall_height = enclosure_height - z - enclosure_floor_ceiling + e;
 
-                nut_lock_width = NUT_DIAMETER + .5;
-                nut_lock_height = NUT_HEIGHT + .4;
+                nut_lock_width = NUT_DIAMETER + .2;
+                nut_lock_height = NUT_HEIGHT + .2;
 
                 rail_height = nut_lock_floor + nut_lock_height;
                 rail_support_length = mount_length - wall_length;
