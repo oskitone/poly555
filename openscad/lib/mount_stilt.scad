@@ -64,8 +64,8 @@ module mount_stilt(
             height - nut_lock_height - ceiling
         ]) {
             cube([
-                NUT_DIAMETER,
-                NUT_DIAMETER + e * 2,
+                nut_lock_diameter,
+                length + e * 2,
                 nut_lock_height
             ]);
         }
