@@ -8,79 +8,24 @@ module mounting_rail(
     height = 1,
     hole_xs = [],
     hole_xs_x_offset = 0,
-    hole_y = undef,
     hole_diameter = PCB_MOUNT_HOLE_DIAMETER,
-
-    head_hole_diameter = SCREW_HEAD_DIAMETER,
-    head_hole_height = SCREW_HEAD_HEIGHT,
-
-    include_nut_cavity = false,
-    nut_lock_diameter = NUT_DIAMETER + .5,
-    nut_lock_height = NUT_HEIGHT + .4,
-    nut_lock_z = 0,
-
-    // TODO: obviate
-    include_sacrificial_bridge = false,
-
     $fn = DEFAULT_ROUNDING
 ) {
     e = 0.0567;
 
-    module _hole_array(
-        diameter = head_hole_diameter,
-        height = head_hole_height + e,
-        z = -e,
-        square = false
-    ) {
+    difference() {
+        cube([width, length, height]);
+
         translate([hole_xs_x_offset, 0, 0]) {
             hole_array(
                 hole_xs,
-                diameter,
-                height,
-                hole_y != undef ? hole_y : length / 2,
-                z,
-                square = square
+                hole_diameter,
+                height + e * 2,
+                length / 2,
+                -e,
+                square = false
             );
         }
-    }
-
-    module _cavities() {
-        difference() {
-            union() {
-                _hole_array(
-                    diameter = hole_diameter,
-                    height = height + e * 2,
-                    z = -e
-                );
-
-                if (include_nut_cavity) {
-                    _hole_array(
-                        diameter = nut_lock_diameter,
-                        height = nut_lock_height + e,
-                        z = nut_lock_z - e,
-                        square = true
-                    );
-                }
-            }
-
-            // TODO: bridge top vs bottom
-            if (
-                include_nut_cavity
-                && include_sacrificial_bridge
-                && (nut_lock_z + nut_lock_height < height)
-            ) {
-                _hole_array(
-                    diameter = hole_diameter + e * 2,
-                    height = SACRIFICIAL_BRIDGE_HEIGHT,
-                    z = nut_lock_z + nut_lock_height
-                );
-            }
-        }
-    }
-
-    difference() {
-        cube([width, length, height]);
-        _cavities();
     }
 }
 
@@ -89,8 +34,5 @@ mounting_rail(
     length = 5,
     height = 8,
     hole_xs = [5, 30, 40, 65, 82],
-    hole_diameter = 2,
-    include_nut_cavity = true,
-    nut_lock_z = 1,
-    include_sacrificial_bridge = true
+    hole_diameter = 2
 );

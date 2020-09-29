@@ -1274,8 +1274,7 @@ module assembly(
                     length = mount_length,
                     height = mount_height,
                     hole_xs = mount_hole_xs,
-                    hole_xs_x_offset = keys_x - key_mounting_rail_x,
-                    head_hole_diameter = SCREW_HEAD_DIAMETER + tolerance * 2
+                    hole_xs_x_offset = keys_x - key_mounting_rail_x
                 );
             }
 
