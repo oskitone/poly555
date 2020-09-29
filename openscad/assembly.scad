@@ -8,6 +8,7 @@ use <lib/engraving.scad>;
 use <lib/keys.scad>;
 use <lib/mount_stilt.scad>;
 use <lib/mounting_rail.scad>;
+use <lib/nut_lock.scad>;
 use <lib/pcb.scad>;
 use <lib/speaker.scad>;
 use <lib/switch.scad>;
@@ -838,10 +839,7 @@ module assembly(
                 sill_height = enclosure_wall;
                 wall_height = enclosure_height - z - enclosure_floor_ceiling + e;
 
-                nut_lock_width = NUT_DIAMETER + .2;
-                nut_lock_height = NUT_HEIGHT + .2;
-
-                rail_height = nut_lock_floor + nut_lock_height;
+                rail_height = nut_lock_floor + NUT_HEIGHT;
                 rail_support_length = mount_length - wall_length;
 
                 module _wall() {
@@ -902,15 +900,14 @@ module assembly(
                             square = false
                         );
 
-                        translate([0, 0, nut_lock_floor + e]) {
-                            hole_array(
-                                xs = mount_hole_xs,
-                                diameter = nut_lock_width,
-                                height = nut_lock_height,
-                                y = mount_length / 2,
-                                z = 0,
-                                square = true
-                            );
+                        for (x = mount_hole_xs) {
+                            translate([
+                                x,
+                                mount_length / 2,
+                                nut_lock_floor + e
+                            ]) {
+                                nut_lock();
+                            }
                         }
                     }
                 }
