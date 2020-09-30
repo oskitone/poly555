@@ -1067,7 +1067,8 @@ module assembly(
             }
 
             module _volume_wheel_brace() {
-                z = pcb_z + PCB_HEIGHT + POT_HEIGHT + volume_wheel_cap_height;
+                z = get_volume_wheel_z(volume_wheel_cap_height, pcb_z)
+                    + get_volume_wheel_total_height(volume_wheel_cap_height);
                 width = enclosure_width - enclosure_wall
                     - (pcb_x + PCB_VOLUME_WHEEL_X);
                 length = enclosure_inner_wall;
