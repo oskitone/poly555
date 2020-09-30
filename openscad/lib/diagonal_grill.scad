@@ -9,14 +9,14 @@ module diagonal_grill(
     long_side = max(width, length);
 
     module _cavities() {
+        count = floor(long_side / plot_width * 2) + 1;
+        total_width = (count * 2 - 1) * size;
+
         translate([width / 2, length / 2, 0 ]) {
             rotate([0, 0, angle]) {
-                translate([-long_side, -long_side, 0]) {
-                    for (i = [0 : long_side / plot_width * 2 - 1]) {
-                        x = plot_width * i;
-                        y = 0;
-
-                        translate([x, y, -e]) {
+                translate([total_width / -2, total_width / -2, 0]) {
+                    for (i = [0 : count - 1]) {
+                        translate([plot_width * i, 0, -e]) {
                             cube([size, long_side * 2, height + e * 2]);
                         }
                     }
@@ -31,4 +31,7 @@ module diagonal_grill(
     }
 }
 
-diagonal_grill(80, 40, 6, size = 3, angle = 360 * $t);
+translate([-40, -20, 0]) {
+    # cube([80, 40, 5]);
+    diagonal_grill(80, 40, 6, size = 9, angle = 360 * $t);
+}
