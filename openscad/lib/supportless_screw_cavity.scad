@@ -7,7 +7,10 @@ module supportless_screw_cavity(
     span = 10,
     angle = 0,
     diameter = PCB_MOUNT_HOLE_DIAMETER,
-    $fn = DEFAULT_ROUNDING
+    $fn = DEFAULT_ROUNDING,
+
+    // Conservatively larger than needed to ensure layers aren't skipped
+    bridge_height = SACRIFICIAL_BRIDGE_HEIGHT * 1.5
 ) {
     e = .0321;
 
@@ -20,11 +23,11 @@ module supportless_screw_cavity(
 
     rotate([0, 0, angle]) {
         translate([span / -2, diameter / -2, 0]) {
-            cube([span, diameter, SACRIFICIAL_BRIDGE_HEIGHT + e]);
+            cube([span, diameter, bridge_height + e]);
         }
 
-        translate([diameter / -2, diameter / -2, SACRIFICIAL_BRIDGE_HEIGHT]) {
-            cube([diameter, diameter, SACRIFICIAL_BRIDGE_HEIGHT]);
+        translate([diameter / -2, diameter / -2, bridge_height]) {
+            cube([diameter, diameter, bridge_height]);
         }
     }
 }
