@@ -3,6 +3,7 @@ include <values.scad>;
 use <basic_shapes.scad>;
 use <pcb.scad>;
 use <nut_lock.scad>;
+use <supportless_screw_cavity.scad>;
 
 module mount_stilt(
     height,
@@ -15,9 +16,7 @@ module mount_stilt(
     hole_diameter = PCB_MOUNT_HOLE_DIAMETER,
 
     nut_lock_height_clearance = DEFAULT_NUT_LOCK_HEIGHT_CLEARANCE,
-
-    // TODO: obviate
-    include_sacrificial_bridge = true,
+    nut_lock_diameter_clearance = DEFAULT_NUT_LOCK_DIAMETER_CLEARANCE,
 
     include_pedestal = true,
 
@@ -61,13 +60,11 @@ module mount_stilt(
         }
 
         translate([0, 0, height - nut_lock_height - ceiling]) {
-            nut_lock(height_clearance = nut_lock_height_clearance);
-        }
-    }
-
-    if (include_sacrificial_bridge) {
-        translate([width / -2, length / -2, height - ceiling]) {
-            cube([width, length, SACRIFICIAL_BRIDGE_HEIGHT]);
+            nut_lock(
+                height_clearance = nut_lock_height_clearance,
+                diameter_clearance = nut_lock_diameter_clearance,
+                include_supportless_screw_cavity = true
+            );
         }
     }
 }

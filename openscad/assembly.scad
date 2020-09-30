@@ -12,6 +12,7 @@ use <lib/mounting_rail.scad>;
 use <lib/nut_lock.scad>;
 use <lib/pcb.scad>;
 use <lib/speaker.scad>;
+use <lib/supportless_screw_cavity.scad>;
 use <lib/switch.scad>;
 use <lib/utils.scad>;
 
@@ -506,29 +507,18 @@ module assembly(
                             cylinder(d = diameter, h = height);
                             _chamfer(diameter);
                         }
+
+                        translate([
+                            pcb_x + p.x,
+                            pcb_y + p.y,
+                            SCREW_HEAD_HEIGHT + exposed_screw_head_clearance - e
+                        ]) {
+                            supportless_screw_cavity(span = diameter);
+                        }
                     }
                 }
 
                 _heads();
-            }
-
-            // TODO: obviate
-            module _screw_head_cavity_bridges(
-                diameter = PCB_MOUNT_HOLE_DIAMETER + e * 2,
-                $fn = DEFAULT_ROUNDING
-            ) {
-                for (p = BOTTOM_MOUNTED_PCB_HOLES) {
-                    translate([
-                        pcb_x + p.x,
-                        pcb_y + p.y,
-                        SCREW_HEAD_HEIGHT + exposed_screw_head_clearance
-                    ]) {
-                        cylinder(
-                            d = diameter,
-                            h = SACRIFICIAL_BRIDGE_HEIGHT
-                        );
-                    }
-                }
             }
 
             module _engraving(corner_offset = 10) {
@@ -801,8 +791,6 @@ module assembly(
                 _engraving();
                 _pcb(for_enclosure_cavity = true);
             }
-
-            _screw_head_cavity_bridges();
         }
 
         module _top(
@@ -890,24 +878,20 @@ module assembly(
                 }
 
                 module _screw_and_nut_lock_cavities($fn = DEFAULT_ROUNDING) {
-                    translate([keys_x, y, z - e]) {
+                    translate([keys_x, y + mount_length / 2, z - e]) {
                         hole_array(
                             xs = mount_hole_xs,
                             diameter = PCB_MOUNT_HOLE_DIAMETER,
                             height = wall_height - WINDOW_PANE_HEIGHT
-                                - sill_height - e,
-                            y = mount_length / 2,
-                            z = 0,
-                            square = false
+                                - sill_height - e
                         );
 
                         for (x = mount_hole_xs) {
-                            translate([
-                                x,
-                                mount_length / 2,
-                                nut_lock_floor + e
-                            ]) {
-                                nut_lock();
+                            translate([x, 0, nut_lock_floor + e]) {
+                                nut_lock(
+                                    include_supportless_screw_cavity = true,
+                                    flip_supportless_screw_cavity = true
+                                );
                             }
                         }
                     }
