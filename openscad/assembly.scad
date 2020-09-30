@@ -823,7 +823,7 @@ module assembly(
                 y = key_mounting_rail_y;
                 z = pcb_z + PCB_HEIGHT + mount_height + cantilever_height;
 
-                nut_lock_floor = 2; // TODO: tighten for shorter screw
+                nut_lock_floor = enclosure_floor_ceiling;
 
                 sill_height = enclosure_wall;
                 wall_height = enclosure_height - z - enclosure_floor_ceiling + e;
