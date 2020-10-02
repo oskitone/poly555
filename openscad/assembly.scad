@@ -12,6 +12,7 @@ use <lib/mount_stilt.scad>;
 use <lib/mounting_rail.scad>;
 use <lib/nut_lock.scad>;
 use <lib/pcb.scad>;
+use <lib/pencil_stand.scad>;
 use <lib/speaker.scad>;
 use <lib/supportless_screw_cavity.scad>;
 use <lib/switch.scad>;
@@ -59,6 +60,9 @@ module assembly(
     volume_wheel_cap_height = 1,
     volume_wheel_grip_size = 1.5,
     volume_wheel_vertical_clearance = .4,
+
+    pencil_stand_display_angle = 65,
+    use_pencil_stand_display_angle = true,
 
     show_enclosure_bottom = true,
     show_battery = true,
@@ -842,6 +846,37 @@ module assembly(
                 }
             }
 
+            module _pencil_stand(
+                cavity = false,
+                wall = enclosure_inner_wall
+            ) {
+                PENCIL_HEIGHT = 25.4 * 6;
+                PENCIL_DIAMETER = 6;
+
+                // Eyeballed into place so end of pencil is in the middle
+                // and supports enclosure at desired pencil_stand_display_angle.
+                // Could probably be derived mathematically!
+                depth = 14;
+                angle_x = -34;
+                angle_y = 14;
+
+                xy = keys_y + (pcb_y - keys_y) / 2;
+
+                translate([xy, xy, cavity ? -e : e]) {
+                    if (cavity) {
+                        pencil_stand(0, depth - wall, angle_x, angle_y);
+                    } else {
+                        pencil_stand(wall, depth, angle_x, angle_y);
+
+                        rotate([angle_y, angle_x, 0]) {
+                            translate([0, 0, depth - PENCIL_HEIGHT - wall]) {
+                                % cylinder(d = PENCIL_DIAMETER, h = PENCIL_HEIGHT);
+                            }
+                        }
+                    }
+                }
+            }
+
             module _volume_wheel_cavity() {
                 z = get_volume_wheel_z(volume_wheel_cap_height, pcb_z)
                     - volume_wheel_vertical_clearance;
@@ -916,6 +951,7 @@ module assembly(
                     _hitch_stilts();
                     _pcb_volume_wheel_stilt();
                     _keys_endstop();
+                    _pencil_stand();
                 }
 
                 _switch_exposure(
@@ -927,6 +963,7 @@ module assembly(
                 _screw_cavities();
                 _engraving();
                 _volume_wheel_cavity();
+                _pencil_stand(cavity = true);
             }
         }
 
@@ -1409,7 +1446,13 @@ module assembly(
         }
     }
 
-    rotate(flip_vertically ? [0, 180, 0] : []) intersection() {
+    rotate(
+        flip_vertically
+            ? [0, 180, 0]
+            : use_pencil_stand_display_angle
+                ? [pencil_stand_display_angle, 0, 0]
+                : []
+    ) intersection() {
         union() {
             _enclosure();
             if (show_battery) { % _battery(); }
@@ -1489,6 +1532,8 @@ assembly(
     show_keys = SHOW_KEYS,
     show_enclosure_top = SHOW_ENCLOSURE_TOP,
     show_window_pane = SHOW_WINDOW_PANE,
+
+    use_pencil_stand_display_angle = USE_PENCIL_STAND_DISPLAY_ANGLE,
 
     animate_visualized_plastic_tolerance_weight =
         ANIMATE_VISUALIZED_PLASTIC_TOLERANCE_WEIGHT,
