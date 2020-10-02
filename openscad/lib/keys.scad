@@ -378,12 +378,9 @@ module mounted_keys(
 
             if (hitch_height > 0) {
                 translate([-e, hitch_y, hitch_z - e]) {
-                    hitch(
+                    hitch_cavity(
                         width = mount_width + e * 2,
-                        height = hitch_height + e,
-                        head_bleed = key_travel,
-                        y_bleed = hitch_clearance + tolerance * 2,
-                        flatten_front = true
+                        height = hitch_height + e
                     );
                 }
             }
@@ -394,9 +391,7 @@ module mounted_keys(
         translate([0, hitch_y, hitch_z]) {
             hitch(
                 width = mount_width,
-                height = hitch_height,
-                mount_hole_xs = mount_hole_xs,
-                y_bleed = tolerance * -2
+                height = hitch_height
             );
         }
     }
