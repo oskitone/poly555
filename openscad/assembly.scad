@@ -198,6 +198,8 @@ module assembly(
         + SPEAKER_LENGTH / 2;
     speaker_z = enclosure_height - enclosure_floor_ceiling - SPEAKER_HEIGHT;
 
+    aligner_width = enclosure_inner_wall;
+
     echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
     echo("Window cavity dimensions", [window_cavity_width, window_cavity_length]);
     echo("Window pane dimensions", window_pane_width, window_pane_length);
@@ -274,10 +276,9 @@ module assembly(
     }
 
     module _mounting_rail_aligners(bleed = 0) {
-        width = enclosure_inner_wall + bleed;
+        width = aligner_width + bleed;
         length = mount_length / 2 + bleed * 2;
-        height = enclosure_bottom_height + LIP_BOX_DEFAULT_LIP_HEIGHT
-            - enclosure_floor_ceiling;
+        height = keys_z - enclosure_floor_ceiling + cantilever_height;
 
         y = key_mounting_rail_y + (mount_length - length) / 2;
         z = enclosure_floor_ceiling - e;
@@ -800,8 +801,6 @@ module assembly(
             speaker_mounting_plate_z = speaker_z + SPEAKER_HEIGHT;
             speaker_mounting_plate_height = enclosure_floor_ceiling - engraving_depth;
 
-            aligner_width = enclosure_inner_wall;
-
             module _window_cavity() {
                 translate([
                     window_and_side_panel_gutter,
@@ -845,23 +844,23 @@ module assembly(
                     x = enclosure_wall - e;
                     rail_width = enclosure_width - x * 2;
 
-                    lip_clearance = tolerance * 4;
-                    lip_clerance_height = enclosure_top_height - z
+                    clearance = aligner_width + tolerance * 4;
+                    clearance_height = enclosure_top_height - z
                         - LIP_BOX_DEFAULT_LIP_HEIGHT;
 
-                    translate([x + lip_clearance, y, z]) {
+                    translate([x + clearance, y, z]) {
                         cube([
-                            rail_width - lip_clearance * 2,
+                            rail_width - clearance * 2,
                             mount_length,
-                            lip_clerance_height + e
+                            clearance_height + e
                         ]);
                     }
 
-                    translate([x, y, z + lip_clerance_height]) {
+                    translate([x, y, z + clearance_height]) {
                         cube([
                             rail_width,
                             mount_length,
-                            rail_height - lip_clerance_height
+                            rail_height - clearance_height
                         ]);
                     }
 
