@@ -58,7 +58,7 @@ module assembly(
     show_switch = true,
     show_pcb = true,
     show_volume_wheel = true,
-    show_mounting_rails = true,
+    show_mounting_rail = true,
     show_keys = true,
     show_enclosure_top = true,
     show_window_pane = false,
@@ -211,8 +211,7 @@ module assembly(
 
     module _mounted_keys(
         include_natural = false,
-        include_accidental = false,
-        include_hitch = false
+        include_accidental = false
     ) {
         translate([keys_x, keys_y, keys_z]) {
             mounted_keys(
@@ -242,14 +241,9 @@ module assembly(
                 include_mount = false,
                 include_natural = include_natural,
                 include_accidental = include_accidental,
-                include_hitch = include_hitch,
                 include_print_supports = true,
 
-                key_travel = key_travel,
-
-                hitch_height = mount_height + HITCH_RECOMMENDED_MINIMUM_CAVITY_HEIGHT,
-                hitch_y = pcb_y - keys_y + TOP_MOUNTED_PCB_HOLES[0][1],
-                hitch_z = -mount_height
+                key_travel = key_travel
             );
         }
     }
@@ -448,10 +442,7 @@ module assembly(
                 intersection() {
                     translate([pcb_x, pcb_y, pcb_z - e]) {
                         mount_stilts(
-                            positions = concat(
-                                TOP_MOUNTED_PCB_HOLES,
-                                BACK_PCB_HOLES
-                            ),
+                            positions = BACK_PCB_HOLES,
                             height = pcb_stilt_height,
                             z = -pcb_stilt_height
                         );
@@ -1264,7 +1255,7 @@ module assembly(
         }
     }
 
-    module _mounting_rails() {
+    module _mounting_rail() {
         difference() {
             translate([
                 key_mounting_rail_x,
@@ -1282,8 +1273,6 @@ module assembly(
 
             _mounting_rail_aligners(tolerance * 2);
         }
-
-        translate([e, 0, 0]) _mounted_keys(include_hitch = true);
     }
 
     module _window_pane() {
@@ -1313,7 +1302,7 @@ module assembly(
             if (show_speaker) { % _speaker(); }
             if (show_pcb) { % _pcb(); }
             if (show_volume_wheel) { _pcb(just_volume_wheel = true); }
-            if (show_mounting_rails) { _mounting_rails(); }
+            if (show_mounting_rail) { _mounting_rail(); }
             if (show_keys) { _keys(); }
             if (show_window_pane) { % _window_pane();}
         }
@@ -1357,7 +1346,7 @@ assembly(
     show_switch = true,
     show_pcb = true,
     show_volume_wheel = true,
-    show_mounting_rails = true,
+    show_mounting_rail = true,
     show_keys = true,
     show_enclosure_top = true,
 
