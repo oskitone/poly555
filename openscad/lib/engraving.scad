@@ -1,5 +1,7 @@
 module engraving(
-    string = "OSKITONE",
+    string = undef,
+    svg = undef,
+    size = undef,
     font = "Work Sans:style=Black",
     size = 10,
     bleed = 0,
@@ -10,9 +12,9 @@ module engraving(
     e = .03;
     minimal_layer_height = .1;
 
-    module _t(height, bleed) {
-        linear_extrude(height = height) {
-            offset(delta = bleed) {
+    module _layer(height, bleed) {
+        linear_extrude(height = height) offset(delta = bleed) resize(size) {
+            if (string != undef) {
                 text(
                     string,
                     size = size,
@@ -20,11 +22,16 @@ module engraving(
                     halign = center ? "center" : "left",
                     valign = center ? "center" : "baseline"
                 );
+            } else if (svg != undef) {
+                import(
+                    file = svg,
+                    center = center
+                );
             }
         }
     }
 
-    _t(height - chamfer, bleed);
+    _layer(height - chamfer, bleed);
 
     if (chamfer > 0) {
         count = ceil(chamfer / minimal_layer_height);
@@ -35,7 +42,7 @@ module engraving(
             z = height - chamfer + i * _layer_height - e;
 
             translate([0, 0, z]) {
-                _t(
+                _layer(
                     height = _layer_height + e,
                     bleed = bleed + (i + 1) * _layer_height
                 );
@@ -67,6 +74,25 @@ for (i = [0 : len(chamfers) - 1]) {
                         string = "XYZ0123",
                         size = size,
                         font="Orbitron:style=Black",
+                        height = depth + e,
+                        bleed = bleeds[ii],
+                        chamfer = chamfers[i]
+                    );
+                }
+            }
+        }
+    }
+}
+
+for (i = [0 : len(chamfers) - 1]) {
+    for (ii = [0 : len(bleeds) - 1]) {
+        translate([ii * (width - e), 40 + i * (length - e), 0]) {
+            difference() {
+                cube([width, length, height]);
+
+                translate([width / 2, length / 2, height - depth]) {
+                    engraving(
+                        svg = "../../branding.svg",
                         height = depth + e,
                         bleed = bleeds[ii],
                         chamfer = chamfers[i]
