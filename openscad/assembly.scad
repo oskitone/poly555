@@ -530,6 +530,7 @@ module assembly(
                 ]) {
                     rotate([0, 180, 0]) {
                         engraving(
+                            string = "OSKITONE",
                             height = engraving_depth + e,
                             bleed = tolerance
                         );
@@ -794,12 +795,11 @@ module assembly(
             }
         }
 
-        module _top(
-            branding_floor_extension = 1,
-            branding_curtain_depth = 1
-        ) {
+        module _top() {
             speaker_mounting_plate_z = speaker_z + SPEAKER_HEIGHT;
             speaker_mounting_plate_height = enclosure_floor_ceiling - engraving_depth;
+
+            led_cavity_width = branding_length * .67;
 
             module _window_cavity() {
                 translate([
@@ -944,80 +944,74 @@ module assembly(
                 }
             }
 
-            module _branding_floor() {
-                x = window_pane_x + window_pane_max_width + aligner_width;
-                y = key_mounting_rail_y + e;
-                z = enclosure_height - enclosure_floor_ceiling
-                    - branding_floor_extension;
+            module _led_exposure(bleed = 0, z_bleed = 0) {
+                z = pcb_z + PCB_HEIGHT - z_bleed;
+                height = enclosure_height - z + z_bleed;
 
-                width = enclosure_width - x - enclosure_wall + e;
-                length = speaker_y - SPEAKER_LENGTH / 2 - tolerance - y;
+                difference() {
+                    hull() {
+                        translate([
+                            side_panel_x + led_cavity_width / 2,
+                            side_panel_y + branding_length / 2,
+                            z
+                        ]) {
+                            cylinder(d = LED_DIAMETER + bleed * 2, h = e);
+                        }
 
-                translate([x, y, z]) {
-                    cube([width, length, branding_floor_extension + e]);
+                        translate([
+                            side_panel_x - bleed,
+                            side_panel_y - bleed,
+                            z + height - e
+                        ]) {
+                            cube([
+                                led_cavity_width + bleed * 2,
+                                branding_length + bleed * 2,
+                                e
+                            ]);
+                        }
+                    }
                 }
             }
 
             module _branding_cavities(
-                ratio = 1.5,
-                line_gutter = enclosure_gutter / 8,
+                line_gutter = enclosure_gutter / 4,
+                led_gutter = enclosure_gutter / 2,
                 chamfer = .2
             ) {
-                height = enclosure_floor_ceiling + branding_floor_extension;
+                branding_width = side_panel_width - led_cavity_width
+                    - led_gutter;
 
-                module _text(
-                    string,
-                    size,
-                    font = "Work Sans:style=Black",
-                    y = 0
-                ) {
-                    translate([
-                        side_panel_x + side_panel_width / 2,
-                        side_panel_y + branding_length / 2 + y,
-                        enclosure_height - height - e
-                    ]) {
+                branding_x = side_panel_x + side_panel_width - branding_width;
+
+                oskitone_length_width_ratio = 4.6265526 / 29.757366;
+                brand_size = branding_width * oskitone_length_width_ratio;
+                model_size = branding_length - line_gutter - brand_size;
+
+                translate([
+                    branding_x,
+                    side_panel_y,
+                    enclosure_height - engraving_depth
+                ]) {
+                    translate([0, branding_length - brand_size, 0]) {
                         engraving(
-                            string = string,
-                            font = font,
-                            size = size,
-                            height = height + e * 2,
-                            center = true,
+                            svg = "../../branding.svg",
+                            height = engraving_depth + e,
+                            size = [branding_width, brand_size],
+                            center = false,
                             bleed = -tolerance,
                             chamfer = quick_preview ? 0 : chamfer
                         );
                     }
-                }
 
-                available_length = branding_length - line_gutter;
-                brand_size = (available_length / (ratio + 1)) * ratio;
-                model_size = available_length / (ratio + 1);
-
-                difference() {
-                    union() {
-                        _text(
-                            "OSKITONE",
-                            size = brand_size,
-                            y = branding_length / 2 - brand_size / 2
-                        );
-                        _text(
-                            "POLY555",
-                            size = model_size,
-                            y = branding_length / -2 + model_size / 2,
-                            font="Orbitron:style=Black"
-                        );
-                    }
-
-                    translate([
-                        side_panel_x - e,
-                        side_panel_y - e,
-                        enclosure_height - enclosure_floor_ceiling
-                    ]) {
-                        cube([
-                            side_panel_width + e * 2,
-                            branding_length + e * 2,
-                            branding_curtain_depth
-                        ]);
-                    }
+                    engraving(
+                        string = "POLY555",
+                        font = "Orbitron:style=Black",
+                        size = model_size,
+                        height = engraving_depth + e,
+                        center = false,
+                        bleed = -tolerance,
+                        chamfer = quick_preview ? 0 : chamfer
+                    );
                 }
             }
 
@@ -1173,12 +1167,13 @@ module assembly(
             difference() {
                 union() {
                     _enclosure_half(true);
-                    _branding_floor();
+                    _led_exposure(enclosure_inner_wall, -e);
                 }
                 _keys_and_bumper_cavity();
                 _window_cavity();
                 _pcb(for_enclosure_cavity = true);
                 _branding_cavities();
+                _led_exposure(tolerance, e, $fn = HIDEF_ROUNDING);
                 _speaker_grill();
                 _volume_wheel_flank_wall(x_bleed = e, z_bleed = e);
             }
@@ -1319,6 +1314,8 @@ module assembly(
             translate([x, key_mounting_rail_y, z]) {
                 cube([41.8 - x, mount_length + e * 2, enclosure_height - z + e]);
             }
+        } else if (cross_section == "led") {
+            cube([side_panel_x + branding_length / 2, enclosure_length, enclosure_height]);
         }
     }
 }
