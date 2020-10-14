@@ -63,7 +63,7 @@ bleeds = [-.1, 0];
 
 /* Best for this text looks to be -.1 bleed and .1-.2 chamfer */
 
-for (i = [0 : len(chamfers) - 1]) {
+* for (i = [0 : len(chamfers) - 1]) {
     for (ii = [0 : len(bleeds) - 1]) {
         translate([ii * (width - e), i * (length - e), 0]) {
             difference() {
@@ -84,7 +84,7 @@ for (i = [0 : len(chamfers) - 1]) {
     }
 }
 
-for (i = [0 : len(chamfers) - 1]) {
+* for (i = [0 : len(chamfers) - 1]) {
     for (ii = [0 : len(bleeds) - 1]) {
         translate([ii * (width - e), 40 + i * (length - e), 0]) {
             difference() {
@@ -102,3 +102,70 @@ for (i = [0 : len(chamfers) - 1]) {
         }
     }
 }
+
+module _test_array(
+    bleeds = [-.1, 0, .1],
+    chamfers = [0, .1, .2]
+) {
+    branding_length = 11.272;
+    brand_size = 5.84426;
+    branding_width = 35.5738;
+    model_size = 3.92774;
+
+    gutter = 2;
+
+    total_width = (branding_width + gutter) * len(bleeds) + gutter;
+    total_length = (branding_length + gutter) * len(chamfers) + gutter;
+    height = 2;
+
+    engraving_depth = 1;
+
+    e = .03;
+
+    module _test(
+        bleed = .1,
+        chamfer = .2
+    ) {
+        translate([0, branding_length - brand_size, 0]) {
+            engraving(
+                svg = "../../branding.svg",
+                height = engraving_depth + e,
+                size = [branding_width, brand_size],
+                center = false,
+                bleed = bleed,
+                chamfer = chamfer
+            );
+        }
+
+        engraving(
+            string = "XYZ0123",
+            font = "Orbitron:style=Black",
+            size = model_size,
+            height = engraving_depth + e,
+            center = false,
+            bleed = bleed,
+            chamfer = chamfer
+        );
+    }
+
+    difference() {
+        cube([total_width, total_length, height]);
+
+        for (i = [0 : len(bleeds) - 1]) {
+            for (ii = [0 : len(chamfers) - 1]) {
+                translate([
+                    gutter + i * (branding_width + gutter),
+                    gutter + ii * (branding_length + gutter),
+                    height - engraving_depth
+                ]) {
+                    _test(
+                        bleed = bleeds[i],
+                        chamfer = chamfers[ii]
+                    );
+                }
+            }
+        }
+    }
+}
+
+_test_array();
