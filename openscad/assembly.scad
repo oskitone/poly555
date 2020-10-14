@@ -1159,7 +1159,7 @@ module assembly(
                 _aligner();
             }
 
-            _key_mounting_rail();
+            * _key_mounting_rail();
             _volume_wheel_brace();
             _speaker_mounting_plate();
             _window_pane_top_supports();
@@ -1316,6 +1316,35 @@ module assembly(
             }
         } else if (cross_section == "led") {
             cube([side_panel_x + branding_length / 2, enclosure_length, enclosure_height]);
+        } else if (cross_section == "branding") {
+            extension = enclosure_gutter;
+
+            height = enclosure_floor_ceiling + 1;
+            led_cavity_height = 30;
+
+            translate([
+                side_panel_x - extension,
+                side_panel_y - extension,
+                enclosure_height - height
+            ]) {
+                cube([
+                    side_panel_width + extension * 2,
+                    branding_length + extension * 2,
+                    height
+                ]);
+            }
+
+            translate([
+                side_panel_x - 1,
+                side_panel_y - 1,
+                enclosure_height - led_cavity_height
+            ]) {
+                cube([
+                    10,
+                    14,
+                    led_cavity_height
+                ]);
+            }
         }
     }
 }
@@ -1337,5 +1366,5 @@ assembly(
     animate_visualized_plastic_tolerance_weight = false,
 
     quick_preview = DEV_MODE,
-    cross_section = undef
+    cross_section = "branding"
 );
