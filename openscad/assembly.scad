@@ -530,7 +530,8 @@ module assembly(
                 ]) {
                     rotate([0, 180, 0]) {
                         engraving(
-                            string = "OSKITONE",
+                            svg = "../../branding.svg",
+                            size = [69, 69 * OSKITONE_LENGTH_WIDTH_RATIO],
                             height = engraving_depth + e,
                             bleed = tolerance
                         );
@@ -983,8 +984,7 @@ module assembly(
 
                 branding_x = side_panel_x + side_panel_width - branding_width;
 
-                oskitone_length_width_ratio = 4.6265526 / 29.757366;
-                brand_size = branding_width * oskitone_length_width_ratio;
+                brand_size = branding_width * OSKITONE_LENGTH_WIDTH_RATIO;
                 model_size = branding_length - line_gutter - brand_size;
 
                 translate([
