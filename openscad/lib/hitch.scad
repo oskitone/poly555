@@ -28,10 +28,16 @@ module hitch(
     }
 
     if (include_dovetails) {
-        translate([0, tolerance, -bottom_extension - HITCH_DOVETAIL_HEIGHT]) {
+        dovetail_length = length - tolerance * 2 - dovetail_wall;
+
+        translate([
+            0,
+            length - dovetail_length + tolerance,
+            -bottom_extension - HITCH_DOVETAIL_HEIGHT
+        ]) {
             dovetails([
                 width,
-                length - tolerance * 2 - dovetail_wall,
+                dovetail_length,
                 HITCH_DOVETAIL_HEIGHT + e
             ], show_insert = true);
         }
@@ -116,7 +122,7 @@ module hitch_base(
         ], show_base = true);
     }
 
-    translate([0, tolerance + length - dovetail_wall, 0]) {
+    translate([0, tolerance, 0]) {
         cube([width, dovetail_wall, HITCH_DOVETAIL_HEIGHT]);
     }
 }
