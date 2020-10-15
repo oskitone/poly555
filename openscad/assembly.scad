@@ -631,6 +631,18 @@ module assembly(
                 }
             }
 
+            module _pcb_volume_wheel_stilt(length = 2) {
+                x = pcb_x + PCB_VOLUME_WHEEL_X - TRIMPOT_KNOB_HEAD_DIAMETER / 2;
+                z = enclosure_floor_ceiling - e;
+
+                width = enclosure_width - x - enclosure_wall + e;
+                height = pcb_z - z;
+
+                translate([x, pcb_y + PCB_VOLUME_WHEEL_Y - length / 2, z]) {
+                    cube([width, length, height]);
+                }
+            }
+
             module _back() {
                 length = enclosure_length - bumper_length;
                 overlap = enclosure_wall + e;
@@ -780,6 +792,7 @@ module assembly(
                     _speaker_container();
                     _window_pane_stilts();
                     _volume_wheel_flank_wall();
+                    _pcb_volume_wheel_stilt();
                 }
 
                 _switch_exposure(
@@ -1308,6 +1321,12 @@ module assembly(
         } else if (cross_section == "switch") {
             cube([
                 pcb_x + PCB_SWITCH_X + SWITCH_BASE_WIDTH / 2 - SWITCH_ORIGIN.x,
+                enclosure_length,
+                enclosure_height
+            ]);
+        } else if (cross_section == "volume_pot") {
+            cube([
+                pcb_x + PCB_VOLUME_WHEEL_X,
                 enclosure_length,
                 enclosure_height
             ]);
