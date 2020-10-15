@@ -248,23 +248,24 @@ module assembly(
         }
     }
 
-    module _mount() {
-        difference() {
-            translate([key_mounting_rail_x, key_mounting_rail_y, keys_z]) {
-                mounting_rail(
-                    enclosure_width - key_mounting_rail_x * 2,
-                    mount_length,
-                    cantilever_height,
-                    hole_xs = mount_hole_xs,
-                    hole_xs_x_offset = pcb_x - key_mounting_rail_x + key_gutter
-                );
-            }
-
-            _mounting_rail_aligners(tolerance * 2);
-        }
-    }
-
     module _keys() {
+        module _mount() {
+            difference() {
+                translate([key_mounting_rail_x, key_mounting_rail_y, keys_z]) {
+                    mounting_rail(
+                        enclosure_width - key_mounting_rail_x * 2,
+                        mount_length,
+                        cantilever_height,
+                        hole_xs = mount_hole_xs,
+                        hole_xs_x_offset = pcb_x - key_mounting_rail_x
+                            + key_gutter
+                    );
+                }
+
+                _mounting_rail_aligners(tolerance * 2);
+            }
+        }
+
         color(natural_key_color, key_opacity) {
             _mounted_keys(include_natural = true);
             _mount();
