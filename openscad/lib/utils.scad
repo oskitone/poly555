@@ -56,3 +56,25 @@ function get_volume_wheel_z(
 ) = (
     pcb_z + pcb_height + pot_height - cap_height - head_height
 );
+
+/* ANIMATION */
+
+function get_step_ends(weights) = [ for (i = [0 : len(weights) - 1])
+    (weights[i] + (i > 0 ? sum(slice(weights, 0, i)) : 0))
+    / sum(weights)
+];
+
+function get_step_end_indexes_above_t(t = 0, step_ends = []) =
+    [ for (i = [0 : len(step_ends) - 1]) if (t < step_ends[i]) i ];
+
+function get_step_duration(i, step_ends = []) = (
+    i == 0
+        ? step_ends[i]
+        : step_ends[i] - step_ends[i - 1]
+);
+
+function get_step_t(i, t, step_ends = []) = (
+    i == 0
+        ? t / step_ends[i]
+        : (t - step_ends[i - 1]) / get_step_duration(i, step_ends)
+);
