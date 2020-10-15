@@ -87,7 +87,7 @@ module pcb(
     if (visualize_volume_pot) {
         translate([PCB_VOLUME_WHEEL_X, PCB_VOLUME_WHEEL_Y, PCB_HEIGHT]) {
             % cylinder(
-                d = 6,
+                d = TRIMPOT_KNOB_HEAD_DIAMETER,
                 h = POT_HEIGHT
             );
         }

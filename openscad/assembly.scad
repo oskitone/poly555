@@ -133,8 +133,13 @@ module assembly(
         SPEAKER_HEIGHT - SPEAKER_MAGNET_HEIGHT + BATTERY_HEIGHT
             + speaker_to_battery_clearance
     );
-    enclosure_bottom_height = pcb_z + PCB_HEIGHT + POT_HEIGHT
-        - volume_wheel_cap_height - volume_wheel_vertical_clearance;
+    enclosure_bottom_height = get_volume_wheel_z(
+        cap_height = volume_wheel_cap_height,
+        pcb_z = pcb_z,
+        pcb_height = PCB_HEIGHT,
+        pot_height = POT_HEIGHT,
+        head_height = TRIMPOT_KNOB_HEAD_HEIGHT
+    ) - volume_wheel_vertical_clearance;
     enclosure_top_height = enclosure_height - enclosure_bottom_height;
 
     key_height = enclosure_height - pcb_stilt_height - enclosure_floor_ceiling
@@ -1236,6 +1241,7 @@ module assembly(
                 visualize_switch = show_switch && !for_enclosure_cavity,
                 visualize_volume_wheel =
                     just_volume_wheel || for_enclosure_cavity,
+                visualize_volume_pot = !for_enclosure_cavity && show_pcb,
 
                 simplify_volume_wheel = for_enclosure_cavity,
                 volume_wheel_diameter = for_enclosure_cavity

@@ -51,7 +51,8 @@ function get_volume_wheel_z(
     cap_height = 1,
     pcb_z = 0,
     pcb_height = PCB_HEIGHT,
-    pot_height = POT_HEIGHT
+    pot_height = POT_HEIGHT,
+    head_height = TRIMPOT_KNOB_HEAD_HEIGHT
 ) = (
-    pcb_z + pcb_height + pot_height - cap_height
+    pcb_z + pcb_height + pot_height - cap_height - head_height
 );

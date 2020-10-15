@@ -7,8 +7,8 @@ module trimpot_knob(
 
     cap_height = 1,
 
-    head_diameter = 6.15,
-    head_height = 1.5,
+    head_diameter = TRIMPOT_KNOB_HEAD_DIAMETER,
+    head_height = TRIMPOT_KNOB_HEAD_HEIGHT,
     head_flat_depth = .55,
 
     simplify = false,
