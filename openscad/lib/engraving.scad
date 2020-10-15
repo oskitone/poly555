@@ -104,7 +104,7 @@ bleeds = [-.1, 0];
 }
 
 module _test_array(
-    bleeds = [-.1, 0, .1],
+    bleeds = [-.1, 0],
     chamfers = [0, .1, .2]
 ) {
     branding_length = 11.272;
@@ -138,7 +138,7 @@ module _test_array(
         }
 
         engraving(
-            string = "XYZ0123",
+            string = "POLY555",
             font = "Orbitron:style=Black",
             size = model_size,
             height = engraving_depth + e,
