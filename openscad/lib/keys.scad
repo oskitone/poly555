@@ -310,7 +310,6 @@ module mounted_keys(
     hitch_height = 0,
     hitch_y = 0,
     hitch_z = 0,
-    hitch_clearance = 0,
     key_travel = 1.4
 ) {
     $fn = 24;
@@ -377,13 +376,12 @@ module mounted_keys(
             );
 
             if (hitch_height > 0) {
-                translate([-e, hitch_y, hitch_z - e]) {
-                    hitch(
+                translate([-e, hitch_y, hitch_z]) {
+                    hitch_cavity(
                         width = mount_width + e * 2,
-                        height = hitch_height + e,
-                        head_bleed = key_travel,
-                        y_bleed = hitch_clearance + tolerance * 2,
-                        flatten_front = true
+                        height = hitch_height,
+                        head_clearance = key_travel,
+                        bottom_extension = e
                     );
                 }
             }
@@ -394,9 +392,7 @@ module mounted_keys(
         translate([0, hitch_y, hitch_z]) {
             hitch(
                 width = mount_width,
-                height = hitch_height,
-                mount_hole_xs = mount_hole_xs,
-                y_bleed = tolerance * -2
+                height = hitch_height
             );
         }
     }
@@ -417,9 +413,6 @@ mounted_keys(
     front_and_sides_chamfer = 1,
 
     gutter = 1,
-
-    undercarriage_height = 5,
-    undercarriage_length = 20,
 
     include_hitch = true,
     include_print_supports = true,
