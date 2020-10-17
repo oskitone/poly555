@@ -37,6 +37,7 @@ module assembly(
 
     mount_length = 6,
     cantilever_length = 3,
+    cantilever_mount_height = 3,
     cantilever_height = 1,
 
     tolerance = .1,
@@ -240,10 +241,6 @@ module assembly(
 
                 gutter = key_gutter,
 
-                mount_length = mount_length,
-                mount_height = cantilever_height,
-                mount_hole_xs = mount_hole_xs,
-
                 cantilever_length = cantilever_length,
                 cantilever_height = cantilever_height,
                 cantilever_recession = cantilever_recession,
@@ -270,14 +267,14 @@ module assembly(
                     mounting_rail(
                         enclosure_width - key_mounting_rail_x * 2,
                         mount_length,
-                        cantilever_height,
+                        cantilever_mount_height,
                         hole_xs = mount_hole_xs,
                         hole_xs_x_offset = pcb_x - key_mounting_rail_x
                             + key_gutter
                     );
                 }
 
-                _mounting_rail_aligners(tolerance * 2);
+                _mounting_rail_aligners(bleed = tolerance * 2, cavity = true);
             }
         }
 
@@ -294,13 +291,16 @@ module assembly(
         _mounted_keys(include_hitch = true);
     }
 
-    module _mounting_rail_aligners(bleed = 0) {
+    module _mounting_rail_aligners(bleed = 0, cavity = false) {
         width = aligner_width + bleed;
         length = mount_length / 2 + bleed * 2;
-        height = keys_z - enclosure_floor_ceiling + cantilever_height;
 
         y = key_mounting_rail_y + (mount_length - length) / 2;
         z = enclosure_floor_ceiling - e;
+
+        height = cavity
+            ? keys_z - enclosure_floor_ceiling + cantilever_mount_height
+            : enclosure_bottom_height + LIP_BOX_DEFAULT_LIP_HEIGHT - z;
 
         for (x = [
             enclosure_wall - e,
@@ -310,7 +310,7 @@ module assembly(
                 cube([
                     width,
                     length,
-                    height + e * 2
+                    cavity ? height + e * 2 : height
                 ]);
             }
         }
@@ -810,7 +810,7 @@ module assembly(
                     );
                     _battery_container();
                     _mount_stilts_and_spacers();
-                    _mounting_rail_aligners();
+                    _mounting_rail_aligners(cavity = false);
                     _speaker_container();
                     _window_pane_stilts();
                     _volume_wheel_flank_wall();
@@ -856,7 +856,7 @@ module assembly(
 
                 x = enclosure_wall - e;
                 y = key_mounting_rail_y;
-                z = pcb_z + PCB_HEIGHT + mount_height + cantilever_height;
+                z = pcb_z + PCB_HEIGHT + mount_height + cantilever_mount_height;
 
                 nut_lock_floor = enclosure_floor_ceiling;
 
@@ -881,15 +881,19 @@ module assembly(
                     rail_width = enclosure_width - x * 2;
 
                     clearance = aligner_width + tolerance * 4;
-                    clearance_height = enclosure_top_height - z
-                        - LIP_BOX_DEFAULT_LIP_HEIGHT;
+                    clearance_height = max(
+                        enclosure_top_height - z - LIP_BOX_DEFAULT_LIP_HEIGHT,
+                        0
+                    );
 
-                    translate([x + clearance, y, z]) {
-                        cube([
-                            rail_width - clearance * 2,
-                            mount_length,
-                            clearance_height + e
-                        ]);
+                    if (clearance_height > 0) {
+                        translate([x + clearance, y, z]) {
+                            cube([
+                                rail_width - clearance * 2,
+                                mount_length,
+                                clearance_height + e
+                            ]);
+                        }
                     }
 
                     translate([x, y, z + clearance_height]) {
@@ -1298,7 +1302,7 @@ module assembly(
                 );
             }
 
-            _mounting_rail_aligners(tolerance * 2);
+            _mounting_rail_aligners(bleed = tolerance * 2, cavity = true);
         }
     }
 
