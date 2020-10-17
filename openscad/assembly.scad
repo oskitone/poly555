@@ -1017,7 +1017,7 @@ module assembly(
             module _branding_cavities(
                 line_gutter = enclosure_gutter / 4,
                 led_gutter = enclosure_gutter / 2,
-                chamfer = .2
+                chamfer = .1
             ) {
                 branding_width = side_panel_width - led_cavity_width
                     - led_gutter;
@@ -1049,7 +1049,7 @@ module assembly(
                         size = model_size,
                         height = engraving_depth + e,
                         center = false,
-                        bleed = -tolerance,
+                        bleed = 0, // intentionally thicker
                         chamfer = quick_preview ? 0 : chamfer
                     );
                 }
