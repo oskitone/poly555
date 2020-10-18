@@ -1016,6 +1016,8 @@ module assembly(
                 height = LED_HEIGHT;
                 z = enclosure_height - height;
 
+                echo("theoretical led x", side_panel_x + led_cavity_width / 2 - pcb_x);
+
                 difference() {
                     hull() {
                         translate([
@@ -1282,9 +1284,8 @@ module assembly(
             pcb(
                 visualize_board =  !for_enclosure_cavity && show_pcb,
                 visualize_buttons = !for_enclosure_cavity && show_pcb,
-                visualize_circuit_space = quick_preview && !for_enclosure_cavity,
-                visualize_silkscreen = !quick_preview && !for_enclosure_cavity
-                     && show_pcb,
+                visualize_circuit_space = false,
+                visualize_silkscreen = true,
                 visualize_switch = show_switch && !for_enclosure_cavity,
                 visualize_volume_wheel =
                     just_volume_wheel || for_enclosure_cavity,
@@ -1401,15 +1402,15 @@ module assembly(
 DEV_MODE = true;
 
 assembly(
-    show_enclosure_bottom = true,
-    show_battery = true,
-    show_speaker = true,
-    show_switch = true,
+    show_enclosure_bottom = false,
+    show_battery = false,
+    show_speaker = false,
+    show_switch = false,
     show_pcb = true,
-    show_volume_wheel = true,
-    show_hitch = true,
-    show_mounting_rail = true,
-    show_keys = true,
+    show_volume_wheel = false,
+    show_hitch = false,
+    show_mounting_rail = false,
+    show_keys = false,
     show_enclosure_top = true,
 
     show_window_pane = false,

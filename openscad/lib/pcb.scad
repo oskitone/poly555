@@ -24,7 +24,7 @@ module pcb(
     visualize_volume_pot = false,
     visualize_volume_wheel = false,
     visualize_switch = false,
-    visualize_led = false,
+    visualize_led = true,
 
     $fn = DEFAULT_ROUNDING
 ) {
