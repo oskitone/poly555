@@ -986,15 +986,17 @@ module assembly(
             }
 
             module _led_exposure(bleed = 0, z_bleed = 0) {
-                z = pcb_z + PCB_HEIGHT - z_bleed;
-                height = enclosure_height - z + z_bleed;
+                /* TEMP for print test w/ rev_c PCB */
+                /* TODO: revert these changes */
+                height = LED_HEIGHT;
+                z = enclosure_height - height;
 
                 difference() {
                     hull() {
                         translate([
                             side_panel_x + led_cavity_width / 2,
                             side_panel_y + branding_length / 2,
-                            z
+                            z - z_bleed
                         ]) {
                             cylinder(d = LED_DIAMETER + bleed * 2, h = e);
                         }
@@ -1002,7 +1004,7 @@ module assembly(
                         translate([
                             side_panel_x - bleed,
                             side_panel_y - bleed,
-                            z + height - e
+                            z + height - e + z_bleed
                         ]) {
                             cube([
                                 led_cavity_width + bleed * 2,
@@ -1213,7 +1215,10 @@ module assembly(
                 _window_cavity();
                 _pcb(for_enclosure_cavity = true);
                 _branding_cavities();
-                _led_exposure(tolerance, e, $fn = HIDEF_ROUNDING);
+
+                /* TEMP: intentionally tighter fit because LED will be loose */
+                /* TODO: revert */
+                _led_exposure(-tolerance, e, $fn = HIDEF_ROUNDING);
                 _speaker_grill();
                 _volume_wheel_flank_wall(x_bleed = e, z_bleed = e);
             }
