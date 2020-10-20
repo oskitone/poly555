@@ -288,6 +288,7 @@ module assembly(
         }
     }
 
+    /* TODO: think about how this can be minimized */
     module _hitch(clearance = 1) {
         switch_clearance_width = SWITCH_BASE_WIDTH + switch_exposure_height * 2
             + clearance * 2;
@@ -368,6 +369,7 @@ module assembly(
                     add_lip = !is_top,
                     remove_lip = is_top,
 
+                    // TODO: rethink this
                     include_tongue_and_groove = !quick_preview,
                     tongue_and_groove_end_length = enclosure_wall * 2,
 
@@ -421,6 +423,7 @@ module assembly(
                 }
             }
 
+            // TODO: still needed?
             module _battery_container(
                 width = BATTERY_LENGTH * .5,
                 length = enclosure_inner_wall,
@@ -1322,6 +1325,8 @@ module assembly(
             }
 
             _mounting_rail_aligners(bleed = tolerance * 2, cavity = true);
+
+            // TODO: cavity for voltage regulator screw, if keeping
         }
     }
 
