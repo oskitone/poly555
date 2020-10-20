@@ -288,8 +288,25 @@ module assembly(
         }
     }
 
-    module _hitch() {
-        _mounted_keys(include_hitch = true);
+    module _hitch(clearance = 1) {
+        switch_clearance_width = SWITCH_BASE_WIDTH + switch_exposure_height * 2
+            + clearance * 2;
+
+        difference() {
+            _mounted_keys(include_hitch = true);
+
+            translate([
+                switch_x - switch_clearance_width / 2,
+                hitch_y - e,
+                0
+            ]) {
+                cube([
+                    switch_clearance_width,
+                    HITCH_WALL_LENGTH + e * 2,
+                    switch_z + clearance
+                ]);
+            }
+        }
     }
 
     module _mounting_rail_aligners(bleed = 0, cavity = false) {
