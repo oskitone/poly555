@@ -30,6 +30,7 @@ module assembly(
     enclosure_rounding = 24,
 
     engraving_depth = 1,
+    engraving_chamfer = .1, // TODO: is this enough?
 
     components_to_window_clearance = 2,
     speaker_to_battery_clearance = .5,
@@ -549,7 +550,8 @@ module assembly(
                             svg = "../../branding.svg",
                             size = [69, 69 * OSKITONE_LENGTH_WIDTH_RATIO],
                             height = engraving_depth + e,
-                            bleed = tolerance
+                            bleed = tolerance,
+                            chamfer = quick_preview ? 0 : engraving_chamfer
                         );
                     }
                 }
@@ -562,14 +564,15 @@ module assembly(
                 ys = [y_origin - y_gutter / 2, y_origin + y_gutter / 2];
 
                 for (i = [0, 1]) {
-                    translate([x, ys[i], -e]) {
-                        mirror([1, 0, 0]) {
+                    translate([x, ys[i], engraving_depth]) {
+                        rotate([0, 180, 0]) {
                             engraving(
                                 string = str(i),
                                 font = "Work Sans:style=Bold",
                                 height = engraving_depth + e,
                                 size = font_size,
-                                bleed = tolerance
+                                bleed = tolerance,
+                                chamfer = quick_preview ? 0 : engraving_chamfer
                             );
                         }
                     }
@@ -1018,8 +1021,7 @@ module assembly(
 
             module _branding_cavities(
                 line_gutter = enclosure_gutter / 4,
-                led_gutter = enclosure_gutter / 2,
-                chamfer = .1
+                led_gutter = enclosure_gutter / 2
             ) {
                 branding_width = side_panel_width - led_cavity_width
                     - led_gutter;
@@ -1041,7 +1043,7 @@ module assembly(
                             size = [branding_width, brand_size],
                             center = false,
                             bleed = -tolerance,
-                            chamfer = quick_preview ? 0 : chamfer
+                            chamfer = quick_preview ? 0 : engraving_chamfer
                         );
                     }
 
@@ -1052,7 +1054,7 @@ module assembly(
                         height = engraving_depth + e,
                         center = false,
                         bleed = 0, // intentionally thicker
-                        chamfer = quick_preview ? 0 : chamfer
+                        chamfer = quick_preview ? 0 : engraving_chamfer
                     );
                 }
             }
