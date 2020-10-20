@@ -17,6 +17,7 @@ module keys(
     accidental_length,
     accidental_height,
 
+    // TODO: think about decoupling
     front_and_sides_chamfer = 2,
 
     gutter = 1,
