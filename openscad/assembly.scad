@@ -1399,11 +1399,11 @@ module assembly(
     }
 }
 
-DEV_MODE = true;
+DEV_MODE = false;
 
 assembly(
     show_enclosure_bottom = false,
-    show_battery = false,
+    show_battery = true,
     show_speaker = false,
     show_switch = false,
     show_pcb = true,
@@ -1411,7 +1411,7 @@ assembly(
     show_hitch = false,
     show_mounting_rail = false,
     show_keys = false,
-    show_enclosure_top = true,
+    show_enclosure_top = false,
 
     show_window_pane = false,
     animate_visualized_plastic_tolerance_weight = false,
