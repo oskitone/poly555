@@ -706,7 +706,7 @@
     (fp_line (start -2.84 -1.25) (end 7.92 -1.25) (layer B.CrtYd) (width 0.05))
     (fp_line (start 7.92 -1.25) (end 7.92 19.35) (layer B.CrtYd) (width 0.05))
     (fp_line (start 7.92 19.35) (end -2.84 19.35) (layer B.CrtYd) (width 0.05))
-    (fp_text user %R (at 2.54 20.22) (layer B.Fab)
+    (fp_text user %R (at 2.54 9.398) (layer B.Fab)
       (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
     )
     (pad 3 thru_hole oval (at 5.08 0 180) (size 1.905 2) (drill 1.2) (layers *.Cu *.Mask)
