@@ -14,10 +14,10 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L power:+9V #PWR0101
+L power:+9V #PWR?
 U 1 1 5F474334
 P 3150 2600
-F 0 "#PWR0101" H 3150 2450 50  0001 C CNN
+F 0 "#PWR?" H 3150 2450 50  0001 C CNN
 F 1 "+9V" H 3165 2773 50  0000 C CNN
 F 2 "" H 3150 2600 50  0001 C CNN
 F 3 "" H 3150 2600 50  0001 C CNN
@@ -129,30 +129,8 @@ Wire Wire Line
 Wire Wire Line
 	7700 3700 7700 3850
 Connection ~ 7150 3700
-$Comp
-L Device:R_POT_TRIM_US RV102
-U 1 1 5F48C811
-P 7700 3100
-F 0 "RV102" H 7600 2800 50  0000 R CNN
-F 1 "1M" H 7600 2900 50  0000 R CNN
-F 2 "Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical" H 7700 3100 50  0001 C CNN
-F 3 "~" H 7700 3100 50  0001 C CNN
-	1    7700 3100
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	7550 3100 7500 3100
-Wire Wire Line
-	7500 3100 7500 2850
 Wire Wire Line
 	6600 2700 7700 2700
-Wire Wire Line
-	7700 2700 7700 2850
-Wire Wire Line
-	7700 2850 7500 2850
-Connection ~ 7700 2850
-Wire Wire Line
-	7700 2850 7700 2950
 Wire Wire Line
 	7700 3250 7700 3700
 Connection ~ 7700 3700
@@ -166,17 +144,6 @@ F 2 "custom-footprints:Speaker_30mm_36MS30008-PN" H 9350 2750 50  0001 C CNN
 F 3 "~" H 9340 2900 50  0001 C CNN
 	1    9350 2950
 	1    0    0    -1  
-$EndComp
-$Comp
-L Device:CP C103
-U 1 1 5F496041
-P 8200 3300
-F 0 "C103" V 7945 3300 50  0000 C CNN
-F 1 "CP" V 8036 3300 50  0000 C CNN
-F 2 "Capacitor_THT:CP_Radial_D4.0mm_P2.00mm" H 8238 3150 50  0001 C CNN
-F 3 "~" H 8200 3300 50  0001 C CNN
-	1    8200 3300
-	0    1    1    0   
 $EndComp
 Wire Wire Line
 	7700 2700 9050 2700
@@ -192,26 +159,6 @@ Wire Wire Line
 Wire Wire Line
 	8050 3300 7100 3300
 NoConn ~ 7700 3300
-$Comp
-L Device:R_POT_TRIM_US RV103
-U 1 1 5F4918D3
-P 8650 3300
-F 0 "RV103" V 8537 3300 50  0000 C CNN
-F 1 "5k" V 8446 3300 50  0000 C CNN
-F 2 "Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical" H 8650 3300 50  0001 C CNN
-F 3 "~" H 8650 3300 50  0001 C CNN
-	1    8650 3300
-	0    1    -1   0   
-$EndComp
-Wire Wire Line
-	9050 3050 8650 3050
-Wire Wire Line
-	8650 3050 8650 3150
-Connection ~ 9050 3050
-Wire Wire Line
-	8350 3300 8500 3300
-Wire Wire Line
-	8800 3300 9050 3300
 Wire Wire Line
 	5800 3700 5800 2700
 Wire Wire Line
@@ -373,5 +320,58 @@ Wire Wire Line
 Wire Wire Line
 	6050 3300 6050 2550
 NoConn ~ 6050 2700
+Wire Wire Line
+	7550 3100 7500 3100
+$Comp
+L Device:R_POT_TRIM_US RV102
+U 1 1 5F48C811
+P 7700 3100
+F 0 "RV102" H 7600 2800 50  0000 R CNN
+F 1 "1M" H 7600 2900 50  0000 R CNN
+F 2 "Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical" H 7700 3100 50  0001 C CNN
+F 3 "~" H 7700 3100 50  0001 C CNN
+	1    7700 3100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7500 3100 7500 2850
 NoConn ~ 4650 2700
+Wire Wire Line
+	7700 2850 7700 2950
+Wire Wire Line
+	7700 2700 7700 2850
+Connection ~ 7700 2850
+Wire Wire Line
+	7700 2850 7500 2850
+$Comp
+L Device:CP C103
+U 1 1 5F496041
+P 8200 3300
+F 0 "C103" V 7945 3300 50  0000 C CNN
+F 1 "CP" V 8036 3300 50  0000 C CNN
+F 2 "Capacitor_THT:CP_Radial_D4.0mm_P2.00mm" H 8238 3150 50  0001 C CNN
+F 3 "~" H 8200 3300 50  0001 C CNN
+	1    8200 3300
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_POT_TRIM_US RV103
+U 1 1 5F4918D3
+P 8650 3300
+F 0 "RV103" V 8537 3300 50  0000 C CNN
+F 1 "5k" V 8446 3300 50  0000 C CNN
+F 2 "Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical" H 8650 3300 50  0001 C CNN
+F 3 "~" H 8650 3300 50  0001 C CNN
+	1    8650 3300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	8350 3300 8500 3300
+Wire Wire Line
+	8800 3300 9050 3300
+Wire Wire Line
+	9050 3050 8650 3050
+Wire Wire Line
+	8650 3050 8650 3150
+Connection ~ 9050 3050
 $EndSCHEMATC
