@@ -289,7 +289,7 @@ module assembly(
         }
     }
 
-    /* TODO: think about how this can be minimized */
+    /* TODO: think about how this can be minimized or built into enclosure */
     module _hitch(clearance = 1) {
         switch_clearance_width = SWITCH_BASE_WIDTH + switch_exposure_height * 2
             + clearance * 2;
@@ -566,6 +566,7 @@ module assembly(
                     enclosure_length * .75,
                     engraving_depth
                 ]) {
+                    // TODO: improve bleed/chamfer
                     rotate([0, 180, 0]) {
                         engraving(
                             svg = "../../branding.svg",
@@ -1040,6 +1041,7 @@ module assembly(
                 }
             }
 
+            // TODO: improve bleed/chamfer
             module _branding_cavities(
                 line_gutter = enclosure_gutter / 4,
                 led_gutter = enclosure_gutter / 2
