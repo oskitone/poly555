@@ -238,7 +238,8 @@ module assembly(
                 accidental_length = natural_key_length * 3/5,
                 accidental_height = key_height + accidental_key_extra_height,
 
-                front_and_sides_chamfer = quick_preview ? 0 : 2,
+                front_chamfer = quick_preview ? 0 : 2,
+                sides_chamfer = quick_preview ? 0 : 1,
 
                 gutter = key_gutter,
 

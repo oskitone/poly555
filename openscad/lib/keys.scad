@@ -17,8 +17,8 @@ module keys(
     accidental_length,
     accidental_height,
 
-    // TODO: think about decoupling
-    front_and_sides_chamfer = 2,
+    front_chamfer = 2,
+    sides_chamfer = 2,
 
     gutter = 1,
 
@@ -79,25 +79,82 @@ module keys(
             }
         }
 
-        difference() {
-            if (front_and_sides_chamfer > 0) {
-                width = dimensions[0];
-                length = dimensions[1];
-                height = dimensions[2];
+        width = dimensions[0];
+        length = dimensions[1];
+        height = dimensions[2];
 
-                intersection() {
-                    translate([0, 0, -front_and_sides_chamfer]) {
-                        rounded_cube([
-                            dimensions.x,
-                            dimensions.y + front_and_sides_chamfer,
-                            dimensions.z + front_and_sides_chamfer
-                        ], radius = front_and_sides_chamfer);
-                    }
+        module _points() {
+            module _donut() {
+                render() donut(
+                    front_chamfer * 2,
+                    sides_chamfer,
+                    coverage = 90,
+                    starting_angle = 180
+                );
+            }
 
-                    cube(dimensions);
+            // front bottom left
+            translate([sides_chamfer, sides_chamfer, 0]) {
+                cylinder(r = sides_chamfer, h = e);
+            }
+
+            // front top left
+            translate([sides_chamfer / 2, front_chamfer, height - front_chamfer]) {
+                rotate([0, 90, 0]) _donut();;
+            }
+
+            // front bottom right
+            translate([width - sides_chamfer, sides_chamfer, 0]) {
+                cylinder(r = sides_chamfer, h = e);
+            }
+
+            // front top right
+            translate([width - sides_chamfer / 2, front_chamfer, height - front_chamfer]) {
+                rotate([0, 90, 0]) _donut();;
+            }
+
+            // back bottom left
+            translate([0, length - e, 0]) {
+                cube([e, e, e]);
+            }
+
+            // back bottom right
+            translate([width - e, length - e, 0]) {
+                cube([e, e, e]);
+            }
+
+            // back top left
+            translate([sides_chamfer, length, height - sides_chamfer]) {
+                rotate([90, 0, 0]) {
+                    cylinder(r = sides_chamfer, h = e);
                 }
+            }
+
+            // back top right
+            translate([width - sides_chamfer, length, height - sides_chamfer]) {
+                rotate([90, 0, 0]) {
+                    cylinder(r = sides_chamfer, h = e);
+                }
+            }
+        }
+
+        difference() {
+            if (front_chamfer + sides_chamfer > 0) {
+                hull() _points();
             } else {
                 cube(dimensions);
+            }
+
+            if (front_chamfer > 0) {
+                translate([0, front_chamfer, height - front_chamfer]) {
+                    rotate([0, 90, 0]) {
+                        rounded_corner_cutoff(
+                            height = width,
+                            radius = front_chamfer,
+                            angle = 180
+                        );
+                    }
+                }
             }
 
             if (cantilever_recession > 0) {
@@ -282,7 +339,8 @@ module mounted_keys(
     accidental_length,
     accidental_height,
 
-    front_and_sides_chamfer = 2,
+    front_chamfer = 2,
+    sides_chamfer = 2,
 
     gutter = 1,
 
@@ -336,7 +394,8 @@ module mounted_keys(
             accidental_length = accidental_length,
             accidental_height = accidental_height,
 
-            front_and_sides_chamfer = front_and_sides_chamfer,
+            front_chamfer = front_chamfer,
+            sides_chamfer = sides_chamfer,
 
             gutter = gutter,
 
@@ -411,7 +470,8 @@ mounted_keys(
     accidental_length = 30,
     accidental_height = 15,
 
-    front_and_sides_chamfer = 1,
+    front_chamfer = 2,
+    sides_chamfer = 1,
 
     gutter = 1,
 
