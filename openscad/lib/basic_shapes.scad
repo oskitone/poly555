@@ -205,4 +205,39 @@ module rounded_corner_cutoff(height, radius, angle = 0, e = 1.123, $fn = $fn) {
     }
 }
 
-rounded_corner_cutoff(height = 15, radius = 5);
+module donut(
+    diameter,
+    thickness,
+    segments = 24,
+    starting_angle = 0,
+    coverage = 360
+) {
+    e = .001;
+
+    segments = max(1, round(segments * (coverage / 360)));
+
+    module segment(angle = 0) {
+        rotate([0, 0, -angle]) {
+            translate([e / -2, diameter / 2 - thickness / 2, 0]) {
+                rotate([0, 90, 0]) {
+                    cylinder(d = thickness, h = e);
+                }
+            }
+        }
+    }
+
+    for (i = [0 : segments - 1]) {
+        hull() {
+            segment(starting_angle + i * (coverage / segments));
+            segment(starting_angle + (i + 1) * (coverage / segments));
+        }
+    }
+}
+
+donut(
+    30,
+    10,
+    segments = 30,
+    coverage = abs($t - .5) * 2 * 360,
+    starting_angle = (($t % .25) * 4) * -360
+);
