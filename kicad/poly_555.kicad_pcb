@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 73)
+    (drawings 76)
     (tracks 2051)
     (zones 0)
     (modules 262)
@@ -11,8 +11,8 @@
 
   (page A4)
   (layers
-    (0 F.Cu signal)
-    (31 B.Cu signal)
+    (0 F.Cu signal hide)
+    (31 B.Cu signal hide)
     (32 B.Adhes user)
     (33 F.Adhes user)
     (34 B.Paste user)
@@ -12632,6 +12632,15 @@
     )
   )
 
+  (gr_text "REV A" (at 43.942 -20.066) (layer B.SilkS) (tstamp 5F99A93E)
+    (effects (font (size 0.8 0.8) (thickness 0.1875)) (justify left mirror))
+  )
+  (gr_text "OSKITONE POLY555" (at 43.942 -22.86) (layer B.SilkS) (tstamp 5F99A93D)
+    (effects (font (size 1.5 1.5) (thickness 0.25)) (justify left mirror))
+  )
+  (gr_text "REV A" (at 137.922 -20.066) (layer F.SilkS) (tstamp 5F99A94E)
+    (effects (font (size 0.8 0.8) (thickness 0.1875)) (justify left))
+  )
   (gr_text "+     -" (at 178.435 -75.692 90) (layer F.SilkS) (tstamp 5F96D92A)
     (effects (font (size 1 1) (thickness 0.15)))
   )
@@ -12816,8 +12825,8 @@
   (gr_line (start 183.954 -48.768) (end 183.954 0) (layer Edge.Cuts) (width 0.05) (tstamp 5F440FD0))
   (gr_poly (pts (xy 184.15 -105.156) (xy 134.62 -105.156) (xy 134.62 -120.142) (xy 184.15 -120.142)) (layer Dwgs.User) (width 0.1) (tstamp 5F45648E))
   (gr_line (start 0 0) (end 0 -114.808) (layer Edge.Cuts) (width 0.05) (tstamp 5F24CFBB))
-  (gr_text "OSKITONE  POLY_555" (at 149.098 -22.606) (layer F.SilkS)
-    (effects (font (size 1.5 1.5) (thickness 0.25)))
+  (gr_text "OSKITONE POLY555" (at 137.922 -22.86) (layer F.SilkS) (tstamp 5F99A951)
+    (effects (font (size 1.5 1.5) (thickness 0.25)) (justify left))
   )
 
   (segment (start 169.212002 -6.636) (end 168.402 -6.636) (width 0.5) (layer B.Cu) (net 1))
