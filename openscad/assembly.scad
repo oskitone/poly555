@@ -426,21 +426,6 @@ module assembly(
                 }
             }
 
-            // TODO: still needed?
-            module _battery_container(
-                width = BATTERY_LENGTH * .5,
-                length = enclosure_inner_wall,
-                height = BATTERY_HEIGHT * .5
-            ) {
-                translate([
-                    side_panel_x + (side_panel_width - width) / 2,
-                    battery_y - length - tolerance,
-                    enclosure_floor_ceiling
-                ]) {
-                    cube([width, length, height]);
-                }
-            }
-
             module _switch_exposure(
                 xy_bleed = 0,
                 include_switch_cavity = true,
@@ -858,7 +843,6 @@ module assembly(
                         include_switch_cavity = false,
                         z_bleed = -e
                     );
-                    _battery_container();
                     _mount_stilts_and_spacers();
                     _mounting_rail_aligners(cavity = false);
                     _speaker_container();
