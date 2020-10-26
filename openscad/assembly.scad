@@ -35,6 +35,7 @@ module assembly(
 
     components_to_window_clearance = 2,
     speaker_to_battery_clearance = .5,
+    exposed_switch_clearance = 1,
     exposed_screw_head_clearance = .4,
 
     mount_length = 6,
@@ -125,7 +126,7 @@ module assembly(
     pcb_z = enclosure_floor_ceiling + max(
         MOUNT_STILT_MINIMUM_HEIGHT,
         SWITCH_BASE_HEIGHT + SWITCH_ACTUATOR_HEIGHT
-            - enclosure_floor_ceiling + exposed_screw_head_clearance
+            - enclosure_floor_ceiling + exposed_switch_clearance
     );
     pcb_stilt_height = pcb_z - enclosure_floor_ceiling;
 
