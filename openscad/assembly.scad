@@ -388,10 +388,6 @@ module assembly(
                     add_lip = !is_top,
                     remove_lip = is_top,
 
-                    // TODO: rethink this
-                    include_tongue_and_groove = !quick_preview,
-                    tongue_and_groove_end_length = enclosure_wall * 2,
-
                     radius = quick_preview ? 0 : enclosure_chamfer,
                     tolerance = tolerance,
 
