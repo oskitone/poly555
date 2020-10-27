@@ -30,8 +30,8 @@ module assembly(
     enclosure_fillet = 2,
     enclosure_rounding = 24,
 
-    engraving_depth = 1,
-    engraving_chamfer = .1, // TODO: is this enough?
+    engraving_depth = .8,
+    engraving_chamfer = .2,
 
     components_to_window_clearance = 2,
     speaker_to_battery_clearance = .5,
@@ -552,16 +552,15 @@ module assembly(
             module _engraving(corner_offset = 10) {
                 translate([
                     enclosure_width / 2,
-                    enclosure_length * .75,
+                    enclosure_length * .67,
                     engraving_depth
                 ]) {
-                    // TODO: improve bleed/chamfer
                     rotate([0, 180, 0]) {
                         engraving(
                             svg = "../../branding.svg",
                             size = [69, 69 * OSKITONE_LENGTH_WIDTH_RATIO],
                             height = engraving_depth + e,
-                            bleed = tolerance,
+                            bleed = -tolerance,
                             chamfer = quick_preview ? 0 : engraving_chamfer
                         );
                     }
@@ -582,7 +581,7 @@ module assembly(
                                 font = "Work Sans:style=Bold",
                                 height = engraving_depth + e,
                                 size = font_size,
-                                bleed = tolerance,
+                                bleed = tolerance * 2,
                                 chamfer = quick_preview ? 0 : engraving_chamfer
                             );
                         }
@@ -1381,6 +1380,21 @@ module assembly(
             }
         } else if (cross_section == "led") {
             cube([side_panel_x + branding_length / 2, enclosure_length, enclosure_height]);
+        } else if (cross_section == "branding") {
+            extension = 2;
+            x = 11;
+
+            translate([
+                side_panel_x + x - extension,
+                side_panel_y - extension,
+                enclosure_height - enclosure_floor_ceiling
+            ]) {
+                cube([
+                    side_panel_width - x + extension * 2,
+                    branding_length + extension * 2,
+                    enclosure_floor_ceiling
+                ]);
+            }
         }
     }
 }
