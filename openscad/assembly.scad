@@ -294,7 +294,7 @@ module assembly(
                     );
                 }
 
-                _mounting_rail_aligners(bleed = tolerance * 2, cavity = true);
+                _mounting_rail_aligners(cavity = true);
             }
         }
 
@@ -329,7 +329,8 @@ module assembly(
         }
     }
 
-    module _mounting_rail_aligners(bleed = 0, cavity = false) {
+    module _mounting_rail_aligners(cavity = false) {
+        bleed = cavity ? tolerance * 2 : 0;
         width = aligner_width + bleed;
         length = mount_length / 2 + bleed * 2;
 
@@ -1343,7 +1344,7 @@ module assembly(
                 );
             }
 
-            _mounting_rail_aligners(bleed = tolerance * 2, cavity = true);
+            _mounting_rail_aligners(cavity = true);
 
             // TODO: cavity for voltage regulator screw, if keeping
         }
