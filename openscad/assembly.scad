@@ -408,6 +408,82 @@ module assembly(
             }
         }
 
+        module _hitch_stilts(
+            cavity = false,
+            width = BREAKAWAY_SUPPORT_DISTANCE,
+            hitch = enclosure_wall,
+            hitch_height = 2
+        ) {
+            z = enclosure_floor_ceiling + BATTERY_HEIGHT;
+
+            height = window_pane_z - z;
+            length = enclosure_length - enclosure_wall
+                - window_cavity_y - window_cavity_length;
+            vault_height = length;
+
+            module _hitch() {
+                _width = cavity ? width + tolerance * 4 : width;
+                _length = cavity ? hitch + e * 2 : hitch + e;
+
+                hull() {
+                    for (position = [
+                        [0, 0, -hitch],
+                        [_width - e, 0, -hitch],
+                        [hitch, _length - e, 0],
+                        [_width - hitch - e, _length - e, 0],
+
+                        [0, 0, hitch_height - e],
+                        [_width - e, 0, hitch_height - e],
+                        [hitch, _length - e, hitch_height - e],
+                        [_width - hitch - e, _length - e, hitch_height - e],
+                    ]) {
+                        translate(position) {
+                            cube([e, e, e]);
+                        }
+                    }
+                }
+            }
+
+            module _stilt() {
+                if (!cavity) {
+                    translate([0, length, 0]) {
+                        flat_top_rectangular_pyramid(
+                            top_width = width,
+                            top_length = length + e,
+                            bottom_width = width,
+                            bottom_length = 0,
+                            height = vault_height + e,
+                            top_weight_y = 1
+                        );
+                    }
+
+                    translate([0, 0, vault_height]) {
+                        cube([width, length + e, height - vault_height]);
+                    }
+                }
+
+                translate([
+                    cavity ? tolerance * -2 : 0,
+                    length - e,
+                    height - hitch_height
+                ]) {
+                    _hitch();
+                }
+            }
+
+            end_gutter = enclosure_wall + window_and_side_panel_gutter;
+
+            for (x = [
+                end_gutter,
+                (enclosure_width - width) / 2,
+                enclosure_width - end_gutter - width
+            ]) {
+                translate([x, enclosure_length - enclosure_wall - length, z]) {
+                    _stilt();
+                }
+            }
+        }
+
         module _bottom() {
             module _switch_container() {
                 translate([
@@ -615,49 +691,6 @@ module assembly(
                 }
             }
 
-            module _window_pane_stilts(width = 15) {
-                z = pcb_z + PCB_HEIGHT;
-
-                height = window_pane_z - z;
-                length = enclosure_length - enclosure_wall
-                    - window_cavity_y - window_cavity_length
-                    - tolerance;
-                vault_height = length;
-
-                plot = (window_cavity_width - window_pane_strut_width) / 2;
-
-                module _stilt() {
-                    translate([0, length, 0]) {
-                        flat_top_rectangular_pyramid(
-                            top_width = width,
-                            top_length = length + e,
-                            bottom_width = width,
-                            bottom_length = 0,
-                            height = vault_height + e,
-                            top_weight_y = 1
-                        );
-                    }
-
-                    translate([0, 0, vault_height]) {
-                        cube([width, length + e, height - vault_height]);
-                    }
-                }
-
-                for (x = [
-                    window_and_side_panel_gutter + (plot - width) / 2,
-                    window_and_side_panel_gutter + plot
-                        + window_pane_strut_width + (plot - width) / 2,
-                ]) {
-                    translate([
-                        x,
-                        enclosure_length - enclosure_wall - length,
-                        z
-                    ]) {
-                        _stilt();
-                    }
-                }
-            }
-
             module _pcb_volume_wheel_stilt(length = 2) {
                 x = pcb_x + PCB_VOLUME_WHEEL_X - TRIMPOT_KNOB_HEAD_DIAMETER / 2;
                 z = enclosure_floor_ceiling - e;
@@ -843,7 +876,7 @@ module assembly(
                     _mount_stilts_and_spacers();
                     _mounting_rail_aligners(cavity = false);
                     _speaker_container();
-                    _window_pane_stilts();
+                    _hitch_stilts();
                     _pcb_volume_wheel_stilt();
                     _hitch_base();
                 }
@@ -1242,6 +1275,7 @@ module assembly(
                 _branding_cavities();
                 _led_exposure(tolerance, e, $fn = HIDEF_ROUNDING);
                 _speaker_grill();
+                _hitch_stilts(cavity = true);
             }
         }
 
