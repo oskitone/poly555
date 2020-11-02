@@ -1,3 +1,4 @@
+include <config.scad>;
 include <lib/values.scad>;
 
 use <lib/basic_shapes.scad>;
@@ -1393,23 +1394,22 @@ module assembly(
     }
 }
 
-DEV_MODE = true;
-
 assembly(
-    show_enclosure_bottom = true,
-    show_battery = true,
-    show_speaker = true,
-    show_switch = true,
-    show_pcb = true,
-    show_volume_wheel = true,
-    show_hitch = true,
-    show_mounting_rail = true,
-    show_keys = true,
-    show_enclosure_top = true,
+    show_enclosure_bottom = SHOW_ENCLOSURE_BOTTOM,
+    show_battery = SHOW_BATTERY,
+    show_speaker = SHOW_SPEAKER,
+    show_switch = SHOW_SWITCH,
+    show_pcb = SHOW_PCB,
+    show_volume_wheel = SHOW_VOLUME_WHEEL,
+    show_hitch = SHOW_HITCH,
+    show_mounting_rail = SHOW_MOUNTING_RAIL,
+    show_keys = SHOW_KEYS,
+    show_enclosure_top = SHOW_ENCLOSURE_TOP,
+    show_window_pane = SHOW_WINDOW_PANE,
 
-    show_window_pane = false,
-    animate_visualized_plastic_tolerance_weight = false,
+    animate_visualized_plastic_tolerance_weight =
+        ANIMATE_VISUALIZED_PLASTIC_TOLERANCE_WEIGHT,
 
-    quick_preview = DEV_MODE,
-    cross_section = undef
+    quick_preview = QUICK_PREVIEW,
+    cross_section = CROSS_SECTION
 );
