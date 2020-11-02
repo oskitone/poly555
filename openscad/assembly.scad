@@ -1047,7 +1047,7 @@ module assembly(
             }
 
             module _led_exposure(bleed = 0, z_bleed = 0) {
-                z = pcb_z + PCB_HEIGHT - z_bleed;
+                z = enclosure_height - LED_HEIGHT - 2;
                 height = enclosure_height - z + z_bleed;
 
                 difference() {
@@ -1273,7 +1273,7 @@ module assembly(
                 _keys_and_bumper_cavity();
                 _window_cavity();
                 _branding_cavities();
-                _led_exposure(tolerance, e, $fn = HIDEF_ROUNDING);
+                _led_exposure(-tolerance, e, $fn = HIDEF_ROUNDING); // intentionally tight
                 _speaker_grill();
                 _hitch_stilts(cavity = true);
             }
