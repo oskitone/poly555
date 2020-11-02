@@ -77,7 +77,8 @@ module assembly(
     key_opacity = .75,
 
     quick_preview = false,
-    cross_section = undef
+    cross_section = undef,
+    echo_dimensions = true
 ) {
     e = 0.0145;
     plot = PCB_BUTTONS[1][0] - PCB_BUTTONS[0][0];
@@ -217,9 +218,20 @@ module assembly(
 
     aligner_width = enclosure_inner_wall;
 
-    echo("Enclosure dimensions", [enclosure_width, enclosure_length, enclosure_height]);
-    echo("Window cavity dimensions", [window_cavity_width, window_cavity_length]);
-    echo("Window pane dimensions", window_pane_width, window_pane_length);
+    if (echo_dimensions) {
+        echo(
+            "Enclosure dimensions",
+            [enclosure_width, enclosure_length, enclosure_height]
+        );
+        echo(
+            "Window cavity dimensions",
+            [window_cavity_width, window_cavity_length]
+        );
+        echo(
+            "Window pane dimensions",
+            [window_pane_width, window_pane_length]
+        );
+    }
 
     module _mounted_keys(
         include_natural = false,
@@ -1411,5 +1423,7 @@ assembly(
         ANIMATE_VISUALIZED_PLASTIC_TOLERANCE_WEIGHT,
 
     quick_preview = QUICK_PREVIEW,
-    cross_section = CROSS_SECTION
+    cross_section = CROSS_SECTION,
+
+    echo_dimensions = ECHO_DIMENSIONS
 );
