@@ -1415,7 +1415,7 @@ assembly(
     animate_visualized_plastic_tolerance_weight =
         ANIMATE_VISUALIZED_PLASTIC_TOLERANCE_WEIGHT,
 
-    quick_preview = QUICK_PREVIEW,
+    quick_preview = QUICK_PREVIEW && $preview,
     cross_section = CROSS_SECTION,
 
     echo_dimensions = ECHO_DIMENSIONS
