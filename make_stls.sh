@@ -6,6 +6,8 @@
 set -o errexit
 set -o errtrace
 
+prefix="p5"
+
 openscad="/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD"
 timestamp=$(git --no-pager log -1 --date=unix --format="%ad")
 dir="local/3d-models/$timestamp"
@@ -16,7 +18,7 @@ function export_stl() {
     stub="$1"
     override="$2"
 
-    filename="$dir/$stub-$timestamp.stl"
+    filename="$dir/$prefix-$stub-$timestamp.stl"
 
     echo "Exporting $filename..."
 
@@ -32,6 +34,7 @@ function export_stl() {
         -D 'SHOW_MOUNTING_RAIL=false' \
         -D 'SHOW_KEYS=false' \
         -D 'SHOW_ENCLOSURE_TOP=false' \
+        -D 'CROSS_SECTION=undef' \
         -D "$override=true"
 
     echo
