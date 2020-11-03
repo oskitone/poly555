@@ -29,7 +29,7 @@ module enclosure_half(
     lip = undef,
     lip_height = LIP_BOX_DEFAULT_LIP_HEIGHT,
 
-    radius = 0,
+    fillet = 0,
 
     gutter = 5,
     clasp_end_gutter = undef,
@@ -116,10 +116,10 @@ module enclosure_half(
                         _width,
                         _length,
                         (add_lip && include_tongue_and_groove)
-                            ? height + lip_height + radius
-                            : height + radius
+                            ? height + lip_height + fillet
+                            : height + fillet
                     ],
-                    radius,
+                    fillet,
                     $fn = $fn
                 );
 
@@ -141,7 +141,7 @@ module enclosure_half(
                     cube([
                         _width + e * 2,
                         _length + e * 2,
-                        radius + e
+                        fillet + e
                     ]);
                 }
             }
@@ -203,7 +203,7 @@ module enclosure_half(
         hinge_count = hinge_count != undef
             ? hinge_count
             : get_hinge_clasp_count(_width);
-        // TODO: fix against radius
+        // TODO: fix against fillet
         hinge_length = min(assumed_total_height, MINIMUM_HINGE_CLASP_LENGTH);
         hinge_width = HINGE_CLASP_MINIMUM_WIDTH;
         hinge_end_gutter = hinge_end_gutter == undef || hinge_count == 1
@@ -244,7 +244,7 @@ module enclosure_half(
             : get_hinge_clasp_count(_width);
 
         clasp_width = HINGE_CLASP_MINIMUM_WIDTH;
-        // TODO: fix against radius
+        // TODO: fix against fillet
         clasp_length = min(assumed_total_height, MINIMUM_HINGE_CLASP_LENGTH);
 
         clasp_end_gutter = clasp_end_gutter == undef || clasp_count == 1
@@ -343,7 +343,7 @@ module __test_enclosure_half(
 
                 lip_height = LIP_BOX_DEFAULT_LIP_HEIGHT,
 
-                radius = 2,
+                fillet = 2,
 
                 gutter = 5,
                 clasp_end_gutter = undef,
@@ -429,7 +429,7 @@ module __test_enclosure(
 
                 lip_height = LIP_BOX_DEFAULT_LIP_HEIGHT,
 
-                radius = 2,
+                fillet = 2,
 
                 include_tongue_and_groove = true,
                 tongue_and_groove_end_length = value,

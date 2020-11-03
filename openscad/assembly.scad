@@ -27,7 +27,7 @@ module assembly(
     enclosure_wall = 2.4,
     enclosure_floor_ceiling = 1.8,
     enclosure_inner_wall = 1.2,
-    enclosure_chamfer = 2,
+    enclosure_fillet = 2,
     enclosure_rounding = 24,
 
     engraving_depth = 1,
@@ -251,8 +251,8 @@ module assembly(
                 accidental_length = natural_key_length * 3/5,
                 accidental_height = key_height + accidental_key_extra_height,
 
-                front_chamfer = quick_preview ? 0 : 2,
-                sides_chamfer = quick_preview ? 0 : 1,
+                front_fillet = quick_preview ? 0 : 2,
+                sides_fillet = quick_preview ? 0 : 1,
 
                 gutter = key_gutter,
 
@@ -387,7 +387,7 @@ module assembly(
                     include_tongue_and_groove = !quick_preview,
                     tongue_and_groove_end_length = enclosure_wall * 2,
 
-                    radius = quick_preview ? 0 : enclosure_chamfer,
+                    fillet = quick_preview ? 0 : enclosure_fillet,
                     tolerance = tolerance,
 
                     $fn = enclosure_rounding
@@ -796,14 +796,14 @@ module assembly(
                     if (!quick_preview) {
                         translate([
                             keys_cavity_xy,
-                            enclosure_chamfer,
-                            enclosure_height - lip_cavity_height - enclosure_chamfer
+                            enclosure_fillet,
+                            enclosure_height - lip_cavity_height - enclosure_fillet
                         ]) {
                             rotate([0, 90, 0]) {
                                 rounded_corner_cutoff(
                                     height = enclosure_width - keys_cavity_xy * 2,
                                     angle = 180,
-                                    radius = enclosure_chamfer,
+                                    radius = enclosure_fillet,
                                     e = e,
                                     $fn = enclosure_rounding
                                 );
@@ -820,7 +820,7 @@ module assembly(
                                 bumper_length + overlap,
                                 enclosure_height
                             ],
-                            quick_preview ? 0 : enclosure_chamfer,
+                            quick_preview ? 0 : enclosure_fillet,
                             $fn = enclosure_rounding
                         );
 

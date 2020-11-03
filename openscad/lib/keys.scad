@@ -17,8 +17,8 @@ module keys(
     accidental_length,
     accidental_height,
 
-    front_chamfer = 2,
-    sides_chamfer = 2,
+    front_fillet = 2,
+    sides_fillet = 2,
 
     gutter = 1,
 
@@ -86,30 +86,30 @@ module keys(
         module _points() {
             module _donut() {
                 render() donut(
-                    front_chamfer * 2,
-                    sides_chamfer,
+                    front_fillet * 2,
+                    sides_fillet,
                     coverage = 90,
                     starting_angle = 180
                 );
             }
 
             // front bottom left
-            translate([sides_chamfer, sides_chamfer, 0]) {
-                cylinder(r = sides_chamfer, h = e);
+            translate([sides_fillet, sides_fillet, 0]) {
+                cylinder(r = sides_fillet, h = e);
             }
 
             // front top left
-            translate([sides_chamfer / 2, front_chamfer, height - front_chamfer]) {
+            translate([sides_fillet / 2, front_fillet, height - front_fillet]) {
                 rotate([0, 90, 0]) _donut();;
             }
 
             // front bottom right
-            translate([width - sides_chamfer, sides_chamfer, 0]) {
-                cylinder(r = sides_chamfer, h = e);
+            translate([width - sides_fillet, sides_fillet, 0]) {
+                cylinder(r = sides_fillet, h = e);
             }
 
             // front top right
-            translate([width - sides_chamfer / 2, front_chamfer, height - front_chamfer]) {
+            translate([width - sides_fillet / 2, front_fillet, height - front_fillet]) {
                 rotate([0, 90, 0]) _donut();;
             }
 
@@ -124,33 +124,33 @@ module keys(
             }
 
             // back top left
-            translate([sides_chamfer, length, height - sides_chamfer]) {
+            translate([sides_fillet, length, height - sides_fillet]) {
                 rotate([90, 0, 0]) {
-                    cylinder(r = sides_chamfer, h = e);
+                    cylinder(r = sides_fillet, h = e);
                 }
             }
 
             // back top right
-            translate([width - sides_chamfer, length, height - sides_chamfer]) {
+            translate([width - sides_fillet, length, height - sides_fillet]) {
                 rotate([90, 0, 0]) {
-                    cylinder(r = sides_chamfer, h = e);
+                    cylinder(r = sides_fillet, h = e);
                 }
             }
         }
 
         difference() {
-            if (front_chamfer + sides_chamfer > 0) {
+            if (front_fillet + sides_fillet > 0) {
                 hull() _points();
             } else {
                 cube(dimensions);
             }
 
-            if (front_chamfer > 0) {
-                translate([0, front_chamfer, height - front_chamfer]) {
+            if (front_fillet > 0) {
+                translate([0, front_fillet, height - front_fillet]) {
                     rotate([0, 90, 0]) {
                         rounded_corner_cutoff(
                             height = width,
-                            radius = front_chamfer,
+                            radius = front_fillet,
                             angle = 180
                         );
                     }
@@ -339,8 +339,8 @@ module mounted_keys(
     accidental_length,
     accidental_height,
 
-    front_chamfer = 2,
-    sides_chamfer = 2,
+    front_fillet = 2,
+    sides_fillet = 2,
 
     gutter = 1,
 
@@ -394,8 +394,8 @@ module mounted_keys(
             accidental_length = accidental_length,
             accidental_height = accidental_height,
 
-            front_chamfer = front_chamfer,
-            sides_chamfer = sides_chamfer,
+            front_fillet = front_fillet,
+            sides_fillet = sides_fillet,
 
             gutter = gutter,
 
@@ -470,8 +470,8 @@ mounted_keys(
     accidental_length = 30,
     accidental_height = 15,
 
-    front_chamfer = 2,
-    sides_chamfer = 1,
+    front_fillet = 2,
+    sides_fillet = 1,
 
     gutter = 1,
 
