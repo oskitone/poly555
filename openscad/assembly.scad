@@ -589,13 +589,17 @@ module assembly(
                 }
             }
 
-            // TODO: make a lil taller for tighter fit
-            module _speaker_container(wall = enclosure_wall, spoke_count = 3) {
+            module _speaker_container(
+                wall = enclosure_wall,
+                spoke_count = 3,
+                vertical_clearance = 1.6 // HACK. TODO: unhack
+            ) {
                 z = enclosure_floor_ceiling - e;
 
                 inner_diameter = SPEAKER_MAGNET_DIAMETER + tolerance * 2;
                 outer_diameter = inner_diameter + wall * 2;
-                height = speaker_z + SPEAKER_MAGNET_HEIGHT - z;
+                height = speaker_z + SPEAKER_MAGNET_HEIGHT - z
+                    - vertical_clearance;
 
                 spoke_length =
                     (SPEAKER_CONE_DIAMETER - SPEAKER_MAGNET_DIAMETER) / 2;
