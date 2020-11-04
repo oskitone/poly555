@@ -1207,7 +1207,7 @@ module assembly(
                 module _struts(
                     count = 1,
                     width = window_pane_strut_width,
-                    overlap = .5,
+                    overlap = 1,
                     z_tightness = .5
                 ) {
                     plot = window_pane_max_width / count;
@@ -1216,7 +1216,8 @@ module assembly(
                         + overlap;
                     z = enclosure_height - enclosure_floor_ceiling
                         - WINDOW_PANE_HEIGHT - length
-                        + z_tightness;
+                        + z_tightness
+                        + overlap / 2;
 
                     for (i = [0 : count - 1]) {
                         x = window_pane_x + plot * i + (plot - width) / 2;
