@@ -67,21 +67,20 @@ for (i = [0 : len(spans) - 1]) {
 module overhang_support(
     width,
     length,
+    support_depth = BREAKAWAY_SUPPORT_DEPTH,
     bridge_height = SACRIFICIAL_BRIDGE_HEIGHT
 ) {
-    count = ceil(
-        (width - BREAKAWAY_SUPPORT_DEPTH) / BREAKAWAY_SUPPORT_DISTANCE
-    );
-    plot = (width - BREAKAWAY_SUPPORT_DEPTH) / count;
+    count = ceil((width - support_depth) / BREAKAWAY_SUPPORT_DISTANCE);
+    plot = (width - support_depth) / count;
 
     e = .0041;
 
     for (i = [0 : count]) {
         translate([i * plot, 0, -length]) {
             flat_top_rectangular_pyramid(
-                top_width = BREAKAWAY_SUPPORT_DEPTH,
+                top_width = support_depth,
                 top_length = length,
-                bottom_width = BREAKAWAY_SUPPORT_DEPTH,
+                bottom_width = support_depth,
                 bottom_length = 0,
                 height = length - bridge_height,
                 top_weight_y = 0
@@ -89,15 +88,9 @@ module overhang_support(
         }
     }
 
-    translate([
-        0,
-        length - BREAKAWAY_SUPPORT_DEPTH,
-        -bridge_height - e
-    ]) {
-        cube([
-            width,
-            BREAKAWAY_SUPPORT_DEPTH,
-            bridge_height + e * 2
-        ]);
+    if (bridge_height > 0) {
+        translate([0, length - support_depth, -bridge_height - e]) {
+            cube([width, support_depth, bridge_height + e * 2]);
+        }
     }
 }

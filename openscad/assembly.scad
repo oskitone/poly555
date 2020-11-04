@@ -29,6 +29,8 @@ module assembly(
     enclosure_inner_wall = 1.2,
     enclosure_chamfer = 2,
     enclosure_rounding = 24,
+    enclosure_lip = .8,
+    enclosure_lip_height = LIP_BOX_DEFAULT_LIP_HEIGHT,
 
     engraving_depth = .8,
     engraving_chamfer = .2,
@@ -339,7 +341,7 @@ module assembly(
 
         height = cavity
             ? keys_z - enclosure_floor_ceiling + cantilever_mount_height
-            : enclosure_bottom_height + LIP_BOX_DEFAULT_LIP_HEIGHT - z;
+            : enclosure_bottom_height + enclosure_lip_height - z;
 
         for (x = [
             enclosure_wall - e,
@@ -388,6 +390,10 @@ module assembly(
 
                     add_lip = !is_top,
                     remove_lip = is_top,
+                    lip = enclosure_lip,
+                    lip_height = is_top
+                        ? enclosure_lip_height + tolerance
+                        : enclosure_lip_height - tolerance,
 
                     radius = quick_preview ? 0 : enclosure_chamfer,
                     tolerance = tolerance,
@@ -398,7 +404,7 @@ module assembly(
         }
 
         module _keys_and_bumper_cavity(length_adjustment = 0) {
-            z = enclosure_bottom_height - LIP_BOX_DEFAULT_LIP_HEIGHT - e;
+            z = enclosure_bottom_height - enclosure_lip_height - e;
 
             translate([-e, -e, z]) {
                 cube([
@@ -412,7 +418,7 @@ module assembly(
         // TODO: strengthen. trick higher infill w/ cavities?
         module _hitch_stilts(
             cavity = false,
-            width = BREAKAWAY_SUPPORT_DISTANCE * 2,
+            width = BREAKAWAY_SUPPORT_DISTANCE,
             hitch = enclosure_wall,
             hitch_height = BREAKAWAY_SUPPORT_DISTANCE / 2
         ) {
@@ -426,33 +432,29 @@ module assembly(
             module _hitch() {
                 _width = cavity ? width + tolerance * 4 : width;
                 _length = cavity ? hitch + e * 2 : hitch + e;
+                support_depth = cavity ? 1 + tolerance * 2 : 1;
                 height_drop = cavity ? 0 : 1;
 
-                hull() {
-                    for (position = [
-                        [0, 0, 0],
-                        [_width - e, 0, 0],
-                        [hitch, _length - e, 0],
-                        [_width - hitch - e, _length - e, 0],
-                            [0, 0, hitch_height - e],
-                        [_width - e, 0, hitch_height - e],
-                        [hitch, _length - e, hitch_height - e - height_drop],
-                        [_width - hitch - e, _length - e, hitch_height - e - height_drop],
-                    ]) {
-                        translate(position) {
-                            cube([e, e, e]);
+                difference() {
+                    cube([_width, _length, hitch_height]);
+
+                    if (cavity) {
+                        translate([-e, 0, -e]) {
+                            cube([
+                                _width + e * 2,
+                                BREAKAWAY_SUPPORT_DEPTH,
+                                SACRIFICIAL_BRIDGE_HEIGHT
+                            ]);
                         }
                     }
                 }
 
-                if (!cavity) {
-                    translate([hitch, 0, 0]) {
-                        overhang_support(
-                            width = _width - hitch * 2,
-                            length = _length
-                        );
-                    }
-                }
+                overhang_support(
+                    width = _width,
+                    length = _length,
+                    bridge_height = -e,
+                    support_depth = support_depth
+                );
             }
 
             module _stilt() {
@@ -870,7 +872,7 @@ module assembly(
                             + volume_wheel_grip_size * 2
                             + tolerance * 4,
                         h = enclosure_bottom_height - z
-                            + LIP_BOX_DEFAULT_LIP_HEIGHT
+                            + enclosure_lip_height
                             + e,
                         $fn = HIDEF_ROUNDING
                     );
@@ -958,7 +960,7 @@ module assembly(
 
                     clearance = aligner_width + tolerance * 4;
                     clearance_height = enclosure_bottom_height
-                        + LIP_BOX_DEFAULT_LIP_HEIGHT - z;
+                        + enclosure_lip_height - z;
 
                     difference() {
                         translate([x, y, z]) {
@@ -1442,11 +1444,13 @@ module assembly(
             }
         } else if (cross_section == "hitch_stilt") {
             x = enclosure_wall * 2;
-            width = BREAKAWAY_SUPPORT_DISTANCE * 2 + x;
+            z = enclosure_bottom_height / 2;
+
+            width = BREAKAWAY_SUPPORT_DISTANCE + x;
             length = 7;
 
-            translate([x, enclosure_length - length, 0]) {
-                cube([width, length, enclosure_height]);
+            translate([x, enclosure_length - length, z]) {
+                cube([width, length, enclosure_height - z - enclosure_floor_ceiling - e]);
             }
         }
     }
