@@ -200,7 +200,7 @@ module assembly(
     window_pane_max_length = enclosure_length - enclosure_wall - window_pane_y
         - tolerance;
     window_pane_length = window_pane_max_length - PLASTICS_TOLERANCE;
-    window_pane_strut_width = window_pane_width / 4;
+    window_pane_strut_width = window_pane_width / 5;
 
     side_panel_width = enclosure_width
         - window_and_side_panel_gutter * 3
@@ -409,11 +409,12 @@ module assembly(
             }
         }
 
+        // TODO: strengthen. trick higher infill w/ cavities?
         module _hitch_stilts(
             cavity = false,
-            width = BREAKAWAY_SUPPORT_DISTANCE,
+            width = BREAKAWAY_SUPPORT_DISTANCE * 2,
             hitch = enclosure_wall,
-            hitch_height = 2
+            hitch_height = BREAKAWAY_SUPPORT_DISTANCE / 2
         ) {
             z = enclosure_floor_ceiling + BATTERY_HEIGHT;
 
@@ -425,22 +426,31 @@ module assembly(
             module _hitch() {
                 _width = cavity ? width + tolerance * 4 : width;
                 _length = cavity ? hitch + e * 2 : hitch + e;
+                height_drop = cavity ? 0 : 1;
 
                 hull() {
                     for (position = [
-                        [0, 0, -hitch],
-                        [_width - e, 0, -hitch],
+                        [0, 0, 0],
+                        [_width - e, 0, 0],
                         [hitch, _length - e, 0],
                         [_width - hitch - e, _length - e, 0],
-
-                        [0, 0, hitch_height - e],
+                            [0, 0, hitch_height - e],
                         [_width - e, 0, hitch_height - e],
-                        [hitch, _length - e, hitch_height - e],
-                        [_width - hitch - e, _length - e, hitch_height - e],
+                        [hitch, _length - e, hitch_height - e - height_drop],
+                        [_width - hitch - e, _length - e, hitch_height - e - height_drop],
                     ]) {
                         translate(position) {
                             cube([e, e, e]);
                         }
+                    }
+                }
+
+                if (!cavity) {
+                    translate([hitch, 0, 0]) {
+                        overhang_support(
+                            width = _width - hitch * 2,
+                            length = _length
+                        );
                     }
                 }
             }
@@ -1425,6 +1435,14 @@ module assembly(
                     branding_length + extension * 2,
                     enclosure_floor_ceiling
                 ]);
+            }
+        } else if (cross_section == "hitch_stilt") {
+            x = enclosure_wall * 2;
+            width = BREAKAWAY_SUPPORT_DISTANCE * 2 + x;
+            length = 7;
+
+            translate([x, enclosure_length - length, 0]) {
+                cube([width, length, enclosure_height]);
             }
         }
     }

@@ -63,3 +63,41 @@ for (i = [0 : len(spans) - 1]) {
         );
     }
 }
+
+module overhang_support(
+    width,
+    length,
+    bridge_height = SACRIFICIAL_BRIDGE_HEIGHT
+) {
+    count = ceil(
+        (width - BREAKAWAY_SUPPORT_DEPTH) / BREAKAWAY_SUPPORT_DISTANCE
+    );
+    plot = (width - BREAKAWAY_SUPPORT_DEPTH) / count;
+
+    e = .0041;
+
+    for (i = [0 : count]) {
+        translate([i * plot, 0, -length]) {
+            flat_top_rectangular_pyramid(
+                top_width = BREAKAWAY_SUPPORT_DEPTH,
+                top_length = length,
+                bottom_width = BREAKAWAY_SUPPORT_DEPTH,
+                bottom_length = 0,
+                height = length - bridge_height,
+                top_weight_y = 0
+            );
+        }
+    }
+
+    translate([
+        0,
+        length - BREAKAWAY_SUPPORT_DEPTH,
+        -bridge_height - e
+    ]) {
+        cube([
+            width,
+            BREAKAWAY_SUPPORT_DEPTH,
+            bridge_height + e * 2
+        ]);
+    }
+}
