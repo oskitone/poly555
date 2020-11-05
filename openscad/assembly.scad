@@ -375,7 +375,7 @@ module assembly(
 
             rotation = is_top ? [180, 0, 180] : [0, 0, 0];
 
-            lip_clearance = .4;
+            lip_clearance = .2;
 
             translate(position) rotate(rotation) {
                 enclosure_half(
@@ -435,37 +435,37 @@ module assembly(
                 _width = cavity ? width + tolerance * 4 : width;
                 _length = cavity ? hitch + e * 2 : hitch + e;
 
-                // guess this is arbitrary now
-                bridge_clearance = .6;
+                // TODO: explain
+                sagging_bridge_clearance = .8;
 
                 _height = cavity
-                    ? hitch_height + bridge_clearance * 2
+                    ? hitch_height + sagging_bridge_clearance
                     : hitch_height;
 
                 support_depth = cavity ? 1 + tolerance * 2 : 1;
                 height_drop = cavity ? 0 : 1;
 
-                translate([0, 0, cavity ? -bridge_clearance : 0]) {
+                translate([0, 0, cavity ? -sagging_bridge_clearance : 0]) {
                     cube([_width, _length, _height]);
                 }
 
                 if (!cavity) {
                     support_height = height - hitch_height; // TODO: fix
-                    echo("support_height", support_height);
 
-                    translate([
-                        0,
-                        _length - BREAKAWAY_SUPPORT_DEPTH / 2,
-                        -support_height
+                    for (x = [
+                        BREAKAWAY_SUPPORT_DEPTH / 2,
+                        width - BREAKAWAY_SUPPORT_DEPTH / 2
                     ]) {
-                        breakaway_support(
-                            width = _width,
-                            length = BREAKAWAY_SUPPORT_DEPTH,
-                            height = support_height,
-                            flip_vertically = false,
-                            include_first = true,
-                            include_last = true
-                        );
+                        translate([
+                            x,
+                            0,
+                            -support_height
+                        ]) {
+                            breakaway_support(
+                                length = _length,
+                                height = support_height + e
+                            );
+                        }
                     }
                 }
             }
