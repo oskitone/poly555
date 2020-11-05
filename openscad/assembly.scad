@@ -432,29 +432,42 @@ module assembly(
             module _hitch() {
                 _width = cavity ? width + tolerance * 4 : width;
                 _length = cavity ? hitch + e * 2 : hitch + e;
+
+                bridge_clearance = SACRIFICIAL_BRIDGE_HEIGHT * 2;
+
+                height = cavity
+                    ? hitch_height + bridge_clearance * 2
+                    : hitch_height;
+
                 support_depth = cavity ? 1 + tolerance * 2 : 1;
                 height_drop = cavity ? 0 : 1;
 
                 difference() {
-                    cube([_width, _length, hitch_height]);
+                    union() {
+                        translate([0, 0, cavity ? -bridge_clearance : 0]) {
+                            cube([_width, _length, height]);
+                        }
+
+                        overhang_support(
+                            width = _width,
+                            length = _length,
+                            bridge_height = -e,
+                            support_depth = support_depth
+                        );
+                    }
 
                     if (cavity) {
-                        translate([-e, 0, -e]) {
-                            cube([
-                                _width + e * 2,
-                                BREAKAWAY_SUPPORT_DEPTH,
-                                SACRIFICIAL_BRIDGE_HEIGHT
-                            ]);
+                        for (y = [0, _length - BREAKAWAY_SUPPORT_DEPTH]) {
+                            translate([-e, y, -bridge_clearance]) {
+                                cube([
+                                    _width + e * 2,
+                                    BREAKAWAY_SUPPORT_DEPTH,
+                                    SACRIFICIAL_BRIDGE_HEIGHT
+                                ]);
+                            }
                         }
                     }
                 }
-
-                overhang_support(
-                    width = _width,
-                    length = _length,
-                    bridge_height = -e,
-                    support_depth = support_depth
-                );
             }
 
             module _stilt() {
