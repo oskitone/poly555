@@ -375,6 +375,8 @@ module assembly(
 
             rotation = is_top ? [180, 0, 180] : [0, 0, 0];
 
+            lip_clearance = .4;
+
             translate(position) rotate(rotation) {
                 enclosure_half(
                     width = width,
@@ -392,8 +394,8 @@ module assembly(
                     remove_lip = is_top,
                     lip = enclosure_lip,
                     lip_height = is_top
-                        ? enclosure_lip_height + tolerance
-                        : enclosure_lip_height - tolerance,
+                        ? enclosure_lip_height + lip_clearance
+                        : enclosure_lip_height - lip_clearance,
 
                     radius = quick_preview ? 0 : enclosure_chamfer,
                     tolerance = tolerance,
@@ -434,7 +436,7 @@ module assembly(
                 _length = cavity ? hitch + e * 2 : hitch + e;
 
                 // guess this is arbitrary now
-                bridge_clearance = SACRIFICIAL_BRIDGE_HEIGHT * 2;
+                bridge_clearance = .6;
 
                 _height = cavity
                     ? hitch_height + bridge_clearance * 2
