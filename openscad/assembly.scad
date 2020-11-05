@@ -433,39 +433,37 @@ module assembly(
                 _width = cavity ? width + tolerance * 4 : width;
                 _length = cavity ? hitch + e * 2 : hitch + e;
 
+                // guess this is arbitrary now
                 bridge_clearance = SACRIFICIAL_BRIDGE_HEIGHT * 2;
 
-                height = cavity
+                _height = cavity
                     ? hitch_height + bridge_clearance * 2
                     : hitch_height;
 
                 support_depth = cavity ? 1 + tolerance * 2 : 1;
                 height_drop = cavity ? 0 : 1;
 
-                difference() {
-                    union() {
-                        translate([0, 0, cavity ? -bridge_clearance : 0]) {
-                            cube([_width, _length, height]);
-                        }
+                translate([0, 0, cavity ? -bridge_clearance : 0]) {
+                    cube([_width, _length, _height]);
+                }
 
-                        overhang_support(
+                if (!cavity) {
+                    support_height = height - hitch_height; // TODO: fix
+                    echo("support_height", support_height);
+
+                    translate([
+                        0,
+                        _length - BREAKAWAY_SUPPORT_DEPTH / 2,
+                        -support_height
+                    ]) {
+                        breakaway_support(
                             width = _width,
-                            length = _length,
-                            bridge_height = -e,
-                            support_depth = support_depth
+                            length = BREAKAWAY_SUPPORT_DEPTH,
+                            height = support_height,
+                            flip_vertically = false,
+                            include_first = true,
+                            include_last = true
                         );
-                    }
-
-                    if (cavity) {
-                        for (y = [0, _length - BREAKAWAY_SUPPORT_DEPTH]) {
-                            translate([-e, y, -bridge_clearance]) {
-                                cube([
-                                    _width + e * 2,
-                                    BREAKAWAY_SUPPORT_DEPTH,
-                                    SACRIFICIAL_BRIDGE_HEIGHT
-                                ]);
-                            }
-                        }
                     }
                 }
             }
@@ -1290,21 +1288,21 @@ module assembly(
                 _aligner();
             }
 
-            _key_mounting_rail();
-            _volume_wheel_brace();
-            _speaker_mounting_plate();
-            _window_pane_top_supports();
+            * _key_mounting_rail();
+            * _volume_wheel_brace();
+            * _speaker_mounting_plate();
+            * _window_pane_top_supports();
 
             difference() {
                 union() {
                     _enclosure_half(true);
-                    _led_exposure(enclosure_inner_wall, -e);
+                    * _led_exposure(enclosure_inner_wall, -e);
                 }
                 _keys_and_bumper_cavity();
                 _window_cavity();
-                _branding_cavities();
-                _led_exposure(-tolerance, e, $fn = HIDEF_ROUNDING); // intentionally tight
-                _speaker_grill();
+                * _branding_cavities();
+                * _led_exposure(-tolerance, e, $fn = HIDEF_ROUNDING); // intentionally tight
+                * _speaker_grill();
                 _hitch_stilts(cavity = true);
             }
         }
