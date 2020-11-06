@@ -9,7 +9,8 @@ module breakaway_support(
     flip_vertically = false,
     include_first = true,
     include_last = true,
-    support_depth = BREAKAWAY_SUPPORT_DEPTH
+    support_depth = BREAKAWAY_SUPPORT_DEPTH,
+    bridge_height = SACRIFICIAL_BRIDGE_HEIGHT
 ) {
     support_depth = max(BREAKAWAY_SUPPORT_DEPTH, support_depth);
     width = max(width, support_depth);
@@ -37,12 +38,8 @@ module breakaway_support(
             }
         }
 
-        translate([
-            0,
-            0,
-            flip_vertically ? 0 : height - SACRIFICIAL_BRIDGE_HEIGHT
-        ]) {
-            cube([width, length, SACRIFICIAL_BRIDGE_HEIGHT]);
+        translate([0, 0, flip_vertically ? 0 : height - bridge_height]) {
+            cube([width, length, bridge_height]);
         }
     }
 
