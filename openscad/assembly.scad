@@ -395,7 +395,7 @@ module assembly(
                     lip = enclosure_lip,
                     lip_height = is_top
                         ? enclosure_lip_height + lip_clearance
-                        : enclosure_lip_height - lip_clearance,
+                        : enclosure_lip_height,
 
                     radius = quick_preview ? 0 : enclosure_chamfer,
                     tolerance = tolerance,
@@ -421,12 +421,16 @@ module assembly(
         module _hitch_stilts(
             cavity = false,
             width = BREAKAWAY_SUPPORT_DISTANCE,
+            width_extension = enclosure_inner_wall / 2,
             hitch = enclosure_wall,
-            hitch_height = BREAKAWAY_SUPPORT_DISTANCE / 2
+            hitch_height = BREAKAWAY_SUPPORT_DISTANCE / 2,
+            bridge_sag_clearance = .8 // TODO: confirm
         ) {
-            z = enclosure_floor_ceiling + BATTERY_HEIGHT;
+            total_width = width + width_extension * 2;
 
-            height = window_pane_z - z;
+            vault_z = enclosure_floor_ceiling + BATTERY_HEIGHT;
+
+            height = window_pane_z - vault_z;
             length = enclosure_length - enclosure_wall
                 - window_cavity_y - window_cavity_length;
             vault_height = length;
@@ -435,32 +439,26 @@ module assembly(
                 _width = cavity ? width + tolerance * 4 : width;
                 _length = cavity ? hitch + e * 2 : hitch + e;
 
-                // TODO: explain
-                sagging_bridge_clearance = .8;
-
                 _height = cavity
-                    ? hitch_height + sagging_bridge_clearance
+                    ? hitch_height + bridge_sag_clearance
                     : hitch_height;
 
                 support_depth = cavity ? 1 + tolerance * 2 : 1;
                 height_drop = cavity ? 0 : 1;
 
-                translate([0, 0, cavity ? -sagging_bridge_clearance : 0]) {
+                translate([0, 0, cavity ? -bridge_sag_clearance : 0]) {
                     cube([_width, _length, _height]);
                 }
 
                 if (!cavity) {
-                    support_height = height - hitch_height; // TODO: fix
+                    support_height = vault_z + height - hitch_height
+                        - enclosure_bottom_height;
 
                     for (x = [
                         BREAKAWAY_SUPPORT_DEPTH / 2,
                         width - BREAKAWAY_SUPPORT_DEPTH / 2
                     ]) {
-                        translate([
-                            x,
-                            0,
-                            -support_height
-                        ]) {
+                        translate([x, 0, -support_height]) {
                             breakaway_support(
                                 length = _length,
                                 height = support_height + e
@@ -471,20 +469,48 @@ module assembly(
             }
 
             module _stilt() {
+                module _tolerance_clearance() {
+                    lip_adjustment = enclosure_bottom_height
+                        + enclosure_lip_height
+                        - vault_z - vault_height;
+
+                    _length = tolerance * 2; // TODO: confirm enough
+                    _height = height - vault_height - hitch_height
+                        - lip_adjustment;
+
+                    z = vault_height + lip_adjustment;
+
+                    translate([-e - width_extension, length - _length, z]) {
+                        cube([
+                            total_width + e * 2,
+                            _length + e,
+                            _height + SACRIFICIAL_BRIDGE_HEIGHT
+                        ]);
+                    }
+                }
+
                 if (!cavity) {
-                    translate([0, length, 0]) {
+                    translate([-width_extension, length, 0]) {
                         flat_top_rectangular_pyramid(
-                            top_width = width,
+                            top_width = total_width,
                             top_length = length + e,
-                            bottom_width = width,
+                            bottom_width = total_width,
                             bottom_length = 0,
                             height = vault_height + e,
                             top_weight_y = 1
                         );
                     }
 
-                    translate([0, 0, vault_height]) {
-                        cube([width, length + e, height - vault_height]);
+                    difference() {
+                        translate([-width_extension, 0, vault_height]) {
+                            cube([
+                                total_width,
+                                length + e,
+                                height - vault_height
+                            ]);
+                        }
+
+                        _tolerance_clearance();
                     }
                 }
 
@@ -498,13 +524,13 @@ module assembly(
             }
 
             end_gutter = enclosure_wall + window_and_side_panel_gutter;
-
+            y = enclosure_length - enclosure_wall - length;
             for (x = [
                 end_gutter,
                 (enclosure_width - width) / 2,
                 enclosure_width - end_gutter - width
             ]) {
-                translate([x, enclosure_length - enclosure_wall - length, z]) {
+                translate([x, y, vault_z]) {
                     _stilt();
                 }
             }
@@ -1456,14 +1482,14 @@ module assembly(
                 ]);
             }
         } else if (cross_section == "hitch_stilt") {
-            x = enclosure_wall * 2;
-            z = enclosure_bottom_height / 2;
+            x = enclosure_wall * 1.5;
+            z = enclosure_bottom_height * .67;
 
-            width = BREAKAWAY_SUPPORT_DISTANCE + x;
+            width = BREAKAWAY_SUPPORT_DISTANCE + x * 2;
             length = 7;
 
             translate([x, enclosure_length - length, z]) {
-                cube([width, length, enclosure_height - z - enclosure_floor_ceiling - e]);
+                cube([width, length + e, enclosure_height - z - enclosure_floor_ceiling - e]);
             }
         }
     }
