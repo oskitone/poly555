@@ -8,28 +8,32 @@ module breakaway_support(
     height = BREAKAWAY_SUPPORT_DEPTH,
     flip_vertically = false,
     include_first = true,
-    include_last = true
+    include_last = true,
+    support_depth = BREAKAWAY_SUPPORT_DEPTH
 ) {
-    has_width = width != BREAKAWAY_SUPPORT_DEPTH;
-    has_length = length != BREAKAWAY_SUPPORT_DEPTH;
+    support_depth = max(BREAKAWAY_SUPPORT_DEPTH, support_depth);
+    width = max(width, support_depth);
+    length = max(length, support_depth);
+    height = max(height, support_depth);
+
+    has_width = width != support_depth;
+    has_length = length != support_depth;
 
     assert(has_width || has_length, "Supply either a width or length");
 
     module _wall() {
         span = max(width, length);
-        count = ceil(
-            (span - BREAKAWAY_SUPPORT_DEPTH) / BREAKAWAY_SUPPORT_DISTANCE
-        );
+        count = ceil((span - support_depth) / BREAKAWAY_SUPPORT_DISTANCE);
 
-        x_plot = has_width ? (span - BREAKAWAY_SUPPORT_DEPTH) / count : 0;
-        y_plot = has_length ? (span - BREAKAWAY_SUPPORT_DEPTH) / count : 0;
+        x_plot = has_width ? (span - support_depth) / count : 0;
+        y_plot = has_length ? (span - support_depth) / count : 0;
 
         start = include_first ? 0 : 1;
         end = include_last ? count : count - 1;
 
         for (i = [start : end]) {
             translate([x_plot * i, y_plot * i, 0]) {
-                cube([BREAKAWAY_SUPPORT_DEPTH, BREAKAWAY_SUPPORT_DEPTH, height]);
+                cube([support_depth, support_depth, height]);
             }
         }
 
@@ -43,8 +47,8 @@ module breakaway_support(
     }
 
     translate([
-        width == BREAKAWAY_SUPPORT_DEPTH ? BREAKAWAY_SUPPORT_DEPTH / -2 : 0,
-        length == BREAKAWAY_SUPPORT_DEPTH ? BREAKAWAY_SUPPORT_DEPTH / -2 : 0,
+        width == support_depth ? support_depth / -2 : 0,
+        length == support_depth ? support_depth / -2 : 0,
         0
     ]) {
         _wall();
@@ -53,10 +57,11 @@ module breakaway_support(
 
 spans = [2, 5, 10, 15, 25];
 height = 5;
-plot = 2;
+plot = 4;
 for (i = [0 : len(spans) - 1]) {
     translate([plot * i, 0, 0]) {
         breakaway_support(
+            support_depth = BREAKAWAY_SUPPORT_DEPTH * (i + 1),
             length = spans[i],
             height = height,
             flip_vertically = i % 2 == 0
