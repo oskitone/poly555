@@ -468,6 +468,7 @@ module assembly(
                                 length = _length,
                                 height = support_height + e,
                                 support_depth = support_depth,
+                                bridge_height = SACRIFICIAL_BRIDGE_HEIGHT * 1.5,
                                 include_first = false
                             );
                         }
