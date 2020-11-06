@@ -424,6 +424,7 @@ module assembly(
             width_extension = enclosure_inner_wall / 2,
             hitch = enclosure_wall,
             hitch_height = BREAKAWAY_SUPPORT_DISTANCE / 2,
+            tolerance_clearance = tolerance * 4,
             bridge_sag_clearance = .4 // TODO: confirm
         ) {
             total_width = width + width_extension * 2;
@@ -433,9 +434,11 @@ module assembly(
             height = window_pane_z - vault_z;
             length = enclosure_length - enclosure_wall
                 - window_cavity_y - window_cavity_length;
-            vault_height = length;
+            vault_height = enclosure_bottom_height + enclosure_lip_height
+                - vault_z;
 
             module _hitch() {
+                hitch = hitch + tolerance_clearance;
                 _width = cavity ? width + tolerance * 4 : width;
                 _length = cavity ? hitch + e * 2 : hitch + e;
 
@@ -446,22 +449,26 @@ module assembly(
                 support_depth = cavity ? 1 + tolerance * 2 : 1;
                 height_drop = cavity ? 0 : 1;
 
-                translate([0, 0, cavity ? -bridge_sag_clearance : 0]) {
+                translate([
+                    0,
+                    -tolerance_clearance,
+                    cavity ? -bridge_sag_clearance : 0
+                ]) {
                     cube([_width, _length, _height]);
                 }
 
                 if (!cavity) {
+                    support_depth = BREAKAWAY_SUPPORT_DEPTH * 1.5;
                     support_height = vault_z + height - hitch_height
                         - enclosure_bottom_height;
 
-                    for (x = [
-                        BREAKAWAY_SUPPORT_DEPTH / 2,
-                        width - BREAKAWAY_SUPPORT_DEPTH / 2
-                    ]) {
-                        translate([x, 0, -support_height]) {
+                    for (x = [support_depth / 2, width - support_depth / 2]) {
+                        translate([x, -tolerance_clearance, -support_height]) {
                             breakaway_support(
                                 length = _length,
-                                height = support_height + e
+                                height = support_height + e,
+                                support_depth = support_depth,
+                                include_first = false
                             );
                         }
                     }
@@ -469,26 +476,6 @@ module assembly(
             }
 
             module _stilt() {
-                module _tolerance_clearance() {
-                    lip_adjustment = enclosure_bottom_height
-                        + enclosure_lip_height
-                        - vault_z - vault_height;
-
-                    _length = tolerance * 4; // intentionally generous
-                    _height = height - vault_height - hitch_height
-                        - lip_adjustment;
-
-                    z = vault_height + lip_adjustment;
-
-                    translate([-e - width_extension, length - _length, z]) {
-                        cube([
-                            total_width + e * 2,
-                            _length + e,
-                            _height + SACRIFICIAL_BRIDGE_HEIGHT
-                        ]);
-                    }
-                }
-
                 if (!cavity) {
                     translate([-width_extension, length, 0]) {
                         flat_top_rectangular_pyramid(
@@ -505,12 +492,10 @@ module assembly(
                         translate([-width_extension, 0, vault_height]) {
                             cube([
                                 total_width,
-                                length + e,
+                                length + e - tolerance_clearance,
                                 height - vault_height
                             ]);
                         }
-
-                        _tolerance_clearance();
                     }
                 }
 
@@ -921,30 +906,30 @@ module assembly(
             difference() {
                 union() {
                     _back();
-                    _front();
-                    _switch_container();
-                    _switch_exposure(
+                    * _front();
+                    * _switch_container();
+                    * _switch_exposure(
                         xy_bleed = enclosure_inner_wall,
                         include_switch_cavity = false,
                         z_bleed = -e
                     );
-                    _mount_stilts_and_spacers();
-                    _mounting_rail_aligners(cavity = false);
-                    _speaker_container();
+                    * _mount_stilts_and_spacers();
+                    * _mounting_rail_aligners(cavity = false);
+                    * _speaker_container();
                     _hitch_stilts();
-                    _pcb_volume_wheel_stilt();
-                    _hitch_base();
+                    * _pcb_volume_wheel_stilt();
+                    * _hitch_base();
                 }
 
-                _switch_exposure(
+                * _switch_exposure(
                     xy_bleed = tolerance,
                     include_switch_cavity = true,
                     z_bleed = e
                 );
-                _switch_engraving();
-                _screw_cavities();
-                _engraving();
-                _volume_wheel_cavity();
+                * _switch_engraving();
+                * _screw_cavities();
+                * _engraving();
+                * _volume_wheel_cavity();
             }
         }
 
@@ -1489,7 +1474,7 @@ module assembly(
             length = 7;
 
             translate([x, enclosure_length - length, z]) {
-                cube([width, length + e, enclosure_height - z - enclosure_floor_ceiling - e]);
+                cube([width, length + 10, enclosure_height - z - enclosure_floor_ceiling - e]);
             }
         }
     }
@@ -1505,7 +1490,7 @@ assembly(
     show_hitch = SHOW_HITCH,
     show_mounting_rail = SHOW_MOUNTING_RAIL,
     show_keys = SHOW_KEYS,
-    show_enclosure_top = SHOW_ENCLOSURE_TOP,
+    show_enclosure_top = false,
     show_window_pane = SHOW_WINDOW_PANE,
 
     animate_visualized_plastic_tolerance_weight =
