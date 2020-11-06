@@ -424,7 +424,7 @@ module assembly(
             width_extension = enclosure_inner_wall / 2,
             hitch = enclosure_wall,
             hitch_height = BREAKAWAY_SUPPORT_DISTANCE / 2,
-            bridge_sag_clearance = .8 // TODO: confirm
+            bridge_sag_clearance = .4 // TODO: confirm
         ) {
             total_width = width + width_extension * 2;
 
@@ -474,7 +474,7 @@ module assembly(
                         + enclosure_lip_height
                         - vault_z - vault_height;
 
-                    _length = tolerance * 2; // TODO: confirm enough
+                    _length = tolerance * 4; // intentionally generous
                     _height = height - vault_height - hitch_height
                         - lip_adjustment;
 
