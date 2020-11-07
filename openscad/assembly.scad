@@ -425,7 +425,7 @@ module assembly(
             hitch = enclosure_wall,
             hitch_height = BREAKAWAY_SUPPORT_DISTANCE / 2,
             tolerance_clearance = tolerance * 4,
-            bridge_sag_clearance = .4 // TODO: confirm
+            bridge_sag_clearance = .8
         ) {
             total_width = width + width_extension * 2;
 
@@ -458,7 +458,7 @@ module assembly(
                 }
 
                 if (!cavity) {
-                    support_depth = BREAKAWAY_SUPPORT_DEPTH * 1.5;
+                    support_depth = .6;
                     support_height = vault_z + height - hitch_height
                         - enclosure_bottom_height;
 
