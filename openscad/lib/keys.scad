@@ -20,8 +20,8 @@ module keys(
     actuator_length = BUTTON_DIAMETER,
     actuator_height = 2,
 
-    wall = 1.2,
-    ceiling = 2,
+    wall = .8,
+    ceiling = 1,
 
     front_fillet = 2,
     sides_fillet = 2,
@@ -410,8 +410,8 @@ module mounted_keys(
     accidental_actuator_y,
     actuator_length = BUTTON_DIAMETER,
 
-    wall = 1.2,
-    ceiling = 2,
+    wall = .8,
+    ceiling = 1,
 
     front_fillet = 2,
     sides_fillet = 2,
@@ -521,8 +521,8 @@ mounted_keys(
     accidental_actuator_y = 40,
     actuator_length = BUTTON_DIAMETER,
 
-    wall = 1.2,
-    ceiling = 2,
+    wall = .8,
+    ceiling = 1,
 
     front_fillet = 2,
     sides_fillet = 1,
