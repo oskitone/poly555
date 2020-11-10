@@ -37,7 +37,7 @@ module assembly(
     engraving_chamfer = .2,
 
     components_to_window_clearance = 2,
-    speaker_to_battery_clearance = .5,
+    speaker_clearance = 1.6,
     exposed_switch_clearance = 1,
     exposed_screw_head_clearance = .4,
 
@@ -142,7 +142,7 @@ module assembly(
         pcb_stilt_height + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
             + WINDOW_PANE_HEIGHT + components_to_window_clearance,
         SPEAKER_HEIGHT - SPEAKER_MAGNET_HEIGHT + BATTERY_HEIGHT
-            + speaker_to_battery_clearance
+            + speaker_clearance
     );
     enclosure_bottom_height =
         get_volume_wheel_z(
@@ -696,17 +696,13 @@ module assembly(
                 }
             }
 
-            module _speaker_container(
-                wall = enclosure_wall,
-                spoke_count = 3,
-                vertical_clearance = 1.6 // HACK. TODO: unhack
-            ) {
+            module _speaker_container(wall = enclosure_wall, spoke_count = 3) {
                 z = enclosure_floor_ceiling - e;
 
                 inner_diameter = SPEAKER_MAGNET_DIAMETER + tolerance * 2;
                 outer_diameter = inner_diameter + wall * 2;
                 height = speaker_z + SPEAKER_MAGNET_HEIGHT - z
-                    - vertical_clearance;
+                    - speaker_clearance;
 
                 spoke_length =
                     (SPEAKER_CONE_DIAMETER - SPEAKER_MAGNET_DIAMETER) / 2;
