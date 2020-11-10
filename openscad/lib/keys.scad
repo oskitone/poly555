@@ -35,10 +35,7 @@ module keys(
     include_accidental = true,
     include_cantilevers = true
 ) {
-    assert(
-        ceiling >= max(front_fillet, sides_fillet),
-        "ceiling must be larger than fillets."
-    );
+    max_fillet = max(front_fillet, sides_fillet);
 
     e = 0.04567;
 
@@ -48,15 +45,14 @@ module keys(
         natural_width - ((accidental_width - gutter) / 2) * 2 - gutter * 2
     );
 
-    module _accidental_cutout(
-        right = true,
-        // TODO: derive
-        front_clearance = (accidental_height - natural_height) / 2
-    ) {
+    module _accidental_cutout(right = true) {
         // Exact size doesn't matter. Just needs to be big and defined.
         width = max(natural_width, accidental_width);
 
         length = accidental_length + gutter + e;
+
+        // TODO: derive
+        front_clearance = (accidental_height - natural_height) / 2;
 
         translate([
             right
@@ -190,6 +186,9 @@ module keys(
         }
 
         module _empty_space_cavities() {
+            inner_width = width - wall * 2;
+            inner_length = length - wall * 2 - cantilever_recession;
+
             module _actuator(base_height = wall, cap_height = ceiling) {
                 x = wall - e;
                 y = (is_natural ? natural_actuator_y : accidental_actuator_y)
@@ -221,15 +220,15 @@ module keys(
                 depth = BREAKAWAY_SUPPORT_DEPTH,
                 gap = BREAKAWAY_SUPPORT_DISTANCE
             ) {
-                inner_width = width - wall * 2 - depth;
-                inner_length = length - wall * 2 - cantilever_recession - depth;
+                _inner_width = inner_width - depth;
+                _inner_length = inner_length - depth;
 
                 module _horizontal() {
                     x = wall - e;
                     z = height - ceiling - horizontal_height + e;
 
-                    count = ceil(inner_length / gap);
-                    plot = inner_length / count;
+                    count = ceil(_inner_length / gap);
+                    plot = _inner_length / count;
 
                     for (i = [1 : count - 1]) {
                         translate([x, wall + i * plot, z]) {
@@ -241,42 +240,57 @@ module keys(
                 module _vertical() {
                     z = height - ceiling - vertical_height + e;
 
-                    count = ceil(inner_width / gap);
-                    plot = inner_width / count;
+                    count = ceil(_inner_width / gap);
+                    plot = _inner_width / count;
 
                     for (i = [1 : count - 1]) {
                         translate([wall + i * plot, wall - e, z]) {
                             cube([
                                 depth,
-                                inner_length + e * 2 + depth,
+                                _inner_length + e * 2 + depth,
                                 vertical_height + e
                             ]);
                         }
                     }
                 }
 
-                if (inner_length > gap) { _horizontal(); }
-                if (inner_width > gap) { _vertical(); }
+                if (_inner_length > gap) { _horizontal(); }
+                if (_inner_width > gap) { _vertical(); }
             }
 
             difference() {
-                translate([wall, wall, -e]) {
-                    cube([
-                        width - wall * 2,
-                        length - wall * 2 - cantilever_recession,
-                        height - ceiling
-                    ]);
+                union() {
+                    translate([wall, wall, -e]) {
+                        cube([
+                            width - wall * 2,
+                            inner_length,
+                            height - max(ceiling, front_fillet, sides_fillet) + e
+                        ]);
+                    }
+
+                    if (ceiling < max_fillet) {
+                        translate([wall, wall, height - max_fillet - e]) {
+                            flat_top_rectangular_pyramid(
+                                top_width = inner_width - (sides_fillet - wall),
+                                top_length = inner_length - (front_fillet - wall),
+                                bottom_width = inner_width,
+                                bottom_length = inner_length,
+                                height = max_fillet - ceiling + e,
+                                top_weight_y = 1
+                            );
+                        }
+                    }
                 }
 
                 if (cut_left) {
                     translate([wall, -wall, 0]) {
-                        _accidental_cutout(right = false, front_clearance = 0);
+                        _accidental_cutout(right = false);
                     }
                 }
 
                 if (cut_right) {
                     translate([-wall, -wall, 0]) {
-                        _accidental_cutout(right = true, front_clearance = 0);
+                        _accidental_cutout(right = true);
                     }
                 }
 
