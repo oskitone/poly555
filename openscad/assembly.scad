@@ -7,7 +7,6 @@ use <lib/breakaway_support.scad>;
 use <lib/diagonal_grill.scad>;
 use <lib/enclosure.scad>;
 use <lib/engraving.scad>;
-use <lib/hitch.scad>;
 use <lib/keys.scad>;
 use <lib/mount_stilt.scad>;
 use <lib/mounting_rail.scad>;
@@ -50,7 +49,7 @@ module assembly(
 
     keys_count = 20,
     starting_natural_key_index = 3,
-    key_travel = 1.4,
+    key_travel = 2, // TODO: refine
 
     // Adjust from 0 to 1 to see possible plastic dimensions from manufacturer
     visualized_plastic_tolerance_weight = .5,
@@ -67,7 +66,6 @@ module assembly(
     show_switch = true,
     show_pcb = true,
     show_volume_wheel = true,
-    show_hitch = true,
     show_mounting_rail = true,
     show_keys = true,
     show_enclosure_top = true,
@@ -170,13 +168,6 @@ module assembly(
     key_mounting_rail_x = enclosure_wall + tolerance * 2;
     key_mounting_rail_y = pcb_y + keys_mount_end_on_pcb - mount_length;
 
-    hitch_clearance = .4;
-    hitch_coverage = 4;
-    hitch_x = keys_x;
-    hitch_y = pcb_y - HITCH_WALL_LENGTH - hitch_clearance;
-    hitch_z = enclosure_floor_ceiling + HITCH_DOVETAIL_HEIGHT - keys_z;
-    hitch_height = abs(hitch_z) + HITCH_HEAD_HEIGHT + hitch_coverage;
-
     battery_x = enclosure_width - BATTERY_WIDTH - enclosure_wall - tolerance;
     battery_y = enclosure_length - enclosure_wall - BATTERY_LENGTH - tolerance;
 
@@ -241,11 +232,7 @@ module assembly(
         );
     }
 
-    module _mounted_keys(
-        include_natural = false,
-        include_accidental = false,
-        include_hitch = false
-    ) {
+    module _mounted_keys(include_natural = false, include_accidental = false) {
         translate([keys_x, keys_y, keys_z]) {
             mounted_keys(
                 count = keys_count,
@@ -268,17 +255,10 @@ module assembly(
                 cantilever_height = cantilever_height,
                 cantilever_recession = cantilever_recession,
 
-                include_hitch = include_hitch,
                 include_mount = false,
                 include_natural = include_natural,
                 include_accidental = include_accidental,
-                include_print_supports = true,
-
-                key_travel = key_travel,
-
-                hitch_height = hitch_height,
-                hitch_y = hitch_y - keys_y,
-                hitch_z = hitch_z
+                include_print_supports = true
             );
         }
     }
@@ -308,28 +288,6 @@ module assembly(
         }
         color(accidental_key_color, key_opacity) {
             _mounted_keys(include_accidental = true);
-        }
-    }
-
-    /* TODO: think about how this can be minimized or built into enclosure */
-    module _hitch(clearance = 1) {
-        switch_clearance_width = SWITCH_BASE_WIDTH + switch_exposure_height * 2
-            + clearance * 2;
-
-        difference() {
-            _mounted_keys(include_hitch = true);
-
-            translate([
-                switch_x - switch_clearance_width / 2,
-                hitch_y - e,
-                0
-            ]) {
-                cube([
-                    switch_clearance_width,
-                    HITCH_WALL_LENGTH + e * 2,
-                    switch_z + clearance
-                ]);
-            }
         }
     }
 
@@ -745,12 +703,6 @@ module assembly(
                 }
             }
 
-            module _hitch_base() {
-                translate([hitch_x, hitch_y, enclosure_floor_ceiling - e]) {
-                    hitch_base(width = mount_width);
-                }
-            }
-
             module _back() {
                 length = enclosure_length - bumper_length;
                 overlap = enclosure_wall + e;
@@ -905,6 +857,43 @@ module assembly(
                 }
             }
 
+            module _keys_endstop(
+                clearance = .4,
+                coverage = 4,
+                height = enclosure_inner_wall,
+                // Supports aren't user facing, so sagging bridges are okay
+                support_gap = BREAKAWAY_SUPPORT_DISTANCE * 2
+            ) {
+                xy = enclosure_wall - e;
+                bar_z = keys_z - height - key_travel;
+
+                width = enclosure_width - xy * 2;
+                length = keys_y + coverage - xy;
+
+                support_width = enclosure_inner_wall;
+                supports_count = ceil(width / support_gap);
+                supports_plot = width / supports_count;
+
+                translate([xy, xy, bar_z]) {
+                    cube([width, length, height]);
+
+                    for (i = [1 : supports_count - 1]) {
+                        x = supports_plot * i - support_width / 2;
+
+                        translate([x, 0, -length]) {
+                            flat_top_rectangular_pyramid(
+                                top_width = support_width,
+                                top_length = length,
+                                bottom_width = support_width,
+                                bottom_length = 0,
+                                height = length + e,
+                                top_weight_y = 0
+                            );
+                        }
+                    }
+                }
+            }
+
             difference() {
                 union() {
                     _back();
@@ -920,7 +909,7 @@ module assembly(
                     _speaker_container();
                     _hitch_stilts();
                     _pcb_volume_wheel_stilt();
-                    _hitch_base();
+                    _keys_endstop();
                 }
 
                 _switch_exposure(
@@ -1421,7 +1410,6 @@ module assembly(
             if (show_speaker) { % _speaker(); }
             if (show_pcb) { % _pcb(); }
             if (show_volume_wheel) { _pcb(just_volume_wheel = true); }
-            if (show_hitch) { _hitch(); }
             if (show_mounting_rail) { _mounting_rail(); }
             if (show_keys) { _keys(); }
             if (show_window_pane) { % _window_pane();}
@@ -1491,7 +1479,6 @@ assembly(
     show_switch = SHOW_SWITCH,
     show_pcb = SHOW_PCB,
     show_volume_wheel = SHOW_VOLUME_WHEEL,
-    show_hitch = SHOW_HITCH,
     show_mounting_rail = SHOW_MOUNTING_RAIL,
     show_keys = SHOW_KEYS,
     show_enclosure_top = SHOW_ENCLOSURE_TOP,
