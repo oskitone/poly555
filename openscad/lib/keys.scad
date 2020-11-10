@@ -15,7 +15,8 @@ module keys(
     accidental_length,
     accidental_height,
 
-    actuator_y,
+    natural_actuator_y,
+    accidental_actuator_y,
     actuator_length = BUTTON_DIAMETER,
     actuator_height = 2,
 
@@ -191,7 +192,8 @@ module keys(
 
             module _actuator(cap_height = 1) {
                 x = wall - e;
-                y = actuator_y - actuator_length / 2
+                y = (is_natural ? natural_actuator_y : accidental_actuator_y)
+                    - actuator_length / 2
                     + (is_natural ? 0 : accidental_length - natural_length);
 
                 width = width - x * 2;
@@ -293,7 +295,10 @@ module keys(
                     }
                 }
 
-                if (actuator_y != undef) {
+                if (
+                    natural_actuator_y != undef &&
+                    accidental_actuator_y != undef
+                ) {
                     _actuator();
                 }
 
@@ -401,7 +406,8 @@ module mounted_keys(
     accidental_length,
     accidental_height,
 
-    actuator_y,
+    natural_actuator_y,
+    accidental_actuator_y,
     actuator_length = BUTTON_DIAMETER,
 
     wall = 1.2,
@@ -452,7 +458,8 @@ module mounted_keys(
             accidental_length = accidental_length,
             accidental_height = accidental_height,
 
-            actuator_y = actuator_y,
+            natural_actuator_y = natural_actuator_y,
+            accidental_actuator_y = accidental_actuator_y,
             actuator_length = actuator_length,
 
             wall = wall,
@@ -510,7 +517,8 @@ mounted_keys(
     accidental_length = 30,
     accidental_height = 15,
 
-    actuator_y = 35,
+    natural_actuator_y = 35,
+    accidental_actuator_y = 40,
     actuator_length = BUTTON_DIAMETER,
 
     wall = 1.2,

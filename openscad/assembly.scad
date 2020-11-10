@@ -233,6 +233,9 @@ module assembly(
     }
 
     module _mounted_keys(include_natural = false, include_accidental = false) {
+        function get_actuator_y(i) = pcb_y + PCB_BUTTONS[i][1] - keys_y
+            + BUTTON_LENGTH / 2;
+
         translate([keys_x, keys_y, keys_z]) {
             mounted_keys(
                 count = keys_count,
@@ -246,6 +249,9 @@ module assembly(
                 accidental_length = natural_key_length * 3/5,
                 accidental_height = key_height + accidental_key_extra_height,
 
+                natural_actuator_y = get_actuator_y(0),
+                accidental_actuator_y = get_actuator_y(1),
+
                 front_fillet = quick_preview ? 0 : 2,
                 sides_fillet = quick_preview ? 0 : 1,
 
@@ -257,8 +263,7 @@ module assembly(
 
                 include_mount = false,
                 include_natural = include_natural,
-                include_accidental = include_accidental,
-                include_print_supports = true
+                include_accidental = include_accidental
             );
         }
     }
