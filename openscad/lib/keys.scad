@@ -15,6 +15,10 @@ module keys(
     accidental_length,
     accidental_height,
 
+    actuator_y,
+    actuator_length = BUTTON_DIAMETER,
+    actuator_height = 2,
+
     wall = 1.2,
     ceiling = 2,
 
@@ -185,6 +189,30 @@ module keys(
             inner_width = width - wall * 2;
             inner_length = length - wall * 2 - cantilever_recession;
 
+            module _actuator(cap_height = 1) {
+                x = wall - e;
+                y = actuator_y - actuator_length / 2
+                    + (is_natural ? 0 : accidental_length - natural_length);
+
+                width = width - x * 2;
+
+                translate([x, y, -e]) {
+                    cube([width, actuator_length, actuator_height + e]);
+
+                    translate([0, 0, actuator_height]) {
+                        flat_top_rectangular_pyramid(
+                            top_width = width,
+                            top_length = 0,
+
+                            bottom_width = width,
+                            bottom_length = actuator_length,
+
+                            height = cap_height
+                        );
+                    }
+                }
+            }
+
             difference() {
                 union() {
                     translate([wall, wall, -e]) {
@@ -219,6 +247,10 @@ module keys(
                     translate([-wall, -wall, 0]) {
                         _accidental_cutout(right = true);
                     }
+                }
+
+                if (actuator_y != undef) {
+                    _actuator();
                 }
             }
         }
@@ -323,6 +355,12 @@ module mounted_keys(
     accidental_length,
     accidental_height,
 
+    actuator_y,
+    actuator_length = BUTTON_DIAMETER,
+
+    wall = 1.2,
+    ceiling = 2,
+
     front_fillet = 2,
     sides_fillet = 2,
 
@@ -367,6 +405,12 @@ module mounted_keys(
             accidental_width = accidental_width,
             accidental_length = accidental_length,
             accidental_height = accidental_height,
+
+            actuator_y = actuator_y,
+            actuator_length = actuator_length,
+
+            wall = wall,
+            ceiling = ceiling,
 
             front_fillet = front_fillet,
             sides_fillet = sides_fillet,
@@ -419,6 +463,12 @@ mounted_keys(
     accidental_width = 7.5,
     accidental_length = 30,
     accidental_height = 15,
+
+    actuator_y = 35,
+    actuator_length = BUTTON_DIAMETER,
+
+    wall = 1.2,
+    ceiling = 2,
 
     front_fillet = 2,
     sides_fillet = 1,
