@@ -1,8 +1,6 @@
 include <values.scad>;
 
 use <basic_shapes.scad>;
-use <breakaway_support.scad>;
-use <hitch.scad>;
 use <utils.scad>;
 
 module keys(
@@ -22,17 +20,13 @@ module keys(
 
     gutter = 1,
 
-    undercarriage_height = 0,
-    undercarriage_length = 0,
-
     cantilever_length = 0,
     cantilever_height = 0,
     cantilever_recession = 0,
 
     include_natural = true,
     include_accidental = true,
-    include_cantilevers = true,
-    include_print_supports = false
+    include_cantilevers = true
 ) {
     e = 0.04567;
 
@@ -44,107 +38,75 @@ module keys(
 
     module _key_block(dimensions, is_natural, cut_left, cut_right) {
         cavity_width = dimensions[0] + e * 2;
-        has_undercarriage = (
-            undercarriage_height > 0 &&
-            undercarriage_length > 0 &&
-            (
-                is_natural ||
-                (!is_natural && dimensions[1] > undercarriage_length)
-            )
-        );
-
-        module _cantilever_recession_cavity() {
-            x = -e;
-            y = dimensions[1] - cantilever_recession;
-
-            length = cantilever_recession + e;
-
-            translate([x, y, -e]) {
-                cube([
-                    cavity_width,
-                    length,
-                    cantilever_height + e
-                ]);
-            }
-
-            translate([x, y, cantilever_height - e]) {
-                flat_top_rectangular_pyramid(
-                    top_width = cavity_width,
-                    top_length = 0,
-                    bottom_width = cavity_width,
-                    bottom_length = length,
-                    height = length,
-                    top_weight_y = 1
-                );
-            }
-        }
 
         width = dimensions[0];
         length = dimensions[1];
         height = dimensions[2];
 
-        module _points() {
-            module _donut() {
-                render() donut(
-                    front_fillet * 2,
-                    sides_fillet,
-                    coverage = 90,
-                    starting_angle = 180
-                );
-            }
+        module _base() {
+            module _points() {
+                module _donut() {
+                    render() donut(
+                        front_fillet * 2,
+                        sides_fillet,
+                        coverage = 90,
+                        starting_angle = 180
+                    );
+                }
 
-            // front bottom left
-            translate([sides_fillet, sides_fillet, 0]) {
-                cylinder(r = sides_fillet, h = e);
-            }
-
-            // front top left
-            translate([sides_fillet / 2, front_fillet, height - front_fillet]) {
-                rotate([0, 90, 0]) _donut();;
-            }
-
-            // front bottom right
-            translate([width - sides_fillet, sides_fillet, 0]) {
-                cylinder(r = sides_fillet, h = e);
-            }
-
-            // front top right
-            translate([width - sides_fillet / 2, front_fillet, height - front_fillet]) {
-                rotate([0, 90, 0]) _donut();;
-            }
-
-            // back bottom left
-            translate([0, length - e, 0]) {
-                cube([e, e, e]);
-            }
-
-            // back bottom right
-            translate([width - e, length - e, 0]) {
-                cube([e, e, e]);
-            }
-
-            // back top left
-            translate([sides_fillet, length, height - sides_fillet]) {
-                rotate([90, 0, 0]) {
+                // front bottom left
+                translate([sides_fillet, sides_fillet, 0]) {
                     cylinder(r = sides_fillet, h = e);
+                }
+
+                // front top left
+                translate([sides_fillet / 2, front_fillet, height - front_fillet]) {
+                    rotate([0, 90, 0]) _donut();;
+                }
+
+                // front bottom right
+                translate([width - sides_fillet, sides_fillet, 0]) {
+                    cylinder(r = sides_fillet, h = e);
+                }
+
+                // front top right
+                translate([width - sides_fillet / 2, front_fillet, height - front_fillet]) {
+                    rotate([0, 90, 0]) _donut();;
+                }
+
+                // back bottom left
+                translate([0, length - e, 0]) {
+                    cube([e, e, e]);
+                }
+
+                // back bottom right
+                translate([width - e, length - e, 0]) {
+                    cube([e, e, e]);
+                }
+
+                // back top left
+                translate([sides_fillet, length, height - sides_fillet]) {
+                    rotate([90, 0, 0]) {
+                        cylinder(r = sides_fillet, h = e);
+                    }
+                }
+
+                // back top right
+                translate([width - sides_fillet, length, height - sides_fillet]) {
+                    rotate([90, 0, 0]) {
+                        cylinder(r = sides_fillet, h = e);
+                    }
                 }
             }
 
-            // back top right
-            translate([width - sides_fillet, length, height - sides_fillet]) {
-                rotate([90, 0, 0]) {
-                    cylinder(r = sides_fillet, h = e);
-                }
-            }
-        }
-
-        difference() {
             if (front_fillet + sides_fillet > 0) {
                 hull() _points();
             } else {
                 cube(dimensions);
             }
+        }
 
+        module _fillet() {
             if (front_fillet > 0) {
                 translate([0, front_fillet, height - front_fillet]) {
                     rotate([0, 90, 0]) {
@@ -156,20 +118,40 @@ module keys(
                     }
                 }
             }
+        }
+
+        module _cantilever_recession_cavity() {
+            x = -e;
+            y = dimensions[1] - cantilever_recession;
+
+            length = cantilever_recession + e;
 
             if (cantilever_recession > 0) {
-                _cantilever_recession_cavity();
-            }
-
-            if (has_undercarriage) {
-                translate([-e, -e, -e]) {
+                translate([x, y, -e]) {
                     cube([
                         cavity_width,
-                        dimensions[1] - undercarriage_length + e,
-                        undercarriage_height + e
+                        length,
+                        cantilever_height + e
                     ]);
                 }
+
+                translate([x, y, cantilever_height - e]) {
+                    flat_top_rectangular_pyramid(
+                        top_width = cavity_width,
+                        top_length = 0,
+                        bottom_width = cavity_width,
+                        bottom_length = length,
+                        height = length,
+                        top_weight_y = 1
+                    );
+                }
             }
+        }
+
+        difference() {
+            _base();
+            _fillet();
+            _cantilever_recession_cavity();
         }
 
         if (include_cantilevers) {
@@ -190,55 +172,9 @@ module keys(
                  }
              }
         }
-
-        module _breakaway_support(x, y, length) {
-            translate([x, y, 0]) {
-                # breakaway_support(
-                    length = length,
-                    height = undercarriage_height + e
-                );
-            }
-        }
-
-        if (has_undercarriage && include_print_supports) {
-            full_length = dimensions[1] - undercarriage_length
-                - BREAKAWAY_SUPPORT_GUTTER;
-
-            bridge_x = accidental_width / 2 + gutter / 2;
-            bridge_y = dimensions[1] - accidental_length - gutter;
-            bridge_length = full_length - bridge_y;
-
-            _breakaway_support(
-                0,
-                0,
-                cut_left ? bridge_y : full_length
-            );
-
-            _breakaway_support(
-                dimensions[0] - BREAKAWAY_SUPPORT_DEPTH,
-                0,
-                cut_right ? bridge_y : full_length
-            );
-
-            if (cut_left) {
-                _breakaway_support(
-                    bridge_x,
-                    bridge_y,
-                    bridge_length
-                );
-            }
-
-            if (cut_right) {
-                _breakaway_support(
-                    dimensions[0] - bridge_x - BREAKAWAY_SUPPORT_DEPTH,
-                    bridge_y,
-                    bridge_length
-                );
-            }
-        }
     }
 
-    module _cutout(right = true) {
+    module _accidental_cutout(right = true) {
         // Exact size doesn't matter. Just needs to be big and defined.
         width = max(natural_width, accidental_width);
 
@@ -286,11 +222,11 @@ module keys(
                 );
 
                 if (cut_left) {
-                    _cutout(right = false);
+                    _accidental_cutout(right = false);
                 }
 
                 if (cut_right) {
-                    _cutout(right = true);
+                    _accidental_cutout(right = true);
                 }
             }
         }
@@ -344,15 +280,10 @@ module mounted_keys(
 
     gutter = 1,
 
-    undercarriage_height = 0,
-    undercarriage_length = 0,
-
     include_mount = true,
     include_natural = true,
     include_accidental = true,
     include_cantilevers = true,
-    include_hitch = false,
-    include_print_supports = false,
 
     mount_length = 0,
     mount_height = 1,
@@ -364,12 +295,7 @@ module mounted_keys(
 
     cantilever_length = 0,
     cantilever_height = 0,
-    cantilever_recession = 0,
-
-    hitch_height = 0,
-    hitch_y = 0,
-    hitch_z = 0,
-    key_travel = 1.4
+    cantilever_recession = 0
 ) {
     $fn = 24;
     e = 0.0678;
@@ -399,13 +325,9 @@ module mounted_keys(
 
             gutter = gutter,
 
-            undercarriage_height = undercarriage_height,
-            undercarriage_length = undercarriage_length,
-
             include_natural = naturals,
             include_accidental = !naturals,
             include_cantilevers = include_cantilevers,
-            include_print_supports = include_print_supports,
 
             cantilever_length = cantilever_length,
             cantilever_height = cantilever_height,
@@ -434,32 +356,12 @@ module mounted_keys(
                 mount_y + mount_length / 2,
                 -e
             );
-
-            if (hitch_height > 0) {
-                translate([-e, hitch_y, hitch_z]) {
-                    hitch_cavity(
-                        width = mount_width + e * 2,
-                        height = hitch_height,
-                        head_clearance = key_travel,
-                        bottom_extension = e
-                    );
-                }
-            }
-        }
-    }
-
-    if (include_hitch) {
-        translate([0, hitch_y, hitch_z]) {
-            hitch(
-                width = mount_width,
-                height = hitch_height
-            );
         }
     }
 }
 
 mounted_keys(
-    count = 13,
+    count = 5,
     starting_natural_key_index = 3,
 
     natural_length = 50,
@@ -475,8 +377,6 @@ mounted_keys(
 
     gutter = 1,
 
-    include_hitch = true,
-    include_print_supports = true,
     include_accidental = true,
     include_natural = true,
 
@@ -488,9 +388,5 @@ mounted_keys(
 
     cantilever_length = 4,
     cantilever_height = 2,
-    cantilever_recession = 2,
-
-    hitch_height = 12,
-    hitch_y = 30,
-    hitch_z = -6
+    cantilever_recession = 2
 );
