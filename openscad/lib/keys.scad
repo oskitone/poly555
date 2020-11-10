@@ -213,6 +213,50 @@ module keys(
                 }
             }
 
+            module _ceiling_webbing(
+                horizontal_height = 6,
+                vertical_height = 4,
+                depth = BREAKAWAY_SUPPORT_DEPTH,
+                gap = BREAKAWAY_SUPPORT_DISTANCE
+            ) {
+                inner_width = width - wall * 2 - depth;
+                inner_length = length - wall * 2 - cantilever_recession - depth;
+
+                module _horizontal() {
+                    x = wall - e;
+                    z = height - ceiling - horizontal_height + e;
+
+                    count = ceil(inner_length / gap);
+                    plot = inner_length / count;
+
+                    for (i = [1 : count - 1]) {
+                        translate([x, wall + i * plot, z]) {
+                            cube([width - x * 2, depth, horizontal_height + e]);
+                        }
+                    }
+                }
+
+                module _vertical() {
+                    z = height - ceiling - vertical_height + e;
+
+                    count = ceil(inner_width / gap);
+                    plot = inner_width / count;
+
+                    for (i = [1 : count - 1]) {
+                        translate([wall + i * plot, wall - e, z]) {
+                            cube([
+                                depth,
+                                inner_length + e * 2 + depth,
+                                vertical_height + e
+                            ]);
+                        }
+                    }
+                }
+
+                if (inner_length > gap) { _horizontal(); }
+                if (inner_width > gap) { _vertical(); }
+            }
+
             difference() {
                 translate([wall, wall, -e]) {
                     cube([
@@ -237,6 +281,8 @@ module keys(
                 if (actuator_y != undef) {
                     _actuator();
                 }
+
+                _ceiling_webbing();
             }
         }
 
