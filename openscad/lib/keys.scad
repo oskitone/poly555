@@ -215,8 +215,8 @@ module keys(
             }
 
             module _ceiling_webbing(
-                horizontal_height = 6,
-                vertical_height = 4,
+                horizontal_height = 2,
+                vertical_height = 1,
                 depth = BREAKAWAY_SUPPORT_DEPTH,
                 gap = BREAKAWAY_SUPPORT_DISTANCE
             ) {
@@ -230,7 +230,7 @@ module keys(
                     count = ceil(_inner_length / gap);
                     plot = _inner_length / count;
 
-                    for (i = [1 : count - 1]) {
+                    for (i = [0 : count]) {
                         translate([x, wall + i * plot, z]) {
                             cube([width - x * 2, depth, horizontal_height + e]);
                         }
@@ -243,7 +243,7 @@ module keys(
                     count = ceil(_inner_width / gap);
                     plot = _inner_width / count;
 
-                    for (i = [1 : count - 1]) {
+                    for (i = [0 : count]) {
                         translate([wall + i * plot, wall - e, z]) {
                             cube([
                                 depth,
