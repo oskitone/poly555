@@ -15,6 +15,9 @@ module keys(
     accidental_length,
     accidental_height,
 
+    wall = 1.2,
+    ceiling = 2,
+
     front_fillet = 2,
     sides_fillet = 2,
 
@@ -28,6 +31,8 @@ module keys(
     include_accidental = true,
     include_cantilevers = true
 ) {
+    max_fillet = max(front_fillet, sides_fillet);
+
     e = 0.04567;
 
     index_offset = [0,2,4,5,7,9,11][starting_natural_key_index];
@@ -35,6 +40,34 @@ module keys(
         accidental_width,
         natural_width - ((accidental_width - gutter) / 2) * 2 - gutter * 2
     );
+
+    module _accidental_cutout(right = true) {
+        // Exact size doesn't matter. Just needs to be big and defined.
+        width = max(natural_width, accidental_width);
+
+        length = accidental_length + gutter + e;
+
+        // TODO: derive
+        front_clearance = (accidental_height - natural_height) / 2;
+
+        translate([
+            right
+                ? natural_width - (accidental_width - gutter) / 2 - gutter
+                : width * -1 + (accidental_width - gutter) / 2
+                    + gutter,
+            natural_length - accidental_length - gutter,
+            -e
+        ]) {
+            flat_top_rectangular_pyramid(
+                top_width = width,
+                top_length = length + front_clearance,
+                bottom_width = width,
+                bottom_length = length,
+                height = natural_height + (e * 2),
+                top_weight_y = 1
+            );
+        }
+    }
 
     module _key_block(dimensions, is_natural, cut_left, cut_right) {
         cavity_width = dimensions[0] + e * 2;
@@ -148,10 +181,53 @@ module keys(
             }
         }
 
+        module _empty_space_cavities() {
+            inner_width = width - wall * 2;
+            inner_length = length - wall * 2 - cantilever_recession;
+
+            difference() {
+                union() {
+                    translate([wall, wall, -e]) {
+                        cube([
+                            width - wall * 2,
+                            inner_length,
+                            height - max(ceiling, front_fillet, sides_fillet) + e
+                        ]);
+                    }
+
+                    if (ceiling < max_fillet) {
+                        translate([wall, wall, height - max_fillet - e]) {
+                            flat_top_rectangular_pyramid(
+                                top_width = inner_width - (sides_fillet - wall),
+                                top_length = inner_length - (front_fillet - wall),
+                                bottom_width = inner_width,
+                                bottom_length = inner_length,
+                                height = max_fillet - ceiling + e,
+                                top_weight_y = 1
+                            );
+                        }
+                    }
+                }
+
+                if (cut_left) {
+                    translate([wall, -wall, 0]) {
+                        _accidental_cutout(right = false);
+                    }
+                }
+
+                if (cut_right) {
+                    translate([-wall, -wall, 0]) {
+                        _accidental_cutout(right = true);
+                    }
+                }
+            }
+        }
+
         difference() {
             _base();
             _fillet();
             _cantilever_recession_cavity();
+            _empty_space_cavities();
         }
 
         if (include_cantilevers) {
@@ -171,34 +247,6 @@ module keys(
                      );
                  }
              }
-        }
-    }
-
-    module _accidental_cutout(right = true) {
-        // Exact size doesn't matter. Just needs to be big and defined.
-        width = max(natural_width, accidental_width);
-
-        length = accidental_length + gutter + e;
-
-        // TODO: derive
-        front_clearance = (accidental_height - natural_height) / 2;
-
-        translate([
-            right
-                ? natural_width - (accidental_width - gutter) / 2 - gutter
-                : width * -1 + (accidental_width - gutter) / 2
-                    + gutter,
-            natural_length - accidental_length - gutter,
-            -e
-        ]) {
-            flat_top_rectangular_pyramid(
-                top_width = width,
-                top_length = length + front_clearance,
-                bottom_width = width,
-                bottom_length = length,
-                height = natural_height + (e * 2),
-                top_weight_y = 1
-            );
         }
     }
 
