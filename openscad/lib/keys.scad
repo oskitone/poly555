@@ -18,6 +18,7 @@ module keys(
     natural_actuator_y,
     accidental_actuator_y,
     actuator_length = BUTTON_DIAMETER,
+    actuator_height = 2,
 
     wall = 1.2,
     ceiling = 2,
@@ -189,7 +190,7 @@ module keys(
             inner_width = width - wall * 2;
             inner_length = length - wall * 2 - cantilever_recession;
 
-            module _actuator(base_height = wall, cap_height = ceiling) {
+            module _actuator(cap_height = 1) {
                 x = wall - e;
                 y = (is_natural ? natural_actuator_y : accidental_actuator_y)
                     - actuator_length / 2
@@ -198,9 +199,9 @@ module keys(
                 width = width - x * 2;
 
                 translate([x, y, -e]) {
-                    cube([width, actuator_length, base_height + e]);
+                    cube([width, actuator_length, actuator_height + e]);
 
-                    translate([0, 0, base_height]) {
+                    translate([0, 0, actuator_height]) {
                         flat_top_rectangular_pyramid(
                             top_width = width,
                             top_length = 0,
