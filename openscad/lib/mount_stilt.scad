@@ -63,7 +63,8 @@ module mount_stilt(
             nut_lock(
                 height_clearance = nut_lock_height_clearance,
                 diameter_clearance = nut_lock_diameter_clearance,
-                include_supportless_screw_cavity = true
+                include_supportless_screw_cavity = true,
+                hole_diameter = hole_diameter
             );
         }
     }
@@ -72,11 +73,12 @@ module mount_stilt(
 module mount_stilts(
     positions,
     height,
-    z = 0
+    z = 0,
+    hole_diameter = PCB_MOUNT_HOLE_DIAMETER
 ) {
     for (p = positions) {
         translate([p.x, p.y, z]) {
-            mount_stilt(height);
+            mount_stilt(height, hole_diameter = hole_diameter);
         }
     }
 }

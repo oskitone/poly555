@@ -5,6 +5,7 @@ use <supportless_screw_cavity.scad>;
 module nut_lock(
     diameter_clearance = DEFAULT_NUT_LOCK_DIAMETER_CLEARANCE,
     height_clearance = DEFAULT_NUT_LOCK_HEIGHT_CLEARANCE,
+    hole_diameter = PCB_MOUNT_HOLE_DIAMETER,
 
     include_supportless_screw_cavity = false,
     supportless_screw_cavity_angle = 0,
@@ -27,7 +28,8 @@ module nut_lock(
             mirror([0, 0, flip_supportless_screw_cavity ? 1 : 0]) {
                 supportless_screw_cavity(
                     span = width_length,
-                    angle = supportless_screw_cavity_angle
+                    angle = supportless_screw_cavity_angle,
+                    diameter = hole_diameter
                 );
             }
         }

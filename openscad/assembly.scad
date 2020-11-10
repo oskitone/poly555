@@ -293,7 +293,8 @@ module assembly(
                         cantilever_mount_height,
                         hole_xs = mount_hole_xs,
                         hole_xs_x_offset = pcb_x - key_mounting_rail_x
-                            + key_gutter
+                            + key_gutter,
+                        hole_diameter = PCB_MOUNT_HOLE_DIAMETER + tolerance * 2
                     );
                 }
 
@@ -582,7 +583,9 @@ module assembly(
                         mount_stilts(
                             positions = BACK_PCB_HOLES,
                             height = pcb_stilt_height,
-                            z = -pcb_stilt_height
+                            z = -pcb_stilt_height,
+                            hole_diameter = PCB_MOUNT_HOLE_DIAMETER
+                                + tolerance * 2
                         );
                     }
 
@@ -617,7 +620,8 @@ module assembly(
                     spacer_array(
                         BOTTOM_MOUNTED_PCB_HOLES,
                         height = pcb_stilt_height + e,
-                        wall = enclosure_wall
+                        wall = enclosure_wall,
+                        hole_diameter = PCB_MOUNT_HOLE_DIAMETER + tolerance * 2
                     );
                 }
             }
@@ -648,7 +652,10 @@ module assembly(
                             pcb_y + p.y,
                             SCREW_HEAD_HEIGHT + exposed_screw_head_clearance - e
                         ]) {
-                            supportless_screw_cavity(span = diameter);
+                            supportless_screw_cavity(
+                                span = diameter,
+                                diameter = PCB_MOUNT_HOLE_DIAMETER + tolerance * 2
+                            );
                         }
                     }
                 }
@@ -1017,7 +1024,7 @@ module assembly(
                     translate([keys_x, y + mount_length / 2, z - e]) {
                         hole_array(
                             xs = mount_hole_xs,
-                            diameter = PCB_MOUNT_HOLE_DIAMETER,
+                            diameter = PCB_MOUNT_HOLE_DIAMETER + tolerance * 2,
                             height = wall_height - WINDOW_PANE_HEIGHT
                                 - sill_height - e
                         );
@@ -1026,7 +1033,8 @@ module assembly(
                             translate([x, 0, nut_lock_floor + e]) {
                                 nut_lock(
                                     include_supportless_screw_cavity = true,
-                                    flip_supportless_screw_cavity = true
+                                    flip_supportless_screw_cavity = true,
+                                    hole_diameter = PCB_MOUNT_HOLE_DIAMETER + tolerance * 2
                                 );
                             }
                         }
@@ -1375,7 +1383,8 @@ module assembly(
                     length = mount_length,
                     height = mount_height,
                     hole_xs = mount_hole_xs,
-                    hole_xs_x_offset = keys_x - key_mounting_rail_x
+                    hole_xs_x_offset = keys_x - key_mounting_rail_x,
+                    hole_diameter = PCB_MOUNT_HOLE_DIAMETER + tolerance * 2
                 );
             }
 
