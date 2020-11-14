@@ -41,7 +41,7 @@ U 1 1 5F476D82
 P 5050 3200
 F 0 "RV101" H 4982 3154 50  0000 R CNN
 F 1 "1M" H 4982 3245 50  0000 R CNN
-F 2 "Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical" H 5050 3200 50  0001 C CNN
+F 2 "Potentiometer_THT:Potentiometer_Bourns_PTV09A-2_Single_Horizontal" H 5050 3200 50  0001 C CNN
 F 3 "~" H 5050 3200 50  0001 C CNN
 	1    5050 3200
 	-1   0    0    1   
@@ -328,7 +328,7 @@ U 1 1 5F48C811
 P 7700 3100
 F 0 "RV102" H 7600 2800 50  0000 R CNN
 F 1 "1M" H 7600 2900 50  0000 R CNN
-F 2 "Potentiometer_THT:Potentiometer_Piher_PT-6-V_Vertical" H 7700 3100 50  0001 C CNN
+F 2 "Potentiometer_THT:Potentiometer_Bourns_PTV09A-2_Single_Horizontal" H 7700 3100 50  0001 C CNN
 F 3 "~" H 7700 3100 50  0001 C CNN
 	1    7700 3100
 	-1   0    0    1   
