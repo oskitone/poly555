@@ -720,7 +720,7 @@ module assembly(
                 }
             }
 
-            module _speaker_container(wall = enclosure_wall, spoke_count = 3) {
+            module _speaker_container(wall = enclosure_wall, gusset_count = 3) {
                 z = enclosure_floor_ceiling - e;
 
                 inner_diameter = SPEAKER_MAGNET_DIAMETER + tolerance * 2;
@@ -728,9 +728,9 @@ module assembly(
                 height = speaker_z + SPEAKER_MAGNET_HEIGHT - z
                     - speaker_clearance;
 
-                spoke_length =
+                gusset_length =
                     (SPEAKER_CONE_DIAMETER - SPEAKER_MAGNET_DIAMETER) / 2;
-                ring_segment_width = (inner_diameter * PI) / spoke_count / 2;
+                ring_segment_width = (inner_diameter * PI) / gusset_count / 2;
 
                 translate([speaker_x, speaker_y, z]) {
                     ring(
@@ -740,10 +740,10 @@ module assembly(
                         $fn = HIDEF_ROUNDING
                     );
 
-                    for (i = [0 : spoke_count - 1]) {
-                        rotate([0, 0, 180 + i / spoke_count * 360]) {
+                    for (i = [0 : gusset_count - 1]) {
+                        rotate([0, 0, 180 + i / gusset_count * 360]) {
                             translate([wall / -2, inner_diameter / 2, 0]) {
-                                cube([wall, spoke_length + e, height]);
+                                cube([wall, gusset_length + e, height]);
                             }
                         }
                     }
