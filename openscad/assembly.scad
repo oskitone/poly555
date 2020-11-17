@@ -238,39 +238,87 @@ module assembly(
         );
     }
 
+    module _keys_hitch_endstop(
+        clearance = .4,
+        coverage = 2,
+        bar_height = 1,
+
+        cavity = false,
+        cavity_key_floor = 2,
+        cavity_clearance = tolerance * 4 // intentionally loose
+    ) {
+        xy = enclosure_wall - e;
+        bar_z = keys_z + cavity_key_floor;
+
+        width = enclosure_width - xy * 2;
+        length = keys_y + coverage - xy + (cavity ? cavity_clearance : 0);
+        height = cavity ? bar_height + key_travel : bar_height;
+
+        translate([xy, xy, bar_z - length]) {
+            flat_top_rectangular_pyramid(
+                top_width = width,
+                top_length = length,
+                bottom_width = width,
+                bottom_length = 0,
+                height = length + e,
+                top_weight_y = 0
+            );
+        }
+
+        translate([xy, xy, bar_z]) {
+            cube([width, length, height]);
+        }
+
+        translate([xy, xy, bar_z + height - e]) {
+            flat_top_rectangular_pyramid(
+                top_width = width,
+                top_length = 0,
+                bottom_width = width,
+                bottom_length = length,
+                height = length + e,
+                top_weight_y = 0
+            );
+        }
+    }
+
     module _mounted_keys(include_natural = false, include_accidental = false) {
         function get_actuator_y(i) = pcb_y + PCB_BUTTONS[i][1] - keys_y
             + BUTTON_LENGTH / 2;
 
-        translate([keys_x, keys_y, keys_z]) {
-            mounted_keys(
-                count = keys_count,
-                starting_natural_key_index = starting_natural_key_index,
+        difference() {
+            translate([keys_x, keys_y, keys_z]) {
+                mounted_keys(
+                    count = keys_count,
+                    starting_natural_key_index = starting_natural_key_index,
 
-                natural_width = natural_key_width,
-                natural_length = natural_key_length,
-                natural_height = key_height,
+                    natural_width = natural_key_width,
+                    natural_length = natural_key_length,
+                    natural_height = key_height,
 
-                accidental_width = 7.5,
-                accidental_length = natural_key_length * 3/5,
-                accidental_height = key_height + accidental_key_extra_height,
+                    accidental_width = 7.5,
+                    accidental_length = natural_key_length * 3/5,
+                    accidental_height = key_height
+                        + accidental_key_extra_height,
 
-                natural_actuator_y = get_actuator_y(0),
-                accidental_actuator_y = get_actuator_y(1),
+                    natural_actuator_y = get_actuator_y(0),
+                    accidental_actuator_y = get_actuator_y(1),
 
-                front_fillet = quick_preview ? 0 : 2,
-                sides_fillet = quick_preview ? 0 : 1,
+                    front_fillet = quick_preview ? 0 : 2,
+                    sides_fillet = quick_preview ? 0 : 1,
 
-                gutter = key_gutter,
+                    gutter = key_gutter,
 
-                cantilever_length = cantilever_length,
-                cantilever_height = cantilever_height,
-                cantilever_recession = cantilever_recession,
+                    cantilever_length = cantilever_length,
+                    cantilever_height = cantilever_height,
+                    cantilever_recession = cantilever_recession,
 
-                include_mount = false,
-                include_natural = include_natural,
-                include_accidental = include_accidental
-            );
+                    include_mount = false,
+                    include_natural = include_natural,
+                    include_accidental = include_accidental
+                );
+            }
+
+            _keys_hitch_endstop(cavity = true);
         }
     }
 
@@ -896,43 +944,6 @@ module assembly(
                 }
             }
 
-            module _keys_endstop(
-                clearance = .4,
-                coverage = 4,
-                height = enclosure_inner_wall,
-                // Supports aren't user facing, so sagging bridges are okay
-                support_gap = BREAKAWAY_SUPPORT_DISTANCE * 2
-            ) {
-                xy = enclosure_wall - e;
-                bar_z = keys_z - height - key_travel;
-
-                width = enclosure_width - xy * 2;
-                length = keys_y + coverage - xy;
-
-                support_width = enclosure_inner_wall;
-                supports_count = ceil(width / support_gap);
-                supports_plot = width / supports_count;
-
-                translate([xy, xy, bar_z]) {
-                    cube([width, length, height]);
-
-                    for (i = [1 : supports_count - 1]) {
-                        x = supports_plot * i - support_width / 2;
-
-                        translate([x, 0, -length]) {
-                            flat_top_rectangular_pyramid(
-                                top_width = support_width,
-                                top_length = length,
-                                bottom_width = support_width,
-                                bottom_length = 0,
-                                height = length + e,
-                                top_weight_y = 0
-                            );
-                        }
-                    }
-                }
-            }
-
             difference() {
                 union() {
                     _back();
@@ -948,7 +959,7 @@ module assembly(
                     _speaker_container();
                     _hitch_stilts();
                     _pcb_volume_wheel_stilt();
-                    _keys_endstop();
+                    _keys_hitch_endstop();
                     _pencil_stand();
                 }
 
