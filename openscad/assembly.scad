@@ -436,11 +436,11 @@ module assembly(
 
         module _hitch_stilts(
             cavity = false,
-            width = BREAKAWAY_SUPPORT_DISTANCE,
+            width = BREAKAWAY_SUPPORT_DISTANCE * 2,
             width_extension = enclosure_inner_wall / 2,
-            hitch = enclosure_wall,
-            hitch_height = BREAKAWAY_SUPPORT_DISTANCE / 2,
-            tolerance_clearance = tolerance * 4,
+            hitch_height = BREAKAWAY_SUPPORT_DISTANCE * .67,
+            length_tolerance_clearance = tolerance * 4,
+            cavity_width_clearance = tolerance * 4,
             bridge_sag_clearance = .8
         ) {
             total_width = width + width_extension * 2;
@@ -454,41 +454,55 @@ module assembly(
                 - vault_z;
 
             module _hitch() {
-                hitch = hitch + tolerance_clearance;
-                _width = cavity ? width + tolerance * 4 : width;
-                _length = cavity ? hitch + e * 2 : hitch + e;
-
+                _width = cavity ? width + cavity_width_clearance : width;
+                _length = cavity
+                    ? enclosure_wall + e * 3
+                    : enclosure_wall + length_tolerance_clearance + e;
                 _height = cavity
                     ? hitch_height + bridge_sag_clearance
                     : hitch_height;
 
-                support_depth = cavity ? 1 + tolerance * 2 : 1;
-                height_drop = cavity ? 0 : 1;
+                module _supports() {
+                    depth = .6;
+                    height = cavity
+                        ? hitch_height + bridge_sag_clearance
+                        : vault_z + height - hitch_height
+                            - enclosure_bottom_height;
+                    count = ceil(width / BREAKAWAY_SUPPORT_DISTANCE);
 
-                translate([
-                    0,
-                    -tolerance_clearance,
-                    cavity ? -bridge_sag_clearance : 0
-                ]) {
-                    cube([_width, _length, _height]);
-                }
+                    y = cavity ? 0 : -length_tolerance_clearance;
+                    z = cavity ? 0 : -height;
 
-                if (!cavity) {
-                    support_depth = .6;
-                    support_height = vault_z + height - hitch_height
-                        - enclosure_bottom_height;
+                    for (i = cavity ? [1 : count - 1] : [0 : count]) {
+                        x = depth / 2
+                            + (i * (width - depth) / count)
+                            + (cavity ? cavity_width_clearance / 2 : 0);
 
-                    for (x = [support_depth / 2, width - support_depth / 2]) {
-                        translate([x, -tolerance_clearance, -support_height]) {
+                        translate([x, y, z]) {
                             breakaway_support(
                                 length = _length,
-                                height = support_height + e,
-                                support_depth = support_depth,
+                                height = height + e,
+                                support_depth = depth,
                                 bridge_height = SACRIFICIAL_BRIDGE_HEIGHT * 1.5,
-                                include_first = false
+                                include_first = cavity
                             );
                         }
                     }
+                }
+
+                translate([
+                    0,
+                    cavity ? -e : -length_tolerance_clearance,
+                    cavity ? -bridge_sag_clearance : 0
+                ]) {
+                    difference() {
+                        cube([_width, _length, _height]);
+                        if (cavity) { _supports(); }
+                    }
+                }
+
+                if (!cavity) {
+                    _supports();
                 }
             }
 
@@ -509,7 +523,7 @@ module assembly(
                         translate([-width_extension, 0, vault_height]) {
                             cube([
                                 total_width,
-                                length + e - tolerance_clearance,
+                                length + e - length_tolerance_clearance,
                                 height - vault_height
                             ]);
                         }
@@ -517,7 +531,7 @@ module assembly(
                 }
 
                 translate([
-                    cavity ? tolerance * -2 : 0,
+                    cavity ? cavity_width_clearance / -2 : 0,
                     length - e,
                     height - hitch_height
                 ]) {
@@ -529,7 +543,6 @@ module assembly(
             y = enclosure_length - enclosure_wall - length;
             for (x = [
                 end_gutter,
-                (enclosure_width - width) / 2,
                 enclosure_width - end_gutter - width
             ]) {
                 translate([x, y, vault_z]) {
@@ -1520,7 +1533,7 @@ module assembly(
             x = enclosure_wall * 1.5;
             z = enclosure_bottom_height * .67;
 
-            width = BREAKAWAY_SUPPORT_DISTANCE + x * 2;
+            width = BREAKAWAY_SUPPORT_DISTANCE * 2 + x * 2;
             length = 7;
 
             translate([x, enclosure_length - length, z]) {
