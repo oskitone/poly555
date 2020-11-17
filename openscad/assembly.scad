@@ -81,7 +81,8 @@ module assembly(
 
     quick_preview = false,
     cross_section = undef,
-    echo_dimensions = true
+    echo_dimensions = true,
+    flip_vertically = false
 ) {
     e = 0.0145;
     plot = PCB_BUTTONS[1][0] - PCB_BUTTONS[0][0];
@@ -1408,7 +1409,7 @@ module assembly(
         }
     }
 
-    intersection() {
+    rotate(flip_vertically ? [0, 180, 0] : []) intersection() {
         union() {
             _enclosure();
             if (show_battery) { % _battery(); }
@@ -1494,6 +1495,6 @@ assembly(
 
     quick_preview = QUICK_PREVIEW && $preview,
     cross_section = CROSS_SECTION,
-
-    echo_dimensions = ECHO_DIMENSIONS
+    echo_dimensions = ECHO_DIMENSIONS,
+    flip_vertically = FLIP_VERTICALLY
 );
