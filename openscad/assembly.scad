@@ -1346,13 +1346,13 @@ module assembly(
             pcb(
                 visualize_board =  show_pcb,
                 visualize_buttons = show_pcb,
-                visualize_circuit_space = quick_preview,
-                visualize_silkscreen = !quick_preview
-                     && show_pcb,
+                visualize_circuit_space = quick_preview && show_pcb,
+                visualize_silkscreen = !quick_preview && show_pcb,
                 visualize_switch = show_switch,
                 visualize_volume_wheel = just_volume_wheel,
                 visualize_volume_pot = show_pcb,
 
+                simplify_volume_wheel = quick_preview,
                 volume_wheel_diameter = volume_wheel_diameter,
                 volume_wheel_grip_size = quick_preview
                     ? 0
