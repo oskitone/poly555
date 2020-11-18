@@ -234,10 +234,21 @@ module donut(
     }
 }
 
-donut(
-    30,
-    10,
-    segments = 30,
-    coverage = abs($t - .5) * 2 * 360,
-    starting_angle = (($t % .25) * 4) * -360
-);
+module rounded_xy_cube(dimensions, radius = 0, $fn = $fn) {
+    if (radius > 0) {
+        hull() {
+            for (x = [radius, dimensions[0] - radius]) {
+                for (y = [radius, dimensions[1] - radius]) {
+                    translate([x, y, 0]) {
+                        cylinder(r = radius, h = dimensions[2]);
+                    }
+                }
+            }
+        }
+    } else {
+        cube(dimensions);
+    }
+}
+
+# cube([2, 20, 10]);
+translate([2, 0, 0]) rotate([0, -90, 0]) rounded_xy_cube([10, 20, 2], 2, 12);

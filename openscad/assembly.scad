@@ -56,7 +56,7 @@ module assembly(
     visualized_plastic_tolerance_weight = .5,
     animate_visualized_plastic_tolerance_weight = false,
 
-    volume_wheel_exposure = 2,
+    volume_wheel_exposure = 1.2,
     volume_wheel_cap_height = 1,
     volume_wheel_grip_size = 1.5,
     volume_wheel_vertical_clearance = .4,
@@ -209,8 +209,7 @@ module assembly(
     side_panel_y = key_mounting_rail_y + mount_length;
     side_panel_length = enclosure_length - enclosure_gutter - side_panel_y;
 
-    volume_wheel_diameter = volume_wheel_exposure +
-        (enclosure_width - (pcb_x + PCB_VOLUME_WHEEL_X)) * 2;
+    volume_wheel_diameter = (enclosure_width - (pcb_x + PCB_VOLUME_WHEEL_X)) * 2;
 
     branding_length = ((pcb_y + PCB_LED_Y) - side_panel_y) * 2;
     speaker_grill_length = side_panel_length - branding_length - enclosure_gutter;
@@ -547,6 +546,52 @@ module assembly(
             ]) {
                 translate([x, y, vault_z]) {
                     _stilt();
+                }
+            }
+        }
+
+        module _volume_wheel_cavity(is_bottom) {
+            y = pcb_y + PCB_VOLUME_WHEEL_Y;
+            z = get_volume_wheel_z(volume_wheel_cap_height, pcb_z)
+                - volume_wheel_vertical_clearance;
+
+            diameter = volume_wheel_diameter + volume_wheel_grip_size * 2
+                + tolerance * 4;
+
+            if (is_bottom) {
+                translate([pcb_x + PCB_VOLUME_WHEEL_X, y, z]) {
+                    cylinder(
+                        d = diameter,
+                        h = enclosure_bottom_height - z + enclosure_lip_height
+                            + e,
+                        $fn = HIDEF_ROUNDING
+                    );
+                }
+            }
+
+            exposure_depth = volume_wheel_exposure;
+            exposure_depth_height = 2;
+            exposure_x = enclosure_width - exposure_depth;
+
+            exposure_width = enclosure_width - exposure_x + e;
+            exposure_length = diameter;
+            exposure_height = (
+                get_volume_wheel_total_height(volume_wheel_cap_height)
+                + volume_wheel_vertical_clearance * 2
+                + exposure_depth_height * 2
+            );
+
+            translate([
+                exposure_x + exposure_width,
+                y - diameter / 2,
+                z - exposure_depth_height
+            ]) {
+                rotate([0, -90, 0]) {
+                    rounded_xy_cube(
+                        [exposure_height, exposure_length, exposure_width],
+                        radius = quick_preview ? 0 : enclosure_fillet,
+                        $fn = DEFAULT_ROUNDING
+                    );
                 }
             }
         }
@@ -937,27 +982,6 @@ module assembly(
                 }
             }
 
-            module _volume_wheel_cavity() {
-                z = get_volume_wheel_z(volume_wheel_cap_height, pcb_z)
-                    - volume_wheel_vertical_clearance;
-
-                translate([
-                    pcb_x + PCB_VOLUME_WHEEL_X,
-                    pcb_y + PCB_VOLUME_WHEEL_Y,
-                    z
-                ]) {
-                    cylinder(
-                        d = volume_wheel_diameter
-                            + volume_wheel_grip_size * 2
-                            + tolerance * 4,
-                        h = enclosure_bottom_height - z
-                            + enclosure_lip_height
-                            + e,
-                        $fn = HIDEF_ROUNDING
-                    );
-                }
-            }
-
             difference() {
                 union() {
                     _back();
@@ -985,7 +1009,7 @@ module assembly(
                 _switch_engraving();
                 _screw_cavities();
                 _engraving();
-                _volume_wheel_cavity();
+                _volume_wheel_cavity(is_bottom = true);
                 _pencil_stand(cavity = true);
             }
         }
@@ -1375,6 +1399,7 @@ module assembly(
                 _led_exposure(tolerance, e, $fn = HIDEF_ROUNDING);
                 _speaker_grill();
                 _hitch_stilts(cavity = true);
+                _volume_wheel_cavity(is_bottom = false);
             }
         }
 
