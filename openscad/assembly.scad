@@ -736,7 +736,8 @@ module assembly(
             module _speaker_container(wall = enclosure_wall, gusset_count = 3) {
                 z = enclosure_floor_ceiling - e;
 
-                inner_diameter = SPEAKER_MAGNET_DIAMETER + tolerance * 2;
+                // Loose fit
+                inner_diameter = SPEAKER_MAGNET_DIAMETER + tolerance * 4;
                 outer_diameter = inner_diameter + wall * 2;
                 height = speaker_z + SPEAKER_MAGNET_HEIGHT - z
                     - speaker_clearance;
