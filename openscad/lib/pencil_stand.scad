@@ -1,43 +1,34 @@
 include <values.scad>;
 
 use <basic_shapes.scad>;
+use <utils.scad>;
 
 module pencil_stand(
     wall,
     depth = 20,
-    angle = 45,
+    angle_x = 45,
+    angle_y = 45,
     $fn = DEFAULT_ROUNDING
 ) {
     e = 0.0987;
 
-    abs_angle = abs(angle);
-
     diameter = PENCIL_STAND_CAVITY_DIAMETER + wall * 2;
-    radius = diameter / 2;
 
-    extension = abs_angle < 90 ? tan(abs_angle) * radius : 0;
-    total_depth = depth + extension;
+    arbitrary_extension = depth * 4;
+    total_depth = depth + arbitrary_extension;
 
-    y = radius / cos(abs_angle);
-    z = cos(90 - abs_angle) * diameter;
-
-    length = sin(abs_angle) * total_depth + cos(abs_angle) * diameter;
-    height = cos(abs_angle) * total_depth;
-
-    mirror([0, angle < 0 ? 1 : 0, 0]) {
-        intersection() {
-            rotate([-abs_angle, 0, 0]) {
-                translate([0, 0, -extension]) {
-                    cylinder(
-                        d = diameter,
-                        h = total_depth
-                    );
-                }
+    difference() {
+        rotate([angle_y, angle_x, 0]) {
+            translate([0, 0, -arbitrary_extension]) {
+                cylinder(
+                    d = diameter,
+                    h = total_depth
+                );
             }
+        }
 
-            translate([-radius - e, -y - e, 0]) {
-                cube([diameter + e * 2, length + e * 2, height + e]);
-            }
+        translate([-total_depth, -total_depth, -total_depth]) {
+            cube([total_depth * 2, total_depth * 2, total_depth]);
         }
     }
 }
@@ -45,20 +36,34 @@ module pencil_stand(
 module pencil_stand_cavity(
     wall,
     depth = 20,
-    angle = 45
+    angle_x = 0,
+    angle_y = 45
 ) {
-    pencil_stand(0, depth - wall, angle);
+    pencil_stand(
+        wall = 0,
+        depth = depth - wall,
+        angle_x = angle_x,
+        angle_y = angle_y
+    );
 }
 
-intersection() {
-    wall = 2;
-    depth = 20;
-    angle = abs($t - .5) * 2 * 89;
-
-    difference() {
-        pencil_stand(wall, depth, angle);
-        translate([0, 0, -.002]) pencil_stand_cavity(wall, depth, angle);
+wall = 2;
+depth = 40;
+angle_x = to_and_from(-60, 60, 30, 3);
+angle_y = to_and_from(-60, 60, 0, 1);
+difference() {
+    pencil_stand(
+        wall = wall,
+        depth = depth,
+        angle_x = angle_x,
+        angle_y = angle_y
+    );
+    translate([0, 0, -.02]) {
+        pencil_stand_cavity(
+            wall = wall,
+            depth = depth,
+            angle_x = angle_x,
+            angle_y = angle_y
+        );
     }
-
-    translate([0, depth * -2, 0]) cube([depth * 4, depth * 4, depth * 2]);
 }

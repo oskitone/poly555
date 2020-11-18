@@ -78,3 +78,24 @@ function get_step_t(i, t, step_ends = []) = (
         ? t / step_ends[i]
         : (t - step_ends[i - 1]) / get_step_duration(i, step_ends)
 );
+
+function undulate(
+    offset = 0,
+    cycles = 1
+) = (
+    abs(
+        (((
+            ($t + offset) % 1
+        ) % (1 / cycles)) * cycles)
+        - 1 / 2
+    ) * 2
+);
+
+function to_and_from(
+    start,
+    stop,
+    offset = 0,
+    cycles = 1
+) = (
+    undulate(offset, cycles) * (stop - start) + start
+);
