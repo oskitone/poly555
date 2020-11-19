@@ -200,7 +200,6 @@ module assembly(
     window_pane_max_length = enclosure_length - enclosure_wall - window_pane_y
         - tolerance;
     window_pane_length = window_pane_max_length - PLASTICS_TOLERANCE;
-    window_pane_strut_width = window_pane_width / 5;
 
     side_panel_width = enclosure_width
         - window_and_side_panel_gutter * 3
@@ -1327,43 +1326,46 @@ module assembly(
                 }
             }
 
+            // TODO: combine with _window_pane_sill
             module _window_pane_top_supports() {
-                module _struts(
-                    count = 1,
-                    width = window_pane_strut_width,
-                    overlap = 1,
-                    z_tightness = .5
-                ) {
-                    plot = window_pane_max_width / count;
-                    y = enclosure_length - enclosure_wall;
-                    length = y - (window_pane_y + window_pane_length)
-                        + overlap;
+                module _struts(overlap = 1, height = enclosure_wall) {
+                    width = BREAKAWAY_SUPPORT_DISTANCE;
+                    overlap = overlap + PLASTICS_TOLERANCE;
+
+                    back_x = window_pane_x + (window_pane_max_width - width) / 2;
+                    back_y = enclosure_length - enclosure_wall - overlap;
+                    side_x = enclosure_wall;
+                    side_y = window_pane_y + (window_pane_length - width) / 2;
+
                     z = enclosure_height - enclosure_floor_ceiling
-                        - WINDOW_PANE_HEIGHT - length
-                        + z_tightness
-                        + overlap / 2;
+                        - WINDOW_PANE_HEIGHT - height;
 
-                    for (i = [0 : count - 1]) {
-                        x = window_pane_x + plot * i + (plot - width) / 2;
+                    supports_count = round(width / BREAKAWAY_SUPPORT_DISTANCE);
+                    support_plot = width / supports_count;
 
-                        intersection() {
-                            translate([x, y, z]) {
-                                rotate([0, 90, 0]) {
-                                    cylinder(
-                                        d = length * 2,
-                                        h = width,
-                                        $fn = 4
-                                    );
-                                }
+                    module _strut() {
+                        cube([width, overlap + e, height]);
+
+                        for (i = [0 : supports_count]) {
+                            translate([i * support_plot, 0, height - e]) {
+                                breakaway_support(
+                                    length = overlap + e,
+                                    height = WINDOW_PANE_HEIGHT + e * 2,
+                                    flip_vertically = true,
+                                    include_first = true,
+                                    include_last = false
+                                );
                             }
+                        }
+                    }
 
-                            translate([x - e, y - length - e, z - length - e]) {
-                                cube([
-                                    width + e * 2,
-                                    length + e * 2,
-                                    length * 2 + e * 2
-                                ]);
-                            }
+                    translate([back_x, back_y, z]) {
+                        _strut();
+                    }
+
+                    translate([side_x - e + overlap, side_y, z]) {
+                        rotate([0, 0, 90]) {
+                            _strut();
                         }
                     }
                 }
