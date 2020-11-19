@@ -103,7 +103,8 @@ module trimpot_knob(
             cylinder_grip(
                 diameter,
                 cap_height * 2 + head_height,
-                size = grip_size
+                size = grip_size,
+                $fn = 6
             );
             ring(
                 diameter = diameter,

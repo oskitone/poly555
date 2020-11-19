@@ -176,7 +176,7 @@ module cylinder_grip(
     count,
     rotation_offset = 0,
     size = 1,
-    $fn = undef
+    $fn = $fn
 ) {
     if (size > 0) {
         count = count != undef
