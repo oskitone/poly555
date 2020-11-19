@@ -1298,17 +1298,19 @@ module assembly(
                     pcb_y + PCB_VOLUME_WHEEL_Y - length / 2,
                     z
                 ]) {
-                    cube([width, length, cone_height]);
+                    hull() {
+                        cube([cone_diameter / 2, length, e]);
 
-                    translate([0, 0, cone_height]) {
-                        flat_top_rectangular_pyramid(
-                            top_width = 0,
-                            top_length = length,
-                            bottom_width = width + e,
-                            bottom_length = length,
-                            height = height,
-                            top_weight_x = 1
-                        );
+                        translate([0, 0, cone_height]) {
+                            flat_top_rectangular_pyramid(
+                                top_width = 0,
+                                top_length = length,
+                                bottom_width = width + e,
+                                bottom_length = length,
+                                height = height,
+                                top_weight_x = 1
+                            );
+                        }
                     }
                 }
 
