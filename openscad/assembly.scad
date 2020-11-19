@@ -27,6 +27,7 @@ module assembly(
     enclosure_wall = 2.4,
     enclosure_floor_ceiling = 1.8,
     enclosure_inner_wall = 1.2,
+    enclosure_minimum_wall = .6,
     enclosure_fillet = 2,
     enclosure_rounding = 24,
     enclosure_lip = .8,
@@ -1167,31 +1168,56 @@ module assembly(
                 }
             }
 
-            module _led_exposure(bleed = 0, z_bleed = 0) {
-                z = pcb_z + PCB_HEIGHT - z_bleed;
-                height = enclosure_height - z + z_bleed;
+            module _led_exposure(
+                bleed = 0,
+                z_bleed = 0,
+                include_gusset = false
+            ) {
+                $fn = quick_preview ? undef: HIDEF_ROUNDING;
 
-                difference() {
-                    hull() {
-                        translate([
-                            side_panel_x + led_cavity_width / 2,
-                            side_panel_y + branding_length / 2,
-                            z
-                        ]) {
-                            cylinder(d = LED_DIAMETER + bleed * 2, h = e);
-                        }
+                exposure_z = pcb_z + PCB_HEIGHT - z_bleed;
+                exposure_height = enclosure_height - exposure_z + z_bleed;
 
-                        translate([
-                            side_panel_x - bleed,
-                            side_panel_y - bleed,
-                            z + height - e
-                        ]) {
-                            cube([
-                                led_cavity_width + bleed * 2,
-                                branding_length + bleed * 2,
-                                e
-                            ]);
-                        }
+                center_x = side_panel_x + led_cavity_width / 2;
+                center_y = side_panel_y + branding_length / 2;
+
+                gusset_y = key_mounting_rail_y + e;
+                gusset_z = pcb_z + PCB_HEIGHT + mount_height
+                    + cantilever_mount_height + e;
+
+                gusset_height = enclosure_height - gusset_z - e;
+                gusset_length = center_y - gusset_y;
+                gusset_width = enclosure_inner_wall;
+
+                hull() {
+                    translate([center_x, center_y, exposure_z]) {
+                        cylinder(d = LED_DIAMETER + bleed * 2, h = e);
+                    }
+
+                    translate([
+                        side_panel_x - bleed,
+                        side_panel_y - bleed,
+                        exposure_z + exposure_height - e
+                    ]) {
+                        cube([
+                            led_cavity_width + bleed * 2,
+                            branding_length + bleed * 2,
+                            e
+                        ]);
+                    }
+                }
+
+                if (include_gusset) {
+                    translate([
+                        center_x - gusset_width / 2,
+                        gusset_y,
+                        gusset_z
+                    ]) {
+                        cube([
+                            gusset_width,
+                            gusset_length,
+                            gusset_height
+                        ]);
                     }
                 }
             }
@@ -1395,12 +1421,12 @@ module assembly(
             difference() {
                 union() {
                     _enclosure_half(true);
-                    _led_exposure(enclosure_inner_wall, -e);
+                    _led_exposure(enclosure_minimum_wall, -e, true);
                 }
                 _keys_and_bumper_cavity();
                 _window_cavity();
                 _branding_cavities();
-                _led_exposure(tolerance, e, $fn = HIDEF_ROUNDING);
+                _led_exposure(tolerance, e);
                 _speaker_grill();
                 _hitch_stilts(cavity = true);
                 _volume_wheel_cavity(is_bottom = false);
