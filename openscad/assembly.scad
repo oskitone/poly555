@@ -481,6 +481,7 @@ module assembly(
                             breakaway_support(
                                 length = _length,
                                 height = height + e,
+                                flip_vertically = true,
                                 support_depth = depth,
                                 bridge_height = SACRIFICIAL_BRIDGE_HEIGHT * 1.5,
                                 include_first = cavity
