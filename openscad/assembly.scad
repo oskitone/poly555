@@ -792,13 +792,26 @@ module assembly(
                     (SPEAKER_CONE_DIAMETER - SPEAKER_MAGNET_DIAMETER) / 2;
                 ring_segment_width = (inner_diameter * PI) / gusset_count / 2;
 
-                translate([speaker_x, speaker_y, z]) {
+                adjuster_count = 4;
+                adjuster_height = speaker_clearance / adjuster_count;
+
+                module _ring(_height) {
                     ring(
                         diameter = outer_diameter,
-                        height = height,
+                        height = _height,
                         inner_diameter = inner_diameter,
                         $fn = HIDEF_ROUNDING
                     );
+                }
+
+                translate([speaker_x, speaker_y, z]) {
+                    _ring(height);
+
+                    for (i = [0 : adjuster_count - 1]) {
+                        translate([0, 0, height + e + (i * (adjuster_height + e))]) {
+                            _ring(adjuster_height);
+                        }
+                    }
 
                     for (i = [0 : gusset_count - 1]) {
                         rotate([0, 0, 180 + i / gusset_count * 360]) {
