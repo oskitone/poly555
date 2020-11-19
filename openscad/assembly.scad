@@ -38,7 +38,7 @@ module assembly(
     engraving_chamfer = .2,
 
     components_to_window_clearance = 2,
-    speaker_clearance = 1.6,
+    speaker_to_battery_clearance = .4,
     exposed_switch_clearance = 1,
     exposed_screw_head_clearance = .4,
 
@@ -147,7 +147,7 @@ module assembly(
         pcb_stilt_height + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
             + WINDOW_PANE_HEIGHT + components_to_window_clearance,
         SPEAKER_HEIGHT - SPEAKER_MAGNET_HEIGHT + BATTERY_HEIGHT
-            + speaker_clearance
+            + speaker_to_battery_clearance
     );
     enclosure_bottom_height =
         get_volume_wheel_z(
@@ -779,20 +779,21 @@ module assembly(
                 }
             }
 
-            module _speaker_container(wall = enclosure_wall, gusset_count = 3) {
-                z = enclosure_floor_ceiling - e;
-
-                // Loose fit
-                inner_diameter = SPEAKER_MAGNET_DIAMETER + tolerance * 4;
+            module _speaker_container(
+                wall = enclosure_inner_wall,
+                gusset_count = 3
+            ) {
+                // Semi-loose fit
+                inner_diameter = SPEAKER_MAGNET_DIAMETER + tolerance * 3;
                 outer_diameter = inner_diameter + wall * 2;
-                height = speaker_z + SPEAKER_MAGNET_HEIGHT - z
-                    - speaker_clearance;
+                height = speaker_z + SPEAKER_MAGNET_HEIGHT
+                    - enclosure_floor_ceiling;
 
                 gusset_length =
                     (SPEAKER_CONE_DIAMETER - SPEAKER_MAGNET_DIAMETER) / 2;
                 ring_segment_width = (inner_diameter * PI) / gusset_count / 2;
 
-                translate([speaker_x, speaker_y, z]) {
+                translate([speaker_x, speaker_y, enclosure_floor_ceiling - e]) {
                     ring(
                         diameter = outer_diameter,
                         height = height,
@@ -803,7 +804,16 @@ module assembly(
                     for (i = [0 : gusset_count - 1]) {
                         rotate([0, 0, 180 + i / gusset_count * 360]) {
                             translate([wall / -2, inner_diameter / 2, 0]) {
-                                cube([wall, gusset_length + e, height]);
+                                flat_top_rectangular_pyramid(
+                                    top_width = wall,
+                                    top_length = wall,
+
+                                    bottom_width = wall,
+                                    bottom_length = gusset_length + e,
+
+                                    height = height,
+                                    top_weight_y = 0
+                                );
                             }
                         }
                     }
