@@ -112,7 +112,7 @@ module pcb(
     if (visualize_switch) {
         translate([PCB_SWITCH_X, PCB_SWITCH_Y, 0]) {
             mirror([0, 0, 1]) {
-                switch();
+                % switch();
             }
         }
     }
