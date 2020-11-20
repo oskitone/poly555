@@ -74,6 +74,7 @@ module assembly(
     show_keys = true,
     show_enclosure_top = true,
     show_window_pane = false,
+    show_pencil_stand_pencil = true,
 
     enclosure_color = undef,
     enclosure_opacity = .75,
@@ -850,9 +851,6 @@ module assembly(
                 cavity = false,
                 wall = enclosure_inner_wall
             ) {
-                PENCIL_HEIGHT = 25.4 * 6;
-                PENCIL_DIAMETER = 6;
-
                 // Eyeballed into place so end of pencil is in the middle
                 // and supports enclosure at desired pencil_stand_display_angle.
                 // Could probably be derived mathematically!
@@ -866,13 +864,13 @@ module assembly(
                     if (cavity) {
                         pencil_stand(0, depth - wall, angle_x, angle_y);
                     } else {
-                        pencil_stand(wall, depth, angle_x, angle_y);
-
-                        rotate([angle_y, angle_x, 0]) {
-                            translate([0, 0, depth - PENCIL_HEIGHT - wall]) {
-                                % cylinder(d = PENCIL_DIAMETER, h = PENCIL_HEIGHT);
-                            }
-                        }
+                        pencil_stand(
+                            wall = wall,
+                            depth = depth,
+                            angle_x = angle_x,
+                            angle_y = angle_y,
+                            show_pencil = show_pencil_stand_pencil
+                        );
                     }
                 }
             }
@@ -1532,6 +1530,7 @@ assembly(
     show_keys = SHOW_KEYS,
     show_enclosure_top = SHOW_ENCLOSURE_TOP,
     show_window_pane = SHOW_WINDOW_PANE,
+    show_pencil_stand_pencil = SHOW_PENCIL_STAND_PENCIL,
 
     use_pencil_stand_display_angle = USE_PENCIL_STAND_DISPLAY_ANGLE,
 

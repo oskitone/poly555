@@ -8,8 +8,12 @@ module pencil_stand(
     depth = 20,
     angle_x = 45,
     angle_y = 45,
+    show_pencil = false,
     $fn = DEFAULT_ROUNDING
 ) {
+    PENCIL_HEIGHT = 25.4 * 6;
+    PENCIL_DIAMETER = 6;
+
     e = 0.0987;
 
     diameter = PENCIL_STAND_CAVITY_DIAMETER + wall * 2;
@@ -29,6 +33,14 @@ module pencil_stand(
 
         translate([-total_depth, -total_depth, -total_depth]) {
             cube([total_depth * 2, total_depth * 2, total_depth]);
+        }
+    }
+
+    if (show_pencil) {
+        rotate([angle_y, angle_x, 0]) {
+            translate([0, 0, depth - PENCIL_HEIGHT - wall]) {
+                % cylinder(d = PENCIL_DIAMETER, h = PENCIL_HEIGHT);
+            }
         }
     }
 }
