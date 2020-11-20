@@ -20,6 +20,7 @@ module keys(
     actuator_length = BUTTON_DIAMETER,
     actuator_height = 2,
 
+    remove_empty_space = true,
     wall = .8,
     ceiling = 1,
 
@@ -310,7 +311,10 @@ module keys(
             _base();
             _fillet();
             _cantilever_recession_cavity();
-            _empty_space_cavities();
+
+            if (remove_empty_space) {
+                _empty_space_cavities();
+            }
         }
 
         if (include_cantilevers) {
