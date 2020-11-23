@@ -158,7 +158,7 @@ module assembly(
             head_height = TRIMPOT_KNOB_HEAD_HEIGHT
         )
         + get_volume_wheel_total_height(volume_wheel_cap_height)
-        + volume_wheel_vertical_clearance * 2;
+        + volume_wheel_vertical_clearance;
     enclosure_top_height = enclosure_height - enclosure_bottom_height;
 
     key_height = enclosure_height - pcb_stilt_height - enclosure_floor_ceiling
