@@ -1318,49 +1318,52 @@ module assembly(
                 }
             }
 
-            module _volume_wheel_brace() {
-                z = get_volume_wheel_z(volume_wheel_cap_height, pcb_z)
+            module _volume_wheel_brace(
+                cone_diameter = volume_wheel_diameter * .67
+            ) {
+                cone_z = get_volume_wheel_z(volume_wheel_cap_height, pcb_z)
                     + get_volume_wheel_total_height(volume_wheel_cap_height);
-                width = enclosure_width - enclosure_wall
-                    - (pcb_x + PCB_VOLUME_WHEEL_X);
-                length = enclosure_inner_wall;
-                height = width;
 
-                cone_diameter = volume_wheel_diameter / 2;
-                cone_height = cone_diameter / 2;
+                module _rib() {
+                    width = enclosure_width - enclosure_wall
+                        - (pcb_x + PCB_VOLUME_WHEEL_X);
+                    length = enclosure_inner_wall;
 
-                translate([
-                    enclosure_width - enclosure_wall - width - e,
-                    pcb_y + PCB_VOLUME_WHEEL_Y - length / 2,
-                    z
-                ]) {
+                    x = enclosure_width - enclosure_wall - width - e;
+                    y = pcb_y + PCB_VOLUME_WHEEL_Y - length / 2;
+                    z = enclosure_bottom_height + enclosure_lip_height
+                        + enclosure_lip_clearance;
+
+                    base_height = enclosure_height - z - enclosure_floor_ceiling
+                        + e;
+
                     hull() {
-                        cube([cone_diameter / 2, length, e]);
+                        translate([x, y, cone_z]) {
+                            cube([cone_diameter / 2, length, e]);
+                        }
 
-                        translate([0, 0, cone_height]) {
-                            flat_top_rectangular_pyramid(
-                                top_width = 0,
-                                top_length = length,
-                                bottom_width = width + e,
-                                bottom_length = length,
-                                height = height,
-                                top_weight_x = 1
-                            );
+                        translate([x, y, z]) {
+                            cube([width + e, length, base_height]);
                         }
                     }
                 }
 
-                translate([
-                    pcb_x + PCB_VOLUME_WHEEL_X,
-                    pcb_y + PCB_VOLUME_WHEEL_Y,
-                    z
-                ]) {
-                    cylinder(
-                        d1 = cone_diameter,
-                        d2 = 0,
-                        h = cone_height
-                    );
+                module _cone() {
+                    translate([
+                        pcb_x + PCB_VOLUME_WHEEL_X,
+                        pcb_y + PCB_VOLUME_WHEEL_Y,
+                        cone_z
+                    ]) {
+                        cylinder(
+                            d1 = cone_diameter,
+                            d2 = 0,
+                            h = cone_diameter / 2
+                        );
+                    }
                 }
+
+                _rib();
+                _cone();
             }
 
             // TODO: combine with _window_pane_sill
