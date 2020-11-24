@@ -38,7 +38,7 @@ module assembly(
     engraving_chamfer = .2,
 
     components_to_window_clearance = 2,
-    speaker_clearance = 1.6,
+    speaker_to_battery_clearance = .4,
     exposed_switch_clearance = 1,
     exposed_screw_head_clearance = .4,
 
@@ -147,7 +147,7 @@ module assembly(
         pcb_stilt_height + PCB_HEIGHT + PCB_COMPONENTS_HEIGHT
             + WINDOW_PANE_HEIGHT + components_to_window_clearance,
         SPEAKER_HEIGHT - SPEAKER_MAGNET_HEIGHT + BATTERY_HEIGHT
-            + speaker_clearance
+            + speaker_to_battery_clearance
     );
     enclosure_bottom_height =
         get_volume_wheel_z(
@@ -780,38 +780,23 @@ module assembly(
             }
 
             module _speaker_container(wall = enclosure_wall, gusset_count = 3) {
-                z = enclosure_floor_ceiling - e;
-
-                // Loose fit
-                inner_diameter = SPEAKER_MAGNET_DIAMETER + tolerance * 4;
+                // Semi-loose fit
+                inner_diameter = SPEAKER_MAGNET_DIAMETER + tolerance * 3;
                 outer_diameter = inner_diameter + wall * 2;
-                height = speaker_z + SPEAKER_MAGNET_HEIGHT - z
-                    - speaker_clearance;
+                height = speaker_z + SPEAKER_MAGNET_HEIGHT
+                    - enclosure_floor_ceiling;
 
                 gusset_length =
                     (SPEAKER_CONE_DIAMETER - SPEAKER_MAGNET_DIAMETER) / 2;
                 ring_segment_width = (inner_diameter * PI) / gusset_count / 2;
 
-                adjuster_count = 4;
-                adjuster_height = speaker_clearance / adjuster_count;
-
-                module _ring(_height) {
+                translate([speaker_x, speaker_y, enclosure_floor_ceiling]) {
                     ring(
                         diameter = outer_diameter,
-                        height = _height,
+                        height = height,
                         inner_diameter = inner_diameter,
                         $fn = HIDEF_ROUNDING
                     );
-                }
-
-                translate([speaker_x, speaker_y, z]) {
-                    _ring(height);
-
-                    for (i = [0 : adjuster_count - 1]) {
-                        translate([0, 0, height + e + (i * (adjuster_height + e))]) {
-                            _ring(adjuster_height);
-                        }
-                    }
 
                     for (i = [0 : gusset_count - 1]) {
                         rotate([0, 0, 180 + i / gusset_count * 360]) {
