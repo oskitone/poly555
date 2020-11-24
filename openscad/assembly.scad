@@ -1375,7 +1375,8 @@ module assembly(
                     width = BREAKAWAY_SUPPORT_DISTANCE;
                     overlap = overlap + PLASTICS_TOLERANCE;
 
-                    back_x = window_pane_x + (window_pane_max_width - width) / 2;
+                    back_x = window_pane_x + window_pane_max_width - width
+                        - enclosure_gutter;
                     back_y = enclosure_length - enclosure_wall - overlap;
                     side_x = enclosure_wall;
                     side_y = window_pane_y + (window_pane_length - width) / 2;
