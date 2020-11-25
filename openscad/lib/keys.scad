@@ -20,7 +20,7 @@ module keys(
     actuator_length = BUTTON_DIAMETER,
     actuator_height = 2,
 
-    remove_empty_space = true,
+    remove_empty_space = false,
     wall = .8,
     ceiling = 1,
 
