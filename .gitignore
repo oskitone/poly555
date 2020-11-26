@@ -9,3 +9,6 @@ fp-info-cache
 
 .DS_Store
 local/
+
+# docs
+docs_sphinx/_build
