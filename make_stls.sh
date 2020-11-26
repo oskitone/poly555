@@ -45,9 +45,9 @@ function export_stl() {
 }
 
 export_stl 'enclosure_bottom' 'SHOW_ENCLOSURE_BOTTOM' 'false'
-export_stl 'volume_wheel' 'SHOW_VOLUME_WHEEL' 'true'
-export_stl 'mounting_rail' 'SHOW_MOUNTING_RAIL' 'false'
-export_stl 'keys' 'SHOW_KEYS' 'false'
 export_stl 'enclosure_top' 'SHOW_ENCLOSURE_TOP' 'true'
+export_stl 'keys' 'SHOW_KEYS' 'false'
+export_stl 'mounting_rail' 'SHOW_MOUNTING_RAIL' 'false'
+export_stl 'volume_wheel' 'SHOW_VOLUME_WHEEL' 'true'
 
 }
