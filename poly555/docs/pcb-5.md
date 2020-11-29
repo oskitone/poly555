@@ -36,7 +36,11 @@ Just like we did for the timer in [Step 3: Make Some Noise](pcb-3#steps), we'll 
 
 Rather than list out all the component footprints by number, it's helpful this time to just go by location. You'll probably find that it's easiest to do them all by type; ie, solder all the resistors before moving onto caps, etc.
 
-TODO: image
+![Closeup of a finished 555 timer circuit for reference](https://dummyimage.com/600x400)
+
+### It should look like this when done
+
+![It should look like this](https://dummyimage.com/600x400)
 
 ## Test it
 

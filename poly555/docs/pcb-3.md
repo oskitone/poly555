@@ -55,6 +55,10 @@ Finish the timer circuit, add the amp circuit, and test the speaker.
    1. Insert the **555 timer chip** into its socket at **U1**.
    2. Insert the **386 amp chip** into its socket at **U22**.
 
+### It should look like this when done
+
+![It should look like this](https://dummyimage.com/600x400)
+
 ## Test it
 
 1. With the battery attached and power switch on, press S1 again. In addition to the LED being lit, you should now hear an audible tone out of the speaker!

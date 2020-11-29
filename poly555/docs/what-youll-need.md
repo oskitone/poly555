@@ -11,7 +11,7 @@ Before we get going, you'll need the following to assemble your POLY555.
 - Soldering iron and solder for electronics
 - Wire stripper or cutters
 - Philips and flathead screwdrivers
-- Chromatic instrument tuner
+- Chromatic instrument tuner or phone app
 - Utility knife
 - School glue
 - 9v battery
@@ -23,8 +23,8 @@ Before we get going, you'll need the following to assemble your POLY555.
 - “Solder sucker” or desoldering braid
 - Tweezers or “dentist’s tools” for working with small components
 
-## Time
-
+:::tip
 Give yourself plenty of time to put this together, at least a good handful of hours.
 
 I like to spread it out throughout the day and take lots of breaks!
+:::

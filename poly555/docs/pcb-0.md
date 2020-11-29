@@ -70,9 +70,23 @@ TODO: confirm IRL
 | 4.7uF              | 20    | electrolytic | _n/a_   |
 | 220uF              | 1     | electrolytic | _n/a_   |
 
+### LEDs
+
+You'll have 21 LEDs total in your kit in 3 different colors:
+
+- **1** for the **power indicator**
+- **12** for the **natural keys**
+- **8** for the **accidental keys**
+
+:::note
+The exact colors for each may vary across kits, which is why they're not denoted here.
+:::
+
+When you're soldering the LEDs, make sure to follow the instructions to use the right one for the job.
+
 ## PCB Legend
 
-TODO: image
+![POLY555 PCB legend](https://dummyimage.com/600x400)
 
 1. **555 timer**<br />
    Twenty identical timer circuits are laid out in 4 rows of 5 columns. They'll be exposed for adoration by a plexiglass window.
@@ -94,7 +108,9 @@ The switches and their timer circuits correspond numerically: S1 to U1, S2 to U2
 
 All the timer circuits are internally identical, so, for example, the resistors are always in the same places -- once you know how where they go in one circuit, you know how to do all of them.
 
-The circuits for the accidental keys (F#, G#, A#, C#, D#) are marked with a <code>#</code> beside their IC socket. (These will be important when you're soldering the LEDs!)
+The circuits for the accidental keys (F#, G#, A#, C#, D#) are marked with a <code>#</code> beside their IC socket.
+
+![Accidental keys marked with # sign](https://dummyimage.com/600x400)
 
 ---
 
@@ -103,6 +119,9 @@ The circuits for the accidental keys (F#, G#, A#, C#, D#) are marked with a <cod
 There's nothing worse than working super hard on something for hours until, when you think you've finally got it all finished and ready, you try to turn it on and find out it doesn't work...
 
 To try to prevent that frustration, we're going to put this together incrementally. At each step, we'll solder up the fewest parts possible to verify it's working as expected before moving on to the next step.
+
+<!-- TODO: any rewrites here? propagate out -->
+<!-- TODO: maybe rename to "parts" or "chapter"? -->
 
 1. **On and Off:**<br/>
    Get power to the board and switch the main LED on and off

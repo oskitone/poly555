@@ -5,10 +5,12 @@ sidebar_label: Parts
 ---
 
 :::note
-
 If you bought the kit with the 3D-printed parts included, you can skip this part!
-
 :::
+
+![The POLY555's different 3D-printed parts on display](https://dummyimage.com/600x400)
+
+<!-- TODO: get printing times -->
 
 There are five parts you'll need to print:
 

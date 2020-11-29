@@ -16,19 +16,13 @@ Get power to one of the timer circuits and light its LED
 - 1/4" screw \* 1
 - Nut \* 1
 - 220 resistor \* 1
-- LED \* 1
-
-### Which LED?
-
-You'll have 21 LEDs total in your kit in 3 different colors:
-
-- 1 for the power indicator
-- 12 for the natural keys
-- 8 for the accidental keys
-
-We're wiring up the the first natural key, F, so grab the color that you have 12 of.
+- Natural key LED \* 1
 
 ## Steps
+
+:::tip
+Double check to make sure you've got the [correct LED color](pcb-0#leds) before soldering!
+:::
 
 1. Solder the **.22uF ceramic capacitor** to **C61**.
 2. Solder the **7805 voltage regulator** to **U21**.
@@ -40,6 +34,10 @@ We're wiring up the the first natural key, F, so grab the color that you have 12
    - A trick I like to do is to solder just one of its legs to hold it in place, then remelt the solder while pushing it in from the other side.
 4. Solder a **220 resistor** to **R1**.
 5. Solder the **LED** to **D1**, making sure to match its outline.
+
+### It should look like this when done
+
+![It should look like this](https://dummyimage.com/600x400)
 
 ## Test it
 

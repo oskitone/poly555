@@ -13,24 +13,22 @@ Get power to the board and switch the main LED on and off.
 - Sliding toggle switch \* 1
 - 9v battery snap \* 1
 - 220 resistor \* 1
-- LED \* 1
-
-### Which LED?
-
-You'll have 21 LEDs total in your kit in 3 different colors:
-
-- 1 for the power indicator
-- 12 for the natural keys
-- 8 for the accidental keys
-
-We're wiring up the power indicator, so grab the color that you only have one of.
+- Power indicator LED \* 1
 
 ## Steps
+
+:::tip
+Double check to make sure you've got the [correct LED color](pcb-0#leds) before soldering!
+:::
 
 1. Solder the **sliding toggle switch** to **S21** on the back of the PCB. There's no polarity to this component, so either way is fine as long as it's on the back side.
 2. Feed the **battery snap**'s wires through the relief hole above **BAT**, then solder its wires into place: red for + and black for -.
 3. Solder a **220 resistor** to **R81**.
 4. Solder the **LED** to **D21**, making sure to match its outline.
+
+### It should look like this when done
+
+![It should look like this](https://dummyimage.com/600x400)
 
 ## Test it
 
