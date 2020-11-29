@@ -4,6 +4,10 @@ title: "PCB Step 1: On and Off"
 sidebar_label: "Step 1: On and Off"
 ---
 
+## Goal
+
+Get power to the board and switch the main LED on and off.
+
 ## Components
 
 - Sliding toggle switch \* 1

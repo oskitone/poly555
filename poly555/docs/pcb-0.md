@@ -25,7 +25,7 @@ sidebar_label: General Tips
 - **Wire relief holes**<br />
   The wires for the speaker (SPK) and battery (BAT) first go through corresponding holes before being soldered. These are meant to reduce strain on the wires as you work on the PCB.
 
-## Legend
+## Component Legend
 
 export const C = ({children: color}) => (
 <span style={{
@@ -70,7 +70,7 @@ TODO: confirm IRL
 | 4.7uF              | 20    | electrolytic | _n/a_   |
 | 220uF              | 1     | electrolytic | _n/a_   |
 
-### On PCB
+## PCB Legend
 
 TODO: image
 
@@ -87,6 +87,14 @@ TODO: image
    - Key mount screws
    - 7805 voltage regulator
    - Wire relief for SPK and BAT
+
+### A little more info on those 555 timers
+
+The switches and their timer circuits correspond numerically: S1 to U1, S2 to U2, etc.
+
+All the timer circuits are internally identical, so, for example, the resistors are always in the same places -- once you know how where they go in one circuit, you know how to do all of them.
+
+The circuits for the accidental keys (F#, G#, A#, C#, D#) are marked with a <code>#</code> beside their IC socket. (These will be important when you're soldering the LEDs!)
 
 ---
 

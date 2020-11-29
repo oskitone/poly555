@@ -4,6 +4,10 @@ title: "PCB Step 2: Timer LED Power"
 sidebar_label: "Step 2: Timer LED Power"
 ---
 
+## Goal
+
+Get power to one of the timer circuits and light its LED
+
 ## Components
 
 - .22uF ceramic capacitor \* 1
@@ -45,4 +49,4 @@ With the battery attached and power switch on, press S1. You should see the LED 
 
 - Check solder joints
 - Make sure battery still has power
-- Use a multimeter to confirm 7805 has 9v going in and 5v coming out, then confirm that's going from the button to R1.
+- Use a multimeter to confirm 7805 has 9v going in and 5v coming out, then confirm that's going from the button to R1 when pressed.
