@@ -57,7 +57,7 @@ module assembly(
     visualized_plastic_tolerance_weight = .5,
     animate_visualized_plastic_tolerance_weight = false,
 
-    volume_wheel_exposure = 1.2,
+    volume_wheel_exposure = 1,
     volume_wheel_cap_height = 1,
     volume_wheel_grip_size = 1.5,
     volume_wheel_vertical_clearance = .4,
