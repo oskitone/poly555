@@ -57,7 +57,7 @@ Finish the timer circuit, add the amp circuit, and test the speaker.
 
 ### It should look like this when done
 
-![It should look like this](https://dummyimage.com/600x400)
+[![It should look like this when done](/img/pcb-3.jpg)](/img/pcb-3.jpg)
 
 ## Test it
 

@@ -22,6 +22,7 @@ Before we get going, you'll need the following to assemble your POLY555.
 - PCB vice or “helping hands” holder
 - “Solder sucker” or desoldering braid
 - Tweezers or “dentist’s tools” for working with small components
+- Windex
 
 :::tip
 Give yourself plenty of time to put this together, at least a good handful of hours.

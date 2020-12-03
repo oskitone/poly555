@@ -37,7 +37,7 @@ Double check to make sure you've got the [correct LED color](pcb-0#leds) before 
 
 ### It should look like this when done
 
-![It should look like this](https://dummyimage.com/600x400)
+[![It should look like this when done](/img/pcb-2.jpg)](/img/pcb-2.jpg)
 
 ## Test it
 

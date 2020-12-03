@@ -40,7 +40,7 @@ Rather than list out all the component footprints by number, it's helpful this t
 
 ### It should look like this when done
 
-![It should look like this](https://dummyimage.com/600x400)
+[![It should look like this when done](/img/pcb-5.jpg)](/img/pcb-5.jpg)
 
 ## Test it
 

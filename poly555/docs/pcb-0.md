@@ -135,3 +135,7 @@ To try to prevent that frustration, we're going to put this together incremental
    Finish timer circuits
 
 This order should hopefully give you a better understanding of how it all works too!
+
+### It will look like this before you start
+
+[![It will look like this before you start](/img/pcb-0.jpg)](/img/pcb-0.jpg)
