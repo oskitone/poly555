@@ -61,6 +61,7 @@ module assembly(
     volume_wheel_cap_height = 1,
     volume_wheel_grip_size = 1.5,
     volume_wheel_vertical_clearance = .4,
+    volume_wheel_brace_clearance = .2,
 
     pencil_stand_display_angle = 65,
     use_pencil_stand_display_angle = true,
@@ -1319,10 +1320,11 @@ module assembly(
             }
 
             module _volume_wheel_brace(
-                cone_diameter = volume_wheel_diameter * .67
+                cone_diameter = volume_wheel_diameter * .5
             ) {
                 cone_z = get_volume_wheel_z(volume_wheel_cap_height, pcb_z)
-                    + get_volume_wheel_total_height(volume_wheel_cap_height);
+                    + get_volume_wheel_total_height(volume_wheel_cap_height)
+                    + volume_wheel_brace_clearance;
 
                 module _rib() {
                     width = enclosure_width - enclosure_wall
