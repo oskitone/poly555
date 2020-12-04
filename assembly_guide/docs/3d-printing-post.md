@@ -5,9 +5,7 @@ sidebar_label: Post-Printing
 ---
 
 :::note
-
 If you bought the kit with the 3D-printed parts included, you can skip this part!
-
 :::
 
 1. Cut or pull away any stringing.

@@ -10,8 +10,6 @@ sidebar_label: General Tips
   The included IC chips can be damaged by static electricity. Leave them in their packaging until ready to install. Before handling, discharge any static electricity on your body by touching a large piece of metal
 - **Ceramic and electrolytic capacitors**<br/>
   There are two kinds of “caps” used in this kit. Ceramic capacitors are small, circular, and have no polarity; they can be placed in either direction. Electrolytic caps are bigger, cylindrical, and have marked +/- polarities.
-- **Component naming conventions**<br/>
-  For these PCBS, C = capacitor, R = resistor. TODO: more?
 - **Vertical resistors**<br/>
   To save space, most resistors stand vertically instead of lay flat on the PCB.
 - **ICs in sockets**<br/>
@@ -94,34 +92,6 @@ The exact colors for each may vary across kits, which is why they're not denoted
 :::
 
 When you're soldering the LEDs, make sure to follow the instructions to use the right one for the job.
-
-## PCB Legend
-
-![POLY555 PCB legend](https://dummyimage.com/600x400)
-
-1. **555 timer**<br />
-   Twenty identical timer circuits are laid out in 4 rows of 5 columns. They'll be exposed for adoration by a plexiglass window.
-2. **Amp**<br />
-   A simple amplifier drives the speaker. Its volume control is exposed on the right of the enclosure.
-3. **Power**<br />
-   A 9v battery powers the device, which is toggled by a sliding toggle switch on the PCB's back. An LED lights up when it's on.
-4. **Buttons and regulator**<br />
-   Power from the switched 9v battery is regulated down to 5v by a 7805 regulator, then distributed across 20 tactile switches -- one for each timer circuit above.
-5. **Holes**<br />
-   - Enclosure bottom screws
-   - Key mount screws
-   - 7805 voltage regulator
-   - Wire relief for SPK and BAT
-
-### A little more info on those 555 timers
-
-The switches and their timer circuits correspond numerically: S1 to U1, S2 to U2, etc.
-
-All the timer circuits are internally identical, so, for example, the resistors are always in the same places -- once you know how where they go in one circuit, you know how to do all of them.
-
-The circuits for the accidental keys (F#, G#, A#, C#, D#) are marked with a <code>#</code> beside their IC socket.
-
-[![A glamorous closeup of the 555 circuits, with accidentals marked with # sign](/img/timers_closeup.jpg)](/img/timers_closeup.jpg)
 
 ---
 

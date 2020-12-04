@@ -6,10 +6,8 @@ sidebar_label: Final Assembly
 
 Almost there! Let's finish up.
 
-:::note
-Take your time here. If the 3D-printed parts aren't fitting well together, don't force them -- you may accidentally break something.
-
-Check for leftover support material that needs to be removed and gently carve it away with a utility knife.
+:::caution
+Take your time here. If the 3D-printed parts aren't fitting well together, don't force them -- you may accidentally break something. Instead, check for leftover support material that needs to be removed and gently carve it away with a utility knife.
 :::
 
 ## Steps

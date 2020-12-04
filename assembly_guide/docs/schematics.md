@@ -4,4 +4,6 @@ title: "Appendix: Schematics"
 sidebar_label: Schematics
 ---
 
-<!-- TODO -->
+[![POLY555 schematic](/img/schematics/poly_555.svg)](/img/schematics/poly_555.svg)
+
+[![555 sheet schematic](/img/schematics/555_astable-Sheet60F4E92A.svg)](/img/schematics/555_astable-Sheet60F4E92A.svg)
