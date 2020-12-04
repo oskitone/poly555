@@ -16,7 +16,7 @@ $EndDescr
 $Sheet
 S 4850 1300 900  550 
 U 60F4E92A
-F0 "555_astable" 50
+F0 "Sheet60F4E92A" 50
 F1 "555_astable.sch" 50
 F2 "Out" I R 5750 1500 50 
 F3 "9v" I L 4850 1500 50 
@@ -1525,12 +1525,6 @@ Wire Wire Line
 	10250 3750 10450 3750
 Wire Wire Line
 	10100 3900 10100 4700
-Text Notes 9700 3050 0    50   ~ 0
-TODO: extra resistor here to “fix”\nfrequency shift from vol change?
-Text Notes 10200 5000 0    50   ~ 0
-Optional “fake log” resistor\nhttps://sound-au.com/project01.htm
-Text Notes 10300 3400 0    50   ~ 0
-TODO: reverse vol pot if\nnot using right trimwheel
 Wire Wire Line
 	10450 3750 11650 3750
 Connection ~ 10450 3750
