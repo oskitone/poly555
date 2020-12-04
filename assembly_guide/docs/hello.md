@@ -7,7 +7,7 @@ slug: /
 
 ## What You'll Be Making
 
-![A finished POLY555](https://dummyimage.com/600x400)
+[![A finished POLY555](/img/assembly/all_done.jpg)](/img/assembly/all_done.jpg)
 
 The POLY555 is a _polyphonic_, analog, square wave synth based on the _555_ timer chip.
 

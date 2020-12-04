@@ -50,6 +50,5 @@ With the battery attached and power switch on, press S2 through S20. In addition
 
 ### Troubleshooting
 
-- Check solder joints
-- Make sure battery still has power
-- Do the same troubleshooting checks you did in [Step 3: Make Some Noise](pcb-3#troubleshooting) for all the buttons and LEDs
+- [Do all the usual debugging steps like checking solder joints, etc.](debugging)
+- Do the same troubleshooting checks you did in [Step 3: Make Some Noise](pcb-3#troubleshooting) but for all the timer circuits.

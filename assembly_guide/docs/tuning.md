@@ -4,10 +4,15 @@ title: Tuning
 sidebar_label: Tuning
 ---
 
-![Tuning the POLY555](https://dummyimage.com/600x400)
+:::tip
+The timer circuits are independant, so you can tune their notes in any order.
+:::
 
-1. Turn on your chromatic tuner or app and place it by the speaker. Find a volume that the tuner can hear and responds to.
-2. Holding any **S\*** switch, adjust its respective **RV\*** trim pot until its note is correct. See table below.
+![Tuning the POLY555](/img/tuning.jpg)
+
+1. If it's already assembled, remove **enclosure top** and **keys**
+1. Turn on your chromatic tuner or app and place it by the speaker. Turn the POLY555's volume up so the tuner can hear it.
+1. Holding any **S\*** switch, adjust its respective **RV\*** trim pot with a small flathead screwdriver until its note is correct.
 
 <!-- TODO: confirm -->
 
@@ -33,7 +38,3 @@ sidebar_label: Tuning
 | S18    | RV18     | A#4  | 466.16    |
 | S19    | RV19     | B4   | 493.88    |
 | S20    | RV20     | C5   | 523.25    |
-
-:::tip
-The circuits are independant, so you can tune in any order.
-:::

@@ -27,6 +27,19 @@ sidebar_label: General Tips
 
 ## Component Legend
 
+### Component Prefixes
+
+| Prefix   | Type                                      |
+| -------- | ----------------------------------------- |
+| **C\***  | Capacitor (both electrolytic and cermaic) |
+| **D\***  | LED                                       |
+| **R\***  | Resistor                                  |
+| **RV\*** | Resistor Variable (trimpot)               |
+| **S\***  | Switch                                    |
+| **U\***  | IC socket and chip                        |
+
+### Resistors
+
 export const C = ({children: color}) => (
 <span style={{
     margin: '0 1rem 0 0',
@@ -44,8 +57,6 @@ export const C = ({children: color}) => (
 {color}
 </span>
 );
-
-### Resistors
 
 TODO: confirm IRL
 
@@ -110,7 +121,7 @@ All the timer circuits are internally identical, so, for example, the resistors 
 
 The circuits for the accidental keys (F#, G#, A#, C#, D#) are marked with a <code>#</code> beside their IC socket.
 
-![Accidental keys marked with # sign](https://dummyimage.com/600x400)
+[![A glamorous closeup of the 555 circuits, with accidentals marked with # sign](/img/timers_closeup.jpg)](/img/timers_closeup.jpg)
 
 ---
 

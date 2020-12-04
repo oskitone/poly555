@@ -38,6 +38,6 @@ If you have the enclosure bottom handy, you can also try inserting the PCB into 
 
 ### Troubleshooting
 
-- Check solder joints
-- Make sure battery still has power
-- Use a multimeter to confirm power is getting from battery to switch to R81
+- [Do all the usual debugging steps like checking solder joints, etc.](debugging)
+- Use a multimeter to confirm power is getting from battery to switch to R81 to LED
+- If power is getting to LED but it isn't lighting, it may be dead. Try a different one.

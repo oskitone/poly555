@@ -45,6 +45,5 @@ With the battery attached and power switch on, press S1. You should see the LED 
 
 ### Troubleshooting
 
-- Check solder joints
-- Make sure battery still has power
+- [Do all the usual debugging steps like checking solder joints, etc.](debugging)
 - Use a multimeter to confirm 7805 has 9v going in and 5v coming out, then confirm that's going from the button to R1 when pressed.

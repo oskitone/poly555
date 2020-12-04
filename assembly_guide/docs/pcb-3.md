@@ -50,7 +50,9 @@ Finish the timer circuit, add the amp circuit, and test the speaker.
    5. Solder the **220uF electrolytic capacitor** to **C64**
    6. Solder a **1k trimmer potentiometer** into **RV21**.
    7. Solder a **100 resistor** to **R82**.
-   8. Just like you did for the battery snap, feed the **speaker**'s wires through the relief hole above **SPK**, then solder its wires into place: red for + and black for -.
+   8. Solder the **speaker**'s wires
+      1. Strip about 1/8" of the plastic coating off their ends.
+      2. Just like you did for the battery snap, feed them through the relief hole above **SPK**, then solder its wires into place: red for + and black for -.
 3. Insert IC chips
    1. Insert the **555 timer chip** into its socket at **U1**.
    2. Insert the **386 amp chip** into its socket at **U22**.
@@ -61,13 +63,12 @@ Finish the timer circuit, add the amp circuit, and test the speaker.
 
 ## Test it
 
-1. With the battery attached and power switch on, press S1 again. In addition to the LED being lit, you should now hear an audible tone out of the speaker!
-2. Try adjusting the pot at RV1. Turning it clockwise should make the frequency go up, and vice-versa.
-3. Try the same on the volume pot at RV21. Clockwise should make the sound quieter, and counter-clockwise will be louder.
+1. With the **battery** attached, turn the power switch on. You should hear a little "boomp" noise from the **speaker** as it's powered by the amp.
+2. Press **S1** again. In addition to the LED being lit, you should now hear an audible tone out of the speaker!
+3. Try adjusting the pot at **RV1**. Turning it clockwise should make the frequency go up, and vice-versa.
+4. Try the same on the volume pot at **RV21**. Clockwise should make the sound quieter, and counter-clockwise will be louder.
 
 ### Troubleshooting
 
+- [Do all the usual debugging steps like checking solder joints, etc.](debugging)
 - Check to see that the volume potentiometer at **RV21** isn't turned all the way down.
-- Check solder joints
-- Make sure battery still has power
-- TODO: more here?!

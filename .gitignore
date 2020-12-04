@@ -12,3 +12,24 @@ local/
 
 # docs
 docs_sphinx/_build
+
+# docusaurus
+# Dependencies
+assembly_guide/node_modules
+
+# Production
+assembly_guide/build
+
+# Generated files
+.docusaurus
+.cache-loader
+
+# Misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

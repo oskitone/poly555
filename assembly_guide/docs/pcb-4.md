@@ -36,6 +36,5 @@ With the battery attached and power switch on, press buttons **S2** through **S2
 
 ### Troubleshooting
 
-- Check solder joints
-- Make sure battery still has power
-- Do the same troubleshooting checks you did in [Step 2: Timer LED Power](pcb-2#troubleshooting) for all the buttons and LEDs
+- [Do all the usual debugging steps like checking solder joints, etc.](debugging)
+- Do the same troubleshooting checks you did in [Step 2: Timer LED Power](pcb-2#troubleshooting) for all the buttons and LEDs.
