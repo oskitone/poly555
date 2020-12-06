@@ -1,11 +1,16 @@
 ---
 id: what-youll-be-making
-title: What You'll Be Making
+title: Oskitone POLY555 Assembly Guide
+hide_table_of_contents: true
 sidebar_label: What You'll Be Making
+description: The POLY555 is a polyphonic, analog, square wave synth based on the 555 timer chip.
+image: /img/assembly/all_done.jpg
 slug: /
 ---
 
 [![A finished POLY555](/img/assembly/all_done.jpg)](/img/assembly/all_done.jpg)
+
+## What You'll Be Making
 
 The POLY555 is a _polyphonic_, analog, square wave synth based on the _555_ timer chip.
 
