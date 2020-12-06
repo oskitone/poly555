@@ -8,6 +8,12 @@ sidebar_label: Parts and Slicing
 If you bought the kit with the 3D-printed parts included, you can skip this part!
 :::
 
+## Download 3D Models
+
+The POLY555's models are hosted on Thingiverse at [https://www.thingiverse.com/thing:4676728](https://www.thingiverse.com/thing:4676728).
+
+Download them and then come on back here!
+
 ## Parts
 
 There are five parts you'll need to print:
