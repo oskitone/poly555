@@ -1,16 +1,11 @@
-# POLY555
+# POLY555 Synth
 
 [![A finished POLY555](assembly_guide/static/img/assembly/all_done.jpg)](assembly_guide/static/img/assembly/all_done.jpg)
 
 The POLY555 is a _polyphonic_, analog, square wave synth based on the _555_ timer chip.
 
-- **Polyphonic:**​ Multiple notes can be played simultaneously. This is opposed to "monophonic," where only one note at a time can be played.
-- **Analog:**​ There are no computers, microcontrollers, sound samplers, or anything digital involved. The sound you hear is the sound of a speaker being abused by discrete electronic components like capacitors and resistors and logic chips.
-- **Square-wave:**​ When its output is viewed on an oscilloscope, its wave resembles a square. It’s a “hard” sounding wave type, commonly associated with chiptune music and old video games
-
-<p><iframe src="https://player.vimeo.com/video/487720782" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></p>
-
-Available to purchase [assembled](https://www.oskitone.com/product/poly555-synth) and as a [DIY Kit](https://www.oskitone.com/product/poly555-synth-diy-kit) from Oskitone.
+**Demo:** [https://vimeo.com/487720782](https://vimeo.com/487720782)
+**Purchase:** [POLY555 Synth](https://www.oskitone.com/product/poly555-synth), [POLY555 Synth DIY Kit](https://www.oskitone.com/product/poly555-synth-diy-kit)
 
 ## Code
 
@@ -22,4 +17,6 @@ This repo contains:
 
 ### License
 
-TODO: pick licenses
+Designed by Oskitone. Please support future synth projects by purchasing a kit from [Oskitone](https://www.oskitone.com/).
+
+Creative Commons Attribution/Share-Alike, all text above must be included in any redistribution. See license.txt for additional details.
