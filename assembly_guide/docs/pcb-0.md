@@ -56,7 +56,7 @@ export const C = ({children: color}) => (
 </span>
 );
 
-TODO: confirm IRL
+<!-- TODO: confirm IRL -->
 
 | Value | Count | Color&nbsp;Code                         |
 | ----- | ----- | --------------------------------------- |
@@ -68,7 +68,7 @@ TODO: confirm IRL
 
 ### Capacitors
 
-TODO: confirm IRL
+<!-- TODO: confirm IRL -->
 
 | Value              | Count | Type         | Marking |
 | ------------------ | ----- | ------------ | ------- |

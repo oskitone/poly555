@@ -25,7 +25,7 @@ Double check to make sure you've got the [correct LED color](pcb-0#leds) before 
 :::
 
 1. Solder the **.22uF ceramic capacitor** to **C61**.
-2. Solder the **7805 voltage regulator** to **U21**.
+2. Solder the **7805 voltage regulator** to **U21**. <!--TODO: pictures for these would be great! -->
    1. It will _lay flat against its outline_ on the back of the PCB, with its text facing outwards, its tab pressed firmly against the exposed copper rectangle on ther PCB, and its legs bent into their holes. To help hold it there while soldering, attach its tab to the PCB with the **screw and nut**.
    2. Solder its legs on the front of the PCB.
    3. Solder its tab to the copper plate on the back of the PCB.
