@@ -1,7 +1,7 @@
 module.exports = {
   title: "POLY555",
-  url: "https://www.oskitone.com/",
-  baseUrl: "/",
+  url: "https://oskitone.github.io/",
+  baseUrl: "/poly555/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",

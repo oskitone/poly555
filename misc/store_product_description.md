@@ -4,26 +4,24 @@ The POLY555 is 20 keyed, independent 555 timers, lovingly celebrated under a ple
 
 ---
 
-The POLY555 is a _polyphonic_, analog, square wave synth based on the _555_ timer chip.
+The POLY555 is a <em>polyphonic</em>, analog, square wave synth based on the <em>555</em> timer chip.
 
-- **Polyphonic:**​ Multiple notes can be played simultaneously. This is opposed to "monophonic," where only one note at a time can be played.
-- **Analog:**​ There are no computers, microcontrollers, sound samplers, or anything digital involved. The sound you hear is the sound of a speaker being abused by discrete electronic components like capacitors and resistors and logic chips.
-- **Square-wave:**​ When its output is viewed on an oscilloscope, its wave resembles a square. It’s a “hard” sounding wave type, commonly associated with chiptune music and old video games
+<ul>
+<li>Custom PCB and 3D-printed hardware, all designed by yours truly</li>
+<li>Satisfying "clicky" tactile switches</li>
+<li>Built-in amplifier and speaker</li>
+<li>Soldered, assembled, tuned, and ready to go!</li>
+</ul>
 
-* Custom PCB and 3D-printed hardware, all designed by yours truly
-* Satisfying "clicky" tactile switches
-* Built-in amplifier and speaker
-* Soldered, assembled, tuned, and ready to go!
-
-**Version:** A
+<strong>Version:</strong> A
 
 <table>
 <tbody>
-<tr><td>**External controls:**</td><td>20 keys, volume wheel, on/off switch</td></tr>
-<tr><td>**Internal controls:**</td><td>20 trim potentiometers for tuning notes</td></tr>
-<tr><td>**Dimensions:**</td><td>7.6"x 6.25" x 1.5"</td></tr>
-<tr><td>**IC Chips:**</td><td>LM555, LM386</td></tr>
-<tr><td>**Input/output:**</td><td>none</td></tr>
+<tr><td><strong>External controls:</strong></td><td>20 keys, volume wheel, on/off switch</td></tr>
+<tr><td><strong>Internal controls:</strong></td><td>20 trim potentiometers for tuning notes</td></tr>
+<tr><td><strong>Dimensions:</strong></td><td>7.6"x 6.25" x 1.5"</td></tr>
+<tr><td><strong>IC Chips:</strong></td><td>LM555, LM386</td></tr>
+<tr><td><strong>Input/output:</strong></td><td>none</td></tr>
 </tbody>
 </table>
 

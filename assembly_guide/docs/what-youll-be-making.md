@@ -13,6 +13,8 @@ The POLY555 is a _polyphonic_, analog, square wave synth based on the _555_ time
 - **Analog:**​ There are no computers, microcontrollers, sound samplers, or anything digital involved. The sound you hear is the sound of a speaker being abused by discrete electronic components like capacitors and resistors and logic chips.
 - **Square-wave:**​ When its output is viewed on an oscilloscope, its wave resembles a square. It’s a “hard” sounding wave type, commonly associated with chiptune music and old video games
 
+<p><iframe src="https://player.vimeo.com/video/487720782" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></p>
+
 :::warning
 Not a toy. Choking hazard. Small parts. Not for children under 3 years.
 

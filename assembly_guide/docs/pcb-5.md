@@ -44,9 +44,7 @@ Rather than list out all the component footprints by number, it's helpful this t
 
 ## Test it
 
-With the battery attached and power switch on, press buttons **S2** through **S20**. You should see should now hear audible tones out of the speaker!
-
-With the battery attached and power switch on, press S2 through S20. In addition to the LED being lit, you should now hear an audible tone out of the speaker!
+With the battery attached and power switch on, press buttons **S2** through **S20**. You should now hear audible tones out of the speaker!
 
 ### Troubleshooting
 
