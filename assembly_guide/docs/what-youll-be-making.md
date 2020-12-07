@@ -10,6 +10,8 @@ slug: /
 
 [![A finished POLY555](/img/assembly/all_done.jpg)](/img/assembly/all_done.jpg)
 
+**Purchase:** [POLY555 Synth](https://www.oskitone.com/product/poly555-synth), [POLY555 Synth DIY Kit](https://www.oskitone.com/product/poly555-synth-diy-kit)
+
 ## What You'll Be Making
 
 The POLY555 is a _polyphonic_, analog, square wave synth based on the _555_ timer chip.

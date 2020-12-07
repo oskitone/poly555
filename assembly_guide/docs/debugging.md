@@ -22,3 +22,7 @@ Stuck? Happens to the best of us. Try these general debugging steps:
   Power isn't getting to the circuit correctly. Check its button's soldering. If the circuit responds to pushing the button down in different ways (like softly vs gently, at certain angles), rather than just on or off, the button may need replacing.
 - **A note is acting funny but its LED is fine**<br />
   Since the LED lights, the timer circuit is getting power, so it must be its components. Check solder joints and components for damage. Try swapping its 555 with a known-good note.
+
+## Something else?
+
+[Contact me](https://www.oskitone.com/contact)! The more I hear about what problems folks run into, the better I can make the assembly guide! :)

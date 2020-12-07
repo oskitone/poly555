@@ -56,8 +56,6 @@ export const C = ({children: color}) => (
 </span>
 );
 
-<!-- TODO: confirm IRL -->
-
 | Value | Count | Color&nbsp;Code                         |
 | ----- | ----- | --------------------------------------- |
 | 10    | 1     | <C>Brown</C> <C>Black</C> <C>Black</C>  |
@@ -68,14 +66,12 @@ export const C = ({children: color}) => (
 
 ### Capacitors
 
-<!-- TODO: confirm IRL -->
-
 | Value              | Count | Type         | Marking |
 | ------------------ | ----- | ------------ | ------- |
 | 10nF _(or .01uF)_  | 20    | ceramic      | 103     |
 | 47nF _(or .046uF)_ | 1     | ceramic      | 473     |
 | .1uF               | 21    | ceramic      | 104     |
-| 22uF               | 1     | ceramic      | 226     |
+| .22uF              | 1     | ceramic      | 224     |
 | 4.7uF              | 20    | electrolytic | _n/a_   |
 | 220uF              | 1     | electrolytic | _n/a_   |
 

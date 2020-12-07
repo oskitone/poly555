@@ -10,7 +10,7 @@ If you bought the kit with the 3D-printed parts included, you can skip this part
 
 ## Download 3D Models
 
-The POLY555's models are hosted on Thingiverse at [https://www.thingiverse.com/thing:4676728](https://www.thingiverse.com/thing:4676728).
+The POLY555's models are hosted on Thingiverse at [https://www.thingiverse.com/thing:4676728/files](https://www.thingiverse.com/thing:4676728/files).
 
 Download them and then come on back here!
 

@@ -19,11 +19,11 @@ Finish the timer circuit, add the amp circuit, and test the speaker.
   - 10nF ceramic capacitor \* 1
   - 1k trimmer potentiometer \* 1
   - IC socket \* 1
-  - 10 resistor \* 1
   - 555 timer chip \* 1
 - Amp circuit
   - .1uF ceramic capacitor \* 1
   - 47nF ceramic capacitor \* 1
+  - 10 resistor \* 1
   - IC socket \* 1
   - 220uF electrolytic capacitor \* 1
   - 1k trimmer potentiometer \* 1
@@ -51,7 +51,7 @@ Finish the timer circuit, add the amp circuit, and test the speaker.
    6. Solder a **1k trimmer potentiometer** into **RV21**.
    7. Solder a **100 resistor** to **R82**.
    8. Solder the **speaker**'s wires
-      1. Strip about 1/8" of the plastic coating off their ends.
+      1. Strip about 1/8" of the insulation off their ends.
       2. Just like you did for the battery snap, feed them through the relief hole above **SPK**, then solder its wires into place: red for + and black for -.
 3. Insert IC chips
    1. Insert the **555 timer chip** into its socket at **U1**.
