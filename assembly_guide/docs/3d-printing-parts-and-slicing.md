@@ -42,4 +42,4 @@ There are five parts you'll need to print:
 **Notes:**
 
 - Models have any supports they'll need baked right in, so you won't need to do anything extra in your slicer. They should also already be rotated to the correct position for printing.
-- The enclosure pieces are big and may warp off the bed plate without good adhesion. I use a lot of glue on the bed and stay away from plastics that shrink.
+- The enclosure pieces are big and may warp off the bed plate without good adhesion. I use a lot of glue on the bed and stay away from plastics that shrink. _Watch the first couple layers of these while printing, especially around the text engravings -- if you see bad adhesion, stop the print to apply more glue and start again._
