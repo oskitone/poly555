@@ -15,14 +15,17 @@ module keys(
     accidental_length,
     accidental_height,
 
+    // remove
     natural_actuator_y,
     accidental_actuator_y,
     actuator_length = BUTTON_DIAMETER,
     actuator_height = 2,
 
-    remove_empty_space = false,
+    remove_empty_space = true,
     wall = .8,
     ceiling = 1,
+    bottom = 1,
+    front_extension = 2.5,
 
     front_fillet = 2,
     sides_fillet = 1,
@@ -189,32 +192,8 @@ module keys(
 
         module _empty_space_cavities() {
             inner_width = width - wall * 2;
-            inner_length = length - wall * 2 - cantilever_recession;
-
-            module _actuator(cap_height = 1) {
-                x = wall - e;
-                y = (is_natural ? natural_actuator_y : accidental_actuator_y)
-                    - actuator_length / 2
-                    + (is_natural ? 0 : accidental_length - natural_length);
-
-                width = width - x * 2;
-
-                translate([x, y, -e]) {
-                    cube([width, actuator_length, actuator_height + e]);
-
-                    translate([0, 0, actuator_height]) {
-                        flat_top_rectangular_pyramid(
-                            top_width = width,
-                            top_length = 0,
-
-                            bottom_width = width,
-                            bottom_length = actuator_length,
-
-                            height = cap_height
-                        );
-                    }
-                }
-            }
+            inner_length = length - wall * 2 - cantilever_recession
+                - front_extension;
 
             module _ceiling_webbing(
                 horizontal_height = 2,
@@ -222,8 +201,8 @@ module keys(
                 depth = BREAKAWAY_SUPPORT_DEPTH,
                 gap = BREAKAWAY_SUPPORT_DISTANCE
             ) {
-                inner_width = width - wall * 2 - depth;
-                inner_length = length - wall * 2 - cantilever_recession - depth;
+                inner_width = inner_width - depth;
+                inner_length = inner_length - depth;
 
                 module _horizontal() {
                     x = wall - e;
@@ -233,7 +212,7 @@ module keys(
                     plot = inner_length / count;
 
                     for (i = [0 : count]) {
-                        translate([x, wall + i * plot, z]) {
+                        translate([x, wall + i * plot + front_extension, z]) {
                             cube([width - x * 2, depth, horizontal_height + e]);
                         }
                     }
@@ -262,11 +241,12 @@ module keys(
 
             difference() {
                 union() {
-                    translate([wall, wall, -e]) {
+                    translate([wall, wall + front_extension, bottom]) {
                         cube([
                             width - wall * 2,
                             inner_length,
                             height - max(ceiling, front_fillet, sides_fillet) + e
+                                - bottom
                         ]);
                     }
 
@@ -294,13 +274,6 @@ module keys(
                     translate([-wall, -wall, 0]) {
                         _accidental_cutout(right = true);
                     }
-                }
-
-                if (
-                    natural_actuator_y != undef &&
-                    accidental_actuator_y != undef
-                ) {
-                    _actuator();
                 }
 
                 _ceiling_webbing();
