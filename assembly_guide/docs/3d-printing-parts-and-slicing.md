@@ -31,13 +31,13 @@ There are five parts you'll need to print:
 
 ## Slicing
 
-| Piece                | Layer height | Color change | Infill | Print time |
-| -------------------- | ------------ | ------------ | ------ | ---------- |
-| **Enclosure top**    | .2mm         | n/a          | 20%    | 4hr        |
-| **Enclosure bottom** | .2mm         | n/a          | 20%    | 8hr 30min  |
-| **Keys**             | .2mm         | 16.8mm       | 0%     | 4hr 30min  |
-| **Mounting rail**    | .2mm         | n/a          | 20%    | 30min      |
-| **Volume wheel**     | .2mm         | n/a          | 20%    | 10min      |
+| Piece                | Layer height | Color change | Print time |
+| -------------------- | ------------ | ------------ | ---------- |
+| **Enclosure top**    | .2mm         | n/a          | 4hr        |
+| **Enclosure bottom** | .2mm         | n/a          | 8hr 30min  |
+| **Keys**             | .2mm         | 16.8mm       | 7hr        |
+| **Mounting rail**    | .2mm         | n/a          | 30min      |
+| **Volume wheel**     | .2mm         | n/a          | 10min      |
 
 **Notes:**
 
