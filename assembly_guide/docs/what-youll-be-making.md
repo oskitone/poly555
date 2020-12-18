@@ -24,6 +24,8 @@ The POLY555 is a _polyphonic_, analog, square wave synth based on the _555_ time
 
 :::warning
 Not a toy. Choking hazard. Small parts. Not for children under 3 years.
+:::
 
-Additionally, this kit itself has well over 200 pieces and requires a solid grasp of through-hole soldering to put together. Familiarity with basic electronics theory is great too! It's not recommended for beginners to put this together on their own.
+:::caution
+Recommended for advanced users! This kit has over 250 pieces and can take 5+ hours to put together. It requires a solid grasp of electronics and through-hole soldering.
 :::

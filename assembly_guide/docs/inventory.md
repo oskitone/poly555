@@ -49,7 +49,7 @@ You'll need the following tools to assemble your POLY555:
 - Patience, patience, patience
 
 :::tip
-Give yourself plenty of time to put this together, at least a good handful of hours.
+Give yourself plenty of time to put this together, at least 5 hours. There are a lot of components and things to solder!
 
 I like to spread it out throughout the day and take lots of breaks!
 :::
