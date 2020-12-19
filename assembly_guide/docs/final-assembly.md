@@ -34,7 +34,7 @@ Take your time here. If the 3D-printed parts aren't fitting well together, don't
    1. Insert 4 **square nuts** into the nut locks on the **enclosure top**. A small dab of glue here on each is optional but will help hold the nut in place the next time you disassemble.
       [![Inserting square nuts](/img/assembly/nuts_in_enclosure_top.jpg)](/img/assembly/nuts_in_enclosure_top.jpg)
    2. Remove protective film from **plexiglass window pane** and fit it into the **enclosure top**.
-      [![Adding the plexiglass window pane](/img/assembly/plexiglass_window.jpg)](/img/assembly/plexiglass_window.jpg)
+      [![Adding the plexiglass window pane](/img/assembly/plexiglass_window.jpg)](/img/assembly/plexiglass_window.jpg) It _will_ fit but may be tight. If you're worried about breaking the **enclosure top**, you can use a utility knife to carefully trim down the two holder tabs to give the **plexiglass window pane** more room.
    3. We're about to lock it up, so now's a good time to make sure your POLY555 is fully [tuned](tuning) and has a good battery. Oh, clean any smudges off the inside window now too.
    4. Gently align the **two enclosure halves**, fitting the back hitches on the bottom into their matching cavities on the top.
       [![The enclosure bottom's hitches fitting into their cavities on the enclosure top](/img/assembly/hitch.jpg)](/img/assembly/hitch.jpg)
