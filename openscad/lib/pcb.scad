@@ -28,8 +28,8 @@ module pcb(
 
     $fn = DEFAULT_ROUNDING
 ) {
-    silkscreen_height = 1;
     e = 0.0567;
+    silkscreen_height = e;
 
     module _holes() {
         for (xy = hole_positions) {
