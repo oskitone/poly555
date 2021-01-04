@@ -48,3 +48,9 @@ Take your time here. If the 3D-printed parts aren't fitting well together, don't
 You’re done!!
 
 Take a selfie with your brand new and very incredible POLY555 synthesizer. Feel good! You're the best!!
+
+### Feedback
+
+When you can, please [let me know](https://www.oskitone.com/contact) how it went for you: how long it took, what you did/didn't like, problems encountered, anything you'd change, etc.
+
+Thank you so much!
