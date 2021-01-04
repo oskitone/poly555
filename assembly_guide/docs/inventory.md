@@ -7,7 +7,7 @@ sidebar_label: Inventory
 ## What's Included
 
 :::note
-While their values won't change, the exact components may vary across kits (ie, changing the brand of caps, etc), so yours may look slightly different than what's pictured. That's just fine!
+While the values of the components and the layout of the PCB won't change, they may vary in appearance (ie, changing the brand of caps, different color/silkscreen PCB, etc), so your kit's parts may look slightly different than what's pictured throughout the guide. That's just fine! Everything will work the same.
 :::
 
 [![The POLY555 DIY Kit](/img/kit.jpg)](/img/kit.jpg)
