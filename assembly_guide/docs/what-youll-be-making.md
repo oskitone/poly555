@@ -10,7 +10,10 @@ slug: /
 
 [![A finished POLY555](/img/assembly/all_done.jpg)](/img/assembly/all_done.jpg)
 
-**Purchase:** [POLY555 Synth](https://www.oskitone.com/product/poly555-synth), [POLY555 Synth DIY Kit](https://www.oskitone.com/product/poly555-synth-diy-kit)
+**Purchase:**
+
+- [POLY555 Synth](https://www.oskitone.com/product/poly555-synth) (fully assembled)
+- [Electronics Kit](https://www.oskitone.com/product/poly555-synth-diy-kit), [3D-Printed Parts](https://www.oskitone.com/product/poly555-synth-3d-printed-parts)
 
 ## What You'll Be Making
 
@@ -21,6 +24,13 @@ The POLY555 is a _polyphonic_, analog, square wave synth based on the _555_ time
 - **Square-wave:**​ When its output is viewed on an oscilloscope, its wave resembles a square. It’s a “hard” sounding wave type, commonly associated with chiptune music and old video games
 
 <p><iframe src="https://player.vimeo.com/video/487720782" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></p>
+
+More information on the POLY555 its development history: <br />
+[https://blog.tommy.sh/posts/poly555-synth/](https://blog.tommy.sh/posts/poly555-synth/)
+
+### Disclaimers
+
+You've been warned!
 
 :::warning
 Not a toy. Choking hazard. Small parts. Not for children under 3 years.
