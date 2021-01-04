@@ -50,9 +50,10 @@ Finish the timer circuit, add the amp circuit, and test the speaker.
    5. Solder the **220uF electrolytic capacitor** to **C64**
    6. Solder a **1k trimmer potentiometer** into **RV21**.
    7. Solder a **100 resistor** to **R82**.
-   8. Solder the **speaker**'s wires
-      1. Strip about 1/8" of the insulation off their ends.
-      2. Just like you did for the battery snap, feed them through the relief hole above **SPK**, then solder its wires into place: red for + and black for -.
+   8. Solder the **speaker**.
+      1. Strip about 1/8" of the insulation off wire's ends.
+      2. Solder wires to speaker, if necessary.
+      3. Just like you did for the battery snap, feed wires through the relief hole above **SPK**, then solder them into place: red for + and black for -.
 3. Insert IC chips
    1. Insert the **555 timer chip** into its socket at **U1**.
    2. Insert the **386 amp chip** into its socket at **U22**.
