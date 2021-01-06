@@ -4,9 +4,11 @@ title: How Does It Work?
 sidebar_label: How Does It Work?
 ---
 
-[![POLY555 PCB](/img/pcb-5.jpg)](/img/pcb-5.jpg)
+Inside the enclosure and under the keys is this PCB:
 
-1. **555 timer**<br />
+[![POLY555 PCB](/img/pcb-5-annotated.jpg)](/img/pcb-5-annotated.jpg)
+
+1. **555 timers**<br />
    Twenty identical timer circuits are laid out in 4 rows of 5 columns. They'll be exposed for adoration by a plexiglass window.
 2. **Amp**<br />
    A simple amplifier drives the speaker. Its volume control is exposed on the right of the enclosure.
