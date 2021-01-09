@@ -35,9 +35,13 @@ Double check to make sure you've got the [correct LED color](pcb-0#leds) before 
 4. Solder a **220 resistor** to **R1**.
 5. Solder the **LED** to **D1**, making sure to match its outline.
 
-### It should look like this when done
+### It should look something like this when done
 
-[![It should look like this when done](/img/pcb-2.jpg)](/img/pcb-2.jpg)
+[![It should look something like this when done](/img/pcb-2.jpg)](/img/pcb-2.jpg)
+
+:::note remember
+The components' brands and PCB/[LED colors](pcb-0#leds) may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
+:::
 
 ## Test it
 

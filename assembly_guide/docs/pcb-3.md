@@ -58,9 +58,13 @@ Finish the timer circuit, add the amp circuit, and test the speaker.
    1. Insert the **555 timer chip** into its socket at **U1**.
    2. Insert the **386 amp chip** into its socket at **U22**.
 
-### It should look like this when done
+### It should look something like this when done
 
-[![It should look like this when done](/img/pcb-3.jpg)](/img/pcb-3.jpg)
+[![It should look something like this when done](/img/pcb-3.jpg)](/img/pcb-3.jpg)
+
+:::note remember
+The components' brands and PCB/[LED colors](pcb-0#leds) may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
+:::
 
 ## Test it
 

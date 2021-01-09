@@ -26,9 +26,13 @@ Double check to make sure you've got the [correct LED colors](pcb-0#leds) before
 3. Solder the remaining 11 **LEDs for the natural keys** to **D3**, **D5**, **D7**, **D8**, **D10**, **D12**, **D13**, **D15**, **D17**, **D19**, **D20**.
 4. Solder the 8 **LEDs for the accidental keys** to **D2**, **D4**, **D6**, **D9**, **D11**, **D14**, **D16**, and **D18**.
 
-### It should look like this when done
+### It should look something like this when done
 
-[![It should look like this when done](/img/pcb-4.jpg)](/img/pcb-4.jpg)
+[![It should look something like this when done](/img/pcb-4.jpg)](/img/pcb-4.jpg)
+
+:::note remember
+The components' brands and PCB/[LED colors](pcb-0#leds) may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
+:::
 
 ## Test it
 
