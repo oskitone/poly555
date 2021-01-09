@@ -4,7 +4,7 @@ title: Inventory
 sidebar_label: Inventory
 ---
 
-## What's Included
+## What's Included in the Kit
 
 :::note
 While the values of the components and the layout of the PCB won't change, they may vary in appearance (ie, changing the brand of caps, different color/silkscreen PCB, etc), so your kit's parts may look slightly different than what's pictured throughout the guide. That's just fine! Everything will work the same.
@@ -24,6 +24,10 @@ While the values of the components and the layout of the PCB won't change, they 
   - **Tactile switches:** 20
   - **Trim potentiometers:** 21
 - **Nuts and bolts:** 12
+
+### Not Using the Kit?
+
+If you're going the full open-source route and gathering all the parts by yourself, head over to the [POLY555 from Scratch](poly555-from-scratch) appendix, then come back here when you're done.
 
 ## What You'll Need
 
