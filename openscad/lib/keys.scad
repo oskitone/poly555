@@ -25,7 +25,7 @@ module keys(
     ceiling = 1,
 
     front_fillet = 2,
-    sides_fillet = 2,
+    sides_fillet = 1,
 
     gutter = 1,
 
@@ -418,7 +418,7 @@ module mounted_keys(
     ceiling = 1,
 
     front_fillet = 2,
-    sides_fillet = 2,
+    sides_fillet = 1,
 
     gutter = 1,
 
