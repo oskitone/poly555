@@ -34,11 +34,25 @@ module trimpot_knob(
         z = cap_height - e;
 
         translate([0, 0, z]) {
-            ring(
+            /* ring(
                 diameter = inner_diameter,
                 height = head_height + e,
                 thickness = wall
-            );
+            ); */
+            difference() {
+                cylinder(
+                    d = inner_diameter,
+                    h = head_height + e
+                );
+
+                translate([0, 0, -e]) {
+                    cylinder(
+                        d1 = inner_diameter - wall * 2,
+                        d2 = inner_diameter - wall * 2 + .4,
+                        h = head_height + e * 3
+                    );
+                }
+            }
 
             cylinder_grip(
                 diameter = head_diameter + tolerance * 2,
