@@ -7,7 +7,7 @@ sidebar_label: General Tips
 ## General Tips
 
 - **IC chips are static-sensitive**<br/>
-  The included IC chips can be damaged by static electricity. Leave them in their packaging until ready to install. Before handling, discharge any static electricity on your body by touching a large piece of metal
+  The included IC chips can be damaged by static electricity. Leave them in their packaging until ready to install. Before handling, discharge any static electricity on your body by touching a large piece of metal. You can even use an anti-static mat and/or wrist strap for extra caution.
 - **Ceramic and electrolytic capacitors**<br/>
   There are two kinds of “caps” used in this kit. Ceramic capacitors are small, circular, and have no polarity; they can be placed in either direction. Electrolytic caps are bigger, cylindrical, and have marked +/- polarities.
 - **Vertical resistors**<br/>
