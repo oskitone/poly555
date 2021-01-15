@@ -18,6 +18,7 @@ module trimpot_knob(
     grip_size = 1.5,
 
     tolerance = .1,
+    head_lock_chamfer = 0,
 
     shim_size = .8,
 
@@ -25,54 +26,58 @@ module trimpot_knob(
 
     $fn = HIDEF_ROUNDING
 ) {
-    e = 0.047;
+    e = 0.0047;
 
     total_height = cap_height * 2 + head_height;
     inner_diameter = head_diameter + tolerance * 2 + wall * 2;
 
     module _head_lock() {
         z = cap_height - e;
+        chamfer_depth = head_lock_chamfer;
 
-        translate([0, 0, z]) {
-            /* ring(
-                diameter = inner_diameter,
-                height = head_height + e,
-                thickness = wall
-            ); */
-            difference() {
-                cylinder(
-                    d = inner_diameter,
-                    h = head_height + e
-                );
-
-                translate([0, 0, -e]) {
-                    cylinder(
-                        d1 = inner_diameter - wall * 2,
-                        d2 = inner_diameter - wall * 2 + .4,
-                        h = head_height + e * 3
+        difference() {
+            union() {
+                translate([0, 0, z]) {
+                    ring(
+                        diameter = inner_diameter,
+                        height = head_height + e,
+                        thickness = wall
                     );
+
+                    cylinder_grip(
+                        diameter = head_diameter + tolerance * 2,
+                        height = head_height + e,
+                        count = 3,
+                        rotation_offset = 180,
+                        size = shim_size
+                    );
+                }
+
+                translate([
+                    head_diameter / -2,
+                    head_diameter / -2 - tolerance,
+                    z
+                ]) {
+                    cube([
+                        head_diameter,
+                        head_flat_depth - tolerance + e,
+                        head_height + e,
+                    ]);
                 }
             }
 
-            cylinder_grip(
-                diameter = head_diameter + tolerance * 2,
-                height = head_height + e,
-                count = 3,
-                rotation_offset = 180,
-                size = shim_size
-            );
-        }
-
-        translate([
-            head_diameter / -2,
-            head_diameter / -2 - tolerance,
-            z
-        ]) {
-            cube([
-                head_diameter,
-                head_flat_depth - tolerance + e,
-                head_height + e,
-            ]);
+            if (head_lock_chamfer > 0) {
+                translate([0, 0, z + head_height - chamfer_depth + e]) {
+                    cylinder(
+                        d1 = min(
+                            inner_diameter - wall * 2 - shim_size,
+                            head_diameter - head_flat_depth - tolerance * 2
+                        ),
+                        d2 = inner_diameter - wall * 2 + chamfer_depth,
+                        h = chamfer_depth + e
+                    );
+                }
+            }
         }
     }
 
@@ -130,5 +135,41 @@ module trimpot_knob(
     }
 }
 
-# trimpot_knob(diameter = 20, simplify = true);
-trimpot_knob(diameter = 20);
+/* # trimpot_knob(diameter = 20, simplify = true); */
+
+module _test_head_lock_chamfer(head_lock_chamfer, label) {
+    difference() {
+        trimpot_knob(
+            diameter = 18.692,
+            grip_size = 1.5,
+            cap_height = 1,
+            head_lock_chamfer = head_lock_chamfer
+        );
+
+        /* translate([-20, -20, -1]) cube([20, 20 * 2, 10]); */
+
+        translate([0, 0, -.01]) mirror([1, 0, 0])
+        linear_extrude(height = .4) offset(delta = .2) resize(1) {
+            text(
+                label,
+                size = 4,
+                halign = "center",
+                valign = "center"
+            );
+        }
+    }
+}
+
+tests = [
+    [.2, "2"],
+    [.4, "4"],
+    [.6, "6"],
+    [1, "10"],
+    [2, "20"],
+];
+
+for (i = [0 : len(tests) - 1]) {
+    translate([i * 25, 0, 0]) {
+        _test_head_lock_chamfer(tests[i][0], tests[i][1]);
+    }
+}

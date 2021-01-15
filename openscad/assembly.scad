@@ -89,7 +89,8 @@ module assembly(
     quick_preview = false,
     cross_section = undef,
     echo_dimensions = true,
-    flip_vertically = false
+    flip_vertically = false,
+    reduced_test_case = REDUCED_TEST_CASE
 ) {
     e = 0.0145;
     plot = PCB_BUTTONS[1][0] - PCB_BUTTONS[0][0];
@@ -139,7 +140,9 @@ module assembly(
     );
     pcb_stilt_height = pcb_z - enclosure_floor_ceiling;
 
-    enclosure_width = enclosure_gutter * 2 + mount_width;
+    enclosure_width = reduced_test_case
+        ? 30 // arbitrary
+        : enclosure_gutter * 2 + mount_width;
     enclosure_length = pcb_y + keys_mount_end_on_pcb
         + PCB_COMPONENTS_LENGTH + window_y_extension * 2
         + enclosure_gutter;
@@ -1004,7 +1007,9 @@ module assembly(
                         include_switch_cavity = false,
                         z_bleed = -e
                     );
-                    _mount_stilts_and_spacers();
+                    if (!reduced_test_case) {
+                        _mount_stilts_and_spacers();
+                    }
                     _mounting_rail_aligners(cavity = false);
                     _speaker_container();
                     _hitch_stilts();
@@ -1013,16 +1018,18 @@ module assembly(
                     _pencil_stand();
                 }
 
-                _switch_exposure(
-                    xy_bleed = tolerance,
-                    include_switch_cavity = true,
-                    z_bleed = e
-                );
-                _switch_engraving();
-                _screw_cavities();
-                _engraving();
-                _volume_wheel_cavity(is_bottom = true);
-                _pencil_stand(cavity = true);
+                if (!reduced_test_case) {
+                    _switch_exposure(
+                        xy_bleed = tolerance,
+                        include_switch_cavity = true,
+                        z_bleed = e
+                    );
+                    _switch_engraving();
+                    _screw_cavities();
+                    _engraving();
+                    _volume_wheel_cavity(is_bottom = true);
+                    _pencil_stand(cavity = true);
+                }
             }
         }
 
@@ -1503,13 +1510,15 @@ module assembly(
             translate([
                 key_mounting_rail_x,
                 key_mounting_rail_y,
-                pcb_z + PCB_HEIGHT
+                reduced_test_case
+                    ? enclosure_floor_ceiling + e * 2
+                    : pcb_z + PCB_HEIGHT
             ]) {
                 mounting_rail(
                     width = enclosure_width - key_mounting_rail_x * 2,
                     length = mount_length,
                     height = mount_height,
-                    hole_xs = mount_hole_xs,
+                    hole_xs = reduced_test_case ? [] : mount_hole_xs,
                     hole_xs_x_offset = keys_x - key_mounting_rail_x,
                     hole_diameter = PCB_MOUNT_HOLE_DIAMETER + tolerance * 2
                 );
@@ -1612,6 +1621,14 @@ module assembly(
             translate([x, enclosure_length - length, z]) {
                 cube([width, length + 10, enclosure_height - z - enclosure_floor_ceiling - e]);
             }
+        } else if (reduced_test_case) {
+            translate([-e, key_mounting_rail_y - e, -e]) {
+                cube([
+                    enclosure_width + e * 2,
+                    mount_length + e * 2,
+                    enclosure_floor_ceiling + BUTTON_HEIGHT
+                ]);
+            }
         }
     }
 }
@@ -1637,5 +1654,6 @@ assembly(
     quick_preview = QUICK_PREVIEW && $preview,
     cross_section = CROSS_SECTION,
     echo_dimensions = ECHO_DIMENSIONS,
-    flip_vertically = FLIP_VERTICALLY
+    flip_vertically = FLIP_VERTICALLY,
+    reduced_test_case = REDUCED_TEST_CASE
 );
