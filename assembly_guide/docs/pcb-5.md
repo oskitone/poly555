@@ -54,3 +54,5 @@ With the battery attached and power switch on, press buttons **S2** through **S2
 
 - [Do all the usual debugging steps like checking solder joints, etc.](debugging)
 - Do the same troubleshooting checks you did in [Step 3: Make Some Noise](pcb-3#troubleshooting) but for all the timer circuits.
+
+If all is well, congrats! The hard parts are over. Now's a good time to go wash your hands to get rid of any soldering residue.

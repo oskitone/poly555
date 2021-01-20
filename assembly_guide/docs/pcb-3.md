@@ -42,6 +42,7 @@ Finish the timer circuit, add the amp circuit, and test the speaker.
    6. Solder the **10nF ceramic capacitor** to **C3**.
    7. Solder a **1k trimmer potentiometer** into **RV1**.
    8. Solder an **IC socket** into **U1**.
+       * The legs of the socket may be bent from shipping. Make sure they're all straight and intact when inserting into PCB and before soldering. De-soldering a damaged socket is no fun! Do this for all the IC sockets for the rest of the assembly process.
 2. Solder the amp circuit
    1. Solder a **.1uF ceramic capacitor** to **C62**.
    2. Solder the **47nF ceramic capacitor** to **C63**.
