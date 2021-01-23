@@ -29,6 +29,14 @@ There are five parts you'll need to print:
 5. **Volume wheel:**
    And the volume wheel fits onto a potentiometer and is exposed on the enclosure's side.
 
+### Reduced test case
+
+Wondering what that sixth file called "reduced_test_case" is for?
+
+This is optional but helpful for confirming your printer and slicer will be able to print the full POLY555 and have it assemble as expected. It takes about 30min.
+
+If the test case's two pieces are difficult to fit together successfully after printing, revisit your slicer settings and ensure the printer is calibrated. Repeat until successful.
+
 ## Slicing recommendations
 
 | Piece                | Layer height | Color change | Print time |
