@@ -18,6 +18,7 @@ module trimpot_knob(
     grip_size = 1.5,
 
     tolerance = .1,
+    head_lock_chamfer = .2,
 
     shim_size = .8,
 
@@ -25,7 +26,7 @@ module trimpot_knob(
 
     $fn = HIDEF_ROUNDING
 ) {
-    e = 0.047;
+    e = 0.0047;
 
     total_height = cap_height * 2 + head_height;
     inner_diameter = head_diameter + tolerance * 2 + wall * 2;
@@ -33,32 +34,49 @@ module trimpot_knob(
     module _head_lock() {
         z = cap_height - e;
 
-        translate([0, 0, z]) {
-            ring(
-                diameter = inner_diameter,
-                height = head_height + e,
-                thickness = wall
-            );
+        difference() {
+            union() {
+                translate([0, 0, z]) {
+                    ring(
+                        diameter = inner_diameter,
+                        height = head_height + e,
+                        thickness = wall
+                    );
 
-            cylinder_grip(
-                diameter = head_diameter + tolerance * 2,
-                height = head_height + e,
-                count = 3,
-                rotation_offset = 180,
-                size = shim_size
-            );
-        }
+                    cylinder_grip(
+                        diameter = head_diameter + tolerance * 2,
+                        height = head_height + e,
+                        count = 3,
+                        rotation_offset = 180,
+                        size = shim_size
+                    );
+                }
 
-        translate([
-            head_diameter / -2,
-            head_diameter / -2 - tolerance,
-            z
-        ]) {
-            cube([
-                head_diameter,
-                head_flat_depth - tolerance + e,
-                head_height + e,
-            ]);
+                translate([
+                    head_diameter / -2,
+                    head_diameter / -2 - tolerance,
+                    z
+                ]) {
+                    cube([
+                        head_diameter,
+                        head_flat_depth - tolerance + e,
+                        head_height + e,
+                    ]);
+                }
+            }
+
+            if (head_lock_chamfer > 0) {
+                translate([0, 0, z + head_height - head_lock_chamfer + e]) {
+                    cylinder(
+                        d1 = min(
+                            inner_diameter - wall * 2 - shim_size,
+                            head_diameter - head_flat_depth - tolerance * 2
+                        ),
+                        d2 = inner_diameter - wall * 2 + head_lock_chamfer,
+                        h = head_lock_chamfer + e
+                    );
+                }
+            }
         }
     }
 
