@@ -379,7 +379,7 @@ module assembly(
         }
     }
 
-    module _enclosure() {
+    module _enclosure(show_enclosure_bottom, show_enclosure_top) {
         keys_exposed_height = accidental_key_extra_height
             + natural_key_exposed_height;
         bumper_length = keys_cavity_length + enclosure_gutter - key_gutter
@@ -1550,24 +1550,7 @@ module assembly(
         }
     }
 
-    rotate(
-        flip_vertically
-            ? [0, 180, 0]
-            : use_pencil_stand_display_angle
-                ? [pencil_stand_display_angle, 0, 0]
-                : []
-    ) intersection() {
-        union() {
-            _enclosure();
-            if (show_battery) { % _battery(); }
-            if (show_speaker) { % _speaker(); }
-            if (show_pcb) { % _pcb(); }
-            if (show_volume_wheel) { _pcb(just_volume_wheel = true); }
-            if (show_mounting_rail) { _mounting_rail(); }
-            if (show_keys) { _keys(); }
-            if (show_window_pane) { % _window_pane();}
-        }
-
+    module _cross_section() {
         if (cross_section == "speaker") {
             cube([speaker_x, enclosure_length, enclosure_height]);
         } else if (cross_section == "width") {
@@ -1630,6 +1613,65 @@ module assembly(
                 ]);
             }
         }
+    }
+
+    module _output(
+        show_enclosure_bottom = false,
+        show_battery = false,
+        show_speaker = false,
+        show_switch = false,
+        show_pcb = false,
+        show_volume_wheel = false,
+        show_mounting_rail = false,
+        show_keys = false,
+        show_enclosure_top = false,
+        show_window_pane = false,
+        show_pencil_stand_pencil = false
+    ) {
+        rotate(
+            flip_vertically
+                ? [0, 180, 0]
+                : use_pencil_stand_display_angle
+                    ? [pencil_stand_display_angle, 0, 0]
+                    : []
+        ) intersection() {
+            union() {
+                _enclosure(show_enclosure_bottom, show_enclosure_top);
+                if (show_battery) { % _battery(); }
+                if (show_speaker) { % _speaker(); }
+                if (show_pcb) { % _pcb(); }
+                if (show_volume_wheel) { _pcb(just_volume_wheel = true); }
+                if (show_mounting_rail) { _mounting_rail(); }
+                if (show_keys) { _keys(); }
+                if (show_window_pane) { % _window_pane();}
+            }
+
+            _cross_section();
+        }
+    }
+
+
+    if (reduced_test_case) {
+        gutter = 1;
+
+        _output(show_enclosure_bottom = true);
+        translate([0, mount_length + gutter, -enclosure_floor_ceiling]) {
+            _mounting_rail();
+        }
+    } else {
+        _output(
+            show_enclosure_bottom = show_enclosure_bottom,
+            show_battery = show_battery,
+            show_speaker = show_speaker,
+            show_switch = show_switch,
+            show_pcb = show_pcb,
+            show_volume_wheel = show_volume_wheel,
+            show_mounting_rail = show_mounting_rail,
+            show_keys = show_keys,
+            show_enclosure_top = show_enclosure_top,
+            show_window_pane = show_window_pane,
+            show_pencil_stand_pencil = show_pencil_stand_pencil
+        );
     }
 }
 
