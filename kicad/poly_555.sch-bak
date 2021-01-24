@@ -16,7 +16,7 @@ $EndDescr
 $Sheet
 S 4850 1300 900  550 
 U 60F4E92A
-F0 "555_astable" 50
+F0 "Sheet60F4E92A" 50
 F1 "555_astable.sch" 50
 F2 "Out" I R 5750 1500 50 
 F3 "9v" I L 4850 1500 50 

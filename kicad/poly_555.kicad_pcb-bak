@@ -6745,7 +6745,7 @@
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5EF27E4C/60F6A6DA)
-    (fp_text reference U5 (at 9.906 6.858 90) (layer F.SilkS)
+    (fp_text reference U5 (at 3.81 6.858 180) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text value 555 (at 9.906 3.048 90) (layer F.Fab)
