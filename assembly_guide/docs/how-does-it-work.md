@@ -15,7 +15,7 @@ Inside the enclosure and under the keys is this PCB:
 3. **Power**<br />
    A 9v battery powers the device, which is toggled by a sliding toggle switch on the PCB's back. An LED lights up when it's on.
 4. **Buttons and regulator**<br />
-   Power from the switched 9v battery is regulated down to 5v by a 7805 regulator, then distributed across 20 tactile switches -- one for each timer circuit above.
+   Power from the switched 9v battery is regulated down to 5v by a 7805 regulator, then distributed across 20 tactile switches -- one for each timer circuit above. Regulating the voltage to a fixed 5v keeps the timers' frequencies consistent even as the battery drains.
 
 For a deeper dive into the underlying circuit, head over to the [schematics](schematics).
 
