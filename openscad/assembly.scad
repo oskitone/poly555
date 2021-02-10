@@ -78,13 +78,13 @@ module assembly(
     show_window_pane = false,
     show_pencil_stand_pencil = true,
 
-    enclosure_color = undef,
-    enclosure_opacity = .75,
-    pcb_color = "purple",
-    pcb_opacity = .75,
-    natural_key_color = "white",
-    accidental_key_color = "black",
-    key_opacity = .75,
+    enclosure_color = "hotpink",
+    enclosure_opacity = 1,
+    pcb_color = "black",
+    pcb_opacity = 1,
+    natural_key_color = "black",
+    accidental_key_color = "white",
+    key_opacity = 1,
 
     quick_preview = false,
     cross_section = undef,
@@ -318,6 +318,8 @@ module assembly(
                     cantilever_length = cantilever_length,
                     cantilever_height = cantilever_height,
                     cantilever_recession = cantilever_recession,
+
+                    natural_labels = ["E", "D", "C", "B", "A", "G", "F"],
 
                     include_mount = false,
                     include_natural = include_natural,
