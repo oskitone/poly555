@@ -33,9 +33,14 @@ module keys(
     cantilever_height = 0,
     cantilever_recession = 0,
 
+    natural_labels = ["C", "D", "E", "F", "G", "A", "B"],
+
     include_natural = true,
     include_accidental = true,
-    include_cantilevers = true
+    include_cantilevers = true,
+    include_labels = false,
+
+    tolerance = 0
 ) {
     max_fillet = max(front_fillet, sides_fillet);
 
@@ -378,6 +383,35 @@ module keys(
         }
     }
 
+    module _label(
+        x,
+        natural_index,
+        label_height = 1,
+        bleed = -tolerance,
+        size = 3.4,
+        gutter = 2
+    ) {
+        _width = accidental_width - sides_fillet * 2;
+
+        label = natural_labels[natural_index % len(natural_labels)];
+
+        translate([
+            x + natural_width / 2,
+            natural_length - size / 2 - gutter,
+            natural_height -  e
+        ]) {
+            linear_extrude(height = label_height) offset(delta = bleed) {
+                text(
+                    label,
+                    size = size,
+                    font = "Orbitron:style=Black",
+                    halign = "center",
+                    valign = "center"
+                );
+            }
+        }
+    }
+
     for (i = [0 : count - 1]) {
         adjusted_i = (i + index_offset);
         note_in_octave_index = adjusted_i % 12;
@@ -385,9 +419,16 @@ module keys(
         is_natural = len(search(note_in_octave_index, [1,3,6,8,10])) == 0;
         is_accidental = !is_natural;
 
-        if (is_natural && include_natural) {
+        if (is_natural) {
             x = (natural_width + gutter) * (natural_index - starting_natural_key_index);
-            _natural(i, x, note_in_octave_index, natural_index);
+
+            if (include_natural) {
+                _natural(i, x, note_in_octave_index, natural_index);
+            }
+
+            if (include_labels) {
+                _label(x, natural_index);
+            }
         }
 
         if (is_accidental && include_accidental) {
@@ -426,6 +467,9 @@ module mounted_keys(
     include_natural = true,
     include_accidental = true,
     include_cantilevers = true,
+    include_labels = false,
+
+    natural_labels = ["C", "D", "E", "F", "G", "A", "B"],
 
     mount_length = 0,
     mount_height = 1,
@@ -449,7 +493,11 @@ module mounted_keys(
         gutter = gutter
     );
 
-    module _keys(naturals = true) {
+    module _keys(
+        naturals = false,
+        accidentals = false,
+        labels = false
+    ) {
         keys(
             count = count,
             starting_natural_key_index = starting_natural_key_index,
@@ -475,22 +523,30 @@ module mounted_keys(
             gutter = gutter,
 
             include_natural = naturals,
-            include_accidental = !naturals,
+            include_accidental = accidentals,
             include_cantilevers = include_cantilevers,
+            include_labels = labels,
+
+            natural_labels = natural_labels,
 
             cantilever_length = cantilever_length,
             cantilever_height = cantilever_height,
-            cantilever_recession = cantilever_recession
+            cantilever_recession = cantilever_recession,
+
+            tolerance = tolerance
         );
     }
 
-    if (include_natural || include_accidental || include_mount) {
+    if (
+        include_labels || include_natural || include_accidental || include_mount
+    ) {
         mount_y = natural_length + cantilever_length - cantilever_recession;
 
         difference() {
             union() {
-                if (include_natural) { _keys(true); }
-                if (include_accidental) { _keys(false); }
+                if (include_natural) { _keys(true, false, false); }
+                if (include_accidental) { _keys(false, true, false); }
+                if (include_labels) { _keys(false, false, true); }
                 if (include_mount) {
                     translate([0, mount_y, 0]) {
                         cube([mount_width, mount_length, mount_height]);
@@ -510,7 +566,7 @@ module mounted_keys(
 }
 
 mounted_keys(
-    count = 5,
+    count = 13,
     starting_natural_key_index = 3,
 
     natural_length = 50,

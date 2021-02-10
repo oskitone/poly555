@@ -284,7 +284,11 @@ module assembly(
         }
     }
 
-    module _mounted_keys(include_natural = false, include_accidental = false) {
+    module _mounted_keys(
+        include_natural = false,
+        include_accidental = false,
+        include_labels = false
+    ) {
         function get_actuator_y(i) = pcb_y + PCB_BUTTONS[i][1] - keys_y
             + BUTTON_LENGTH / 2;
 
@@ -317,7 +321,8 @@ module assembly(
 
                     include_mount = false,
                     include_natural = include_natural,
-                    include_accidental = include_accidental
+                    include_accidental = include_accidental,
+                    include_labels = include_labels
                 );
             }
 
@@ -350,6 +355,7 @@ module assembly(
         }
         color(accidental_key_color, key_opacity) {
             _mounted_keys(include_accidental = true);
+            _mounted_keys(include_labels = true);
         }
     }
 
