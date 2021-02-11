@@ -109,7 +109,7 @@ module enclosure_half(
     }
 
     module _outer_wall() {
-        group() {
+        union() {
             difference() {
                 rounded_cube(
                     [
@@ -135,8 +135,12 @@ module enclosure_half(
 
                 translate([
                     -e,
-                    -e,
-                    (add_lip && include_tongue_and_groove) ? height + lip_height : height
+                    (add_lip && include_tongue_and_groove)
+                        ? wall + e
+                        : -e,
+                    (add_lip && include_tongue_and_groove)
+                        ? height + lip_height
+                        : height
                 ]) {
                     cube([
                         _width + e * 2,
@@ -191,10 +195,12 @@ module enclosure_half(
         }
     }
 
-    module _groove_exposure() {
+    module _groove_exposure(
+        clearance = tolerance * 2
+    ) {
         if (include_tongue_and_groove && remove_lip) {
-            translate([0, -e, height - lip_height]) {
-                cube([width, wall + tolerance * 4 + e * 2, lip_height + e]);
+            translate([0, -e, -e]) {
+                cube([width, wall + clearance + e * 2, height + e * 2]);
             }
         }
     }
