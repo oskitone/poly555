@@ -10,7 +10,11 @@ module breakaway_support(
     include_first = true,
     include_last = true,
     support_depth = BREAKAWAY_SUPPORT_DEPTH,
-    bridge_height = SACRIFICIAL_BRIDGE_HEIGHT
+    bridge_height = SACRIFICIAL_BRIDGE_HEIGHT,
+
+    include_raft = false,
+    raft_height = SACRIFICIAL_BRIDGE_HEIGHT,
+    raft_depth = BREAKAWAY_SUPPORT_DEPTH
 ) {
     support_depth = max(BREAKAWAY_SUPPORT_DEPTH, support_depth);
     width = max(width, support_depth);
@@ -21,6 +25,16 @@ module breakaway_support(
     has_length = length != support_depth;
 
     assert(has_width || has_length, "Supply either a width or length");
+
+    module _raft(
+        width = width + raft_depth * 2,
+        length = length + raft_depth * 2,
+        height = raft_height
+    ) {
+        translate([-raft_depth, -raft_depth, 0]) {
+            cube([width, length, height]);
+        }
+    }
 
     module _wall() {
         span = max(width, length);
@@ -40,6 +54,10 @@ module breakaway_support(
 
         translate([0, 0, flip_vertically ? 0 : height - bridge_height]) {
             cube([width, length, bridge_height]);
+        }
+
+        if (include_raft) {
+            _raft();
         }
     }
 
