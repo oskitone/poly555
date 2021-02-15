@@ -1506,27 +1506,27 @@ module assembly(
     }
 
     module _mounting_rail() {
-        difference() {
-            translate([
-                key_mounting_rail_x,
-                key_mounting_rail_y,
-                reduced_test_case
-                    ? enclosure_floor_ceiling + e * 2
-                    : pcb_z + PCB_HEIGHT
-            ]) {
-                mounting_rail(
-                    width = enclosure_width - key_mounting_rail_x * 2,
-                    length = mount_length,
-                    height = mount_height,
-                    hole_xs = reduced_test_case ? [] : mount_hole_xs,
-                    hole_xs_x_offset = keys_x - key_mounting_rail_x,
-                    hole_diameter = PCB_MOUNT_HOLE_DIAMETER + tolerance * 2
-                );
+        color(enclosure_color) {
+            difference() {
+                translate([
+                    key_mounting_rail_x,
+                    key_mounting_rail_y,
+                    reduced_test_case
+                        ? enclosure_floor_ceiling + e * 2
+                        : pcb_z + PCB_HEIGHT
+                ]) {
+                    mounting_rail(
+                        width = enclosure_width - key_mounting_rail_x * 2,
+                        length = mount_length,
+                        height = mount_height,
+                        hole_xs = reduced_test_case ? [] : mount_hole_xs,
+                        hole_xs_x_offset = keys_x - key_mounting_rail_x,
+                        hole_diameter = PCB_MOUNT_HOLE_DIAMETER + tolerance * 2
+                    );
+                }
+
+                _mounting_rail_aligners(cavity = true);
             }
-
-            _mounting_rail_aligners(cavity = true);
-
-            // TODO: cavity for voltage regulator screw, if keeping
         }
     }
 
