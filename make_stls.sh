@@ -24,7 +24,7 @@ function export_stl() {
 
     echo "Exporting $filename..."
 
-    $openscad "openscad/assembly.scad" \
+    $openscad "openscad/poly555.scad" \
         -o "$filename" \
         -D 'ECHO_DIMENSIONS=false' \
         -D 'SHOW_ENCLOSURE_BOTTOM=false' \

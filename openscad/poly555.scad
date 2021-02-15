@@ -18,7 +18,7 @@ use <lib/supportless_screw_cavity.scad>;
 use <lib/switch.scad>;
 use <lib/utils.scad>;
 
-module assembly(
+module poly555(
     key_gutter = 1,
     accidental_key_recession = 2,
     natural_key_exposed_height = 3,
@@ -1675,7 +1675,7 @@ module assembly(
     }
 }
 
-assembly(
+poly555(
     show_enclosure_bottom = SHOW_ENCLOSURE_BOTTOM,
     show_battery = SHOW_BATTERY,
     show_speaker = SHOW_SPEAKER,
