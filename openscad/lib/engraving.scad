@@ -1,7 +1,7 @@
 module engraving(
     string = undef,
     svg = undef,
-    size = undef,
+    resize = undef,
     font = "Work Sans:style=Black",
     size = 10,
     bleed = 0,
@@ -13,7 +13,7 @@ module engraving(
     minimal_layer_height = .1;
 
     module _layer(height, bleed) {
-        linear_extrude(height = height) offset(delta = bleed) resize(size) {
+        linear_extrude(height = height) offset(delta = bleed) resize(resize) {
             if (string != undef) {
                 text(
                     string,

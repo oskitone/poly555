@@ -660,7 +660,7 @@ module poly555(
                     rotate([0, 180, 0]) {
                         engraving(
                             svg = "../../branding.svg",
-                            size = [69, 69 * OSKITONE_LENGTH_WIDTH_RATIO],
+                            resize = [69, 69 * OSKITONE_LENGTH_WIDTH_RATIO],
                             height = engraving_depth + e,
                             bleed = -tolerance,
                             chamfer = quick_preview ? 0 : engraving_chamfer
@@ -1185,7 +1185,7 @@ module poly555(
                         engraving(
                             svg = "../../branding.svg",
                             height = engraving_depth + e,
-                            size = [branding_width, brand_size],
+                            resize = [branding_width, brand_size],
                             center = false,
                             bleed = -tolerance,
                             chamfer = quick_preview ? 0 : engraving_chamfer
