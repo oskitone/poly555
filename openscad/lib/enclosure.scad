@@ -38,7 +38,6 @@ module enclosure_half(
     tolerance = .1, // increase to .2 for looser fit, will need separate fixture
 
     include_tongue_and_groove = false,
-    tongue_and_groove_end_length = undef,
 
     $fn = $fn
 ) {
@@ -57,52 +56,53 @@ module enclosure_half(
     floor_ceiling = floor_ceiling ? floor_ceiling : wall;
     assumed_total_height = height * 2;
 
-    module _grooves(z, bleed = 0) {
-        x = wall - lip + tolerance - groove_depth - bleed;
-        groove_width = _width - x * 2;
-        groove_length = include_tongue_and_groove
-            ? _length - wall - x
-            : _length - wall * 2;
+    module _grooves(z, bleed = 0, entrance_length = 2) {
+        edge_x = wall - lip - bleed;
+        groove_x = edge_x + tolerance - groove_depth;
+
+        front_clearance = add_lip
+            ? wall + entrance_length
+            : wall - lip - tolerance + e;
+
+        groove_width = _width - groove_x * 2;
+        groove_length = _length - wall - front_clearance;
 
         support_depth = groove_depth - tolerance;
 
-        if (include_tongue_and_groove) {
-            intersection() {
-                hull() {
-                    translate([x + support_depth, wall, z]) {
-                        flat_top_rectangular_pyramid(
-                            top_width = groove_width,
-                            top_length = groove_length,
-                            bottom_width = groove_width - support_depth * 2,
-                            bottom_length = groove_length - support_depth,
-                            height = support_depth,
-                            top_y = 0
-                        );
-                    }
+        hull() {
+            translate([groove_x + support_depth, wall, z]) {
+                flat_top_rectangular_pyramid(
+                    top_width = groove_width,
+                    top_length = groove_length,
+                    bottom_width = groove_width - support_depth * 2,
+                    bottom_length = groove_length,
+                    height = support_depth,
+                    top_y = 0
+                );
+            }
 
-                    translate([x, wall, z + groove_height - support_depth]) {
-                        flat_top_rectangular_pyramid(
-                            top_width = groove_width - support_depth * 2,
-                            top_length = groove_length - support_depth,
-                            bottom_width = groove_width,
-                            bottom_length = groove_length,
-                            height = support_depth,
-                            top_y = 0
-                        );
-                    }
-                }
+            translate([groove_x, wall, z + groove_height - support_depth]) {
+                flat_top_rectangular_pyramid(
+                    top_width = groove_width - support_depth * 2,
+                    top_length = groove_length,
+                    bottom_width = groove_width,
+                    bottom_length = groove_length,
+                    height = support_depth,
+                    top_y = 0
+                );
+            }
 
-                if (tongue_and_groove_end_length) {
-                    y = length - wall - tongue_and_groove_end_length - bleed;
-                    z = add_lip ? height : height - lip_height;
-
-                    translate([-e, y, z - e]) {
-                        cube([
-                            width + e * 2,
-                            tongue_and_groove_end_length + wall + bleed,
-                            lip_height + e * 2
-                        ]);
-                    }
+            if (add_lip) {
+                translate([
+                    edge_x,
+                    wall + groove_length,
+                    z + support_depth
+                ]) {
+                    cube([
+                        width - edge_x * 2,
+                        entrance_length,
+                        groove_height - support_depth * 2
+                    ]);
                 }
             }
         }
@@ -155,10 +155,12 @@ module enclosure_half(
                     cube([_width - x * 2, length, lip_height + e]);
                 }
 
-                _grooves(
-                    z = height + lip_height - groove_height,
-                    bleed = -tolerance
-                );
+                if (include_tongue_and_groove) {
+                    _grooves(
+                        z = height + lip_height - groove_height,
+                        bleed = -tolerance
+                    );
+                }
             }
         }
     }
@@ -184,10 +186,12 @@ module enclosure_half(
                 cube([width, length, lip_height + e]);
             }
 
-            _grooves(
-                z = height - lip_height,
-                bleed = tolerance
-            );
+            if (include_tongue_and_groove) {
+                _grooves(
+                    z = height - lip_height,
+                    bleed = tolerance
+                );
+            }
         }
     }
 
@@ -432,7 +436,6 @@ module __test_enclosure(
                 fillet = 2,
 
                 include_tongue_and_groove = true,
-                tongue_and_groove_end_length = value,
 
                 tolerance = .1,
 
