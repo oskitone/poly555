@@ -38,6 +38,7 @@ module enclosure_half(
     tolerance = .1, // increase to .2 for looser fit, will need separate fixture
 
     include_tongue_and_groove = false,
+    tongue_and_groove_endstop_height = 0,
 
     $fn = $fn
 ) {
@@ -117,6 +118,7 @@ module enclosure_half(
                         _length,
                         (add_lip && include_tongue_and_groove)
                             ? height + lip_height + fillet
+                                + tongue_and_groove_endstop_height
                             : height + fillet
                     ],
                     fillet,
@@ -128,7 +130,8 @@ module enclosure_half(
                         cube([
                             _width + e * 2,
                             _length - wall + e,
-                            lip_height * 2 + e
+                            tongue_and_groove_endstop_height
+                                + lip_height * 2 + e
                         ]);
                     }
                 }
@@ -136,7 +139,9 @@ module enclosure_half(
                 translate([
                     -e,
                     -e,
-                    (add_lip && include_tongue_and_groove) ? height + lip_height : height
+                    (add_lip && include_tongue_and_groove)
+                        ? height + lip_height + tongue_and_groove_endstop_height
+                        : height
                 ]) {
                     cube([
                         _width + e * 2,
@@ -196,9 +201,11 @@ module enclosure_half(
     }
 
     module _groove_exposure() {
+        _height = height - floor_ceiling;
+
         if (include_tongue_and_groove && remove_lip) {
-            translate([0, -e, height - lip_height]) {
-                cube([width, wall + tolerance * 4 + e * 2, lip_height + e]);
+            translate([0, -e, height - _height]) {
+                cube([width, wall + tolerance * 4 + e * 2, _height + e]);
             }
         }
     }
