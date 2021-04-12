@@ -306,6 +306,9 @@ module poly555(
                     natural_actuator_y = get_actuator_y(0),
                     accidental_actuator_y = get_actuator_y(1),
 
+                    remove_empty_space = true,
+                    front_extension = 2.5,
+
                     front_fillet = quick_preview ? 0 : 2,
                     sides_fillet = quick_preview ? 0 : 1,
 

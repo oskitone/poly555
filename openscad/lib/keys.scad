@@ -387,8 +387,11 @@ module mounted_keys(
     accidental_actuator_y,
     actuator_length = BUTTON_DIAMETER,
 
+    remove_empty_space = false,
     wall = .8,
     ceiling = 1,
+    bottom = 1,
+    front_extension = 0,
 
     front_fillet = 2,
     sides_fillet = 1,
@@ -439,8 +442,11 @@ module mounted_keys(
             accidental_actuator_y = accidental_actuator_y,
             actuator_length = actuator_length,
 
+            remove_empty_space = remove_empty_space,
             wall = wall,
             ceiling = ceiling,
+            bottom = bottom,
+            front_extension = front_extension,
 
             front_fillet = front_fillet,
             sides_fillet = sides_fillet,
