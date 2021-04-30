@@ -1646,7 +1646,9 @@ module poly555(
                 if (show_window_pane) { % _window_pane();}
             }
 
-            _cross_section();
+            if (cross_section) {
+                _cross_section();
+            }
         }
     }
 
