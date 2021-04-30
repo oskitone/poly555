@@ -602,61 +602,6 @@ module poly555(
         }
 
         module _bottom() {
-            module _switch_container() {
-                translate([
-                    switch_x - SWITCH_ORIGIN.x - enclosure_inner_wall,
-                    switch_y - SWITCH_ORIGIN.y - enclosure_inner_wall,
-                    switch_exposure_height - e
-                ]) {
-                    cube([
-                        SWITCH_BASE_WIDTH + enclosure_inner_wall * 2,
-                        SWITCH_BASE_LENGTH + enclosure_inner_wall * 2,
-                        SWITCH_BASE_HEIGHT + e
-                    ]);
-                }
-            }
-
-            module _switch_exposure(
-                xy_bleed = 0,
-                include_switch_cavity = true,
-                z_bleed = 0
-            ) {
-                width_extension = switch_exposure_height;
-                length_extension = switch_exposure_height;
-
-                translate([
-                    switch_x - SWITCH_ORIGIN.x - width_extension - xy_bleed,
-                    switch_y - SWITCH_ORIGIN.y - length_extension - xy_bleed,
-                    -z_bleed
-                ]) {
-                    flat_top_rectangular_pyramid(
-                        top_width = SWITCH_BASE_WIDTH + xy_bleed * 2,
-                        top_length = SWITCH_BASE_LENGTH + xy_bleed * 2,
-
-                        bottom_width = SWITCH_BASE_WIDTH + xy_bleed * 2
-                            + width_extension * 2,
-                        bottom_length = SWITCH_BASE_LENGTH + xy_bleed * 2
-                            + length_extension * 2,
-
-                        height = switch_exposure_height + z_bleed * 2
-                    );
-                }
-
-                if (include_switch_cavity) {
-                    translate([
-                        switch_x - SWITCH_ORIGIN.x - xy_bleed,
-                        switch_y - SWITCH_ORIGIN.y - xy_bleed,
-                        switch_exposure_height - z_bleed
-                    ]) {
-                        cube([
-                            SWITCH_BASE_WIDTH + xy_bleed * 2,
-                            SWITCH_BASE_LENGTH + xy_bleed * 2,
-                            SWITCH_BASE_HEIGHT + z_bleed * 2
-                        ]);
-                    }
-                }
-            }
-
             module _mount_stilts_and_spacers() {
                 intersection() {
                     translate([pcb_x, pcb_y, pcb_z - e]) {
@@ -1001,8 +946,14 @@ module poly555(
                 union() {
                     _back();
                     _front();
-                    _switch_container();
-                    _switch_exposure(
+                    switch_container(
+                        position = [switch_x, switch_y],
+                        exposure_height = switch_exposure_height,
+                        wall = enclosure_inner_wall
+                    );
+                    switch_exposure(
+                        position = [switch_x, switch_y],
+                        exposure_height = switch_exposure_height,
                         xy_bleed = enclosure_inner_wall,
                         include_switch_cavity = false,
                         z_bleed = -e
@@ -1019,7 +970,9 @@ module poly555(
                 }
 
                 if (!reduced_test_case) {
-                    _switch_exposure(
+                    switch_exposure(
+                        position = [switch_x, switch_y],
+                        exposure_height = switch_exposure_height,
                         xy_bleed = tolerance,
                         include_switch_cavity = true,
                         z_bleed = e
