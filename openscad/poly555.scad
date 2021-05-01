@@ -13,8 +13,8 @@ use <lib/mounting_rail.scad>;
 use <lib/nut_lock.scad>;
 use <lib/pcb.scad>;
 use <lib/pencil_stand.scad>;
+use <lib/screw_head_exposures.scad>;
 use <lib/speaker.scad>;
-use <lib/supportless_screw_cavity.scad>;
 use <lib/switch.scad>;
 use <lib/utils.scad>;
 
@@ -651,43 +651,6 @@ module poly555(
                 }
             }
 
-            module _screw_cavities() {
-                $fn = HIDEF_ROUNDING;
-
-                module _chamfer(diameter, chamfer = 1, $fn = DEFAULT_ROUNDING) {
-                    cylinder(
-                        d1 = diameter + chamfer * 2,
-                        d2 = diameter,
-                        h = chamfer
-                    );
-                }
-
-                module _heads() {
-                    diameter = SCREW_HEAD_DIAMETER + tolerance * 2;
-                    height = SCREW_HEAD_HEIGHT + exposed_screw_head_clearance + e;
-
-                    for (p = BOTTOM_MOUNTED_PCB_HOLES) {
-                        translate([pcb_x + p.x, pcb_y + p.y, -e]) {
-                            cylinder(d = diameter, h = height);
-                            _chamfer(diameter);
-                        }
-
-                        translate([
-                            pcb_x + p.x,
-                            pcb_y + p.y,
-                            SCREW_HEAD_HEIGHT + exposed_screw_head_clearance - e
-                        ]) {
-                            supportless_screw_cavity(
-                                span = diameter,
-                                diameter = PCB_MOUNT_HOLE_DIAMETER + tolerance * 2
-                            );
-                        }
-                    }
-                }
-
-                _heads();
-            }
-
             module _engraving(corner_offset = 10) {
                 translate([
                     enclosure_width / 2,
@@ -978,7 +941,13 @@ module poly555(
                         z_bleed = e
                     );
                     _switch_engraving();
-                    _screw_cavities();
+                    translate([pcb_x, pcb_y, 0]) {
+                        screw_head_exposures(
+                            positions = BOTTOM_MOUNTED_PCB_HOLES,
+                            tolerance = tolerance,
+                            clearance = exposed_screw_head_clearance
+                        );
+                    }
                     _engraving();
                     _volume_wheel_cavity(is_bottom = true);
                     _pencil_stand(cavity = true);
