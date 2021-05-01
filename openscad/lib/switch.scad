@@ -3,6 +3,8 @@ include <values.scad>;
 use <basic_shapes.scad>;
 
 module switch(position = 0) {
+    e = .05234;
+
     translate([-SWITCH_ORIGIN.x, -SWITCH_ORIGIN.y, 0]) {
         cube([
             SWITCH_BASE_WIDTH,
@@ -15,12 +17,12 @@ module switch(position = 0) {
             (SWITCH_BASE_LENGTH - SWITCH_ACTUATOR_LENGTH) / 2
                 - SWITCH_ACTUATOR_TRAVEL / 2
                 + SWITCH_ACTUATOR_TRAVEL * position,
-            SWITCH_BASE_HEIGHT
+            SWITCH_BASE_HEIGHT - e
         ]) {
             cube([
                 SWITCH_ACTUATOR_WIDTH,
                 SWITCH_ACTUATOR_LENGTH,
-                SWITCH_ACTUATOR_HEIGHT
+                SWITCH_ACTUATOR_HEIGHT + e
             ]);
         }
     }
