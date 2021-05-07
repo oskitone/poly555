@@ -5,7 +5,7 @@ use <supportless_screw_cavity.scad>;
 module screw_head_exposure(
     tolerance = 0,
     clearance = 0,
-
+    show_dfm = true,
     $fn = HIDEF_ROUNDING
 ) {
     e = .0582;
@@ -26,11 +26,13 @@ module screw_head_exposure(
         _chamfer();
     }
 
-    translate([0, 0, SCREW_HEAD_HEIGHT + clearance - e]) {
-        supportless_screw_cavity(
-            span = diameter,
-            diameter = PCB_MOUNT_HOLE_DIAMETER + tolerance * 2
-        );
+    if (show_dfm) {
+        translate([0, 0, SCREW_HEAD_HEIGHT + clearance - e]) {
+            supportless_screw_cavity(
+                span = diameter,
+                diameter = PCB_MOUNT_HOLE_DIAMETER + tolerance * 2
+            );
+        }
     }
 }
 
