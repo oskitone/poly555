@@ -3,6 +3,22 @@ include <values.scad>;
 use <basic_shapes.scad>;
 use <utils.scad>;
 
+PENCIL_HEIGHT = 25.4 * 6;
+PENCIL_DIAMETER = 6;
+
+module pencil_stand_pencil(
+    wall,
+    depth = 20,
+    angle_x = 45,
+    angle_y = 45,
+) {
+    rotate([angle_y, angle_x, 0]) {
+        translate([0, 0, depth - PENCIL_HEIGHT - wall]) {
+            cylinder(d = PENCIL_DIAMETER, h = PENCIL_HEIGHT);
+        }
+    }
+}
+
 module pencil_stand(
     wall,
     depth = 20,
@@ -11,9 +27,6 @@ module pencil_stand(
     show_pencil = false,
     $fn = DEFAULT_ROUNDING
 ) {
-    PENCIL_HEIGHT = 25.4 * 6;
-    PENCIL_DIAMETER = 6;
-
     e = 0.0987;
 
     diameter = PENCIL_STAND_CAVITY_DIAMETER + wall * 2;
@@ -37,11 +50,12 @@ module pencil_stand(
     }
 
     if (show_pencil) {
-        rotate([angle_y, angle_x, 0]) {
-            translate([0, 0, depth - PENCIL_HEIGHT - wall]) {
-                % cylinder(d = PENCIL_DIAMETER, h = PENCIL_HEIGHT);
-            }
-        }
+        % pencil_stand_pencil(
+            wall = wall,
+            depth = depth,
+            angle_x = angle_x,
+            angle_y = angle_y
+        );
     }
 }
 
