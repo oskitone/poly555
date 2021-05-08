@@ -56,8 +56,8 @@ Finish the timer circuit, add the amp circuit, and test the speaker.
       2. Solder wires to speaker, if necessary.
       3. Just like you did for the battery snap, feed wires through the relief hole above **SPK**, then solder them into place: red for + and black for -.
 3. Insert IC chips
-   1. Insert the **555 timer chip** into its socket at **U1**.
-   2. Insert the **386 amp chip** into its socket at **U22**.
+   1. Insert the **555 timer chip** into its socket at **U1**, making sure it's in the right orientation: a notch or dimple at the top of the chip should match the notch in the footprint outline on the PCB.
+   2. Insert the **386 amp chip** into its socket at **U22**, again making sure its in the right orientation. You'll do this for all chips throughout assembly.
 
 ### It should look something like this when done
 

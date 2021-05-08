@@ -4,6 +4,10 @@ title: PCB General Tips
 sidebar_label: General Tips
 ---
 
+:::caution
+These general tips will apply to all PCB assembly steps, so read them and follow them carefully!
+:::
+
 ## General Tips
 
 - **IC chips are static-sensitive**<br/>
@@ -17,7 +21,7 @@ sidebar_label: General Tips
 - **Component polarities**<br/>
   LEDs, batteries, and electrolytic capacitors have positive and negative leads. Where applicable, the PCB will be labeled where each lead goes or a component outline to denote orientation.
 - **IC orientation**<br />
-  The IC chips also have an orientation, marked by a notch at their top. Make sure these line up when soldering the sockets and again when inserting the chips.
+  The IC chips also have an orientation, marked by a notch at their top. Make sure these line up when soldering the sockets and again when inserting the chips. A chip can be permanently damaged if inserted incorrectly!
 - **Not all components go on the front**<br />
   Take a look at the back side of the PCB and note that there are outlines for two components: U21 (the 7805 voltage regulator) and S21 (the power switch). Unlike all the others, these two will mount on the back.
 - **Wire relief holes**<br />
