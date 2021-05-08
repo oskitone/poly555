@@ -40,6 +40,9 @@ module enclosure_half(
     include_tongue_and_groove = false,
     tongue_and_groove_end_length = undef,
 
+    outer_color,
+    cavity_color,
+
     $fn = $fn
 ) {
     e = 0.01234;
@@ -286,17 +289,20 @@ module enclosure_half(
             _clasp(true);
         } else {
             difference() {
-                group() {
-                    difference() {
-                        _outer_wall();
-                        _inner_cutout();
-                        _groove_exposure();
-                    }
-
-                    if (include_hinge) { _hinge(); }
-                    if (include_clasp) { _clasp(is_bottom = false); }
-                    if (include_clasp_knob) { _clasp(is_bottom = true); }
+                color(outer_color) {
+                    _outer_wall();
                 }
+
+                color(cavity_color) {
+                    _inner_cutout();
+                    _groove_exposure();
+                }
+            }
+
+            color(outer_color) {
+                if (include_hinge) { _hinge(); }
+                if (include_clasp) { _clasp(is_bottom = false); }
+                if (include_clasp_knob) { _clasp(is_bottom = true); }
             }
         }
     }
