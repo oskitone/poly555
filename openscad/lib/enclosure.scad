@@ -92,7 +92,8 @@ module enclosure_half(
                 translate([x, y, z + groove_height - support_depth]) {
                     flat_top_rectangular_pyramid(
                         top_width = groove_width - support_depth * 2,
-                        top_length = groove_length - support_depth,
+                        top_length = groove_length - support_depth
+                            * (tongue_and_groove_snap ? 2 : 1),
                         bottom_width = groove_width,
                         bottom_length = groove_length,
                         height = support_depth,
