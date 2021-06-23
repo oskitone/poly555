@@ -75,63 +75,74 @@ module enclosure_half(
             ? tongue_and_groove_snap ? _length - x * 2 : _length - wall - x
             : _length - wall * 2;
 
+        module _hull() {
+            hull() {
+                translate([bottom_x, bottom_y, z]) {
+                    flat_top_rectangular_pyramid(
+                        top_width = groove_width,
+                        top_length = groove_length,
+                        bottom_width = groove_width - support_depth * 2,
+                        bottom_length = groove_length - support_depth
+                            * (tongue_and_groove_snap ? 2 : 1),
+                        height = support_depth,
+                        top_weight_y = tongue_and_groove_snap ? .5 : 0
+                    );
+                }
+
+                translate([x, y, z + groove_height - support_depth]) {
+                    flat_top_rectangular_pyramid(
+                        top_width = groove_width - support_depth * 2,
+                        top_length = groove_length - support_depth,
+                        bottom_width = groove_width,
+                        bottom_length = groove_length,
+                        height = support_depth,
+                        top_weight_y = tongue_and_groove_snap ? .5 : 0
+                    );
+                }
+            }
+        }
+
+        module _intersection() {
+            if (tongue_and_groove_end_length) {
+                y = length - wall - tongue_and_groove_end_length - bleed;
+                z = add_lip ? height : height - lip_height;
+
+                translate([-e, y, z - e]) {
+                    cube([
+                        width + e * 2,
+                        tongue_and_groove_end_length + wall + bleed,
+                        lip_height + e * 2
+                    ]);
+                }
+            } else if (tongue_and_groove_snap) {
+                _tolerance = tolerance * (add_lip ? -1 : 1);
+                _snap = !!tongue_and_groove_snap.y
+                    ? tongue_and_groove_snap
+                    : [tongue_and_groove_snap, tongue_and_groove_snap];
+
+                snap_width = _snap.x * width + _tolerance;
+                snap_length = _snap.y * length + _tolerance;
+
+                z = add_lip ? height - e : height - lip_height -e ;
+
+                translate([(width - snap_width) / 2, -e, z]) {
+                    cube([snap_width, length + e * 2, lip_height + e * 2]);
+                }
+
+                translate([-e, (length - snap_length) / 2, z]) {
+                    cube([width + e * 2, snap_length, lip_height + e * 2]);
+                }
+            }
+        }
+
         if (include_tongue_and_groove) {
-            intersection() {
-                hull() {
-                    translate([bottom_x, bottom_y, z]) {
-                        flat_top_rectangular_pyramid(
-                            top_width = groove_width,
-                            top_length = groove_length,
-                            bottom_width = groove_width - support_depth * 2,
-                            bottom_length = groove_length - support_depth
-                                * (tongue_and_groove_snap ? 2 : 1),
-                            height = support_depth,
-                            top_weight_y = tongue_and_groove_snap ? .5 : 0
-                        );
-                    }
-
-                    translate([x, y, z + groove_height - support_depth]) {
-                        flat_top_rectangular_pyramid(
-                            top_width = groove_width - support_depth * 2,
-                            top_length = groove_length - support_depth,
-                            bottom_width = groove_width,
-                            bottom_length = groove_length,
-                            height = support_depth,
-                            top_weight_y = tongue_and_groove_snap ? .5 : 0
-                        );
-                    }
+            if (tongue_and_groove_end_length || tongue_and_groove_snap) {
+                intersection() {
+                    _hull();
+                    _intersection();
                 }
-
-                if (tongue_and_groove_end_length) {
-                    y = length - wall - tongue_and_groove_end_length - bleed;
-                    z = add_lip ? height : height - lip_height;
-
-                    translate([-e, y, z - e]) {
-                        cube([
-                            width + e * 2,
-                            tongue_and_groove_end_length + wall + bleed,
-                            lip_height + e * 2
-                        ]);
-                    }
-                } else if (tongue_and_groove_snap) {
-                    _tolerance = tolerance * (add_lip ? -1 : 1);
-                    _snap = !!tongue_and_groove_snap.y
-                        ? tongue_and_groove_snap
-                        : [tongue_and_groove_snap, tongue_and_groove_snap];
-
-                    snap_width = _snap.x * width + _tolerance;
-                    snap_length = _snap.y * length + _tolerance;
-
-                    z = add_lip ? height - e : height - lip_height -e ;
-
-                    translate([(width - snap_width) / 2, -e, z]) {
-                        cube([snap_width, length + e * 2, lip_height + e * 2]);
-                    }
-
-                    translate([-e, (length - snap_length) / 2, z]) {
-                        cube([width + e * 2, snap_length, lip_height + e * 2]);
-                    }
-                }
+            } else {
+                _hull();
             }
         }
     }
