@@ -40,6 +40,7 @@ module enclosure_half(
     include_tongue_and_groove = false,
     tongue_and_groove_end_length = undef,
     tongue_and_groove_snap = undef, // ex: .5, [.25, .75]
+    tongue_and_groove_pull = 0,
 
     outer_color,
     cavity_color,
@@ -66,6 +67,7 @@ module enclosure_half(
 
         x = wall - lip + tolerance - groove_depth - bleed;
         y = tongue_and_groove_snap ? x : wall;
+        z = z - tongue_and_groove_pull / 2;
 
         bottom_x = x + support_depth;
         bottom_y = tongue_and_groove_snap ? y + support_depth : y;
@@ -491,9 +493,10 @@ module __test_enclosure(
                 fillet = 2,
 
                 include_tongue_and_groove = true,
-                tongue_and_groove_snap = value,
+                tongue_and_groove_snap = .5,
+                tongue_and_groove_pull = value,
 
-                tolerance = .2, // loose
+                tolerance = .1,
 
                 $fn = 24
             );
@@ -535,6 +538,5 @@ module __test_enclosure(
 }
 
 __test_enclosure(
-    [undef, .5, [.8, .3]],
-    test_height = undef
+    [0, .1, .2]
 );
