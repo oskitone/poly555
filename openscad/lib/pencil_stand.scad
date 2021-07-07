@@ -63,14 +63,53 @@ module pencil_stand_cavity(
     wall,
     depth = 20,
     angle_x = 0,
-    angle_y = 45
+    angle_y = 45,
+
+    add_tightening_webs = false,
+    web_count = 3,
+    web_width = 1,
+    web_length = .6,
+    web_depth = 10
 ) {
-    pencil_stand(
-        wall = 0,
-        depth = depth - wall,
-        angle_x = angle_x,
-        angle_y = angle_y
-    );
+    e = .0481;
+
+    module _webs() {
+        for (i = [0 : web_count - 1]) {
+            rotate([angle_y, angle_x, 0]) rotate([0, 0, 360 / web_count * i]) {
+                translate([
+                    web_width / -2,
+                    PENCIL_STAND_CAVITY_DIAMETER / 2 - web_length,
+                    depth - wall - web_depth
+                ]) {
+                    cube([web_width, web_length + e, web_depth + e]);
+
+                    translate([0, web_length, -web_length]) {
+                        flat_top_rectangular_pyramid(
+                            top_width = web_width,
+                            top_length = web_length,
+                            bottom_width = web_width,
+                            bottom_length = 0,
+                            height = web_length + e,
+                            top_weight_y = 1
+                        );
+                    }
+                }
+            }
+        }
+    }
+
+    difference() {
+        pencil_stand(
+            wall = 0,
+            depth = depth - wall,
+            angle_x = angle_x,
+            angle_y = angle_y
+        );
+
+        if (add_tightening_webs) {
+            _webs();
+        }
+    }
 }
 
 wall = 2;
@@ -84,6 +123,7 @@ difference() {
         angle_x = angle_x,
         angle_y = angle_y
     );
+
     translate([0, 0, -.02]) {
         pencil_stand_cavity(
             wall = wall,
