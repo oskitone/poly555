@@ -6,6 +6,8 @@ use <utils.scad>;
 PENCIL_HEIGHT = 25.4 * 6;
 PENCIL_DIAMETER = 6;
 
+function is_vector(value) = (!!value[0]);
+
 module pencil_stand_pencil(
     wall,
     depth = 20,
@@ -19,6 +21,35 @@ module pencil_stand_pencil(
     }
 }
 
+function _get_pencil_stand_arbitrary_extension(depth) = (depth * 4);
+function _get_pencil_stand_total_depth(depth) = (
+    depth + _get_pencil_stand_arbitrary_extension(depth)
+);
+function _get_pencil_stand_diameter(wall) = (
+    PENCIL_STAND_CAVITY_DIAMETER + wall * 2
+);
+
+
+module _pencil_stand_cover(
+    depth,
+    height = undef,
+    z = undef
+) {
+    total_depth = _get_pencil_stand_total_depth(depth);
+
+    translate([
+        -total_depth,
+        -total_depth,
+        z != undef ? z : -total_depth
+    ]) {
+        cube([
+            total_depth * 2,
+            total_depth * 2,
+            height != undef ? height : total_depth
+        ]);
+    }
+}
+
 module pencil_stand(
     wall,
     depth = 20,
@@ -29,10 +60,9 @@ module pencil_stand(
 ) {
     e = 0.0987;
 
-    diameter = PENCIL_STAND_CAVITY_DIAMETER + wall * 2;
-
-    arbitrary_extension = depth * 4;
-    total_depth = depth + arbitrary_extension;
+    diameter = _get_pencil_stand_diameter(wall);
+    arbitrary_extension = _get_pencil_stand_arbitrary_extension(depth);
+    total_depth = _get_pencil_stand_total_depth(depth);
 
     difference() {
         rotate([angle_y, angle_x, 0]) {
@@ -44,9 +74,7 @@ module pencil_stand(
             }
         }
 
-        translate([-total_depth, -total_depth, -total_depth]) {
-            cube([total_depth * 2, total_depth * 2, total_depth]);
-        }
+        _pencil_stand_cover(depth);
     }
 
     if (show_pencil) {
@@ -65,40 +93,79 @@ module pencil_stand_cavity(
     angle_x = 0,
     angle_y = 45,
 
+    chamfer = 0,
+
     add_tightening_webs = false,
     web_count = 3,
-    web_width = 1,
-    web_length = .6,
+    web_width = 2,
+    web_length = [.2, .5], // .6,
+    web_offset_angles = false, // TODO: rename
     web_depth = 10
 ) {
     e = .0481;
 
-    module _webs() {
-        for (i = [0 : web_count - 1]) {
-            rotate([angle_y, angle_x, 0]) rotate([0, 0, 360 / web_count * i]) {
-                translate([
-                    web_width / -2,
-                    PENCIL_STAND_CAVITY_DIAMETER / 2 - web_length,
-                    depth - wall - web_depth + web_length
-                ]) {
-                    cube([
-                        web_width,
-                        web_length + e,
-                        web_depth - web_length + e
-                    ]);
+    web_depth = web_depth != undef ? web_depth : depth;
 
-                    translate([0, web_length, -web_length]) {
-                        flat_top_rectangular_pyramid(
-                            top_width = web_width,
-                            top_length = web_length,
-                            bottom_width = web_width,
-                            bottom_length = 0,
-                            height = web_length + e,
-                            top_weight_y = 1
-                        );
+    module _webs(
+        _length = web_length,
+        _depth = web_depth,
+        angle = 0
+    ) {
+        echo("_webs", _length, _depth, angle);
+
+        for (i = [0 : web_count - 1]) {
+            rotate([angle_y, angle_x, 0]) {
+                rotate([0, 0, angle + 360 / web_count * i]) {
+                    translate([
+                        web_width / -2,
+                        PENCIL_STAND_CAVITY_DIAMETER / 2 - _length,
+                        depth - wall - _depth + _length
+                    ]) {
+                        cube([
+                            web_width,
+                            _length + e,
+                            _depth - _length + e
+                        ]);
+
+                        translate([0, _length, -_length]) {
+                            flat_top_rectangular_pyramid(
+                                top_width = web_width,
+                                top_length = _length,
+                                bottom_width = web_width,
+                                bottom_length = 0,
+                                height = _length + e,
+                                top_weight_y = 1
+                            );
+                        }
                     }
                 }
             }
+        }
+    }
+
+    module _chamfer() {
+        module _layer(bleed, z) {
+            intersection() {
+                _pencil_stand_cover(
+                    depth,
+                    height = e,
+                    z = z
+                );
+
+                pencil_stand(
+                    wall = bleed,
+                    depth = depth,
+                    angle_x = angle_x,
+                    angle_y = angle_y
+                );
+            }
+        }
+
+        height = PENCIL_STAND_CAVITY_DIAMETER / 2 - e;
+
+        hull() {
+            _layer(chamfer + e * 2, 0);
+            _layer(-height, height);
         }
     }
 
@@ -111,14 +178,32 @@ module pencil_stand_cavity(
         );
 
         if (add_tightening_webs) {
-            _webs();
+            if (is_vector(web_length)) {
+                for (i = [0 : len(web_length) - 1]) {
+                    _webs(
+                        _length = web_length[len(web_length) - i - 1],
+                        _depth = web_depth / len(web_length) * (1 + i),
+                        /* angle = 180 / len(web_length) * i */
+                        angle = web_offset_angles
+                            ? (180 / web_count) * (i % 2)
+                            : 0
+                    );
+                }
+            } else {
+                _webs();
+            }
         }
+    }
+
+    if (chamfer > 0) {
+        _chamfer();
     }
 }
 
 
 module _test(
     web_lengths = [.6],
+    web_offset_angless = [true],
 
     angle_x = to_and_from(-60, 60, 30, 3),
     angle_y = to_and_from(-60, 60, 0, 1),
@@ -142,7 +227,7 @@ module _test(
             : str(number)
     );
 
-    for (i = [0 : len(web_lengths) - 1]) {
+    for (i = [0 : len(web_offset_angless) - 1]) {
         translate([diameter * i, 0, 0]) {
             difference() {
                 pencil_stand(
@@ -159,8 +244,11 @@ module _test(
                         angle_x = angle_x,
                         angle_y = angle_y,
 
+                        chamfer = 1,
+
                         add_tightening_webs = true,
-                        web_length = web_lengths[i]
+                        web_length = web_lengths[0],
+                        web_offset_angles = web_offset_angless[i]
                     );
                 }
 
@@ -168,7 +256,7 @@ module _test(
                     linear_extrude(height = engraving_depth + e) {
                         offset(delta = .1) {
                             text(
-                                pretty_number(web_lengths[i]),
+                                web_offset_angless[i] ? "T" : "F",
                                 size = 4,
                                 font = "Orbitron:style=Black",
                                 halign = "center",
@@ -183,11 +271,13 @@ module _test(
 }
 
 _test(
-    web_lengths = [0, .2, .4, .6, .8, 1, 1.2, 1.4],
+    /* web_lengths = [0, .2, .4, .6, .8, 1, 1.2, 1.4], */
+    web_lengths = [ [.2, .6, 1] ],
+    /* web_offset_angless = [false, true], */
 
-    angle_x = 0,
-    angle_y = 0,
+    angle_x = -52,
+    angle_y = 20,
 
     wall = 1,
-    depth = 11
+    depth = 12.8
 );
