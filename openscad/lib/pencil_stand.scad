@@ -79,9 +79,13 @@ module pencil_stand_cavity(
                 translate([
                     web_width / -2,
                     PENCIL_STAND_CAVITY_DIAMETER / 2 - web_length,
-                    depth - wall - web_depth
+                    depth - wall - web_depth + web_length
                 ]) {
-                    cube([web_width, web_length + e, web_depth + e]);
+                    cube([
+                        web_width,
+                        web_length + e,
+                        web_depth - web_length + e
+                    ]);
 
                     translate([0, web_length, -web_length]) {
                         flat_top_rectangular_pyramid(
@@ -112,24 +116,78 @@ module pencil_stand_cavity(
     }
 }
 
-wall = 2;
-depth = 40;
-angle_x = to_and_from(-60, 60, 30, 3);
-angle_y = to_and_from(-60, 60, 0, 1);
-difference() {
-    pencil_stand(
-        wall = wall,
-        depth = depth,
-        angle_x = angle_x,
-        angle_y = angle_y
+
+module _test(
+    web_lengths = [.6],
+
+    angle_x = to_and_from(-60, 60, 30, 3),
+    angle_y = to_and_from(-60, 60, 0, 1),
+
+    wall = 2,
+    depth = 40,
+
+    engraving_depth = .8
+) {
+    e = .048;
+
+    diameter = PENCIL_STAND_CAVITY_DIAMETER + wall * 1.5;
+
+    function pretty_number(number) = (
+        (number != 0 && number < 1)
+            ? str(
+                number < 0 ? "-" : "",
+                ".",
+                abs(number) * 10
+            )
+            : str(number)
     );
 
-    translate([0, 0, -.02]) {
-        pencil_stand_cavity(
-            wall = wall,
-            depth = depth,
-            angle_x = angle_x,
-            angle_y = angle_y
-        );
+    for (i = [0 : len(web_lengths) - 1]) {
+        translate([diameter * i, 0, 0]) {
+            difference() {
+                pencil_stand(
+                    wall = wall,
+                    depth = depth,
+                    angle_x = angle_x,
+                    angle_y = angle_y
+                );
+
+                translate([0, 0, -.02]) {
+                    pencil_stand_cavity(
+                        wall = wall,
+                        depth = depth,
+                        angle_x = angle_x,
+                        angle_y = angle_y,
+
+                        add_tightening_webs = true,
+                        web_length = web_lengths[i]
+                    );
+                }
+
+                translate([0, 0, depth - engraving_depth]) {
+                    linear_extrude(height = engraving_depth + e) {
+                        offset(delta = .1) {
+                            text(
+                                pretty_number(web_lengths[i]),
+                                size = 4,
+                                font = "Orbitron:style=Black",
+                                halign = "center",
+                                valign = "center"
+                            );
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+
+_test(
+    web_lengths = [0, .2, .4, .6, .8, 1, 1.2, 1.4],
+
+    angle_x = 0,
+    angle_y = 0,
+
+    wall = 1,
+    depth = 11
+);
