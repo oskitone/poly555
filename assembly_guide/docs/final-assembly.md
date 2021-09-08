@@ -17,7 +17,7 @@ Take your time here. If the 3D-printed parts aren't fitting well together, don't
       [![Two square nuts in their posts](/img/assembly/nuts_in_enclosure_bottom.jpg)](/img/assembly/nuts_in_enclosure_bottom.jpg)
    2. Place the **finished PCB** into the enclosure bottom half, fitting the switch into its cavity.
       [![Placing the PCB into enclosure bottom](/img/assembly/pcb_in_enclosure_bottom.jpg)](/img/assembly/pcb_in_enclosure_bottom.jpg)
-   3. Slide **9v battery** into its space behind the speaker. It will ll be a tight fit.
+   3. Slide **9v battery** into its space behind the speaker. It will be a tight fit.
       [![9v battery](/img/assembly/battery.jpg)](/img/assembly/battery.jpg)
    4. Fit **speaker** into its container ring above battery. Try to hide any excess wire from the speaker under the PCB.
       [![Pressing the speaker into its container](/img/assembly/speaker.jpg)](/img/assembly/speaker.jpg)
