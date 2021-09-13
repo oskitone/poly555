@@ -28,7 +28,7 @@ Double check to make sure you've got the [correct LED color](pcb-0#leds) before 
 2. Solder the **7805 voltage regulator** to **U21**. <!--TODO: pictures for these would be great! -->
    1. It will _lay flat against its outline_ on the back of the PCB, with its text facing outwards, its tab pressed firmly against the exposed copper rectangle on ther PCB, and its legs bent into their holes. To help hold it there while soldering, attach its tab to the PCB with the **screw and nut**. _It's important that there's no visible gap between 7805's tab and the copper plate on the PCB_.
    2. Solder its legs on the front of the PCB.
-   3. Solder its tab to the copper plate on the back of the PCB by applying solder to the sides of the tab where it meets the copper plate.
+   3. Solder its tab to the copper plate on the back of the PCB by applying solder to the sides of the tab where it meets the copper plate. You may need to use a higher temperature on your soldering iron and/or apply additional flux if using a non-flux solder.
    4. Remove the screw and nut for later use.
 3. Solder a **tactile switch** into **S1**, making sure it's perfectly flat against the PCB.
    - A trick I like to do is to solder just one of its legs to hold it in place, then remelt the solder while pushing it in from the other side.
