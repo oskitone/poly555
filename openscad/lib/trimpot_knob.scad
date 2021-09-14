@@ -18,7 +18,7 @@ module trimpot_knob(
     grip_size = 1.5,
 
     tolerance = .1,
-    head_lock_chamfer = .2,
+    head_lock_chamfer = .4,
 
     shim_size = .8,
 
@@ -140,5 +140,16 @@ module trimpot_knob(
     }
 }
 
-# trimpot_knob(diameter = 20, simplify = true);
-trimpot_knob(diameter = 20);
+plot = 20 - 1.8;
+head_lock_chamfers = [0, .2, .4, .6, .8, 1];
+
+/* .2 through .6 all seem good. .8 works but is a little too loose. */
+
+for (i = [0 : len(head_lock_chamfers) - 1]) {
+    translate([plot * i, 0, 0]) {
+        trimpot_knob(
+            head_lock_chamfer = head_lock_chamfers[i],
+            grip_size = 0
+        );
+    }
+}
