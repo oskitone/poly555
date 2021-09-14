@@ -1568,7 +1568,7 @@ module poly555(
                 if (show_window_pane) { % _window_pane();}
             }
 
-            if (cross_section) {
+            if (cross_section || reduced_test_case) {
                 _cross_section();
             }
         }
