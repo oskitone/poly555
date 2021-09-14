@@ -117,18 +117,24 @@ module trimpot_knob(
             cylinder(d = diameter, h = total_height);
         } else {
             _head_lock();
+
             cylinder(d = inner_diameter, h = cap_height);
-            cylinder_grip(
-                diameter,
-                cap_height * 2 + head_height,
-                size = grip_size,
-                $fn = 6
-            );
+
+            if (grip_size > 0) {
+                cylinder_grip(
+                    diameter,
+                    cap_height * 2 + head_height,
+                    size = grip_size,
+                    $fn = 6
+                );
+            }
+
             ring(
                 diameter = diameter,
                 height = total_height,
                 thickness = wall
             );
+
             _spokes();
         }
     }
