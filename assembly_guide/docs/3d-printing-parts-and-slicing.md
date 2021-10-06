@@ -50,6 +50,7 @@ If the test case's two pieces are difficult to fit together successfully after p
 **Notes:**
 
 - Models assume Fused Deposition Modeling with a standard .4mm nozzle. Using a bigger nozzle will likely result in a loss of detail and possibly missing internal walls.
-- They have any supports they'll need baked right in, so you won't need to do anything extra in your slicer, and should also already be rotated to the correct position for printing.
+- The 3D-printed parts were designed using PLA. Other filament types like ABS are not recommended and will likely have fit or tolerance issues. (If you find that you need to drill or file your prints, that's a good sign there'll be other problems too.)
+- Any supports the models need they'll already have, they'll already be rotated to the correct orientation for printing, and they shouldn't need brims. Brims on the keys, in fact, could cause warping on removal.
 - The enclosure pieces are big and may warp off the bed plate without good adhesion. I tend to use a lot of glue on the bed and stay away from plastics that shrink. _Watch the first couple layers of these while printing, especially around the text engravings -- if you see bad adhesion, stop the print to remedy the situation and start again._
 - If the prints aren't fitting together well, check to see that the corners aren't bulging. We should see clean, sharp edges on the mounting rail and the keys' mount. See if your slicer has settings for "coasting" or "linear advance."
