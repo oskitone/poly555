@@ -24,7 +24,7 @@ The POLY555 is a _polyphonic_, analog, square wave synth based on the _555_ time
 
 <p><iframe src="https://player.vimeo.com/video/487720782" width="640" height="360" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></p>
 
-More information on the POLY555 its development history: <br />
+More information on the POLY555, its development, and history: <br />
 [https://blog.tommy.sh/posts/poly555-synth/](https://blog.tommy.sh/posts/poly555-synth/)
 
 ### Disclaimers
