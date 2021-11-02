@@ -23,7 +23,7 @@ Take your time here. If the 3D-printed parts aren't fitting well together, don't
       [![Pressing the speaker into its container](/img/assembly/speaker.jpg)](/img/assembly/speaker.jpg)
    5. Secure PCB into place with 2 **1/4" screws**. Don't overtighten!
       [![Securing the PCB with screws](/img/assembly/screwing_pcb_into_enclosure_bottom.jpg)](/img/assembly/screwing_pcb_into_enclosure_bottom.jpg)
-   6. Fit **volume wheel** onto **RV21**, matching its cavity to the trim pot's shape.
+   6. Fit **volume wheel** onto **RV21**, matching its cavity to the trim pot's shape. As long as it's able to turn the underlying pot, it's okay if it's a little loose &mdash; it'll get held in place by the **enclosure top**.
       [![Adding a volume wheel to the trim pot](/img/assembly/volume_wheel.jpg)](/img/assembly/volume_wheel.jpg)
 2. **Add keys**
    1. Place **mounting rail** onto PCB, aligning its holes to the screw holes below.
