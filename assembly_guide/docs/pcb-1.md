@@ -31,7 +31,7 @@ Double check to make sure you've got the [correct LED color](pcb-0#leds) before 
 [![It should look something like this when done](/img/pcb-1.jpg)](/img/pcb-1.jpg)
 
 :::note remember
-The components' brands and PCB/[LED colors](pcb-0#leds) may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
+The components' brands and colors for PCB, [LEDs](pcb-0#leds), and wires may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
 :::
 
 ## Test it

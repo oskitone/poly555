@@ -53,8 +53,8 @@ Finish the timer circuit, add the amp circuit, and test the speaker.
    7. Solder a **100 resistor** to **R82**.
    8. Solder the **speaker**.
       1. Strip about 1/8" of the insulation off wire's ends.
-      2. Solder wires to speaker, if necessary.
-      3. Just like you did for the battery snap, feed wires through the relief hole above **SPK**, then solder them into place: red for + and black for -.
+      2. If necessary, solder wires to speaker. The lighter wire goes to + and the darker wire goes to -.
+      3. Just like you did for the battery snap, feed wires through the relief hole above **SPK**, then solder them into place: lighter wire to + and darker to -.
 3. Insert IC chips
    1. Insert the **555 timer chip** into its socket at **U1**, making sure it's in the right orientation: a notch or dimple at the top of the chip should match the notch in the footprint outline on the PCB.
    2. Insert the **386 amp chip** into its socket at **U22**, again making sure its in the right orientation. You'll do this for all chips throughout assembly.
@@ -64,7 +64,7 @@ Finish the timer circuit, add the amp circuit, and test the speaker.
 [![It should look something like this when done](/img/pcb-3.jpg)](/img/pcb-3.jpg)
 
 :::note remember
-The components' brands and PCB/[LED colors](pcb-0#leds) may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
+The components' brands and colors for PCB, [LEDs](pcb-0#leds), and wires may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
 :::
 
 ## Test it
