@@ -50,6 +50,7 @@ If the test case's two pieces are difficult to fit together successfully after p
 **Notes:**
 
 - Models assume Fused Deposition Modeling with a standard .4mm nozzle. Using a bigger nozzle will likely result in a loss of detail and possibly missing internal walls.
+- You may find the bottoms of the keys stick together because the plastic has expanded too far into the gap between them. See if your slicer has a setting called something like ["Elephant foot compensation"](https://help.prusa3d.com/en/article/elephant-foot-compensation_114487). Otherwise you'll need to carefully cut off the excess plastic with a utility knife.
 - The 3D-printed parts were designed using PLA. Other filament types like ABS are not recommended and will likely have fit or tolerance issues. (If you find that you need to drill or file your prints, that's a good sign there'll be other problems too.)
 - Any supports the models need they'll already have, they'll already be rotated to the correct orientation for printing, and they shouldn't need brims. Brims on the keys, in fact, could cause warping on removal.
 - The enclosure pieces are big and may warp off the bed plate without good adhesion. I tend to use a lot of glue on the bed and stay away from plastics that shrink. _Watch the first couple layers of these while printing, especially around the text engravings -- if you see bad adhesion, stop the print to remedy the situation and start again._
