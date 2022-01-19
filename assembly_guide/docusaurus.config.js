@@ -1,5 +1,5 @@
 module.exports = {
-  title: "POLY555",
+  title: "Oskitone POLY555 Assembly Guide",
   url: "https://oskitone.github.io/",
   baseUrl: "/poly555/",
   onBrokenLinks: "throw",
