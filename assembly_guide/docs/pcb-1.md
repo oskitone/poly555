@@ -18,7 +18,7 @@ Get power to the board and switch the main LED on and off.
 ## Steps
 
 :::tip
-Double check to make sure you've got the [correct LED color](pcb-0#leds) before soldering!
+Double check to make sure you've got the [correct LED color](pcb-0.md#leds) before soldering!
 :::
 
 1. Solder the **sliding toggle switch** to **S21** on the back of the PCB. There's no polarity to this component, so either way is fine as long as it's on the back side.
@@ -31,7 +31,7 @@ Double check to make sure you've got the [correct LED color](pcb-0#leds) before 
 [![It should look something like this when done](/img/pcb-1.jpg)](/img/pcb-1.jpg)
 
 :::note remember
-The components' brands and colors for PCB, [LEDs](pcb-0#leds), and wires may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
+The components' brands and colors for PCB, [LEDs](pcb-0.md#leds), and wires may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
 :::
 
 ## Test it
@@ -42,6 +42,6 @@ If you have the enclosure bottom handy, you can also try inserting the PCB into 
 
 ### Troubleshooting
 
-- [Do all the usual debugging steps like checking solder joints, etc.](debugging)
+- [Do all the usual debugging steps like checking solder joints, etc.](debugging.md)
 - Use a multimeter to confirm power is getting from battery to switch to R81 to LED
 - If power is getting to LED but it isn't lighting, it may be dead. Try a different one.

@@ -64,7 +64,7 @@ Finish the timer circuit, add the amp circuit, and test the speaker.
 [![It should look something like this when done](/img/pcb-3.jpg)](/img/pcb-3.jpg)
 
 :::note remember
-The components' brands and colors for PCB, [LEDs](pcb-0#leds), and wires may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
+The components' brands and colors for PCB, [LEDs](pcb-0.md#leds), and wires may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
 :::
 
 ## Test it
@@ -76,5 +76,5 @@ The components' brands and colors for PCB, [LEDs](pcb-0#leds), and wires may loo
 
 ### Troubleshooting
 
-- [Do all the usual debugging steps like checking solder joints, etc.](debugging)
+- [Do all the usual debugging steps like checking solder joints, etc.](debugging.md)
 - Check to see that the volume potentiometer at **RV21** isn't turned all the way down.

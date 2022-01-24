@@ -37,7 +37,7 @@ Take your time here. If the 3D-printed parts aren't fitting well together, don't
       [![Adding the plexiglass window pane](/img/assembly/plexiglass_window.jpg)](/img/assembly/plexiglass_window.jpg)
       - It _will_ fit but may be tight. If you're worried about breaking the **enclosure top**, you can use a utility knife to carefully trim down the two holder tabs to give the **plexiglass window pane** more room.
       - Alternatively, if it's too loose, let a line of glue dry in the long cavity under the nuts. Repeat until the fit is snug.
-   3. We're about to lock it up, so now's a good time to make sure your POLY555 is fully [tuned](tuning) and has a good battery. Oh, clean any smudges off the inside window now too.
+   3. We're about to lock it up, so now's a good time to make sure your POLY555 is fully [tuned](tuning.md) and has a good battery. Oh, clean any smudges off the inside window now too.
    4. Gently align the **two enclosure halves**, fitting the back hitches on the bottom into their matching cavities on the top.
       [![The enclosure bottom's hitches fitting into their cavities on the enclosure top](/img/assembly/hitch.jpg)](/img/assembly/hitch.jpg)
    5. Srew 4 **1" screws** into the four mounting rail holes on the bottom of the enclosure. Don't overtighten!

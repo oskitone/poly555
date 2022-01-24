@@ -17,7 +17,7 @@ Inside the enclosure and under the keys is this PCB:
 4. **Buttons and regulator**<br />
    Power from the switched 9v battery is regulated down to 5v by a 7805 regulator, then distributed across 20 tactile switches -- one for each timer circuit above. Regulating the voltage to a fixed 5v keeps the timers' frequencies consistent even as the battery drains.
 
-For a deeper dive into the underlying circuit, head over to the [schematics](schematics).
+For a deeper dive into the underlying circuit, head over to the [schematics](schematics.md).
 
 ## The keys to the keys to the timers
 

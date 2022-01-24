@@ -21,7 +21,7 @@ Get power to one of the timer circuits and light its LED
 ## Steps
 
 :::tip
-Double check to make sure you've got the [correct LED color](pcb-0#leds) before soldering!
+Double check to make sure you've got the [correct LED color](pcb-0.md#leds) before soldering!
 :::
 
 1. Solder the **.22uF ceramic capacitor** to **C61**.
@@ -40,7 +40,7 @@ Double check to make sure you've got the [correct LED color](pcb-0#leds) before 
 [![It should look something like this when done](/img/pcb-2.jpg)](/img/pcb-2.jpg)
 
 :::note remember
-The components' brands and colors for PCB, [LEDs](pcb-0#leds), and wires may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
+The components' brands and colors for PCB, [LEDs](pcb-0.md#leds), and wires may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
 :::
 
 ## Test it
@@ -49,5 +49,5 @@ With the battery attached and power switch on, press S1. You should see the LED 
 
 ### Troubleshooting
 
-- [Do all the usual debugging steps like checking solder joints, etc.](debugging)
+- [Do all the usual debugging steps like checking solder joints, etc.](debugging.md)
 - Use a multimeter to confirm 7805 has 9v going in and 5v coming out, then confirm that's going from the button to R1 when pressed.

@@ -32,7 +32,7 @@ This step will take the longest time, but, if you've made it this far, it should
 
 ## Steps
 
-Just like we did for the timer in [Step 3: Make Some Noise](pcb-3#steps), we'll be soldering up the remaining 19 timers.
+Just like we did for the timer in [Step 3: Make Some Noise](pcb-3.md#steps), we'll be soldering up the remaining 19 timers.
 
 Rather than list out all the component footprints by number, it's helpful this time to just go by location. You'll probably find that it's easiest to do them all by type; ie, solder all the resistors before moving onto caps, etc.
 
@@ -43,7 +43,7 @@ Rather than list out all the component footprints by number, it's helpful this t
 [![It should look something like this when done](/img/pcb-5.jpg)](/img/pcb-5.jpg)
 
 :::note remember
-The components' brands and colors for PCB, [LEDs](pcb-0#leds), and wires may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
+The components' brands and colors for PCB, [LEDs](pcb-0.md#leds), and wires may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
 :::
 
 ## Test it
@@ -52,7 +52,7 @@ With the battery attached and power switch on, press buttons **S2** through **S2
 
 ### Troubleshooting
 
-- [Do all the usual debugging steps like checking solder joints, etc.](debugging)
-- Do the same troubleshooting checks you did in [Step 3: Make Some Noise](pcb-3#troubleshooting) but for all the timer circuits.
+- [Do all the usual debugging steps like checking solder joints, etc.](debugging.md)
+- Do the same troubleshooting checks you did in [Step 3: Make Some Noise](pcb-3.md#troubleshooting) but for all the timer circuits.
 
 If all is well, congrats! The hard parts are over. Now's a good time to go wash your hands to get rid of any soldering residue.

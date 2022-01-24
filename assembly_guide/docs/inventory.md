@@ -27,7 +27,7 @@ While the values of the components and the layout of the PCB won't change, they 
 
 ### Not Using the Kit?
 
-If you're going the full open-source route and gathering all the parts by yourself, head over to the [POLY555 from Scratch](poly555-from-scratch) appendix, then come back here when you're done.
+If you're going the full open-source route and gathering all the parts by yourself, head over to the [POLY555 from Scratch](poly555-from-scratch.md) appendix, then come back here when you're done.
 
 ## What You'll Need
 

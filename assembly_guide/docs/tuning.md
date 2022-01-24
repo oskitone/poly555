@@ -41,6 +41,6 @@ The timer circuits are independant, so you can tune their notes in any order.
 
 ## Using an oscilloscope
 
-Referring to the [schematics](schematics), we can see the 555s' outputs converge on RV21.
+Referring to the [schematics](schematics.md), we can see the 555s' outputs converge on RV21.
 
 Attach your oscilloscope probe to its left leg to view the raw square waves before they get sent to the 386. Ground is RV21's right leg, on the speaker, and a bunch of other places!

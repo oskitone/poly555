@@ -18,7 +18,7 @@ Solder all the buttons and LEDs.
 ## Steps
 
 :::tip
-Double check to make sure you've got the [correct LED colors](pcb-0#leds) before soldering!
+Double check to make sure you've got the [correct LED colors](pcb-0.md#leds) before soldering!
 :::
 
 1. Solder the 19 **tactile switches** into **S2**, **S3**, **S4**, **S5**, **S6**, **S7**, **S8**, **S9**, **S10**, **S11**, **S12**, **S13**, **S14**, **S15**, **S16**, **S17**, **S18**, **S19**, and **S20**. Make sure they're perfectly flat against the PCB, just like **S1**!
@@ -31,7 +31,7 @@ Double check to make sure you've got the [correct LED colors](pcb-0#leds) before
 [![It should look something like this when done](/img/pcb-4.jpg)](/img/pcb-4.jpg)
 
 :::note remember
-The components' brands and colors for PCB, [LEDs](pcb-0#leds), and wires may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
+The components' brands and colors for PCB, [LEDs](pcb-0.md#leds), and wires may look different from yours, and that's okay! What's important is that the part types and values are in the right spots.
 :::
 
 ## Test it
@@ -40,5 +40,5 @@ With the battery attached and power switch on, press buttons **S2** through **S2
 
 ### Troubleshooting
 
-- [Do all the usual debugging steps like checking solder joints, etc.](debugging)
-- Do the same troubleshooting checks you did in [Step 2: Timer LED Power](pcb-2#troubleshooting) for all the buttons and LEDs.
+- [Do all the usual debugging steps like checking solder joints, etc.](debugging.md)
+- Do the same troubleshooting checks you did in [Step 2: Timer LED Power](pcb-2.md#troubleshooting) for all the buttons and LEDs.

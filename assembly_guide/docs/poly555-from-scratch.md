@@ -65,7 +65,7 @@ Considerations:
 
 - Low voltage options are better for battery performance.
 - Voltage regulator's output should fall within supply voltage. This likely won't be a problem.
-- Frequency range needs to cover the full spectrum of [notes](tuning).
+- Frequency range needs to cover the full spectrum of [notes](tuning.md).
 
 #### Tested
 
@@ -79,11 +79,11 @@ Considerations:
 [lmc555]: https://www.ti.com/lit/ds/symlink/lmc555.pdf
 [lm555cn]: https://www.ti.com/lit/ds/symlink/lm555.pdf
 
-_\* With default component values from [schematics](schematics)._
+_\* With default component values from [schematics](schematics.md)._
 
 _\*\* Kits ship with one of these._
 
-If using a different 555, breadboard the timer circuit first to determine its range, [adjusting the other components](hacking) if necessary to get to the desired note range. The downside to a wider frequency range is that it's harder to tune!
+If using a different 555, breadboard the timer circuit first to determine its range, [adjusting the other components](hacking.md) if necessary to get to the desired note range. The downside to a wider frequency range is that it's harder to tune!
 
 ### Tactile switches
 
