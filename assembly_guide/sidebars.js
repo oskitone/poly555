@@ -9,10 +9,10 @@ module.exports = {
     "PCB Assembly": ["pcb-0", "pcb-1", "pcb-2", "pcb-3", "pcb-4", "pcb-5"],
     "Putting it all together": ["tuning", "final-assembly", "care"],
     Appendix: [
+      "hacking",
       "poly555-from-scratch",
       "debugging",
       "schematics",
-      "hacking",
       "source-and-license"
     ]
   }
