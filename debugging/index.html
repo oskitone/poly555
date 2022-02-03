@@ -6,13 +6,13 @@
 <meta name="generator" content="Docusaurus v2.0.0-alpha.69">
 <title data-react-helmet="true">Appendix: Debugging | Oskitone POLY555 Assembly Guide</title><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" name="docusaurus_language" content="en"><meta data-react-helmet="true" name="docusaurus_version" content="current"><meta data-react-helmet="true" name="docusaurus_tag" content="docs-default-current"><meta data-react-helmet="true" property="og:title" content="Appendix: Debugging | Oskitone POLY555 Assembly Guide"><meta data-react-helmet="true" name="description" content="Stuck? Happens to the best of us. Try these general debugging steps:"><meta data-react-helmet="true" property="og:description" content="Stuck? Happens to the best of us. Try these general debugging steps:"><meta data-react-helmet="true" property="og:url" content="https://oskitone.github.io//poly555/debugging"><link data-react-helmet="true" rel="shortcut icon" href="/poly555/img/favicon.ico"><link data-react-helmet="true" rel="canonical" href="https://oskitone.github.io//poly555/debugging"><link rel="stylesheet" href="/poly555/styles.7ee0c135.css">
 <link rel="preload" href="/poly555/styles.a94b49ca.js" as="script">
-<link rel="preload" href="/poly555/runtime~main.6e74709a.js" as="script">
+<link rel="preload" href="/poly555/runtime~main.b245cedc.js" as="script">
 <link rel="preload" href="/poly555/main.824b8627.js" as="script">
 <link rel="preload" href="/poly555/1.d48dbd84.js" as="script">
 <link rel="preload" href="/poly555/26.f4a8039b.js" as="script">
 <link rel="preload" href="/poly555/935f2afb.b13d96d7.js" as="script">
 <link rel="preload" href="/poly555/25.0da11981.js" as="script">
-<link rel="preload" href="/poly555/2bccb399.cc2a4eac.js" as="script">
+<link rel="preload" href="/poly555/2bccb399.c2b08169.js" as="script">
 </head>
 <body>
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script><div id="__docusaurus">
@@ -21,14 +21,15 @@ The key mounting screw(s) may be too tight. Try loosening until the note turns o
 The key mounting screw(s) may be too loose. Try tightening.</li><li><strong>A note and its LED are acting funny</strong><br>
 Power isn&#x27;t getting to the circuit correctly. Check its button&#x27;s soldering. If the circuit responds to pushing the button down in different ways (like softly vs gently, at certain angles), rather than just on or off, the button may need replacing.</li><li><strong>A note is acting funny but its LED is fine</strong><br>
 Since the LED lights, the timer circuit is getting power, so it must be its components. Check solder joints and components for damage. Try swapping its 555 with a known-good note.</li><li><strong>The LEDs light up when pressing keys but no sounds come out</strong><br><ol><li>Confirm the speaker itself isn&#x27;t broken<ul><li>On the POLY555, you can try skipping the amp circuit by pulling the 386 out of its socket and connecting its pin 5 (the amp&#x27;s output that would normally go to the big capacitor at C64 and then the speaker) to pin 3 (the 555&#x27;s output) of one of the 555s. It won&#x27;t be loud (because it&#x27;s not amplified anymore), but, if the speaker isn&#x27;t broken, there should be a low rumble.</li><li>Alternatively, you can also try hooking the POLY555&#x27;s speaker up to the headphone output of another small music device.</li></ul></li><li>Confirm the 386 and volume pot aren&#x27;t broken<ul><li>With the 386 chip back in its socket, try shorting the left two pins of the volume pot at RV21.</li><li>If it&#x27;s LOUD when playing, that means the 386 is working but the volume pot is broken. Swap it with a spare.</li><li>If it&#x27;s still muted but the test above confirmed the speaker works, the 386 might be fried or its circuit needs some re-solder work.</li></ul></li></ol></li><li><strong>The high notes are too low and can&#x27;t be tuned any higher</strong><br>
+Try changing the battery!</li><li><strong>Individual notes play fine but holding down multiple keys causes a weird distortion</strong><br>
 Try changing the battery!</li></ul><h2><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="something-else"></a>Something else?<a class="hash-link" href="#something-else" title="Direct link to heading">#</a></h2><p><a href="https://www.oskitone.com/contact" target="_blank" rel="noopener noreferrer">Contact me</a>! The more I hear about what problems folks run into, the better I can make the assembly guide! :)</p></div></article><div class="margin-vert--lg"><nav class="pagination-nav" aria-label="Blog list page navigation"><div class="pagination-nav__item"><a class="pagination-nav__link" href="/poly555/poly555-from-scratch"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">« Appendix: POLY555 from Scratch</div></a></div><div class="pagination-nav__item pagination-nav__item--next"><a class="pagination-nav__link" href="/poly555/schematics"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Appendix: Schematics »</div></a></div></nav></div></div></div><div class="col col--3"><div class="tableOfContents_3SO_ thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#troubleshooting" class="table-of-contents__link">Troubleshooting</a></li><li><a href="#something-else" class="table-of-contents__link">Something else?</a></li></ul></div></div></div></div></main></div></div><footer class="footer footer--dark"><div class="container"><div class="text--center"><div>Copyright © 2022 Oskitone. Built with Docusaurus.</div></div></div></footer></div>
 <script src="/poly555/styles.a94b49ca.js"></script>
-<script src="/poly555/runtime~main.6e74709a.js"></script>
+<script src="/poly555/runtime~main.b245cedc.js"></script>
 <script src="/poly555/main.824b8627.js"></script>
 <script src="/poly555/1.d48dbd84.js"></script>
 <script src="/poly555/26.f4a8039b.js"></script>
 <script src="/poly555/935f2afb.b13d96d7.js"></script>
 <script src="/poly555/25.0da11981.js"></script>
-<script src="/poly555/2bccb399.cc2a4eac.js"></script>
+<script src="/poly555/2bccb399.c2b08169.js"></script>
 </body>
 </html>
