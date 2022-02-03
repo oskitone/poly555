@@ -33,6 +33,8 @@ Stuck? Happens to the best of us. Try these general debugging steps:
         * If it's still muted but the test above confirmed the speaker works, the 386 might be fried or its circuit needs some re-solder work.
 - **The high notes are too low and can't be tuned any higher**<br />
   Try changing the battery!
+- **Individual notes play fine but holding down multiple keys causes a weird distortion**<br />
+  Try changing the battery!
 
 ## Something else?
 
