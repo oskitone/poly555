@@ -11,7 +11,7 @@ The timer circuits are independant, so you can tune their notes in any order.
 ![Tuning the POLY555](/img/tuning.jpg)
 
 1. If it's already assembled, remove **enclosure top** and **keys**
-2. Turn on your chromatic tuner or app and place it by the speaker. Turn the POLY555's volume up so the tuner can hear it.
+2. Get your tuner ready and place it by the speaker. Turn the POLY555's volume up so the tuner can hear it.
 3. Holding any **S\*** switch, adjust its respective **RV\*** trim pot with a small flathead screwdriver until its note is correct. See frequency table below.
 
 ## Frequency table

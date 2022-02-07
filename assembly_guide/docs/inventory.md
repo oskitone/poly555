@@ -38,7 +38,7 @@ You'll need the following tools to assemble your POLY555:
 - Soldering iron and solder for electronics
 - Wire stripper or cutters
 - Philips and flathead screwdrivers
-- Chromatic instrument tuner or phone app
+- Chromatic instrument tuner, phone app, or an [online tuner](https://www.google.com/search?q=online+instrument+tuner)
 - Utility knife
 - School glue
 - 9v battery
