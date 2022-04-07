@@ -37,7 +37,7 @@ Some components may have a different designation in Kicad's BOM.
 | R81, R1, R5, R9, R13, R17, R21, R25, R29, R33, R37, R41, R45, R49, R53, R57, R61, R65, R69, R73, R77                | Resistor L6.3mm_D2.5mm                 | 21       | 220           |
 | R83                                                                                                                 | Resistor L6.3mm_D2.5mm                 | 1        | 10            |
 | RV21, RV1, RV2, RV3, RV4, RV5, RV6, RV7, RV8, RV9, RV10, RV11, RV12, RV13, RV14, RV15, RV16, RV17, RV18, RV19, RV20 | Trim pot                               | 21       | 1k            |
-| S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15, S16, S17, S18, S19, S20                           | SW_TH_Tactile_Omron_B3F-10xx, 6mm tall | 20       | 6x6x6 tactile |
+| S1, S2, S3, S4, S5, S6, S7, S8, S9, S10, S11, S12, S13, S14, S15, S16, S17, S18, S19, S20                           | 6x6x6 (6mm tall) | 20       | 6x6x6 tactile |
 | S21                                                                                                                 | Slide switch                           | 1        | SS12D02       |
 | U1, U2, U3, U4, U5, U6, U7, U8, U9, U10, U11, U12, U13, U14, U15, U16, U17, U18, U19, U20                           | DIP-8_W7.62mm                          | 20       | 555           |
 | U21                                                                                                                 | TO-220F-3 Horizontal_TabDown           | 1        | L7805         |
