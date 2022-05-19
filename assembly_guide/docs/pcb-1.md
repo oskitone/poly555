@@ -21,7 +21,11 @@ Get power to the board and switch the main LED on and off.
 Double check to make sure you've got the [correct LED color](pcb-0.md#leds) before soldering!
 :::
 
-1. Solder the **sliding toggle switch** to **S21** on the back of the PCB. There's no polarity to this component, so either way is fine as long as it's on the back side.
+:::tip
+The **S21** switch goes on the _back_ of the PCB, not the front.
+:::
+
+1. Solder the **sliding toggle switch** to **S21** on the _back_ of the PCB. There's no polarity to this component, so either way is fine as long as it's on the back side.
 2. Feed the **battery snap**'s wires through the relief hole above **BAT**, then solder its wires into place: red for + and black for -.
 3. Solder a **220 resistor** to **R81**.
 4. Solder the **LED** to **D21**, making sure to match its outline.
