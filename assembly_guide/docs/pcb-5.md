@@ -56,3 +56,9 @@ With the battery attached and power switch on, press buttons **S2** through **S2
 - Do the same troubleshooting checks you did in [Step 3: Make Some Noise](pcb-3.md#troubleshooting) but for all the timer circuits.
 
 If all is well, congrats! The hard parts are over. Now's a good time to go wash your hands to get rid of any soldering residue.
+
+## How does it work?
+
+1. When any **tactile switch** is pressed, 5v from the regulator travels up to its corresponding timer circuit, lighting its LED and powering its 555.
+
+Just like in [PCB Step 3: Make Some Noise](/pcb-3#how-does-it-work)!

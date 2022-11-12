@@ -49,3 +49,9 @@ If you have the enclosure bottom handy, you can also try inserting the PCB into 
 - [Do all the usual debugging steps like checking solder joints, etc.](debugging.md)
 - Use a multimeter to confirm power is getting from battery to switch to R81 to LED
 - If power is getting to LED but it isn't lighting, it may be dead. Try a different one.
+
+## How does it work?
+
+1. The **battery snap** connects the 9v battery to the PCB. Its negative wire (ground) goes throughout the board, but its positive wire only goes to the **sliding toggle switch** at **S21**.
+2. When the **sliding toggle switch** is on, power goes from the battery to the rest of the circuit. When it's switched off, no power is used. _**S21** acts like manually connecting and disconnecting the battery._
+3. The first part of the circuit to use the battery's power is the **LED** at **D21**, but first it goes through the **220 resistor** to **R81**. This is called a current-limiting resistor. Without it, the LED would burn out!

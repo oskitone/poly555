@@ -42,3 +42,10 @@ With the battery attached and power switch on, press buttons **S2** through **S2
 
 - [Do all the usual debugging steps like checking solder joints, etc.](debugging.md)
 - Do the same troubleshooting checks you did in [Step 2: Timer LED Power](pcb-2.md#troubleshooting) for all the buttons and LEDs.
+
+## How does it work?
+
+1. When any **tactile switch** is pressed, 5v from the regulator travels up to its corresponding timer circuit.
+2. Its **LED** lights up, with help from its current-limiting **220 resistor**.
+
+Just like in [PCB Step 2: Timer LED Power](/pcb-2#how-does-it-work)!

@@ -51,3 +51,12 @@ With the battery attached and power switch on, press S1. You should see the LED 
 
 - [Do all the usual debugging steps like checking solder joints, etc.](debugging.md)
 - Use a multimeter to confirm 7805 has 9v going in and 5v coming out, then confirm that's going from the button to R1 when pressed.
+
+## How does it work?
+
+1. The **7805 voltage regulator** at **U21** takes 9v from the battery and brings it down to 5v.
+   - Why would we want to do this? The 555 timers we'll solder next are sensitive to changes in voltage, and our 9v battery will slowly supply less juice as the POLY555 is used. The **7805** regulates that dwindling voltage so it's a consistent 5v. Without the regulator, the timers would quickly fall out of tune!
+   - A side effect of how the **7805** works is that it creates heat &mdash; after all, that extra power has to go somewhere, right? That heat is dissipated through its tab and distributed into the "ground" of the PCB.
+   - The **cap** at **C61** helps to reduce fluctuations in the output voltage.
+2. When the **tactile switch** at **S1** is pressed, 5v from the regulator travels up to the first timer circuit in the board's top left corner.
+3. Just like the LED from the previous step, the **LED** at **D1** has a **220 resistor** at **R1** to limit its current to a less-destructive value.
