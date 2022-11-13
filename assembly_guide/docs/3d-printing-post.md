@@ -2,6 +2,8 @@
 id: 3d-printing-post
 title: 3D-Printing Post-Printing
 sidebar_label: Post-Printing
+description: How to prepare the POLY555 parts after printing
+image: /img/removing_window_supports.jpg
 ---
 
 :::note

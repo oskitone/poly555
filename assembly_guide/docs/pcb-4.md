@@ -1,7 +1,9 @@
 ---
 id: pcb-4
 title: "PCB Step 4: Light All Lights"
+description: Solder all the buttons and LEDs on the POLY555.
 sidebar_label: "Step 4: Light All Lights"
+image: /img/pcb-5.jpg
 ---
 
 ## Goal

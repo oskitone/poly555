@@ -1,7 +1,9 @@
 ---
 id: pcb-1
 title: "PCB Step 1: On and Off"
+description: Get power to the POLY555's board and switch the main LED on and off.
 sidebar_label: "Step 1: On and Off"
+image: /img/pcb-5.jpg
 ---
 
 ## Goal

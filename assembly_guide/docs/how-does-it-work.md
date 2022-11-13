@@ -2,6 +2,8 @@
 id: how-does-it-work
 title: How Does It Work?
 sidebar_label: How Does It Work?
+description: How does the POLY555 work?
+image: /img/pcb-5-annotated.jpg
 ---
 
 Inside the enclosure and under the keys is this PCB:

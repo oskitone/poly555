@@ -2,6 +2,8 @@
 id: care
 title: Care
 sidebar_label: Care
+description: How to care for your POLY555
+image: /img/assembly/all_done.jpg
 ---
 
 - Clean the plexiglass window pane with regular window cleaner.

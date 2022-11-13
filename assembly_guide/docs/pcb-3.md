@@ -1,7 +1,9 @@
 ---
 id: pcb-3
 title: "PCB Step 3: Make Some Noise"
+description: Finish the POLY555's first timer circuit, add the amp circuit, and test its speaker.
 sidebar_label: "Step 3: Make Some Noise"
+image: /img/pcb-5.jpg
 ---
 
 ## Goal

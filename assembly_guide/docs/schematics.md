@@ -1,7 +1,9 @@
 ---
 id: schematics
 title: "Appendix: Schematics"
+description: POLY555 electronics schematic
 sidebar_label: Schematics
+image: /img/schematics/poly_555.svg
 ---
 
 [![POLY555 schematic](/img/schematics/poly_555.svg)](/img/schematics/poly_555.svg)

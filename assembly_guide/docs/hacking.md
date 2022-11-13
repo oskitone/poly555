@@ -2,6 +2,8 @@
 id: hacking
 title: "Appendix: Hacking"
 sidebar_label: Hacking
+description: Hacking ideas for the POLY555
+image: /img/hacking/gain-cap.jpg
 ---
 
 :::warning

@@ -2,6 +2,8 @@
 id: debugging
 title: "Appendix: Debugging"
 sidebar_label: Debugging
+description: Debugging/troubleshooting tips for assembling the POLY555
+image: /img/assembly/all_done.jpg
 ---
 
 Stuck? Happens to the best of us. Try these general debugging steps:

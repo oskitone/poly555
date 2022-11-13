@@ -1,7 +1,9 @@
 ---
 id: poly555-from-scratch
 title: "Appendix: POLY555 from Scratch"
+description: BOM and sourcing advice for making the POLY555 "from scratch"
 sidebar_label: POLY555 from Scratch
+image: /img/schematics/poly_555.svg
 ---
 
 :::note

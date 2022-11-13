@@ -1,7 +1,9 @@
 ---
 id: pcb-2
 title: "PCB Step 2: Timer LED Power"
+description: Get power to one of the POLY555's timer circuits and light its LED.
 sidebar_label: "Step 2: Timer LED Power"
+image: /img/pcb-5.jpg
 ---
 
 ## Goal

@@ -1,7 +1,9 @@
 ---
 id: pcb-5
 title: "PCB Step 5: And All the Rest"
+description: Finish the POLY555's timer circuits.
 sidebar_label: "Step 5: And All the Rest"
+image: /img/pcb-5.jpg
 ---
 
 ## Goal

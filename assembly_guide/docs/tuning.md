@@ -1,7 +1,9 @@
 ---
 id: tuning
 title: Tuning
+description: Tuning the POLY555.
 sidebar_label: Tuning
+image: /img/tuning.jpg
 ---
 
 :::tip

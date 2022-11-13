@@ -1,7 +1,9 @@
 ---
 id: source-and-license
 title: "Appendix: Source and License"
+description: The POLY555 is open-source hardware.
 sidebar_label: Source and License
+image: /img/assembly/all_done.jpg
 ---
 
 ## Source

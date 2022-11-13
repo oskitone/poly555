@@ -2,6 +2,8 @@
 id: inventory
 title: Inventory
 sidebar_label: Inventory
+description: Inventory for the POLY555 kit and what you'll need to assemble it
+image: /img/kit.jpg
 ---
 
 ## What's Included in the Kit

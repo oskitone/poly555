@@ -2,6 +2,8 @@
 id: final-assembly
 title: Final Assembly
 sidebar_label: Final Assembly
+description: How to do final assembly of the POLY555
+image: /img/assembly/hitch.jpg
 ---
 
 Almost there! Let's finish up.

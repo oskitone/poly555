@@ -2,6 +2,8 @@
 id: 3d-printing-parts-and-slicing
 title: 3D-Printing Parts and Slicing
 sidebar_label: Parts and Slicing
+description: Downloading and slicing the POLY555 parts for your 3D-printer
+image: /img/assembly/all_done.jpg
 ---
 
 :::note

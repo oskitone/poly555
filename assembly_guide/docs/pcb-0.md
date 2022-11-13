@@ -2,6 +2,8 @@
 id: pcb-0
 title: PCB General Tips
 sidebar_label: General Tips
+description: General electronics assembly tips for the POLY555.
+image: /img/pcb-5.jpg
 ---
 
 :::caution

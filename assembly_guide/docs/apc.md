@@ -1,6 +1,8 @@
 ---
 id: apc
 title: "APC_0"
+description: APC
+image: /img/apc/pcb.png
 ---
 
 ## PCB
