@@ -57,10 +57,10 @@ Take a selfie with your brand new and very incredible POLY555 synthesizer. Feel 
 
 When you can, please [let me know](https://www.oskitone.com/contact) how it went for you:
 
-* What did you like? Did you have fun?!
-* Not including printing time, about how long did it take?
-* Were there any parts missing or damaged?
-* Any problems encountered with the instructions?
-* Is there anything you'd change about the POLY555 itself?
+- What did you like? Did you have fun?!
+- Not including printing time, about how long did it take?
+- Were there any parts missing or damaged?
+- Any problems encountered with the instructions?
+- Is there anything you'd change about the POLY555 itself?
 
 I act and rely on customers' feedback to make future kits even better. Thank you so much!
